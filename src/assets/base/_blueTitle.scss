@@ -1,0 +1,33 @@
+@import "../mixin/mixin";
+@import"./color";
+@import"./font";
+
+
+
+.title_area {
+    @include container();
+    margin-bottom: 70px;
+    .sure_title {
+        @include container();
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 8px;
+        .title_font {
+            @include title();
+            &:before {
+                @include titleBefore();
+            }
+            margin-bottom: 0;
+        }
+    }
+    small {
+        display: block;
+        @include container();
+        text-align: center;
+        color: $blue;
+        letter-spacing: 2px;
+        font-weight: 600;
+        opacity: 0.8;
+    }
+}

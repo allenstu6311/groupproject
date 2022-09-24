@@ -1,0 +1,28 @@
+.register{
+    @include container;
+    .title{
+        font-size: 40px;
+        position: relative;
+        left: 140px;
+        padding: 40px 0;
+    }
+    .register_information{
+        display: flex;
+        justify-content: center;
+        padding-bottom: 40px;
+        .input_title{
+            font-size: 20px;
+            line-height: 60px;
+        }
+        .input_area{
+            padding-left: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            line-height: 22px;
+        }
+    }
+    .btnLittle{
+        margin: 0 auto 40px;
+    }
+}

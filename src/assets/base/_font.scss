@@ -1,0 +1,46 @@
+body {
+    font-family:'Microsoft JhengHei', '微軟正黑體', 'Microsoft YaHei', sans-serif;
+    }
+
+
+$fontTitle:'DFKai-SB';//標楷體 
+//如果沒標楷體需求，其餘字體用預設字體
+
+$fontSize:64px;
+
+$fonSizeList:(
+    "h1":$fontSize,
+    "h2":($fontSize)-24px,
+    "h3":($fontSize)-32px,
+    "h4":($fontSize)-40px,
+    "h5":($fontSize)-44px,
+    "h6":($fontSize)-48px,
+    "p":($fontSize)-48px,
+    "span":($fontSize)-48px,
+    "a":($fontSize)-48px,
+
+);
+
+@each $key,$val in $fonSizeList{
+    #{$key}{
+        font-size: $val;
+    }
+}
+
+$funColor:(
+    "h1":$black,
+    "h2":$black,
+    "h3":$black,
+    "h4":$black,
+    "h5":$black,
+    "h6":$black,
+    "p":$black,
+    "span":$black,
+);
+
+@each $key,$val in $funColor{
+    #{$key}{
+        color: $val;
+    }
+}
+

@@ -1,0 +1,103 @@
+
+.btnLarge{//大顆按鈕
+    width: 200px;
+    text-align: center;
+    border-radius: 100px;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 800;
+    background-color: $blue;
+    color: $white;
+    border: none;
+    z-index: 10;
+    letter-spacing: 3px;
+    cursor: pointer;
+    &:hover{//&是連結父層
+        background-color: $red;
+        transform: translateY(-3px);
+        box-shadow: 2px 4px 0px $black;
+        transition: all 0.3s 
+}
+    &:active{
+        transform: translateY(-3px) scale(.97);
+        box-shadow: 1px 2px 0px $black;
+        transition: all 0.1s 
+  }
+}
+
+
+.btnLittle{//小顆按鈕
+    width: 120px;
+    text-align: center;
+    border-radius: 100px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 800;
+    background-color: $blue;
+    color: $white;
+    border: none;
+    position: relative;
+    z-index: 10;
+    letter-spacing: 2px;
+    cursor: pointer;
+    &:hover{//&是連結父層
+        background-color: $red;
+        transform: translateY(-3px);
+        box-shadow: 2px 4px 0px $black;
+        transition: all 0.3s 
+}
+    &:active{
+        transform: translateY(-3px) scale(.97);
+        box-shadow: 1px 2px 0px $black;
+        transition: all 0.1s 
+  }
+}
+
+.btnAddCart{//加入購物車小小顆按鈕
+    width: 110px;
+    text-align: center;
+    border-radius: 100px;
+    padding: 5px;
+    font-size: 16px;
+    font-weight: 800;
+    background-color: $blue;
+    color: $white;
+    border: none;
+    position: relative;
+    z-index: 10;
+    letter-spacing: 1px;
+    cursor: pointer;
+    &:hover{//&是連結父層
+        background-color: $red;
+        transform: translateY(-3px);
+        box-shadow: 2px 4px 0px $black;
+        transition: all 0.3s 
+}
+    &:active{
+        transform: translateY(-3px) scale(.97);
+        box-shadow: 1px 2px 0px $black;
+        transition: all 0.1s 
+}
+}
+
+.btnMinimum{//最最小按鈕
+    width: 90px;
+    text-align: center;
+    border-radius: 100px;
+    padding: 3px;
+    font-size: 14px;
+    font-weight: 800;
+    background-color: $blue;
+    color: $white;
+    border: none;
+    position: relative;
+    z-index: 10;
+    letter-spacing: 1px;
+    cursor: pointer;
+    &:hover{//&是連結父層
+        background-color: $red;
+        transition: all 0.3s 
+}
+}
+
+

@@ -1,0 +1,1224 @@
+
+@keyframes slide-top {
+    0% {
+                transform: translateY(0);
+                opacity: 0;
+    }
+    100% {
+                transform: translateY(-315px);
+                opacity: 1;
+    }
+}
+.slide-top {
+    animation: slide-top 1.8s both;
+
+}
+
+
+@keyframes show-up {
+    0% {
+                opacity: 0;
+    }
+    100% {
+                opacity:.7;
+                
+                
+    }
+}
+.show-up {
+    animation: show-up 1.5s both;
+
+}
+
+@keyframes slide-show {
+    0% {
+        opacity: .2;
+        transform: translate3d(60px,10px, 0px);
+    }
+    50%{
+        transform: translate3d(30px,30px, 0px);
+    }
+    100% {
+        opacity:.9;
+        transform: translate3d(25px,55px, 0px);
+                
+                
+    }
+}
+.slide-show{
+    animation-name: slide-show; /* 套用的 keyframe */
+    animation-duration: 3s;          /* 動畫持續時間 */
+    animation-iteration-count: infinite; /* 動畫播放次數 */
+    animation-timing-function: linear; /* 影片加速速率 */
+    animation-direction: alternate; /* 動畫持續時間 */
+}
+@keyframes slide-to-right {
+    0% {
+        transform: translateX(-500px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+
+
+.reveal {
+    position: relative;
+    opacity: 0;
+}
+
+.reveal.fade_active {
+    opacity: 1;
+}
+.fade_active.fade-top {
+    animation: fade-top 1s ease-in;
+}
+.fade_active.fade-bottom {
+    animation: fade-bottom 1s ease-in;
+}
+.fade_active.fade-left {
+    animation: fade-left 1s ease-in;
+}
+.fade_active.fade-right {
+    animation: fade-right 1s ease-in;
+}
+@keyframes fade-top {
+    0% {
+        transform: translateY(120px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+@keyframes fade-bottom {
+0% {
+    transform: translateY(150px);
+    opacity: 0;
+}
+100% {
+    transform: translateY(0);
+    opacity: 1;
+}
+}
+@keyframes fade-bottom {
+0% {
+    transform: translateY(50px);
+    opacity: 0;
+}
+100% {
+    transform: translateY(0);
+    opacity: 1;
+}
+}
+@keyframes fade-left {
+0% {
+    transform: translateX(-100px);
+    opacity: 0;
+}
+100% {
+    transform: translateX(0);
+    opacity: 1;
+}
+}
+
+@keyframes fade-right {
+0% {
+    transform: translateX(100px);
+    opacity: 0;
+}
+100% {
+    transform: translateX(0);
+    opacity: 1;
+}
+}
+
+/*==============以上是動畫效果=================*/
+
+body{
+    background-color: $baseWhite;
+    
+}
+
+main{
+    width: 100%;
+    display: block;
+    
+}
+/*===========BANNER===========*/
+.main_banner{
+    min-width: 100%;
+    height: 90vh;
+    margin: 0 auto;
+    display: flex;
+    // background-image: url(../assets/images/mainBanner.gif);
+    // background-repeat:no-repeat;
+    // background-position: center;
+    // background-size: cover;
+    overflow: hidden;
+    position: relative;
+    video{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top:0;
+        left:0;
+        object-fit: cover;
+    }
+
+    .banner_logo{
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+
+        img{
+            position: absolute;
+            width: 11%;
+            transition: all 2s;
+            &:hover {
+                transform: translate3d(0px, 70px, 0px);
+                
+            }
+        }
+    }
+
+    .banner_circle{
+        position: absolute;
+        width: 95px;
+        height: 90vh;
+        right: 0;
+        background-image: url(../assets/images/bannercircle.gif);
+        background-repeat:no-repeat;
+        background-position: center;
+        background-size: cover;
+
+        
+    }
+
+    .first{
+        transform: rotate(180deg);
+    }
+    .second {
+        position: absolute;
+        width: 95px;
+        height: 90vh;
+        left: 0px;
+        background-image: url(../assets/images/bannercircle.gif);
+        background-repeat:no-repeat;
+        background-position: center;
+        background-size: cover;
+
+        
+    }
+
+    .banner_hand{
+        position: absolute;
+        width: 45%;
+        height: 410px;
+        right: 20px;
+        top: -160px;
+        background-image: url(../assets/images/bannerhand.png);
+        background-repeat:no-repeat;
+        background-size: cover;
+        transform: rotate(5deg);
+
+    }
+
+    .bottom{
+        position: absolute;
+        width: 45%;
+        height: 370px;
+        left: 30px;
+        top: 260px;
+        background-image: url(../assets/images/bannerhand2.png);
+        background-repeat:no-repeat;
+        background-size: cover;
+    }
+}
+
+/*====== 行動版 RWD | 320px ~ 768px ======*/
+@media screen and (min-width: 320px) and (max-width: 767.98px){
+    .main_banner{
+        height: 600px;
+        
+        .banner_logo{
+            position: absolute;
+            width: 100%;
+            top: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img{
+                width: 30%;
+            }
+        }
+        .banner_circle{
+            width: 50px;
+            height: 600px;
+            background-repeat:no-repeat;
+            background-position: right;
+            background-size: cover;
+            
+        }
+        .first{
+            transform: rotate(180deg);
+        }
+        .second{
+            width: 50px;
+            height: 600px;
+            background-repeat:no-repeat;
+            background-position: right;
+            background-size: cover;
+        }
+        .banner_hand{
+            position: absolute;
+            width: 80%;
+            height: 380px;
+            right: 50px;
+            top: -90px;
+            background-image: url(../assets/images/bannerhand.png);
+            background-repeat:no-repeat;
+            background-size: contain;
+
+        }
+        .bottom{
+            position: absolute;
+            width: 70%;
+            height: 370px;
+            left: 0px;
+            top: 390px;
+            background-image: url(../assets/images/bannerhand2.png);
+            background-repeat:no-repeat;
+            background-size: contain;
+        }
+    }
+}
+
+/*======    平板版 RWD | 768px ~ 1200px ======*/
+@media screen and (min-width: 768px) and (max-width: 1199.98px){
+    .main_banner{
+        height: 660px;
+        .banner_logo{
+            position: absolute;
+            width: 100%;
+            top: 54vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img{
+                width: 15%;
+            }
+        }
+        .banner_circle{
+            width: 50px;
+            height: 660px;
+            right: -10px;
+            background-repeat:no-repeat;
+            background-position: right;
+            background-size: cover;
+            
+        }
+        .first{
+            transform: rotate(180deg);
+        }
+        .second{
+            width: 50px;
+            height: 660px;
+            left: -10px;
+            background-repeat:no-repeat;
+            background-position: right;
+            background-size: cover;
+        }
+        .banner_hand{
+            position: absolute;
+            width: 55%;
+            height: 380px;
+            right: 50px;
+            top: -100px;
+            background-image: url(../assets/images/bannerhand.png);
+            background-repeat:no-repeat;
+            background-size: contain;
+
+        }
+        .bottom{
+            position: absolute;
+            width: 55%;
+            height: 370px;
+            left: 10px;
+            top: 380px;
+            background-image: url(../assets/images/bannerhand2.png);
+            background-repeat:no-repeat;
+            background-size: contain;
+        }
+    }
+}
+//--------------關於我們---------------
+
+.rotate-center {
+    animation: rotate-center 15s linear infinite both;
+}
+
+@keyframes rotate-center {
+    0% {
+            transform: rotate(0);
+    }
+    100% {
+            transform: rotate(360deg);
+    }
+}
+
+
+
+
+
+.about_us{
+    width: 100%;
+    max-width: 1200px;
+    padding: 150px 0px 0px 0px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    // overflow: hidden;
+
+    .about_us_intro{
+        width: 400px;
+
+        .title_area{
+            position: relative;
+            .title{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 6px;
+            .title_font {
+                @include title();
+
+                &:before {
+                    @include titleBefore();
+                }
+
+                margin-bottom: 0;
+            }
+            }
+
+            small {
+                display: block;
+                width: 100%;
+                text-align: center;
+                color: $blue;
+                letter-spacing: 2px;
+                margin-bottom: 20px;
+            }
+
+            p{
+                line-height: 40px;
+                margin-bottom: 30px;
+            }
+        }
+    }
+    .about_us_pic{
+        position: relative;
+        width: 700px;
+
+        .round_back{
+            width: 430px;
+            height: 430px;
+            position: absolute;
+            top: 0px;
+            right: -70px;
+            background: url(../assets/images/imageRoundGate.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .round_front{
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            position: relative;
+            background-color: $blue;
+            top: 20px;
+            right: -90px;
+            border: 5px solid $blue;
+            img{
+                width: 420px;
+                height: 420px;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+        }
+    }
+}
+/*====== 行動版 RWD | 320px ~ 768px ======*/
+@media screen and (min-width: 320px) and (max-width: 767.98px){
+    .about_us{
+        width: 100%;
+        height: 120%;
+        max-width: 1200px;
+        padding: 120px 0px 0px 0px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        overflow: hidden;
+        
+        .about_us_intro{
+            width: 90%;
+            margin: 0 auto;
+            .title_area{
+
+                .title{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 6px;
+                .title_font {
+                    @include title();
+    
+                    &:before {
+                        @include titleBefore();
+                    }
+    
+                    margin-bottom: 0;
+                }
+                }
+    
+                small {
+                    display: block;
+                    width: 100%;
+                    text-align: center;
+                    color: $blue;
+                    letter-spacing: 2px;
+                    margin-bottom: 20px;
+                }
+    
+                p{
+                    line-height: 40px;
+                    margin-bottom: 30px;
+                }
+            }
+        }
+        .about_us_pic{
+            position: relative;
+            width: 700px;
+            height: 100%;
+    
+            .round_back{
+                width: 450px;
+                height: 450px;
+                position: absolute;
+                top: -100px;
+                right: -200px;
+                background: url(../assets/images/imageRoundGate.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                
+            }
+    
+            .round_front{
+                width: 350px;
+                height: 350px;
+                border-radius: 50%;
+                position: relative;
+                background-color: $blue;
+                top:0px;
+                right: -35px;
+                border: 5px solid $blue;
+            img{
+                width: 350px;
+                height: 350px;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+            }
+        }
+    }
+
+}
+
+/*======    平板版 RWD | 768px ~ 1200px ======*/
+@media screen and (min-width: 768px) and (max-width: 1199.98px){
+    .about_us{
+        width: 100%;
+        height: 760px;
+        max-width: 1200px;
+        padding: 150px 0px 0px 0px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        overflow: hidden;
+        
+        .about_us_intro{
+            width: 90%;
+            margin: 0 auto;
+            .title_area{
+
+                .title{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 6px;
+                .title_font {
+                    @include title();
+    
+                    &:before {
+                        @include titleBefore();
+                    }
+    
+                    margin-bottom: 0;
+                }
+                }
+    
+                small {
+                    display: block;
+                    width: 100%;
+                    text-align: center;
+                    color: $blue;
+                    letter-spacing: 2px;
+                    margin-bottom: 20px;
+                }
+    
+                p{
+                    line-height: 40px;
+                    margin-bottom: 30px;
+                }
+            }
+        }
+        .about_us_pic{
+            position: relative;
+            width: 700px;
+            height: 100%;
+    
+            .round_back{
+                width: 450px;
+                height: 450px;
+                position: absolute;
+                top: -150px;
+                right: -200px;
+                background: url(../assets/images/imageRoundGate.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                
+            }
+    
+            .round_front{
+                width: 400px;
+                height: 400px;
+                border-radius: 50%;
+                position: relative;
+                background-color: $blue;
+                top:-100px;
+                right: -200px;
+                img{
+                    width: 400px;
+                    height: 400px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}
+
+//=======================按摩學堂=====================
+
+.massage_school{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 150px;
+    
+    .massage_school_content{
+        width: 100%;
+        max-width: 1200px;
+        display: flex;
+        justify-content: space-between;
+       
+        .massage_school_intro{
+            width: 400px;
+            padding-top: 80px;
+            h3{
+                color: $red;
+                font-family: $fontTitle;
+                letter-spacing: 1px;
+                margin-bottom: 30px;
+                position: relative;
+
+                &::before{
+                    content: url(../assets/images/h3RedFrame.png);
+                    width: 100%;
+                    height: 100%;
+                    top: -7px;
+                    left:-6px;
+                    position: absolute;
+                }
+            }
+            p{
+                line-height: 40px;
+                margin-bottom: 30px;
+            }
+        }
+
+        .swiper {
+            width: 750px;
+            height: 400px;
+            margin: 0;
+        }
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+          }
+    
+          .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+    
+          .swiper-pagination-bullet {
+            width: 16px;
+            height: 16px;
+            text-align: center;
+            line-height: 24px;
+            font-size: 12px;
+            color:  rgb(205, 205, 205);
+            opacity: 1;
+            background: rgb(205, 205, 205);
+          }
+    
+          .swiper-pagination-bullet-active {
+            color: $blue;
+            background: $blue;
+          }
+
+    }
+    
+}
+
+/*====== 行動版 RWD | 320px ~ 768px ======*/
+@media screen and (min-width: 320px) and (max-width: 767.98px){
+.massage_school{
+    display: flex;
+    .massage_school_content{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        .massage_school_intro{
+            width: 80%;
+            margin: 0 auto;
+            padding-top: 0px;
+        }
+    }
+    .swiper{
+        width: 80%;
+    }
+    
+}
+}
+/*======    平板版 RWD | 768px ~ 1200px ======*/
+@media screen and (min-width: 768px) and (max-width: 1199.98px){
+.massage_school{
+    width: 90%;
+    .massage_school_content{
+
+        .swiper{
+            width: 600px;
+        }
+    }
+}
+}
+
+//=======================商品專區=====================
+.product{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 150px;
+    .product_content{
+        width: 100%;
+        max-width: 1200px;
+        display: flex;
+        justify-content: space-between;
+
+        .product_oil{
+            width: 480px;
+            height: 450px;
+            background: url(../assets/images/indexOil.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: relative;
+            img{
+                position: absolute;
+                width: 450px;
+                height: 288px;
+                top: 85px;
+                right: 15px;
+                border-radius: 10px;
+            }
+        
+        }
+        .product_tool{
+            width: 480px;
+            height: 450px;
+            background: url(../assets/images/indextool.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: relative;
+            img{
+                position: absolute;
+                width: 450px;
+                height: 288px;
+                top: 85px;
+                right: 15px;
+                border-radius: 10px;
+            }
+        
+        }
+    }
+
+}
+
+/*====== 行動版 RWD | 320px ~ 768px ======*/
+@media screen and (min-width: 320px) and (max-width: 767.98px){
+    .product{
+        width: 90%;
+        
+        .product_content{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            .product_oil{
+                width: 355px;
+                height: 355px;
+                img{
+                    position: absolute;
+                    width: 335px;
+                    height: 213px;
+                    top: 62px;
+                    right: 10px;
+                    border-radius: 10px;
+                }
+            }
+            .product_tool{
+                width: 355px;
+                height: 355px;
+                img{
+                    position: absolute;
+                    width: 335px;
+                    height: 213px;
+                    top: 62px;
+                    right: 10px;
+                    border-radius: 10px;
+                }
+            }
+        }
+    }
+}
+/*======    平板版 RWD | 768px ~ 1200px ======*/
+@media screen and (min-width: 768px) and (max-width: 1199.98px){
+    .product{
+        width: 90%;
+        
+        .product_content{
+            width: 100%;
+            
+
+            .product_oil{
+                width: 350px;
+                height: 350px;
+                img{
+                    position: absolute;
+                    width: 333px;
+                    height: 213px;
+                    top: 60px;
+                    right: 7px;
+                    border-radius: 10px;
+                }
+            }
+            .product_tool{
+                width: 350px;
+                height: 350px;
+                img{
+                    position: absolute;
+                    width: 333px;
+                    height: 213px;
+                    top: 60px;
+                    right: 7px;
+                    border-radius: 10px;
+                }
+            }
+        }
+    }
+}
+//--------------預約按摩---------------
+.reservation_bg{
+    width: 100%;
+    background-image: url(../assets/images/brick.png);
+    background-repeat:no-repeat;
+    background-position:right;
+    .index_reservation{
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 150px;
+    
+        .reservation_intro{
+            width: 400px;
+            height: 500px;
+            top: 30%;
+            position: sticky;
+            .title_area{
+                position: relative;
+                .title{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 6px;
+                .title_font {
+                    @include title();
+        
+                    &:before {
+                        @include titleBefore();
+                    }
+        
+                    margin-bottom: 0;
+                }
+                }
+        
+                small {
+                    display: block;
+                    width: 100%;
+                    text-align: center;
+                    color: $blue;
+                    letter-spacing: 2px;
+                    margin-bottom: 20px;
+                }
+        
+                p{
+                    line-height: 40px;
+                    margin-bottom: 30px;
+                }
+            }
+        }
+        
+        .reservation_content{
+            width: 500px;
+            max-width: 1200px;
+            .item{
+                max-width: 500px;
+                padding: 15px 15px 25px 15px;
+                margin: 80px 0px;
+                background-color: white;
+                border-radius: 15px;
+                box-shadow: 13px 13px 0px $blue;
+                .pic{
+                    max-width: 500px;
+    
+                    img{
+                        width: 100%;
+                        height: 300px;
+                        border-radius: 15px;
+                        object-fit: cover;
+    
+                    }
+                }
+                .item_bottom{
+                    max-width: 500px;
+                    display: flex;
+                    justify-content: space-around;
+                    margin-top: 15px;
+
+                    .intro{
+                        display: block;
+                        width: 70%;
+                        
+                        h4{
+                            color: $blue;
+                            font-weight: 600;
+                            margin-bottom: 10px;
+                        }
+                        p{
+                            line-height: 24px;
+                        }
+                        .pirce{
+                            color:$red;
+                            font-weight: 600;
+                        }
+                        
+                    }
+                    .intro_btn{
+                        display: flex;
+                        align-items: end;
+                    }
+                }
+            }
+        
+        }
+        
+    }
+}
+/*====== 行動版 RWD | 320px ~ 768px ======*/
+@media screen and (min-width: 320px) and (max-width: 767.98px){
+    .reservation_bg{
+        background-image: url(../assets/images/brick_RWD.png);
+        background-position: right 35% bottom 22%;
+        .index_reservation{
+            width: 90%;
+            
+            .reservation_intro{
+                width: 100%;
+                height: 300px;
+                position: static;
+                
+
+                
+            }
+        }
+    }
+}
+/*======    平板版 RWD | 768px ~ 1200px ======*/
+@media screen and (min-width: 768px) and (max-width: 1199.98px){
+    .reservation_bg{
+        background-image: url(../assets/images/brick_RWD.png);
+        background-position: right -100% bottom 22%;
+        .index_reservation{
+            width: 90%;
+
+            
+            .reservation_intro{
+                width: 100%;
+                height: 300px;
+                position: static;
+                
+            }
+            .reservation_content{
+                margin: 0 auto;
+            }
+            
+        }
+    }
+}
+
+//--------------客戶感想---------------
+
+.index_review{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 150px;
+    overflow: hidden;
+
+
+    .swiper2 {
+        width: 100%;
+        height: 100%;
+        .swiper-wrapper{
+          
+            .swiper-slide {
+                width: 400px;
+                height: 450px;
+                font-size: 18px;
+                margin: 0 auto;
+                
+            }
+        
+            .swiper-slide img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+
+        
+
+        .swiper-pagination {
+            position: inherit;
+            text-align: center;
+            transition: .3s opacity;
+            transform: translate3d(0,0,0);
+            z-index: 0;
+            margin-top: 30px;
+            .swiper-pagination-bullet {
+                width: 16px;
+                height: 16px;
+                text-align: center;
+                line-height: 24px;
+                font-size: 12px;
+                color:  rgb(205, 205, 205);
+                opacity: 1;
+                background: rgb(205, 205, 205);
+                cursor: pointer;
+              }
+        
+              .swiper-pagination-bullet-active {
+                color: $blue;
+                background: $blue;
+              }
+        }
+    }
+}
+
+
+/*====== 行動版 RWD | 320px ~ 768px ======*/
+@media screen and (min-width: 320px) and (max-width: 767.98px){
+    .index_review{
+        width: 100%;
+    
+        .swiper2 {
+            width: 100%;
+            height: 100%;
+            .swiper-wrapper{
+              
+                .swiper-slide {
+                    width: 350px;
+                    height: 400px;
+                    font-size: 18px;
+                    margin: 0 auto;
+                    
+                    
+                }
+            
+                .swiper-slide img {
+                    display: block;
+                    width: 300px;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+    
+            
+    
+            .swiper-pagination {
+                position: inherit;
+                text-align: center;
+                transition: .3s opacity;
+                transform: translate3d(0,0,0);
+                z-index: 0;
+                margin-top: 30px;
+                .swiper-pagination-bullet {
+                    width: 16px;
+                    height: 16px;
+                    text-align: center;
+                    line-height: 24px;
+                    font-size: 12px;
+                    color:  rgb(205, 205, 205);
+                    opacity: 1;
+                    background: rgb(205, 205, 205);
+                    cursor: pointer;
+                  }
+            
+                  .swiper-pagination-bullet-active {
+                    color: $blue;
+                    background: $blue;
+                  }
+            }
+        }
+    }
+}
+//--------------最新消息---------------
+.latest_news{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 150px;
+    margin-bottom: 100px;
+
+    .news_content{
+        width: 100%;
+
+        .news{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            
+
+            .news_intro{
+                width: 60%;
+                padding-top: 10px;
+                .news_title{
+                    color: $blue;
+                    font-weight: 600;
+                    margin-bottom: 30px;
+                }
+                .news_date{
+                    margin-bottom: 30px;
+                }
+                .news_text{
+                    line-height: 40px;
+                    font-size: 18px;
+                }
+                .news_btn{
+                    width: 100%;
+                    height: 100px;
+                    display: flex;
+                    justify-content: end;
+                    align-items: flex-end;
+                }
+            }
+            
+        }
+    }
+
+}
+/*====== 行動版 RWD | 320px ~ 768px ======*/
+@media screen and (min-width: 320px) and (max-width: 767.98px){
+    .latest_news{
+        width: 90%;
+        .news_content{
+            width: 100%;
+            .news{
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                .pic{
+                    width: 100%;
+                    img{
+                        width: 100%;
+                    }
+                }
+                .news_intro{
+                    width: 100%;
+                    padding-top: 20px;
+                }
+                .news_btn{
+                    width: 100%;
+                    height: 100px;
+                    display: flex;
+                    justify-content: start;
+                    align-items: flex-start;
+                }
+            }
+        }
+
+    }
+}

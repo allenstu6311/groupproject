@@ -1,0 +1,261 @@
+.game_answer{
+    width: 100%;
+    .answer_container{
+        width: 80%;
+        padding: 5px;
+        margin: 70px auto 120px auto;
+        border: 3px solid $blue;
+        border-radius: 12px;
+        box-shadow: 6px 10px 0px 0px $blue;
+        background-color: #fff;
+        position: relative;
+        .answer_frame{
+            border-radius: 8px;
+            border: 2px solid $blue;
+            .answer{
+                padding: 20px;
+                text-align: center;
+                line-height: 2;
+                color: #524F4F;
+                font-size: 24px;
+            }
+        }
+        &::before{
+            content: "";
+            width: 0px;
+            border-top: 60px solid $blue;
+            border-right: 50px solid transparent;
+            border-bottom: 50px solid transparent ;
+            border-left: 50px solid transparent;
+            position: absolute;
+            top: 110%;
+            left: 2%;
+        }
+    }
+    .answer_hand{
+        width: 70%;
+        margin: 0 auto 0 auto;
+        position: relative;
+        img{
+            display: block;
+            width: 100%;
+        }
+        .acupoint{
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 20px;
+            height: 20px;
+            background-color: $red;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .acupoint:hover,.acupoint:focus{
+            background-color: $red;
+            transition: 0.3s;
+            scale: 1.5;
+            box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
+        }
+        .zhong_chong{
+            top: 55%;
+            left: 33%;
+            scale: 1.5;
+            box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
+            z-index: 90;
+        }
+        .shao_shang{
+            top: 5%;
+            left: 52%;
+        }
+        .he_gu{
+            top: 37%;
+            left: 38%;
+        }
+        .ming_men{
+            top: 73%;
+            left: 12%;
+        }
+        .shen_men{
+            top: 90%;
+            left: 65%;
+        }
+        .yu_ji{
+            top: 40%;
+            left: 57%;
+        }
+        .shao_fu{
+            top: 68%;
+            left: 31%;
+        }
+        .tai_yuan{
+            top: 72%;
+            left: 80%;
+        }
+        .answer_box{
+            position: absolute;
+            top: 105%;
+            width: 100%;
+            padding: 5px;
+            border: 3px solid $blue;
+            border-radius: 12px;
+            box-shadow: 6px 10px 0px 0px $blue;
+            background-color: #fff;
+            z-index: 95;
+            .answer_box_frame{
+                border-radius: 8px;
+                border: 2px solid $blue;
+                .answer_title{
+                    font-family: $fontTitle;
+                    color: $blue;
+                    padding-top: 10px;
+                    padding-left: 10px;
+                }
+                .answer_txt{
+                    color: #524F4F;
+                    padding: 10px;
+                    letter-spacing: 2px;
+                    line-height: 25px;
+                }
+            }
+        }
+        .zhong_chong::before{
+            content: '';
+            width: 240px;
+            height: 2px;
+            background-color: $blue;
+            position: absolute;
+            top: 680%;
+            left: -550%;
+            transform: rotate(-90deg
+            );
+        }
+    }
+    .answer_btn{
+        margin-top: 350px;
+        margin-bottom: 120px;
+        text-align: center;
+        a{
+            text-decoration: none;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+    }
+        
+}
+
+/*====== 平板版 RWD | 768px ~ 1200px ======*/
+@media screen and (min-width: 768px) and (max-width: 1199.98px){
+    .game_answer{
+        .answer_container{
+            width: 60%;
+        }
+        .answer_hand{
+            width: 60%;
+            .acupoint{
+                width: 25px;
+                height: 25px;
+            }
+            .answer_box{
+                position: absolute;
+                top: 20%;
+                left: 60%;
+                width: 300px;
+                padding: 5px;
+                border: 3px solid $blue;
+                border-radius: 12px;
+                box-shadow: 6px 10px 0px 0px $blue;
+                background-color: #fff;
+                .answer_box_frame{
+                    border-radius: 8px;
+                    border: 2px solid $blue;
+                    .answer_title{
+                        font-family: $fontTitle;
+                        color: $blue;
+                        padding-top: 10px;
+                        padding-left: 10px;
+                    }
+                    .answer_txt{
+                        color: #524F4F;
+                        padding: 10px;
+                        letter-spacing: 2px;
+                        line-height: 25px;
+                        font-size: 14px;
+                    }
+                }
+            }
+            .zhong_chong::before{
+                content: '';
+                width: 200px;
+                height: 2px;
+                background-color: $blue;
+                position: absolute;
+                top: -250%;
+                left: -30%;
+                transform: rotate(-45deg
+                );
+            }
+        }
+        .answer_btn{
+            margin-top: 120px;
+        }
+    }
+}
+
+/*====== 桌機版 RWD | >1200px ======*/
+@media screen and (min-width: 1200px){
+    .game_answer{
+        .answer_container{
+            width: 60%;
+        }
+        .answer_hand{
+            width: 40%;
+            .acupoint{
+                width: 25px;
+                height: 25px;
+            }
+            .answer_box{
+                position: absolute;
+                top: 30%;
+                left: 70%;
+                width: 400px;
+                padding: 5px;
+                border: 3px solid $blue;
+                border-radius: 12px;
+                box-shadow: 6px 10px 0px 0px $blue;
+                background-color: #fff;
+                .answer_box_frame{
+                    border-radius: 8px;
+                    border: 2px solid $blue;
+                    .answer_title{
+                        font-family: $fontTitle;
+                        color: $blue;
+                        padding-top: 10px;
+                        padding-left: 10px;
+                    }
+                    .answer_txt{
+                        color: #524F4F;
+                        padding: 10px;
+                        letter-spacing: 2px;
+                        line-height: 25px;
+                    }
+                }
+            }
+            .zhong_chong::before{
+                content: '';
+                width: 200px;
+                height: 2px;
+                background-color: $blue;
+                position: absolute;
+                top: 0%;
+                left: 88%;
+                transform: rotate(-7deg
+                );
+            }
+        }
+        .answer_btn{
+            margin-top: 120px;
+        }
+    }
+}

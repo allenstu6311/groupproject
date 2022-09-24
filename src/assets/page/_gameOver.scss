@@ -1,0 +1,102 @@
+.game_over{
+    width: 100%;
+    .coupon_container{
+        width: 80%;
+        padding: 5px;
+        margin: 80px auto 120px auto;
+        border: 3px solid $blue;
+        border-radius: 12px;
+        box-shadow: 6px 10px 0px 0px $blue;
+        background-color: #fff;
+        position: relative;
+        .coupon_frame{
+            border-radius: 8px;
+            border: 2px solid $blue;
+            .coupon{
+                padding-top: 50px;
+                padding-left: 5px;
+                padding-right: 5px;
+                text-align: center;
+                line-height: 2;
+                letter-spacing: 3px;
+                color: #524F4F;
+                font-size: 18px;
+                span{
+                    color: $red;
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+    .btn_group{
+        margin-bottom: 80px;
+        .over_btn{
+            text-align: center;
+            margin: 50px 0px 0px 0px;
+            a{
+                text-decoration: none;
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+        }
+    }
+}
+
+/*====== 平板版 RWD | 768px ~ 1200px ======*/
+@media screen and (min-width: 768px) and (max-width: 1199.98px){
+    .game_over{
+        .coupon_container{
+            width: 60%;
+            margin: 100px auto 120px auto;
+            .coupon_frame{
+                .coupon{
+                    padding-top: 70px;
+                    text-align: center;
+                    line-height: 2;
+                    font-size: 24px;
+                    span{
+                        font-size: 24px;
+                    }
+                }
+            }
+        }
+        .btn_group{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 100px;
+            .over_btn{
+                margin: 50px 10px 0px 10px;
+            }
+        }
+    }
+}
+
+/*====== 桌機版 RWD | >1200px ======*/
+@media screen and (min-width: 1200px){
+    .game_over{
+        .coupon_container{
+            width: 60%;
+            margin: 120px auto 120px auto;
+            .coupon_frame{
+                .coupon{
+                    padding-top: 90px;
+                    padding-bottom: 50px;
+                    font-size: 24px;
+                    span{
+                        font-size: 24px;
+                    }
+                }
+            }
+        }
+        .btn_group{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 120px;
+            .over_btn{
+                margin: 0px 10px 0px 10px;
+            }
+        }
+    }
+}

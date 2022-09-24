@@ -1,0 +1,111 @@
+@mixin rect($w, $h:$w) {
+    width: $w;
+    height: $h;
+}
+
+@mixin layout($w) {
+    @if $w==100 {
+        width: 100%;
+    }
+
+    @else {
+        width: $w + px;
+        margin: 0 auto;
+    }
+}
+
+@mixin container() {
+    //外部容器
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+@mixin title() {
+    //標題藍色圈圈
+
+    width: 57px;
+    height: 57px;
+    border-radius: 50%;
+    background-color: $blue;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    // font-weight: 900;
+    color: white;
+    font-family: $fontTitle;
+
+}
+
+@mixin titleBefore() {
+    //標題before
+    content: "";
+    width: 49px;
+    height: 49px;
+    background-color: transparent;
+    border: 2.3px solid white;
+    position: absolute;
+    top: 1px;
+    left: 2.5%;
+    border-radius: 50%;
+
+}
+
+
+@mixin grid($val, $d:null) {
+
+    //格線系統
+    @for $i from 1 through $val {
+        .col#{$d}-#{$i} {
+            width: calc($i / $val * 100%);
+        }
+    }
+}
+
+@include grid(12);
+
+@mixin cellphone() {
+    @media screen and (max-width:768px) {
+
+        .col-1,
+        .col-2,
+        .col-3,
+        .col-4,
+        .col-5,
+        .col-6,
+        .col-7,
+        .col-8,
+        .col-9,
+        .col-10,
+        .col-11,
+        .col-12 {
+            width: 90%;
+        }
+    }
+
+    @content;
+}
+
+// 手機板 mobile
+@mixin m() {
+    @media screen and (min-width: 320px) and (max-width: 767.98px) {
+        @content;
+    }
+}
+
+// 平板 tablet
+@mixin t() {
+    @media screen and (min-width: 768px) and (max-width: 1199.98px) {
+        @content;
+    }
+}
+
+// 桌機 pc
+@mixin pc() {
+    @media screen and (min-width: 1200px) {
+        @content;
+    }
+}

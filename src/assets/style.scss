@@ -1,0 +1,54 @@
+
+//base
+@import"./base/bcgFlower";
+@import"./base/blueTitle";
+@import"./base/color";
+@import"./base/common";
+@import"./base/font";
+@import"./base/reset";
+@import"./base/var";
+
+//@mixin
+@import"./mixin//mixin";
+
+//component
+@import "./component/btn";
+@import './component/banner';
+@import './component/datetimepicker';
+
+//layout
+@import"./layout/header";
+@import"./layout/footer";
+
+//page
+@import "./page/index";
+// @import "./page/memLogin";
+// @import "./page/memCenter";
+// @import "./page/register";
+// @import "./page/backstageUserSwitch";
+// @import "./page/manageLogin";
+// @import "./page/backstageIndex";
+@import "./page/massageFAQ";
+
+@import './page/reservation';
+// @import './page/resvPage';
+@import './page/aboutUs';
+// @import './page/aboutMasseuse';
+// @import './page/employee';
+
+// @import"./page/productDetails";
+
+// @import "./page/massageschool";
+// @import "./page/massageGame";
+// @import "./page/gameAnswer";
+// @import "./page/gameOver";
+
+// @import"./page/Payment";
+// @import"./page/shopingArea";
+
+// @import"./page/shoppingCart";
+// @import"./mixin/MediaPayment";
+
+// @import "./mixin/productMedia";
+// @import"./mixin/AreaMedia";
+// @import"./mixin/_shoppingCartMedia";

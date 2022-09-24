@@ -1,0 +1,20 @@
+.sr_only{
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+}
+.banner{
+    // banner照片請統一規格: 高度裁切 650px (暫定)
+    img{
+        width: 100%;
+    }
+}
+.main_title{
+    position: absolute;
+    right: 0;
+    top: 20%;
+    img{
+        width: 13vw;
+    }
+}

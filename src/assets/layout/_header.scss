@@ -1,0 +1,325 @@
+.page_header {
+    width: 100%;
+    display: flex;
+    background-color: $baseWhite;
+    box-shadow: 0px 2px 3px rgba(48, 48, 48, 0.252);
+    z-index: 999;
+    
+
+    nav{
+        width: 1200px;
+        height: 80px;
+        list-style: none;
+        display: flex;
+        margin: 0 auto;
+        justify-content: space-between;
+        padding: 0px 20px 0px 10px;
+        .header_logo{
+            width: 160px;
+            display: block;
+            padding: 5px 0px;
+            align-self: center;
+            img{
+                width: 100%;
+            }
+        }
+        ul{
+            width: 60%;
+            display: flex;
+            justify-content: space-around;
+            
+            li{
+                align-self: center;
+                
+                
+                a {
+                    display: inline-block;
+                    font-family: $fontTitle;
+                    font-weight: 600;
+                    font-size: 18px;
+                    letter-spacing: 2px;
+                    color: $blue;
+                    text-decoration: none;
+                    padding: 5px;
+                    white-space: nowrap;
+                    position: relative;
+                    text-transform: uppercase;
+                    bottom: 2px black solid;
+                    cursor: pointer;
+
+                    
+                    &:before{
+                        position: absolute;
+                        content: '';
+                        left: 0;
+                        bottom: 0;
+                        height: 1.5px;
+                        width: 100%;
+                        background-color: $red;
+                        transform: scaleX(0);
+                        transform-origin: right;
+                        transition: transform .3s linear;
+                    }
+                    &:hover:before{
+                        transform: scaleX(1);
+                        transform-origin: left;
+                    }
+                    &:hover{
+                        color: $red;
+                    }
+                }
+            }
+        }
+        .header_icon{
+            display: flex;
+            width: 90px;
+            justify-content: space-between;
+            .header_member{
+                width: 30px;
+                align-self: center;
+                a{
+                    padding: 0;
+    
+                    img{
+                        vertical-align: bottom;
+                        width: 100%;
+                    }
+                }
+            }  
+            .header_shopping_cart{
+                width: 30px;
+                align-self: center;
+                a{
+                    padding: 0;
+    
+                    img{
+                        vertical-align: bottom;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        #check{
+            display: none;
+        }
+        label{
+            display: none;
+            align-self: center;
+            justify-content: space-evenly;
+            span{
+                width: 36px;
+                height: 3px;
+                background-color: $blue;
+            }
+        }
+        #check:checked ~ label .line2{
+            opacity: 0;
+        }
+        #check:checked ~ label .line1,
+        #check:checked ~ label .line3{    
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+        }
+        #check:checked ~ label .line1{
+            transform: rotate(45deg);
+        }
+        #check:checked ~ label .line3{
+            transform: rotate(-45deg);
+        }
+        
+    }
+}
+
+
+
+/*====== 行動版 RWD | 320px ~ 768px ======*/
+@media screen and (min-width: 320px) and (max-width: 767.98px){
+
+.page_header nav{
+    width: 100%;
+
+    .header_logo{
+        width: 160px;
+    }
+    nav{
+        position: fixed;
+    }
+    ul{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        background-color: $blue ;
+        height: 90vh;
+        top: 80px;
+        left: -100%;
+        transition: all .7s;
+        opacity: 0;
+        background-image: url('/src/assets/images/aboutUs.jpg');
+        background-repeat:no-repeat;
+        background-position: center;
+        background-size: cover;
+        z-index: 998;
+        li{
+            line-height: 40px;
+            margin: 30px 0;
+            
+            a{
+                color: $white;
+                &:before{
+                    background-color: $white;
+                }
+                &:hover{
+                    color: $white;
+                }
+            }
+
+        }
+    }
+    .header_icon{
+        margin-right: 55px;
+        .header_member{
+            width: 30px;
+            align-self: center;
+            a{
+                padding: 0;
+
+                img{
+                    vertical-align: bottom;
+                    width: 100%;
+                }
+            }
+        }  
+        .header_shopping_cart{
+            width: 30px;
+            align-self: center;
+            a{
+                padding: 0;
+
+                img{
+                    vertical-align: bottom;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    #check:checked ~ ul{
+        left: 0;
+        opacity: 1;
+    }
+    
+    label{
+        width: 36px;
+        height: 36px;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 10px;
+        justify-content: space-evenly;
+        span{
+            display: block;
+            
+        }
+    }
+
+}
+
+}
+
+/*======    平板版 RWD | 768px ~ 1200px ======*/
+@media screen and (min-width: 768px) and (max-width: 1199.98px){
+    .page_header nav{
+        width: 100%;
+        
+    
+        .header_logo{
+            width: 160px;
+  
+        }
+        nav{
+            position: fixed;
+        }
+        ul{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            position: absolute;
+            background-color: $blue ;
+            height: 90vh;
+            top: 80px;
+            left: -100%;
+            transition: all .7s;
+            opacity: 0;
+            background-image: url('/src/assets/images/bcgFlowerLittle.png');
+            background-repeat:no-repeat;
+            background-position: center;
+            background-size: cover;
+            z-index: 998;
+            li{
+                line-height: 30px;
+                margin: 10px 0;
+                
+                a{
+                    color: $white;
+                    &:before{
+                        background-color: $white;
+                    }
+                    &:hover{
+                        color: $white;
+                    }
+                }
+    
+            }
+        }
+        .header_icon{
+            margin-right: 55px;
+            .header_member{
+                width: 30px;
+                align-self: center;
+                a{
+                    padding: 0;
+    
+                    img{
+                        vertical-align: bottom;
+                        width: 100%;
+                    }
+                }
+            }  
+            .header_shopping_cart{
+                width: 30px;
+                align-self: center;
+                a{
+                    padding: 0;
+    
+                    img{
+                        vertical-align: bottom;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        #check:checked ~ ul{
+            left: 0;
+            opacity: 1;
+        }
+        
+        label{
+            width: 36px;
+            height: 36px;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            right: 10px;
+            justify-content: space-evenly;
+            span{
+                display: block;
+                
+            }
+        }
+    
+    }
+}

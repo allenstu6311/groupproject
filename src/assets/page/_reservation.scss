@@ -1,0 +1,139 @@
+.reservation {
+    @include m() {
+        @include grid(12);
+    }
+
+    @include t() {
+        @include grid(12, -md);
+    }
+
+    @include pc() {
+        @include grid(12, -xl);
+    }
+
+    .banner img,
+    .pic_ctnr img {
+        object-position: center;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        vertical-align: bottom;
+    }
+
+    .resv_content {
+        @include container;
+
+        .title_area {
+            margin-top: 70px;
+        }
+
+        .msg_card_list {
+            @include container();
+            margin-top: 70px;
+            box-sizing: border-box;
+            padding: 0px 10px;
+
+            .msg_card_frame {
+                @include m() {
+                    width: 95%;
+                    margin-bottom: 50px;
+                }
+
+                width: 80%;
+                padding: 5px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 120px;
+                border: 3px solid $blue;
+                border-radius: 12px;
+                box-shadow: 6px 10px 0px 0px $blue;
+                box-sizing: border-box;
+
+                .msg_card.row {
+                    @include m() {
+                        padding: 15px 0;
+                    }
+
+                    box-sizing: border-box;
+                    padding: 30px 0;
+                    border-radius: 8px;
+                    border: 2px solid $blue;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .col {
+                        margin: auto;
+                        box-sizing: border-box;
+                        padding: 30px;
+
+                        @include m() {
+                            padding: 35px 15px;
+                        }
+                    }
+
+                    .msg_card_txt {
+
+                        h3 {
+                            color: $red;
+                            font-family: $fontTitle;
+                            letter-spacing: 1px;
+                            margin-left: 36px;
+                            margin-bottom: 30px;
+                            position: relative;
+
+                            @include m() {
+                                margin-bottom: 40px;
+                            }
+
+                            &::before {
+                                content: url(../assets/images/h3RedFrame.png);
+                                width: 100%;
+                                height: 100%;
+                                top: -9px;
+                                left: -40px;
+                                position: absolute;
+                            }
+                        }
+
+                        .intro {
+                            margin-top: 30px;
+                            line-height: 2;
+                        }
+
+                        .price_form {
+                            margin-top: 30px;
+                            line-height: 1.5;
+                            font-size: 18px;
+                            color: $red;
+
+                            span {
+                                color: $red;
+                                font-size: 18px;
+                            }
+
+                            p {
+                                color: #524F4F;
+                                font-size: 14px;
+                            }
+                        }
+
+                        .btn {
+                            margin-top: 30px;
+                            text-align: right;
+                        }
+                    }
+                }
+            }
+
+            .reverse {
+                .msg_card {
+                    flex-direction: row-reverse;
+                }
+            }
+
+        }
+    }
+
+}

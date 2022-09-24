@@ -1,0 +1,165 @@
+.switch{
+    @include m() {
+        @include grid(12);
+    }
+
+    @include t() {
+        @include grid(12, -md);
+    }
+
+    @include pc() {
+        @include grid(12, -xl);
+    }    
+    
+    .about,
+    .store_info{
+        margin-top: 120px;
+        .frame{
+            width: 60%;
+            padding: 5px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 120px;
+            border: 3px solid $blue;
+            border-radius: 12px;
+            box-shadow: 6px 10px 0px 0px $blue;
+            background-color: #fff;
+            .framei{
+                border-radius: 8px;
+                border: 2px solid $blue;
+                .text{
+                    padding: 30px 50px;
+                    line-height: 3;
+                    opacity: 0.8;
+                    font-weight: 700;
+                }
+                .text_storeInfo{
+                    text-align: center;
+                }
+            }
+        }
+        .imgFrame{
+            img{
+                transform: scale(1, 1);
+                transition: 0.8s;
+            }
+            img:hover{
+                transform: scale(1.05, 1.05);
+            }
+        }
+        .container{
+            .row{
+                .btnLarge{
+                    text-align: center;
+                }
+                .content{
+                    display: flex;
+                    box-sizing: border-box;
+                    .imgFrame{
+                        border: 4px solid $blue;
+                        border-radius: 12px;
+                        overflow: hidden;
+                        box-sizing: border-box;
+                        width: 90%;
+                        img{
+                            width: 100%;
+                            display: block;
+                            background-size: 100% 100%;
+                        }
+                    }
+                    .imgInfo{
+                        color: $white;
+                        font-family: $fontTitle;
+                        .circle {
+                            background-color: $red;
+                            font-weight: 500;
+                            margin: 2px;
+                            border-radius: 50%;
+                            text-align: center;
+                        }
+                    }
+                } 
+            }
+        }
+    }
+    .store_info{
+        .sub_title{
+            margin-bottom: 70px;
+            text-align: center;
+        }
+        iframe{
+            width: 100%;
+            height: 50vh;
+        }
+    }
+
+    /*======    平板版 RWD | 768px ~ ???px ======*/
+    @media screen and (min-width: 768px){
+        
+        .container{
+            .row{
+                display: flex;
+                .btnLarge{
+                    margin: 70px auto 0px;
+                }
+                .content{
+                    width: 75%;
+                    margin: auto;
+                    .imgInfo{
+                        width: 3.3vw;
+                        padding: 0.5vw;
+                        .circle {
+                            @include rect(3.4vw);
+                            line-height: 3.4vw;
+                            font-size: 2vw;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // ==========================================手機版
+
+    @media screen and (min-width: 320px) and (max-width: 767.98px){
+        .about,
+        .store_info{
+            .frame{
+                width: 80%;
+            }
+        }
+        .container{
+            .row{
+                margin-left: auto;
+                margin-right: auto;
+                .redTitle{
+                    margin-top: 150px;
+                    .btnLarge{
+                        margin: 60px auto;
+                    }
+                    .content{
+                        width: 80%;
+                        margin-left: auto;
+                        margin-right: auto;
+                        justify-content: center;
+                        position: relative;
+                        .imgFrame{
+                            margin-left: auto;
+                            margin-right: auto;
+                        }
+                        .imgInfo{
+                            display: flex;
+                            position: absolute;
+                            top: -12vh;
+                            .circle {
+                                @include rect(48px);
+                                line-height: 1.4;
+                                font-size: 32px;
+                            }
+                        }
+                    } 
+                }
+            }
+        }
+    }
+}

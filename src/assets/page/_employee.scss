@@ -1,0 +1,145 @@
+.switch{
+    @include m() {
+        @include grid(12);
+    }
+
+    @include t() {
+        @include grid(12, -md);
+    }
+
+    @include pc() {
+        @include grid(12, -xl);
+    }
+  
+    
+    
+    .employee{
+        margin-top: 120px;
+        overflow: hidden;
+        .sub_title{
+            margin-bottom: 70px;
+            text-align: center;
+        }
+        .container{
+            margin-bottom: 120px;
+            .row{
+                position: relative;
+                .third_title{
+                    margin-bottom: 50px;
+                }
+                .text{
+                    line-height: 3;
+                    font-weight: 700;
+                    opacity: 0.7;
+                }
+                .Dframe{
+                    width: 579px;
+                    height: 580px;
+                    .imgFrame{
+                        width: 490px;
+                        height: 490px;
+                        overflow: hidden;
+                        border: 5px solid $blue;
+                        box-sizing: border-box;
+                        img{
+                            width: 100%;
+                        }
+                    }
+                }
+                .Rframe{
+                    width: 637px;
+                    height: 638px;
+                    position: relative;
+                    background: url(../images/imageRoundGate.png);
+                    background-repeat: no-repeat;
+                }
+                .RimgFrame{
+                    width: 490px;
+                    height: 490px;
+                    border: 5px solid $blue;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    position: absolute;
+                    img{
+                        width: 100%;
+                    }
+                }
+                .Dframe_left{
+                    background: url(../images/image3Dframe_left.png);
+                    background-repeat: no-repeat;
+                    overflow: hidden;
+                    .imgFrame{
+                        margin-left: 87px;
+                    }
+                }
+                .Dframe_right{
+                    background: url(../images/image3Dframe_right.png);
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+    }
+
+
+    /*======    桌機版 | 768px ~ ???px ======*/
+
+    @media screen and (min-width: 768px){
+        .employee{
+            .container{
+                .row{
+                    display: flex;
+                    align-items: center;
+                    .third_title,
+                    .text{
+                        padding-left: 30%;
+                    }
+                    .Rframe{
+                        right: 30%;
+                    }
+                    .RimgFrame{
+                        left: 12%;
+                        bottom: 10%;
+                    }
+                    .textMove{
+                        position: relative;
+                        right: 10%;
+                    }
+                }
+            }
+        }
+    }
+
+
+    /*======    平板 RWD | 768px ~ 1199.98px ======*/
+
+
+    // ==========================================手機版
+
+    @media screen and (min-width: 320px) and (max-width: 767.98px){
+        .employee{
+            .container{
+                .row{
+                    text-align: center;
+                    margin-bottom: 50px;
+                    .Rframe{
+                        right: 70%;
+                    }
+                    .RimgFrame{
+                        left: 5%;
+                        bottom: 20%;
+                    }
+                    .text{
+                        margin-bottom: 100px;
+                    }
+                    .text_room{
+                        margin-bottom: 160px;
+                    }
+                }
+                .row_round{
+                    display: flex;
+                    flex-direction: column-reverse;
+                }
+            }
+        }
+    }
+}

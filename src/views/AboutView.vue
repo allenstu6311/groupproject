@@ -1,5 +1,23 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <Header />
+    <About />
+  <Footer />
+      
+      
+<router-view/>
+
 </template>
+
+<script>
+import Header from "@/components/Header.vue"
+import Footer from "@/components/Footer.vue"
+import About from "@/components/About.vue"
+    export default{
+
+        components:{
+            Header,
+            Footer,
+            About
+        }
+    }
+</script>

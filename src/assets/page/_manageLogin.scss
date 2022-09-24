@@ -1,0 +1,39 @@
+.manageLogin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    h2 {
+        font-size: 26px;
+        position: relative;
+        left: -130px;
+        margin-bottom: 0;
+    }
+    .input_area {
+        width: 300px;
+        padding-top: 48px;
+        margin: 0 auto;
+        font-size: 20px;
+
+        .account {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .password {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        input {
+            width: 200px;
+            height: 20px;
+            margin-left: 16px;
+            padding: 0;
+        }
+    }
+
+}

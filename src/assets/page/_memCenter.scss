@@ -1,0 +1,428 @@
+#lightbox-teleport {
+    //LightBox
+    position: relative;
+
+    .lightbox {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+    }
+
+    .modal-mask {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: table;
+        background-color: rgba(0, 0, 0, .5);
+        transition: opacity .3s ease;
+    }
+
+    .modal-container {
+        cursor: pointer;
+        display: table-cell;
+        vertical-align: middle;
+
+    }
+
+    .modal-body {
+        width: 75%;
+        cursor: auto;
+        display: block;
+        margin: 0 auto;
+        padding: 0 0 2rem;
+        background-color: #fff;
+
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            padding: 5px;
+            background-color: $blue;
+            color: $white;
+        }
+
+        body {
+            padding-top: 5px;
+            font-size: 16px;
+
+            .order-list {
+                table {
+                    border: 1px solid $black;
+
+                    td {
+                        padding: 3px;
+                    }
+                }
+
+                .order-detail {
+                    text-align: center;
+                    margin: 5px auto;
+                }
+            }
+
+        }
+    }
+
+}
+
+
+.memCenter {
+    @include container;
+    position: relative;
+    padding-bottom: 100px;
+
+    input {
+        font-size: 16px;
+    }
+
+    //會員大頭貼
+    .member {
+        display: flex;
+        position: absolute;
+        top: 80px;
+        left: 20px;
+
+        .mem_mug_shot {
+            width: 100px;
+            height: 100px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+        }
+
+        .mem_name {
+            height: 100%;
+            position: relative;
+            top: 70px;
+            color: $white;
+            padding: 5px 10px;
+            background-color: rgba(204, 204, 204, 0.192);
+        }
+    }
+
+    //會員背景圖
+    .mem_banner {
+        width: 100%;
+        height: 200px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    }
+
+    // 個人資料
+    .content1 {
+        h2 {
+            text-align: center;
+            padding-top: 10px;
+            margin-bottom: 0;
+        }
+    }
+
+    .mem_data {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 30px;
+    }
+
+    .mem_data_table{
+        margin-left: 380px;
+    }
+
+    #person_info {
+        th ,th{
+            font-size: 20px;
+            padding: 20px;
+        }
+    }
+
+
+    #mem_confirm{
+        margin: 0 auto;
+    }
+    .edit {
+        text-align: center;
+        padding-right: 20px;
+    }
+
+    //歷史訂單
+    //歷史訂單搜尋
+    .content2 {
+        padding: 10px;
+        font-size: 0.5rem;
+
+        h2 {
+            text-align: center;
+            padding-top: 10px;
+            margin-bottom: 0;
+        }
+    }
+
+    .order_search_row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .order_search_bar {
+        display: flex;
+        padding-bottom: 0.5rem;
+        align-items: center;
+    }
+
+    .state_search {
+        margin: 0 10px;
+    }
+
+    //歷史訂單資料表格
+    .content2 {
+        table {
+            width: 100%;
+            border: 1px solid $black;
+            border-collapse: collapse;
+            text-align: center;
+
+            th {
+                border: 1px solid $black;
+                background-color: $blue;
+                color: $white;
+                padding: 3px;
+            }
+
+            tr {
+                border: 1px solid $black;
+
+                .order_detail {
+                    display: block;
+                    margin: 0 auto;
+                }
+            }
+
+            td {
+                border: 1px solid $black;
+                padding: 3px;
+                vertical-align: middle;
+            }
+
+
+        }
+    }
+
+
+    //預約紀錄
+    // 預約紀錄搜尋
+    .content3 {
+        padding: 10px;
+        font-size: 0.5rem;
+
+        h2 {
+            text-align: center;
+            padding-top: 10px;
+            margin-bottom: 0;
+        }
+    }
+
+    .reserve_search_bar {
+        display: flex;
+        flex-wrap: wrap;
+        padding-bottom: 0.5rem;
+        align-items: center;
+    }
+
+    .reserve_search_row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .category_row {
+        display: flex;
+        margin-bottom: 5px;
+
+        select {
+            font-size: 16px;
+        }
+    }
+
+    .reserve_time {
+        margin: 0 10px;
+        display: flex;
+        align-items: center;
+
+        input {
+            width: 60px;
+        }
+    }
+
+    //預約紀錄資料表格
+    .content3 {
+        table {
+            width: 100%;
+            border: 1px solid $black;
+            border-collapse: collapse;
+            text-align: center;
+
+            th {
+                border: 1px solid $white;
+                background-color: $blue;
+                color: $white;
+                padding: 3px;
+            }
+
+            tr {
+                border: 1px solid $black;
+            }
+
+            td {
+                border: 1px solid $black;
+                padding: 3px;
+            }
+
+
+        }
+    }
+
+    // 書籤頁切換
+    .panel_control {
+        position: absolute;
+        opacity: 0;
+    }
+
+    .tab_group {
+        text-align: center;
+        display: flex;
+        justify-content: space-around;
+        background-color: $blue;
+    }
+
+    .tab_group label {
+        display: inline-block;
+        padding: 10px 30px;
+        border-bottom: none;
+        background-color: $blue;
+        position: relative;
+        color: $white;
+    }
+
+    .content {
+        display: none;
+    }
+
+    #radio1:checked~.tab_group [for="radio1"],
+    #radio2:checked~.tab_group [for="radio2"],
+    #radio3:checked~.tab_group [for="radio3"] {
+        background-color: $red;
+    }
+
+    #radio1:checked~.content_group .content1,
+    #radio2:checked~.content_group .content2,
+    #radio3:checked~.content_group .content3 {
+        display: block
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #lightbox-teleport {
+        .modal-body {
+            width: 50%;
+
+            body {
+                font-size: 22px;
+                padding: 5px;
+
+                span {
+                    font-size: 22px;
+                }
+
+                .order-list {
+                    table {
+                        border: 1px solid $black;
+
+                        th {
+                            padding: 5px;
+                        }
+
+                        td {
+                            padding: 5px;
+                        }
+                    }
+
+                    .order-detail {
+                        text-align: center;
+                        margin: 5px auto;
+                    }
+                }
+            }
+        }
+
+        .modal-container {
+            vertical-align: middle;
+        }
+
+    }
+
+    .memCenter {
+
+
+        .panel_group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .tab_group {
+            width: 200px;
+            display: block;
+            font-size: 20px;
+        }
+
+        .tab_group label {
+            display: block;
+        }
+
+        .content_group {
+            flex-grow: 1;
+        }
+
+        //歷史訂單
+        .content2 {
+            font-size: 1rem;
+        }
+
+        .order_search_row {
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .category_row {
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        //預約紀錄
+        .content3 {
+            font-size: 1rem;
+        }
+
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .memCenter {
+        .reserve_search_row {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+}

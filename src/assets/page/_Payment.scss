@@ -1,0 +1,154 @@
+
+#app{
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+}
+.path{
+    width: 50%;
+    min-width: 500px;
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
+    padding:50px 0;
+
+    .target{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: beige;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        position: relative;
+    }
+    .target:nth-child(1):before{
+        content:"";
+        width: 160px;
+        height: 4px;
+        background-color: beige;
+        position: absolute;
+        right: -160px;
+    }
+    .target:nth-child(2):before{
+        content:"";
+        width: 160px;
+        height: 4px;
+        background-color: beige;
+        position: absolute;
+        right: -160px;
+    }
+}
+.receiver{
+
+    box-shadow: 0px 0px 10px rgb(199, 199, 199);
+    margin: auto;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.5;
+    
+   
+   .receiver-title{
+    padding: 5px;
+    font-size: 25px;
+    font-weight: 800;
+    margin-bottom: 20px;
+   }
+   .receiver-address{
+    margin: 10px 0;
+    line-height: 2;
+   }
+}
+label{
+    display: block;
+}
+.pay-list{
+    background-color: $white;
+}
+address{
+    border: 1px solid black;
+
+    th{
+        text-align: center;
+    }
+    
+}
+.pay-url{
+    text-decoration: none;
+    color: $white;
+}
+// =========================================
+
+
+    .credit-card-title{
+        padding: 5px;
+        font-size: 25px;
+        font-weight: 800;
+        margin-bottom: 20px;
+    }
+
+    .credit-card{
+        box-shadow: 0px 0px 10px rgb(199, 199, 199);
+        margin: auto;
+        line-height: 1.5;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+
+       
+    }
+    
+// ==================================
+
+.confirm-data{
+    box-shadow: 0px 0px 10px rgb(199, 199, 199);
+    margin: auto;
+    line-height: 1.5;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: $white;
+
+    .confirm-data-title{
+        padding: 5px;
+        font-size: 25px;
+        font-weight: 800;
+        margin-bottom: 20px;
+        
+    }
+    table{
+
+        th{
+            padding: 10px 20px;
+         
+           
+        }
+    }
+   
+}
+.hint{
+    background-color: red !important;
+    color: aliceblue !important;
+}
+.pay-btn{
+    text-align: center;
+    margin: 20px 0;
+}
+.address{
+    line-height: 3;
+
+        tr{
+            th{
+                font-weight: 500;
+            }
+        }
+   }
+

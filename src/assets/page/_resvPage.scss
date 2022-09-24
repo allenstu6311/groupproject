@@ -1,0 +1,240 @@
+.resv_page {
+    @include m() {
+        @include grid(12);
+    }
+
+    @include t() {
+        @include grid(12, -md);
+    }
+
+    @include pc() {
+        @include grid(12, -xl);
+    }
+
+    img {
+        object-position: center;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        vertical-align: bottom;
+    }
+
+    .msg {
+        @include container ();
+        margin-bottom: 110px;
+
+        .topic {
+            @include container ();
+
+            .breadcrumb {
+                margin-top: 60px;
+                margin-left: 40px;
+                color: $blue;
+
+                a {
+                    color: $blue;
+                }
+
+                a.this_page {
+                    border-bottom: 1px solid $blue;
+                }
+            }
+
+            .content.container {
+                @include container();
+
+                .row {
+                    display: flex;
+                    flex-wrap: wrap;
+                    margin-bottom: 60px;
+
+                    .col {
+                        padding: 50px 30px;
+                        box-sizing: border-box;
+
+                        @include m() {
+                            padding: 30px 10px 15px 10px;
+                        }
+
+                        .content_pic.frame {
+                            // background-color: #fff;
+                            padding: 5px;
+                            margin-left: auto;
+                            margin-right: auto;
+                            border: 3px solid $blue;
+                            border-radius: 12px;
+                            box-shadow: 6px 10px 0px 0px $blue;
+
+                            .framei {
+                                width: 100%;
+                                border-radius: 8px;
+                                border: 2px solid $blue;
+                                overflow: hidden;
+                            }
+                        }
+
+                        .content_txt {
+                            width: 100%;
+                            padding: 0 20px;
+                            box-sizing: border-box;
+                            margin: auto;
+
+                            h1 {
+                                color: $white;
+                                margin-bottom: 50px;
+                                font-family: $fontTitle;
+                                position: relative;
+
+                                .circle {
+                                    display: inline-block;
+                                    background-color: $red;
+                                    margin: 2px;
+                                    @include rect(48px);
+                                    line-height: 48px;
+                                    border-radius: 50%;
+                                    font-size: 32px;
+                                    text-align: center;
+                                }
+
+                                &::before {
+                                    content: '';
+                                    width: 380px;
+                                    height: 10%;
+                                    background-color: $blue;
+                                    top: 40px;
+                                    left: -80px;
+                                    z-index: -1;
+                                    position: absolute;
+                                }
+                            }
+
+                            p {
+                                font-size: 14px;
+                                color: #878787;
+                                margin-bottom: 10px;
+                            }
+
+                            .therapist,
+                            .timespan {
+                                display: block;
+                                width: 100%;
+                                padding: 5px;
+                                padding-left: 10px;
+                                margin-bottom: 20px;
+                            }
+
+                            //datetimepicker套件
+                            .calendar {
+                                margin-top: 40px;
+                                margin-bottom: 40px;
+
+                                .xdsoft_datetimepicker {
+                                    // width: 400px;
+                                    margin: auto;
+
+                                    .active {
+                                        background-color: #fff;
+
+                                    }
+                                }
+                            }
+
+                            .content_footer {
+                                width: 100%;
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                color: $red;
+
+                                .price {
+                                    color: $red;
+                                    font-size: 24px;
+                                }
+
+                                .btnLittle {
+                                    text-align: center;
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+
+        .supplement {
+            border: 1px solid $blue;
+            width: 90%;
+            margin: auto;
+
+            .tabs {
+                border-bottom: 1px solid $blue;
+                color: $blue;
+
+                .tab {
+                    background-color: transparent;
+                    border: none;
+                    color: $blue;
+                    text-align: center;
+                    padding: 10px 0;
+                    font-size: 24px;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+
+                    &:active {
+                        font-weight: 800;
+                    }
+                }
+            }
+
+            .tab_container {
+                padding: 50px 80px;
+                line-height: 2;
+            }
+        }
+
+    }
+
+    .related {
+        @include container ();
+        margin-bottom: 120px;
+
+        .title_area {
+            margin-bottom: 30px;
+        }
+    }
+
+    .items.row {
+        display: flex;
+        flex-wrap: wrap;
+
+        .col {
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-bottom: 30px;
+            box-sizing: border-box;
+
+            .item_link {
+                .item_pic {
+                    margin-bottom: 30px;
+                    border-radius: 15px;
+                    overflow: hidden;
+                }
+
+                .item_txt {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 18px;
+
+                    span {
+                        font-size: 18px;
+                    }
+                }
+            }
+
+        }
+
+    }
+}

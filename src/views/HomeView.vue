@@ -1,15 +1,16 @@
 <template>
   <Header />
     <Home />
-   <Footer />
-  <router-view/>
+  <Footer />
+
+      <router-view/>
 </template>
 
 <script>
+
+import Home from "@/components/Home.vue"
 import Header from "@/components/Header.vue"
 import Footer from "@/components/Footer.vue"
-import Home from "@/components/Home.vue"
-
 export default {
 
   components: {

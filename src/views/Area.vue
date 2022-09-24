@@ -1,20 +1,27 @@
 <template>
   <Header />
-     <FAQ />
-   
+    <AreaList />
   <Footer />
 
 </template>
 
+
 <script>
 import Header from "@/components/Header.vue"
 import Footer from "@/components/Footer.vue"
-import FAQ from"@/components/FAQ.vue"
+import AreaList from "@/components/AreList.vue"
 export default {
     components:{
         Header,
         Footer,
-        FAQ
-    }
+        AreaList
+    },
+    data(){
+
+        return{
+
+        }
+    },
+
 }
 </script>

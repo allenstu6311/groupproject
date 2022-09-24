@@ -1,8 +1,7 @@
 <template>
-    <Header />
-  
-    <router-view/>
-    <Footer />
+  <Header />
+      <router-view/>
+  <Footer />
 
 </template>
 
@@ -15,7 +14,7 @@ export default {
     comments:{
         Header,
         Footer,
-        Home
+ 
     }
 }
 </script>

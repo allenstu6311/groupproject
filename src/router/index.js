@@ -3,6 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import Reservation from "../views/Reservation.vue"
 import Messagefaq from "../views/Messagefaq.vue"
+import Area from "../views/Area.vue"
+import  ShoppingCar from "@/components/ShoppingCar.vue"
 
 const routes = [
   {
@@ -33,6 +35,22 @@ const routes = [
     // this generates a separate chunk (reserve.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "reserve" */ '../views/Messagefaq.vue')
+  },
+  {
+    path: '/area',
+    name: 'area',
+    // route level code-splitting
+    // this generates a separate chunk (reserve.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "reserve" */ '../views/Area.vue')
+  },
+  {
+    path: '/cart',
+    name: 'cart',
+    // route level code-splitting
+    // this generates a separate chunk (reserve.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "reserve" */ '../views/Cart.vue')
   },
 ]
 

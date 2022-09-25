@@ -65,7 +65,8 @@
                     <div class="shopping-check">
                     <div class="shopping-checkout">
                         <p>商品金額:{{box}}元</p><p>折扣金額:{{box-totalPrice}}</p>  <p>結帳金額:$<strong>{{totalPrice}}</strong></p>
-                    <a   @click="checkCar" href="./Payment.html" ><button class="btnLittle">前往結帳</button> </a>
+                    <router-link  to="/Confirm">><button class="btnLittle">前往結帳</button>
+                    </router-link>
                     </div>
                     
                 </div>

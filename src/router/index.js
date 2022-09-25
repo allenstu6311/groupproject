@@ -52,6 +52,14 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "reserve" */ '../views/Cart.vue')
   },
+  {
+    path: '/Confirm',
+    name: 'Confirm',
+    // route level code-splitting
+    // this generates a separate chunk (reserve.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "reserve" */ '../views/Confirm.vue')
+  },
 ]
 
 const router = createRouter({

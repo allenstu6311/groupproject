@@ -1,11 +1,11 @@
 
 //base
+@import"./base/reset";
 @import"./base/bcgFlower";
 @import"./base/blueTitle";
 @import"./base/color";
 @import"./base/common";
 @import"./base/font";
-@import"./base/reset";
 @import"./base/var";
 
 //@mixin
@@ -45,6 +45,8 @@
 
 // @import"./page/Payment";
 @import"./page/shopingArea";
+@import "./page/memberInfo";
+@import "./page//CheckCommodity"
 
 // @import"./page/shoppingCart";
 // @import"./mixin/MediaPayment";

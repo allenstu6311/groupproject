@@ -1,0 +1,55 @@
+.member-info{
+    letter-spacing: 2px;
+    line-height: 2;
+    font-size: 22px;
+    padding: 10px;
+    margin-bottom: 50px;
+    font-weight: 800;
+   
+    .member-title{}
+    .member-body{
+        margin-bottom: 20px;
+        label{
+            display: block;
+            width: 150px;
+        }
+        input{
+            padding: 5px;
+            border-radius: 5px;
+            background-color: rgb(217, 217, 217);
+            border: none;
+        }
+        .member-name{
+            display: flex;
+            align-items: center;
+        }
+        .member-cellphone{
+            display: flex;
+            align-items: center;
+        }
+        .member-address{
+            display: flex;
+            align-items: center;
+        }
+        .member-transport{
+            display: flex;
+            .delivery{}
+            .method{
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        .member-pay{
+            display: flex;
+            .pay{}
+            .methods{
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        
+    }
+    .member-send{
+        text-align: center;
+    }
+}

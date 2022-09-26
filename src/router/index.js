@@ -65,6 +65,11 @@ const routes = [
     path:'/MemLogin',
     name:'MemLogin',
     component: () => import('../views/MemLogin.vue')
+  },
+  {
+    path:'/MassageSchool',
+    name:'MassageSchool',
+    component: () => import('../views/MassageSchoolView.vue')
   }
 ]
 

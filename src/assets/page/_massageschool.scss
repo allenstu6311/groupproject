@@ -12,81 +12,6 @@
             padding-right: 30px;
         }
     } 
-    /* Slider */
-    .slick-slider{
-        position: relative;
-    }
-    .slick-list{
-        overflow: hidden;
-    }
-    .slick-loading .slick-track{
-        visibility: hidden;
-    }
-    .slick-slide{
-        float: left;
-    }
-    .slick-prev,.slick-next{
-        font-size: 0;
-        position: absolute;
-        top: 45%;
-        display: block;
-        width: 50px;
-        height: 50px;
-        cursor: pointer;
-        color: #fff;
-        border: 2px solid $blue;
-        background:$blue;
-        border-radius: 50%;
-        z-index: 99;
-    }
-    .slick-prev:hover,.slick-next:hover{
-        color: $blue;
-        background: #fff;
-        border: 2px solid $blue;
-    }
-    .slick-prev{
-        left: 35px;
-    }
-    .slick-prev:before{
-        content: '<';
-        font-size: 40px;
-    }
-    .slick-next{
-        right: 35px;
-    }
-    .slick-next:before{
-        content: '>';
-        font-size: 40px;
-    }
-    /* Dots */
-    .slick-dots{
-        text-align: center;
-    }
-    .slick-dots li{
-        position: relative;
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        margin: 0 5px;
-        color: $blue;
-        padding: 0;
-        cursor: pointer;
-    }
-    .slick-dots li button{
-        line-height: 0;
-        display: block;
-        width: 15px;
-        height: 15px;
-        border-radius: 50%;
-        padding: 5px;
-        cursor: pointer;
-        color: transparent;
-        border: 0;
-        background: #ddd;
-    }
-    .slick-dots li button:hover,.slick-dots li button:focus{
-        background: $blue;
-    }
 }
 
 /*====== 行動版 RWD | 320px ~ 768px ======*/
@@ -105,7 +30,7 @@
                 text-indent: 20px;
                 position: relative;
                 &::before{
-                    content: url(../images/h3RedFrame.png);
+                    content: url(../assets/images/h3RedFrame.png);
                     width: 100%;
                     height: 100%;
                     position: absolute;
@@ -149,26 +74,6 @@
                         }
                     }
                 }
-                .slick-prev,.slick-next{
-                    font-size: 0;
-                    position: absolute;
-                    top: 40%;
-                    display: block;
-                    width: 50px;
-                    height: 50px;
-                    cursor: pointer;
-                    color: #fff;
-                    border: 2px solid $blue;
-                    background:$blue;
-                    border-radius: 50%;
-                    z-index: 99;
-                }
-                .slick-prev{
-                    left: 0px;
-                }
-                .slick-next{
-                    right: 0px;
-                }
             }
             .knowledge_list.title_right{
                 width: 320px;
@@ -206,26 +111,6 @@
                             line-height: 2;
                         }
                     }
-                }
-                .slick-prev,.slick-next{
-                    font-size: 0;
-                    position: absolute;
-                    top: 50%;
-                    display: block;
-                    width: 50px;
-                    height: 50px;
-                    cursor: pointer;
-                    color: #fff;
-                    border: 2px solid $blue;
-                    background:$blue;
-                    border-radius: 50%;
-                    z-index: 99;
-                }
-                .slick-prev{
-                    left: 0px;
-                }
-                .slick-next{
-                    right: 0px;
                 }
             }     
         }
@@ -247,7 +132,7 @@
                 text-indent: 20px;
                 position: relative;
                 &::before{
-                    content: url(../images/h3RedFrame.png);
+                    content: url(../assets/images/h3RedFrame.png);
                     width: 100%;
                     height: 100%;
                     position: absolute;
@@ -292,26 +177,6 @@
                         }
                     }
                 }
-                .slick-prev,.slick-next{
-                    font-size: 0;
-                    position: absolute;
-                    top: 40%;
-                    display: block;
-                    width: 50px;
-                    height: 50px;
-                    cursor: pointer;
-                    color: #fff;
-                    border: 2px solid $blue;
-                    background:$blue;
-                    border-radius: 50%;
-                    z-index: 99;
-                }
-                .slick-prev{
-                    left: 20px;
-                }
-                .slick-next{
-                    right: 20px;
-                }
             }
             .knowledge_list.title_right{
                 width: 750px;
@@ -349,26 +214,6 @@
                             line-height: 2;
                         }
                     }
-                }
-                .slick-prev,.slick-next{
-                    font-size: 0;
-                    position: absolute;
-                    top: 50%;
-                    display: block;
-                    width: 50px;
-                    height: 50px;
-                    cursor: pointer;
-                    color: #fff;
-                    border: 2px solid $blue;
-                    background:$blue;
-                    border-radius: 50%;
-                    z-index: 99;
-                }
-                .slick-prev{
-                    left: 20px;
-                }
-                .slick-next{
-                    right: 20px;
                 }
             }     
         }
@@ -395,7 +240,7 @@
                 line-height: 2;
                 
                 &::before{
-                    content: url(../images/h3RedFrameStraight.png);
+                    content: url(../assets/images/h3RedFrameStraight.png);
                     width: 100%;
                     height: 100%;
                     top: 22%;

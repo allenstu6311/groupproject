@@ -14,7 +14,7 @@
                 
             <section class="about_us"><!------關於我們------>
                 <div class="about_us_intro">
-                    <div class="title_area reveal fade-left">
+                    <div class="title_area">
                         <div class="sure_title">
                             <h2 class="title_font">關</h2>
                             <h2 class="title_font">於</h2>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="about_us_pic">
                     <div class="round_back rotate-center "></div>
-                    <div class="round_front reveal fade-right">
+                    <div class="round_front">
                         <img src="../assets/images/index_ab.jpg" alt="">
                     </div>
                 </div>
@@ -54,18 +54,22 @@
                         </p>
                         <a href="./massageschool.html"><div class="btnLittle">前往遊戲</div></a>
                     </div>
-                    <div class="swiper mySwiper">
-                        <!-- Additional required wrapper -->
-                        <div class="swiper-wrapper">
-                            <!-- Slides -->
-                            <div class="swiper-slide"><img src="../assets/images/schoolhead.png" alt=""></div>
-                            <div class="swiper-slide"><img src="../assets/images/schoolhand.png" alt=""></div>
-                            <div class="swiper-slide"><img src="../assets/images/schoolbody.png" alt=""></div>
-                            <div class="swiper-slide"><img src="../assets/images/schoolfoot.png" alt=""></div>
-                        </div>
-                        <!-- If we need pagination -->
-                        <div class="swiper-pagination"></div>
-                    </div>
+                    <swiper
+                        :modules="modules"
+                        :pagination="{ clickable: true }"
+                        :loop="true"
+                        :autoplay="{
+                        delay: 2500,
+                        disableOnInteraction: false
+                        }"
+                        @swiper="onSwiper"
+                        @slideChange="onSlideChange"
+                    >
+                        <swiper-slide><img src="../assets/images/schoolhead.png" alt=""></swiper-slide>
+                        <swiper-slide><img src="../assets/images/schoolhand.png" alt=""></swiper-slide>
+                        <swiper-slide><img src="../assets/images/schoolbody.png" alt=""></swiper-slide>
+                        <swiper-slide><img src="../assets/images/schoolfoot.png" alt=""></swiper-slide>
+                    </swiper>
                 </div>
                 <div class="about_us_pic">
                     <div class="round_back rotate-center "></div>
@@ -189,20 +193,24 @@
                         </div>
                         <small>• REVIEW •</small>
                     </div>
-                    <div class="swiper2 mySwiper2">
-                        <!-- Additional required wrapper -->
-                        <div class="swiper-wrapper">
-                            <!-- Slides -->
-                            <div class="swiper-slide"><img src="../assets/images/unhappyCat.png" alt=""></div>
-                            <div class="swiper-slide"><img src="../assets/images/astronaut.png" alt=""></div>
-                            <div class="swiper-slide"><img src="../assets/images/smellCat.png" alt=""></div>
-                            <div class="swiper-slide"><img src="../assets/images/strongCat.png" alt=""></div>
-                            <div class="swiper-slide"><img src="../assets/images/shockCat.png" alt=""></div>
-                            <div class="swiper-slide"><img src="../assets/images/FrisbeeGog.png" alt=""></div>
-                        </div>
-                        <!-- If we need pagination -->
-                        <div class="swiper-pagination"></div>
-                    </div>
+                    <swiper 
+                    class="swiper"
+                    :modules="modules"
+                    :space-between="30"
+                    :slides-per-view="3"
+                    :autoplay="{
+                        delay: 2500,
+                        disableOnInteraction: false
+                    }"
+                    :pagination="{ clickable: true }"
+                    >
+                        <swiper-slide class="slide"><img src="../assets/images/unhappyCat.png" alt=""></swiper-slide>
+                        <swiper-slide class="slide"><img src="../assets/images/astronaut.png" alt=""></swiper-slide>
+                        <swiper-slide class="slide"><img src="../assets/images/strongCat.png" alt=""></swiper-slide>
+                        <swiper-slide class="slide"><img src="../assets/images/smellCat.png" alt=""></swiper-slide>
+                        <swiper-slide class="slide"><img src="../assets/images/shockCat.png" alt=""></swiper-slide>
+                        <swiper-slide class="slide"><img src="../assets/images/FrisbeeGog.png" alt=""></swiper-slide>
+                    </swiper>
                 </section>
                 <section class="latest_news reveal fade-top"><!------最新消息------->
                     <div class="title_area ">
@@ -218,7 +226,7 @@
                     <div class="news_content">
                         <div class="news">
                             <div class="pic">
-                                <!-- <img src="../assets/images/shop off.png" alt="" id="NEWS_PIC"> -->
+                                <img src="../assets/images/shop_off.png" alt="">
                             </div>
                             <div class="news_intro">
                                 <h3 class="news_title" id="NEWS_TITLE">春節假期店休公告</h3>
@@ -238,7 +246,7 @@
                         <hr>
                         <div class="news">
                             <div class="pic">
-                                <!-- <img src="../assets/images/advanced study.png" alt="" id="NEWS_PIC"> -->
+                                <img src="../assets/images/advanced_study.png" alt="" id="NEWS_PIC">
                             </div>
                             <div class="news_intro">
                                 <h3 class="news_title" id="NEWS_TITLE">12/26店休公告</h3>
@@ -260,3 +268,37 @@
         </main>
     </div>
 </template>
+<script>
+    // import Swiper core and required modules
+    import {Autoplay, Pagination} from 'swiper';
+  
+    // Import Swiper Vue.js components
+    import { Swiper, SwiperSlide } from 'swiper/vue';
+  
+    // Import Swiper styles
+    import 'swiper/css';
+    import 'swiper/css/navigation';
+    import 'swiper/css/pagination';
+    import 'swiper/css/scrollbar';
+  
+    // Import Swiper styles
+    export default {
+      components: {
+        Swiper,
+        SwiperSlide,
+      },
+      setup() {
+        const onSwiper = (swiper) => {
+          console.log(swiper);
+        };
+        const onSlideChange = () => {
+          console.log('slide change');
+        };
+        return {
+          onSwiper,
+          onSlideChange,
+          modules: [Pagination,Autoplay],
+        };
+      },
+    };
+  </script>

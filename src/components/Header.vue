@@ -18,7 +18,7 @@
             <li><router-link to="/message">常見問題</router-link></li>
         </ul>
         <div class="header_icon">
-            <span class="header_member"><a href="./memLogin.html" ><img src="../assets/images/headerMember.png" alt=""></a></span>
+            <span class="header_member"><router-link to="/MemLogin"><img src="../assets/images/headerMember.png" alt=""></router-link></span>
             <span class="header_shopping_cart"><router-link to="/cart"><img src="../assets/images/headerShoppinCart.png" alt=""></router-link></span>
         </div>  
         

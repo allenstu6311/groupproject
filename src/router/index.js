@@ -5,6 +5,7 @@ import Reservation from "../views/Reservation.vue"
 import Messagefaq from "../views/Messagefaq.vue"
 import Area from "../views/Area.vue"
 import  ShoppingCar from "@/components/ShoppingCar.vue"
+import MemLogin from "../views/MemLogin.vue"
 
 const routes = [
   {
@@ -60,6 +61,11 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "reserve" */ '../views/Confirm.vue')
   },
+  {
+    path:'/MemLogin',
+    name:'MemLogin',
+    component: () => import('../views/MemLogin.vue')
+  }
 ]
 
 const router = createRouter({

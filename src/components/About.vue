@@ -1,6 +1,5 @@
 <template>
-      <div class="background_flower switch">
-  
+    <div class="background_flower switch">
         <h1 class="sr_only">關於我們</h1>
         <div class="banner">
             <img src="../assets/images/aboutUsBanner.png" alt="關於我們照片">
@@ -22,14 +21,14 @@
                 <div class="framei">
                     <div class="text text_one">
                         <p>
-                        走在人文、商業、溫暖的台灣街道上，這裡沒有過多的喧囂，
-                        卻有著與忙碌的市區不一樣的悠閒，
-                        的確，有些地方...它並沒有說需要吸引到多少人目光，
-                        它只需要讓來到這裡的人感受到一份溫暖、一份溫度，那就足夠，
-                        營造這樣一個簡單、平凡，靜謐舒適的環境，
-                        純淨舒壓回歸自然，讓身心靈回歸平靜，
-                        用每一雙專業、溫暖的雙手來療癒每一個疲憊的身心靈，
-                        再次找回最初、最開始的那一片恬靜心田
+                            走在人文、商業、溫暖的台灣街道上，這裡沒有過多的喧囂，
+                            卻有著與忙碌的市區不一樣的悠閒，
+                            的確，有些地方...它並沒有說需要吸引到多少人目光，
+                            它只需要讓來到這裡的人感受到一份溫暖、一份溫度，那就足夠，
+                            營造這樣一個簡單、平凡，靜謐舒適的環境，
+                            純淨舒壓回歸自然，讓身心靈回歸平靜，
+                            用每一雙專業、溫暖的雙手來療癒每一個疲憊的身心靈，
+                            再次找回最初、最開始的那一片恬靜心田
                         </p>
                     </div>
                 </div>
@@ -100,87 +99,68 @@
     </div>
 </template>
 
+
 <script>
-// import gsap from "gsap";
-// import ScrollTrigger from "gsap/ScrollTrigger";
-// gsap.registerPlugin(ScrollTrigger);
-// Vue.mixin({
-//   created: function () {
-//     this.gsap = gsap;
-//   }
-// });
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 
-// export default {
-//     mounted(){
-//         const {frame_one} = this.$scroll_one;
-//         const gsap_start = new ScrollTrigger();
-
-//         gsap_start.from(frame_one,{
-//             scrollTrigger: {
-//                 trigger: frame_one,
-//                 // start: "top 70%"
-//             },
-//             duration: 2, 
-//             rotationX: 60, 
-//             scale: 0.6,
-//             opacity: 0,
-//             x: -400,
-//             z: -200,
-//             ease: "back"
-//         });
-//     }
-// }
-    // gsap.from(".frame_one",{
-    //     scrollTrigger: {
-    //         trigger: ".frame_one",
-    //         start: "top 70%"
-    //     },
-    //     duration: 2, 
-    //     rotationX: 60, 
-    //     scale: 0.6,
-    //     opacity: 0,
-    //     x: -400,
-    //     z: -200,
-    //     ease: "back"
-    // });
-    // gsap.from(".frame_two",{
-    //     scrollTrigger: {
-    //         trigger: ".frame_two",
-    //         start: "top 70%"
-    //     },
-    //     duration: 2, 
-    //     rotationX: 60, 
-    //     scale: 0.6,
-    //     opacity: 0,
-    //     x: -400,
-    //     z: -200,
-    //     ease: "back"
-    // });
-    // gsap.from(".circle",{
-    //     scrollTrigger: {
-    //         trigger: ".name",
-    //         start: "top 70%"
-    //     },
-    //     y: 100,
-    //     stagger: 0.1,
-    //     duration: 1.2,
-    //     opacity: 0,
-    //     ease: "power3"
-    // });
-    // gsap.from(".btnLarge",{
-    //     scrollTrigger: {
-    //         trigger: ".btnLarge",
-    //         start: "top bottom"
-    //     },
-    //     y:100,
-    //     stagger: 0.2,
-    //     duration: 1,
-    //     opacity: 0,
-    //     ease: "back"
-    // });
-
+export default {
+    mounted(){
+        gsap.from(".frame_one",{
+            scrollTrigger: {
+                trigger: ".frame_one",
+                start: "center 70%",
+                end: "60% 60%"
+            },
+            duration: 2, 
+            rotationX: 60, 
+            scale: 0.6,
+            opacity: 0,
+            x: -400,
+            z: -200,
+            ease: "back"
+        });
+        gsap.from(".frame_two",{
+            scrollTrigger: {
+                trigger: ".frame_two",
+                start: "top 70%"
+            },
+            duration: 2, 
+            rotationX: 60, 
+            scale: 0.6,
+            opacity: 0,
+            x: -400,
+            z: -200,
+            ease: "back"
+        });
+        gsap.from(".circle",{
+            scrollTrigger: {
+                trigger: ".name",
+                start: "top 70%"
+            },
+            y: 100,
+            stagger: 0.1,
+            duration: 1.2,
+            opacity: 0,
+            ease: "power3"
+        });
+        gsap.from(".btnLarge",{
+            scrollTrigger: {
+                trigger: ".btnLarge",
+                start: "top bottom"
+            },
+            y:100,
+            stagger: 0.2,
+            duration: 1,
+            opacity: 0,
+            ease: "back"
+        });
+    }
+}
 </script>
+
 <style lang="scss">
     @import"../assets/style.scss";
 </style>

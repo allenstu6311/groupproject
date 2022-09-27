@@ -49,7 +49,7 @@
                                 <img src="../assets/images/small_teamPic.png" alt="按摩師介紹圖">
                             </div>
                         </div>
-                        <a href="./AboutMasseuse.html">
+                        <a href="/therapist">
                             <div class="btnLarge">查看介紹</div>
                         </a>
                     </div>
@@ -65,7 +65,7 @@
                                 <div class="circle">紹</div>
                             </h3>
                         </div>
-                        <a href="./employee.html">
+                        <a href="/employee">
                             <div class="btnLarge">查看介紹</div>
                         </a>
                     </div>
@@ -101,6 +101,85 @@
 </template>
 
 <script>
+// import gsap from "gsap";
+// import ScrollTrigger from "gsap/ScrollTrigger";
+// gsap.registerPlugin(ScrollTrigger);
+// Vue.mixin({
+//   created: function () {
+//     this.gsap = gsap;
+//   }
+// });
+
+
+// export default {
+//     mounted(){
+//         const {frame_one} = this.$scroll_one;
+//         const gsap_start = new ScrollTrigger();
+
+//         gsap_start.from(frame_one,{
+//             scrollTrigger: {
+//                 trigger: frame_one,
+//                 // start: "top 70%"
+//             },
+//             duration: 2, 
+//             rotationX: 60, 
+//             scale: 0.6,
+//             opacity: 0,
+//             x: -400,
+//             z: -200,
+//             ease: "back"
+//         });
+//     }
+// }
+    // gsap.from(".frame_one",{
+    //     scrollTrigger: {
+    //         trigger: ".frame_one",
+    //         start: "top 70%"
+    //     },
+    //     duration: 2, 
+    //     rotationX: 60, 
+    //     scale: 0.6,
+    //     opacity: 0,
+    //     x: -400,
+    //     z: -200,
+    //     ease: "back"
+    // });
+    // gsap.from(".frame_two",{
+    //     scrollTrigger: {
+    //         trigger: ".frame_two",
+    //         start: "top 70%"
+    //     },
+    //     duration: 2, 
+    //     rotationX: 60, 
+    //     scale: 0.6,
+    //     opacity: 0,
+    //     x: -400,
+    //     z: -200,
+    //     ease: "back"
+    // });
+    // gsap.from(".circle",{
+    //     scrollTrigger: {
+    //         trigger: ".name",
+    //         start: "top 70%"
+    //     },
+    //     y: 100,
+    //     stagger: 0.1,
+    //     duration: 1.2,
+    //     opacity: 0,
+    //     ease: "power3"
+    // });
+    // gsap.from(".btnLarge",{
+    //     scrollTrigger: {
+    //         trigger: ".btnLarge",
+    //         start: "top bottom"
+    //     },
+    //     y:100,
+    //     stagger: 0.2,
+    //     duration: 1,
+    //     opacity: 0,
+    //     ease: "back"
+    // });
+
 </script>
 <style lang="scss">
     @import"../assets/style.scss";

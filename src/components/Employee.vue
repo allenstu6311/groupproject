@@ -85,7 +85,101 @@
     </div>
 </template>
 <script>
-    
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
+export default {
+    mounted(){
+        gsap.from(".RimgFrame",{
+            scrollTrigger: {
+                trigger: ".row_round",
+                start: "top center",
+            },
+            x: -800,
+            rotation: -120,
+            duration: 2,
+            opacity: 0,
+            ease: "back"
+        });
+        gsap.from(".Rframe",{
+            scrollTrigger: {
+                trigger: ".row_round",
+            },
+            rotation: 360,
+            duration: 28,
+            repeat: Infinity,
+            ease: "linear"
+        });
+        gsap.from(".title_hall",{
+            scrollTrigger: {
+                trigger: ".row_hall",
+                start: "20% center"
+            },
+            x: 250,
+            duration: 1.5,
+            opacity: 0,
+            ease: "back"
+        });
+        gsap.from(".title_room",{
+            scrollTrigger: {
+                trigger: ".row_round",
+                start: "top center"
+            },
+            x: 250,
+            duration: 1.5,
+            delay: 0.8,
+            opacity: 0,
+            ease: "back"
+        });
+        gsap.from(".title_bath",{
+            scrollTrigger: {
+                trigger: ".row_bath",
+                start: "20% center"
+            },
+            x: 250,
+            duration: 1.5,
+            opacity: 0,
+            ease: "back"
+        });
+        gsap.from(".text_hall p",{
+            scrollTrigger: {
+                trigger: ".row_hall",
+                start: "20% center"
+            },
+            x: 250,
+            stagger: 0.2,
+            duration: 1.5,
+            delay: 0.2,
+            opacity: 0,
+            ease: "back"
+        });
+        gsap.from(".text_room p",{
+            scrollTrigger: {
+                trigger: ".row_round",
+                start: "top center"
+            },
+            x: 250,
+            stagger: 0.2,
+            duration: 1.5,
+            delay: 1,
+            opacity: 0,
+            ease: "back"
+        });
+        gsap.from(".text_bath p",{
+            scrollTrigger: {
+                trigger: ".row_bath",
+                start: "20% center"
+            },
+            x: 250,
+            stagger: 0.2,
+            duration: 1.5,
+            delay: 0.2,
+            opacity: 0,
+            ease: "back"
+        });        
+    }
+}
 </script>
 <style lang="scss">
     @import"../assets/style.scss";

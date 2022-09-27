@@ -11,205 +11,205 @@
     z-index: -1;
 
 }
-.commodity-container{
-    @include container();
-    display: flex;
-    flex-direction: column;
-    line-height: 2;
-    text-align: center;
-    justify-content: center;
+// .commodity-container{
+//     @include container();
+//     display: flex;
+//     flex-direction: column;
+//     line-height: 2;
+//     text-align: center;
+//     justify-content: center;
 
-        .title-font{
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: #163D82;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 27px;
-            font-weight: 900;
-            color: aliceblue;
-            font-family:serif,sans-serif,cursive,fantasy,monospace;
-        }
-        .title-font:before{
-            content: "";
-            width: 42px;
-            height: 42px;
-            background-color: transparent;
-            border: 3px solid aliceblue;
-            position: absolute;
-            top: .5px;
-            left: 2.5%;
-            border-radius: 50%;
-        }
+//         .title-font{
+//             width: 50px;
+//             height: 50px;
+//             border-radius: 50%;
+//             background-color: #163D82;
+//             position: relative;
+//             display: flex;
+//             align-items: center;
+//             justify-content: center;
+//             font-size: 27px;
+//             font-weight: 900;
+//             color: aliceblue;
+//             font-family:serif,sans-serif,cursive,fantasy,monospace;
+//         }
+//         .title-font:before{
+//             content: "";
+//             width: 42px;
+//             height: 42px;
+//             background-color: transparent;
+//             border: 3px solid aliceblue;
+//             position: absolute;
+//             top: .5px;
+//             left: 2.5%;
+//             border-radius: 50%;
+//         }
     
-    .bread{
-        padding: 10px;
-    }
+//     .bread{
+//         padding: 10px;
+//     }
 
-   .commodity-enter{
-    text-align: center;
-    padding: 10px 0;
+//    .commodity-enter{
+//     text-align: center;
+//     padding: 10px 0;
 
-    input{
-        padding: 7px;
-        border: none;
-        box-shadow: 0px 0px 10px rgb(203, 203, 203);
-    }
-    button{
-        padding: 7px;
-        border: none;
-        background-color: $red;
-        color: $white;
-        box-shadow: 0px 0px 10px rgb(203, 203, 203);
-    }
+//     input{
+//         padding: 7px;
+//         border: none;
+//         box-shadow: 0px 0px 10px rgb(203, 203, 203);
+//     }
+//     button{
+//         padding: 7px;
+//         border: none;
+//         background-color: $red;
+//         color: $white;
+//         box-shadow: 0px 0px 10px rgb(203, 203, 203);
+//     }
     
-   }
-   .commodity-keywords{
-    display: flex;
-    justify-content: space-evenly;
-    font-weight: 800;
+//    }
+//    .commodity-keywords{
+//     display: flex;
+//     justify-content: space-evenly;
+//     font-weight: 800;
 
-   }
+//    }
 
-}
-.commodity-filter{
-    display: flex;
-    justify-content: center;
-}
-// =======================================
-.area-list{
+// }
+// .commodity-filter{
+//     display: flex;
+//     justify-content: center;
+// }
+// // =======================================
+// .area-list{
   
-    @include container();
+//     @include container();
  
-    .row{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .area-order{
-        width: 100%;
-        max-width: 240px;
-        margin: 30px 0;
+//     .row{
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//     }
+//     .area-order{
+//         width: 100%;
+//         max-width: 240px;
+//         margin: 30px 0;
         
 
-        .area-order-title{
-            background-color: $blue;
-            text-align: center;
-            padding: 10px;
+//         .area-order-title{
+//             background-color: $blue;
+//             text-align: center;
+//             padding: 10px;
             
-            h4{
-                color:$white;
-                cursor: pointer;
-            }
-        }
-        .oilList{
-            display: none;
+//             h4{
+//                 color:$white;
+//                 cursor: pointer;
+//             }
+//         }
+//         .oilList{
+//             display: none;
             
-        }
-        .massageList{
-            display: none;
-        }
+//         }
+//         .massageList{
+//             display: none;
+//         }
         
-        li{
-            text-align: center;
-            background-color: $white;
-            border: 1px solid $blue;
-            cursor: pointer;
+//         li{
+//             text-align: center;
+//             background-color: $white;
+//             border: 1px solid $blue;
+//             cursor: pointer;
 
-            .list-chose{
-                display: block;
-                color:$blue;
-                padding: 10px;
-            }
+//             .list-chose{
+//                 display: block;
+//                 color:$blue;
+//                 padding: 10px;
+//             }
             
-            .focus{
-                background-color: $red ;
-                color:$white ;
-                border-bottom: $red ;
-                transition: .5s;
-            }
+//             .focus{
+//                 background-color: $red ;
+//                 color:$white ;
+//                 border-bottom: $red ;
+//                 transition: .5s;
+//             }
 
-        }
-        .triangle{
-            float: right;
-            margin: auto 0;
-            font-weight: 800;
-            font-size: 23px
+//         }
+//         .triangle{
+//             float: right;
+//             margin: auto 0;
+//             font-weight: 800;
+//             font-size: 23px
          
-        }
+//         }
 
-    }
-}
+//     }
+// }
    
-.wrap{
-    width: 100%;
-    max-width: 1000px;
-    height: 100%;
-    margin: auto;
-    position: relative;
-    padding-bottom: 100px;
-    .bread{
-        margin: 5px 0;
-      }
-    .area-box{
+// .wrap{
+//     width: 100%;
+//     max-width: 1000px;
+//     height: 100%;
+//     margin: auto;
+//     position: relative;
+//     padding-bottom: 100px;
+//     .bread{
+//         margin: 5px 0;
+//       }
+//     .area-box{
       
-        @include container();
-          padding-top: 50px;
-          justify-content: center;
+//         @include container();
+//           padding-top: 50px;
+//           justify-content: center;
      
-          .area-card{
-              margin: 30px 10px;
+//           .area-card{
+//               margin: 30px 10px;
              
-                &:hover{
-                    box-shadow: 0px 0px 10px rgb(204, 204, 204); 
-                    transition: .5s;
-                    transform: scale(1.1,1.1);
-                }
-          }
+//                 &:hover{
+//                     box-shadow: 0px 0px 10px rgb(204, 204, 204); 
+//                     transition: .5s;
+//                     transform: scale(1.1,1.1);
+//                 }
+//           }
         
-          .area-oritem{
-            line-height: 1.5;
-            .area-capacity{
-                display: flex;
-                flex-wrap: nowrap;
-                width: 200px;
-                overflow: hidden;   
+//           .area-oritem{
+//             line-height: 1.5;
+//             .area-capacity{
+//                 display: flex;
+//                 flex-wrap: nowrap;
+//                 width: 200px;
+//                 overflow: hidden;   
            
-              small{
-                display: block;
-              }
-            }
+//               small{
+//                 display: block;
+//               }
+//             }
            
-        }
+//         }
        
-          .area-name{
+//           .area-name{
          
-              padding: 5px;  
-          }
-          .area-pic img{
-              width: 100%;
-          }
-          .area-price{
-              display: flex;
-              justify-content: flex-end;
-              padding: 5px;
-              p{
-                font-size: 22px;
-                color:$red
-              }
+//               padding: 5px;  
+//           }
+//           .area-pic img{
+//               width: 100%;
+//           }
+//           .area-price{
+//               display: flex;
+//               justify-content: flex-end;
+//               padding: 5px;
+//               p{
+//                 font-size: 22px;
+//                 color:$red
+//               }
 
            
-          }
-          .add-shoppingCar{
-              display: flex;
-              justify-content: flex-end;
-              padding: 5px;
-          }
-          }
-}
+//           }
+//           .add-shoppingCar{
+//               display: flex;
+//               justify-content: flex-end;
+//               padding: 5px;
+//           }
+//           }
+// }
 .page-number-computer{
     margin: auto;
     display: flex ;

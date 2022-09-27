@@ -1,40 +1,84 @@
-.commodity-container {
-    margin-top: 70px;
-    margin-bottom: 50px;
 
-   
+.commodity-container {
+    flex-shrink: 0;
     .commodity-order{
         display: flex;
-        justify-content: space-between;
-        border-bottom: 1px  solid black;
+        justify-content: space-between; 
+
         .commodity-sale{
             display: flex;
+         
             span{
+                padding: 10px;
+                border:none;
                 display: block;
-                border: 1px solid black;
-                background-color: red;
+                background-color: $white;
+                box-shadow: 10px 0px 10px rgb(204, 204, 204);
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                text-align: center;
             }
         }
-    
-        .commodity-filter{}
+        .commodity-filter{
+            display: flex;
+            >:first-child{
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+            }
+            >:last-child{
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+            }
+            button{
+                width: 100%;
+                background-color:$white;
+                padding: 0 10px;
+                font-weight: 800;
+                letter-spacing: 1px;
+                cursor: pointer;
+            }
+        }
     }
- 
 }
 
 .commodity-area{
     margin-bottom: 70px;
-
+    background-color: $white;
+    padding: 10px;
+    
     .commodity-obj{
-        display: flex;
-        border-bottom: 1px solid black;
-        padding: 10px;
-       
+        display: flex; 
+        align-items: center; 
+        border-bottom: 1px solid gray; 
         .commodity-pic{
-            width: 50%;
-            img{
-                width: 100%;
-                height: 100%;
+            width:35%;
+            position: relative;
+            overflow: hidden;
+            .slide-pic{
+                position: relative;
+                display: flex;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                    
+                }
+
             }
+            
+        }
+        button{
+            width: 20px;
+            height: 20px;
+            background-color:$blue;
+            color:$white;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 900;
+            font-size: 16px;
         }
         .commodity-body{
             width: 50%;
@@ -43,6 +87,7 @@
             .commodity-name{}
             .commodity-price{}
             .commodity-evaluation{}
+            
 
         }
     }
@@ -50,8 +95,7 @@
 
 @media screen and (min-width:768px){
     .commodity-list{
-        margin-top: 70px;
-    
+   
         .commodity-order{
             display: flex;
             justify-content: space-between;
@@ -64,16 +108,37 @@
         margin-bottom: 70px;
     
         .commodity-obj{
-            display: flex;
-            border-bottom: 1px solid black;
-            padding: 10px;
-           
+            display: flex; 
+            align-items: center;  
             .commodity-pic{
-                width: 10%;
-                img{
-                    width: 100%;
-                    height: 100%;
+                width:15%;
+                position: relative;
+                overflow: hidden;
+                .slide-pic{
+                    position: relative;
+                    display: flex;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        position: relative;
+                        
+                    }
+
                 }
+                
+            }
+            button{
+                width: 30px;
+                height: 30px;
+                background-color:$blue;
+                color:$white;
+                border-radius: 50%;
+                border: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-weight: 900;
+                font-size: 18px;
             }
             .commodity-body{
                 width: 50%;
@@ -82,9 +147,15 @@
                 .commodity-name{}
                 .commodity-price{}
                 .commodity-evaluation{}
+                
     
             }
         }
     }
 
+}
+// ===================================工具
+.orderColor{
+    background-color:$blue !important;
+    color: aliceblue;
 }

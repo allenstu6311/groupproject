@@ -3950,4 +3950,70 @@ a {
 }
 .commodity-list .commodity-detail .commodity-money span {
   font-size: 22px;
+}
+
+.commodity-container {
+  margin-top: 70px;
+  margin-bottom: 50px;
+}
+.commodity-container .commodity-order {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+}
+.commodity-container .commodity-order .commodity-sale {
+  display: flex;
+}
+.commodity-container .commodity-order .commodity-sale span {
+  display: block;
+  border: 1px solid black;
+  background-color: red;
+}
+.commodity-area {
+  margin-bottom: 70px;
+}
+.commodity-area .commodity-obj {
+  display: flex;
+  border-bottom: 1px solid black;
+  padding: 10px;
+}
+.commodity-area .commodity-obj .commodity-pic {
+  width: 50%;
+}
+.commodity-area .commodity-obj .commodity-pic img {
+  width: 100%;
+  height: 100%;
+}
+.commodity-area .commodity-obj .commodity-body {
+  width: 50%;
+  padding: 10px;
+}
+@media screen and (min-width: 768px) {
+  .commodity-list {
+    margin-top: 70px;
+  }
+  .commodity-list .commodity-order {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
+  .commodity-area {
+    margin-bottom: 70px;
+  }
+  .commodity-area .commodity-obj {
+    display: flex;
+    border-bottom: 1px solid black;
+    padding: 10px;
+  }
+  .commodity-area .commodity-obj .commodity-pic {
+    width: 10%;
+  }
+  .commodity-area .commodity-obj .commodity-pic img {
+    width: 100%;
+    height: 100%;
+  }
+  .commodity-area .commodity-obj .commodity-body {
+    width: 50%;
+    padding: 10px;
+  }
 }/*# sourceMappingURL=style.css.map */

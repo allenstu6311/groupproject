@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import FrontPageView from '../views/FrontPageView.vue'
 import HomeView from '../views/HomeView.vue'
 import AboutUs from '../views/AboutUs.vue'
 import TherapistView from '../views/TherapistView.vue'
@@ -11,6 +12,11 @@ import MemLogin from "../views/MemLogin.vue"
 const routes = [
   {
     path: '/',
+    name: 'front page',
+    component: FrontPageView
+  },
+  {
+    path: '/home',
     name: 'home',
     component: HomeView
   },

@@ -26,7 +26,7 @@
                             店裡打造溫馨整潔讓客人一進門就覺得放鬆自在。
                             生活太緊繃想放鬆的你來嘗試看看，讓你們體驗完後，踏出去時心情與身體都樂樂!
                         </p>
-                        <a href="./aboutUs.html"><div class="btnLittle">查看更多</div></a>
+                        <a href="/About"><div class="btnLittle">查看更多</div></a>
                     </div>
                 </div>
                 <div class="about_us_pic">
@@ -52,7 +52,7 @@
                         <h3>&nbsp;玩遊戲認識穴道</h3>
                         <p>您知道身體有多少穴道嗎?您知道按哪個穴道可以讓身體紓壓嗎?花個時間玩場小遊戲，既能認識穴道又能領取折價券唷!
                         </p>
-                        <a href="./massageschool.html"><div class="btnLittle">前往遊戲</div></a>
+                        <a href="/MassageSchool"><div class="btnLittle">前往遊戲</div></a>
                     </div>
                     <swiper
                         :modules="modules"
@@ -94,7 +94,7 @@
                         <img src="../assets/images/index_tools.jpg" alt="">
                     </div></a>
                 </div>
-                <a href="./shopingArea.html"><div class="btnLittle">更多商品</div></a>
+                <a href="/ProductList"><div class="btnLittle">更多商品</div></a>
             </section>
             <div class="reservation_bg">
                 <section class="index_reservation">
@@ -108,10 +108,10 @@
                             </div>
                             <small>• RESERVATION •</small>
                             <p>按指穴提供四種按摩服務項目，不管是久坐上班族，或是帶個兩小孩的全職媽媽，我們都有適合的按摩項目為您解決各種酸痛!</p>
-                            <a href="./reservation.html"><div class="btnLittle">查看更多</div></a>
+                            <a href="/reserve"><div class="btnLittle">查看更多</div></a>
                         </div>
                     </div>
-                    <div class="reservation_content"><!------預約按摩------>
+                    <div class="reservation_content">
                         <div class="item">
                             <div class="pic">
                                 <img src="../assets/images/resv1.jpg" alt="">
@@ -176,7 +176,7 @@
                                     <p>適合平常有按摩習慣者</p>
                                 </div>
                                 <div class="intro_btn">
-                                    <a href="./resvPage.html"><div class="btnLittle">立即預約</div></a>
+                                    <a href="./Reserve.vue"><div class="btnLittle">立即預約</div></a>
                                 </div>
                             </div>
                         </div>

@@ -1,8 +1,8 @@
 <template>
-  <Header />
-  <Confirm />
-      <router-view/>
-  <Footer />
+    <Header />
+    <Confirm />
+    <router-view/>
+    <Footer />
 
 </template>
 

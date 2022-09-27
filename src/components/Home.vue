@@ -298,6 +298,18 @@
           onSwiper,
           onSlideChange,
           modules: [Pagination,Autoplay],
+          breakpoints: {
+              1: {
+                slidesPerView: 1,
+                centeredSlides: false,
+                spaceBetween: 100,
+              },
+              992: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+                centeredSlides: false,
+              },
+            }
         };
       },
     };

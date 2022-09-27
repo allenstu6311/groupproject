@@ -3,6 +3,8 @@
   <div class="background-pic">
         <img src="../assets/images/bcgFlower.png" alt="">
     </div>
+
+    
 <div class="confirm-container">
     <MemberInfo />
     <CheckCommodity />

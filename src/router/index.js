@@ -54,7 +54,6 @@ const routes = [
     component: () => import(/* webpackChunkName: "reserve" */ '../views/Confirm.vue')
   },
   {
-<<<<<<< HEAD
     path:'/MemLogin',
     name:'MemLogin',
     component: () => import('../views/MemLogin.vue')
@@ -63,8 +62,8 @@ const routes = [
     path:'/MassageSchool',
     name:'MassageSchool',
     component: () => import('../views/MassageSchoolView.vue')
-  }
-=======
+  },
+  {
     path: '/ProductList',
     name: 'ProductList',
     // route level code-splitting
@@ -72,7 +71,6 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "reserve" */ '../views/ProductList.vue')
   },
->>>>>>> allen
 ]
 
 const router = createRouter({

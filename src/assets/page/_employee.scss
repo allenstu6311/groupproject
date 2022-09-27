@@ -50,7 +50,7 @@
                     width: 637px;
                     height: 638px;
                     position: relative;
-                    background: url(../images/imageRoundGate.png);
+                    background: url(/src/assets/images/imageRoundGate.png);
                     background-repeat: no-repeat;
                 }
                 .RimgFrame{
@@ -65,7 +65,7 @@
                     }
                 }
                 .Dframe_left{
-                    background: url(../images/image3Dframe_left.png);
+                    background: url(/src/assets/images/image3Dframe_left.png);
                     background-repeat: no-repeat;
                     overflow: hidden;
                     .imgFrame{
@@ -73,7 +73,7 @@
                     }
                 }
                 .Dframe_right{
-                    background: url(../images/image3Dframe_right.png);
+                    background: url(/src/assets/images/image3Dframe_right.png);
                     background-repeat: no-repeat;
                 }
             }

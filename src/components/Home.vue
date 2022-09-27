@@ -268,7 +268,7 @@
         </main>
     </div>
 </template>
-<script>
+// <script>
     // import Swiper core and required modules
     import {Autoplay, Pagination} from 'swiper';
   

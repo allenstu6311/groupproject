@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import AboutView from '../views/AboutView.vue'
+import AboutUs from '../views/AboutUs.vue'
+import TherapistView from '../views/TherapistView.vue'
+import EmployeeView from '../views/EmployeeView.vue'
 import Reservation from "../views/Reservation.vue"
 import Messagefaq from "../views/Messagefaq.vue"
 import Area from "../views/Area.vue"
-import  ShoppingCar from "@/components/ShoppingCar.vue"
+import ShoppingCar from "@/components/ShoppingCar.vue"
 import MemLogin from "../views/MemLogin.vue"
 
 const routes = [
@@ -19,7 +21,27 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    // component: () => import(/* webpackChunkName: "about" */ '../views/AboutUs.vue')
+    component: AboutUs
+
+  },
+  {
+    path: '/therapist',
+    name: 'therapist',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    // component: () => import(/* webpackChunkName: "about" */ '../views/TherapistView.vue')
+    component: TherapistView
+  },
+  {
+    path: '/employee',
+    name: 'employee',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    // component: () => import(/* webpackChunkName: "about" */ '../views/TherapistView.vue')
+    component: EmployeeView
   },
   {
     path: '/reserve',

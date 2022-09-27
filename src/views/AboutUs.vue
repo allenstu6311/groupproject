@@ -2,7 +2,7 @@
   	<Header />
 	<About />
   	<Footer />
-<!-- <router-view/> -->
+<router-view/>
 </template>
 
 <script>

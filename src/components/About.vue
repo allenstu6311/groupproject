@@ -49,7 +49,7 @@
                                 <img src="../assets/images/small_teamPic.png" alt="按摩師介紹圖">
                             </div>
                         </div>
-                        <a href="./AboutMasseuse.html">
+                        <a href="/therapist">
                             <div class="btnLarge">查看介紹</div>
                         </a>
                     </div>
@@ -65,7 +65,7 @@
                                 <div class="circle">紹</div>
                             </h3>
                         </div>
-                        <a href="./employee.html">
+                        <a href="/employee">
                             <div class="btnLarge">查看介紹</div>
                         </a>
                     </div>

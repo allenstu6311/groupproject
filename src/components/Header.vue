@@ -7,7 +7,7 @@
             <span class="line2"></span>
             <span class="line3"></span>
         </label> 
-        <router-link to="/"   class="header_logo"><img src="../assets/images/headerLogo.png" alt=""></router-link>
+        <router-link to="/home"   class="header_logo"><img src="../assets/images/headerLogo.png" alt=""></router-link>
     
         <ul>
             <li><router-link to="/about">關於我們</router-link></li>

@@ -17,6 +17,7 @@
             @include title();
             &:before {
                 @include titleBefore();
+                box-sizing: inherit;
             }
             margin-bottom: 0;
         }

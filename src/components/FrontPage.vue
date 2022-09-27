@@ -23,15 +23,16 @@
     </div>
 </template>
 
-<script>
-// export default {
-//     components: {
 
-//     }
-// }
+<script>
+// import 'bootstrap'
 </script>
 
-<style lang="scss">
+
+
+<style lang="scss" scoped>
+    // @import 'bootstrap/dist/css/bootstrap.min.css';
+    @import 'bootstrap';
     @import"../assets/style.scss";
     .backstage_header{
         text-align: center;

@@ -3,7 +3,7 @@
     <nav>
         <div class="footer_content">
             <div class="follow">
-                <a href="./index.html" class="footer_logo"><img src="../assets/images/footerLogo.png" alt=""></a>
+                <a href="/home" class="footer_logo"><img src="../assets/images/footerLogo.png" alt=""></a>
                 <div class="social">
                     <a href=""><img src="../assets/images/footerIG.png" alt=""></a>
                     <a href=""><img src="../assets/images/footerFB.png" alt=""></a>

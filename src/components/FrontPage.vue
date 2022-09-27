@@ -6,7 +6,7 @@
         <!-- <div class="choose_id">選擇登入</div> -->
         <div class="row justify-content-md-around my_set">
             <div class="col col-lg-2">
-                    <a href="index_main.html">
+                    <a href="/home">
                         <button class="btnLarge enter">前台</button>
                     </a>
             </div>

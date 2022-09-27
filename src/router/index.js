@@ -12,7 +12,7 @@ import MemLogin from "../views/MemLogin.vue"
 const routes = [
   {
     path: '/',
-    name: 'front page',
+    name: 'frontpage',
     component: FrontPageView
   },
   {

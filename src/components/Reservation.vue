@@ -30,7 +30,7 @@
             class="msg_card_frame"
             v-for="(msgCard, index) in msgCardList"
             :key="index"
-            :class="{ reverse: index % 2 === 1 }"
+            :class="{ reverse: index % 2 === 1, btnLeft: index%2 !==1}"
           >
             <div class="msg_card row">
               <div class="msg_card_txt col col-12 col-md-12 col-xl-8">

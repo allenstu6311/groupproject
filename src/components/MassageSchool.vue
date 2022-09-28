@@ -25,7 +25,8 @@
 
             <section class="knowledge_container title_left">
                 <h3 class="knowledge_title ">頭部</h3>
-                <swiper :modules="modules"
+                <swiper class="knowledge_swiper"
+                        :modules="modules"
                         :pagination="{ clickable: true }"
                         :navigation="true"
                         :loop="true"
@@ -62,7 +63,8 @@
             </section>
 
             <section class="knowledge_container title_right">
-                <swiper :modules="modules"
+                <swiper class="knowledge_swiper"
+                        :modules="modules"
                         :pagination="{ clickable: true }"
                         :navigation="true"
                         :loop="true"
@@ -100,7 +102,8 @@
 
             <section class="knowledge_container title_left">
                 <h3 class="knowledge_title">身體</h3>
-                <swiper :modules="modules"
+                <swiper class="knowledge_swiper"
+                        :modules="modules"
                         :pagination="{ clickable: true }"
                         :navigation="true"
                         :loop="true"
@@ -136,7 +139,8 @@
             </section>
 
             <section class="knowledge_container title_right">
-                <swiper :modules="modules"
+                <swiper class="knowledge_swiper"
+                        :modules="modules"
                         :pagination="{ clickable: true }"
                         :navigation="true"
                         :loop="true"

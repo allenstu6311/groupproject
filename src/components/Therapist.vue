@@ -26,7 +26,6 @@
                     <div class="col-xl-6 col-12">
                         <div class="frame frame_one">
                             <div class="masseusePic">
-                                <!-- <img src="../assets/images/masseusePic1.jpg" alt="按摩師傅1"> -->
                                 <img
                                 :src="require(`@/assets/images/${therapist.pic}`)"
                                 :alt="therapist.pic_alt"

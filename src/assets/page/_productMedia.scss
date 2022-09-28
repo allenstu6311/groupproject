@@ -1,0 +1,290 @@
+    @media screen and (min-width:1200px) {
+   
+        .bread{
+            padding: 10px;
+            font-size: 16px;
+        }
+        .product-title{
+            @include container();
+            line-height: 2;
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 100px;
+          
+            .product-body{
+                width: 45%;
+                
+            }
+            .product-introduce {
+                @include container();
+              
+                .product-txt {
+                    text-align: left;
+                    padding: 10px;
+                    line-height: 2;
+                    ul{
+                  
+                        li{
+                            width: 500px;
+                            margin: auto;
+                            display: flex;
+                            justify-content: flex-start;
+                        }
+                        
+                    }
+                }
+            }
+            .product-name{
+                display: flex;
+            }
+          
+            .product-pic{
+                width: 45%;
+            }
+            .product-pic img{
+                width: 100%;
+            }
+         
+            .pic-control{
+                width: 100px;
+                display: none ;
+                justify-content: space-evenly;
+                margin: auto;
+             
+                .pic-number{
+                    font-size: 0px;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background-color: gray;
+        
+                }
+            }
+            .pic-slide{
+             
+              display: flex;
+              align-items: center;
+              margin-bottom: 30px;
+                .pic-chose{
+                    width: 200px;
+                    height: 120px;
+                   
+                }
+                img{
+                    width: 100%;
+                    height: 100%; 
+                    opacity: .2;   
+                }
+                button{
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+            .product-number{
+                display: flex;
+                align-items: center;
+                justify-content: flex-start ;
+                margin: 10px 0;
+                button{
+                    width: 30px;
+                    height: 30px;
+                    font-size: 25px;
+                }
+                input{
+                    width: 50px;
+                    padding: 5px 0;
+                    text-align: center;
+                }
+            }
+            .product-price{
+                display: flex;
+                justify-content: flex-start ;
+                padding: 10px;
+                p{
+                    font-size: 35px;
+                }
+              
+            }
+        
+        }
+      
+    }
+
+    // ===================================
+
+    @media screen and (min-width:1024px) {
+        .bread{
+            padding: 10px;
+            font-size: 16px;
+        }
+        .product-title{
+            @include container();
+            line-height: 2;
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 50px;
+
+            .product-pic{
+                width: 400px;
+            }
+            .product-pic img{
+                width: 130%;
+            }
+            .pic-control{
+                width: 100px;
+                display: none;
+                justify-content: space-evenly;
+                margin: auto;
+        
+                .pic-number{
+                    font-size: 0px;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background-color: gray;
+                }
+          
+            .product-body{
+                width: 45%;
+
+                .product-introduce{
+                    .product-txt{
+                        text-align: left;
+                        ul{
+          
+                            li{
+                                width: 500px;
+                                margin: auto;
+                                display: flex;
+                                justify-content: flex-start;
+                            }
+                            
+                        }
+                    }
+
+                }
+            }
+        
+       
+         
+          
+               
+            }
+            
+     
+            .pic-slide{
+              display: flex;
+              align-items: center;
+              margin-bottom: 30px;
+              justify-content: center;
+              margin: auto;
+                .pic-chose{
+                    width: 500px;
+                    height: 120px;
+                    display: flex;
+                    
+                   
+                }
+                img{
+                    width: 100%;
+                    height: 100%; 
+                    opacity: .2;   
+                }
+                button{
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+            .product-number{
+                display: flex;
+                align-items: center;
+                justify-content:flex-start;
+                margin: 10px 0;
+                button{
+                    width: 30px;
+                    height: 30px;
+                    font-size: 25px;
+                }
+                input{
+                    width: 50px;
+                    padding: 5px 0;
+                    text-align: center;
+                    
+                }
+            }
+            .product-addcar{
+                display: flex;
+                justify-content: flex-start;
+            }
+            .product-price{
+                display: flex;
+                justify-content: flex-start;
+                padding: 10px;
+                p{
+                    font-size: 35px;
+                }
+
+              
+            }
+          
+        
+        }
+        // ==========================
+        .rightImg {
+            display: inline-block;
+            width: 800px;
+            height: 800px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            }
+            
+            /* 右边的区域图片放大空间 */
+            .right {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border: 1px solid red;
+            right: 100px;
+            top: 10%;
+            right:-600px;
+            overflow: hidden;
+            }
+            
+            /* 一个最高层层罩 */
+            .maskTop {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            }
+            
+            /* 层罩，通过定位将左上角定位到(0,0) */
+            .top {
+            width: 200px;
+            height: 200px;
+            background-color: lightcoral;
+            opacity: 0.4;
+            position: absolute;
+            top: 0;
+            left: 0;
+            }
+            
+            /* 原图的显示 */
+            .leftImg {
+            width: 400px;
+            height: 400px;
+            display: inline-block;
+            }
+            
+            /* 原图的容器 */
+            .left {
+            width: 100%;
+            height: 100%;
+            
+            position: relative;
+            }
+    }
+

@@ -22,7 +22,7 @@
                  <button @click="next(item)"> ＜ </button>
                 <div class="commodity-pic" >
                    <router-link to="/Detail">
-                    <div class="slide-pic" :style="{left:126.93*item.slide+'px',transition:.4+'s'}">    
+                    <div class="slide-pic" :style="{left:126.93*item.slide+'px',transition:.4+'s'}" @click="addOrder(item.PROD_ID)">    
                         <img :src="require(`../assets/php/pic/${item.PROD_PIC1}`)">
                         <img :src="require(`../assets/php/pic/${item.PROD_PIC2}`)" >
                         <img :src="require(`../assets/php/pic/${item.PROD_PIC3}`)" >
@@ -51,14 +51,13 @@
                
                 <div class="commodity-pic" >
                  <button @click="next(item)"> ＜ </button>
-                   <!-- <router-link to="/Detail">  </router-link> -->
-                   <div class="slide-pic" @click="addOrder(item.PROD_ID)" :style="{left:210*item.slide+'px',transition:.4+'s'}" >
-                
-                    <img :src="require(`../assets/php/pic/${item.PROD_PIC1}`)">
-                    <img :src="require(`../assets/php/pic/${item.PROD_PIC2}`)" >
-                    <img :src="require(`../assets/php/pic/${item.PROD_PIC3}`)" >
+                    <router-link to="/Detail">
+                        <div class="slide-pic" @click="addOrder(item.PROD_ID)" :style="{left:210*item.slide+'px',transition:.4+'s'}" >
+                        <img :src="require(`../assets/php/pic/${item.PROD_PIC1}`)">
+                        <img :src="require(`../assets/php/pic/${item.PROD_PIC2}`)" >
+                        <img :src="require(`../assets/php/pic/${item.PROD_PIC3}`)" >
                    </div>
-                 
+                    </router-link>
                  <button @click="prev(item)">＞</button>
                 </div>
                    
@@ -74,7 +73,7 @@
                     </div>
                 </div>
             </div>
-    </div> 
+        </div> 
     </div>
 <!-- =============================================特賣商品 -->
 
@@ -82,20 +81,29 @@
         <h1>目前無特價商品</h1>
     </div>
 </div>
-  
+
 </template>
 
 <script >
+
 export default {
+    components:{
+        
+    },
+    props:{
+        price:Array,
+        enter1:Number,
+        enter2:Number
+    },
         data(){
         return{
             data:[],
             order:[],
+            info:[],
             order:1,
             toggle:false,
             commoditySale:1,
             areaShow:"卡片",
-
         }
     },
     methods:{
@@ -120,11 +128,12 @@ export default {
                 PROD_PIC2:this.data[index].PROD_PIC2,
                 PROD_PIC3:this.data[index].PROD_PIC3,
                 PROD_DATE:this.data[index].PROD_DATE,
+                PROD_NUM:this.data[index].PRODUCT_NUM,
                 PROD_DESC1:this.data[index].PROD_DESC1,
                 PROD_DESC2:this.data[index].PROD_DESC2,
                 PROD_DESC3:this.data[index].PROD_DESC3,
             }]
-            console.log(this.order)
+            
             this.setStorage()
         },
         setStorage(){
@@ -134,15 +143,24 @@ export default {
             let orders = localStorage.getItem("order");
             if(!orders) return;
             this.order = JSON.parse(orders)
+
+        },
+        clear(){
+            this.order=[]
         }
-        
+
     },
     created(){
-        this.axios.get("http://localhost/cli/team/src/assets/php/productlist.php")
+        this.axios.get("http://localhost/cli/team/src/assets/php/commoditylist.php")
         .then((res)=>{
+            console.log(this.price)
             this.data = res.data
-            console.log(this.data)
+            this.info = res.data
         })
+        this.clear();
+    },
+    computed:{
+     
     },
     watch:{
         toggle:{
@@ -153,8 +171,28 @@ export default {
                 this.areaShow="橫排"
              }
             }
+        },
+        price:{
+            handler(newVal){
+                this.data = newVal 
+            }
+        },
+        enter1:{
+            handler(newVal){
+                if(newVal==""){
+                    this.data=this.info
+                }
+            }
+        },
+         enter2:{
+            handler(newVal){
+                if(newVal==""){
+                    this.data=this.info
+                }
+            }
         }
-    }
+    },
+    
     
 }
 

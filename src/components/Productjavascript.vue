@@ -1,4 +1,4 @@
-
+<script>
 export default {
     
     data(){
@@ -38,8 +38,6 @@ export default {
         //     if(!ranges) return;
         //     this.range = JSON.parse(ranges)
         // },
-    },
-    created() {
-        
-    },
+    }
 }
+</script>

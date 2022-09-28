@@ -6,8 +6,15 @@
     </div>
   <div class="Product-container">
    
-     <Commodity />
-    <Filter />
+     <Commodity  :price ="priceInfo" 
+                  :enter1 =  int_Num1
+                  :enter2 =  int_Num2
+     
+     />
+      <Filter  @filter="filterRange"
+              @int_1 ="intValue1"
+              @int_2 ="intValue2"
+      />
   </div>
   
   <Footer />
@@ -21,6 +28,9 @@ import Footer from "@/components/Footer.vue"
 import Commodity from "@/components/Commodity.vue"
 import Filter from "@/components/Filter.vue"
 export default {
+  props:{
+
+  },
     components:{
         Header,
         Footer,
@@ -30,9 +40,27 @@ export default {
     data(){
 
         return{
-
+          priceInfo:[],
+          int_Num1:0,
+          int_Num2:0,
         }
     },
+    methods:{
+        filterRange(val){     
+          this.priceInfo = val
+        },
+        intValue1(val){
+          this.int_Num1=val
+     
+        },
+        intValue2(val){
+          this.int_Num2=val
+     
+        } 
+    },
+    watch:{
+   
+    }
 
 }
 </script>

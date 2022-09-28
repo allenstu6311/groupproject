@@ -1,7 +1,6 @@
 <template>
   <div class="wrapper reservation background_flower">
     <h1 class="sr_only">預約按摩</h1>
-
     <main>
       <section class="resv_banner">
         <div class="banner">
@@ -70,17 +69,10 @@
                   </div>
                 </div>
                 <div class="btn">
-                  <a class="btnLarge" href="../assets/resvPage.html"
-                    >立即預約</a
-                  >
+                  <a class="btnLarge" href="/resvPage">立即預約</a>
                 </div>
               </div>
               <div class="pic_ctnr msg_card_pic col col-12 col-md-8 col-xl-4">
-                <!-- <img :src="msgCard.pic" :alt="msgCard.pic_alt" />
-                <img
-                  :src="require('@/assets/images/resv1.jpg')"
-                  :alt="msgCard.pic_alt"
-                /> -->
                 <img
                   :src="require(`@/assets/images/${msgCard.pic}`)"
                   :alt="msgCard.pic_alt"
@@ -95,12 +87,7 @@
 </template>
 <script>
 export default {
-  //   name: "HelloWorld",
-  props: {
-    msg: String,
-    title: String,
-    song: String,
-  },
+  props: {},
   data() {
     return {
       msgCardList: [

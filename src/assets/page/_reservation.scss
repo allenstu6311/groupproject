@@ -126,7 +126,11 @@
                     }
                 }
             }
-
+            .msg_card_frame.btnLeft .msg_card .msg_card_txt .btn {
+                @include pc() {
+                    text-align: left;
+                }
+            }
             .reverse {
                 .msg_card {
                     flex-direction: row-reverse;

@@ -135,13 +135,13 @@
             4.
             您如有「發炎」、「腫瘤」、「經放射治療部位」、「皮膚病」及「骨頭及關節突出處」等症狀，請於按摩前提前告知，避免按摩師給予太大力道。
           </div>
-          <!-- <div v-else="activeTab == 'C'" class="tab_container">
+          <div v-else-if="activeTab == 'C'" class="tab_container">
             1. 請問可以現場預約嗎？<br />
             &nbsp;&nbsp;&nbsp;建議您先線上預約服務的時間與指定的師傅，以避免來店久候，耽誤到您保貴的時間！<br />
             <br />
             2. 請問建議的按摩時間長度？<br />
             &nbsp;&nbsp;&nbsp;時間的長短，建議足部按摩60分鐘，其他服務120分鐘，這樣按摩師才有足夠時間做完整的服務。<br />
-          </div> -->
+          </div>
         </div>
       </section>
       <section class="related">

@@ -11,7 +11,7 @@
   </div>
   
   <Footer />
-
+<router-link to="/Detail">詳細</router-link>
 </template>
 
 
@@ -36,7 +36,7 @@ export default {
 
 }
 </script>
-<style lang="scss" scope>
+<style lang="scss" scoped>
   *{
     box-sizing: border-box;
   }

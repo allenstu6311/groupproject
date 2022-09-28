@@ -4473,13 +4473,14 @@ a {
   padding: 10px;
   border: none;
   display: block;
-  background-color: #FFFFFF;
   box-shadow: 10px 0px 10px rgb(204, 204, 204);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   text-align: center;
+  background-color: gray;
 }
 .commodity-container .commodity-order .commodity-filter {
+  width: 50%;
   display: flex;
 }
 .commodity-container .commodity-order .commodity-filter > :first-child {
@@ -4535,16 +4536,87 @@ a {
   align-items: center;
   font-weight: 900;
   font-size: 16px;
+  z-index: 5;
+  position: relative;
 }
 .commodity-area .commodity-obj .commodity-body {
   width: 50%;
   padding: 10px;
+}
+.commodity-area .commodity-obj .commodity-body .commodity-name {
+  margin-bottom: 20px;
+}
+.commodity-area .commodity-obj .commodity-body .commodity-price p strong {
+  color: #B52011;
+  font-size: 25px;
+  font-weight: 800;
+}
+.commodity-card {
+  margin-bottom: 70px;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.commodity-card .commodity-obj {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 20px;
+}
+.commodity-card .commodity-obj .commodity-pic {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.commodity-card .commodity-obj .commodity-pic .slide-pic {
+  position: relative;
+  display: flex;
+}
+.commodity-card .commodity-obj .commodity-pic .slide-pic img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin: 0 10px;
+}
+.commodity-card .commodity-obj button {
+  width: 20px;
+  height: 20px;
+  background-color: #163D82;
+  color: #FFFFFF;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  font-size: 16px;
+  position: relative;
+  z-index: 5;
+}
+.commodity-card .commodity-obj .commodity-body {
+  width: 100%;
+  padding: 10px;
+}
+.commodity-card .commodity-obj .commodity-body .commodity-name {
+  margin-bottom: 20px;
+}
+.commodity-card .commodity-obj .commodity-body .commodity-price p strong {
+  color: #B52011;
+  font-size: 25px;
+  font-weight: 800;
 }
 @media screen and (min-width: 768px) {
   .commodity-list .commodity-order {
     display: flex;
     justify-content: space-between;
     margin-bottom: 50px;
+  }
+  .commodity-list .commodity-filter {
+    width: 50%;
   }
   .commodity-area {
     margin-bottom: 70px;
@@ -4584,10 +4656,17 @@ a {
     width: 50%;
     padding: 10px;
   }
+  .commodity-area .commodity-obj .commodity-body .commodity-name {
+    margin-bottom: 20px;
+  }
 }
 .orderColor {
   background-color: #163D82 !important;
   color: aliceblue;
+}
+
+.saleColor {
+  background-color: #FFFFFF !important;
 }
 
 .filter-range {
@@ -4595,6 +4674,7 @@ a {
   right: 0;
   background-color: #FFFFFF;
   padding: 10px;
+  z-index: 8;
 }
 
 .filter-container {
@@ -4623,9 +4703,7 @@ a {
   top: -15px;
   right: 10px;
 }
-.filter-container .filter-list .filter-close a {
-  text-decoration: none;
-  display: block;
+.filter-container .filter-list .filter-close p {
   color: gray;
   padding: 10px;
   font-size: 22px;
@@ -4637,6 +4715,9 @@ a {
 }
 .filter-container .filter-list .price-checkbox {
   font-size: 22px;
+  text-align: center;
+}
+.filter-container .filter-list .keyword {
   text-align: center;
 }
 

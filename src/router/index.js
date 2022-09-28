@@ -4,7 +4,8 @@ import HomeView from '../views/HomeView.vue'
 import AboutUs from '../views/AboutUs.vue'
 import TherapistView from '../views/TherapistView.vue'
 import EmployeeView from '../views/EmployeeView.vue'
-import Reservation from "../views/Reservation.vue"
+import ReservationView from '../views/ReservationView.vue'
+import ResvPageView from '../views/ResvPageView.vue'
 import Messagefaq from "../views/Messagefaq.vue"
 import ShoppingCar from "@/components/ShoppingCar.vue"
 import MemLogin from "../views/MemLogin.vue"
@@ -49,12 +50,17 @@ const routes = [
     component: EmployeeView
   },
   {
-    path: '/reserve',
-    name: 'reserve',
+    path: '/reservation',
+    name: 'reservation',
     // route level code-splitting
     // this generates a separate chunk (reserve.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "reserve" */ '../views/Reservation.vue')
+    component: () => import(/* webpackChunkName: "reserve" */ '../views/ReservationView.vue')
+  },
+  {
+    path: '/resvPage',
+    name: 'resvPage',
+    component: () => import('../views/ResvPageView.vue')
   },
   {
     path: '/message',
@@ -82,13 +88,13 @@ const routes = [
     component: () => import(/* webpackChunkName: "reserve" */ '../views/Confirm.vue')
   },
   {
-    path:'/MemLogin',
-    name:'MemLogin',
+    path: '/MemLogin',
+    name: 'MemLogin',
     component: () => import('../views/MemLogin.vue')
   },
   {
-    path:'/MassageSchool',
-    name:'MassageSchool',
+    path: '/MassageSchool',
+    name: 'MassageSchool',
     component: () => import('../views/MassageSchoolView.vue')
   },
   {

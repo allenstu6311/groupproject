@@ -4,16 +4,18 @@
       <section class="msg container">
         <div class="topic">
           <div class="breadcrumb">
-            <a href="./index.html">首頁</a> >
-            <a href="./reservation.html">預約按摩</a> >
-            <a class="this_page" href="./resvPage.html">全身穴道按摩</a>
+            <a href="/home">首頁</a> > <a href="/reservation">預約按摩</a> >
+            <a class="this_page" href="/resvPage">全身穴道按摩</a>
           </div>
           <div class="content container">
             <div class="row">
               <div class="col col-12 col-md-5 col-xl-6">
                 <div class="content_pic frame">
                   <div class="framei">
-                    <img src="./images/resv1.jpg" alt="全身穴道按摩照片" />
+                    <img
+                      src="../assets/images/resv1.jpg"
+                      alt="全身穴道按摩照片"
+                    />
                   </div>
                 </div>
               </div>
@@ -49,15 +51,15 @@
                       class="timespan"
                     >
                       <option disabled value="">請選擇時間長度</option>
-                      <option value="2,400" selected>
+                      <option value="2400" selected>
                         <span class="msg_timespan_1">120分鐘</span>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <span class="msg_price_1">NT$2,400</span>
+                        <span class="msg_price_1">NT$2400</span>
                       </option>
-                      <option value="1,600">
+                      <option value="1600">
                         <span class="msg_timespan_1">60分鐘</span>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <span class="msg_price_1">NT$1,600</span>
+                        <span class="msg_price_1">NT$1600</span>
                       </option>
                     </select>
                     <div class="calendar">
@@ -160,7 +162,10 @@
           >
             <a href="" class="item_link">
               <div class="item_pic">
-                <img :src="item.pic" :alt="item.pic_alt" />
+                <img
+                  :src="require(`@/assets/images/${item.pic}`)"
+                  :alt="item.pic_alt"
+                />
               </div>
               <div class="item_txt">
                 <span class="item_name">
@@ -177,11 +182,7 @@
 </template>
 <script>
 export default {
-  props: {
-    msg: String,
-    title: String,
-    song: String,
-  },
+  props: {},
   data() {
     return {
       isActive: true, //預測剛開始是打開active
@@ -190,7 +191,7 @@ export default {
       orderList: [],
       orderMsg: "全身穴道按摩",
       orderTherapist: "李駿燕",
-      orderPrice: "1,600",
+      orderPrice: "1600",
       orderDate: "",
       timeStart: "",
       timeEnd: "",
@@ -206,7 +207,7 @@ export default {
           timespan_2: 60,
           price_2: 1600,
           rec_2: "適合平常有按摩習慣者​",
-          pic: "./images/resv2.jpg",
+          pic: "resv2.jpg",
           pic_alt: "精油深層放鬆照片",
         },
         {
@@ -219,7 +220,7 @@ export default {
           timespan_2: 60,
           price_2: 1500,
           rec_2: "適合平常有按摩習慣者​",
-          pic: "./images/resv3.jpg",
+          pic: "resv3.jpg",
           pic_alt: "東方經絡指壓照片",
         },
         {
@@ -232,7 +233,7 @@ export default {
           timespan_2: 60,
           price_2: 1200,
           rec_2: "適合平常有按摩習慣者​",
-          pic: "./images/resv4.jpg",
+          pic: "resv4.jpg",
           pic_alt: "足部舒壓按摩照片",
         },
       ],

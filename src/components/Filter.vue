@@ -5,7 +5,7 @@
     <div class="filter-container" v-if="filter==true">   
         <div class="filter-list">
             <div class="filter-close">
-                <a href="">X</a>
+                <p @click="filter=false">X</p>
             </div>
             <div class="price-range">
             <p>價格範圍</p>
@@ -17,10 +17,18 @@
              </div>
         </div>
         <div class="price-checkbox">
-            <p>篩選:<input type="checkbox"></p>
-            <p>篩選:<input type="checkbox"></p>
-            <p>篩選:<input type="checkbox"></p>
-            <p>篩選:<input type="checkbox"></p>
+            <p>價格區間</p>
+            <p><input type="checkbox">299~399元</p>
+            <p><input type="checkbox">299~399元</p>
+            <p><input type="checkbox">299~399元</p>
+            <p><input type="checkbox">299~399元</p>
+        </div>
+         <div class="keyword">
+            <p>關鍵字搜尋</p>
+             <p><input type="checkbox">按摩槍</p>
+            <p><input type="checkbox">按摩槍</p>
+            <p><input type="checkbox">按摩槍</p>
+            <p><input type="checkbox">按摩槍</p>
         </div>
         </div>
       
@@ -54,7 +62,6 @@
             <p><input type="checkbox">按摩槍</p>
         </div>
         </div>
-      
     </div>
 </template>
 

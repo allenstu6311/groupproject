@@ -20,36 +20,45 @@
 
     <div id="app">
         
-      <form class="row g-3" action="../src/assets/php/productlist.php" method="post"  enctype="multipart/form-data">
+      <form class="row g-3" action="../src/assets/php/file.php" method="post"  enctype="multipart/form-data">
 
         <div class="col-md-3">
           <label for="inputEmail4" class="form-label">產品名稱</label>
-          <input type="text" class="form-control" id="inputEmail4" name="name">
+          <input type="text" class="form-control" id="inputEmail4" name="PROD_NAME">
         </div>
         <div class="col-md-3">
           <label for="inputPassword4" class="form-label">價錢</label>
-          <input type="text" class="form-control" id="inputPassword4" name="price">
+          <input type="text" class="form-control" id="inputPassword4" name="PROD_PRICE">
         </div>
     
         <div class="col-md-6">
           <label for="inputCity" class="form-label">產品圖片1</label>
-          <input type="file" name="upFile[]">
+          <input type="file" name="photo[]">
           <label for="inputCity" class="form-label">產品圖片2</label>
-          <input type="file" name="upFile[]">
+          <input type="file" name="photo[]">
           <label for="inputCity" class="form-label">產品圖片3</label>
-          <input type="file" name="upFile[]">
+          <input type="file" name="photo[]">
         </div>
-        <div class="col-md-4">
-          <label for="inputState" class="form-label">評價</label>
-          <input type="text" name="evaluation" class="form-control" id="inputPassword4">
-        </div>
-         <div class="col-md-4">
-          <label for="inputState" class="form-label">評價人數</label>
-          <input type="text" name="people" class="form-control" id="inputPassword4">
-        </div>
+
         <div class="col-md-4">
           <label for="inputState" class="form-label">商品狀態</label>
-          <input type="text" name="label" class="form-control" id="inputPassword4">
+          <input type="text" name="PROD_STATUS" class="form-control" id="inputPassword4">
+        </div>
+         <div class="col-md-4">
+          <label for="inputState" class="form-label">上假日期</label>
+          <input type="date" name="PROD_DATE" class="form-control" id="inputPassword4">
+        </div>
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">商品敘述1</label>
+          <input type="text" name="PROD_DESC1" class="form-control" id="inputPassword4">
+        </div>
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">商品敘述2</label>
+          <input type="text" name="PROD_DESC2" class="form-control" id="inputPassword4">
+        </div>
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">商品敘述3</label>
+          <input type="text" name="PROD_DESC3" class="form-control" id="inputPassword4">
         </div>
       
         <div class="col-16">

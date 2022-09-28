@@ -9,6 +9,8 @@ import ResvPageView from '../views/ResvPageView.vue'
 import Messagefaq from "../views/Messagefaq.vue"
 import ShoppingCar from "@/components/ShoppingCar.vue"
 import MemLogin from "../views/MemLogin.vue"
+import ProductList from "../views/ProductList.vue"
+import Detail from "../views/Detail.vue"
 
 const routes = [
   {
@@ -104,6 +106,14 @@ const routes = [
     // this generates a separate chunk (reserve.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "reserve" */ '../views/ProductList.vue')
+  },
+  {
+    path: '/Detail',
+    name: 'Detail',
+    // route level code-splitting
+    // this generates a separate chunk (reserve.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "reserve" */ '../views/Detail.vue')
   },
 ]
 

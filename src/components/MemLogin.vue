@@ -16,7 +16,7 @@
             </div>
         </div>
         <!-- 登入按鈕 -->
-        <button class="btnMinimum login_btn"><a href="./memCenter.html">登入</a> </button>
+        <button class="btnMinimum login_btn"><a href="/memCenter">登入</a> </button>
         <hr>
         <div>其他登入方式</div>
         <div class="another_login">
@@ -32,7 +32,3 @@
         </div>
     </div>
 </template>
-
-<style lang="scss">
-@import"../assets/style.scss";
-</style>

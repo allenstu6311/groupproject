@@ -9,8 +9,12 @@ import ResvPageView from '../views/ResvPageView.vue'
 import Messagefaq from "../views/Messagefaq.vue"
 import ShoppingCar from "@/components/ShoppingCar.vue"
 import MemLogin from "../views/MemLogin.vue"
+<<<<<<< HEAD
 import ProductList from "../views/ProductList.vue"
 import Detail from "../views/Detail.vue"
+=======
+import MemCenter from "../views/MemCenterView.vue"
+>>>>>>> kang
 
 const routes = [
   {
@@ -93,6 +97,11 @@ const routes = [
     path: '/MemLogin',
     name: 'MemLogin',
     component: () => import('../views/MemLogin.vue')
+  },
+  {
+    path: '/MemCenter',
+    name: 'MemCenter',
+    component: () => import('../views/MemCenterView.vue')
   },
   {
     path: '/MassageSchool',

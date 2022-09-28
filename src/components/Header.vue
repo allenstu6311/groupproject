@@ -11,7 +11,7 @@
     
         <ul>
             <li><router-link to="/about">關於我們</router-link></li>
-            <li><router-link to="/reserve">預約按摩</router-link></li>
+            <li><router-link to="/reservation">預約按摩</router-link></li>
             <li><router-link to="/ProductList">商品專區</router-link></li>
             <!-- <a href="../index.html" class="header_logo"><img src="../images/headerLogo.png" alt=""></a> -->
             <li><router-link to="/MassageSchool">按摩小學堂</router-link></li>

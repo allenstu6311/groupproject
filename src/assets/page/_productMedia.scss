@@ -13,6 +13,7 @@
           
             .product-body{
                 width: 45%;
+                margin:  auto 0;
                 
             }
             .product-introduce {
@@ -84,7 +85,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: flex-start ;
-                margin: 10px 0;
+                margin: 10px 20px;
                 button{
                     width: 30px;
                     height: 30px;
@@ -164,12 +165,8 @@
 
                 }
             }
-        
-       
-         
-          
-               
-            }
+      
+    }
             
      
             .pic-slide{
@@ -182,6 +179,7 @@
                     width: 500px;
                     height: 120px;
                     display: flex;
+                 
                     
                    
                 }
@@ -193,13 +191,14 @@
                 button{
                     width: 30px;
                     height: 30px;
+                    z-index: 3;
                 }
             }
             .product-number{
                 display: flex;
                 align-items: center;
                 justify-content:flex-start;
-                margin: 10px 0;
+                margin: 10px 20px;
                 button{
                     width: 30px;
                     height: 30px;

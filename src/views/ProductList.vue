@@ -12,12 +12,14 @@
                   :search =  project_target
                   :search_empty ="search_obj"
                   :checkPrice ="product_price"
+                  :checkTool ="product_tool"
      
      />
       <Filter  @filter="filterRange"
               @int_1 ="intValue1"
               @int_2 ="intValue2"
               @checkMoney ="productMoney"
+              @tool ="productTool"
       />
   </div>
   
@@ -48,6 +50,7 @@ export default {
           search_obj:'',
           project_target:[],
           product_price:[],
+          product_tool:[],
         }
     },
     methods:{
@@ -74,8 +77,10 @@ export default {
           })
         },
         productMoney(val){
-          // console.log("val-->",val)
           this.product_price = val
+        },
+        productTool(val){
+          this.product_tool = val
         }
     },
     watch:{

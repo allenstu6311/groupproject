@@ -3,28 +3,27 @@ header('Access-Control-Allow-Origin:*');
 header("Content-Type:application/json;charset=utf-8");
 
 
-function search($target){
+function price($filterPrice_1,$filterPrice_2){
 
 require_once("./url.php");
 
 
-$sql = "select * from PRODUCT where PROD_STATUS=1 and PROD_NAME like '%{$target}%' ";
+$sql = "select * from PRODUCT where PROD_STATUS=1 and PROD_PRICE BETWEEN {$filterPrice_1} AND {$filterPrice_2} ";
 
 $book = $pdo->query($sql);
 
-if($book->rowCount()==0){
-    echo "{}";
-}else{
-    $books = $book->fetchAll();
+$books = $book->fetchAll();
 
 $data=[];
 
     foreach($books as $i=> $page){
         $data[]=$page;
     }
+
+
     echo json_encode($data);
+  
 }
-}
-search($_GET['target'])
+price($_GET['filterPrice_1'],$_GET['filterPrice_2'])
 
 ?>

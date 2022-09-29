@@ -19,10 +19,10 @@
         </div>
         <div class="price-checkbox">
             <p>價格區間</p>
-            <p><input type="checkbox">299~399元</p>
-            <p><input type="checkbox">299~399元</p>
-            <p><input type="checkbox">299~399元</p>
-            <p><input type="checkbox">299~399元</p>
+            <p><input type="checkbox"  @click="checked">100~499元</p>
+            <p><input type="checkbox">500~999元</p>
+            <p><input type="checkbox">1000~1499元</p>
+            <p><input type="checkbox">1500~1999元</p>
         </div>
          <div class="keyword">
             <p>關鍵字搜尋</p>
@@ -50,10 +50,10 @@
         </div>
         <div class="price-checkbox">
             <p>價格區間</p>
-            <p><input type="checkbox">299~399元</p>
-            <p><input type="checkbox">299~399元</p>
-            <p><input type="checkbox">299~399元</p>
-            <p><input type="checkbox">299~399元</p>
+            <p><input type="radio" name="price" v-model="checkTarget_1" value="true"  @click="checked(1)">100~499元</p>
+            <p><input type="radio" name="price" v-model="checkTarget_2" value="true" @click="checked(2)">500~999元</p>
+            <p><input type="radio" name="price" v-model="checkTarget_3" value="true" @click="checked(3)">1000~1499元</p>
+            <p><input type="radio" name="price" v-model="checkTarget_4" value="true" @click="checked(4)">1500~1999元</p>
         </div>
         <div class="keyword">
             <p>關鍵字搜尋</p>
@@ -70,9 +70,6 @@
 <script>
 
 export default {
-    components:{
-       
-    },
     
     data(){
         return{
@@ -80,6 +77,13 @@ export default {
             priceRange_1:0,
             priceRange_2:0,
             range:[],
+            checkPrice:[],
+            checkTarget_1:false,
+            checkTarget_2:false,
+            checkTarget_3:false,
+            checkTarget_4:false,
+            filterPrice:[],
+           
         }
     },
     methods:{
@@ -105,18 +109,94 @@ export default {
         filterChose(){
             this.filter=true
         },
+        checked(num){
+            switch(num){
+                case 1:
+                    if(this.checkTarget_1){
+                        this.checkTarget_1=false
+                        this.checkPrice=[]
+                    }else{
+                        this.checkPrice=[
+                        {
+                        price_1:100,
+                        price_2:499,
+                        
+                        }]
+                    
+                    }
+                  
+                    break;
+                case 2:
+                     if(this.checkTarget_2){
+                        this.checkTarget_2=false
+                        this.checkPrice=[]
+                    }else{
+                        this.checkPrice=[
+                        {
+                        price_1:500,
+                        price_2:999,
+                        
+                        }]
+                    }
+                    
+                break;
+                    case 3:
+                     if(this.checkTarget_3){
+                        this.checkTarget_3=false
+                        this.checkPrice=[]
+                    }else{
+                        this.checkPrice=[
+                        {
+                        price_1:1000,
+                        price_2:1499,
+                        
+                        }]
+                    }
+                break;
+                    case 4:
+                     if(this.checkTarget_4){
+                        this.checkTarget_4=false
+                        this.checkPrice=[]
+                    }else{
+                        this.checkPrice=[
+                        {
+                        price_1:1500,
+                        price_2:1999,
+                        
+                        }]
+                        
+                    }
+                break;
+
+            }
+            this.axios.get("http://localhost/cli/team/src/assets/php/filterPrice.php",{
+
+                params:{
+                    filterPrice_1:this.checkPrice[0].price_1,
+                    filterPrice_2:this.checkPrice[0].price_2
+                }
+                
+            })
+            .then((res)=>{
+                // console.log(res)
+                this.filterPrice = res.data
+                 this.$emit("checkMoney",this.filterPrice)
+            })
+           
+            // console.log("check-->",this.checkPrice)
+        }
       
     },
     watch:{
         priceRange_1:{
             handler(newVal){
-                console.log("子層-->",newVal)
+                // console.log("子層-->",newVal)
                 this.$emit("int_1",this.priceRange_1)
             }
         },
           priceRange_2:{
             handler(newVal){
-                console.log("2層-->",newVal)
+                // console.log("2層-->",newVal)
                 this.$emit("int_1",this.priceRange_2)
             }
         },

@@ -1,7 +1,7 @@
 <template>
   <Header />
    <div class="product-search">
-      <input type="text" name=""  v-model="search_obj">
+      <input type="text" name=""  v-model="search_obj" placeholder="請輸入商品名稱">
       <button @click="searchStar">搜尋</button>
     </div>
   <div class="Product-container">
@@ -11,11 +11,13 @@
                   :enter2 =  int_Num2
                   :search =  project_target
                   :search_empty ="search_obj"
+                  :checkPrice ="product_price"
      
      />
       <Filter  @filter="filterRange"
               @int_1 ="intValue1"
               @int_2 ="intValue2"
+              @checkMoney ="productMoney"
       />
   </div>
   
@@ -45,6 +47,7 @@ export default {
           int_Num2:0,
           search_obj:'',
           project_target:[],
+          product_price:[],
         }
     },
     methods:{
@@ -70,10 +73,19 @@ export default {
                this.project_target = res.data
           })
         },
+        productMoney(val){
+          // console.log("val-->",val)
+          this.product_price = val
+        }
     },
     watch:{
         search_obj:{
             handler(newVal){   
+          }
+        },
+        product_price:{
+          handler(newVal){
+            console.log("watch-->",newVal)
           }
         }
     }

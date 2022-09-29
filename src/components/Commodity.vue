@@ -1,5 +1,4 @@
 <template>
-
 <div class="commodity-total col-7">
     <div class="commodity-container col-12">
         <div class="commodity-order col-12">
@@ -85,21 +84,17 @@
         <h1>目前無特價商品</h1>
     </div>
 </div>
-
 </template>
-
 <script >
 
 export default {
-    components:{
-        
-    },
     props:{
         price:Array,
         enter1:Number,
         enter2:Number,
         search:Array,
         search_empty:String,
+        checkPrice:Array,
         
     },
         data(){
@@ -123,8 +118,7 @@ export default {
         prev(item){
             if(item.slide>-2){
                 item.slide-=1
-            }
-                
+            }   
         },
         addOrder(id){
             let index = this.data.findIndex(item=> item.PROD_ID===id)
@@ -156,14 +150,6 @@ export default {
         clear(){
             this.order=[]
         },
-        check(){
-            // if(this.search_empty==""){
-            //     this.data = this.info
-            // }
-            
-          
-        }
-
     },
     created(){
         this.axios.get("http://localhost/cli/team/src/assets/php/commoditylist.php")
@@ -210,7 +196,6 @@ export default {
                 if(newVal!=""){
                     this.data = newVal
                 }
-               
             }
         }, 
         data:{
@@ -229,14 +214,19 @@ export default {
                     this.data=this.info
                 }
             }
+        },
+        checkPrice:{
+            handler(newVal){
+                console.log("check-->",newVal)
+                this.data = newVal
+            }
         }
+       
        
     },
     updated(){
-        this.check()
-    }
-    
-    
+
+    }  
 }
 
 </script>

@@ -37,43 +37,47 @@
                                 <table id="person_info">
                                     <tr class="person_info_item">
                                         <th>帳號:</th>
-                                        <td>abc123</td>
+                                        <td :style="pdata_display_none">{{account}}</td>
+                                        <td><input type="text" v-model="account" :style="pdata_display_show" maxlength="10"></td>
                                     </tr>
                                     <tr class="person_info_item">
                                         <th>密碼:</th>
-                                        <td>******</td>
+                                        <td :style="pdata_display_none">{{password}}</td>
+                                        <td><input type="password" v-model="password" :style="pdata_display_show" maxlength="10"></td>
                                     </tr>
                                     <tr class="person_info_item">
                                         <th>信箱:</th>
-                                        <td>abc123@gmail.com</td>
+                                        <td :style="pdata_display_none">{{email}}</td>
+                                        <td><input type="text" v-model="email" :style="pdata_display_show" maxlength="30"></td>
                                     </tr>
                                     <tr class="person_info_item">
                                         <th>生日:</th>
-                                        <td>1998年10月27日</td>
+                                        <td :style="pdata_display_none">{{birthday}}</td>
+                                        <td><input type="date" v-model="birthday" :style="pdata_display_show"></td>
                                     </tr>
                                     <tr class="person_info_item">
                                         <th>手機:</th>
-                                        <td>0912345678</td>
+                                        <td :style="pdata_display_none">{{phone}}</td>
+                                        <td><input type="text" v-model="phone" :style="pdata_display_show" maxlength="10"></td>
                                     </tr>
                                     <tr class="person_info_item">
                                         <th>市話:</th>
-                                        <td>03-12345678</td>
+                                        <td :style="pdata_display_none">{{lphonef}}{{lphones}}</td>
+                                        <td><input type="text" v-model="lphonef" :style="pdata_display_show" maxlength="3" style="width:20px;">-<input type="text" v-model="lphones" :style="pdata_display_show" maxlength="10"></td>
+                                        
                                     </tr>
                                     <tr class="person_info_item">
                                         <th>地址:</th>
-                                        <td>桃園市中壢區復興路46號9樓</td>
+                                        <td :style="pdata_display_none">{{address}}</td>
+                                        <td><input type="text" v-model="address" :style="pdata_display_show" maxlength="40"></td>
                                     </tr>
                                 </table>
                                 <div class="confirm_button">
-                                    <button class="btnMinimum" id="mem_confirm" style="display: none;"
-                                        onclick="get_new()">確定</button>
+                                    <button class="btnMinimum" id="mem_confirm" :style="pdata_display_show" @click="editdata = false,displayshow = true">確定</button>
                                 </div>
-
                             </div>
-
                             <div class="edit">
-                                <button class="btnMinimum" id="mem_edit" style="display: block;"
-                                    onclick="edit()">編輯</button>
+                                <button class="btnMinimum" id="mem_edit" :style="pdata_display_none" @click="editdata = true,displayshow = false">編輯</button>
                             </div>
                         </div>
                     </div>
@@ -183,17 +187,36 @@ export default {
     },
     data: () => ({
         isShow: false,
+        editdata:false,
+        displayshow:true,
+        account:"abc123",
+        password:"123abc",
+        email:"abc123@gmail.com",
+        birthday:"1998年10月27日",
+        phone:"0912345678",
+        lphonef:"03",
+        lphones:"12345678",
+        address:"桃園市中壢區復興路46號9樓"
     }),
     computed: {
         modalStyle() {
             return {
                 'display': this.isShow ? '' : 'none',
             };
-        }
+        },
+        pdata_display_show(){
+            return{
+                'display': this.editdata ? '' : 'none',
+            }
+        },
+        pdata_display_none(){
+            return{
+                'display': this.displayshow ? '' : 'none',
+            }
+        },
     },
     methods: {
         toggleModal() {
-            console.log('123')
             this.isShow = !this.isShow;
         },
     }

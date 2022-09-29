@@ -108,7 +108,7 @@
                             </div>
                             <small>• RESERVATION •</small>
                             <p>按指穴提供四種按摩服務項目，不管是久坐上班族，或是帶個兩小孩的全職媽媽，我們都有適合的按摩項目為您解決各種酸痛!</p>
-                            <a href="/reserve"><div class="btnLittle">查看更多</div></a>
+                            <a href="/Reservation"><div class="btnLittle">查看更多</div></a>
                         </div>
                     </div>
                     <div class="reservation_content">
@@ -125,7 +125,7 @@
                                     <p>適合平常有按摩習慣者</p>
                                 </div>
                                 <div class="intro_btn">
-                                    <a href="./resvPage.html"><div class="btnLittle">立即預約</div></a>
+                                    <a href="/ResvPage"><div class="btnLittle">立即預約</div></a>
                                 </div>
                             </div>
                         </div>
@@ -142,7 +142,7 @@
                                     <p>適合平常有按摩習慣者</p>
                                 </div>
                                 <div class="intro_btn">
-                                    <a href="./resvPage.html"><div class="btnLittle">立即預約</div></a>
+                                    <a href="/ResvPage"><div class="btnLittle">立即預約</div></a>
                                 </div>
                             </div>
                         </div>
@@ -159,7 +159,7 @@
                                     <p>適合平常有按摩習慣者</p>
                                 </div>
                                 <div class="intro_btn">
-                                    <a href="./resvPage.html"><div class="btnLittle">立即預約</div></a>
+                                    <a href="/ResvPage"><div class="btnLittle">立即預約</div></a>
                                 </div>
                             </div>
                         </div>
@@ -176,7 +176,7 @@
                                     <p>適合平常有按摩習慣者</p>
                                 </div>
                                 <div class="intro_btn">
-                                    <a href="./Reserve.vue"><div class="btnLittle">立即預約</div></a>
+                                    <a href="/ResvPage"><div class="btnLittle">立即預約</div></a>
                                 </div>
                             </div>
                         </div>

@@ -25,10 +25,10 @@
                  <button @click="next(item)"> ＜ </button>
                 <div class="commodity-pic" >
                    <router-link to="/Detail">
-                    <div class="slide-pic" :style="{left:126.93*item.slide+'px',transition:.4+'s'}" @click="addOrder(item.PROD_ID)">    
-                        <img :src="require(`../assets/php/pic/${item.PROD_PIC1}`)">
-                        <img :src="require(`../assets/php/pic/${item.PROD_PIC2}`)" >
-                        <img :src="require(`../assets/php/pic/${item.PROD_PIC3}`)" >
+                    <div class="slide-pic" :style="{left:picWidth*item.slide+'px',transition:.4+'s'}" @click="addOrder(item.PROD_ID)">    
+                        <img :src="require(`../assets/php/pic/${item.PROD_PIC1}`)" id="pic">
+                        <img :src="require(`../assets/php/pic/${item.PROD_PIC2}`)"  >
+                        <img :src="require(`../assets/php/pic/${item.PROD_PIC3}`)"  >
                    </div>
                     </router-link>
                 </div>
@@ -55,7 +55,7 @@
                 <div class="commodity-pic" >
                  <button @click="next(item)"> ＜ </button>
                     <router-link to="/Detail">
-                        <div class="slide-pic" @click="addOrder(item.PROD_ID)" :style="{left:210*item.slide+'px',transition:.4+'s'}" >
+                        <div class="slide-pic" @click="addOrder(item.PROD_ID)" :style="{left:picWidth*item.slide+'px',transition:.4+'s'}" >
                         <img :src="require(`../assets/php/pic/${item.PROD_PIC1}`)">
                         <img :src="require(`../assets/php/pic/${item.PROD_PIC2}`)" >
                         <img :src="require(`../assets/php/pic/${item.PROD_PIC3}`)" >
@@ -95,7 +95,7 @@ export default {
         search:Array,
         search_empty:String,
         checkPrice:Array,
-        
+        checkTool:Array,
     },
         data(){
         return{
@@ -106,7 +106,8 @@ export default {
             toggle:false,
             commoditySale:1,
             areaShow:"卡片",
-            empty:false
+            empty:false,
+            picWidth:150,
         }
     },
     methods:{
@@ -145,7 +146,6 @@ export default {
             let orders = localStorage.getItem("order");
             if(!orders) return;
             this.order = JSON.parse(orders)
-
         },
         clear(){
             this.order=[]
@@ -157,8 +157,13 @@ export default {
             // console.log(this.price)
             this.data = res.data
             this.info = res.data
+
+            
         })
         this.clear();
+        // let pic = document.querySelector("#pic")
+        // console.log("--->",pic)
+//    .clientWidth
     },
    
     watch:{
@@ -220,12 +225,17 @@ export default {
                 console.log("check-->",newVal)
                 this.data = newVal
             }
-        }
-       
+        },
+         checkTool:{
+            handler(newVal){
+                console.log("new-->",newVal)
+                this.data = newVal
+            }
+         }
        
     },
     updated(){
-
+   
     }  
 }
 

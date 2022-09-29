@@ -2724,6 +2724,328 @@ main {
     height: 100vh;
   }
 }
+.lightbox {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+.lightbox .modal-body {
+  width: 75%;
+  cursor: auto;
+  display: block;
+  margin: 0 auto;
+  padding: 0 0 2rem;
+  background-color: #fff;
+}
+.lightbox .modal-body header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  padding: 5px;
+  background-color: #163D82;
+  color: #FFFFFF;
+}
+.lightbox .modal-body body {
+  padding-top: 5px;
+  font-size: 16px;
+}
+.lightbox .modal-body body .order-list table {
+  border: 1px solid #000000;
+}
+.lightbox .modal-body body .order-list table td {
+  padding: 3px;
+}
+.lightbox .modal-body body .order-list .order-detail {
+  text-align: center;
+  margin: 5px auto;
+}
+
+.modal-mask {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: table;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease;
+}
+
+.modal-container {
+  cursor: pointer;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.memCenter {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  position: relative;
+  padding-bottom: 100px;
+}
+.memCenter input {
+  font-size: 16px;
+}
+.memCenter .member {
+  display: flex;
+  position: absolute;
+  top: 80px;
+  left: 20px;
+}
+.memCenter .member .mem_mug_shot {
+  width: 100px;
+  height: 100px;
+}
+.memCenter .member .mem_mug_shot img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.memCenter .member .mem_name {
+  height: 100%;
+  position: relative;
+  top: 70px;
+  color: #FFFFFF;
+  padding: 5px 10px;
+  background-color: rgba(204, 204, 204, 0.192);
+}
+.memCenter .mem_banner {
+  width: 100%;
+  height: 200px;
+}
+.memCenter .mem_banner img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+.memCenter .content1 h2 {
+  text-align: center;
+  padding-top: 10px;
+  margin-bottom: 0;
+}
+.memCenter .mem_data {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+}
+.memCenter .mem_data_table {
+  margin-left: 380px;
+}
+.memCenter #person_info th,
+.memCenter #person_info th {
+  font-size: 20px;
+  padding: 20px;
+}
+.memCenter #mem_confirm {
+  margin: 0 auto;
+}
+.memCenter .edit {
+  text-align: center;
+  padding-right: 20px;
+}
+.memCenter .content2 {
+  padding: 10px;
+  font-size: 0.5rem;
+}
+.memCenter .content2 h2 {
+  text-align: center;
+  padding-top: 10px;
+  margin-bottom: 0;
+}
+.memCenter .order_search_row {
+  display: flex;
+  flex-direction: column;
+}
+.memCenter .order_search_bar {
+  display: flex;
+  padding-bottom: 0.5rem;
+  align-items: center;
+}
+.memCenter .state_search {
+  margin: 0 10px;
+}
+.memCenter .content2 table {
+  width: 100%;
+  border: 1px solid #000000;
+  border-collapse: collapse;
+  text-align: center;
+}
+.memCenter .content2 table th {
+  border: 1px solid #000000;
+  background-color: #163D82;
+  color: #FFFFFF;
+  padding: 3px;
+}
+.memCenter .content2 table tr {
+  border: 1px solid #000000;
+}
+.memCenter .content2 table tr .order_detail {
+  display: block;
+  margin: 0 auto;
+}
+.memCenter .content2 table td {
+  border: 1px solid #000000;
+  padding: 3px;
+  vertical-align: middle;
+}
+.memCenter .content3 {
+  padding: 10px;
+  font-size: 0.5rem;
+}
+.memCenter .content3 h2 {
+  text-align: center;
+  padding-top: 10px;
+  margin-bottom: 0;
+}
+.memCenter .reserve_search_bar {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 0.5rem;
+  align-items: center;
+}
+.memCenter .reserve_search_row {
+  display: flex;
+  flex-direction: column;
+}
+.memCenter .category_row {
+  display: flex;
+  margin-bottom: 5px;
+}
+.memCenter .category_row select {
+  font-size: 16px;
+}
+.memCenter .reserve_time {
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+}
+.memCenter .reserve_time input {
+  width: 60px;
+}
+.memCenter .content3 table {
+  width: 100%;
+  border: 1px solid #000000;
+  border-collapse: collapse;
+  text-align: center;
+}
+.memCenter .content3 table th {
+  border: 1px solid #FFFFFF;
+  background-color: #163D82;
+  color: #FFFFFF;
+  padding: 3px;
+}
+.memCenter .content3 table tr {
+  border: 1px solid #000000;
+}
+.memCenter .content3 table td {
+  border: 1px solid #000000;
+  padding: 3px;
+}
+.memCenter .panel_control {
+  position: absolute;
+  opacity: 0;
+}
+.memCenter .tab_group {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  background-color: #163D82;
+}
+.memCenter .tab_group label {
+  display: inline-block;
+  padding: 10px 30px;
+  border-bottom: none;
+  background-color: #163D82;
+  position: relative;
+  color: #FFFFFF;
+}
+.memCenter .content {
+  display: none;
+}
+.memCenter #radio1:checked ~ .tab_group [for=radio1],
+.memCenter #radio2:checked ~ .tab_group [for=radio2],
+.memCenter #radio3:checked ~ .tab_group [for=radio3] {
+  background-color: #B52011;
+}
+.memCenter #radio1:checked ~ .content_group .content1,
+.memCenter #radio2:checked ~ .content_group .content2,
+.memCenter #radio3:checked ~ .content_group .content3 {
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .modal-body {
+    width: 50%;
+  }
+  .modal-body body {
+    font-size: 22px;
+    padding: 5px;
+  }
+  .modal-body body .order-list table {
+    border: 1px solid #000000;
+  }
+  .modal-body body .order-list table th {
+    padding: 5px;
+  }
+  .modal-body body .order-list table td {
+    padding: 5px;
+  }
+  .modal-body body .order-list .order-detail {
+    text-align: center;
+    margin: 5px auto;
+  }
+  .modal-container {
+    vertical-align: middle;
+  }
+}
+.memCenter .panel_group {
+  display: flex;
+  justify-content: space-between;
+}
+.memCenter .tab_group {
+  width: 200px;
+  display: block;
+  font-size: 20px;
+}
+.memCenter .tab_group label {
+  display: block;
+}
+.memCenter .content_group {
+  flex-grow: 1;
+}
+.memCenter .content2 {
+  font-size: 1rem;
+}
+.memCenter .order_search_row {
+  flex-direction: row;
+  align-items: center;
+}
+.memCenter .category_row {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+.memCenter .content3 {
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 1200px) {
+  .memCenter .reserve_search_row {
+    display: flex;
+    flex-direction: row;
+  }
+}
 .switch {
   /*======    桌機版 | 768px ~ ???px ======*/
 }
@@ -5297,6 +5619,167 @@ a {
     display: none;
   }
 }
+.review-title {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 0;
+}
+.review-title h2 {
+  font-weight: 800;
+}
+
+.review-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  line-height: 2;
+}
+.review-container .review-score {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.review-container .review-score .review-fraction {
+  text-align: center;
+  height: 50px;
+}
+.review-container .review-score .review-fraction h3 {
+  font-size: 30px;
+  font-weight: 600;
+  color: #B52011;
+}
+.review-container .review-score .review-fraction h3 strong {
+  font-size: 40px;
+}
+.review-container .review-score .review-star {
+  display: flex;
+}
+.review-container .review-score .review-star p {
+  font-size: 35px;
+  margin: 0 5px;
+  font-weight: 800;
+  color: #B52011;
+}
+.review-container .review-evaluation {
+  display: flex;
+  justify-content: flex-start;
+}
+.review-container .review-evaluation .evaluation-star {
+  border: 1px solid gray;
+  margin: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  cursor: pointer;
+}
+.review-container .review-evaluation .evaluation-star p {
+  font-size: 18px;
+  padding: 5px 30px;
+  font-weight: 900;
+}
+
+.message-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 50px 0;
+}
+.message-container .message-user {
+  display: flex;
+  align-items: center;
+}
+.message-container .message-user .user-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+.message-container .message-user .user-pic img {
+  width: 100%;
+}
+.message-container .message-area {
+  padding: 20px 70px;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid gray;
+}
+.message-container .message-area p {
+  line-height: 1.5;
+}
+.message-container .message-write {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 0;
+  text-align: center;
+}
+.message-container .message-write .write-tex {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 1000px;
+}
+@media screen and (max-width: 768px) {
+  .review-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    line-height: 2;
+  }
+  .review-container .review-score {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .review-container .review-score .review-fraction {
+    text-align: center;
+    height: 50px;
+  }
+  .review-container .review-score .review-fraction h3 {
+    font-size: 30px;
+    font-weight: 600;
+    color: #B52011;
+  }
+  .review-container .review-score .review-fraction h3 strong {
+    font-size: 40px;
+  }
+  .review-container .review-score .review-star {
+    display: flex;
+  }
+  .review-container .review-score .review-star p {
+    font-size: 35px;
+    margin: 0 5px;
+    font-weight: 800;
+    color: #B52011;
+  }
+  .review-container .review-evaluation {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .review-container .review-evaluation .evaluation-star {
+    border: 1px solid gray;
+    margin: 15px;
+    display: flex;
+    justify-content: flex-start !important;
+    align-items: center;
+    background-color: #FFFFFF;
+    cursor: pointer;
+  }
+  .review-container .review-evaluation .evaluation-star p {
+    font-size: 18px;
+    padding: 5px 30px;
+    font-weight: 900;
+  }
+}
 @media screen and (min-width: 1200px) {
   .bread {
     padding: 10px;
@@ -5313,6 +5796,7 @@ a {
   }
   .product-title .product-body {
     width: 45%;
+    margin: auto 0;
   }
   .product-title .product-introduce {
     width: 100%;
@@ -5374,7 +5858,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin: 10px 0;
+    margin: 10px 20px;
   }
   .product-title .product-number button {
     width: 30px;
@@ -5460,12 +5944,13 @@ a {
   .product-title .pic-slide button {
     width: 30px;
     height: 30px;
+    z-index: 3;
   }
   .product-title .product-number {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin: 10px 0;
+    margin: 10px 20px;
   }
   .product-title .product-number button {
     width: 30px;

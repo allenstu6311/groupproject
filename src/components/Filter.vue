@@ -19,10 +19,10 @@
         </div>
         <div class="price-checkbox">
             <p>價格區間</p>
-            <p><input type="checkbox"  @click="checked">100~499元</p>
-            <p><input type="checkbox">500~999元</p>
-            <p><input type="checkbox">1000~1499元</p>
-            <p><input type="checkbox">1500~1999元</p>
+             <p><input type="radio" name="price" v-model="checkTarget_1" value="true"  @click="checked(1)">100~499元</p>
+            <p><input type="radio" name="price" v-model="checkTarget_2" value="true" @click="checked(2)">500~999元</p>
+            <p><input type="radio" name="price" v-model="checkTarget_3" value="true" @click="checked(3)">1000~1499元</p>
+            <p><input type="radio" name="price" v-model="checkTarget_4" value="true" @click="checked(4)">1500~1999元</p>
         </div>
          <div class="keyword">
             <p>關鍵字搜尋</p>
@@ -57,20 +57,15 @@
         </div>
         <div class="keyword">
             <p>關鍵字搜尋</p>
-             <p><input type="checkbox">按摩槍</p>
-            <p><input type="checkbox">按摩槍</p>
-            <p><input type="checkbox">按摩槍</p>
-            <p><input type="checkbox">按摩槍</p>
+            <p><input type="radio" name="product" v-model="tool_1" value="true" @click="tool(1)">按摩槍</p>
+            <p><input type="radio" name="product" v-model="tool_2" value="true" @click="tool(2)">按摩球</p>
+            <p><input type="radio" name="product" v-model="tool_3" value="true" @click="tool(3)">按摩滾筒</p>
         </div>
         </div>
-    </div>
- 
+    </div> 
 </template>
-
 <script>
-
 export default {
-    
     data(){
         return{
             filter:false,
@@ -78,11 +73,17 @@ export default {
             priceRange_2:0,
             range:[],
             checkPrice:[],
+            checkTool:[],
             checkTarget_1:false,
             checkTarget_2:false,
             checkTarget_3:false,
             checkTarget_4:false,
+            tool_1:false,
+            tool_2:false,
+            tool_3:false,
+            tool_4:false,
             filterPrice:[],
+            filterTool:[]
            
         }
     },
@@ -115,6 +116,7 @@ export default {
                     if(this.checkTarget_1){
                         this.checkTarget_1=false
                         this.checkPrice=[]
+                        location.reload()
                     }else{
                         this.checkPrice=[
                         {
@@ -122,14 +124,13 @@ export default {
                         price_2:499,
                         
                         }]
-                    
                     }
-                  
                     break;
                 case 2:
                      if(this.checkTarget_2){
                         this.checkTarget_2=false
                         this.checkPrice=[]
+                        location.reload()
                     }else{
                         this.checkPrice=[
                         {
@@ -144,6 +145,7 @@ export default {
                      if(this.checkTarget_3){
                         this.checkTarget_3=false
                         this.checkPrice=[]
+                        location.reload()
                     }else{
                         this.checkPrice=[
                         {
@@ -157,6 +159,7 @@ export default {
                      if(this.checkTarget_4){
                         this.checkTarget_4=false
                         this.checkPrice=[]
+                        location.reload()
                     }else{
                         this.checkPrice=[
                         {
@@ -167,7 +170,6 @@ export default {
                         
                     }
                 break;
-
             }
             this.axios.get("http://localhost/cli/team/src/assets/php/filterPrice.php",{
 
@@ -178,13 +180,57 @@ export default {
                 
             })
             .then((res)=>{
-                // console.log(res)
                 this.filterPrice = res.data
                  this.$emit("checkMoney",this.filterPrice)
             })
-           
-            // console.log("check-->",this.checkPrice)
-        }
+        },
+        tool(num){
+            switch(num){
+                case 1:
+                    if(this.tool_1){
+                        this.tool_1 = false;
+                        this.checkTool=[]
+                        location.reload()
+                    }else{
+                        this.checkTool=[{
+                            type:"槍"
+                        }]
+                    }
+                    break;
+                      case 2:
+                    if(this.tool_2){
+                        this.tool_2 = false;
+                        this.checkTool=[]
+                        location.reload()
+                    }else{
+                        this.checkTool=[{
+                            type:"球"
+                        }]
+                    }
+                    break;
+                      case 3:
+                    if(this.tool_3){
+                        this.tool_3 = false;
+                        this.checkTool=[]
+                        location.reload()
+                    }else{
+                        this.checkTool=[{
+                            type:"滾筒"
+                        }]
+                    }
+                    break;
+            }
+            this.axios.get("http://localhost/cli/team/src/assets/php/fiterTool.php",
+            {
+                params:{
+                    type:this.checkTool[0].type
+                }
+            })
+            .then((res)=>{
+                this.filterTool = res.data
+                this.$emit("tool",this.filterTool)
+            })
+        },
       
     },
     watch:{

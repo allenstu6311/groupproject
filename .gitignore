@@ -2,7 +2,7 @@
 node_modules
 package-lock.json
 /dist
-
+connect_cgd102g2.php
 
 # local env files
 .env.local

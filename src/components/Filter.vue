@@ -83,6 +83,7 @@ export default {
         }
     },
     methods:{
+    
         choseRange(){
             this.axios.get("http://localhost/cli/team/src/assets/php/priceRange.php",
             {
@@ -95,7 +96,7 @@ export default {
             .then((res)=>{
                
                 this.range = res.data
-                // console.log("range--->",this.range)
+                console.log("range--->",this.range)
                 this.data=this.range
                 this.$emit("filter",this.range)
              

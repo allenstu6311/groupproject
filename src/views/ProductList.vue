@@ -1,14 +1,16 @@
 <template>
   <Header />
    <div class="product-search">
-      <input type="text" name="" value="">
-      <button>搜尋</button>
+      <input type="text" name=""  v-model="search_obj">
+      <button @click="searchStar">搜尋</button>
     </div>
   <div class="Product-container">
    
      <Commodity  :price ="priceInfo" 
                   :enter1 =  int_Num1
                   :enter2 =  int_Num2
+                  :search =  project_target
+                  :search_empty ="search_obj"
      
      />
       <Filter  @filter="filterRange"
@@ -28,9 +30,7 @@ import Footer from "@/components/Footer.vue"
 import Commodity from "@/components/Commodity.vue"
 import Filter from "@/components/Filter.vue"
 export default {
-  props:{
-
-  },
+  
     components:{
         Header,
         Footer,
@@ -43,6 +43,8 @@ export default {
           priceInfo:[],
           int_Num1:0,
           int_Num2:0,
+          search_obj:'',
+          project_target:[],
         }
     },
     methods:{
@@ -56,10 +58,24 @@ export default {
         intValue2(val){
           this.int_Num2=val
      
-        } 
+        },
+        searchStar(){
+          this.axios.get("http://localhost/cli/team/src/assets/php/search.php",{
+
+            params:{
+              target:this.search_obj
+            }
+          })
+          .then((res)=>{
+               this.project_target = res.data
+          })
+        },
     },
     watch:{
-   
+        search_obj:{
+            handler(newVal){   
+          }
+        }
     }
 
 }

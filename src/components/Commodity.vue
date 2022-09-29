@@ -8,14 +8,18 @@
                 <span class="bold" @click="commoditySale=2" :class="{saleColor:commoditySale==2}">特價商品</span>
             </div>
             <div class="commodity-filter">
-                <button @click="order=1" :class="{orderColor:order==1}">價格排序</button>
-                <button @click="order=2" :class="{orderColor:order==2}">評價排序</button>
+                <button @click="orderby=1" :class="{orderColor:orderby==1}">價格排序</button>
+                <button @click="orderby=2" :class="{orderColor:orderby==2}">評價排序</button>
                 <button @click="toggle=!toggle">{{areaShow}}</button>
             </div>
         </div>
     </div>
 
     <div class="commodity-total" v-if="commoditySale==1">
+        <div class="ifEmpty" v-if="empty==true">
+             <h1>查無商品</h1>
+        </div>
+       
         <!-- =============================================橫排顯示 -->
      <div class="commodity-area col-12" v-if="toggle==true">
          <div class="commodity-obj" v-for="item in data" :key="item.PROD_ID">            
@@ -93,17 +97,21 @@ export default {
     props:{
         price:Array,
         enter1:Number,
-        enter2:Number
+        enter2:Number,
+        search:Array,
+        search_empty:String,
+        
     },
         data(){
         return{
             data:[],
             order:[],
             info:[],
-            order:1,
+            orderby:1,
             toggle:false,
             commoditySale:1,
             areaShow:"卡片",
+            empty:false
         }
     },
     methods:{
@@ -147,21 +155,26 @@ export default {
         },
         clear(){
             this.order=[]
+        },
+        check(){
+            // if(this.search_empty==""){
+            //     this.data = this.info
+            // }
+            
+          
         }
 
     },
     created(){
         this.axios.get("http://localhost/cli/team/src/assets/php/commoditylist.php")
         .then((res)=>{
-            console.log(this.price)
+            // console.log(this.price)
             this.data = res.data
             this.info = res.data
         })
         this.clear();
     },
-    computed:{
-     
-    },
+   
     watch:{
         toggle:{
             handler(newVal){
@@ -174,6 +187,7 @@ export default {
         },
         price:{
             handler(newVal){
+                console.log("price--?",newVal)
                 this.data = newVal 
             }
         },
@@ -190,8 +204,37 @@ export default {
                     this.data=this.info
                 }
             }
+        },
+        search:{
+            handler(newVal){
+                if(newVal!=""){
+                    this.data = newVal
+                }
+               
+            }
+        }, 
+        data:{
+            handler(newVal){
+                if(newVal.length==null){
+                this.empty=true
+                }else{
+                this.empty=false
+                }
+                console.log("data-->",newVal)
+            }
+        },
+        search_empty:{
+            handler(newVal){
+                if(newVal==""){
+                    this.data=this.info
+                }
+            }
         }
+       
     },
+    updated(){
+        this.check()
+    }
     
     
 }

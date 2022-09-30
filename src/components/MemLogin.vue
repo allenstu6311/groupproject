@@ -11,7 +11,7 @@
             </div>
             <br>
             <div class="sign">
-                <a href="./register.html">註冊</a>
+                <a href="/MemRegister">註冊</a>
                 <a href="./backstage.html">忘記密碼</a>
             </div>
         </div>

@@ -12,6 +12,7 @@ import MemLogin from "../views/MemLogin.vue"
 import ProductList from "../views/ProductList.vue"
 import Detail from "../views/Detail.vue"
 import MemCenter from "../views/MemCenterView.vue"
+import MemRegister from "../views/MemRegisterView.vue"
 
 
 const routes = [
@@ -100,6 +101,11 @@ const routes = [
     path: '/MemCenter',
     name: 'MemCenter',
     component: () => import('../views/MemCenterView.vue')
+  },
+  {
+    path: '/MemRegister',
+    name: 'MemRegister',
+    component: () => import('../views/MemRegisterView.vue')
   },
   {
     path: '/MassageSchool',

@@ -19,15 +19,15 @@
             </div>
             <div 
                 class="container container_one"
-                v-for="(therapist, index) in therapistCardList"
-                :key="index"
+                v-for="($therapists , $page) in therapistCardList"
+                :key="$page"
             >
                 <div class="row ">
                     <div class="col-xl-6 col-12">
                         <div class="frame frame_one">
                             <div class="masseusePic">
                                 <img
-                                :src="require(`@/assets/images/${therapist.pic}`)"
+                                :src="require(`@/assets/images/${$data.pic}`)"
                                 :alt="therapist.pic_alt"
                                 />
                             </div>
@@ -68,47 +68,51 @@ export default {
             
             therapistCardList: [
                 {
-                    pic: "masseusePic1.jpg",
-                    pic_alt: "李駿燕師傅",
-                    name: "李駿燕",
-                    intro:[
-                        '英國 IPHM 國際經絡芳療師證照',
-                        '英國 ITEC 國際高階芳療師證照',
-                        '美國 NAHA 國際芳療保健師證照',
-                        '印度 Himalaya Yoga 喜瑪拉雅瑜伽學院證照'
-                    ],
+                    pic: "",
+                    pic_alt: "",
+                    name: "",
+                    intro:[],
+                    // pic: "masseusePic1.jpg",
+                    // pic_alt: "李駿燕師傅",
+                    // name: "李駿燕",
+                    // intro:[
+                    //     '英國 IPHM 國際經絡芳療師證照',
+                    //     '英國 ITEC 國際高階芳療師證照',
+                    //     '美國 NAHA 國際芳療保健師證照',
+                    //     '印度 Himalaya Yoga 喜瑪拉雅瑜伽學院證照'
+                    // ],
                 },
                 {
-                    pic: "masseusePic2.jpg",
-                    pic_alt: "言子倩師傅",
-                    name: "言子倩",
-                    intro:[
-                        '英國 IPHM 國際經絡芳療師證照',
-                        '英國 ITEC 國際高階芳療師證照',
-                        '美國 NAHA 國際芳療保健師證照',
-                        '印度 Himalaya Yoga 喜瑪拉雅瑜伽學院證照'
-                    ]
+                    // pic: "masseusePic2.jpg",
+                    // pic_alt: "言子倩師傅",
+                    // name: "言子倩",
+                    // intro:[
+                    //     '英國 IPHM 國際經絡芳療師證照',
+                    //     '英國 ITEC 國際高階芳療師證照',
+                    //     '美國 NAHA 國際芳療保健師證照',
+                    //     '印度 Himalaya Yoga 喜瑪拉雅瑜伽學院證照'
+                    // ]
                 },
                 {
-                    pic: "masseusePic3.jpg",
-                    pic_alt: "康晉壕師傅",
-                    name: "康晉壕",
-                    intro:[
-                        '英國 IPHM 國際經絡芳療師證照',
-                        '英國 ITEC 國際高階芳療師證照',
-                        '美國 NAHA 國際芳療保健師證照',
-                        '印度 Himalaya Yoga 喜瑪拉雅瑜伽學院證照'
-                    ]
+                    // pic: "masseusePic3.jpg",
+                    // pic_alt: "康晉壕師傅",
+                    // name: "康晉壕",
+                    // intro:[
+                    //     '英國 IPHM 國際經絡芳療師證照',
+                    //     '英國 ITEC 國際高階芳療師證照',
+                    //     '美國 NAHA 國際芳療保健師證照',
+                    //     '印度 Himalaya Yoga 喜瑪拉雅瑜伽學院證照'
+                    // ]
                 },
                 {
-                    pic: "masseusePic4.jpg",
-                    pic_alt: "倪玉涓師傅",
-                    name: "倪玉涓",
-                    intro:[
-                        '英國 IPHM 國際經絡芳療師證照',
-                        '英國 ITEC 國際高階芳療師證照',
-                        '美國 NAHA 國際芳療保健師證照'
-                    ]
+                    // pic: "masseusePic4.jpg",
+                    // pic_alt: "倪玉涓師傅",
+                    // name: "倪玉涓",
+                    // intro:[
+                    //     '英國 IPHM 國際經絡芳療師證照',
+                    //     '英國 ITEC 國際高階芳療師證照',
+                    //     '美國 NAHA 國際芳療保健師證照'
+                    // ]
                 }
             ]
         }

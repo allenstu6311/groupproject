@@ -25,7 +25,10 @@
                     輸入地址:
                 </div>
                 <div class="input_area">
-                    <input type="text" maxlength="30" v-model="account">
+                    <div>
+                        <input type="text" maxlength="30" v-model="account">
+                        <span id="idMsg" @load="checkId"></span>
+                    </div>
                     <input type="password" maxlength="15" v-model="password">
                     <input type="password" maxlength="15" v-model="passwordAgain">
                     <input type="text" maxlength="10" v-model="name">
@@ -36,7 +39,7 @@
                     <input type="text" maxlength="40" v-model="address">
                 </div>
             </div>
-            <div  style="text-align:center"><input type="submit" value="送出" class="btnLittle" @click="submit"></div>
+            <div style="text-align:center"><input type="submit" value="送出" class="btnLittle" @click="submit"></div>
         </form>
     </div>
 </template>
@@ -79,6 +82,19 @@ export default {
                 return
             }
         },
+        //檢查帳號是否重複
+        checkId() {
+            let xhr = new XMLHttpRequest();
+            if (xhr.status == 200) {
+                document.getElementById("idMsg").innerText = xhr.responseText;
+            } else {
+                alert(xhr.status);
+            }
+            xhr.open("post", "checkMemId.php", true)
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+            let check_id = "memId=" + this.account
+            xhr.send(check_id)
+        }
     },
 }
 </script>

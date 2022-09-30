@@ -5,7 +5,7 @@ header("Content-Type:application/json;charset=utf-8");
 
 function price($priceRange_1,$priceRange_2){
 
-require_once("./url.php");
+require_once("../../connect_cgd102g2.php");
 
 
 $sql = "select * from PRODUCT where PROD_STATUS=1 and PROD_PRICE BETWEEN {$priceRange_1} AND {$priceRange_2} ";

@@ -51,9 +51,9 @@
 @import"./page/filter";
 @import"./page/review.scss";
 
-// @import"./page/shoppingCart";
+@import"./page/shoppingCart";
 // @import"./mixin/MediaPayment";
 
 @import "./page/productMedia";
 // @import"./mixin/AreaMedia";
-// @import"./mixin/_shoppingCartMedia";
+@import"./page/_shoppingCartMedia"

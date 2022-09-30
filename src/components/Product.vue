@@ -4,11 +4,8 @@
         <img src="../assets/images/bcgFlower.png " alt="">
         </div>
         <!-- ========================================banner -->
-
-   
             <div class="product-title">
                 <div class="product-pic"> 
-            
                     <img :src="require(`../assets/php/pic/${order[0].PROD_PIC1}`)" v-if="page==1"  :class="{light:page==1}">
                     <img :src="require(`../assets/php/pic/${order[0].PROD_PIC2}`)" v-if="page==2"  :class="{light:page==2}">
                     <img :src="require(`../assets/php/pic/${order[0].PROD_PIC3}`)" v-if="page==3"  :class="{light:page==3}">
@@ -58,7 +55,7 @@
                         </div>
                        <div class="product-number">
                              <button @click="reduceNum(order)">-</button> 
-                             <input type="text" v-model = "order[0].PROD_NUM"> 
+                             <input type="text" v-model = "product_num"> 
                              <button  @click="addNum(order)">+</button> 
                        </div>
                         <div class="product-addcar">
@@ -81,15 +78,16 @@ export default {
             score:[],
             star:[],
             block:"☆",
+            product_num:0,
         }
     },
     methods:{
-        addNum(item){
-             item[0].PROD_NUM+=1
+        addNum(){
+             this.product_num+=1
         },
         reduceNum(item){
-            if(item[0].PROD_NUM>0){
-                item[0].PROD_NUM-=1
+            if(this.product_num>0){
+                this.product_num-=1
             }
         },
         changePic(i){
@@ -106,13 +104,15 @@ export default {
                  this.page+=1
             }
         },
+        addCar(){
+            
+        },
 
         onlineStorage(){
         let orders = localStorage.getItem("order");
         if(!orders) return;
         this.order = JSON.parse(orders)
-        // console.log(this.order)
-
+    
          this.score =(this.order[0].PROD_REVIEW/this.order[0].PROD_TIMES ).toFixed(1)
            
             this.star = parseInt(this.score)

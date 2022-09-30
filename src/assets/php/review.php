@@ -5,7 +5,7 @@ header("Content-Type:application/json;charset=utf-8");
 
 function review($number,$product){
 
-require_once("./url.php");
+require_once("../../connect_cgd102g2.php");
 
 
 $sql = "update PRODUCT set PROD_REVIEW = PROD_REVIEW+{$number} ,PROD_TIMES = PROD_TIMES+1 WHERE PROD_NAME='{$product}'";

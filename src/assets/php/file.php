@@ -1,7 +1,7 @@
 <?php
 $errMsg = "";
 try{
-    require_once("./url.php");
+    require_once("../../connect_cgd102g2.php");
 
     if($_FILES['photo']['error']==UPLOAD_ERR_OK){//確認是否上傳成功
 
@@ -37,7 +37,7 @@ try{
     copy($from,$to);
 
 
-    $sql = "INSERT INTO PRODUCT (PROD_ID,PROD_NAME,PROD_PRICE,PROD_PIC1,PROD_PIC2,PROD_PIC3,PROD_STATUS,PROD_DATE,slide,PROD_DESC1,PROD_DESC2,PROD_DESC3)values(null, :PROD_NAME, :PROD_PRICE,:fileName0, :fileName1, :fileName2,:PROD_STATUS,:PROD_DATE,0,:PROD_DESC1,:PROD_DESC2,:PROD_DESC3)";
+    $sql = "INSERT INTO PRODUCT (PROD_ID,PROD_NAME,PROD_PRICE,PROD_PIC1,PROD_PIC2,PROD_PIC3,PROD_STATUS,PROD_DATE,slide,PROD_DESC1,PROD_DESC2,PROD_DESC3,PROD_REVIEW,PROD_TIMES)values(null, :PROD_NAME, :PROD_PRICE,:fileName0, :fileName1, :fileName2,:PROD_STATUS,:PROD_DATE,0,:PROD_DESC1,:PROD_DESC2,:PROD_DESC3,0,0)";
 
 
 

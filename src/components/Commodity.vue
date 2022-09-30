@@ -36,7 +36,7 @@
                 <div class="commodity-body">
                    
                     <div class="commodity-name">
-                        <h4 class="bold">{{item.PROD_NAME}}</h4>
+                        <h5 class="bold">{{item.PROD_NAME}}</h5>
                     </div>
                     <div class="commodity-price">
                         <p>$<strong>{{item.PROD_PRICE}}</strong></p>
@@ -148,10 +148,7 @@ export default {
         onlineStorage(){
             let orders = localStorage.getItem("order");
             if(!orders) return;
-            this.order = JSON.parse(orders)
-
-          
-           
+            this.order = JSON.parse(orders) 
         },
         clear(){
             this.order=[]

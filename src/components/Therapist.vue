@@ -40,9 +40,9 @@
                             <p 
                                 class="text_content"
                                 v-for="( introcontent , introindex ) in therapist.intro"
-                                :key="introindex"
+                                :key= introindex
                             >
-                            {{ introcontent }}
+                            {{  introcontent  }}
                             </p>
                         </div>
                         <a href="/reserve">
@@ -76,7 +76,7 @@ export default {
                         '英國 ITEC 國際高階芳療師證照',
                         '美國 NAHA 國際芳療保健師證照',
                         '印度 Himalaya Yoga 喜瑪拉雅瑜伽學院證照'
-                    ]
+                    ],
                 },
                 {
                     pic: "masseusePic2.jpg",

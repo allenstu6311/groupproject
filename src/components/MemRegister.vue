@@ -29,7 +29,7 @@
                     <input type="password" maxlength="15" v-model="password">
                     <input type="password" maxlength="15" v-model="passwordAgain">
                     <input type="text" maxlength="10" v-model="name">
-                    <input type="text" maxlength="40" v-model="email">
+                    <input type="email" maxlength="40" v-model="email">
                     <input type="date" v-model="birthday">
                     <input type="text" maxlength="10" v-model="phone">
                     <input type="text" maxlength="10" v-model="localphone">

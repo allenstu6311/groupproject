@@ -96,7 +96,7 @@
                 </div>
                 <a href="/ProductList"><div class="btnLittle">更多商品</div></a>
             </section>
-            <div class="reservation_bg">
+            <div class="reservation_bg"><!------預約按摩------>
                 <section class="index_reservation">
                     <div class="reservation_intro">
                         <div class="title_area">
@@ -196,13 +196,23 @@
                     <swiper 
                     class="swiper"
                     :modules="modules"
-                    :space-between="30"
-                    :slides-per-view="3"
                     :autoplay="{
                         delay: 2500,
                         disableOnInteraction: false
                     }"
                     :pagination="{ clickable: true }"
+                    :breakpoints= "{
+                    1: {
+                        slidesPerView: 2,
+                        centeredSlides: false,
+                        spaceBetween: 150,
+                    },
+                    992: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                        centeredSlides: false,
+                    },
+                    }"
                     >
                         <swiper-slide class="slide"><img src="../assets/images/unhappyCat.png" alt=""></swiper-slide>
                         <swiper-slide class="slide"><img src="../assets/images/astronaut.png" alt=""></swiper-slide>
@@ -298,18 +308,7 @@
           onSwiper,
           onSlideChange,
           modules: [Pagination,Autoplay],
-          breakpoints: {
-              1: {
-                slidesPerView: 1,
-                centeredSlides: false,
-                spaceBetween: 100,
-              },
-              992: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-                centeredSlides: false,
-              },
-            }
+          
         };
       },
     };

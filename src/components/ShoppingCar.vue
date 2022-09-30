@@ -5,7 +5,7 @@
     </div>
 
         <!-- ========================================banner -->
-    <div id="app" style="margin-bottom:200px;margin-top: 100px;" class="shopping-container">
+ 
         <div class="shopping-cart">
             <div class="shopping-title">
                 <div class="title-font">購</div>
@@ -65,7 +65,7 @@
                     <div class="shopping-check">
                     <div class="shopping-checkout">
                         <p>商品金額:{{box}}元</p><p>折扣金額:{{box-totalPrice}}</p>  <p>結帳金額:$<strong>{{totalPrice}}</strong></p>
-                    <router-link  to="/Confirm">><button class="btnLittle">前往結帳</button>
+                    <router-link  to="/Confirm"><button class="btnLittle">前往結帳</button>
                     </router-link>
                     </div>
                     
@@ -108,7 +108,7 @@
             <button @click="prev" class="prev">></button>
         </div>
     </div>
-</div>
+
     
 </template>
 

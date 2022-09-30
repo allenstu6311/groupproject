@@ -6,15 +6,30 @@ try{
 
     require_once("../../connect_cgd102g2.php");
 
-    $sql = "select * from therapist where THERAPIST_ID = 1";
-    $therapist = $pdo->query($sql);
+    $sql = "select * from `therapist` where THERAPIST_ID = 1";
+    $therapist = $pdo->query($sql); //先編譯好
+	// $therapist->bindValue(":THERAPIST_ID", $THERAPIST_ID); //代入資料
+	// $therapist->execute();//執行之
 
     if($therapist->rowCount()==0){
         echo "無按摩師資料";
         // exit();
     }else{
         $therapists = $therapist->fetch(PDO::FETCH_ASSOC);
-        echo "有按摩師資料";
+        $data=[];
+
+        foreach($therapists as $i=> $page){
+        
+        ?>
+        
+        <?php
+        
+            $data[]=$page;
+        }
+        echo json_encode($data);
+        
+        ?>
+        <?php
     }
 }catch (Exception $e) {
         echo "錯誤行號 : ", $e->getLine(), "<br>";
@@ -22,10 +37,3 @@ try{
         //echo "系統暫時不能正常運行，請稍後再試<br>";	
 }
 ?>
-
-<?=$therapists["THERAPIST_ID"]?>
-<?=$therapists["THERAPIST_LICENSE_1"]?>
-<?=$therapists["THERAPIST_LICENSE_2"]?>
-<?=$therapists["THERAPIST_LICENSE_3"]?>
-<?=$therapists["THERAPIST_LICENSE_4"]?>
-<?=$therapists["THERAPIST_NAME"]?>

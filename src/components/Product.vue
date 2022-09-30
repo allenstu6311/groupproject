@@ -35,6 +35,14 @@
                     <div class="product-name" >
                         <h2>{{order[0].PROD_NAME}}</h2>
                     </div>
+                <div class="review-star">
+                    <p v-for="item in this.star" :key="item">★</p>
+                    <p v-if='this.star<1'>{{block}}</p>
+                    <p v-if='this.star<2'>{{block}}</p>
+                    <p v-if='this.star<3'>{{block}}</p>
+                    <p v-if='this.star<4'>{{block}}</p>
+                    <p v-if='this.star<5'>{{block}}</p>
+                </div>
             
                     <div class="product-price"  >
                         <p>${{order[0].PROD_PRICE}}元</p>
@@ -70,6 +78,9 @@ export default {
         return{
             order:[],
             page:1,
+            score:[],
+            star:[],
+            block:"☆",
         }
     },
     methods:{
@@ -100,7 +111,12 @@ export default {
         let orders = localStorage.getItem("order");
         if(!orders) return;
         this.order = JSON.parse(orders)
-        console.log(this.order)
+        // console.log(this.order)
+
+         this.score =(this.order[0].PROD_REVIEW/this.order[0].PROD_TIMES ).toFixed(1)
+           
+            this.star = parseInt(this.score)
+             console.log("score-->",this.star)
         }
     },
     created(){
@@ -116,6 +132,17 @@ export default {
     }
     .light{
         opacity: 1;
+    }
+       .review-star{
+        display: flex;
+        
+        p{
+                font-size: 35px;
+                margin: 0 5px;
+                font-weight: 800;
+                color:#B52011;
+            }
+            
     }
 
 </style>

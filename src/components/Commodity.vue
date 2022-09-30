@@ -42,7 +42,7 @@
                         <p>$<strong>{{item.PROD_PRICE}}</strong></p>
                     </div>
                     <div class="commodity-evaluation">
-                        <span v-for="i in 3" :key='i'>★</span>
+                        <span  v-for="i in parseInt((item.PROD_REVIEW+1)/(item.PROD_TIMES+1))" :key='i'>★</span>
                     </div>
                 </div>
             </div>  
@@ -72,7 +72,7 @@
                         <p>$<strong>{{item.PROD_PRICE}}</strong></p>
                     </div>
                     <div class="commodity-evaluation">
-                        <span v-for="i in 3" :key='i'>★</span>
+                        <span v-for="i in parseInt((item.PROD_REVIEW+1)/(item.PROD_TIMES+1))" :key='i'>★</span>
                     </div>
                 </div>
             </div>
@@ -102,6 +102,7 @@ export default {
             data:[],
             order:[],
             info:[],
+            starNum:[],
             orderby:1,
             toggle:false,
             commoditySale:1,
@@ -148,6 +149,9 @@ export default {
             let orders = localStorage.getItem("order");
             if(!orders) return;
             this.order = JSON.parse(orders)
+
+          
+           
         },
         clear(){
             this.order=[]
@@ -159,13 +163,17 @@ export default {
             // console.log(this.price)
             this.data = res.data
             this.info = res.data
-
             
+
+              for(let i=0;i<this.data.length;i++){
+                this.starNum.push(((this.data[i].PROD_REVIEW+1)/(this.data[i].PROD_TIMES+1)).toFixed(1))
+            }            
         })
         this.clear();
+        this.onlineStorage()
         // let pic = document.querySelector("#pic")
         // console.log("--->",pic)
-//    .clientWidth
+       //.clientWidth
     },
    
     watch:{
@@ -212,7 +220,6 @@ export default {
                 }else{
                 this.empty=false
                 }
-                console.log("data-->",newVal)
             }
         },
         search_empty:{
@@ -242,11 +249,19 @@ export default {
 }
 
 </script>
-<style scoped>
+<style lang="scss" scoped>
   .commodity-total{
     display: flex;
     flex-direction: column;
     
-   
+  }
+  .commodity-evaluation{
+    margin: 10px 0;
+    span{
+        font-size: 20px;
+        margin: 10px 0;
+        font-weight: 800;
+        color:#B52011;
+    }
   }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="background_flower switch" action="../assets/php/therapistContent.php">
+    <div class="background_flower switch">
         <div class="banner">
             <img src="../assets/images/banner_teamPic.jpg" alt="按摩師團隊">
         </div>
@@ -19,30 +19,35 @@
             </div>
             <div 
                 class="container container_one"
-                v-for="($therapists , $page) in therapistCardList"
-                :key="$page"
+                v-for="(therapist, index) in therapistCardList"
+                :key="index"
             >
                 <div class="row ">
                     <div class="col-xl-6 col-12">
                         <div class="frame frame_one">
                             <div class="masseusePic">
                                 <img
-                                :src="require(`@/assets/images/${$data.pic}`)"
-                                :alt="therapist.pic_alt"
+                                :src="require(`@/assets/images/${therapist.THERAPIST_PIC}`)"
+                                :alt="therapist.THERAPIST_NAME"
                                 />
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-6 col-12 rwd_text">
-                        <h4 class="third_title title_one">{{ therapist.name }}  <span>師傅</span></h4>
+                        <h4 class="third_title title_one">{{ therapist.THERAPIST_NAME }}  <span>師傅</span></h4>
                         <div class="text text_one">
                             <p>證照：</p>
-                            <p 
-                                class="text_content"
-                                v-for="( introcontent , introindex ) in therapist.intro"
-                                :key= introindex
-                            >
-                            {{  introcontent  }}
+                            <p class="text_content">
+                                {{  therapist.THERAPIST_LICENSE_1 }}
+                            </p>
+                            <p class="text_content">
+                                {{  therapist.THERAPIST_LICENSE_2 }}
+                            </p>
+                            <p class="text_content">
+                                {{  therapist.THERAPIST_LICENSE_3 }}
+                            </p>
+                            <p class="text_content">
+                                {{  therapist.THERAPIST_LICENSE_4 }}
                             </p>
                         </div>
                         <a href="/reserve">
@@ -59,66 +64,31 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
+
 export default {
     props: {
         therapist: String,
     },
     data() {
         return {
-            
-            therapistCardList: [
-                {
-                    pic: "",
-                    pic_alt: "",
-                    name: "",
-                    intro:[],
-                    // pic: "masseusePic1.jpg",
-                    // pic_alt: "李駿燕師傅",
-                    // name: "李駿燕",
-                    // intro:[
-                    //     '英國 IPHM 國際經絡芳療師證照',
-                    //     '英國 ITEC 國際高階芳療師證照',
-                    //     '美國 NAHA 國際芳療保健師證照',
-                    //     '印度 Himalaya Yoga 喜瑪拉雅瑜伽學院證照'
-                    // ],
-                },
-                {
-                    // pic: "masseusePic2.jpg",
-                    // pic_alt: "言子倩師傅",
-                    // name: "言子倩",
-                    // intro:[
-                    //     '英國 IPHM 國際經絡芳療師證照',
-                    //     '英國 ITEC 國際高階芳療師證照',
-                    //     '美國 NAHA 國際芳療保健師證照',
-                    //     '印度 Himalaya Yoga 喜瑪拉雅瑜伽學院證照'
-                    // ]
-                },
-                {
-                    // pic: "masseusePic3.jpg",
-                    // pic_alt: "康晉壕師傅",
-                    // name: "康晉壕",
-                    // intro:[
-                    //     '英國 IPHM 國際經絡芳療師證照',
-                    //     '英國 ITEC 國際高階芳療師證照',
-                    //     '美國 NAHA 國際芳療保健師證照',
-                    //     '印度 Himalaya Yoga 喜瑪拉雅瑜伽學院證照'
-                    // ]
-                },
-                {
-                    // pic: "masseusePic4.jpg",
-                    // pic_alt: "倪玉涓師傅",
-                    // name: "倪玉涓",
-                    // intro:[
-                    //     '英國 IPHM 國際經絡芳療師證照',
-                    //     '英國 ITEC 國際高階芳療師證照',
-                    //     '美國 NAHA 國際芳療保健師證照'
-                    // ]
-                }
-            ]
+            therapistCardList: [],
         }
     },
-    mounted(){
-        gsap.from(".frame_one",{
+    created(){
+        this.getDataFromApi(); // 在建立Vue.js模板時順帶執行這個參數
+    },
+    methods:{
+        async getDataFromApi() {
+            var url = 'http://localhost/CGD102_G2/src/assets/php/therapistContent.php'
+            let getData = async(url) => {
+                let response = await fetch(url); // await 很雞掰，真的在哭
+                let JSON =  response.json();
+                this.therapistCardList = await JSON; // php抓取回來的資料存取在預設好的參數裡
+            }
+            await getData(url); // 觸發 getData 的匿名 function 內容 ==> 79 ~ 81 行的內容
+            console.log(this.therapistCardList);
+
+            gsap.from(".frame_one",{
             scrollTrigger: {
                 trigger: ".frame_one",
                 start: "30% center"
@@ -128,31 +98,32 @@ export default {
             duration: 2,
             opacity: 0,
             ease: "back"
-        });
-        gsap.from(".text_one p",{
-            scrollTrigger: {
-                trigger: ".text_one",
-                start: "top center"
-            },
-            duration: 1,
-            stagger: 0.2,
-            delay: 0.2,
-            x: 150,
-            opacity: 0,
-            ease: "back"
-        });
-        gsap.from(".btnLittle_one",{
-            scrollTrigger: {
-                trigger: ".text_one",
-                start: "top center"
-            },
-            duration: 1,
-            delay: 1.2,
-            x: 100,
-            opacity: 0,
-            ease: "back"
-        });
-    }
+            });
+            gsap.from(".text_one p",{
+                scrollTrigger: {
+                    trigger: ".text_one",
+                    start: "top center"
+                },
+                duration: 1,
+                stagger: 0.2,
+                delay: 0.2,
+                x: 150,
+                opacity: 0,
+                ease: "back"
+            });
+            gsap.from(".btnLittle_one",{
+                scrollTrigger: {
+                    trigger: ".text_one",
+                    start: "top center"
+                },
+                duration: 1,
+                delay: 1.2,
+                x: 100,
+                opacity: 0,
+                ease: "back"
+            });
+        }
+    },
 }
 </script>
 

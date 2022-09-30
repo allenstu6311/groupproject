@@ -135,6 +135,8 @@ export default {
                 PROD_DESC1:this.data[index].PROD_DESC1,
                 PROD_DESC2:this.data[index].PROD_DESC2,
                 PROD_DESC3:this.data[index].PROD_DESC3,
+                PROD_REVIEW:this.data[index].PROD_REVIEW+1,
+                PROD_TIMES:this.data[index].PROD_TIMES+1
             }]
             
             this.setStorage()

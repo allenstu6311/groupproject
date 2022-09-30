@@ -5,20 +5,20 @@
             <h3 class="bold">訂單資訊</h3>
         </div>
         <div class="member-synchronize">
-            <input type="checkbox">同訂購人資訊
+            <input type="checkbox" v-model="check">同訂購人資訊
         </div>
         <div class="member-body">
             <div class="member-name">
                 <label for="name">姓名:</label>
-                <input type="text" size="30" name="name" value="">
+                <input type="text" size="30" name="name"  v-model="name">
             </div>
             <div class="member-cellphone">
                 <label for="cellphone">手機:</label>
-                <input type="text" size="30" name="cellphone" value="">
+                <input type="text" size="30" name="cellphone"  v-model="cellphone">
             </div>
               <div class="member-address">
                 <label for="address">地址:</label>
-                <input type="text" size="30" name="address" value="">
+                <input type="text" size="30" name="address"  v-model="address">
             </div>
               <div class="member-transport">
                 <div class="delivery">
@@ -59,6 +59,42 @@
 
 <script>
 export default {
-    
+  data(){
+    return{
+        member:[],
+        check:false,
+        name:"",
+        cellphone:"",
+        address:"",
+    }
+  },
+  methods:{
+
+  },
+  watch:{
+    check:{
+       handler(newVal){
+        if(newVal==true){
+          this.name = this.member[0].MEM_NAME
+          this.cellphone = this.member[0].MEM_PHONE
+          this.address = this.member[0].MEM_ADDRESS
+
+        }else{
+          this.name="",
+          this.cellphone="",
+          this.address=""
+
+        }
+    }
+    }
+   
+  },
+  created(){
+    this.axios.get("http://localhost/CGD102_G2/src/assets/php/memberInfo.php")
+    .then((res)=>{
+      this.member = res.data
+      console.log(this.member[0])
+    })
+  }
 }
 </script>

@@ -10,12 +10,12 @@
     <CheckCommodity />
 </div>
 <div class="agree">
-    <input type="checkbox">
+    <input type="checkbox" v-model="agree">
     <span>我同意本網站的<span>服務條款</span>與<span>退換貨規則</span></span>
 </div>
 <div class="change-page">
-    <button>上一頁</button>
-    <button>下一頁</button>
+    <button type="button">上一頁</button>
+    <button  type="button" disabled class="next-page" :class="{checkAfter:agree}">下一頁</button>
 </div>
 
 
@@ -40,12 +40,20 @@
         justify-content: space-around;
         padding: 50px 10px;
     }
+    .next-page{
+        width: 120px;
+        text-align: center;
+        border-radius: 100px;
+        padding: 10px;
+        font-size: 16px;
+        font-weight: 800;
+    }
     .change-page{
         display: flex;
         justify-content: space-evenly;
         margin: 10px 0;
 
-        button{
+        :first-child{
             width: 120px;
             text-align: center;
             border-radius: 100px;
@@ -83,6 +91,7 @@
             }
         }
     }
+    
     @media screen and (min-width:768px){
             .confirm-container{
                 width: 100%;
@@ -103,6 +112,32 @@
                     }
             }
     }
+    .checkAfter{
+         width: 120px;
+            text-align: center;
+            border-radius: 100px;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: 800;
+            background-color: #163D82;
+            color: #FFFFFF;
+            border: none;
+            position: relative;
+            z-index: 10;
+            letter-spacing: 2px;
+            cursor: pointer;
+            &:hover{//&是連結父層
+                background-color:#B52011;
+                transform: translateY(-3px);
+                box-shadow: 2px 4px 0px #000000;
+                transition: all 0.3s 
+        }
+            &:active{
+                transform: translateY(-3px) scale(.97);
+                box-shadow: 1px 2px 0px #000000;
+                transition: all 0.1s 
+        }
+    }
 </style>
 
 <script>
@@ -116,6 +151,11 @@ export default {
         Footer,
         MemberInfo,
         CheckCommodity
+    },
+    data(){
+        return{
+            agree:false,
+        }
     }
 }
 </script>

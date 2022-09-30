@@ -10,14 +10,14 @@
              
             </div>
             <div class="review-star">
-                <p v-for="item in this.star" :key="item">★</p>
-                <p v-if='this.star<1'>{{block}}</p>
-                <p v-if='this.star<2'>{{block}}</p>
-                <p v-if='this.star<3'>{{block}}</p>
-                <p v-if='this.star<4'>{{block}}</p>
-                <p v-if='this.star<5'>{{block}}</p>
+                <p v-for="item in star" :key="item">★</p>
+                <p v-if='star<1'>{{block}}</p>
+                <p v-if='star<2'>{{block}}</p>
+                <p v-if='star<3'>{{block}}</p>
+                <p v-if='star<4'>{{block}}</p>
+                <p v-if='star<5'>{{block}}</p>
             </div>
-               <small style="text-align:center">共{{order[0].PROD_TIMES}}人評價此商品</small>
+               <small style="text-align:center">共{{order[0] ? order[0].PROD_TIMES : 0}}人評價此商品</small>
         </div>
 
         <div class="review-evaluation">
@@ -85,7 +85,7 @@ export default {
         giveRating(num,name){
             
 
-            this.axios.get("http://localhost/CGD102_G2/src/assets/php/review.php",
+            this.axios.get("http://localhost/CGD102_G2/src/assets/phps/review.php",
             {
                 params:{
                     number:num,

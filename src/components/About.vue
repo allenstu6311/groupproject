@@ -122,6 +122,8 @@ export default {
             z: -200,
             ease: "back"
         });
+
+        
         gsap.from(".frame_two",{
             scrollTrigger: {
                 trigger: ".frame_two",

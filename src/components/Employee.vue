@@ -15,7 +15,7 @@
                     <p class="title_font">環</p>
                     <p class="title_font">境</p>
                 </h2>
-                <small>• ENTREPRENEURIAL IDEA •</small>
+                <small>• STORE ENVIRONMENT •</small>
             </div>
             <div class="container">
                 <div class="row row_hall">

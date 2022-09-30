@@ -177,7 +177,7 @@
             </section>
 
             <div class="msgshl_btn ">
-                <a class="btnLarge" href="./massageGame.html">開始遊戲吧 !</a>
+                <a class="btnLarge" href="/MassageGame">開始遊戲吧 !</a>
             </div>
 
         </div>

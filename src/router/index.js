@@ -9,6 +9,9 @@ import ResvPageView from '../views/ResvPageView.vue'
 import Messagefaq from "../views/Messagefaq.vue"
 import ShoppingCar from "@/components/ShoppingCar.vue"
 import MemLogin from "../views/MemLogin.vue"
+import MassageSchoolView from '../views/MassageSchoolView.vue'
+import MassageGameView from '../views/MassageGameView.vue'
+import GetCouponView from '../views/GetCouponView.vue'
 
 const routes = [
   {
@@ -95,7 +98,17 @@ const routes = [
   {
     path: '/MassageSchool',
     name: 'MassageSchool',
-    component: () => import('../views/MassageSchoolView.vue')
+    component: MassageSchoolView
+  },
+  {
+    path: '/MassageGame',
+    name: 'MassageGame',
+    component: MassageGameView
+  },
+  {
+    path: '/GetCoupon',
+    name: 'GetCoupon',
+    component: GetCouponView
   },
   {
     path: '/ProductList',

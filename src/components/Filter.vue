@@ -90,7 +90,7 @@ export default {
     methods:{
     
         choseRange(){
-            this.axios.get("http://localhost/cli/team/src/assets/php/priceRange.php",
+            this.axios.get("http://localhost/CGD102_G2/src/assets/php/priceRange.php",
             {
                 params:{
                     priceRange_1:this.priceRange_1,
@@ -171,7 +171,7 @@ export default {
                     }
                 break;
             }
-            this.axios.get("http://localhost/cli/team/src/assets/php/filterPrice.php",{
+            this.axios.get("http://localhost/CGD102_G2/src/assets/php/filterPrice.php",{
 
                 params:{
                     filterPrice_1:this.checkPrice[0].price_1,
@@ -220,7 +220,7 @@ export default {
                     }
                     break;
             }
-            this.axios.get("http://localhost/cli/team/src/assets/php/fiterTool.php",
+            this.axios.get("http://localhost/CGD102_G2/src/assets/php/fiterTool.php",
             {
                 params:{
                     type:this.checkTool[0].type

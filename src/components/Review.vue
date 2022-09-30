@@ -85,7 +85,7 @@ export default {
         giveRating(num,name){
             
 
-            this.axios.get("http://localhost/cli/team/src/assets/php/review.php",
+            this.axios.get("http://localhost/CGD102_G2/src/assets/php/review.php",
             {
                 params:{
                     number:num,

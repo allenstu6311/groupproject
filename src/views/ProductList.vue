@@ -66,7 +66,7 @@ export default {
      
         },
         searchStar(){
-          this.axios.get("http://localhost/cli/team/src/assets/php/search.php",{
+          this.axios.get("http://localhost/CGD102_G2/src/assets/php/search.php",{
 
             params:{
               target:this.search_obj

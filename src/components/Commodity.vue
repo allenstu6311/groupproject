@@ -155,7 +155,7 @@ export default {
         },
     },
     created(){
-        this.axios.get("http://localhost/cli/team/src/assets/php/commoditylist.php")
+        this.axios.get("http://localhost/CGD102_G2/src/assets/php/commoditylist.php")
         .then((res)=>{
             // console.log(this.price)
             this.data = res.data

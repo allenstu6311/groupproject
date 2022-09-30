@@ -79,7 +79,7 @@ export default {
     },
     methods:{
         async getDataFromApi() {
-            var url = 'http://localhost/CGD102_G2/src/assets/php/therapistContent.php'
+            var url = 'http://localhost/CGD102_G2/src/assets/phps/therapistContent.php'
             let getData = async(url) => {
                 let response = await fetch(url); // await 很雞掰，真的在哭
                 let JSON =  response.json();

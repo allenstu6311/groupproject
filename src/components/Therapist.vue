@@ -1,5 +1,5 @@
 <template>
-    <div class="background_flower switch">
+    <div class="background_flower switch" action="../assets/php/therapistContent.php">
         <div class="banner">
             <img src="../assets/images/banner_teamPic.jpg" alt="按摩師團隊">
         </div>

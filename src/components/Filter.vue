@@ -193,7 +193,7 @@ export default {
                         location.reload()
                     }else{
                         this.checkTool=[{
-                            type:"槍"
+                            type:"按摩槍"
                         }]
                     }
                     break;

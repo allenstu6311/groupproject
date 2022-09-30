@@ -1630,7 +1630,7 @@ main {
 .main_banner .banner_logo {
   position: absolute;
   width: 100%;
-  bottom: 0;
+  bottom: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1646,25 +1646,56 @@ main {
 .main_banner .banner_circle {
   position: absolute;
   width: 95px;
-  height: 90vh;
+  height: 10000px;
   right: 0;
-  background-image: url(../assets/images/bannercircle.gif);
-  background-repeat: no-repeat;
+  background-image: url(../assets/images/bannercircle.png);
+  background-repeat: repeat-y;
   background-position: center;
-  background-size: cover;
+  -webkit-animation: MOVE 140s linear infinite;
+          animation: MOVE 140s linear infinite;
 }
-.main_banner .first {
-  transform: rotate(180deg);
+@-webkit-keyframes MOVE {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+@keyframes MOVE {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
 }
 .main_banner .second {
   position: absolute;
-  width: 95px;
-  height: 90vh;
+  width: 96px;
+  height: 10000px;
   left: 0px;
-  background-image: url(../assets/images/bannercircle.gif);
-  background-repeat: no-repeat;
+  background-image: url(../assets/images/bannercircle.png);
+  background-repeat: repeat-y;
   background-position: center;
-  background-size: cover;
+  -webkit-animation: move 140s linear infinite;
+          animation: move 140s linear infinite;
+}
+@-webkit-keyframes move {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+@keyframes move {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
 }
 .main_banner .banner_hand {
   position: absolute;
@@ -1704,22 +1735,13 @@ main {
   .main_banner .banner_logo img {
     width: 30%;
   }
-  .main_banner .banner_circle {
-    width: 50px;
-    height: 600px;
-    background-repeat: no-repeat;
-    background-position: right;
-    background-size: cover;
-  }
   .main_banner .first {
-    transform: rotate(180deg);
+    width: 96px;
+    right: -50px;
   }
   .main_banner .second {
-    width: 50px;
-    height: 600px;
-    background-repeat: no-repeat;
-    background-position: right;
-    background-size: cover;
+    width: 96px;
+    left: -50px;
   }
   .main_banner .banner_hand {
     position: absolute;
@@ -1758,24 +1780,13 @@ main {
   .main_banner .banner_logo img {
     width: 15%;
   }
-  .main_banner .banner_circle {
-    width: 50px;
-    height: 660px;
-    right: -10px;
-    background-repeat: no-repeat;
-    background-position: right;
-    background-size: cover;
-  }
   .main_banner .first {
-    transform: rotate(180deg);
+    width: 96px;
+    right: 0px;
   }
   .main_banner .second {
-    width: 50px;
-    height: 660px;
-    left: -10px;
-    background-repeat: no-repeat;
-    background-position: right;
-    background-size: cover;
+    width: 96px;
+    left: 0px;
   }
   .main_banner .banner_hand {
     position: absolute;
@@ -1823,7 +1834,7 @@ main {
 .about_us {
   width: 100%;
   max-width: 1200px;
-  padding: 130px 0px 0px 0px;
+  padding: 120px 0px 0px 0px;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -1917,7 +1928,7 @@ main {
     width: 100%;
     height: 120%;
     max-width: 1200px;
-    padding: 120px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -1925,7 +1936,7 @@ main {
     overflow: hidden;
   }
   .about_us .about_us_intro {
-    width: 90%;
+    width: 85%;
     margin: 0 auto;
   }
   .about_us .about_us_intro .title_area .title {
@@ -2172,6 +2183,7 @@ main {
 @media screen and (min-width: 320px) and (max-width: 767.98px) {
   .massage_school {
     display: flex;
+    padding-top: 100px;
   }
   .massage_school .massage_school_content {
     display: flex;
@@ -2203,7 +2215,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding-top: 130px;
+  padding-top: 120px;
 }
 .product .product_content {
   width: 100%;
@@ -2248,6 +2260,7 @@ main {
 @media screen and (min-width: 320px) and (max-width: 767.98px) {
   .product {
     width: 90%;
+    padding-top: 100px;
   }
   .product .product_content {
     width: 100%;
@@ -2443,7 +2456,7 @@ main {
   }
   .reservation_bg .index_reservation .reservation_intro {
     width: 100%;
-    height: 300px;
+    height: 450px;
     position: static;
   }
 }
@@ -2458,7 +2471,7 @@ main {
   }
   .reservation_bg .index_reservation .reservation_intro {
     width: 100%;
-    height: 300px;
+    height: 400px;
     position: static;
   }
   .reservation_bg .index_reservation .reservation_content {
@@ -3086,7 +3099,8 @@ main {
 }
 
 .switch {
-  /*======    桌機版 | 768px ~ ???px ======*/
+  /*======    平板版 RWD | 768px ~ 1200px ======*/
+  /*====== 行動版 RWD | 320px ~ 768px ======*/
 }
 @media screen and (min-width: 320px) and (max-width: 767.98px) {
   .switch .col-1 {
@@ -3313,9 +3327,8 @@ main {
 }
 .switch .FAQ .frame .answer {
   display: none;
-  line-height: 1.8;
+  line-height: 2;
   font-weight: 600;
-  opacity: 0.8;
   margin: 0 15%;
   padding: 25px 15px;
   border-bottom: 2px solid #163D82;
@@ -3323,33 +3336,35 @@ main {
   border-right: 2px solid #163D82;
   background-color: #FFFFFF;
   position: relative;
-  top: -5px;
-  z-index: -99;
+  top: -15px;
+  z-index: -1;
+  border-radius: 10px;
 }
 .switch .online_consultation {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
   margin-bottom: 120px;
 }
 .switch .online_consultation .imgRow {
+  width: 50%;
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
 }
-.switch .online_consultation .imgRow .lineImgCell {
-  position: relative;
-}
-.switch .online_consultation .imgRow .lineImgPeople {
-  position: relative;
+.switch .online_consultation .imgRow img {
+  margin: auto;
+  margin-top: 100px;
 }
 .switch .online_consultation .textColumn {
-  position: relative;
-  padding: 100px 0;
+  width: 50%;
+  padding: 80px 0;
 }
 .switch .online_consultation .textColumn .text {
   margin: auto;
   width: 50%;
-  line-height: 1.5;
+  line-height: 40px;
   font-weight: 600;
   opacity: 0.8;
+  margin-bottom: 50px;
 }
 .switch .online_consultation .textColumn .join {
   width: 220px;
@@ -3365,41 +3380,50 @@ main {
 .switch .online_consultation .textColumn .join .btnLarge img {
   margin: 0px 10px;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 1199.98px) {
+  .switch .FAQ .frame .question {
+    margin: 10% 5% 0;
+  }
+  .switch .FAQ .frame .answer {
+    margin: 0 5%;
+  }
   .switch .online_consultation {
+    width: 90%;
     margin-bottom: 120px;
   }
-  .switch .online_consultation .imgRow .lineImgCell {
-    left: 120px;
-  }
-  .switch .online_consultation .imgRow .lineImgPeople {
-    right: -80px;
-  }
   .switch .online_consultation .textColumn {
-    position: relative;
-    padding: 100px 0;
-    right: 120px;
+    margin-left: 20px;
   }
   .switch .online_consultation .textColumn .text {
-    margin: auto;
-    width: 50%;
-    line-height: 1.5;
-    font-weight: 600;
-    opacity: 0.8;
+    width: 60%;
   }
 }
 @media screen and (min-width: 320px) and (max-width: 767.98px) {
-  .switch .online_consultation .row {
+  .switch .FAQ .frame .question {
+    margin: 10% 5% 0;
+  }
+  .switch .FAQ .frame .answer {
+    margin: 0 5%;
+  }
+  .switch .online_consultation {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
+    width: 80%;
   }
-  .switch .online_consultation .row .imgRow .lineImgCell {
-    left: 15px;
+  .switch .online_consultation .imgRow {
+    width: 100%;
+    order: 2;
   }
-  .switch .online_consultation .row .imgRow .lineImgPeople {
-    right: 15px;
+  .switch .online_consultation .imgRow img {
+    width: 100%;
+    margin-top: 50px;
   }
-  .switch .online_consultation .row .textColumn .text {
+  .switch .online_consultation .textColumn {
+    width: 100%;
+    order: 1;
+  }
+  .switch .online_consultation .textColumn .text {
+    width: 90%;
     margin-bottom: 70px;
   }
 }
@@ -5178,6 +5202,772 @@ main {
     right: 5%;
   }
 }
+.massage_game {
+  width: 100%;
+}
+.massage_game .game_container {
+  margin-top: 70px;
+}
+.massage_game .game_container .quiz_container .question_container {
+  width: 80%;
+  padding: 5px;
+  margin: 70px auto 40px auto;
+  border: 3px solid #163D82;
+  border-radius: 12px;
+  box-shadow: 6px 10px 0px 0px #163D82;
+  background-color: #fff;
+  position: relative;
+}
+.massage_game .game_container .quiz_container .question_container .question_frame {
+  border-radius: 8px;
+  border: 2px solid #163D82;
+}
+.massage_game .game_container .quiz_container .question_container .question_frame .question {
+  padding: 20px;
+  text-align: center;
+  line-height: 2;
+  color: #524F4F;
+  font-size: 18px;
+}
+.massage_game .game_container .quiz_container .question_container::before {
+  content: "";
+  width: 0px;
+  border-top: 2px solid #163D82;
+  border-right: 2px solid #163D82;
+  border-bottom: 50px solid #163D82;
+  border-left: 2px solid #163D82;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+}
+.massage_game .game_container .quiz_container .answer_container {
+  width: 60%;
+  padding: 5px;
+  margin: 0px auto 50px auto;
+  border: 3px solid #163D82;
+  border-radius: 12px;
+  box-shadow: 6px 10px 0px 0px #163D82;
+  background-color: #fff;
+  position: relative;
+}
+.massage_game .game_container .quiz_container .answer_container .answer_frame {
+  height: 80px;
+  border-radius: 8px;
+  border: 2px solid #163D82;
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: #524F4F;
+}
+.massage_game .game_container .quiz_container .answer_container .answer_frame .answer {
+  padding: 10px;
+  text-align: center;
+  line-height: 2;
+  color: #163D82;
+  font-family: "DFKai-SB";
+  font-size: 32px;
+}
+.massage_game .game_container .quiz_container .answer_container .answer_frame .answer.answer_click {
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.massage_game .game_container .quiz_container .answer_container::before {
+  content: "";
+  width: 0px;
+  position: absolute;
+}
+.massage_game .game_container .hand_pic {
+  width: 80%;
+  margin: 0 auto 0 auto;
+  position: relative;
+}
+.massage_game .game_container .hand_pic img {
+  display: block;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.massage_game .game_container .hand_pic .acupoint {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 20px;
+  height: 20px;
+  background-color: #B52011;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 98;
+}
+.massage_game .game_container .hand_pic .acupoint:hover, .massage_game .game_container .hand_pic .acupoint:focus {
+  background-color: #B52011;
+  transition: 0.3s;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
+}
+.massage_game .game_container .hand_pic .acupoint::after {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  content: "";
+  width: 0px;
+  height: 0px;
+  background-color: #163D82;
+  transition: 0.5s;
+}
+.massage_game .game_container .hand_pic .acupoint:hover::after,
+.massage_game .game_container .hand_pic .acupoint:focus::after {
+  left: 0px;
+  width: 40px;
+  height: 1px;
+  transition: 0.5s;
+}
+.massage_game .game_container .hand_pic .acupoint::before {
+  width: 12px;
+  font-size: 12px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  content: "";
+  font-family: "DFKai-SB";
+  color: transparent;
+  font-size: 20px;
+  transition: 0.3s;
+}
+.massage_game .game_container .hand_pic .acupoint:hover::before,
+.massage_game .game_container .hand_pic .acupoint:focus::before {
+  color: #163D82;
+  transition: 0.3s 0.2s;
+}
+.massage_game .game_container .hand_pic .zhong_chong {
+  left: 35%;
+}
+.massage_game .game_container .hand_pic .shao_shang {
+  top: 44%;
+  left: 90%;
+}
+.massage_game .game_container .hand_pic .he_gu {
+  top: 62%;
+  left: 57%;
+}
+.massage_game .game_container .hand_pic .ming_men {
+  top: 43%;
+  left: 10%;
+}
+.massage_game .game_container .hand_pic .shen_men {
+  top: 95%;
+  left: 28%;
+}
+.massage_game .game_container .hand_pic .lao_gong {
+  top: 55%;
+  left: 40%;
+}
+.massage_game .game_container .hand_pic .yu_ji {
+  top: 67%;
+  left: 72%;
+}
+.massage_game .game_container .hand_pic .shao_fu {
+  top: 67%;
+  left: 25%;
+}
+.massage_game .game_container .hand_pic .tai_yuan {
+  top: 93%;
+  left: 53%;
+}
+.massage_game .game_container .hand_pic .zhong_chong::after {
+  top: 12px;
+  left: 0px;
+}
+.massage_game .game_container .hand_pic .zhong_chong:hover::after,
+.massage_game .game_container .hand_pic .zhong_chong:focus::after {
+  left: -40px;
+}
+.massage_game .game_container .hand_pic .zhong_chong::before {
+  top: -25px;
+  left: -65px;
+  content: "中衝穴";
+}
+.massage_game .game_container .hand_pic .shao_shang::after {
+  top: 12px;
+  left: 100%;
+}
+.massage_game .game_container .hand_pic .shao_shang:hover::after,
+.massage_game .game_container .hand_pic .shao_shang:focus::after {
+  width: 10px;
+  left: 100%;
+}
+.massage_game .game_container .hand_pic .shao_shang::before {
+  top: -25px;
+  left: 30px;
+  content: "少商穴";
+}
+.massage_game .game_container .hand_pic .he_gu::after {
+  top: 12px;
+  left: 100%;
+}
+.massage_game .game_container .hand_pic .he_gu:hover::after,
+.massage_game .game_container .hand_pic .he_gu:focus::after {
+  left: 100%;
+  width: 40px;
+}
+.massage_game .game_container .hand_pic .he_gu::before {
+  top: -23px;
+  left: 60px;
+  content: "合谷穴";
+}
+.massage_game .game_container .hand_pic .ming_men::after {
+  top: 12px;
+  left: 0px;
+}
+.massage_game .game_container .hand_pic .ming_men:hover::after,
+.massage_game .game_container .hand_pic .ming_men:focus::after {
+  width: 13px;
+  left: -13px;
+}
+.massage_game .game_container .hand_pic .ming_men::before {
+  top: -25px;
+  left: -35px;
+  content: "命門穴";
+}
+.massage_game .game_container .hand_pic .shen_men::after {
+  top: 12px;
+  left: 0px;
+}
+.massage_game .game_container .hand_pic .shen_men:hover::after,
+.massage_game .game_container .hand_pic .shen_men:focus::after {
+  width: 28px;
+  left: -28px;
+}
+.massage_game .game_container .hand_pic .shen_men::before {
+  top: -25px;
+  left: -50px;
+  content: "神門穴";
+}
+.massage_game .game_container .hand_pic .lao_gong::after {
+  top: 12px;
+  left: 0px;
+}
+.massage_game .game_container .hand_pic .lao_gong:hover::after,
+.massage_game .game_container .hand_pic .lao_gong:focus::after {
+  left: -60px;
+  width: 60px;
+}
+.massage_game .game_container .hand_pic .lao_gong::before {
+  top: -25px;
+  left: -80px;
+  content: "勞宮穴";
+}
+.massage_game .game_container .hand_pic .yu_ji::after {
+  top: 12px;
+  left: 100%;
+}
+.massage_game .game_container .hand_pic .yu_ji:hover::after,
+.massage_game .game_container .hand_pic .yu_ji:focus::after {
+  width: 20px;
+  left: 100%;
+}
+.massage_game .game_container .hand_pic .yu_ji::before {
+  top: -25px;
+  left: 40px;
+  content: "魚際穴";
+}
+.massage_game .game_container .hand_pic .shao_fu::after {
+  top: 12px;
+  left: 0px;
+}
+.massage_game .game_container .hand_pic .shao_fu:hover::after,
+.massage_game .game_container .hand_pic .shao_fu:focus::after {
+  left: -28px;
+  width: 28px;
+}
+.massage_game .game_container .hand_pic .shao_fu::before {
+  top: -25px;
+  left: -50px;
+  content: "少府穴";
+}
+.massage_game .game_container .hand_pic .tai_yuan::after {
+  top: 12px;
+  left: 100%;
+}
+.massage_game .game_container .hand_pic .tai_yuan:hover::after,
+.massage_game .game_container .hand_pic .tai_yuan:focus::after {
+  width: 30px;
+  left: 100%;
+}
+.massage_game .game_container .hand_pic .tai_yuan::before {
+  top: -25px;
+  left: 50px;
+  content: "太淵穴";
+}
+.massage_game .game_btn {
+  margin: 70px 0px 120px 0px;
+  text-align: center;
+}
+.massage_game .game_btn a {
+  text-decoration: none;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+/*====== 平板版 RWD | 768px ~ 1200px ======*/
+@media screen and (min-width: 768px) and (max-width: 1199.98px) {
+  .massage_game .game_container .quiz_container .question_container {
+    margin: 70px auto 70px auto;
+    width: 70%;
+  }
+  .massage_game .game_container .quiz_container .question_container .question_frame .question {
+    font-size: 20px;
+  }
+  .massage_game .game_container .quiz_container .question_container::before {
+    border-top: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 50px solid #163D82;
+    top: 9%;
+    left: 100%;
+  }
+  .massage_game .game_container .quiz_container .answer_container {
+    width: 30%;
+    margin: 0px 0px 70px 54%;
+    border: 3px solid #163D82;
+  }
+  .massage_game .game_container .quiz_container .answer_container .answer_frame {
+    height: 100px;
+    padding: 20px;
+    font-size: 20px;
+  }
+  .massage_game .game_container .quiz_container .answer_container .answer_frame .answer {
+    padding: 20px;
+  }
+  .massage_game .game_container .quiz_container .answer_container::before {
+    border-top: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 40px solid transparent;
+    border-left: 60px solid #163D82;
+    top: 6%;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic {
+    margin: -23% 0px 0px 15%;
+    width: 50%;
+  }
+  .massage_game .game_container .hand_pic .acupoint {
+    width: 25px;
+    height: 25px;
+  }
+  .massage_game .game_container .hand_pic .acupoint::before {
+    width: 60px;
+    font-size: 20px;
+  }
+  .massage_game .game_container .hand_pic .zhong_chong::after {
+    top: 12px;
+    left: 0px;
+  }
+  .massage_game .game_container .hand_pic .zhong_chong:hover::after,
+.massage_game .game_container .hand_pic .zhong_chong:focus::after {
+    left: -40px;
+  }
+  .massage_game .game_container .hand_pic .zhong_chong::before {
+    top: 0px;
+    left: -100px;
+    content: "中衝穴";
+  }
+  .massage_game .game_container .hand_pic .shao_shang::after {
+    top: 12px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .shao_shang:hover::after,
+.massage_game .game_container .hand_pic .shao_shang:focus::after {
+    width: 40px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .shao_shang::before {
+    top: 0px;
+    left: 70px;
+    content: "少商穴";
+  }
+  .massage_game .game_container .hand_pic .he_gu::after {
+    top: 12px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .he_gu:hover::after,
+.massage_game .game_container .hand_pic .he_gu:focus::after {
+    left: 100%;
+    width: 100px;
+  }
+  .massage_game .game_container .hand_pic .he_gu::before {
+    top: 0px;
+    left: 130px;
+    content: "合谷穴";
+  }
+  .massage_game .game_container .hand_pic .ming_men::after {
+    top: 12px;
+    left: 0px;
+  }
+  .massage_game .game_container .hand_pic .ming_men:hover::after,
+.massage_game .game_container .hand_pic .ming_men:focus::after {
+    width: 35px;
+    left: -35px;
+  }
+  .massage_game .game_container .hand_pic .ming_men::before {
+    top: 0px;
+    left: -95px;
+    content: "命門穴";
+  }
+  .massage_game .game_container .hand_pic .shen_men::after {
+    top: 12px;
+    left: 0px;
+  }
+  .massage_game .game_container .hand_pic .shen_men:hover::after,
+.massage_game .game_container .hand_pic .shen_men:focus::after {
+    width: 40px;
+    left: -40px;
+  }
+  .massage_game .game_container .hand_pic .shen_men::before {
+    top: 0px;
+    left: -100px;
+    content: "神門穴";
+  }
+  .massage_game .game_container .hand_pic .lao_gong::after {
+    top: 12px;
+    left: 0px;
+  }
+  .massage_game .game_container .hand_pic .lao_gong:hover::after,
+.massage_game .game_container .hand_pic .lao_gong:focus::after {
+    left: -110px;
+    width: 110px;
+  }
+  .massage_game .game_container .hand_pic .lao_gong::before {
+    top: 0px;
+    left: -170px;
+    content: "勞宮穴";
+  }
+  .massage_game .game_container .hand_pic .yu_ji::after {
+    top: 12px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .yu_ji:hover::after,
+.massage_game .game_container .hand_pic .yu_ji:focus::after {
+    width: 40px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .yu_ji::before {
+    top: 0px;
+    left: 70px;
+    content: "魚際穴";
+  }
+  .massage_game .game_container .hand_pic .shao_fu::after {
+    top: 12px;
+    left: 0px;
+  }
+  .massage_game .game_container .hand_pic .shao_fu:hover::after,
+.massage_game .game_container .hand_pic .shao_fu:focus::after {
+    left: -60px;
+    width: 60px;
+  }
+  .massage_game .game_container .hand_pic .shao_fu::before {
+    top: 0px;
+    left: -120px;
+    content: "少府穴";
+  }
+  .massage_game .game_container .hand_pic .tai_yuan::after {
+    top: 12px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .tai_yuan:hover::after,
+.massage_game .game_container .hand_pic .tai_yuan:focus::after {
+    width: 40px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .tai_yuan::before {
+    top: 0px;
+    left: 70px;
+    content: "太淵穴";
+  }
+  .massage_game .game_btn {
+    margin: 0% 0px 120px 50%;
+  }
+}
+/*====== 桌機版 RWD | >1200px ======*/
+@media screen and (min-width: 1200px) {
+  .massage_game .game_container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .massage_game .game_container .quiz_container {
+    width: 50%;
+  }
+  .massage_game .game_container .quiz_container .question_container {
+    margin: 30px auto 70px auto;
+  }
+  .massage_game .game_container .quiz_container .question_container .question_frame .question {
+    font-size: 24px;
+  }
+  .massage_game .game_container .quiz_container .question_container::before {
+    border-top: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 40px solid transparent;
+    border-left: 60px solid #163D82;
+    top: 7%;
+    left: 101%;
+  }
+  .massage_game .game_container .quiz_container .answer_container {
+    width: 40%;
+    margin: 0px 0px 0px 10%;
+  }
+  .massage_game .game_container .quiz_container .answer_container .answer_frame {
+    height: 100px;
+    padding: 20px;
+    font-size: 24px;
+  }
+  .massage_game .game_container .quiz_container .answer_container .answer_frame .answer {
+    padding: 20px;
+  }
+  .massage_game .game_container .quiz_container .answer_container::before {
+    border-top: 40px solid transparent;
+    border-right: 60px solid #163D82;
+    border-bottom: 40px solid transparent;
+    border-left: 40px solid transparent;
+    top: 7%;
+    right: 101%;
+  }
+  .massage_game .game_container .hand_pic {
+    width: 35%;
+  }
+  .massage_game .game_container .hand_pic .acupoint {
+    width: 25px;
+    height: 25px;
+  }
+  .massage_game .game_container .hand_pic .acupoint::before {
+    width: 60px;
+    font-size: 20px;
+  }
+  .massage_game .game_container .hand_pic .zhong_chong::after {
+    top: 12px;
+    left: 0px;
+  }
+  .massage_game .game_container .hand_pic .zhong_chong:hover::after,
+.massage_game .game_container .hand_pic .zhong_chong:focus::after {
+    left: -40px;
+  }
+  .massage_game .game_container .hand_pic .zhong_chong::before {
+    top: 0px;
+    left: -100px;
+    content: "中衝穴";
+  }
+  .massage_game .game_container .hand_pic .shao_shang::after {
+    top: 100%;
+    left: 50%;
+  }
+  .massage_game .game_container .hand_pic .shao_shang:hover::after,
+.massage_game .game_container .hand_pic .shao_shang:focus::after {
+    width: 1px;
+    height: 15px;
+    left: 50%;
+  }
+  .massage_game .game_container .hand_pic .shao_shang::before {
+    top: 40px;
+    left: 0px;
+    content: "少商穴";
+  }
+  .massage_game .game_container .hand_pic .he_gu::after {
+    top: 12px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .he_gu:hover::after,
+.massage_game .game_container .hand_pic .he_gu:focus::after {
+    left: 100%;
+    width: 75px;
+  }
+  .massage_game .game_container .hand_pic .he_gu::before {
+    top: 0px;
+    left: 105px;
+    content: "合谷穴";
+  }
+  .massage_game .game_container .hand_pic .ming_men::after {
+    top: 12px;
+    left: 0px;
+  }
+  .massage_game .game_container .hand_pic .ming_men:hover::after,
+.massage_game .game_container .hand_pic .ming_men:focus::after {
+    width: 40px;
+    left: -40px;
+  }
+  .massage_game .game_container .hand_pic .ming_men::before {
+    top: 0px;
+    left: -100px;
+    content: "命門穴";
+  }
+  .massage_game .game_container .hand_pic .shen_men::after {
+    top: 12px;
+    left: 0px;
+  }
+  .massage_game .game_container .hand_pic .shen_men:hover::after,
+.massage_game .game_container .hand_pic .shen_men:focus::after {
+    width: 40px;
+    left: -40px;
+  }
+  .massage_game .game_container .hand_pic .shen_men::before {
+    top: 0px;
+    left: -100px;
+    content: "神門穴";
+  }
+  .massage_game .game_container .hand_pic .lao_gong::after {
+    top: 12px;
+    left: 0px;
+  }
+  .massage_game .game_container .hand_pic .lao_gong:hover::after,
+.massage_game .game_container .hand_pic .lao_gong:focus::after {
+    left: -110px;
+    width: 110px;
+  }
+  .massage_game .game_container .hand_pic .lao_gong::before {
+    top: 0px;
+    left: -170px;
+    content: "勞宮穴";
+  }
+  .massage_game .game_container .hand_pic .yu_ji::after {
+    top: 12px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .yu_ji:hover::after,
+.massage_game .game_container .hand_pic .yu_ji:focus::after {
+    width: 20px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .yu_ji::before {
+    top: 0px;
+    left: 50px;
+    content: "魚際穴";
+  }
+  .massage_game .game_container .hand_pic .shao_fu::after {
+    top: 12px;
+    left: 0px;
+  }
+  .massage_game .game_container .hand_pic .shao_fu:hover::after,
+.massage_game .game_container .hand_pic .shao_fu:focus::after {
+    left: -60px;
+    width: 60px;
+  }
+  .massage_game .game_container .hand_pic .shao_fu::before {
+    top: 0px;
+    left: -120px;
+    content: "少府穴";
+  }
+  .massage_game .game_container .hand_pic .tai_yuan::after {
+    top: 12px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .tai_yuan:hover::after,
+.massage_game .game_container .hand_pic .tai_yuan:focus::after {
+    width: 40px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .tai_yuan::before {
+    top: 0px;
+    left: 70px;
+    content: "太淵穴";
+  }
+  .massage_game .game_btn {
+    margin: -30px 0px 120px -50%;
+  }
+}
+.game_over {
+  width: 100%;
+}
+.game_over .coupon_container {
+  width: 80%;
+  padding: 5px;
+  margin: 80px auto 120px auto;
+  border: 3px solid #163D82;
+  border-radius: 12px;
+  box-shadow: 6px 10px 0px 0px #163D82;
+  background-color: #fff;
+  position: relative;
+}
+.game_over .coupon_container .coupon_frame {
+  border-radius: 8px;
+  border: 2px solid #163D82;
+}
+.game_over .coupon_container .coupon_frame .coupon {
+  padding-top: 50px;
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: center;
+  line-height: 2;
+  letter-spacing: 3px;
+  color: #524F4F;
+  font-size: 18px;
+}
+.game_over .coupon_container .coupon_frame .coupon span {
+  color: #B52011;
+  font-size: 18px;
+}
+.game_over .btn_group {
+  margin-bottom: 80px;
+}
+.game_over .btn_group .over_btn {
+  text-align: center;
+  margin: 50px 0px 0px 0px;
+}
+.game_over .btn_group .over_btn a {
+  text-decoration: none;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+/*====== 平板版 RWD | 768px ~ 1200px ======*/
+@media screen and (min-width: 768px) and (max-width: 1199.98px) {
+  .game_over .coupon_container {
+    width: 60%;
+    margin: 100px auto 120px auto;
+  }
+  .game_over .coupon_container .coupon_frame .coupon {
+    padding-top: 70px;
+    text-align: center;
+    line-height: 2;
+    font-size: 24px;
+  }
+  .game_over .coupon_container .coupon_frame .coupon span {
+    font-size: 24px;
+  }
+  .game_over .btn_group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 100px;
+  }
+  .game_over .btn_group .over_btn {
+    margin: 50px 10px 0px 10px;
+  }
+}
+/*====== 桌機版 RWD | >1200px ======*/
+@media screen and (min-width: 1200px) {
+  .game_over .coupon_container {
+    width: 60%;
+    margin: 120px auto 120px auto;
+  }
+  .game_over .coupon_container .coupon_frame .coupon {
+    padding-top: 90px;
+    padding-bottom: 50px;
+    font-size: 24px;
+  }
+  .game_over .coupon_container .coupon_frame .coupon span {
+    font-size: 24px;
+  }
+  .game_over .btn_group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 120px;
+  }
+  .game_over .btn_group .over_btn {
+    margin: 0px 10px 0px 10px;
+  }
+}
 @media screen and (max-width: 768px) {
   .col-1,
 .col-2,
@@ -5495,7 +6285,6 @@ a {
   width: 100%;
   height: 100%;
   position: relative;
-  margin-right: 20px;
 }
 .commodity-card .commodity-obj button {
   width: 20px;
@@ -5604,7 +6393,6 @@ a {
     width: 100%;
     height: 100%;
     position: relative;
-    margin-right: 20px;
   }
   .commodity-card .commodity-obj button {
     width: 20px;

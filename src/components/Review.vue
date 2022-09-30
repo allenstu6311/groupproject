@@ -102,30 +102,34 @@ export default {
             })
             this.tex=""
             this.setStorage()
+            
+        },
+        getStorage(){
+            
+            let orders = localStorage.getItem("order");
+            if(!orders) return;
+            this.order = JSON.parse(orders)
+            this.score =(this.order[0].PROD_REVIEW/this.order[0].PROD_TIMES ).toFixed(1)
+           
+            this.star = parseInt(this.score)
         },
     
         setStorage(){
             localStorage.setItem("article",JSON.stringify(this.article))
         },
         onlineStorage(){
+         
             let articles = localStorage.getItem("article")
             if(!articles) return
             this.article = JSON.parse(articles)
-
-            let orders = localStorage.getItem("order");
-            if(!orders) return;
-            this.order = JSON.parse(orders)
-            console.log("order-->",this.order)
-
-            this.score =(this.order[0].PROD_REVIEW/this.order[0].PROD_TIMES ).toFixed(1)
-           
-            this.star = parseInt(this.score)
-            //  console.log("score-->",this.star)
+        
         }
     },
     created(){
-       
-        this.onlineStorage()
+        this.getStorage()
+        this. onlineStorage()
+        
+      
     }
 }
 </script>

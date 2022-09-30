@@ -8,7 +8,7 @@ function tool($type){
 require_once("../../connect_cgd102g2.php");
 
 
-$sql = "select * from PRODUCT where PROD_STATUS=1 and PROD_NAME like '%{$type}%' ";
+$sql = "select * from PRODUCT where PROD_STATUS=1 and PROD_TYPE like '%{$type}%' ";
 
 $book = $pdo->query($sql);
 

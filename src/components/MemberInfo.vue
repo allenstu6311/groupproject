@@ -90,7 +90,7 @@ export default {
    
   },
   created(){
-    this.axios.get("http://localhost/CGD102_G2/src/assets/php/memberInfo.php")
+    this.axios.get("http://localhost/CGD102_G2/src/assets/phps/memberInfo.php")
     .then((res)=>{
       this.member = res.data
       console.log(this.member[0])

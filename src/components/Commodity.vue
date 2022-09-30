@@ -191,7 +191,7 @@ export default {
           PROD_TIMES: this.data[index].PROD_TIMES + 1,
         },
       ];
-
+     
       this.setStorage();
     },
     setStorage() {
@@ -208,8 +208,7 @@ export default {
     
   },
   created() {
-    this.axios
-      .get("http://localhost/CGD102_G2/src/assets/phps/commoditylist.php")
+    this.axios.get("http://localhost/CGD102_G2/src/assets/phps/commoditylist.php")
       .then((res) => {
         // console.log(this.price)
         this.data = res.data;
@@ -223,7 +222,7 @@ export default {
             ).toFixed(1)
           );
         }
-          
+           console.log(this.order)
       this.$nextTick(() => {
           //等dom更新時會執行
           this.photo = document.getElementById("pic").clientWidth;
@@ -234,7 +233,7 @@ export default {
           window.onresize = () => {
             let pic = document.getElementById("pic").clientWidth;
             this.photo = pic;
-            console.log(this.photo);
+         
           };
          
       });

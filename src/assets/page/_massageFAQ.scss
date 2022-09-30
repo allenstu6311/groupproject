@@ -93,9 +93,8 @@
             }
             .answer{
                 display: none;
-                line-height: 1.8;
+                line-height: 2;
                 font-weight: 600;
-                opacity: 0.8;
                 margin: 0 15%;
                 padding: 25px 15px;
                 border-bottom: 2px solid $blue;
@@ -103,33 +102,36 @@
                 border-right: 2px solid $blue;
                 background-color: $white;
                 position: relative;
-                top: -5px;
-                z-index: -99;
+                top: -15px;
+                z-index: -1;
+                border-radius: 10px;
+                
             }
         }
     }
     .online_consultation{
+        display: flex;
+        max-width: 1200px;
+        margin: 0 auto;
         margin-bottom: 120px;
         .imgRow{
+            width: 50%;
             display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            .lineImgCell{
-                position: relative;
-            }   
-            .lineImgPeople{
-                position: relative;
-            }         
+            img{
+                margin: auto;
+                margin-top: 100px;
+            }
         }
         .textColumn{
-            position: relative;
-            padding: 100px 0;
+            width: 50%;
+            padding: 80px 0;
             .text{
                 margin: auto;
                 width: 50%;
-                line-height: 1.5;
+                line-height: 40px;
                 font-weight: 600;
                 opacity: 0.8;
+                margin-bottom: 50px;
             }
             .join{
                 width: 220px;
@@ -147,52 +149,72 @@
             }
         }
     }
-    /*======    桌機版 | 768px ~ ???px ======*/
-    @media screen and (min-width: 768px){
+    /*======    平板版 RWD | 768px ~ 1200px ======*/
+    @media screen and (min-width: 768px) and (max-width: 1199.98px){
+
+        .FAQ{
+            .frame{
+                .question {
+                    margin: 10% 5% 0;
+                }
+                .answer{
+                    margin: 0 5%;
+                }
+            }
+
+            }
         .online_consultation{
+            width: 90%;
             margin-bottom: 120px;
             .imgRow{
-                .lineImgCell{
-                    left: 120px;
-                }   
-                .lineImgPeople{
-                    right: -80px;
-                }         
+            
             }
             .textColumn{
-                position: relative;
-                padding: 100px 0;
-                right: 120px;
+                margin-left: 20px;
                 .text{
-                    margin: auto;
-                    width: 50%;
-                    line-height: 1.5;
-                    font-weight: 600;
-                    opacity: 0.8;
+                    width: 60%;
+
+
                 }
             }
         }
     }
 
-    // ==========================================手機版
+    /*====== 行動版 RWD | 320px ~ 768px ======*/
 
     @media screen and (min-width: 320px) and (max-width: 767.98px){
-        .online_consultation{
-            .row{
-                display: flex;
-                flex-direction: column-reverse;
-                .imgRow{
-                    .lineImgCell{
-                        left: 15px;
-                    }   
-                    .lineImgPeople{
-                        right: 15px;
-                    }         
+        .FAQ{
+            .frame{
+                .question {
+                    margin: 10% 5% 0;
                 }
-                .textColumn{
-                    .text{
-                        margin-bottom: 70px;
-                    }
+                .answer{
+                    margin: 0 5%;
+                }
+            }
+
+            }
+            
+
+        .online_consultation{
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            .imgRow{
+                width: 100%;
+                order: 2;
+                img{
+                    width: 100%;
+                    margin-top: 50px;
+                }
+                    
+            }
+            .textColumn{
+                width: 100%;
+                order: 1;
+                .text{
+                    width: 90%;
+                    margin-bottom: 70px;
                 }
             }
         }

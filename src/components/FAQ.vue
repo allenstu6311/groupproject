@@ -129,15 +129,8 @@
             </div>
         </section>
         <section class="online_consultation">
-            <div class="container">
-                <div class="row">
                     <div class="col-12 col-lg-6 imgRow">
-                        <div class="lineImgCell">
-                            <img src="../assets/images/FAQLine.png" alt="LINE畫面">
-                        </div>
-                        <div class="lineImgPeople">
-                            <img src="../assets/images/FAQLinePeople.png" alt="人">
-                        </div>
+                        <img src="../assets/images/FAQLINEPIC.png" alt="">
                     </div>
                     <div class="col-12 col-lg-6 textColumn">
                         <div class="title_area">
@@ -162,8 +155,6 @@
                             </a>
                         </div>
                     </div>
-                </div>
-            </div>
         </section>
 
     </div>

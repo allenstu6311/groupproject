@@ -1,16 +1,19 @@
-
 <template>
-    <div class="container">
+    <div class="container background_flower">
         <div class="logo">
             <img src="../assets/images/headerLogo.png" alt="">
         </div>
+
         <div class="btn_contain">
-                <a href="/home">
-                    <button class="btnLarge enter">前台</button>
-                </a>
-                <a href="backstage.html">
-                    <button class="btnLarge enter">後台</button>
-                </a>
+            <img class="slide-top" src="../assets/images/enterHand1.png" alt="">
+            <a href="/home">
+                <button class="enter">前台</button>
+            </a>
+            <div class="space"></div>
+            <a href="backstage.html">
+                <button class="enter ">後台</button>
+            </a>
+            <img class="slide-bottom" src="../assets/images/enterHand2.png" alt="">
         </div>
         
         <div class="copyright">
@@ -25,22 +28,116 @@
 
 <style lang="scss" scoped>
     @import"../assets/style.scss";
-    .backstage_header{
+    @keyframes slide-top {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity:1;
+        transform: translateY(-15px);
+                
+                
+    }
+}
+.slide-top{
+    animation-name: slide-top; /* 套用的 keyframe */
+    animation-duration: 4s;          /* 動畫持續時間 */
+    animation-iteration-count: infinite; /* 動畫播放次數 */
+    animation-timing-function: linear; /* 影片加速速率 */
+    animation-direction: alternate; /* 動畫持續時間 */
+}
+
+    @keyframes slide-bottom {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-15px);
+    }
+    100% {
+        opacity:1;
+        transform: translateY(15px);
+                
+                
+    }
+}
+.slide-bottom{
+    animation-name: slide-bottom; /* 套用的 keyframe */
+    animation-duration: 4s;          /* 動畫持續時間 */
+    animation-iteration-count: infinite; /* 動畫播放次數 */
+    animation-timing-function: linear; /* 影片加速速率 */
+    animation-direction: alternate; /* 動畫持續時間 */
+}
+
+
+    .container{
+        width: 100%;
+        height: 100%;
         text-align: center;
-        background-color: $blue;
-        padding: 20px;
-    }
-    .enter{
-        margin-top: 200px;
-        border-radius: 50%;
-        width: 200px;
-        height: 200px;
-        a{
-            display: block;
+        background-color: $baseWhite;
+        .logo{
+            
+            margin: 0 auto;
+            padding-top: 40px;
+            width: 1200px;
+            img{
+                width: 300px;
+                
+            }
         }
-    }    
+        .btn_contain{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 65vh;
+            margin: 0 auto;
+            width: 1200px;
+            .space{
+                width: 250px;
+            }
+            a{
+                border-radius: 50%;
+                border: 3px solid $blue;
+                transition: all .3s;
+                &:hover{
+                    background-color: $blue;
+                    transform: scale(1.1);
+                }
+                &:hover .enter{
+                    color:$white;
+                }
+                
+
+                .enter{
+                background-color: transparent;
+                border: 0px;
+                width: 180px;
+                height: 180px;
+                cursor: pointer;
+                font-size: 36px;
+                font-weight: 600;
+                color: $blue;
+                letter-spacing: 3px;
+                }    
+            }
+        }
+        
     .copyright {
+        margin: 0 auto;
+        padding-top: 50px;
+        width: 1200px;
         line-height: 1.5;
-        margin-top: 100px;
+        p{
+            color: rgb(119, 119, 119);
+        }
     }
+    }
+    
 </style>

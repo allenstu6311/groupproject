@@ -6,19 +6,26 @@
       
         <div class="review-score">
             <div class="review-fraction">
-                <h3><strong>5</strong>/5</h3>
+                <h3><strong>{{score}}</strong>/5</h3>
+             
             </div>
             <div class="review-star">
-                <p v-for="i in 5" :key="i">★</p>
+                <p v-for="item in this.star" :key="item">★</p>
+                <p v-if='this.star<1'>{{block}}</p>
+                <p v-if='this.star<2'>{{block}}</p>
+                <p v-if='this.star<3'>{{block}}</p>
+                <p v-if='this.star<4'>{{block}}</p>
+                <p v-if='this.star<5'>{{block}}</p>
             </div>
+               <small style="text-align:center">共{{order[0].PROD_TIMES}}人評價此商品</small>
         </div>
 
         <div class="review-evaluation">
-            <div class="evaluation-star"><p>1星</p></div>
-            <div class="evaluation-star"><p>2星</p></div>
-            <div class="evaluation-star"><p>3星</p></div>
-            <div class="evaluation-star"><p>4星</p></div>
-            <div class="evaluation-star"><p>5星</p></div>
+            <div class="evaluation-star"><p @click="giveRating(1,order[0].PROD_NAME)">1星</p></div>
+            <div class="evaluation-star"><p @click="giveRating(2,order[0].PROD_NAME)">2星</p></div>
+            <div class="evaluation-star"><p @click="giveRating(3,order[0].PROD_NAME)">3星</p></div>
+            <div class="evaluation-star"><p @click="giveRating(4,order[0].PROD_NAME)">4星</p></div>
+            <div class="evaluation-star"><p @click="giveRating(5,order[0].PROD_NAME)">5星</p></div>
         </div>
     </div>
     <!-- =========================================留言 -->
@@ -61,6 +68,11 @@ export default {
     data(){
         return{
             tex:"",
+            review:[],
+            order:[],
+            score:[],
+            star:[],
+            block:"☆",
             article:[
                 {
                     pic:"https://picsum.photos/50/50/?random=10",
@@ -71,6 +83,18 @@ export default {
         }
     },
     methods:{
+        giveRating(num,name){
+            
+
+            this.axios.get("http://localhost/cli/team/src/assets/php/review.php",
+            {
+                params:{
+                    number:num,
+                    product:name
+                }
+            })
+            alert("感謝評價")
+        },
         upload(){
             this.article.push({
                 pic:"https://picsum.photos/50/50/?random=10",
@@ -80,18 +104,7 @@ export default {
             this.tex=""
             this.setStorage()
         },
-        // keypress(){
-        //     window.addEventListener("keypress",function(e){
-        //         if(e.code=="Enter"){
-        //             this.article.push({
-        //             pic:"https://picsum.photos/50/50/?random=10",
-        //             name:"玄玄",
-        //             post:this.tex,
-        //     })
-        //     this.tex=""
-        //         }
-        //     })
-        // },
+    
         setStorage(){
             localStorage.setItem("article",JSON.stringify(this.article))
         },
@@ -99,11 +112,22 @@ export default {
             let articles = localStorage.getItem("article")
             if(!articles) return
             this.article = JSON.parse(articles)
+
+            let orders = localStorage.getItem("order");
+            if(!orders) return;
+            this.order = JSON.parse(orders)
+            console.log("order-->",this.order)
+
+            this.score =(this.order[0].PROD_REVIEW/this.order[0].PROD_TIMES ).toFixed(1)
+           
+
+            this.star = parseInt(this.score)
+             console.log("score-->",this.star)
         }
     },
     created(){
+       
         this.onlineStorage()
-    
     }
 }
 </script>

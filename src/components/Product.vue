@@ -56,9 +56,10 @@
                         <div class="product-addcar">
                             <button  class="btnLarge"  @click="addCar()">加入購物車</button>
                             <a href="./shoppingCart.html"><button   class="btnLarge  redBtn" @click="direct()">直接購買</button> </a> 
-                            </div>  
+                        </div>  
                     </div>
                 </div>
+                
             </div>             
        
 </template>

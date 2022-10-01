@@ -88,10 +88,10 @@
           <button @click="addNum(order)">+</button>
         </div>
         <div class="product-addcar">
-          <button class="btnLarge" @click="addCar()">加入購物車</button>
-          <a href="./shoppingCart.html"
-            ><button class="btnLarge redBtn" @click="direct()">直接購買</button>
-          </a>
+          <button class="btnLarge" @click="addCar(order[0].PROD_ID)">加入購物車</button>
+            <router-link to="/Confirm">
+              <button class="btnLarge redBtn" @click="direct()">直接購買</button>
+            </router-link>
         </div>
       </div>
     </div>
@@ -108,6 +108,7 @@ export default {
       star: [],
       member: [],
       cart: [],
+      calculate:[],
       block: "☆",
       product_num: 1,
     };
@@ -134,8 +135,13 @@ export default {
         this.page += 1;
       }
     },
-    addCar() {
-      this.cart.push({
+    addCar(id) {
+      
+      let index = this.cart.find(item=>item.PROD_ID===id)
+      
+      if(!index){
+        alert("成功加入")
+        this.cart.push({
         PROD_ID: this.order[0].PROD_ID,
         PROD_NAME: this.order[0].PROD_NAME,
         PROD_PRICE: this.order[0].PROD_PRICE,
@@ -151,11 +157,35 @@ export default {
         PROD_TIMES: this.order[0].PROD_TIMES + 1,
       });
 
+          this.calculate.push({
+        PROD_ID: this.order[0].PROD_ID,
+        PROD_NAME: this.order[0].PROD_NAME,
+        PROD_PRICE: this.order[0].PROD_PRICE,
+        PROD_PIC1: this.order[0].PROD_PIC1,
+        PROD_PIC2: this.order[0].PROD_PIC2,
+        PROD_PIC3: this.order[0].PROD_PIC3,
+        PROD_DATE: this.order[0].PROD_DATE,
+        PROD_NUM: this.product_num,
+        PROD_DESC1: this.order[0].PROD_DESC1,
+        PROD_DESC2: this.order[0].PROD_DESC2,
+        PROD_DESC3: this.order[0].PROD_DESC3,
+        PROD_REVIEW: this.order[0].PROD_REVIEW + 1,
+        PROD_TIMES: this.order[0].PROD_TIMES + 1,
+      });
+
+   
+
+      }else{
+        alert("購物車已有相同物品")
+      }
+      
+
       this.setStorage();
     },
     setStorage() {
       localStorage.setItem("user", JSON.stringify(this.member));
       localStorage.setItem("cart", JSON.stringify(this.cart));
+      localStorage.setItem("calculate", JSON.stringify(this.calculate));
     },
     getStar() {
       let orders = localStorage.getItem("order");
@@ -175,6 +205,10 @@ export default {
       let carts = localStorage.getItem("cart");
       if (!carts) return;
       this.cart = JSON.parse(carts);
+
+       let calculates = localStorage.getItem("calculate");
+      if (!calculates) return;
+      this.calculate = JSON.parse(calculates);
     },
   },
   created() {

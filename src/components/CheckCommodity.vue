@@ -6,15 +6,15 @@
         </div>
     <div class="commodity-show">
         <ul>
-            <li>
+            <li v-for="item in cart" :key="item">
                <div class="commodity-pic">
-                <img src="https://picsum.photos/300/200/?random=10">
+                <img :src="require(`../assets/phps/pic/${item.PROD_PIC1}`)">
                </div>
                <div class="commodity-price">
-                $100
+                ${{item.PROD_PRICE}}
                </div>
                <div class="commodity-price-num">
-                x1
+                X{{item.PROD_NUM}}
                </div>
             </li>
         </ul>
@@ -35,3 +35,40 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+    
+    data(){
+        return{
+
+        }
+    },
+    methods:{
+
+    getInfo(){
+
+        let orders = localStorage.getItem("order");
+        if(!orders) return;
+        this.order = JSON.parse(orders)
+
+        let members = localStorage.getItem("user")
+        if(!members) return;
+        this.member = JSON.parse(members)
+        
+        let carts = localStorage.getItem("cart")
+        if(!carts) return;
+        this.cart = JSON.parse(carts)
+
+        console.log(this.cart)
+
+        this.score =(this.order[0].PROD_REVIEW/this.order[0].PROD_TIMES ).toFixed(1)
+        this.star = parseInt(this.score)
+        
+        }
+    },
+    created(){
+        this.getInfo()
+    }
+}
+</script>

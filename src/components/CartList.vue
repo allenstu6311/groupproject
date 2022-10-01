@@ -131,10 +131,3 @@ export default {
 
 </style>
    
-//  <div class="shopping-discount">
-// //                     <h5>選擇優惠券:</h5>
-// //                     <select name="" id="" v-model="sel" >
-// //                         <option value="1">請選擇</option>
-// //                         <option v-for="item in coupon" :key="item" :value="item.CPS_DIS">{{item.CPS_NAME}}</option>
-//                     </select>
-//                 </div>

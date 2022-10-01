@@ -44,21 +44,20 @@
                 </div>
             </div>
         </div>
-        <div class="member-send">
-            <button class="btnLittle">送出</button>
-        </div>
     </div>
-    
+
 </template>
 
 <style lang="scss" scope>
   *{
     box-sizing: border-box;
   }
+  
 </style>
 
 <script>
 export default {
+  
   data(){
     return{
         member:[],

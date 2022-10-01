@@ -13,15 +13,88 @@
     <input type="checkbox" v-model="agree">
     <span>我同意本網站的<span>服務條款</span>與<span>退換貨規則</span></span>
 </div>
-<div class="change-page">
+
+  <div class="change-page">
     <button type="button">上一頁</button>
     <button  type="button" disabled class="next-page" :class="{checkAfter:agree}">下一頁</button>
 </div>
 
 
+
 <Footer />
 
 </template>
+<script>
+import Header from "@/components/Header.vue"
+import Footer from "@/components/Footer.vue"
+import MemberInfo from "@/components/MemberInfo.vue"
+import CheckCommodity from "@/components/CheckCommodity.vue"
+export default {
+    components:{
+        Header,
+        Footer,
+        MemberInfo,
+        CheckCommodity
+    },
+    data(){
+        return{
+            agree:false,
+            totalPrice:0,
+        }
+    },
+    methods:{
+        Information() {
+      let orders = localStorage.getItem("order");
+      if (!orders) return;
+      this.order = JSON.parse(orders);
+
+      let members = localStorage.getItem("user");
+      if (!members) return;
+      this.member = JSON.parse(members);
+
+      let carts = localStorage.getItem("cart");
+      if (!carts) return;
+      this.cart = JSON.parse(carts);
+
+      let calculates = localStorage.getItem("calculate");
+      if (!calculates) return;
+      this.calculate = JSON.parse(calculates);
+
+      console.log("商-->",this.calculate)
+
+      let totalPrices = localStorage.getItem("totalPrice");
+      if (!totalPrices) return;
+      this.totalPrice = JSON.parse(totalPrices);
+
+      this.score = (
+        this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
+      ).toFixed(1);
+      this.star = parseInt(this.score);
+    },
+    pay() {
+
+           this.axios.get("http://localhost/CGD102_G2/src/assets/phps/productlist.php",{
+          params:{
+                PROD_ORDERS_SUBTOTAL:this.totalPrice,
+                
+          }
+      })
+          this.axios.get("http://localhost/CGD102_G2/src/assets/php/productOrder.php",{
+          params:{
+             PROD_ID:this.calculates[0].PROD_ID,
+             ORDER_ITEMS_PRICE:this.calculates[0].PROD_PRICE,
+             ORDER_ITEMS_QTY:this.calculates[0].PROD_NUM,
+          }
+      })
+    },
+    },
+    
+    created(){
+       this.Information()
+       
+    }
+}
+</script>
 <style lang="scss" scope>
 .background-pic{
     position: fixed;
@@ -140,22 +213,3 @@
     }
 </style>
 
-<script>
-import Header from "@/components/Header.vue"
-import Footer from "@/components/Footer.vue"
-import MemberInfo from "@/components/MemberInfo.vue"
-import CheckCommodity from "@/components/CheckCommodity.vue"
-export default {
-    components:{
-        Header,
-        Footer,
-        MemberInfo,
-        CheckCommodity
-    },
-    data(){
-        return{
-            agree:false,
-        }
-    }
-}
-</script>

@@ -135,6 +135,7 @@ export default {
         this.page += 1;
       }
     },
+    
     addCar(id) {
       
       let index = this.cart.find(item=>item.PROD_ID===id)

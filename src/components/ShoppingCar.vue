@@ -4,6 +4,8 @@
         <img src="../assets/images/bcgFlower.png" alt="">
     </div>
 
+    
+
         <!-- ========================================banner -->
 
         <div class="purchase-area">

@@ -6,8 +6,9 @@
                 <div class="title-font">物</div>
                 <div class="title-font">車</div>
             </div>
+        </div>
 
-            <div class="shopping-list col-12">
+        <div class="shopping-list col-12">
                  <div class="shopping-cart-empty" v-if="detect==0" style="text-align:center;">
                     <h1>目前購物車是空的</h1>
                 </div> 
@@ -43,7 +44,7 @@
             
          
                
-                <div class="shopping-price">
+                <!-- <div class="shopping-price">
                     <div class="shopping-box">
                         全選<input type="checkbox" v-model="checked"  @click="checkTotal">
                         <button class="btnLarge" @click="drop">刪除選取項目</button>
@@ -55,8 +56,8 @@
                     </router-link>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div> -->
+       
 </template>
 
 <script>
@@ -84,8 +85,12 @@ export default {
             //     }
             // })
         },
+        getInfo(){
+
+        },
 
           onlineStorage(){
+          
         let orders = localStorage.getItem("order");
         if(!orders) return;
         this.order = JSON.parse(orders)
@@ -93,7 +98,7 @@ export default {
         let members = localStorage.getItem("user")
         if(!members) return;
         this.member = JSON.parse(members)
-    
+        
         let carts = localStorage.getItem("cart")
         if(!carts) return;
         this.cart = JSON.parse(carts)
@@ -119,10 +124,17 @@ export default {
 }
 </script>
 
+<style lang="scss">
+.shopping-list{
+    background-color: red;
+}
+
+</style>
+   
 //  <div class="shopping-discount">
-//                     <h5>選擇優惠券:</h5>
-//                     <select name="" id="" v-model="sel" >
-//                         <option value="1">請選擇</option>
-//                         <option v-for="item in coupon" :key="item" :value="item.CPS_DIS">{{item.CPS_NAME}}</option>
+// //                     <h5>選擇優惠券:</h5>
+// //                     <select name="" id="" v-model="sel" >
+// //                         <option value="1">請選擇</option>
+// //                         <option v-for="item in coupon" :key="item" :value="item.CPS_DIS">{{item.CPS_NAME}}</option>
 //                     </select>
 //                 </div>

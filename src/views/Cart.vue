@@ -1,20 +1,20 @@
 <template>
     <Header />
-    <CartList />
+    <ProductCart />
     <ShoppingCar />
     <Footer />
 </template>
 
 <script>
 import ShoppingCar from "@/components/ShoppingCar.vue"
-import CartList from "@/components/CartList.vue"
+import ProductCart from "@/components/ProductCart.vue"
 import Header from "@/components/Header.vue"
 import Footer from "@/components/Footer.vue"
  
 export default {
     components:{
         ShoppingCar,
-        CartList,
+        ProductCart,
         Header,
         Footer
 

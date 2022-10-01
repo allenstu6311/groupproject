@@ -1,0 +1,208 @@
+@include cellphone();
+// ====================================商品區
+.shopping-list{
+    margin: auto;
+    font-weight: 800;
+
+    .shopping-cart-empty{}
+    .shopping-list-order{
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-around;
+        margin-bottom: 30px;
+        background-color: $white;
+        box-shadow: 0px 0px 10px rgb(211, 211, 211);
+        padding: 10px 0;
+
+        input[type="checkbox"]{
+            width: 20px;
+            height: 20px;
+        }
+        .shopping-list-pic{
+            width: 30%;
+            img{
+                width: 100%;
+            }
+        }
+
+        .shopping-list-body{
+            line-height: 1.5;
+            .shopping-list-name{
+                margin-bottom: 5px;
+            }
+            .shopping-list-calculate{
+                h5{
+                    color:$red
+                }
+            }
+            .shopping-list-star{
+                display: none;
+            }
+            .shopping-list-int{}
+           
+        }
+        .shopping-list-btn{
+            display: none;
+        }
+    }
+}
+// =====================================優惠券
+.shopping-discount{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: $white;
+    box-shadow: 0px 0px 10px rgb(211, 211, 211);
+    padding: 30px 0;
+    font-weight: 800;
+}
+// ====================================確認區
+.shopping-price{
+    margin: auto;
+    font-weight: 800;
+    background-color: $white;
+    box-shadow: 0px 0px 10px rgb(211, 211, 211);
+    padding: 10px 0;
+    .shopping-box{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+
+        span{
+            font-size: 22px;
+        }
+        input{
+            width: 30px;
+            height: 30px;
+        }
+    }
+    .shopping-check{
+        line-height: 2;
+        .shopping-checkout{
+            text-align: center;
+        }
+    }
+
+}
+@media screen and (min-width:768px) {
+    // ======================================商品
+    .shopping-list{
+        .shopping-cart-empty{}
+        .shopping-list-order{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            background-color: $white;
+            box-shadow: 0px 0px 10px rgb(211, 211, 211);
+            padding: 10px 10px;
+    
+            input[type="checkbox"]{
+                width: 20px;
+                height: 20px;
+                margin: 0 10px;
+            }
+            .shopping-list-pic{
+                width: 10%;
+                img{
+                    width: 100%;
+                }
+            }
+    
+            .shopping-list-body{
+                width: 70%;
+                line-height: 1.5;
+                display: flex;
+                align-items: center;
+                margin-left: 0;
+                .shopping-list-name{
+                    width:350px;
+                    margin-bottom: 5px;
+                }
+                .shopping-list-calculate{
+                    margin: auto;
+                    h5{
+                        color:$red
+                    }
+                }
+                .shopping-list-star{
+                    display: flex;
+                    p{
+                        margin: 0 5px;
+                        font-size: 20px;
+                        color:$red
+                    }
+                }
+                .shopping-list-int{
+                    margin: auto;
+                }
+               
+            }
+            .shopping-list-btn{
+                display: block;
+            }
+        }
+    }
+// ==========================================優惠券
+.shopping-discount{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: $white;
+    box-shadow: 0px 0px 10px rgb(211, 211, 211);
+    padding: 30px 0;
+    margin: auto;
+    font-weight: 800;
+    select{
+        margin: 0 10px;
+    }
+}
+// ======================================確認
+
+    .shopping-price{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: auto;
+        font-weight: 800;
+        background-color: $white;
+        box-shadow: 0px 0px 10px rgb(211, 211, 211);
+        padding: 10px 0;
+        .shopping-box{
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-bottom: 0px;
+            padding: 10px 10px;
+    
+            span{
+                font-size: 28px;
+                margin-right:20px;
+                display: flex;
+                align-items: center;
+            }
+            input{
+                width: 30px;
+                height: 30px;
+            }
+        }
+        .shopping-check{
+            display: flex;
+            align-items: center;
+            line-height: 2;
+            .shopping-checkout{
+                width: 650px;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                margin-right:0 ;
+                justify-content: space-evenly;
+            }
+        }
+    
+    }
+}
+

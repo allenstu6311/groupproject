@@ -35,28 +35,28 @@
           <h5>${{ item.PROD_PRICE }}</h5>
         </div>
         <div class="shopping-list-star">
-          <p
-            v-for="item in parseInt(item.PROD_REVIEW / item.PROD_TIMES)"
-            :key="item"
-          >
-            ★
-          </p>
+          <p v-for="item in parseInt(item.PROD_REVIEW / item.PROD_TIMES)" :key="item">★</p>
+                <p v-if='star<1'>{{block}}</p>
+                <p v-if='star<2'>{{block}}</p>
+                <p v-if='star<3'>{{block}}</p>
+                <p v-if='star<4'>{{block}}</p>
+                <p v-if='star<5'>{{block}}</p>
         </div>
         <div class="shopping-list-int">
-          <button @click="reduceNum(item)">-</button
+          <button @click="reduceNum(item,item.PROD_ID)">-</button
           ><input
             style="text-align: center"
             type="text"
             :value="item.PROD_NUM"
             size="1"
-          /><button @click="addNum(item)">+</button>
+          /><button @click="addNum(item,item.PROD_ID)">+</button>
         </div>
       </div>
       <div class="shopping-list-btn">
         <button
           class="btnMinimum"
           style="padding: 7px"
-          @click="reduceCar(item.PROD_ID)"
+          @click="reduceCar(item,item.PROD_ID)"
         >
           移出購物車
         </button>
@@ -105,21 +105,29 @@ export default {
       totalPrice: 0,
       calculate: [],
       checkOut: true,
+      block:"☆",
     };
   },
   methods: {
-    reduceNum(item) {
+    reduceNum(item,id) {
+       let carNum = this.calculate.find(item=>item.PROD_ID===id)
       item.PROD_NUM -= 1;
+       carNum.PROD_NUM-=1
       this.setLocal();
     },
-    addNum(item) {
+    addNum(item,id) {
       item.PROD_NUM += 1;
+      let carNum = this.calculate.find(item=>item.PROD_ID===id)
+      carNum.PROD_NUM+=1
       this.setLocal();
     },
     reduceCar(id) {
       let count = this.cart.findIndex((item) => item.PROD_ID === id);
-
+      let index = this.calculate.findIndex(item=>item.PROD_ID===id)
+      
       this.cart.splice(count, 1);
+      this.calculate.splice(index,1)
+      this.setLocal()
     },
     drop() {
       for (let i = this.cart.length - 1; i >= 0; i--) {
@@ -135,6 +143,7 @@ export default {
           }
         }
       }
+      location.reload()
       
       this.setLocal();
     },

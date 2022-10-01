@@ -34,6 +34,7 @@
         }
         .review-star{
             display: flex;
+            justify-content:flex-start;
             p{
                 font-size: 35px;
                 margin: 0 5px;
@@ -153,6 +154,7 @@
             }
             .review-star{
                 display: flex;
+                justify-content: center;
                 p{
                     font-size: 35px;
                     margin: 0 5px;

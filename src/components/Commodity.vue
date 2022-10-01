@@ -69,9 +69,12 @@
                 v-for="i in parseInt(
                   (item.PROD_REVIEW + 1) / (item.PROD_TIMES + 1)
                 )"
-                :key="i"
-                >★</span
-              >
+                :key="i">★</span>
+                <span v-if='star<1'>{{block}}</span>
+                <span v-if='star<2'>{{block}}</span>
+                <span v-if='star<3'>{{block}}</span>
+                <span v-if='star<4'>{{block}}</span>
+                <span v-if='star<5'>{{block}}</span>
             </div>
           </div>
         </div>
@@ -151,13 +154,14 @@ export default {
       order: [],
       info: [],
       starNum: [],
-      orderby: 1,
+      orderby: "",
       toggle: false,
       commoditySale: 1,
       areaShow: "卡片",
       empty: false,
       picWidth: "",
       photo: "",
+      block:"☆",
     };
   },
   methods: {
@@ -237,19 +241,9 @@ export default {
           };
          
       });
-       
-       
     this.clear();
     this.onlineStorage();
-
-  
-    
   },
-  mounted(){
-      
-
-  },
-
   watch: {
     toggle: {
       handler(newVal) {
@@ -321,6 +315,22 @@ export default {
         this.data = newVal;
       },
     },
+    orderby:{
+      handler(newVal){
+        console.log(newVal)
+        if(newVal==1){
+          this.data.sort(function(a,b){
+            return  b.PROD_PRICE-a.PROD_PRICE
+           
+          })
+        }else{
+            this.data.sort(function(a,b){
+            return b.PROD_REVIEW-a.PROD_REVIEW
+           
+          })
+        }
+      }
+    }
   },
 };
 </script>

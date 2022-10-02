@@ -17,12 +17,15 @@
           >
         </div>
         <div class="commodity-filter">
-          <button @click="orderby = 1" :class="{ orderColor: orderby == 1 }">
-            價格排序
-          </button>
-          <button @click="orderby = 2" :class="{ orderColor: orderby == 2 }">
-            評價排序
-          </button>
+          <select name="" id="" v-model="selFilter"  @change="groupBy(selFilter)">
+            <option value="0" selected>隨機排續</option>
+            <option value="1">價格由高至低</option>
+            <option value="2">價格由低至高</option>
+            <option value="3">評價由高至低</option>
+            <option value="4">評價由低至高</option>
+            <option value="5">日期由新至舊</option>
+            <option value="6">日期由舊至新</option>
+          </select>
           <button @click="toggle = !toggle">{{ areaShow }}</button>
         </div>
       </div>
@@ -135,6 +138,9 @@
     <div class="special-offer" v-if="commoditySale == 2">
       <h1>目前無特價商品</h1>
     </div>
+    <div class="commodity-page">
+      <span v-for="(i,value) in 3" :key="i" @click="pagination(i,value)" :class="{changePage:i==currPage}">{{i}}</span>
+    </div>
   </div>
 </template>
 <script>
@@ -162,6 +168,10 @@ export default {
       picWidth: "",
       photo: "",
       block:"☆",
+      selFilter:0,
+      range_1:0,
+      range_2:4,
+      currPage:1,
     };
   },
   methods: {
@@ -186,8 +196,6 @@ export default {
           PROD_PIC2: this.data[index].PROD_PIC2,
           PROD_PIC3: this.data[index].PROD_PIC3,
           PROD_DATE: this.data[index].PROD_DATE,
-          // PROD_NUM:this.data[index].PRODUCT_NUM,
-
           PROD_DESC1: this.data[index].PROD_DESC1,
           PROD_DESC2: this.data[index].PROD_DESC2,
           PROD_DESC3: this.data[index].PROD_DESC3,
@@ -206,18 +214,94 @@ export default {
       if (!orders) return;
       this.order = JSON.parse(orders);
     },
+    groupBy(value){
+       
+      switch(value){
+        case "0":
+        this.data.sort(function() {
+        return (0.5-Math.random());
+        });
+        break;
+
+        case "1":
+          this.data.sort(function(a,b){
+          return  b.PROD_PRICE-a.PROD_PRICE
+           
+          })
+          break;
+
+          case "2":
+          this.data.sort(function(a,b){
+          return a.PROD_PRICE - b.PROD_PRICE
+           
+          })
+          break;
+
+          case "3":
+          this.data.sort(function(a,b){
+          return b.PROD_REVIEW-a.PROD_REVIEW
+           
+          })
+          break;
+
+          case "4":
+          this.data.sort(function(a,b){
+          return a.PROD_REVIEW - b.PROD_REVIEW
+           
+          })
+          break;
+
+          case "5":
+          this.data.sort(function(a,b){
+          return new Date(b.PROD_DATE)-new Date(a.PROD_DATE) 
+           
+          })
+          break;
+
+          case "6":
+          this.data.sort(function(a,b){
+          return new Date(a.PROD_DATE) - new Date(b.PROD_DATE) 
+           
+          })
+          break;
+          
+      }
+    },
     clear() {
       this.order = [];  
     },
-    
-  },
-  created() {
-    this.axios.get("http://localhost/CGD102_G2/src/assets/phps/commoditylist.php")
+    pagination(i,value){
+      this.currPage=i
+      switch(i){
+         case 1:
+          this.range_1=0
+          this.range_2=4
+          this.getCommodityInfo()
+       
+          break;
+        case 2:
+          this.range_1=4
+          this.range_2=8
+          this.getCommodityInfo()
+          break;
+      }
+    },
+     getCommodityInfo(){
+      this.axios.get("http://localhost/CGD102_G2/src/assets/phps/commoditylist.php",
+    {
+      params:{
+          range_1:this.range_1,
+          range_2:this.range_2,
+      }
+    })
       .then((res) => {
         // console.log(this.price)
         this.data = res.data;
         this.info = res.data;
-             
+        this.data.sort(function() {
+        return (0.5-Math.random());
+        });
+            
         for (let i = 0; i < this.data.length; i++) {
           this.starNum.push(
             (
@@ -226,7 +310,6 @@ export default {
             ).toFixed(1)
           );
         }
-           console.log(this.order)
       this.$nextTick(() => {
           //等dom更新時會執行
           this.photo = document.getElementById("pic").clientWidth;
@@ -241,6 +324,13 @@ export default {
           };
          
       });
+
+  },
+    
+  },
+ 
+  created() {
+    this.getCommodityInfo()
     this.clear();
     this.onlineStorage();
   },
@@ -249,14 +339,22 @@ export default {
       handler(newVal) {
         if (newVal == false) {
           this.areaShow = "橫排";
-           this.photo = document.getElementById("pic").clientWidth-49;
+          this.photo = document.getElementById("pic").clientWidth-49;
+             window.onresize = () => {
+            let pic = document.getElementById("pic").clientWidth;
+            this.photo = pic;
+         
+          };
           console.log(this.photo) 
         } else {
           this.areaShow = "卡片";
-          this.photo = document.getElementById("pic").clientWidth+50;
-          console.log(this.photo)
-        
+          this.photo = document.getElementById("pic").clientWidth+85;
+             window.onresize = () => {
+            let pic = document.getElementById("pic").clientWidth;
+            this.photo = pic;
          
+          };
+          console.log(this.photo)
         }
       },
     },
@@ -315,22 +413,6 @@ export default {
         this.data = newVal;
       },
     },
-    orderby:{
-      handler(newVal){
-        console.log(newVal)
-        if(newVal==1){
-          this.data.sort(function(a,b){
-            return  b.PROD_PRICE-a.PROD_PRICE
-           
-          })
-        }else{
-            this.data.sort(function(a,b){
-            return b.PROD_REVIEW-a.PROD_REVIEW
-           
-          })
-        }
-      }
-    }
   },
 };
 </script>

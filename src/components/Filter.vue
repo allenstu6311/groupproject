@@ -204,7 +204,7 @@ export default {
                         location.reload()
                     }else{
                         this.checkTool=[{
-                            type:"球"
+                            type:"按摩球"
                         }]
                     }
                     break;

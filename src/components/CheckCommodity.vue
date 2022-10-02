@@ -33,11 +33,12 @@
 
 <script>
 export default {
+  
   data() {
     return {
       calculate: [],
-      productPrice: 0,
       totalPrice: "",
+      productPrice:0,
     };
   },
   methods: {
@@ -69,9 +70,17 @@ export default {
         this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
       ).toFixed(1);
       this.star = parseInt(this.score);
+     
     },
   },
-  watch: {
+
+  created() {
+    this.getInfo();
+    
+
+   
+  },
+    watch: {
     calculate: {
       handler(newVal) {
         this.productPrice = "";
@@ -79,14 +88,11 @@ export default {
           this.productPrice = parseFloat(
             this.productPrice + newVal[i].PROD_PRICE * newVal[i].PROD_NUM
           );
+              this.$emit("productPrice",this.productPrice)
         }
       },
     },
 
-  },
-  created() {
-    this.getInfo();
-   
   },
 };
 </script>

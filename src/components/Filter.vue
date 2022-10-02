@@ -1,8 +1,11 @@
 <template>
 
- <div class="filter-range" @click="filterChose">
-    <img src="../assets/images/filter_min_blue.png" alt="">
- </div>
+
+    <span class="filter-range" @click="filterChose">
+      <i class="fa-solid fa-filter"></i>
+    </span>
+   
+
     <div class="filter-container" v-if="filter==true">   
         <div class="filter-list">
             <div class="filter-close">

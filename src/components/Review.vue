@@ -28,15 +28,22 @@
             <div class="evaluation-star"><p @click="giveRating(5,order[0].PROD_NAME)">5星</p></div>
         </div>
     </div>
+    <!-- =============================================如果沒有留言 -->
+
+        <div class="no-article" v-if="article.length==0">
+            <h2>目前沒有評論</h2>    
+        </div> 
     <!-- =========================================留言 -->
     <div class="message-container" v-for="item in  article" :key="item">
         <div class="message-user"  >
             <div class="message-user">
                 <div class="user-pic">
                     <img :src="item.pic">
+                    <img src="https://picsum.photos/50/50/?random=10" v-if="item.pic==null">
                 </div>
             <div class="user-name">
                 <p>{{item.mem_name}}</p>
+                <small>{{item.COMMENT_DATE}}</small>
             </div>
             </div>
 
@@ -44,7 +51,7 @@
             <p>{{item.COMMENT_MESSAGE}}</p>
         </div>
     </div>
-</div>
+    </div>
     
 
     <div class="message-write">
@@ -80,7 +87,7 @@ export default {
     methods:{
         giveRating(num,name){
             
-
+            
             this.axios.get("http://localhost/CGD102_G2/src/assets/phps/review.php",
             {
                 params:{
@@ -100,8 +107,15 @@ export default {
                         mem_id:this.member[0].MEM_ID,
                     }
                 })
-            
-            
+                
+                this.article.push({
+                    COMMENT_MESSAGE:this.tex,
+                    mem_name:this.article[0].mem_name,
+                    COMMENT_DATE:new Date().toISOString().slice(0, 19).replace('T', ' ')
+                })
+
+                this.tex=""
+
         },
         getStorage(){
             
@@ -118,22 +132,9 @@ export default {
             this.star = parseInt(this.score)
         },
     
-        setStorage(){
-            localStorage.setItem("article",JSON.stringify(this.article))
-        },
-        onlineStorage(){
-         
-            let articles = localStorage.getItem("article")
-            if(!articles) return
-
-            this.article = JSON.parse(articles)
-        
-        }
     },
     created(){
         this.getStorage()
-        this. onlineStorage()
-
         this.axios.get("http://localhost/CGD102_G2/src/assets/phps/article.php",
         {
             params:{
@@ -143,11 +144,15 @@ export default {
         .then((res)=>{
            
             this.article = res.data
-             console.log( this.article)
+             console.log("文章", this.article)
+
+        console.log(new Date().toLocaleTimeString().slice(0, 19).replace('T', ' '))
+
+  
         })
-        
-        
-      
+
+ 
+       
     }
 }
 </script>

@@ -61,7 +61,7 @@
       <div class="product-name">
         <h2>{{ order[0].PROD_NAME }}</h2>
       </div>
-      <div class="review-star">
+      <div class="product-star">
         <p v-for="item in star" :key="item">★</p>
         <p v-if="star < 1">{{ block }}</p>
         <p v-if="star < 2">{{ block }}</p>
@@ -83,7 +83,7 @@
           <br />
         </div>
         <div class="product-number">
-          <button @click="reduceNum(order)">-</button>
+          <button @click="reduceNum(order)">–</button>
           <input type="text" v-model="product_num" />
           <button @click="addNum(order)">+</button>
         </div>

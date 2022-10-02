@@ -24,7 +24,7 @@
             >
                 <div class="row ">
                     <div class="col-xl-6 col-12">
-                        <div class="frame frame_one">
+                        <div class="frame frame_one" :class="'frame_'+[therapist.THERAPIST_ID]">
                             <div class="masseusePic">
                                 <img
                                 :src="require(`@/assets/images/${therapist.THERAPIST_PIC}`)"
@@ -35,7 +35,7 @@
                     </div>
                     <div class="col-xl-6 col-12 rwd_text">
                         <h4 class="third_title title_one">{{ therapist.THERAPIST_NAME }}  <span>師傅</span></h4>
-                        <div class="text text_one">
+                        <div class="text text_one" :class="'text_'+[therapist.THERAPIST_ID]">
                             <p>證照：</p>
                             <p class="text_content">
                                 {{  therapist.THERAPIST_LICENSE_1 }}
@@ -50,8 +50,8 @@
                                 {{  therapist.THERAPIST_LICENSE_4 }}
                             </p>
                         </div>
-                        <a href="/reserve">
-                            <div class="btnLittle btnLittle_one">立即預約</div>
+                        <a href="/resvPage">
+                            <div class="btnLittle btnLittle_one" :class="'btnLittle_'+[therapist.THERAPIST_ID]">立即預約</div>
                         </a>
                     </div>
                 </div>
@@ -85,12 +85,12 @@ export default {
                 let JSON =  response.json();
                 this.therapistCardList = await JSON; // php抓取回來的資料存取在預設好的參數裡
             }
-            await getData(url); // 觸發 getData 的匿名 function 內容 ==> 79 ~ 81 行的內容
+            await getData(url); // 觸發 getData 的匿名 function 內容 ==> 84 ~ 86 行的內容
             console.log(this.therapistCardList);
 
-            gsap.from(".frame_one",{
+            gsap.from(".frame_1",{
             scrollTrigger: {
-                trigger: ".frame_one",
+                trigger: ".frame_1",
                 start: "30% center"
             },
             x: -300,
@@ -99,9 +99,9 @@ export default {
             opacity: 0,
             ease: "back"
             });
-            gsap.from(".text_one p",{
+            gsap.from(".text_1 p",{
                 scrollTrigger: {
-                    trigger: ".text_one",
+                    trigger: ".text_1",
                     start: "top center"
                 },
                 duration: 1,
@@ -111,13 +111,115 @@ export default {
                 opacity: 0,
                 ease: "back"
             });
-            gsap.from(".btnLittle_one",{
+            gsap.from(".btnLittle_1",{
                 scrollTrigger: {
-                    trigger: ".text_one",
+                    trigger: ".text_1",
                     start: "top center"
                 },
                 duration: 1,
                 delay: 1.2,
+                x: 100,
+                opacity: 0,
+                ease: "back"
+            });
+            gsap.from(".frame_2",{
+            scrollTrigger: {
+                trigger: ".frame_2",
+                start: "30% center"
+            },
+            x: -300,
+            rotation: -45,
+            duration: 2,
+            opacity: 0,
+            ease: "back"
+            });
+            gsap.from(".text_2 p",{
+                scrollTrigger: {
+                    trigger: ".text_2",
+                    start: "top center"
+                },
+                duration: 1,
+                stagger: 0.2,
+                delay: 0.2,
+                x: 150,
+                opacity: 0,
+                ease: "back"
+            });
+            gsap.from(".btnLittle_2",{
+                scrollTrigger: {
+                    trigger: ".text_2",
+                    start: "top center"
+                },
+                duration: 1,
+                delay: 1,
+                x: 100,
+                opacity: 0,
+                ease: "back"
+            });
+            gsap.from(".frame_3",{
+            scrollTrigger: {
+                trigger: ".frame_3",
+                start: "30% center"
+            },
+            x: -300,
+            rotation: -45,
+            duration: 2,
+            opacity: 0,
+            ease: "back"
+            });
+            gsap.from(".text_3 p",{
+                scrollTrigger: {
+                    trigger: ".text_3",
+                    start: "top center"
+                },
+                duration: 1,
+                stagger: 0.2,
+                delay: 0.2,
+                x: 150,
+                opacity: 0,
+                ease: "back"
+            });
+            gsap.from(".btnLittle_3",{
+                scrollTrigger: {
+                    trigger: ".text_3",
+                    start: "top center"
+                },
+                duration: 1,
+                delay: 1,
+                x: 100,
+                opacity: 0,
+                ease: "back"
+            });
+            gsap.from(".frame_4",{
+            scrollTrigger: {
+                trigger: ".frame_4",
+                start: "30% center"
+            },
+            x: -300,
+            rotation: -45,
+            duration: 2,
+            opacity: 0,
+            ease: "back"
+            });
+            gsap.from(".text_4 p",{
+                scrollTrigger: {
+                    trigger: ".text_4",
+                    start: "top center"
+                },
+                duration: 1,
+                stagger: 0.2,
+                delay: 0.2,
+                x: 150,
+                opacity: 0,
+                ease: "back"
+            });
+            gsap.from(".btnLittle_4",{
+                scrollTrigger: {
+                    trigger: ".text_4",
+                    start: "top center"
+                },
+                duration: 1,
+                delay: 1,
                 x: 100,
                 opacity: 0,
                 ease: "back"

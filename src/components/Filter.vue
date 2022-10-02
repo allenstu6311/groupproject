@@ -25,11 +25,10 @@
             <p><input type="radio" name="price" v-model="checkTarget_4" value="true" @click="checked(4)">1500~1999元</p>
         </div>
          <div class="keyword">
-            <p>關鍵字搜尋</p>
-             <p><input type="checkbox">按摩槍</p>
-            <p><input type="checkbox">按摩槍</p>
-            <p><input type="checkbox">按摩槍</p>
-            <p><input type="checkbox">按摩槍</p>
+        <p>關鍵字搜尋</p>
+            <p><input type="radio" name="product" v-model="tool_1" value="true" @click="tool(1)">按摩槍</p>
+            <p><input type="radio" name="product" v-model="tool_2" value="true" @click="tool(2)">按摩球</p>
+            <p><input type="radio" name="product" v-model="tool_3" value="true" @click="tool(3)">按摩滾筒</p>
         </div>
         </div>
       

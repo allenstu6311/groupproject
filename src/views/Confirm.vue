@@ -60,7 +60,7 @@ export default {
       if (!calculates) return;
       this.calculate = JSON.parse(calculates);
 
-      console.log("商-->",this.calculate)
+    //   console.log("商-->",this.calculate)
 
       let totalPrices = localStorage.getItem("totalPrice");
       if (!totalPrices) return;
@@ -71,14 +71,17 @@ export default {
       ).toFixed(1);
       this.star = parseInt(this.score);
     },
-    pay() {
+    pay() {//商品清單
 
-           this.axios.get("http://localhost/CGD102_G2/src/assets/phps/productlist.php",{
-          params:{
+        this.axios.get("http://localhost/CGD102_G2/src/assets/phps/productlist.php",{
+        params:{
                 PROD_ORDERS_SUBTOTAL:this.totalPrice,
                 
           }
+      }).then((res)=>{
+        
       })
+      //商品明細
           this.axios.get("http://localhost/CGD102_G2/src/assets/php/productOrder.php",{
           params:{
              PROD_ID:this.calculates[0].PROD_ID,
@@ -90,6 +93,12 @@ export default {
     },
     
     created(){
+           this.axios.get("http://localhost/CGD102_G2/src/assets/phps/member.php")
+    .then((res)=>{
+      this.memberCoups = res.data
+      console.log("Coups-->",this.memberCoups)
+      console.log("mem-->",this.member)
+    })
        this.Information()
        
     }

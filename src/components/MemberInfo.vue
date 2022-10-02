@@ -92,7 +92,7 @@ export default {
     this.axios.get("http://localhost/CGD102_G2/src/assets/phps/memberInfo.php")
     .then((res)=>{
       this.member = res.data
-      console.log(this.member[0])
+      // console.log(this.member[0])
     })
   }
 }

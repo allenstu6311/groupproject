@@ -139,7 +139,9 @@
       <h1>目前無特價商品</h1>
     </div>
     <div class="commodity-page">
+      <span @click="prevCurrPage">＜</span>
       <span v-for="(i,value) in 3" :key="i" @click="pagination(i,value)" :class="{changePage:i==currPage}">{{i}}</span>
+      <span @click="nextCurrPage">＞</span>
     </div>
   </div>
 </template>
@@ -269,6 +271,18 @@ export default {
     },
     clear() {
       this.order = [];  
+    },
+    prevCurrPage(){
+      this.currPage-=1
+      this.range_1-=4
+      this.range_2-=4
+      this.getCommodityInfo()
+    },
+     nextCurrPage(){
+      this.currPage+=1
+      this.range_1+=4
+      this.range_2+=4
+      this.getCommodityInfo()
     },
     pagination(i,value){
       this.currPage=i

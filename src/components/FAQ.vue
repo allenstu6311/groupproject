@@ -90,7 +90,7 @@
             async getDataFromApi() {
                 var url = 'http://localhost/CGD102_G2/src/assets/phps/FAQContent.php'
                 let getData = async(url) => {
-                    let response = await fetch(url); // await 很重要
+                    let response = await fetch(url); // await: 這行的 await 執行完才會執行下一個 await
                     let JSON =  response.json();
                     this.faqCardList = await JSON; // php 抓取回來的資料存取在預設好的參數裡
                 }

@@ -9,6 +9,7 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 // import 'view-ui-plus/dist/styles/viewuiplus.css'
+// import "bootstrap/dist/css/bootstrap.css"
 
 
 createApp(App).use(store)

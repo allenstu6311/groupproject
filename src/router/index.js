@@ -16,6 +16,9 @@ import MemRegister from "../views/MemRegisterView.vue"
 import MassageSchoolView from '../views/MassageSchoolView.vue'
 import MassageGameView from '../views/MassageGameView.vue'
 import GetCouponView from '../views/GetCouponView.vue'
+import BackstageView from '../views/BackstageView.vue'
+import BackstageIndexView from '../views/BackstageIndexView.vue'
+import ManageLoginView from '../views/ManageLoginView.vue'
 
 const routes = [
   {
@@ -136,6 +139,21 @@ const routes = [
     // this generates a separate chunk (reserve.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "reserve" */ '../views/Detail.vue')
+  },
+  {
+    path: '/backstage',
+    name: 'backstage',
+    component: BackstageView
+  },
+  {
+    path: '/backstageIndex',
+    name: 'backstageIndex',
+    component: BackstageIndexView
+  },
+  {
+    path: '/manageLogin',
+    name: 'manageLogin',
+    component: ManageLoginView
   },
 ]
 

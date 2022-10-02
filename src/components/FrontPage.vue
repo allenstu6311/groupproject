@@ -10,7 +10,7 @@
                 <button class="enter">前台</button>
             </a>
             <div class="space"></div>
-            <a href="backstage.html">
+            <a href="/backstage">
                 <button class="enter ">後台</button>
             </a>
             <img class="slide-bottom" src="../assets/images/enterHand2.png" alt="">

@@ -9,16 +9,16 @@
             <div class="product-title">
                 <div class="product-pic"> 
             
-                    <img :src="require(`../assets/php/pic/${order[0].PROD_PIC1}`)" v-if="page==1"  :class="{light:page==1}">
-                    <img :src="require(`../assets/php/pic/${order[0].PROD_PIC2}`)" v-if="page==2"  :class="{light:page==2}">
-                    <img :src="require(`../assets/php/pic/${order[0].PROD_PIC3}`)" v-if="page==3"  :class="{light:page==3}">
+                    <img :src="require(`../assets/phps/pic/${order[0].PROD_PIC1}`)" v-if="page==1"  :class="{light:page==1}">
+                    <img :src="require(`../assets/phps/pic/${order[0].PROD_PIC2}`)" v-if="page==2"  :class="{light:page==2}">
+                    <img :src="require(`../assets/phps/pic/${order[0].PROD_PIC3}`)" v-if="page==3"  :class="{light:page==3}">
 
                     <div class="pic-slide" >
                         <button @click="prev()">＜</button>
                         <div class="pic-chose">              
-                            <img  :src="require(`../assets/php/pic/${order[0].PROD_PIC1}`)" :class="{light:page==1}" @click="page=1">
-                            <img  :src="require(`../assets/php/pic/${order[0].PROD_PIC2}`)" :class="{light:page==2}" @click="page=2">
-                            <img :src="require(`../assets/php/pic/${order[0].PROD_PIC3}`)" :class="{light:page==3}" @click="page=3">
+                            <img  :src="require(`../assets/phps/pic/${order[0].PROD_PIC1}`)" :class="{light:page==1}" @click="page=1">
+                            <img  :src="require(`../assets/phps/pic/${order[0].PROD_PIC2}`)" :class="{light:page==2}" @click="page=2">
+                            <img :src="require(`../assets/phps/pic/${order[0].PROD_PIC3}`)" :class="{light:page==3}" @click="page=3">
                         </div>
                               
                         <button @click="next()">＞</button>

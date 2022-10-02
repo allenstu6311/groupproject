@@ -26,9 +26,9 @@
                 <div class="commodity-pic" >
                    <router-link to="/Detail">
                     <div class="slide-pic" :style="{left:picWidth*item.slide+'px',transition:.4+'s'}" @click="addOrder(item.PROD_ID)">    
-                        <img :src="require(`../assets/php/pic/${item.PROD_PIC1}`)" id="pic">
-                        <img :src="require(`../assets/php/pic/${item.PROD_PIC2}`)"  >
-                        <img :src="require(`../assets/php/pic/${item.PROD_PIC3}`)"  >
+                        <img :src="require(`../assets/phps/pic/${item.PROD_PIC1}`)" id="pic">
+                        <img :src="require(`../assets/phps/pic/${item.PROD_PIC2}`)"  >
+                        <img :src="require(`../assets/phps/pic/${item.PROD_PIC3}`)"  >
                    </div>
                     </router-link>
                 </div>
@@ -56,9 +56,9 @@
                  <button @click="next(item)"> ＜ </button>
                     <router-link to="/Detail">
                         <div class="slide-pic" @click="addOrder(item.PROD_ID)" :style="{left:picWidth*item.slide+'px',transition:.4+'s'}" >
-                        <img :src="require(`../assets/php/pic/${item.PROD_PIC1}`)">
-                        <img :src="require(`../assets/php/pic/${item.PROD_PIC2}`)" >
-                        <img :src="require(`../assets/php/pic/${item.PROD_PIC3}`)" >
+                        <img :src="require(`../assets/phps/pic/${item.PROD_PIC1}`)">
+                        <img :src="require(`../assets/phps/pic/${item.PROD_PIC2}`)" >
+                        <img :src="require(`../assets/phps/pic/${item.PROD_PIC3}`)" >
                    </div>
                     </router-link>
                  <button @click="prev(item)">＞</button>

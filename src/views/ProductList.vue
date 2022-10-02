@@ -2,7 +2,7 @@
   <Header />
    <div class="product-search">
       <input type="text" name=""  v-model="search_obj" placeholder="請輸入商品名稱">
-      <button @click="searchStar">搜尋</button>
+      <button @click="searchStar"><i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
   <div class="Product-container">
    

@@ -4,17 +4,17 @@ header('Access-Control-Allow-Origin:*');
 header("Content-Type:application/json;charset=utf-8");
 
 
-function productOrder(){
+function productList($mem_id,$productPrice,$cps_id,$totalPrice,$address){
 
 require_once("../../connect_cgd102g2.php");
 
 
-$sql = "insert into PRODUCT_ORDERS VALUES(null,) ";
+$sql = "insert into PRODUCT_ORDERS VALUES(null,{$mem_id},1,now(),{$productPrice},{$cps_id},{$totalPrice},'{$address}') ";
 
 $book = $pdo->query($sql);
 echo  $pdo->lastInsertId();
 
 }
-productOrder()
+productList($_GET['mem_id'],$_GET['productPrice'],$_GET['cps_id'],$_GET['totalPrice'],$_GET['address'])
 
 ?>

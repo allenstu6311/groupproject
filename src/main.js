@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import axios from "axios"
 import VueAxios from 'vue-axios'
-import ViewUIPlus from 'view-ui-plus'
+// import ViewUIPlus from 'view-ui-plus'
 import App from './App.vue'
 // import Header from "@/components/Header.vue"
 // import Footer from "@/components/Footer.vue"

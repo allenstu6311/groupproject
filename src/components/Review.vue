@@ -29,30 +29,31 @@
         </div>
     </div>
     <!-- =========================================留言 -->
-    <div class="message-container">
-        <div class="message-user"  v-for="item in article" :key="item.name">
+    <div class="message-container" v-for="item in  article" :key="item">
+        <div class="message-user"  >
             <div class="message-user">
                 <div class="user-pic">
                     <img :src="item.pic">
                 </div>
             <div class="user-name">
-                <p>{{item.name}}</p>
+                <p>{{item.mem_name}}</p>
             </div>
             </div>
 
          <div class="message-area">
-            <p>{{item.post}}</p>
+            <p>{{item.COMMENT_MESSAGE}}</p>
         </div>
     </div>
+</div>
+    
 
-  
-        <div class="message-write">
+    <div class="message-write">
             <textarea name="" id="" cols="40" rows="10" class="write-tex" v-model="tex" @keyup.enter="upload"></textarea>
             <div class="write-send">
                 <button class="btnLittle" @click="upload"  >上傳</button>
             </div>
         </div>
-    </div>
+
 </template>
 
 <style lang="scss" scoped>
@@ -72,13 +73,8 @@ export default {
             score:[],
             star:[],
             block:"☆",
-            article:[
-                {
-                    pic:"https://picsum.photos/50/50/?random=10",
-                    name:"俊彥",
-                    post:"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed suscipit iusto quibusdam nesciunt est distinctio praesentium magnam delectus, mollitia ex quam omnis excepturi magni dicta, vero sunt reprehenderit amet ad."
-                }
-                ]
+            article:[]
+       
         }
     },
     methods:{
@@ -95,13 +91,16 @@ export default {
             alert("感謝評價")
         },
         upload(){
-            this.article.push({
-                pic:"https://picsum.photos/50/50/?random=10",
-                name:"玄玄",
-                post:this.tex,
-            })
-            this.tex=""
-            this.setStorage()
+            
+                this.axios.get("http://localhost/CGD102_G2/src/assets/phps/comment.php",
+                {
+                    params:{
+                        post:this.tex,
+                        product_id:this.order[0].PROD_ID,
+                        mem_id:this.member[0].MEM_ID,
+                    }
+                })
+            
             
         },
         getStorage(){
@@ -109,6 +108,11 @@ export default {
             let orders = localStorage.getItem("order");
             if(!orders) return;
             this.order = JSON.parse(orders)
+
+            let members = localStorage.getItem("user");
+            if (!members) return;
+            this.member = JSON.parse(members);
+
             this.score =(this.order[0].PROD_REVIEW/this.order[0].PROD_TIMES ).toFixed(1)
            
             this.star = parseInt(this.score)
@@ -121,6 +125,7 @@ export default {
          
             let articles = localStorage.getItem("article")
             if(!articles) return
+
             this.article = JSON.parse(articles)
         
         }
@@ -128,6 +133,19 @@ export default {
     created(){
         this.getStorage()
         this. onlineStorage()
+
+        this.axios.get("http://localhost/CGD102_G2/src/assets/phps/article.php",
+        {
+            params:{
+                prod_id:this.order[0].PROD_ID
+            }
+        })
+        .then((res)=>{
+           
+            this.article = res.data
+             console.log( this.article)
+        })
+        
         
       
     }

@@ -278,7 +278,7 @@
         </main>
     </div>
 </template>
-<script scope>
+<script scoped>
     // import Swiper core and required modules
     import {Autoplay, Pagination} from 'swiper';
   

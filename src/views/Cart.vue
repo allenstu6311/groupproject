@@ -3,8 +3,10 @@
      <div class="background-pic">
         <img src="../assets/images/bcgFlower.png" alt="">
     </div>
-    <ProductCart  :getProduct="temporary"/>
-    <ShoppingCar   @productInfo="productInfo"/>
+    <ProductCart  :getProduct="temporary"
+                    @cart-message="cartInformation"/>
+    <ShoppingCar   @product-info="productInfo"
+                    :checkCar ="carSend"/>
     <Footer />
 </template>
 
@@ -24,13 +26,19 @@ export default {
     },
     data(){
         return{
-            temporary:[]
+            temporary:[],
+            carSend:[],
+            
         }
     },
     methods:{
         productInfo(val){
             // console.log("val",val)
-            this.temporary=val
+            this.temporary.push(val)
+        },
+        cartInformation(val){
+            console.log("val",val)
+            this.carSend = val
         }
     },
     created(){

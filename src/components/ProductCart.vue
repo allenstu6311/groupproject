@@ -16,7 +16,7 @@
       <h1>目前購物車是空的</h1>
     </div>
 
-    <div class="shopping-list-order" v-for="item in cart" :key="item">
+    <div class="shopping-list-order" v-for="item in cart" :key="item.PROD_ID">
       <input type="checkbox" v-model="calculate" :value="item" />
       <!-- {{calculate}} -->
       <div class="shopping-list-pic">
@@ -49,7 +49,7 @@
         <button
           class="btnMinimum"
           style="padding: 7px"
-          @click="reduceCar( item.PROD_ID)"
+          @click="reduceCar(item.PROD_ID)"
         >
           移出購物車
         </button>
@@ -98,12 +98,13 @@ export default {
       cart: [],
       coupon: [],
       sel: "1",
-      productPrice: 0,
-      totalPrice: 0,
+      // productPrice: 0,
+      // totalPrice: 0,
       calculate: [],
       checkOut: true,
       block: "☆",
       detect: false,
+      order: [],
     };
   },
   methods: {
@@ -120,13 +121,11 @@ export default {
       this.setLocal();
     },
     reduceCar(id) {
-      let count = this.cart.findIndex(item=>item.PROD_ID === id);
+      let count = this.cart.findIndex((item) => item.PROD_ID === id);
       let index = this.calculate.findIndex((item) => item.PROD_ID === id);
 
-      
-      //  console.log("index",index)
       this.cart.splice(count, 1);
-      this.calculate.splice(index, 1);    
+      this.$emit("cart-message", this.cart);
       this.setLocal();
     },
     drop() {
@@ -155,29 +154,26 @@ export default {
     },
     getInfo() {
       let orders = localStorage.getItem("order");
-      if (!orders) return;
-      this.order = JSON.parse(orders);
+      if (orders) this.order = JSON.parse(orders);
 
       let members = localStorage.getItem("user");
-      if (!members) return;
-      this.member = JSON.parse(members);
+      if (members) this.member = JSON.parse(members);
 
       let carts = localStorage.getItem("cart");
-      if (!carts) return;
-      this.cart = JSON.parse(carts);
+      if (carts) this.cart = JSON.parse(carts);
 
       let calculates = localStorage.getItem("calculate");
-      if (!calculates) return;
-      this.calculate = JSON.parse(calculates);
+      if (calculates) this.calculate = JSON.parse(calculates);
 
       let totalPrices = localStorage.getItem("totalPrice");
-      if (!totalPrices) return;
-      this.totalPrice = JSON.parse(totalPrices);
+      if (totalPrices) this.totalPrice = JSON.parse(totalPrices);
 
-      this.score = (
-        this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
-      ).toFixed(1);
-      this.star = parseInt(this.score);
+      if (this.order.length) {
+        this.score = (
+          this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
+        ).toFixed(1);
+        this.star = parseInt(this.score);
+      }
     },
     selChange(sel) {
       this.totalPrice = parseInt(this.productPrice * this.sel);
@@ -191,9 +187,19 @@ export default {
     checkBox: function () {
       return JSON.parse(JSON.stringify(this.calculate));
     },
-    //  takeProduct:function(){
-    //   return JSON.parse(JSON.stringify(this.getProduct))
-    // }
+    productPrice() {
+      let sum = 0;
+      for (let i = 0; i < this.calculate.length; i++) {
+        sum = parseFloat(
+          sum + this.calculate[i].PROD_PRICE * this.calculate[i].PROD_NUM
+        );
+      }
+      return sum;
+    },
+    totalPrice(){
+    return  parseInt(this.productPrice * this.sel);
+
+    }
   },
   created() {
     this.axios
@@ -208,9 +214,17 @@ export default {
   watch: {
     getProduct: {
       handler(newVal) {
-        // console.log("new",newVal)
+        let num = this.cart.findIndex(
+          (item) => item.PROD_ID === newVal[newVal.length - 1].PROD_ID
+        );
+        if (num >= 0) {
+          alert("購物車已有相同物品");
+          return;
+        }
 
-        this.cart.push({
+        alert("成功加入");
+
+        const obj = {
           PROD_ID: newVal[newVal.length - 1].PROD_ID,
           PROD_NAME: newVal[newVal.length - 1].PROD_NAME,
           PROD_PRICE: newVal[newVal.length - 1].PROD_PRICE,
@@ -224,23 +238,10 @@ export default {
           PROD_DESC3: newVal[newVal.length - 1].PROD_DESC3,
           PROD_REVIEW: newVal[newVal.length - 1].PROD_REVIEW,
           PROD_TIMES: newVal[newVal.length - 1].PROD_TIMES,
-        });
+        };
 
-        this.calculate.push({
-          PROD_ID: newVal[newVal.length - 1].PROD_ID,
-          PROD_NAME: newVal[newVal.length - 1].PROD_NAME,
-          PROD_PRICE: newVal[newVal.length - 1].PROD_PRICE,
-          PROD_PIC1: newVal[newVal.length - 1].PROD_PIC1,
-          PROD_PIC2: newVal[newVal.length - 1].PROD_PIC2,
-          PROD_PIC3: newVal[newVal.length - 1].PROD_PIC3,
-          PROD_DATE: newVal[newVal.length - 1].PROD_DATE,
-          PROD_NUM: 1,
-          PROD_DESC1: newVal[newVal.length - 1].PROD_DESC1,
-          PROD_DESC2: newVal[newVal.length - 1].PROD_DESC2,
-          PROD_DESC3: newVal[newVal.length - 1].PROD_DESC3,
-          PROD_REVIEW: newVal[newVal.length - 1].PROD_REVIEW,
-          PROD_TIMES: newVal[newVal.length - 1].PROD_TIMES,
-        });
+        this.cart.push({ ...obj });
+        this.calculate.push({ ...obj });
 
         this.setLocal();
       },
@@ -248,7 +249,7 @@ export default {
     },
     buyCar: {
       handler(newVal) {
-        console.log(newVal)
+        console.log(newVal);
         if (newVal.length == 0) {
           this.detect = true;
         }
@@ -262,8 +263,7 @@ export default {
             this.productPrice + newVal[i].PROD_PRICE * newVal[i].PROD_NUM
           );
         }
-        // this.sel = 1;
-        // this.totalPrice = parseInt(this.productPrice * this.sel);
+        
         this.setLocal();
         this.countMoney();
       },
@@ -279,20 +279,6 @@ export default {
     },
     deep: true,
   },
-  mounted() {},
-  updated() {
-    this.productPrice = "";
-    for (let i = 0; i < this.calculate.length; i++) {
-      this.productPrice = parseFloat(
-        this.productPrice +
-          this.calculate[i].PROD_PRICE * this.calculate[i].PROD_NUM
-      );
-    }
 
-    this.totalPrice = parseInt(this.productPrice * this.sel);
-    this.setLocal();
-
-    //  console.log("new",this.getProduct)
-  },
 };
 </script>

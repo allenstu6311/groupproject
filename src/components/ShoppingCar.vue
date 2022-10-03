@@ -38,7 +38,7 @@
 <script>
 export default {
   props:{
-
+    checkCar:Array,
   },
   
   data() {
@@ -48,6 +48,7 @@ export default {
       addOn:[],
       cart:[],
       calculate:[],
+
     };
   },
   methods:{
@@ -66,12 +67,36 @@ export default {
     addShoppingCart(id){
         
         let count = this.data.findIndex(item=>item.PROD_ID===id)
-        let num = this.addOn.find(item=>item.PROD_ID===id)
-        let block = this.cart.find(item=>item.PROD_ID===id)
-        console.log("data",block)
-      if(!num){
-        alert("成功加入")
-        this.addOn.push({
+        // let num = this.addOn.find(item=>item.PROD_ID===id)
+        // let prohibit = this.checkCar.find(item=>item.PROD_ID===id)
+        // let block = this.cart.find(item=>item.PROD_ID===id)
+        // console.log("data",block)
+      // if(!num){
+      //   alert("成功加入")
+      //   this.addOn={
+      //   PROD_ID: this.data[count].PROD_ID,
+      //   PROD_NAME: this.data[count].PROD_NAME,
+      //   PROD_PRICE: this.data[count].PROD_PRICE,
+      //   PROD_PIC1: this.data[count].PROD_PIC1,
+      //   PROD_PIC2: this.data[count].PROD_PIC2,
+      //   PROD_PIC3: this.data[count].PROD_PIC3,
+      //   PROD_DATE: this.data[count].PROD_DATE,
+      //   PROD_NUM: 1,
+      //   PROD_DESC1: this.data[count].PROD_DESC1,
+      //   PROD_DESC2: this.data[count].PROD_DESC2,
+      //   PROD_DESC3: this.data[count].PROD_DESC3,
+      //   PROD_REVIEW: this.data[count].PROD_REVIEW + 1,
+      //   PROD_TIMES: this.data[count].PROD_TIMES + 1,
+
+      // };
+    
+    
+      // }else{
+      //   alert("購物車已有相同物品")
+      // }
+      // this.updateStorage()
+      // console.log("add",this.addOn)
+      this.addOn={
         PROD_ID: this.data[count].PROD_ID,
         PROD_NAME: this.data[count].PROD_NAME,
         PROD_PRICE: this.data[count].PROD_PRICE,
@@ -85,16 +110,8 @@ export default {
         PROD_DESC3: this.data[count].PROD_DESC3,
         PROD_REVIEW: this.data[count].PROD_REVIEW + 1,
         PROD_TIMES: this.data[count].PROD_TIMES + 1,
-
-      });
-    
-    
-      }else{
-        alert("購物車已有相同物品")
-      }
-      // this.updateStorage()
-      // console.log("add",this.addOn)
-      this.$emit("productInfo",this.addOn)
+        };
+      this.$emit("product-info",this.addOn)
       
       // location.reload()
       

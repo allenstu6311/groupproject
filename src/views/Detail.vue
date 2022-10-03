@@ -5,7 +5,7 @@
     </div>
     <div class="Detail-container">
     <Product />
-    <!-- <Review /> -->
+    <Review />
     </div>
    
     <Footer />

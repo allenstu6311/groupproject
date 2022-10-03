@@ -239,10 +239,10 @@ export default {
           PROD_REVIEW: newVal[newVal.length - 1].PROD_REVIEW,
           PROD_TIMES: newVal[newVal.length - 1].PROD_TIMES,
         };
-
+         
         this.cart.push({ ...obj });
         this.calculate.push({ ...obj });
-
+   this.detect = false;
         this.setLocal();
       },
       deep: true,

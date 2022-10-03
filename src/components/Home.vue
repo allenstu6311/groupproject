@@ -311,5 +311,32 @@
           
         };
       },
+
+
+      props: {
+            news: String
+        },
+        data() {
+            return {
+                newsCardList: [],
+            }
+        },
+        created(){
+            this.getDataFromApi(); // 在建立 Vue.js 模板時順帶執行這個參數
+        },
+        methods:{
+            async getDataFromApi() {
+                var url = 'http://localhost/CGD102_G2/src/assets/phps/news.php'
+                let getData = async(url) => {
+                    let response = await fetch(url); // await 很重要
+                    let JSON =  response.json();
+                    this.newsCardList = await JSON; // php 抓取回來的資料存取在預設好的參數裡
+                }
+                await getData(url); // 觸發 getData 的匿名 function 內容 ==> 95 ~ 97 行的內容
+                console.log(this.newsCardList);
+            }
+        }
+
     };
+
   </script>

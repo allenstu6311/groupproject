@@ -74,6 +74,8 @@
 </template>
 
 <script>
+// import { Script } from 'vm';
+
     export default {
         props: {
             faq: String

@@ -10,7 +10,7 @@ try{
     $faq = $pdo->query($sql);
 
     if($faq->rowCount()==0){
-        echo "無按摩師資料";
+        echo "無資料";
         // exit();
     }else{
         $faqs = $faq->fetchAll(PDO::FETCH_ASSOC);

@@ -234,19 +234,19 @@
                     </div>
                     <hr>
                     <div class="news_content">
-                        <div class="news">
+                        <!--建立迴圈，依資料數量去複製框架-->
+                        <div class="news"
+                        v-for="(newsContent,index) in newsCardList"
+                        :key="index"
+                        
+                        >
                             <div class="pic">
-                                <img src="../assets/images/shop_off.png" alt="">
+                                <img :src="require(`../assets/images/${newsContent.NEWS_PIC}`)" alt="" id="NEWS_PIC">
                             </div>
                             <div class="news_intro">
-                                <h3 class="news_title" id="NEWS_TITLE">春節假期店休公告</h3>
-                                <div class="news_date" id="NEWS_DATE">2022-01-05</div>
-                                <div class="news_text" id="NEWS_TEXT">
-                                    按指穴全店將於春節期間店休
-                                    <br>
-                                    1/24(五)除夕～1/28(二)初四 店休
-                                    <br>
-                                    1/29(三)初五起正常營業，期待與您再相見～
+                                <h3 class="news_title" id="NEWS_TITLE">{{newsContent.NEWS_TITLE}}</h3>
+                                <div class="news_date" id="NEWS_DATE">{{newsContent.NEWS_DATE}}</div>
+                                <div class="news_text" id="NEWS_TEXT" v-html="newsContent.NEWS_TEXT">
                                 </div>
                                 <div class="news_btn">
                                     <div class="btnLittle">查看更多</div>
@@ -254,7 +254,7 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="news">
+                        <!-- <div class="news">
                             <div class="pic">
                                 <img src="../assets/images/advanced_study.png" alt="" id="NEWS_PIC">
                             </div>
@@ -272,7 +272,7 @@
                                     <div class="btnLittle">查看更多</div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </section>
         </main>
@@ -312,7 +312,7 @@
         };
       },
 
-
+//---------------------------------------------------------------------------------------------------
       props: {
             news: String
         },
@@ -325,7 +325,7 @@
             this.getDataFromApi(); // 在建立 Vue.js 模板時順帶執行這個參數
         },
         methods:{
-            async getDataFromApi() {
+            async getDataFromApi() { //async是非同步
                 var url = 'http://localhost/CGD102_G2/src/assets/phps/news.php'
                 let getData = async(url) => {
                     let response = await fetch(url); // await 很重要

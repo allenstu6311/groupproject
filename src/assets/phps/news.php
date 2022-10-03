@@ -7,20 +7,20 @@ try{
     require_once("../../connect_cgd102g2.php");
 
     $sql = "select * from NEWS";
-    $new = $pdo->query($new);
+    $new = $pdo->query($sql); //設定變數把sql的東西放進去
 
     if($new->rowCount()==0){
         echo "無資料";
         // exit();
     }else{
-        $news = $new->fetchAll(PDO::FETCH_ASSOC);
+        $news = $new->fetchAll(PDO::FETCH_ASSOC); //如果有資料的話,就抓所有索引值的資料
         $data = [];
 
         foreach($news as $i => $page){
         
         ?>
         <?php
-        $data[] = $page;
+        $data[] = $page; //資料都給陣列印出來
         }
 
         echo json_encode($data);

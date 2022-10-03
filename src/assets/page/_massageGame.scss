@@ -45,7 +45,6 @@
                 background-color: #fff;
                 position: relative;
                 .answer_frame{
-                    height: 80px;
                     border-radius: 8px;
                     border: 2px solid $blue;
                     padding: 10px;
@@ -62,7 +61,7 @@
                         font-size: 32px;
                     }
                     .answer.answer_click{
-                        font-size: 20px;
+                        font-size: 18px;
                         letter-spacing: 1px;
                         font-family: Arial, Helvetica, sans-serif;
                     }
@@ -298,6 +297,167 @@
                 left: 50px;
                 content: '太淵穴';
             }
+            .zhong_chong_change{
+                left: 35%;
+            }
+            .shao_shang_change{
+                top: 44%;
+                left: 90%;
+            }
+            .he_gu_change{
+                top: 62%;
+                left: 57%;
+            }
+            .ming_men_change{
+                top: 43%;
+                left: 10%;
+            }
+            .shen_men_change{
+                top: 95%;
+                left: 28%;
+            }
+            .lao_gong_change{
+                top: 55%;
+                left: 40%;
+            }
+            
+            .yu_ji_change{
+                top: 67%;
+                left: 72%;
+            }
+            .shao_fu_change{
+                top: 67%;
+                left: 25%;
+            }
+            .tai_yuan_change{
+                top: 93%;
+                left: 53%;
+            }
+            .zhong_chong_change::after{
+                top: 12px;
+                left: 0px;
+            }
+            .zhong_chong_change:hover::after,
+            .zhong_chong_change:focus::after{
+                left: -40px;
+            }
+            .zhong_chong_change::before{
+                top: -25px;
+                left: -65px;
+                content: '中衝穴';
+            }
+            .shao_shang_change::after{
+                top: 12px;
+                left: 100%;
+            }
+            .shao_shang_change:hover::after,
+            .shao_shang_change:focus::after{
+                width: 10px;
+                left: 100%;
+            }
+            .shao_shang_change::before{
+                top: -25px;
+                left: 30px;
+                content: '少商穴';
+            }
+            .he_gu_change::after{
+                top: 12px;
+                left: 100%;
+            }
+            .he_gu_change:hover::after,
+            .he_gu_change:focus::after{
+                left: 100%;
+                width: 40px;
+            }
+            .he_gu_change::before{
+                top: -23px;
+                left: 60px;
+                content: '合谷穴';
+            }
+            .ming_men_change::after{
+                top: 12px;
+                left: 0px;
+            }
+            .ming_men_change:hover::after,
+            .ming_men_change:focus::after{
+                width: 13px;
+                left: -13px;
+            }
+            .ming_men_change::before{
+                top: -25px;
+                left: -35px;
+                content: '命門穴';
+            }
+            .shen_men_change::after{
+                top: 12px;
+                left: 0px;
+            }
+            .shen_men_change:hover::after,
+            .shen_men_change:focus::after{
+                width: 28px;
+                left: -28px;
+            }
+            .shen_men_change::before{
+                top: -25px;
+                left: -50px;
+                content: '神門穴';
+            }
+            .lao_gong_change::after{
+                top: 12px;
+                left: 0px;
+            }
+            .lao_gong_change:hover::after,
+            .lao_gong_change:focus::after{
+                left: -60px;
+                width: 60px;
+            }
+            .lao_gong_change::before{
+                top: -25px;
+                left: -80px;
+                content: '勞宮穴';
+            }
+            .yu_ji_change::after{
+                top: 12px;
+                left: 100%;
+            }
+            .yu_ji_change:hover::after,
+            .yu_ji_change:focus::after{
+                width: 20px;
+                left: 100%;
+            }
+            .yu_ji_change::before{
+                top: -25px;
+                left: 40px;
+                content: '魚際穴';
+            }
+            .shao_fu_change::after{
+                top: 12px;
+                left: 0px;
+            }
+            .shao_fu_change:hover::after,
+            .shao_fu_change:focus::after{
+                left: -28px;
+                width: 28px;
+            }
+            .shao_fu_change::before{
+                top: -25px;
+                left: -50px;
+                content: '少府穴';
+            }
+            .tai_yuan_change::after{
+                top: 12px;
+                left: 100%;
+            }
+            .tai_yuan_change:hover::after,
+            .tai_yuan_change:focus::after{
+                width: 30px;
+                left: 100%;
+            }
+            .tai_yuan_change::before{
+                top: -25px;
+                left: 50px;
+                content: '太淵穴';
+            }
         }
     }
     .game_btn{
@@ -339,7 +499,6 @@
                     margin: 0px 0px 70px 54%;
                     border: 3px solid $blue;
                     .answer_frame{
-                        height: 100px;
                         padding: 20px;
                         font-size: 20px;
                         .answer{
@@ -527,7 +686,6 @@
                     width: 40%;
                     margin: 0px 0px 0px 10%;
                     .answer_frame{
-                        height: 100px;
                         padding: 20px;
                         font-size: 24px;
                         .answer{

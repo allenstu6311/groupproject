@@ -44,7 +44,8 @@
                 <input type="text" maxlength="40" v-model="address">
             </div>
         </div>
-        <div style="text-align:center"><button  class="btnLittle" @click="submit">送出</button></div>
+        <div style="text-align:center"><button  class="btnLittle" @click="submit">送出</button>
+        </div>
     </div>
 </template>
 <script>
@@ -79,15 +80,21 @@ export default {
                 return;
             }else if(this.pswflag&&this.emailflag){
                 var xhr = new XMLHttpRequest();
-                // var url = `http://localhost/CGD102_G2/src/assets/phps/register.php?account=${this.account}&password=${this.password}&name=${this.name}&email=${this.email}&birthday=${this.birthday}&phone=${this.phone}&localphone=${this.localphone}&address=${this.address}`
-                // xhr.open("get",url,true);
+                
                 xhr.onload = function(){
                     alert(xhr.responseText);
                 }
                 xhr.open("post","http://localhost/CGD102_G2/src/assets/phps/register.php",true);
                 xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
+                xhr.onload = function(){
+                    if(xhr.status == 200){
+                        window.location.replace("/MemLogin");
+                    }
+                }
+
                 let mem_deta = `account=${this.account}&password=${this.password}&name=${this.name}&email=${this.email}&birthday=${this.birthday}&phone=${this.phone}&localphone=${this.localphone}&address=${this.address}`
+                console.log(mem_deta);
                 xhr.send(mem_deta);
                 
             }else{

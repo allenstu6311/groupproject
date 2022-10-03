@@ -61,7 +61,7 @@
       <div class="product-name">
         <h2>{{ order[0].PROD_NAME }}</h2>
       </div>
-      <div class="review-star">
+      <div class="product-star">
         <p v-for="item in star" :key="item">★</p>
         <p v-if="star < 1">{{ block }}</p>
         <p v-if="star < 2">{{ block }}</p>
@@ -83,7 +83,7 @@
           <br />
         </div>
         <div class="product-number">
-          <button @click="reduceNum(order)">-</button>
+          <button @click="reduceNum(order)">–</button>
           <input type="text" v-model="product_num" />
           <button @click="addNum(order)">+</button>
         </div>
@@ -201,7 +201,7 @@ export default {
       if (!members) return;
       this.member = JSON.parse(members);
 
-      console.log(this.member);
+
 
       let carts = localStorage.getItem("cart");
       if (!carts) return;
@@ -214,10 +214,10 @@ export default {
   },
   created() {
     this.axios
-      .get("http://localhost/CGD102_G2/src/assets/phps/member.php")
+      .get("http://localhost/CGD102_G2/src/assets/phps/memberInfo.php")
       .then((res) => {
         this.member = res.data;
-        console.log(this.member[0].MEM_ID);
+        console.log(this.member);
       });
     this.getStar();
   },

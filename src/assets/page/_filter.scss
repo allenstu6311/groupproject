@@ -1,13 +1,14 @@
-
-.filter-range{
+.filter-range {
     position: fixed;
     right: 0;
-    background-color: $white;
     padding: 10px;
-    z-index: 8;
+    z-index: 0;
+    svg{
+        font-size: 35px;
+    }
 }
-.filter-container{
-    background-color: rgba(0,0,0,0.5);
+.filter-container {
+    background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
     margin: auto;
     top: 0;
@@ -19,89 +20,92 @@
     align-items: center;
     font-weight: 800;
 
-
-    .filter-list{
+    .filter-list {
         width: 100%;
         max-width: 300px;
         background-color: aliceblue;
         position: relative;
         line-height: 2;
         padding: 10px;
+        border-radius: 5px;
 
-        .filter-close{
+        .filter-close {
             position: absolute;
             top: -15px;
             right: 10px;
-    
-            p{
-               
+
+            p {
                 color: gray;
                 padding: 10px;
                 font-size: 22px;
-             
-                }
+            }
         }
 
-        .price-range{
+        .price-range {
             margin-top: 30px;
             font-size: 22px;
             text-align: center;
         }
-        .price-checkbox{
+        .price-checkbox {
             font-size: 22px;
-            text-align: center; 
+            text-align: left;
+
+            p{
+                margin-left: 90px;
+            }
         }
-        .keyword{
-            text-align: center;
+        .keyword {
+            text-align: left;
+
+            p{
+                margin-left: 90px;
+            }
         }
     }
 }
-.filter-wrap{
+.filter-wrap {
     display: none;
 }
 
-@media screen and (min-width:768px){
-    .filter-range{
+@media screen and (min-width: 768px) {
+    .filter-range {
         display: none;
     }
-    .filter-wrap{
+    .filter-wrap {
         line-height: 3;
         display: block;
         margin-top: 50px;
         font-weight: 900;
         margin-left: 30px;
-    
-        .filter-list{
+
+        .filter-list {
             width: 100%;
             box-shadow: 0px 0px 10px rgb(206, 206, 206);
             padding: 10px;
             text-align: center;
-    
-            .filter-close{
+
+            .filter-close {
                 display: none;
             }
-    
-            .price-range{
-             
+
+            .price-range {
             }
-            .price-checkbox{
-                width:150px ;
+            .price-checkbox {
+                width: 150px;
                 margin: auto;
                 text-align: left;
 
-                :first-child{
+                :first-child {
                     text-align: center;
                 }
-                 
             }
-          
         }
-        .keyword{
+        .keyword {
             width: 150px;
             text-align: left;
             margin: auto;
 
-            :first-child{
+            :first-child {
                 text-align: center;
             }
         }

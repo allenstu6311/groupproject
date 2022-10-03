@@ -17,7 +17,13 @@
           >
         </div>
         <div class="commodity-filter">
-          <select name="" id="" v-model="selFilter"  @change="groupBy(selFilter)">
+          <select
+            name=""
+            id=""
+            class="sel"
+            v-model="selFilter"
+            @change="groupBy(selFilter)"
+          >
             <option value="0" selected>隨機排續</option>
             <option value="1">價格由高至低</option>
             <option value="2">價格由低至高</option>
@@ -26,7 +32,18 @@
             <option value="5">日期由新至舊</option>
             <option value="6">日期由舊至新</option>
           </select>
-          <button @click="toggle = !toggle">{{ areaShow }}</button>
+          <button
+            @click="toggle = true"
+            :class="{ orderColor: toggle == true }"
+          >
+            <i class="fa-solid fa-clone"></i>
+          </button>
+          <button
+            @click="toggle = false"
+            :class="{ orderColor: toggle == false }"
+          >
+            <i class="fa-solid fa-list"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -72,12 +89,14 @@
                 v-for="i in parseInt(
                   (item.PROD_REVIEW + 1) / (item.PROD_TIMES + 1)
                 )"
-                :key="i">★</span>
-                <span v-if='star<1'>{{block}}</span>
-                <span v-if='star<2'>{{block}}</span>
-                <span v-if='star<3'>{{block}}</span>
-                <span v-if='star<4'>{{block}}</span>
-                <span v-if='star<5'>{{block}}</span>
+                :key="i"
+                >★</span
+              >
+              <span v-if="star < 1">{{ block }}</span>
+              <span v-if="star < 2">{{ block }}</span>
+              <span v-if="star < 3">{{ block }}</span>
+              <span v-if="star < 4">{{ block }}</span>
+              <span v-if="star < 5">{{ block }}</span>
             </div>
           </div>
         </div>
@@ -94,9 +113,9 @@
             <button @click="next(item)">＜</button>
             <router-link to="/Detail">
               <div
-            
                 class="slide-pic"
-                  ref="imgWidth" id="pic"
+                ref="imgWidth"
+                id="pic"
                 @click="addOrder(item.PROD_ID)"
                 :style="{
                   left: photo * item.SLIDE + 'px',
@@ -139,7 +158,15 @@
       <h1>目前無特價商品</h1>
     </div>
     <div class="commodity-page">
-      <span v-for="(i,value) in 3" :key="i" @click="pagination(i,value)" :class="{changePage:i==currPage}">{{i}}</span>
+      <span @click="prevCurrPage">＜</span>
+      <span
+        v-for="(i, value) in 3"
+        :key="i"
+        @click="pagination(i, value)"
+        :class="{ changePage: i == currPage }"
+        >{{ i }}</span
+      >
+      <span @click="nextCurrPage">＞</span>
     </div>
   </div>
 </template>
@@ -163,15 +190,14 @@ export default {
       orderby: "",
       toggle: false,
       commoditySale: 1,
-      areaShow: "卡片",
       empty: false,
       picWidth: "",
       photo: "",
-      block:"☆",
-      selFilter:0,
-      range_1:0,
-      range_2:4,
-      currPage:1,
+      block: "☆",
+      selFilter: 0,
+      range_1: 0,
+      range_2: 4,
+      currPage: 1,
     };
   },
   methods: {
@@ -203,7 +229,7 @@ export default {
           PROD_TIMES: this.data[index].PROD_TIMES + 1,
         },
       ];
-     
+
       this.setStorage();
     },
     setStorage() {
@@ -214,123 +240,122 @@ export default {
       if (!orders) return;
       this.order = JSON.parse(orders);
     },
-    groupBy(value){
-       
-      switch(value){
+    groupBy(value) {
+      switch (value) {
         case "0":
-        this.data.sort(function() {
-        return (0.5-Math.random());
-        });
-        break;
+          this.data.sort(function () {
+            return 0.5 - Math.random();
+          });
+          break;
 
         case "1":
-          this.data.sort(function(a,b){
-          return  b.PROD_PRICE-a.PROD_PRICE
-           
-          })
+          this.data.sort(function (a, b) {
+            return b.PROD_PRICE - a.PROD_PRICE;
+          });
           break;
 
-          case "2":
-          this.data.sort(function(a,b){
-          return a.PROD_PRICE - b.PROD_PRICE
-           
-          })
+        case "2":
+          this.data.sort(function (a, b) {
+            return a.PROD_PRICE - b.PROD_PRICE;
+          });
           break;
 
-          case "3":
-          this.data.sort(function(a,b){
-          return b.PROD_REVIEW-a.PROD_REVIEW
-           
-          })
+        case "3":
+          this.data.sort(function (a, b) {
+            return b.PROD_REVIEW - a.PROD_REVIEW;
+          });
           break;
 
-          case "4":
-          this.data.sort(function(a,b){
-          return a.PROD_REVIEW - b.PROD_REVIEW
-           
-          })
+        case "4":
+          this.data.sort(function (a, b) {
+            return a.PROD_REVIEW - b.PROD_REVIEW;
+          });
           break;
 
-          case "5":
-          this.data.sort(function(a,b){
-          return new Date(b.PROD_DATE)-new Date(a.PROD_DATE) 
-           
-          })
+        case "5":
+          this.data.sort(function (a, b) {
+            return new Date(b.PROD_DATE) - new Date(a.PROD_DATE);
+          });
           break;
 
-          case "6":
-          this.data.sort(function(a,b){
-          return new Date(a.PROD_DATE) - new Date(b.PROD_DATE) 
-           
-          })
+        case "6":
+          this.data.sort(function (a, b) {
+            return new Date(a.PROD_DATE) - new Date(b.PROD_DATE);
+          });
           break;
-          
       }
     },
     clear() {
-      this.order = [];  
+      this.order = [];
     },
-    pagination(i,value){
-      this.currPage=i
-      switch(i){
-         case 1:
-          this.range_1=0
-          this.range_2=4
-          this.getCommodityInfo()
-       
+    prevCurrPage() {
+      this.currPage -= 1;
+      this.range_1 -= 4;
+      this.range_2 -= 4;
+      this.getCommodityInfo();
+    },
+    nextCurrPage() {
+      this.currPage += 1;
+      this.range_1 += 4;
+      this.range_2 += 4;
+      this.getCommodityInfo();
+    },
+    pagination(i, value) {
+      this.currPage = i;
+      switch (i) {
+        case 1:
+          this.range_1 = 0;
+          this.range_2 = 4;
+          this.getCommodityInfo();
+
           break;
         case 2:
-          this.range_1=4
-          this.range_2=8
-          this.getCommodityInfo()
+          this.range_1 = 4;
+          this.range_2 = 8;
+          this.getCommodityInfo();
           break;
       }
     },
-     getCommodityInfo(){
-      this.axios.get("http://localhost/CGD102_G2/src/assets/phps/commoditylist.php",
-    {
-      params:{
-          range_1:this.range_1,
-          range_2:this.range_2,
-      }
-    })
-      .then((res) => {
-        // console.log(this.price)
-        this.data = res.data;
-        this.info = res.data;
-        this.data.sort(function() {
-        return (0.5-Math.random());
-        });
-            
-        for (let i = 0; i < this.data.length; i++) {
-          this.starNum.push(
-            (
-              (this.data[i].PROD_REVIEW + 1) /
-              (this.data[i].PROD_TIMES + 1)
-            ).toFixed(1)
-          );
-        }
-      this.$nextTick(() => {
-          //等dom更新時會執行
-          this.photo = document.getElementById("pic").clientWidth;
-          console.log(this.photo) 
+    getCommodityInfo() {
+      this.axios
+        .get("http://localhost/CGD102_G2/src/assets/phps/commoditylist.php", {
+          params: {
+            range_1: this.range_1,
+            range_2: this.range_2,
+          },
+        })
+        .then((res) => {
+          // console.log(this.price)
+          this.data = res.data;
+          this.info = res.data;
+          this.data.sort(function () {
+            return 0.5 - Math.random();
+          });
 
-        });
-      
+          for (let i = 0; i < this.data.length; i++) {
+            this.starNum.push(
+              (
+                (this.data[i].PROD_REVIEW + 1) /
+                (this.data[i].PROD_TIMES + 1)
+              ).toFixed(1)
+            );
+          }
+          this.$nextTick(() => {
+            //等dom更新時會執行
+            this.photo = document.getElementById("pic").clientWidth;
+            console.log(this.photo);
+          });
+
           window.onresize = () => {
             let pic = document.getElementById("pic").clientWidth;
             this.photo = pic;
-         
           };
-         
-      });
+        });
+    },
+  },
 
-  },
-    
-  },
- 
   created() {
-    this.getCommodityInfo()
+    this.getCommodityInfo();
     this.clear();
     this.onlineStorage();
   },
@@ -338,23 +363,19 @@ export default {
     toggle: {
       handler(newVal) {
         if (newVal == false) {
-          this.areaShow = "橫排";
-          this.photo = document.getElementById("pic").clientWidth-49;
-             window.onresize = () => {
+          this.photo = document.getElementById("pic").clientWidth - 49;
+          window.onresize = () => {
             let pic = document.getElementById("pic").clientWidth;
             this.photo = pic;
-         
           };
-          console.log(this.photo) 
+          console.log(this.photo);
         } else {
-          this.areaShow = "卡片";
-          this.photo = document.getElementById("pic").clientWidth+85;
-             window.onresize = () => {
+          this.photo = document.getElementById("pic").clientWidth + 85;
+          window.onresize = () => {
             let pic = document.getElementById("pic").clientWidth;
             this.photo = pic;
-         
           };
-          console.log(this.photo)
+          console.log(this.photo);
         }
       },
     },

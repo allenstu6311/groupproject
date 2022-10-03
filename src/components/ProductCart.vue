@@ -43,7 +43,7 @@
                 <p v-if='star<5'>{{block}}</p>
         </div>
         <div class="shopping-list-int">
-          <button @click="reduceNum(item,item.PROD_ID)">-</button
+          <button @click="reduceNum(item,item.PROD_ID)">–</button
           ><input
             style="text-align: center"
             type="text"

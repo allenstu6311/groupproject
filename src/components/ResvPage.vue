@@ -29,11 +29,11 @@
                     <div class="circle">按</div>
                     <div class="circle">摩</div>
                   </h1>
-                  <form action="" method="get">
+                  <form action="../assets/php/resv.php" method="get">
                     <p>請選擇按摩師傅</p>
                     <select
                       v-model="orderTherapist"
-                      name=""
+                      name="therapist"
                       id="orderTherapist"
                       class="therapist"
                     >
@@ -46,7 +46,7 @@
                     <p>請選擇時間長度</p>
                     <select
                       v-model="orderPrice"
-                      name=""
+                      name="timespan"
                       id="orderPrice"
                       class="timespan"
                     >
@@ -62,20 +62,21 @@
                         <span class="msg_price_1">NT$1600</span>
                       </option>
                     </select>
-                    <div class="calendar">
-                      <input
-                        id="datetimepicker"
-                        class="xdsoft_datetimepicker"
-                        type="text"
-                      />
-                    </div>
-
+                    <DatePicker
+                      v-model="valueTime"
+                      type="datetime"
+                      format="yyyy-MM-dd HH:mm"
+                      placeholder="請選擇預約日期及時間"
+                      style="width: 300px"
+                      :options="options1"
+                      :time-picker-options="{steps: [1, 60, 10], disabledHours:[0,1,2,3,4,5,6,7,8,9,22,23]}"
+                    />
                     <div class="content_footer">
                       <div class="price">NT$ {{ orderPrice }}</div>
                       <input
                         id="confirm"
                         class="btnLittle"
-                        type="button"
+                        type="submit"
                         @click="confirm"
                         value="確認預約"
                       />
@@ -181,10 +182,13 @@
   </div>
 </template>
 <script>
+// import 'view-ui-plus/dist/styles/viewuiplus.css'
+
 export default {
   props: {},
   data() {
     return {
+      valueTime: "",
       isActive: true, //預測剛開始是打開active
       isActive2: false,
       isActive3: false,
@@ -237,6 +241,28 @@ export default {
           pic_alt: "足部舒壓按摩照片",
         },
       ],
+      timeResult: "",
+      // options1: {
+      //   disabledDate(date) {
+      //     // return date && date.valueOf() < Date.now() - 86400000;
+      //     // return new Date(date).getMonth() + 1 == 9;
+      //     return this.disableTimeArray.some((item) => {
+      //       return (
+      //         date.valueOf() >= Date.parse(item[0]) &&
+      //         date.valueOf() >= Date.parse(item[1])
+      //       );
+      //     });
+      //   },
+      // },
+      disableTimeArray: [
+        ["2022-10-10 10:00:00", "2022-10-13 12:00:00"],
+        // ["2022-09-29", "2022-10-07"],
+        // { start: "2022-09-20", end: "2022-09-24" },
+      ],
+      optionTime: {
+        disabledHours: "[1,5,10]",
+        disabledMinutes: "[0,10,20]",
+      },
     };
   },
   methods: {
@@ -285,6 +311,30 @@ export default {
         this.setStorage(newVal);
       },
       deep: true, //監聽陣列內容
+    },
+    valueTime(newVal) {
+      let time = new Date(newVal);
+      this.timeResult = `${time.getFullYear()}-${
+        time.getMonth() + 1
+      }-${time.getDate()} ${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`;
+    },
+  },
+  computed: {
+    options1() {
+      let thus = this;
+      return {
+        disabledDate(date) {
+          // return new Date(date).getMonth() + 1 == 9;
+          return thus.disableTimeArray.some((item) => {
+            //some表示只要有包含在這段時間區間裡面 就return true, true就會被disable掉, date是選擇的日期
+            return (
+              (date.valueOf() >= Date.parse(item[0]) &&
+                date.valueOf() <= Date.parse(item[1])) ||
+              (date && date.valueOf() < Date.now() - 86400000)
+            );
+          });
+        },
+      };
     },
   },
 };

@@ -1,8 +1,11 @@
 <template>
 
- <div class="filter-range" @click="filterChose">
-    <img src="../assets/images/filter_min_blue.png" alt="">
- </div>
+
+    <span class="filter-range" @click="filterChose">
+      <i class="fa-solid fa-filter"></i>
+    </span>
+   
+
     <div class="filter-container" v-if="filter==true">   
         <div class="filter-list">
             <div class="filter-close">
@@ -25,11 +28,10 @@
             <p><input type="radio" name="price" v-model="checkTarget_4" value="true" @click="checked(4)">1500~1999元</p>
         </div>
          <div class="keyword">
-            <p>關鍵字搜尋</p>
-             <p><input type="checkbox">按摩槍</p>
-            <p><input type="checkbox">按摩槍</p>
-            <p><input type="checkbox">按摩槍</p>
-            <p><input type="checkbox">按摩槍</p>
+        <p>關鍵字搜尋</p>
+            <p><input type="radio" name="product" v-model="tool_1" value="true" @click="tool(1)">按摩槍</p>
+            <p><input type="radio" name="product" v-model="tool_2" value="true" @click="tool(2)">按摩球</p>
+            <p><input type="radio" name="product" v-model="tool_3" value="true" @click="tool(3)">按摩滾筒</p>
         </div>
         </div>
       

@@ -1,7 +1,13 @@
 <template>
     <Header />
+    <div class="background-pic">
+        <img src="../assets/images/bcgFlower.png" alt="">
+    </div>
+    <div class="Detail-container">
     <Product />
-    <Review />
+    <!-- <Review /> -->
+    </div>
+   
     <Footer />
 </template>
 
@@ -14,9 +20,15 @@ import Review from "@/components/Review.vue"
     export default{
         components:{
             Product ,
+            Review,
             Header,
             Footer,
-            Review
+            
         }
     }
 </script>
+<style scoped>
+    .Detail-container{
+        margin-top: 100px;
+    }
+</style>

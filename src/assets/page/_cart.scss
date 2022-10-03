@@ -117,12 +117,13 @@
                 display: flex;
                 align-items: center;
                 margin-left: 0;
+                justify-content: space-around;
                 .shopping-list-name{
                     width:300px;
                     margin-bottom: 5px;
                 }
                 .shopping-list-calculate{
-                    margin: auto;
+                    margin: 0;
                     h5{
                         color:$red
                     }
@@ -136,7 +137,8 @@
                     }
                 }
                 .shopping-list-int{
-                    margin: auto;
+                    margin: 0;
+                    display: flex;
                     button{
                         background-color: transparent;
                         border: none;

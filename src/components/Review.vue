@@ -145,13 +145,7 @@ export default {
            
             this.article = res.data
              console.log("文章", this.article)
-
-        console.log(new Date().toLocaleTimeString().slice(0, 19).replace('T', ' '))
-
-  
-        })
-
- 
+         })
        
     }
 }

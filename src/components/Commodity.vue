@@ -151,13 +151,7 @@
           </div>
         </div>
       </div>
-    </div>
-    <!-- =============================================特賣商品 -->
-
-    <div class="special-offer" v-if="commoditySale == 2">
-      <h1>目前無特價商品</h1>
-    </div>
-    <div class="commodity-page">
+        <div class="commodity-page">
       <span @click="prevCurrPage">＜</span>
       <span
         v-for="(i, value) in 3"
@@ -168,6 +162,13 @@
       >
       <span @click="nextCurrPage">＞</span>
     </div>
+    </div>
+    <!-- =============================================特賣商品 -->
+
+    <div class="special-offer" v-if="commoditySale == 2">
+      <h1>目前無特價商品</h1>
+    </div>
+  
   </div>
 </template>
 <script>
@@ -196,7 +197,7 @@ export default {
       block: "☆",
       selFilter: 0,
       range_1: 0,
-      range_2: 4,
+      range_2: 6,
       currPage: 1,
     };
   },
@@ -290,28 +291,31 @@ export default {
     },
     prevCurrPage() {
       this.currPage -= 1;
-      this.range_1 -= 4;
-      this.range_2 -= 4;
-      this.getCommodityInfo();
+      this.pagination(this.currPage)
     },
     nextCurrPage() {
       this.currPage += 1;
-      this.range_1 += 4;
-      this.range_2 += 4;
-      this.getCommodityInfo();
+      this.pagination(this.currPage)
+     
     },
-    pagination(i, value) {
-      this.currPage = i;
+    pagination(i, value,currPage) {
+      this.currPage=i
+        
       switch (i) {
         case 1:
           this.range_1 = 0;
-          this.range_2 = 4;
+          this.range_2 = 6;
           this.getCommodityInfo();
 
           break;
         case 2:
-          this.range_1 = 4;
-          this.range_2 = 8;
+          this.range_1 = 6;
+          this.range_2 = 6;
+          this.getCommodityInfo();
+          break;
+          case 3:
+          this.range_1 = 12;
+          this.range_2 = 2;
           this.getCommodityInfo();
           break;
       }

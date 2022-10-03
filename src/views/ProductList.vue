@@ -1,5 +1,8 @@
 <template>
   <Header />
+    <div class="background-pic">
+        <img src="../assets/images/bcgFlower.png" alt="">
+    </div>
    <div class="product-search">
       <input type="text" name=""  v-model="search_obj" placeholder="請輸入商品名稱">
       <button @click="searchStar"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -24,7 +27,6 @@
   </div>
   
   <Footer />
-<router-link to="/Detail">詳細</router-link>
 </template>
 
 

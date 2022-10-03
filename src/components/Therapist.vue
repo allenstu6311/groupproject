@@ -37,18 +37,10 @@
                         <h4 class="third_title title_one">{{ therapist.THERAPIST_NAME }}  <span>師傅</span></h4>
                         <div class="text text_one" :class="'text_'+[therapist.THERAPIST_ID]">
                             <p>證照：</p>
-                            <p class="text_content">
-                                {{  therapist.THERAPIST_LICENSE_1 }}
-                            </p>
-                            <p class="text_content">
-                                {{  therapist.THERAPIST_LICENSE_2 }}
-                            </p>
-                            <p class="text_content">
-                                {{  therapist.THERAPIST_LICENSE_3 }}
-                            </p>
-                            <p class="text_content">
-                                {{  therapist.THERAPIST_LICENSE_4 }}
-                            </p>
+                            <p class="text_content" contenteditable v-text="therapist.THERAPIST_LICENSE_1"></p>
+                            <p class="text_content" v-text="therapist.THERAPIST_LICENSE_2"></p>
+                            <p class="text_content" v-text="therapist.THERAPIST_LICENSE_3"></p>
+                            <p class="text_content" v-text="therapist.THERAPIST_LICENSE_4"></p>
                         </div>
                         <a href="/resvPage">
                             <div class="btnLittle btnLittle_one" :class="'btnLittle_'+[therapist.THERAPIST_ID]">立即預約</div>
@@ -85,7 +77,7 @@ export default {
                 let JSON =  response.json();
                 this.therapistCardList = await JSON; // php抓取回來的資料存取在預設好的參數裡
             }
-            await getData(url); // 觸發 getData 的匿名 function 內容 ==> 84 ~ 86 行的內容
+            await getData(url); // 觸發 getData 的匿名 function 內容 ==> 76 ~ 78 行的內容
             console.log(this.therapistCardList);
 
             gsap.from(".frame_1",{

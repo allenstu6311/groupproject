@@ -66,12 +66,12 @@ export default {
     addShoppingCart(id){
         
         let count = this.data.findIndex(item=>item.PROD_ID===id)
-        // let num = this.addOn.find(item=>item.PROD_ID===id)
+        let num = this.addOn.find(item=>item.PROD_ID===id)
         let block = this.cart.find(item=>item.PROD_ID===id)
-        // console.log("data",count)
-      if(!block){
+        console.log("data",block)
+      if(!num){
         alert("成功加入")
-        this.cart.push({
+        this.addOn.push({
         PROD_ID: this.data[count].PROD_ID,
         PROD_NAME: this.data[count].PROD_NAME,
         PROD_PRICE: this.data[count].PROD_PRICE,
@@ -88,10 +88,11 @@ export default {
 
       });
     
+    
       }else{
         alert("購物車已有相同物品")
       }
-      this.updateStorage()
+      // this.updateStorage()
       // console.log("add",this.addOn)
       this.$emit("productInfo",this.addOn)
       

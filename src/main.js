@@ -17,6 +17,6 @@ import '@fortawesome/fontawesome-free/js/all.js'
 createApp(App).use(store)
                 .use(router)
                 .use(VueAxios,axios)
-                .use(ViewUIPlus)
+                // .use(ViewUIPlus)
                 .mount('#app')
 // .ues(Header).use(Footer)

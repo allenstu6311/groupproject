@@ -182,10 +182,14 @@
   </div>
 </template>
 <script>
-// import 'view-ui-plus/dist/styles/viewuiplus.css'
+import { DatePicker } from 'view-ui-plus';
+import 'view-ui-plus/dist/styles/viewuiplus.css'
 
 export default {
   props: {},
+  components: {
+    DatePicker,
+  },
   data() {
     return {
       valueTime: "",

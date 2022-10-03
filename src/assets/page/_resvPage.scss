@@ -103,7 +103,7 @@
                                     width: 380px;
                                     height: 10%;
                                     background-color: $blue;
-                                    top: 40px;
+                                    top: 25px;
                                     left: -80px;
                                     z-index: -1;
                                     position: absolute;
@@ -124,24 +124,21 @@
                                 padding-left: 10px;
                                 margin-bottom: 20px;
                             }
-
-                            //datetimepicker套件
-                            .calendar {
-                                margin-top: 40px;
+                            // view-ui-plus datepicker套件
+                            .ivu-date-picker{
+                                margin-top: 35px;
                                 margin-bottom: 40px;
-
-                                .xdsoft_datetimepicker {
-                                    // width: 400px;
-                                    margin: auto;
-
-                                    .active {
-                                        background-color: #fff;
-
-                                    }
+                                width: 100%;
+                                .ivu-input{
+                                    border-color:rgb(118, 118, 118);
+                                    color: #000;
+                                }
+                                .ivu-input-suffix i {
+                                    color: #000;
                                 }
                             }
-
                             .content_footer {
+                                margin-top: 30px;
                                 width: 100%;
                                 display: flex;
                                 justify-content: space-between;

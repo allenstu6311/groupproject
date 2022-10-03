@@ -67,7 +67,6 @@
                       type="datetime"
                       format="yyyy-MM-dd HH:mm"
                       placeholder="請選擇預約日期及時間"
-                      style="width: 300px"
                       :options="options1"
                       :time-picker-options="{steps: [1, 60, 10], disabledHours:[0,1,2,3,4,5,6,7,8,9,22,23]}"
                     />

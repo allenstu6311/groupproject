@@ -1,4 +1,5 @@
 <template>
+     <router-link to="/BackShop">後台</router-link>
   <div class="commodity-total col-7">
     <div class="commodity-container col-12">
       <div class="commodity-order col-12">

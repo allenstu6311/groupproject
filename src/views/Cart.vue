@@ -1,5 +1,7 @@
 <template>
     <Header />
+   
+
      <div class="background-pic">
         <img src="../assets/images/bcgFlower.png" alt="">
     </div>
@@ -8,6 +10,7 @@
     <ShoppingCar   @product-info="productInfo"
                     :checkCar ="carSend"/>
     <Footer />
+   
 </template>
 
 <script>

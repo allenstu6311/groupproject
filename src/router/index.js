@@ -87,6 +87,14 @@ const routes = [
     component: () => import(/* webpackChunkName: "reserve" */ '../views/Cart.vue')
   },
   {
+    path: '/BackShop',
+    name: 'BackShop',
+    // route level code-splitting
+    // this generates a separate chunk (reserve.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "reserve" */ '../views/BackShop.vue')
+  },
+  {
     path: '/Confirm',
     name: 'Confirm',
     // route level code-splitting

@@ -10,7 +10,7 @@
   <div class="shopping-list col-10">
     <div
       class="shopping-cart-empty"
-      v-if="detect == 0"
+      v-if="detect == true"
       style="text-align: center"
     >
       <h1>目前購物車是空的</h1>
@@ -34,29 +34,22 @@
         <div class="shopping-list-calculate">
           <h5>${{ item.PROD_PRICE }}</h5>
         </div>
-        <div class="shopping-list-star">
-          <p v-for="item in parseInt(item.PROD_REVIEW / item.PROD_TIMES)" :key="item">★</p>
-                <p v-if='star<1'>{{block}}</p>
-                <p v-if='star<2'>{{block}}</p>
-                <p v-if='star<3'>{{block}}</p>
-                <p v-if='star<4'>{{block}}</p>
-                <p v-if='star<5'>{{block}}</p>
-        </div>
+
         <div class="shopping-list-int">
-          <button @click="reduceNum(item,item.PROD_ID)">–</button
+          <button @click="reduceNum(item, item.PROD_ID)">–</button
           ><input
             style="text-align: center"
             type="text"
             :value="item.PROD_NUM"
             size="1"
-          /><button @click="addNum(item,item.PROD_ID)">+</button>
+          /><button @click="addNum(item, item.PROD_ID)">+</button>
         </div>
       </div>
       <div class="shopping-list-btn">
         <button
           class="btnMinimum"
           style="padding: 7px"
-          @click="reduceCar(item,item.PROD_ID)"
+          @click="reduceCar( item.PROD_ID)"
         >
           移出購物車
         </button>
@@ -97,54 +90,59 @@
 <script>
 import { nextTick } from "@vue/runtime-core";
 export default {
+  props: {
+    getProduct: Array,
+  },
   data() {
     return {
       cart: [],
       coupon: [],
       sel: "1",
+      productPrice: 0,
       totalPrice: 0,
       calculate: [],
       checkOut: true,
-      block:"☆",
+      block: "☆",
+      detect: false,
     };
   },
   methods: {
-    reduceNum(item,id) {
-       let carNum = this.calculate.find(item=>item.PROD_ID===id)
+    reduceNum(item, id) {
+      let carNum = this.calculate.find((item) => item.PROD_ID === id);
       item.PROD_NUM -= 1;
-       carNum.PROD_NUM-=1
+      carNum.PROD_NUM -= 1;
       this.setLocal();
     },
-    addNum(item,id) {
+    addNum(item, id) {
       item.PROD_NUM += 1;
-      let carNum = this.calculate.find(item=>item.PROD_ID===id)
-      carNum.PROD_NUM+=1
+      let carNum = this.calculate.find((item) => item.PROD_ID === id);
+      carNum.PROD_NUM += 1;
       this.setLocal();
     },
     reduceCar(id) {
-      let count = this.cart.findIndex((item) => item.PROD_ID === id);
-      let index = this.calculate.findIndex(item=>item.PROD_ID===id)
+      let count = this.cart.findIndex(item=>item.PROD_ID === id);
+      let index = this.calculate.findIndex((item) => item.PROD_ID === id);
+
       
+      //  console.log("index",index)
       this.cart.splice(count, 1);
-      this.calculate.splice(index,1)
-      this.setLocal()
+      this.calculate.splice(index, 1);    
+      this.setLocal();
     },
     drop() {
       for (let i = this.cart.length - 1; i >= 0; i--) {
         let a = this.cart[i].PROD_ID;
         for (let j = this.calculate.length - 1; j >= 0; j--) {
-        let  b = this.calculate[j].PROD_ID;
+          let b = this.calculate[j].PROD_ID;
           if (a == b) {
-            console.log("i-->",i)
-            console.log("j-->",j)
             this.cart.splice(i, 1);
             this.calculate.splice(j, 1);
             break;
           }
         }
       }
-      location.reload()
-      
+      location.reload();
+
       this.setLocal();
     },
 
@@ -167,8 +165,6 @@ export default {
       let carts = localStorage.getItem("cart");
       if (!carts) return;
       this.cart = JSON.parse(carts);
-
-      console.log(this.cart);
 
       let calculates = localStorage.getItem("calculate");
       if (!calculates) return;
@@ -195,6 +191,9 @@ export default {
     checkBox: function () {
       return JSON.parse(JSON.stringify(this.calculate));
     },
+    //  takeProduct:function(){
+    //   return JSON.parse(JSON.stringify(this.getProduct))
+    // }
   },
   created() {
     this.axios
@@ -207,6 +206,54 @@ export default {
   },
 
   watch: {
+    getProduct: {
+      handler(newVal) {
+        // console.log("new",newVal)
+
+        this.cart.push({
+          PROD_ID: newVal[newVal.length - 1].PROD_ID,
+          PROD_NAME: newVal[newVal.length - 1].PROD_NAME,
+          PROD_PRICE: newVal[newVal.length - 1].PROD_PRICE,
+          PROD_PIC1: newVal[newVal.length - 1].PROD_PIC1,
+          PROD_PIC2: newVal[newVal.length - 1].PROD_PIC2,
+          PROD_PIC3: newVal[newVal.length - 1].PROD_PIC3,
+          PROD_DATE: newVal[newVal.length - 1].PROD_DATE,
+          PROD_NUM: 1,
+          PROD_DESC1: newVal[newVal.length - 1].PROD_DESC1,
+          PROD_DESC2: newVal[newVal.length - 1].PROD_DESC2,
+          PROD_DESC3: newVal[newVal.length - 1].PROD_DESC3,
+          PROD_REVIEW: newVal[newVal.length - 1].PROD_REVIEW,
+          PROD_TIMES: newVal[newVal.length - 1].PROD_TIMES,
+        });
+
+        this.calculate.push({
+          PROD_ID: newVal[newVal.length - 1].PROD_ID,
+          PROD_NAME: newVal[newVal.length - 1].PROD_NAME,
+          PROD_PRICE: newVal[newVal.length - 1].PROD_PRICE,
+          PROD_PIC1: newVal[newVal.length - 1].PROD_PIC1,
+          PROD_PIC2: newVal[newVal.length - 1].PROD_PIC2,
+          PROD_PIC3: newVal[newVal.length - 1].PROD_PIC3,
+          PROD_DATE: newVal[newVal.length - 1].PROD_DATE,
+          PROD_NUM: 1,
+          PROD_DESC1: newVal[newVal.length - 1].PROD_DESC1,
+          PROD_DESC2: newVal[newVal.length - 1].PROD_DESC2,
+          PROD_DESC3: newVal[newVal.length - 1].PROD_DESC3,
+          PROD_REVIEW: newVal[newVal.length - 1].PROD_REVIEW,
+          PROD_TIMES: newVal[newVal.length - 1].PROD_TIMES,
+        });
+
+        this.setLocal();
+      },
+      deep: true,
+    },
+    buyCar: {
+      handler(newVal) {
+        console.log(newVal)
+        if (newVal.length == 0) {
+          this.detect = true;
+        }
+      },
+    },
     calculate: {
       handler(newVal) {
         this.productPrice = "";
@@ -215,12 +262,10 @@ export default {
             this.productPrice + newVal[i].PROD_PRICE * newVal[i].PROD_NUM
           );
         }
-        this.sel = 1;
-        this.totalPrice = parseInt(this.productPrice * this.sel);
-        this.setLocal()
+        // this.sel = 1;
+        // this.totalPrice = parseInt(this.productPrice * this.sel);
+        this.setLocal();
         this.countMoney();
-
-        console.log("cal-->", newVal);
       },
     },
     checkOut: {
@@ -235,10 +280,19 @@ export default {
     deep: true,
   },
   mounted() {},
-  update() {
-    this.sel = 1;
+  updated() {
+    this.productPrice = "";
+    for (let i = 0; i < this.calculate.length; i++) {
+      this.productPrice = parseFloat(
+        this.productPrice +
+          this.calculate[i].PROD_PRICE * this.calculate[i].PROD_NUM
+      );
+    }
+
     this.totalPrice = parseInt(this.productPrice * this.sel);
     this.setLocal();
+
+    //  console.log("new",this.getProduct)
   },
 };
 </script>

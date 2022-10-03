@@ -3,21 +3,7 @@
 .shopping-cart{
     @include container();
     line-height: 3;
-    .shopping-title{
-        @include container();
-        display: flex;
-        margin: 20px 0;
-
-        .title-font{
-            @include title();
-            &:before{
-                @include titleBefore();
-            }
-         }
-     
-    
-      
-    }
+  
     .shopping-list{
         margin-bottom: 150px;
         .shopping-list-order{
@@ -90,24 +76,7 @@
 // ======================================
 .purchase-area{
     @include container();
-    .purchase-area-title{
-        @include container();
-        display: flex;
-        .title-font{
-            @include title();
-            &:before{
-                @include titleBefore();
-            }
-        }
-
-        .shopping-title{
-            @include container();
-            display: flex;
-            margin: 20px 0;
-
-        }
    
-    }
 }
 
 .purchase-area-container{
@@ -166,5 +135,34 @@
 
    
 }
+.shopping-title{
+    @include container();
+    display: flex;
+    margin: 20px 0;
 
+    .title-font{
+        @include title();
+        &:before{
+            @include titleBefore();
+        }
+     }
+}
+.purchase-area-title{
+    @include container();
+    display: flex;
+    .title-font{
+        @include title();
+        &:before{
+            @include titleBefore();
+        }
+    }
+
+    .shopping-title{
+        @include container();
+        display: flex;
+        margin: 20px 0;
+
+    }
+
+}
 

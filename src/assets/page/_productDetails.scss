@@ -16,6 +16,18 @@
     .product-star{
         display: flex;
         justify-content: center;
+        position: relative;
+        .star-score{
+            &:before{
+                content: "";
+                width: 45px;
+                height: 2px;
+                background-color: $red;
+                position: absolute;
+                bottom: 20px;
+
+            }
+        }
         p{
             font-size: 35px;
             margin: 0 5px;
@@ -135,6 +147,7 @@
             }
         }
     }
+    
 
     .product-addcar {
         text-align: center;

@@ -62,6 +62,7 @@
         <h2>{{ order[0].PROD_NAME }}</h2>
       </div>
       <div class="product-star">
+        <p class="star-score">{{score}}</p>
         <p v-for="item in star" :key="item">★</p>
         <p v-if="star < 1">{{ block }}</p>
         <p v-if="star < 2">{{ block }}</p>
@@ -192,6 +193,7 @@ export default {
       let orders = localStorage.getItem("order");
       if (!orders) return;
       this.order = JSON.parse(orders);
+      console.log(this.order)
       this.score = (
         this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
       ).toFixed(1);

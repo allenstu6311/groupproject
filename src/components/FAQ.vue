@@ -33,11 +33,7 @@
                         </div>
                     </label>
                     <div class="answer">
-                        <p>
-                            <span class="big">
-                                {{faq.FAQ_TEXT}}
-                            </span>
-                        </p>
+                        <p><span class="big" v-text="faq.FAQ_TEXT"></span></p>
                     </div>
                 </div>
             </div>
@@ -94,7 +90,7 @@
                     let JSON =  response.json();
                     this.faqCardList = await JSON; // php 抓取回來的資料存取在預設好的參數裡
                 }
-                await getData(url); // 觸發 getData 的匿名 function 內容 ==> 95 ~ 97 行的內容
+                await getData(url); // 觸發 getData 的匿名 function 內容 ==> 89 ~ 91 行的內容
                 console.log(this.faqCardList);
             }
         }

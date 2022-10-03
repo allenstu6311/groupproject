@@ -86,8 +86,7 @@ export default {
     },
     methods:{
         giveRating(num,name){
-            
-            
+        
             this.axios.get("http://localhost/CGD102_G2/src/assets/phps/review.php",
             {
                 params:{
@@ -118,7 +117,7 @@ export default {
 
         },
         getStorage(){
-            
+           
             let orders = localStorage.getItem("order");
             if(!orders) return;
             this.order = JSON.parse(orders)
@@ -133,8 +132,11 @@ export default {
         },
     
     },
+   
     created(){
+       
         this.getStorage()
+       
         this.axios.get("http://localhost/CGD102_G2/src/assets/phps/article.php",
         {
             params:{
@@ -142,9 +144,9 @@ export default {
             }
         })
         .then((res)=>{
-           
+            console.log(res)
             this.article = res.data
-             console.log("文章", this.article)
+            console.log("文章", this.article)
          })
        
     }

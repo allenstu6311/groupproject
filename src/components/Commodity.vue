@@ -151,12 +151,13 @@
           </div>
         </div>
       </div>
-        <div class="commodity-page">
+        <div class="commodity-page"  v-show="disappear==false">
       <span @click="prevCurrPage">＜</span>
       <span
         v-for="(i, value) in 3"
         :key="i"
-        @click="pagination(i, value)"
+       
+        @click="pagination(i, value)" 
         :class="{ changePage: i == currPage }"
         >{{ i }}</span
       >
@@ -181,6 +182,7 @@ export default {
     search_empty: String,
     checkPrice: Array,
     checkTool: Array,
+    checkList: Array,
   },
   data() {
     return {
@@ -199,6 +201,7 @@ export default {
       range_1: 0,
       range_2: 6,
       currPage: 1,
+      disappear:false,
     };
   },
   methods: {
@@ -347,7 +350,7 @@ export default {
           this.$nextTick(() => {
             //等dom更新時會執行
             this.photo = document.getElementById("pic").clientWidth;
-            console.log(this.photo);
+           
           });
 
           window.onresize = () => {
@@ -362,30 +365,33 @@ export default {
     this.getCommodityInfo();
     this.clear();
     this.onlineStorage();
+    
   },
   watch: {
     toggle: {
       handler(newVal) {
-        if (newVal == false) {
-          this.photo = document.getElementById("pic").clientWidth - 49;
-          window.onresize = () => {
-            let pic = document.getElementById("pic").clientWidth;
-            this.photo = pic;
-          };
-          console.log(this.photo);
-        } else {
-          this.photo = document.getElementById("pic").clientWidth + 85;
-          window.onresize = () => {
-            let pic = document.getElementById("pic").clientWidth;
-            this.photo = pic;
-          };
-          console.log(this.photo);
-        }
+        this.$nextTick(()=> {
+          if (newVal == false) {
+            this.photo = document.getElementById("pic").clientWidth + 45;
+            window.onresize = () => {
+              let pic = document.getElementById("pic").clientWidth;
+              this.photo = pic;
+            };
+           
+          } else {
+            this.photo = document.getElementById("pic").clientWidth + 45;
+            window.onresize = () => {
+              let pic = document.getElementById("pic").clientWidth;
+              this.photo = pic;
+            };
+          
+          }
+        });
       },
     },
     price: {
       handler(newVal) {
-        console.log("price--?", newVal);
+   
         this.data = newVal;
       },
     },
@@ -412,7 +418,8 @@ export default {
     },
     data: {
       handler(newVal) {
-        if (newVal.length == null) {
+        console.log("data",newVal)
+        if (newVal.length == 0) {
           this.empty = true;
         } else {
           this.empty = false;
@@ -421,21 +428,32 @@ export default {
     },
     search_empty: {
       handler(newVal) {
+       
         if (newVal == "") {
           this.data = this.info;
         }
+       
       },
     },
-    checkPrice: {
+    // checkPrice: {
+    //   handler(newVal) {
+    //     console.log("check-->", newVal);
+    //     this.data = newVal;
+    //   },
+    // },
+    // checkTool: {
+    //   handler(newVal) {
+    //     console.log("new-->", newVal);
+    //     this.data = newVal;
+    //   },
+    // },
+    checkList: {
       handler(newVal) {
-        console.log("check-->", newVal);
+        
         this.data = newVal;
-      },
-    },
-    checkTool: {
-      handler(newVal) {
-        console.log("new-->", newVal);
-        this.data = newVal;
+          if(this.data.length<=6){
+            this.disappear=true
+          }
       },
     },
   },

@@ -85,9 +85,14 @@ table {
 .row {
   flex-wrap: nowrap;
 }
-.list-group {
+.list-group{
   width: 15%;
+  :nth-child(2){
+    background-color: red;
+   
+  }
 }
+
 </style>
 <script>
 import SlideChose from "@/components/SlideChose.vue";
@@ -98,7 +103,6 @@ export default {
   data() {
     return {
       data: [],
-      shelf: "上架中",
     };
   },
   methods: {

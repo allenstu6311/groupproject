@@ -4,12 +4,10 @@
       class="list-group-item pt-3 pb-3"
       v-for="item in chose"
       :key="item.name"
-      :class="{ target: value == item.id }"
-      @click="changeColor(item.id)"
-    >
-      {{ item.name }}
-    </li>
+      
+      @click="changeColor(item.id)"><a :href="item.path" id="url" style=" background-color: transparent !important;">{{ item.name }}</a></li>
   </ul>
+  
 </template>
 <style lang="scss" scoped>
 @import "bootstrap/scss/bootstrap";
@@ -17,12 +15,6 @@
   cursor: pointer;
   background-color: #163d82;
   color: white;
-
-  
-}
-.target {
-  background-color: #B52011;
-  font-weight: 800;
 }
 .list-group {
   width: 200px;
@@ -30,10 +22,12 @@
   margin:0 20px;
   li{
     width: 180px;
-    margin: 10px 0;
     text-align: center;
     font-size: 22px;
-    margin: auto;
+    margin: 10px auto;
+    a{
+      text-decoration: none;
+    }
   }
 
 }
@@ -52,10 +46,12 @@ export default {
         {
           id: 1,
           name: "管理商品",
+          path:"/BackShop",
         },
         {
           id: 2,
           name: "管理商品訂單",
+          path:"/OrderItem",
         },
         {
           id: 3,

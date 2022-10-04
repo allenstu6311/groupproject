@@ -26,15 +26,15 @@
                     </div>
                     <div class="answer_container">
                         <div class="answer_frame">
-                            <div class="answer" v-if="activeAcupoint === 'A'">{{acupoint[0]}}</div>
-                            <div class="answer" v-else-if="activeAcupoint === 'B'">{{acupoint[1]}}</div>
-                            <div class="answer" v-else-if="activeAcupoint === 'C'">{{acupoint[2]}}</div>
-                            <div class="answer" v-else-if="activeAcupoint === 'D'">{{acupoint[3]}}</div>
-                            <div class="answer" v-else-if="activeAcupoint === 'E'">{{acupoint[4]}}</div>
-                            <div class="answer" v-else-if="activeAcupoint === 'F'">{{acupoint[5]}}</div>
-                            <div class="answer" v-else-if="activeAcupoint === 'G'">{{acupoint[6]}}</div>
-                            <div class="answer" v-else-if="activeAcupoint === 'H'">{{acupoint[7]}}</div>
-                            <div class="answer" v-else-if="activeAcupoint === 'I'">{{acupoint[8]}}</div>
+                            <div class="answer" v-if="activeAcupoint == 'A'">{{acupoint[0]}}</div>
+                            <div class="answer" v-else-if="activeAcupoint == 'B'">{{acupoint[1]}}</div>
+                            <div class="answer" v-else-if="activeAcupoint == 'C'">{{acupoint[2]}}</div>
+                            <div class="answer" v-else-if="activeAcupoint == 'D'">{{acupoint[3]}}</div>
+                            <div class="answer" v-else-if="activeAcupoint == 'E'">{{acupoint[4]}}</div>
+                            <div class="answer" v-else-if="activeAcupoint == 'F'">{{acupoint[5]}}</div>
+                            <div class="answer" v-else-if="activeAcupoint == 'G'">{{acupoint[6]}}</div>
+                            <div class="answer" v-else-if="activeAcupoint == 'H'">{{acupoint[7]}}</div>
+                            <div class="answer" v-else-if="activeAcupoint == 'I'">{{acupoint[8]}}</div>
                             <div class="answer answer_click" v-else>{{acupoint[9]}}</div>
                         </div>
                     </div>
@@ -43,41 +43,32 @@
 
                 <div class="hand_pic">
                     <img :src="require(`@/assets/images/${imgName}`)" alt="手部穴道圖">
-                    <button class="acupoint" 
-                            :class="{zhong_chong:zhongChong,zhong_chong_change:fzhongChong}"
-                            @click="activeAcupoint = 'A';changeA()"></button>
+                    <button :class="{fzhong_chong:zhongChong,zhong_chong:!zhongChong}"
+                            @click="activeAcupointA"></button>
 
-                    <button class="acupoint"
-                            :class="{shao_shang:shaoShang,shao_shang_change:fshaoShang}"
-                            @click="activeAcupoint = 'B';changeB()"></button>
+                    <button :class="{fshao_shang:shaoShang,shao_shang:!shaoShang}"
+                            @click="activeAcupointB"></button>
 
-                    <button class="acupoint" 
-                            :class="{he_gu:heGu,he_gu_change:fheGu}"
-                            @click="activeAcupoint = 'C';changeC()"></button>
+                    <button :class="{fhe_gu:heGu,he_gu:!heGu}"
+                            @click="activeAcupointC"></button>
 
-                    <button class="acupoint"
-                            :class="{ming_men:mingMen,ming_men_change:fmingMen}" 
-                            @click="activeAcupoint = 'D';changeD()"></button>
+                    <button :class="{fming_men:mingMen,ming_men:!mingMen}" 
+                            @click="activeAcupointD"></button>
 
-                    <button class="acupoint" 
-                            :class="{shen_men:shenMen,shen_men_change:fshenMen}"
-                            @click="activeAcupoint = 'E';changeE()"></button>
+                    <button :class="{fshen_men:shenMen,shen_men:!shenMen}"
+                            @click="activeAcupointE"></button>
 
-                    <button class="acupoint" 
-                            :class="{lao_gong:laoGong,lao_gong_change:flaoGong}"
-                            @click="activeAcupoint = 'F';changeF()"></button>
+                    <button :class="{flao_gong:laoGong,lao_gong:!laoGong}"
+                            @click="activeAcupointF"></button>
 
-                    <button class="acupoint" 
-                            :class="{yu_ji:yuJi,yu_ji_change:fyuJi}"
-                            @click="activeAcupoint = 'G';changeG()"></button>
+                    <button :class="{fyu_ji:yuJi,yu_ji:!yuJi}"
+                            @click="activeAcupointG"></button>
 
-                    <button class="acupoint" 
-                            :class="{shao_fu:shaoFu,shao_fu_change:fshaoFu}"
-                            @click="activeAcupoint = 'H';changeH()"></button>
+                    <button :class="{fshao_fu:shaoFu,shao_fu:!shaoFu}"
+                            @click="activeAcupointH"></button>
 
-                    <button class="acupoint"
-                            :class="{tai_yuan:taiYuan,tai_yuan_change:ftaiYuan}" 
-                            @click="activeAcupoint = 'I';changeI()"></button>
+                    <button :class="{ftai_yuan:taiYuan,tai_yuan:!taiYuan}" 
+                            @click="activeAcupointI"></button>
                 </div>
 
             </section>
@@ -96,33 +87,15 @@
             return{
                 activeAcupoint:'',
                 isActive:true,
-
-                zhongChong:true,
-                fzhongChong:'',
-
-                shaoShang:true,
-                fshaoShang:'',
-
-                heGu:true,
-                fheGu:false,
-
-                mingMen:true,
-                fmingMen:false,
-
-                shenMen:true,
-                fshenMen:false,
-
-                laoGong:true,
-                flaoGong:false,
-
-                yuJi:true,
-                fyuJi:false,
-
-                shaoFu:true,
-                fshaoFu:false,
-
-                taiYuan:true,
-                ftaiYuan:false,
+                zhongChong:false,
+                shaoShang:false,
+                heGu:false,
+                mingMen:false,
+                shenMen:false,
+                laoGong:false,
+                yuJi:false,
+                shaoFu:false,
+                taiYuan:false,
 
                 acupoint:[
                     "中衝穴","少商穴","合谷穴","命門穴","神門穴","勞宮穴","魚際穴","少府穴","太淵穴","（請點擊穴道）"
@@ -132,71 +105,127 @@
             }
         },
         methods:{
-            changeA(){
-                this.zhongChong = !this.zhongChong;
-                
-                if(this.zhongChong){
-                    this.zhongChong= true
-                    this.fzhongChong= false
-                }else{
-                    this.fzhongChong= true
-                    this.shaoShang = true
-                    this.fzhongChong = false
-                }
+            activeAcupointA(){
+                this.activeAcupoint ="A";
+                this.zhongChong = true;
+                this.shaoShang = false;
+                this.heGu = false;
+                this.mingMen = false;
+                this.shenMen = false;
+                this.laoGong = false;
+                this.yuJi = false;
+                this.shaoFu = false;
+                this.taiYuan = false;
             },
-            changeB(){
-                this.shaoShang = !this.shaoShang;
-                
-                if(this.shaoShang){
-                    this.shaoShang = true
-                    this.fshaoShang = false
-                }else{
-                    this.fshaoShang = true
-                    this.zhongChong= true
-                    this.fzhongChong= false
-                }
+            activeAcupointB(){
+                this.activeAcupoint ="B";
+                this.zhongChong = false;
+                this.shaoShang = true;
+                this.heGu = false;
+                this.mingMen = false;
+                this.shenMen = false;
+                this.laoGong = false;
+                this.yuJi = false;
+                this.shaoFu = false;
+                this.taiYuan = false;
             },
-            changeC(){
-                this.heGu = !this.heGu;
-                this.fheGu = !this.fheGu;
+            activeAcupointC(){
+                this.activeAcupoint ="C"
+                this.zhongChong = false;
+                this.shaoShang = false;
+                this.heGu = true;
+                this.mingMen = false;
+                this.shenMen = false;
+                this.laoGong = false;
+                this.yuJi = false;
+                this.shaoFu = false;
+                this.taiYuan = false;
             },
-            changeD(){
-                this.mingMen = !this.mingMen;
-                this.fmingMen = !this.fmingMen;
+            activeAcupointD(){
+                this.activeAcupoint ="D"
+                this.zhongChong = false;
+                this.shaoShang = false;
+                this.heGu = false;
+                this.mingMen = true;
+                this.shenMen = false;
+                this.laoGong = false;
+                this.yuJi = false;
+                this.shaoFu = false;
+                this.taiYuan = false;
             },
-            changeE(){
-                this.shenMen = !this.shenMen;
-                this.fshenMen = !this.fshenMen;
+            activeAcupointE(){
+                this.activeAcupoint ="E"
+                this.zhongChong = false;
+                this.shaoShang = false;
+                this.heGu = false;
+                this.mingMen = false;
+                this.shenMen = true;
+                this.laoGong = false;
+                this.yuJi = false;
+                this.shaoFu = false;
+                this.taiYuan = false;
             },
-            changeF(){
-                this.laoGong = !this.laoGong;
-                this.flaoGong = !this.flaoGong;
+            activeAcupointF(){
+                this.activeAcupoint ="F"
+                this.zhongChong = false;
+                this.shaoShang = false;
+                this.heGu = false;
+                this.mingMen = false;
+                this.shenMen = false;
+                this.laoGong = true;
+                this.yuJi = false;
+                this.shaoFu = false;
+                this.taiYuan = false;
             },
-            changeG(){
-                this.yuJi = !this.yuJi;
-                this.fyuJi = !this.fyuJi;
+            activeAcupointG(){
+                this.activeAcupoint ="G"
+                this.zhongChong = false;
+                this.shaoShang = false;
+                this.heGu = false;
+                this.mingMen = false;
+                this.shenMen = false;
+                this.laoGong = false;
+                this.yuJi = true;
+                this.shaoFu = false;
+                this.taiYuan = false;
             },
-            changeH(){
-                this.shaoFu = !this.shaoFu;
-                this.fshaoFu = !this.fshaoFu;
+            activeAcupointH(){
+                this.activeAcupoint ="H"
+                this.zhongChong = false;
+                this.shaoShang = false;
+                this.heGu = false;
+                this.mingMen = false;
+                this.shenMen = false;
+                this.laoGong = false;
+                this.yuJi = false;
+                this.shaoFu = true;
+                this.taiYuan = false;
             },
-            changeI(){
-                this.taiYuan = !this.taiYuan;
-                this.ftaiYuan = !this.ftaiYuan;
+            activeAcupointI(){
+                this.activeAcupoint ="I"
+                this.zhongChong = false;
+                this.shaoShang = false;
+                this.heGu = false;
+                this.mingMen = false;
+                this.shenMen = false;
+                this.laoGong = false;
+                this.yuJi = false;
+                this.shaoFu = false;
+                this.taiYuan = true;
             },
             changeBtn(){
                 this.isActive = !this.isActive;
 
             },
             changeImg(){
-                if(this.isActive){
+                if(this.activeAcupoint =="A"){
                     this.imgName='game1Correct.png'
                 }else{
                     this.imgName='game1Wrong.png'
                 }
             },
             changeQ(){
-                if(this.isActive){
+                if(this.activeAcupoint =="A"){
                     this.question='正確答案!'
                 }else{
                     this.question='錯誤答案!'

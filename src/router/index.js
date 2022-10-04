@@ -58,6 +58,7 @@ const routes = [
   {
     path: '/backTherapist',
     name: 'backTherapist',
+    chName: '按摩師管理',
     component: BackTherapistView
   },
   {
@@ -174,6 +175,7 @@ const routes = [
   {
     path: '/backstageIndex',
     name: 'backstageIndex',
+    chName: '首頁',
     component: BackstageIndexView
   },
   {

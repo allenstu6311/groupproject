@@ -19,7 +19,8 @@ import GetCouponView from '../views/GetCouponView.vue'
 import BackstageView from '../views/BackstageView.vue'
 import BackstageIndexView from '../views/BackstageIndexView.vue'
 import ManageLoginView from '../views/ManageLoginView.vue'
-
+import BackShop from '../views/BackShop.vue'
+import OrderItem from '../views/OrderItem.vue'
 const routes = [
   {
     path: '/',
@@ -93,6 +94,14 @@ const routes = [
     // this generates a separate chunk (reserve.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "reserve" */ '../views/BackShop.vue')
+  },
+  {
+    path: '/OrderItem',
+    name: 'OrderItem',
+    // route level code-splitting
+    // this generates a separate chunk (reserve.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "reserve" */ '../views/OrderItem.vue')
   },
   {
     path: '/Confirm',

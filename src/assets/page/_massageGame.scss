@@ -83,10 +83,10 @@
                 width: 100%;
                 object-fit: contain;
             }
-            .acupoint{
+            .zhong_chong{
                 position: absolute;
                 top: 0%;
-                left: 0%;
+                left: 35%;
                 width: 20px;
                 height: 20px;
                 background-color: $red;
@@ -96,367 +96,874 @@
                 transition: 0.3s;
                 z-index: 98;
             }
-            .acupoint:hover,.acupoint:focus{
+            .fzhong_chong{
+                position: absolute;
+                top: 0%;
+                left: 35%;
+                width: 20px;
+                height: 20px;
+                background-color: $red;
+                border-radius: 50%;
+                border: none;
+                cursor: pointer;
+                transition: 0.3s;
+                z-index: 98;
+            }
+            .zhong_chong:hover{
                 background-color: $red;
                 transition: 0.3s;
                 scale: 1.5;
                 box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
             }
-            .acupoint::after{
+            .fzhong_chong:focus{
+                background-color: $red;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
+            }
+            .zhong_chong::after{
                 position: absolute;
-                top: 0px;
-                left: 0px;
                 content: '';
                 width: 0px;
                 height: 0px;
                 background-color: $blue;
                 transition: 0.5s;
-            }
-            .acupoint:hover::after,
-            .acupoint:focus::after{
-                left: 0px;
-                width: 40px;
-                height: 1px;
-                transition: 0.5s;
-            }
-            .acupoint::before{
-                width: 12px;
-                font-size: 12px;
-                position: absolute;
-                top: 0px;
-                left: 0px;
-                content: '';
-                font-family: $fontTitle;
-                color: transparent;
-                font-size: 20px;
-                transition: 0.3s;
-            }
-            .acupoint:hover::before,
-            .acupoint:focus::before{
-                color: $blue;
-                transition: 0.3s 0.2s;
-            }
-            .zhong_chong{
-                left: 35%;
-            }
-            .shao_shang{
-                top: 44%;
-                left: 90%;
-            }
-            .he_gu{
-                top: 62%;
-                left: 57%;
-            }
-            .ming_men{
-                top: 43%;
-                left: 10%;
-            }
-            .shen_men{
-                top: 95%;
-                left: 28%;
-            }
-            .lao_gong{
-                top: 55%;
-                left: 40%;
-            }
-            
-            .yu_ji{
-                top: 67%;
-                left: 72%;
-            }
-            .shao_fu{
-                top: 67%;
-                left: 25%;
-            }
-            .tai_yuan{
-                top: 93%;
-                left: 53%;
-            }
-            .zhong_chong::after{
                 top: 12px;
                 left: 0px;
             }
-            .zhong_chong:hover::after,
-            .zhong_chong:focus::after{
+            .fzhong_chong::after{
+                position: absolute;
+                content: '';
+                width: 0px;
+                height: 0px;
+                background-color: $blue;
+                transition: 0.5s;
+                top: 12px;
+                left: 0px;
+            }
+            .zhong_chong:hover::after{
+                width: 40px;
+                height: 1px;
+                transition: 0.5s;
+                left: -40px;
+            }
+            .fzhong_chong:focus::after{
+                width: 40px;
+                height: 1px;
                 left: -40px;
             }
             .zhong_chong::before{
+                width: 12px;
+                font-size: 18px;
+                position: absolute;
+                content: '';
+                font-family: $fontTitle;
+                color: transparent;
+                transition: 0.3s;
                 top: -25px;
                 left: -65px;
                 content: '中衝穴';
             }
+            .fzhong_chong::before{
+                width: 12px;
+                font-size: 18px;
+                position: absolute;
+                font-family: $fontTitle;
+                color: transparent;
+                transition: 0.3s;
+                top: -25px;
+                left: -65px;
+                content: '中衝穴';
+            }
+            .zhong_chong:hover::before{
+                color: $blue;
+                transition: 0.3s 0.2s;
+            }
+            .fzhong_chong:focus::before{
+                color: $blue;
+            }
+
+            .shao_shang{
+                position: absolute;
+                top: 44%;
+                left: 90%;
+                width: 20px;
+                height: 20px;
+                background-color: $red;
+                border-radius: 50%;
+                border: none;
+                cursor: pointer;
+                transition: 0.3s;
+                z-index: 98;
+            }
+            .fshao_shang{
+                position: absolute;
+                top: 44%;
+                left: 90%;
+                width: 20px;
+                height: 20px;
+                background-color: $red;
+                border-radius: 50%;
+                border: none;
+                cursor: pointer;
+                transition: 0.3s;
+                z-index: 98;
+            }
+            .shao_shang:hover{
+                background-color: $red;
+                transition: 0.3s;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
+            }
+            .fshao_shang:focus{
+                background-color: $red;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
+            }
             .shao_shang::after{
+                position: absolute;
+                content: '';
+                width: 0px;
+                height: 0px;
+                background-color: $blue;
+                transition: 0.5s;
                 top: 12px;
                 left: 100%;
             }
-            .shao_shang:hover::after,
-            .shao_shang:focus::after{
+            .fshao_shang::after{
+                position: absolute;
+                content: '';
+                width: 0px;
+                height: 0px;
+                background-color: $blue;
+                transition: 0.5s;
+                top: 12px;
+                left: 100%;
+            }
+            .shao_shang:hover::after{
+                height: 1px;
+                transition: 0.5s;
+                width: 10px;
+                left: 100%;
+            }
+            .fshao_shang:focus::after{
+                height: 1px;
                 width: 10px;
                 left: 100%;
             }
             .shao_shang::before{
+                width: 12px;
+                font-size: 18px;
+                position: absolute;
+                font-family: $fontTitle;
+                color: transparent;
+                transition: 0.3s;
                 top: -25px;
                 left: 30px;
                 content: '少商穴';
             }
+            .fshao_shang::before{
+                width: 12px;
+                font-size: 18px;
+                position: absolute;
+                font-family: $fontTitle;
+                color: transparent;
+                transition: 0.3s;
+                top: -25px;
+                left: 30px;
+                content: '少商穴';
+            }
+            .shao_shang:hover::before{
+                color: $blue;
+                transition: 0.3s 0.2s;
+            }
+            .fshao_shang:focus::before{
+                color: $blue;
+            }
+
+            .he_gu{
+                position: absolute;
+                top: 62%;
+                left: 57%;
+                width: 20px;
+                height: 20px;
+                background-color: $red;
+                border-radius: 50%;
+                border: none;
+                cursor: pointer;
+                transition: 0.3s;
+                z-index: 98;
+            }
+            .fhe_gu{
+                position: absolute;
+                top: 62%;
+                left: 57%;
+                width: 20px;
+                height: 20px;
+                background-color: $red;
+                border-radius: 50%;
+                border: none;
+                cursor: pointer;
+                transition: 0.3s;
+                z-index: 98;
+            }
+            .he_gu:hover{
+                background-color: $red;
+                transition: 0.3s;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
+            }
+            .fhe_gu:focus{
+                background-color: $red;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
+            }
             .he_gu::after{
+                position: absolute;
+                content: '';
+                width: 0px;
+                height: 0px;
+                background-color: $blue;
+                transition: 0.5s;
                 top: 12px;
                 left: 100%;
             }
-            .he_gu:hover::after,
-            .he_gu:focus::after{
+            .fhe_gu::after{
+                position: absolute;
+                content: '';
+                width: 0px;
+                height: 0px;
+                background-color: $blue;
+                transition: 0.5s;
+                top: 12px;
                 left: 100%;
-                width: 40px;
+            }
+            .he_gu:hover::after{
+                height: 1px;
+                transition: 0.5s;
+                left: 100%;
+                width: 70px;
+            }
+            .fhe_gu:focus::after{
+                height: 1px;
+                left: 100%;
+                width: 70px;
             }
             .he_gu::before{
+                width: 12px;
+                font-size: 18px;
+                position: absolute;
+                font-family: $fontTitle;
+                color: transparent;
+                transition: 0.3s;
                 top: -23px;
-                left: 60px;
+                left: 90px;
                 content: '合谷穴';
             }
+            .fhe_gu::before{
+                width: 12px;
+                font-size: 18px;
+                position: absolute;
+                font-family: $fontTitle;
+                color: transparent;
+                transition: 0.3s;
+                top: -23px;
+                left: 90px;
+                content: '合谷穴';
+            }
+            .he_gu:hover::before{
+                color: $blue;
+                transition: 0.3s 0.2s;
+            }
+            .fhe_gu:focus::before{
+                color: $blue;
+            }
+
+            .ming_men{
+                position: absolute;
+                top: 43%;
+                left: 10%;
+                width: 20px;
+                height: 20px;
+                background-color: $red;
+                border-radius: 50%;
+                border: none;
+                cursor: pointer;
+                transition: 0.3s;
+                z-index: 98;
+            }
+            .fming_men{
+                position: absolute;
+                top: 43%;
+                left: 10%;
+                width: 20px;
+                height: 20px;
+                background-color: $red;
+                border-radius: 50%;
+                border: none;
+                cursor: pointer;
+                transition: 0.3s;
+                z-index: 98;
+            }
+            .ming_men:hover{
+                background-color: $red;
+                transition: 0.3s;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
+            }
+            .fming_men:focus{
+                background-color: $red;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
+            }
             .ming_men::after{
+                position: absolute;
+                content: '';
+                width: 0px;
+                height: 0px;
+                background-color: $blue;
+                transition: 0.5s;
                 top: 12px;
                 left: 0px;
             }
-            .ming_men:hover::after,
-            .ming_men:focus::after{
+            .fming_men::after{
+                position: absolute;
+                content: '';
+                width: 0px;
+                height: 0px;
+                background-color: $blue;
+                transition: 0.5s;
+                top: 12px;
+                left: 0px;
+            }
+            .ming_men:hover::after{
+                height: 1px;
+                transition: 0.5s;
+                width: 13px;
+                left: -13px;
+            }
+            .fming_men:focus::after{
+                height: 1px;
                 width: 13px;
                 left: -13px;
             }
             .ming_men::before{
+                width: 12px;
+                font-size: 18px;
+                position: absolute;
+                font-family: $fontTitle;
+                color: transparent;
+                transition: 0.3s;
                 top: -25px;
                 left: -35px;
                 content: '命門穴';
             }
+            .fming_men::before{
+                width: 12px;
+                font-size: 18px;
+                position: absolute;
+                font-family: $fontTitle;
+                color: transparent;
+                transition: 0.3s;
+                top: -25px;
+                left: -35px;
+                content: '命門穴';
+            }
+            .ming_men:hover::before{
+                color: $blue;
+                transition: 0.3s 0.2s;
+            }
+            .fming_men:focus::before{
+                color: $blue;
+            }
+            
+            .shen_men{
+                position: absolute;
+                top: 95%;
+                left: 28%;
+                width: 20px;
+                height: 20px;
+                background-color: $red;
+                border-radius: 50%;
+                border: none;
+                cursor: pointer;
+                transition: 0.3s;
+                z-index: 98;
+            }
+            .fshen_men{
+                position: absolute;
+                top: 95%;
+                left: 28%;
+                width: 20px;
+                height: 20px;
+                background-color: $red;
+                border-radius: 50%;
+                border: none;
+                cursor: pointer;
+                transition: 0.3s;
+                z-index: 98;
+            }
+            .shen_men:hover{
+                background-color: $red;
+                transition: 0.3s;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
+            }
+            .fshen_men:focus{
+                background-color: $red;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
+            }
             .shen_men::after{
+                position: absolute;
+                content: '';
+                width: 0px;
+                height: 0px;
+                background-color: $blue;
+                transition: 0.5s;
                 top: 12px;
                 left: 0px;
             }
-            .shen_men:hover::after,
-            .shen_men:focus::after{
+            .fshen_men::after{
+                position: absolute;
+                content: '';
+                width: 0px;
+                height: 0px;
+                background-color: $blue;
+                transition: 0.5s;
+                top: 12px;
+                left: 0px;
+            }
+            .shen_men:hover::after{
+                height: 1px;
+                transition: 0.5s;
+                width: 28px;
+                left: -28px;
+            }
+            .fshen_men:focus::after{
+                height: 1px;
                 width: 28px;
                 left: -28px;
             }
             .shen_men::before{
+                width: 12px;
+                font-size: 18px;
+                position: absolute;
+                font-family: $fontTitle;
+                color: transparent;
+                transition: 0.3s;
                 top: -25px;
                 left: -50px;
                 content: '神門穴';
             }
+            .fshen_men::before{
+                width: 12px;
+                font-size: 18px;
+                position: absolute;
+                font-family: $fontTitle;
+                color: transparent;
+                transition: 0.3s;
+                top: -25px;
+                left: -50px;
+                content: '神門穴';
+            }
+            .shen_men:hover::before{
+                color: $blue;
+                transition: 0.3s 0.2s;
+            }
+            .fshen_men:focus::before{
+                color: $blue;
+            }
+
+            .lao_gong{
+                position: absolute;
+                top: 55%;
+                left: 40%;
+                width: 20px;
+                height: 20px;
+                background-color: $red;
+                border-radius: 50%;
+                border: none;
+                cursor: pointer;
+                transition: 0.3s;
+                z-index: 98;
+            }
+            .flao_gong{
+                position: absolute;
+                top: 55%;
+                left: 40%;
+                width: 20px;
+                height: 20px;
+                background-color: $red;
+                border-radius: 50%;
+                border: none;
+                cursor: pointer;
+                transition: 0.3s;
+                z-index: 98;
+            }
+            .lao_gong:hover{
+                background-color: $red;
+                transition: 0.3s;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
+            }
+            .flao_gong:focus{
+                background-color: $red;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
+            }
             .lao_gong::after{
+                position: absolute;
+                content: '';
+                width: 0px;
+                height: 0px;
+                background-color: $blue;
+                transition: 0.5s;
                 top: 12px;
                 left: 0px;
             }
-            .lao_gong:hover::after,
-            .lao_gong:focus::after{
-                left: -60px;
-                width: 60px;
+            .flao_gong::after{
+                position: absolute;
+                content: '';
+                width: 0px;
+                height: 0px;
+                background-color: $blue;
+                transition: 0.5s;
+                top: 12px;
+                left: 0px;
+            }
+            .lao_gong:hover::after{
+                height: 1px;
+                transition: 0.5s;
+                left: -80px;
+                width: 80px;
+            }
+            .flao_gong:focus::after{
+                height: 1px;
+                left: -80px;
+                width: 80px;
             }
             .lao_gong::before{
+                width: 12px;
+                font-size: 18px;
+                position: absolute;
+                font-family: $fontTitle;
+                color: transparent;
+                transition: 0.3s;
                 top: -25px;
-                left: -80px;
+                left: -100px;
                 content: '勞宮穴';
             }
+            .flao_gong::before{
+                width: 12px;
+                font-size: 18px;
+                position: absolute;
+                font-family: $fontTitle;
+                color: transparent;
+                transition: 0.3s;
+                top: -25px;
+                left: -100px;
+                content: '勞宮穴';
+            }
+            .lao_gong:hover::before{
+                color: $blue;
+                transition: 0.3s 0.2s;
+            }
+            .flao_gong:focus::before{
+                color: $blue;
+            }
+            
+            .yu_ji{
+                position: absolute;
+                top: 67%;
+                left: 72%;
+                width: 20px;
+                height: 20px;
+                background-color: $red;
+                border-radius: 50%;
+                border: none;
+                cursor: pointer;
+                transition: 0.3s;
+                z-index: 98;
+            }
+            .fyu_ji{
+                position: absolute;
+                top: 67%;
+                left: 72%;
+                width: 20px;
+                height: 20px;
+                background-color: $red;
+                border-radius: 50%;
+                border: none;
+                cursor: pointer;
+                transition: 0.3s;
+                z-index: 98;
+            }
+            .yu_ji:hover{
+                background-color: $red;
+                transition: 0.3s;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
+            }
+            .fyu_ji:focus{
+                background-color: $red;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
+            }
             .yu_ji::after{
+                position: absolute;
+                content: '';
+                width: 0px;
+                height: 0px;
+                background-color: $blue;
+                transition: 0.5s;
                 top: 12px;
                 left: 100%;
             }
-            .yu_ji:hover::after,
-            .yu_ji:focus::after{
+            .fyu_ji::after{
+                position: absolute;
+                content: '';
+                width: 0px;
+                height: 0px;
+                background-color: $blue;
+                transition: 0.5s;
+                top: 12px;
+                left: 100%;
+            }
+            .yu_ji:hover::after{
+                height: 1px;
+                transition: 0.5s;
+                width: 20px;
+                left: 100%;
+            }
+            .fyu_ji:focus::after{
+                height: 1px;
                 width: 20px;
                 left: 100%;
             }
             .yu_ji::before{
+                width: 12px;
+                font-size: 18px;
+                position: absolute;
+                font-family: $fontTitle;
+                color: transparent;
+                transition: 0.3s;
                 top: -25px;
                 left: 40px;
                 content: '魚際穴';
             }
+            .fyu_ji::before{
+                width: 12px;
+                font-size: 18px;
+                position: absolute;
+                font-family: $fontTitle;
+                color: transparent;
+                transition: 0.3s;
+                top: -25px;
+                left: 40px;
+                content: '魚際穴';
+            }
+            .yu_ji:hover::before{
+                color: $blue;
+                transition: 0.3s 0.2s;
+            }
+            .fyu_ji:focus::before{
+                color: $blue;
+            }
+
+            .shao_fu{
+                position: absolute;
+                top: 67%;
+                left: 25%;
+                width: 20px;
+                height: 20px;
+                background-color: $red;
+                border-radius: 50%;
+                border: none;
+                cursor: pointer;
+                transition: 0.3s;
+                z-index: 98;
+            }
+            .fshao_fu{
+                position: absolute;
+                top: 67%;
+                left: 25%;
+                width: 20px;
+                height: 20px;
+                background-color: $red;
+                border-radius: 50%;
+                border: none;
+                cursor: pointer;
+                transition: 0.3s;
+                z-index: 98;
+            }
+            .shao_fu:hover{
+                background-color: $red;
+                transition: 0.3s;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
+            }
+            .fshao_fu:focus{
+                background-color: $red;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
+            }
             .shao_fu::after{
+                position: absolute;
+                content: '';
+                width: 0px;
+                height: 0px;
+                background-color: $blue;
+                transition: 0.5s;
                 top: 12px;
                 left: 0px;
             }
-            .shao_fu:hover::after,
-            .shao_fu:focus::after{
+            .fshao_fu::after{
+                position: absolute;
+                content: '';
+                width: 0px;
+                height: 0px;
+                background-color: $blue;
+                transition: 0.5s;
+                top: 12px;
+                left: 0px;
+            }
+            .shao_fu:hover::after{
+                height: 1px;
+                transition: 0.5s;
+                left: -28px;
+                width: 28px;
+            }
+            .fshao_fu:focus::after{
+                height: 1px;
                 left: -28px;
                 width: 28px;
             }
             .shao_fu::before{
+                width: 12px;
+                font-size: 18px;
+                position: absolute;
+                font-family: $fontTitle;
+                color: transparent;
+                transition: 0.3s;
                 top: -25px;
                 left: -50px;
                 content: '少府穴';
             }
+            .fshao_fu::before{
+                width: 12px;
+                font-size: 18px;
+                position: absolute;
+                font-family: $fontTitle;
+                color: transparent;
+                transition: 0.3s;
+                top: -25px;
+                left: -50px;
+                content: '少府穴';
+            }
+            .shao_fu:hover::before{
+                color: $blue;
+                transition: 0.3s 0.2s;
+            }
+            .fshao_fu:focus::before{
+                color: $blue;
+            }
+
+            .tai_yuan{
+                position: absolute;
+                top: 93%;
+                left: 53%;
+                width: 20px;
+                height: 20px;
+                background-color: $red;
+                border-radius: 50%;
+                border: none;
+                cursor: pointer;
+                transition: 0.3s;
+                z-index: 98;
+            }
+            .ftai_yuan{
+                position: absolute;
+                top: 93%;
+                left: 53%;
+                width: 20px;
+                height: 20px;
+                background-color: $red;
+                border-radius: 50%;
+                border: none;
+                cursor: pointer;
+                transition: 0.3s;
+                z-index: 98;
+            }
+            .tai_yuan:hover{
+                background-color: $red;
+                transition: 0.3s;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
+            }
+            .ftai_yuan:focus{
+                background-color: $red;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
+            }
             .tai_yuan::after{
+                position: absolute;
+                content: '';
+                width: 0px;
+                height: 0px;
+                background-color: $blue;
+                transition: 0.5s;
                 top: 12px;
                 left: 100%;
             }
-            .tai_yuan:hover::after,
-            .tai_yuan:focus::after{
+            .ftai_yuan::after{
+                position: absolute;
+                content: '';
+                width: 0px;
+                height: 0px;
+                background-color: $blue;
+                transition: 0.5s;
+                top: 12px;
+                left: 100%;
+            }
+            .tai_yuan:hover::after{
+                height: 1px;
+                transition: 0.5s;
+                width: 30px;
+                left: 100%;
+            }
+            .ftai_yuan:focus::after{
+                height: 1px;
                 width: 30px;
                 left: 100%;
             }
             .tai_yuan::before{
+                width: 12px;
+                font-size: 18px;
+                position: absolute;
+                font-family: $fontTitle;
+                color: transparent;
+                transition: 0.3s;
                 top: -25px;
                 left: 50px;
                 content: '太淵穴';
             }
-            .zhong_chong_change{
-                left: 35%;
-            }
-            .shao_shang_change{
-                top: 44%;
-                left: 90%;
-            }
-            .he_gu_change{
-                top: 62%;
-                left: 57%;
-            }
-            .ming_men_change{
-                top: 43%;
-                left: 10%;
-            }
-            .shen_men_change{
-                top: 95%;
-                left: 28%;
-            }
-            .lao_gong_change{
-                top: 55%;
-                left: 40%;
-            }
-            
-            .yu_ji_change{
-                top: 67%;
-                left: 72%;
-            }
-            .shao_fu_change{
-                top: 67%;
-                left: 25%;
-            }
-            .tai_yuan_change{
-                top: 93%;
-                left: 53%;
-            }
-            .zhong_chong_change::after{
-                top: 12px;
-                left: 0px;
-            }
-            .zhong_chong_change:hover::after,
-            .zhong_chong_change:focus::after{
-                left: -40px;
-            }
-            .zhong_chong_change::before{
-                top: -25px;
-                left: -65px;
-                content: '中衝穴';
-            }
-            .shao_shang_change::after{
-                top: 12px;
-                left: 100%;
-            }
-            .shao_shang_change:hover::after,
-            .shao_shang_change:focus::after{
-                width: 10px;
-                left: 100%;
-            }
-            .shao_shang_change::before{
-                top: -25px;
-                left: 30px;
-                content: '少商穴';
-            }
-            .he_gu_change::after{
-                top: 12px;
-                left: 100%;
-            }
-            .he_gu_change:hover::after,
-            .he_gu_change:focus::after{
-                left: 100%;
-                width: 40px;
-            }
-            .he_gu_change::before{
-                top: -23px;
-                left: 60px;
-                content: '合谷穴';
-            }
-            .ming_men_change::after{
-                top: 12px;
-                left: 0px;
-            }
-            .ming_men_change:hover::after,
-            .ming_men_change:focus::after{
-                width: 13px;
-                left: -13px;
-            }
-            .ming_men_change::before{
-                top: -25px;
-                left: -35px;
-                content: '命門穴';
-            }
-            .shen_men_change::after{
-                top: 12px;
-                left: 0px;
-            }
-            .shen_men_change:hover::after,
-            .shen_men_change:focus::after{
-                width: 28px;
-                left: -28px;
-            }
-            .shen_men_change::before{
-                top: -25px;
-                left: -50px;
-                content: '神門穴';
-            }
-            .lao_gong_change::after{
-                top: 12px;
-                left: 0px;
-            }
-            .lao_gong_change:hover::after,
-            .lao_gong_change:focus::after{
-                left: -60px;
-                width: 60px;
-            }
-            .lao_gong_change::before{
-                top: -25px;
-                left: -80px;
-                content: '勞宮穴';
-            }
-            .yu_ji_change::after{
-                top: 12px;
-                left: 100%;
-            }
-            .yu_ji_change:hover::after,
-            .yu_ji_change:focus::after{
-                width: 20px;
-                left: 100%;
-            }
-            .yu_ji_change::before{
-                top: -25px;
-                left: 40px;
-                content: '魚際穴';
-            }
-            .shao_fu_change::after{
-                top: 12px;
-                left: 0px;
-            }
-            .shao_fu_change:hover::after,
-            .shao_fu_change:focus::after{
-                left: -28px;
-                width: 28px;
-            }
-            .shao_fu_change::before{
-                top: -25px;
-                left: -50px;
-                content: '少府穴';
-            }
-            .tai_yuan_change::after{
-                top: 12px;
-                left: 100%;
-            }
-            .tai_yuan_change:hover::after,
-            .tai_yuan_change:focus::after{
-                width: 30px;
-                left: 100%;
-            }
-            .tai_yuan_change::before{
+            .ftai_yuan::before{
+                width: 12px;
+                font-size: 18px;
+                position: absolute;
+                font-family: $fontTitle;
+                color: transparent;
+                transition: 0.3s;
                 top: -25px;
                 left: 50px;
                 content: '太淵穴';
+            }
+            .tai_yuan:hover::before{
+                color: $blue;
+                transition: 0.3s 0.2s;
+            }
+            .ftai_yuan:focus::before{
+                color: $blue;
             }
         }
     }
@@ -518,137 +1025,280 @@
             .hand_pic{
                 margin: -23% 0px 0px 15%;
                 width: 50%;
-                .acupoint{
-                    width: 25px;
-                    height: 25px;
-                }
-                .acupoint::before{
-                    width: 60px;
-                    font-size: 20px;
-                }
                 .zhong_chong::after{
                     top: 12px;
                     left: 0px;
                 }
-                .zhong_chong:hover::after,
-                .zhong_chong:focus::after{
+                .fzhong_chong::after{
+                    top: 12px;
+                    left: 0px;
+                }
+                .zhong_chong:hover::after{
+                    left: -40px;
+                }
+                .fzhong_chong:focus::after{
                     left: -40px;
                 }
                 .zhong_chong::before{
+                    width: 60px;
+                    font-size: 20px;
                     top: 0px;
                     left: -100px;
                     content: '中衝穴';
                 }
+                .fzhong_chong::before{
+                    width: 60px;
+                    font-size: 20px;
+                    top: 0px;
+                    left: -100px;
+                    content: '中衝穴';
+                }
+
                 .shao_shang::after{
                     top: 12px;
                     left: 100%;
                 }
-                .shao_shang:hover::after,
-                .shao_shang:focus::after{
+                .fshao_shang::after{
+                    top: 12px;
+                    left: 100%;
+                }
+                .shao_shang:hover::after{
+                    width: 40px;
+                    left: 100%;
+                }
+                .fshao_shang:focus::after{
                     width: 40px;
                     left: 100%;
                 }
                 .shao_shang::before{
+                    width: 60px;
+                    font-size: 20px;
                     top: 0px;
-                    left: 70px;
+                    left: 60px;
                     content: '少商穴';
                 }
+                .fshao_shang::before{
+                    width: 60px;
+                    font-size: 20px;
+                    top: 0px;
+                    left: 60px;
+                    content: '少商穴';
+                }
+
                 .he_gu::after{
                     top: 12px;
                     left: 100%;
                 }
-                .he_gu:hover::after,
-                .he_gu:focus::after{
+                .fhe_gu::after{
+                    top: 12px;
+                    left: 100%;
+                }
+                .he_gu:hover::after{
+                    left: 100%;
+                    width: 100px;
+                }
+                .fhe_gu:focus::after{
                     left: 100%;
                     width: 100px;
                 }
                 .he_gu::before{
+                    width: 60px;
+                    font-size: 20px;
                     top: 0px;
-                    left: 130px;
+                    left: 120px;
                     content: '合谷穴';
                 }
+                .fhe_gu::before{
+                    width: 60px;
+                    font-size: 20px;
+                    top: 0px;
+                    left: 120px;
+                    content: '合谷穴';
+                }
+
                 .ming_men::after{
                     top: 12px;
                     left: 0px;
                 }
-                .ming_men:hover::after,
-                .ming_men:focus::after{
+                .fming_men::after{
+                    top: 12px;
+                    left: 0px;
+                }
+                .ming_men:hover::after{
+                    width: 35px;
+                    left: -35px;
+                }
+                .fming_men:focus::after{
                     width: 35px;
                     left: -35px;
                 }
                 .ming_men::before{
+                    width: 60px;
+                    font-size: 20px;
                     top: 0px;
                     left: -95px;
                     content: '命門穴';
                 }
+                .fming_men::before{
+                    width: 60px;
+                    font-size: 20px;
+                    top: 0px;
+                    left: -95px;
+                    content: '命門穴';
+                }
+
                 .shen_men::after{
                     top: 12px;
                     left: 0px;
                 }
-                .shen_men:hover::after,
-                .shen_men:focus::after{
+                .fshen_men::after{
+                    top: 12px;
+                    left: 0px;
+                }
+                .shen_men:hover::after{
+                    width: 40px;
+                    left: -40px;
+                }
+                .fshen_men:focus::after{
                     width: 40px;
                     left: -40px;
                 }
                 .shen_men::before{
+                    width: 60px;
+                    font-size: 20px;
                     top: 0px;
                     left: -100px;
                     content: '神門穴';
                 }
+                .fshen_men::before{
+                    width: 60px;
+                    font-size: 20px;
+                    top: 0px;
+                    left: -100px;
+                    content: '神門穴';
+                }
+
                 .lao_gong::after{
                     top: 12px;
                     left: 0px;
                 }
-                .lao_gong:hover::after,
-                .lao_gong:focus::after{
+                .flao_gong::after{
+                    top: 12px;
+                    left: 0px;
+                }
+                .lao_gong:hover::after{
+                    left: -110px;
+                    width: 110px;
+                }
+                .flao_gong:focus::after{
                     left: -110px;
                     width: 110px;
                 }
                 .lao_gong::before{
+                    width: 60px;
+                    font-size: 20px;
                     top: 0px;
                     left: -170px;
                     content: '勞宮穴';
                 }
+                .flao_gong::before{
+                    width: 60px;
+                    font-size: 20px;
+                    top: 0px;
+                    left: -170px;
+                    content: '勞宮穴';
+                }
+
                 .yu_ji::after{
                     top: 12px;
                     left: 100%;
                 }
-                .yu_ji:hover::after,
-                .yu_ji:focus::after{
+                .fyu_ji::after{
+                    top: 12px;
+                    left: 100%;
+                }
+                .yu_ji:hover::after{
+                    width: 40px;
+                    left: 100%;
+                }
+                .fyu_ji:focus::after{
                     width: 40px;
                     left: 100%;
                 }
                 .yu_ji::before{
+                    width: 60px;
+                    font-size: 20px;
                     top: 0px;
-                    left: 70px;
+                    left: 60px;
                     content: '魚際穴';
                 }
+                .fyu_ji::before{
+                    width: 60px;
+                    font-size: 20px;
+                    top: 0px;
+                    left: 60px;
+                    content: '魚際穴';
+                }
+
                 .shao_fu::after{
                     top: 12px;
                     left: 0px;
                 }
-                .shao_fu:hover::after,
-                .shao_fu:focus::after{
+                .fshao_fu::after{
+                    top: 12px;
+                    left: 0px;
+                }
+                .shao_fu:hover::after{
+                    left: -60px;
+                    width: 60px;
+                }
+                .vshao_fu:focus::after{
                     left: -60px;
                     width: 60px;
                 }
                 .shao_fu::before{
+                    width: 60px;
+                    font-size: 20px;
                     top: 0px;
                     left: -120px;
                     content: '少府穴';
                 }
+                .fshao_fu::before{
+                    width: 60px;
+                    font-size: 20px;
+                    top: 0px;
+                    left: -120px;
+                    content: '少府穴';
+                }
+
                 .tai_yuan::after{
                     top: 12px;
                     left: 100%;
                 }
-                .tai_yuan:hover::after,
-                .tai_yuan:focus::after{
+                .ftai_yuan::after{
+                    top: 12px;
+                    left: 100%;
+                }
+                .tai_yuan:hover::after{
+                    width: 40px;
+                    left: 100%;
+                }
+                .ftai_yuan:focus::after{
                     width: 40px;
                     left: 100%;
                 }
                 .tai_yuan::before{
+                    width: 60px;
+                    font-size: 20px;
                     top: 0px;
-                    left: 70px;
+                    left: 60px;
+                    content: '太淵穴';
+                }
+                .ftai_yuan::before{
+                    width: 60px;
+                    font-size: 20px;
+                    top: 0px;
+                    left: 60px;
                     content: '太淵穴';
                 }
             }
@@ -704,136 +1354,280 @@
             }
             .hand_pic{
                 width: 35%;
-                .acupoint{
-                    width: 25px;
-                    height: 25px;
-                }
-                .acupoint::before{
-                    width: 60px;
-                    font-size: 20px;
-                }
                 .zhong_chong::after{
                     top: 12px;
                     left: 0px;
                 }
-                .zhong_chong:hover::after,
-                .zhong_chong:focus::after{
+                .fzhong_chong::after{
+                    top: 12px;
+                    left: 0px;
+                }
+                .zhong_chong:hover::after{
+                    left: -40px;
+                }
+                .fzhong_chong:focus::after{
                     left: -40px;
                 }
                 .zhong_chong::before{
+                    width: 60px;
+                    font-size: 20px;
                     top: 0px;
                     left: -100px;
                     content: '中衝穴';
                 }
+                .fzhong_chong::before{
+                    width: 60px;
+                    top: 0px;
+                    font-size: 20px;
+                    left: -100px;
+                    content: '中衝穴';
+                }
+
                 .shao_shang::after{
                     top: 100%;
                     left: 50%;
                 }
-                .shao_shang:hover::after,
-                .shao_shang:focus::after{
+                .fshao_shang::after{
+                    top: 100%;
+                    left: 50%;
+                }
+                .shao_shang:hover::after{
+                    width: 1px;
+                    height: 15px;
+                    left: 50%;
+                }
+                .fshao_shang:focus::after{
                     width: 1px;
                     height: 15px;
                     left: 50%;
                 }
                 .shao_shang::before{
+                    width: 60px;
+                    font-size: 20px;
                     top: 40px;
                     left: 0px;
                     content: '少商穴';
                 }
+                .fshao_shang::before{
+                    width: 60px;
+                    font-size: 20px;
+                    top: 40px;
+                    left: 0px;
+                    content: '少商穴';
+                }
+
                 .he_gu::after{
                     top: 12px;
                     left: 100%;
                 }
-                .he_gu:hover::after,
-                .he_gu:focus::after{
+                .fhe_gu::after{
+                    top: 12px;
+                    left: 100%;
+                }
+                .he_gu:hover::after{
+                    left: 100%;
+                    width: 75px;
+                }
+                .fhe_gu:focus::after{
                     left: 100%;
                     width: 75px;
                 }
                 .he_gu::before{
+                    width: 60px;
+                    font-size: 20px;
                     top: 0px;
                     left: 105px;
                     content: '合谷穴';
                 }
+                .fhe_gu::before{
+                    width: 60px;
+                    font-size: 20px;
+                    top: 0px;
+                    left: 105px;
+                    content: '合谷穴';
+                }
+
                 .ming_men::after{
                     top: 12px;
                     left: 0px;
                 }
-                .ming_men:hover::after,
-                .ming_men:focus::after{
+                .fming_men::after{
+                    top: 12px;
+                    left: 0px;
+                }
+                .ming_men:hover::after{
+                    width: 40px;
+                    left: -40px;
+                }
+                .fming_men:focus::after{
                     width: 40px;
                     left: -40px;
                 }
                 .ming_men::before{
+                    width: 60px;
+                    font-size: 20px;
                     top: 0px;
                     left: -100px;
                     content: '命門穴';
                 }
+                .fming_men::before{
+                    width: 60px;
+                    font-size: 20px;
+                    top: 0px;
+                    left: -100px;
+                    content: '命門穴';
+                }
+
                 .shen_men::after{
                     top: 12px;
                     left: 0px;
                 }
-                .shen_men:hover::after,
-                .shen_men:focus::after{
+                .fshen_men::after{
+                    top: 12px;
+                    left: 0px;
+                }
+                .shen_men:hover::after{
+                    width: 40px;
+                    left: -40px;
+                }
+                .fshen_men:focus::after{
                     width: 40px;
                     left: -40px;
                 }
                 .shen_men::before{
+                    width: 60px;
+                    font-size: 20px;
                     top: 0px;
                     left: -100px;
                     content: '神門穴';
                 }
+                .fshen_men::before{
+                    width: 60px;
+                    font-size: 20px;
+                    top: 0px;
+                    left: -100px;
+                    content: '神門穴';
+                }
+
                 .lao_gong::after{
                     top: 12px;
                     left: 0px;
                 }
-                .lao_gong:hover::after,
-                .lao_gong:focus::after{
+                .flao_gong::after{
+                    top: 12px;
+                    left: 0px;
+                }
+                .lao_gong:hover::after{
+                    left: -110px;
+                    width: 110px;
+                }
+                .flao_gong:focus::after{
                     left: -110px;
                     width: 110px;
                 }
                 .lao_gong::before{
+                    width: 60px;
+                    font-size: 20px;
                     top: 0px;
                     left: -170px;
                     content: '勞宮穴';
                 }
+                .flao_gong::before{
+                    width: 60px;
+                    font-size: 20px;
+                    top: 0px;
+                    left: -170px;
+                    content: '勞宮穴';
+                }
+
                 .yu_ji::after{
                     top: 12px;
                     left: 100%;
                 }
-                .yu_ji:hover::after,
-                .yu_ji:focus::after{
+                .fyu_ji::after{
+                    top: 12px;
+                    left: 100%;
+                }
+                .yu_ji:hover::after{
+                    width: 20px;
+                    left: 100%;
+                }
+                .fyu_ji:focus::after{
                     width: 20px;
                     left: 100%;
                 }
                 .yu_ji::before{
+                    width: 60px;
+                    font-size: 20px;
                     top: 0px;
                     left: 50px;
                     content: '魚際穴';
                 }
+                .fyu_ji::before{
+                    width: 60px;
+                    font-size: 20px;
+                    top: 0px;
+                    left: 50px;
+                    content: '魚際穴';
+                }
+
                 .shao_fu::after{
                     top: 12px;
                     left: 0px;
                 }
-                .shao_fu:hover::after,
-                .shao_fu:focus::after{
+                .fshao_fu::after{
+                    top: 12px;
+                    left: 0px;
+                }
+                .shao_fu:hover::after{
+                    left: -60px;
+                    width: 60px;
+                }
+                .fshao_fu:focus::after{
                     left: -60px;
                     width: 60px;
                 }
                 .shao_fu::before{
+                    width: 60px;
+                    font-size: 20px;
                     top: 0px;
                     left: -120px;
                     content: '少府穴';
                 }
+                .fshao_fu::before{
+                    width: 60px;
+                    font-size: 20px;
+                    top: 0px;
+                    left: -120px;
+                    content: '少府穴';
+                }
+
                 .tai_yuan::after{
                     top: 12px;
                     left: 100%;
                 }
-                .tai_yuan:hover::after,
-                .tai_yuan:focus::after{
+                .ftai_yuan::after{
+                    top: 12px;
+                    left: 100%;
+                }
+                .tai_yuan:hover::after{
+                    width: 40px;
+                    left: 100%;
+                }
+                .ftai_yuan:focus::after{
                     width: 40px;
                     left: 100%;
                 }
                 .tai_yuan::before{
+                    width: 60px;
+                    font-size: 20px;
+                    top: 0px;
+                    left: 70px;
+                    content: '太淵穴';
+                }
+                .ftai_yuan::before{
+                    width: 60px;
+                    font-size: 20px;
                     top: 0px;
                     left: 70px;
                     content: '太淵穴';

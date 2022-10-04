@@ -165,7 +165,18 @@ const routes = [
   {
     path: '/backstageIndex',
     name: 'backstageIndex',
-    component: BackstageIndexView
+    component: BackstageIndexView,
+
+    children:[
+      {
+        path: '/BackShop',
+        name: 'BackShop',
+        // route level code-splitting
+        // this generates a separate chunk (reserve.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "reserve" */ '../views/BackShop.vue')
+      },
+    ]
   },
   {
     path: '/manageLogin',

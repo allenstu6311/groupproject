@@ -24,10 +24,10 @@ try{
         $member->bindValue(":LOCALCALL",$_POST["localphone"]);
         $member->bindValue(":EMAIL",$_POST["email"]);
         $member->execute();
-        print "註冊成功";
+        echo "註冊成功";
     }else{ //找得到
       //傳回此帳號已存在
-        print "此帳號已存在";
+        echo "此帳號已存在";
     }	
   }catch(PDOException $e){
     echo $e->getMessage();

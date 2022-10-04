@@ -82,19 +82,20 @@ export default {
                 var xhr = new XMLHttpRequest();
                 
                 xhr.onload = function(){
-                    alert(xhr.responseText);
+                    if(xhr.status == 200){
+                        if(xhr.responseText == "註冊成功"){
+                            alert("註冊成功");
+                            window.location.replace("/MemLogin");
+                        }else if(xhr.responseText == "此帳號已存在"){
+                            alert("此帳號已存在");
+                        }
+                    }
                 }
+                
                 xhr.open("post","http://localhost/CGD102_G2/src/assets/phps/register.php",true);
                 xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
-                xhr.onload = function(){
-                    if(xhr.status == 200){
-                        window.location.replace("/MemLogin");
-                    }
-                }
-
                 let mem_deta = `account=${this.account}&password=${this.password}&name=${this.name}&email=${this.email}&birthday=${this.birthday}&phone=${this.phone}&localphone=${this.localphone}&address=${this.address}`
-                console.log(mem_deta);
                 xhr.send(mem_deta);
                 
             }else{

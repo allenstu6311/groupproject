@@ -21,6 +21,10 @@ import BackstageIndexView from '../views/BackstageIndexView.vue'
 import ManageLoginView from '../views/ManageLoginView.vue'
 import BackShop from '../views/BackShop.vue'
 import OrderItem from '../views/OrderItem.vue'
+import BackTherapistView from '../views/BackTherapistView.vue'
+
+
+
 const routes = [
   {
     path: '/',
@@ -50,6 +54,11 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     // component: () => import(/* webpackChunkName: "about" */ '../views/TherapistView.vue')
     component: TherapistView
+  },
+  {
+    path: '/backTherapist',
+    name: 'backTherapist',
+    component: BackTherapistView
   },
   {
     path: '/employee',

@@ -14,7 +14,7 @@
       </header>
       <div class="menageIndex">
         <div class="row ">
-          <div class="col-1 backgrond_color">
+          <div class="col-2 backgrond_color">
             <div class="list-group" id="list-tab" role="tablist">
               <a class="list-group-item list-group-item-action active myset_border myset_list_bac" id="list-home-list"
                 data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">首頁</a>
@@ -40,7 +40,7 @@
                 href="#list-settings" role="tab" aria-controls="list-settings">管理折價券</a>
             </div>
           </div>
-          <div class="col-11">
+          <div class="col-8">
             <div class="tab-content" id="nav-tabContent">
               <div class="tab-pane fade show active myset_bac backstage_index" id="list-home" role="tabpanel"
                 aria-labelledby="list-home-list">
@@ -49,21 +49,55 @@
                     <h2>最新訂單</h2>
                     <button class="btnLarge">前往管理訂單</button>
                   </div>
-                  <div class="latest_order_detail">
+                  <!-- <div class="latest_order_detail">
                       <ul>
                           <li>訂單編號</li>
                           <li>訂購人</li>
                           <li>訂單成立時間</li>
                           <li>狀態</li>
                       </ul>
-                  </div>
+                  </div> -->
+                  <table class="table">
+                    <thead class="table-info">
+                      <tr>
+                        <th scope="col">訂單編號</th>
+                        <th scope="col">訂購人</th>
+                        <th scope="col">訂單成立時間</th>
+                        <th scope="col">狀態</th>
+                        <th scope="col">詳細資訊</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>A123456789</td>
+                        <td>無名氏</td>
+                        <td>2022-09-11</td>
+                        <td>未出貨</td>
+                        <td>詳細資訊</td>
+                      </tr>
+                      <tr>
+                        <td>A123456789</td>
+                        <td>無名氏</td>
+                        <td>2022-09-11</td>
+                        <td>未出貨</td>
+                        <td>詳細資訊</td>
+                      </tr>
+                      <tr>
+                        <td>A123456789</td>
+                        <td>無名氏</td>
+                        <td>2022-09-11</td>
+                        <td>未出貨</td>
+                        <td>詳細資訊</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
                 <div class="latest_reservation">
                   <div class="latest_reservation_title">
                     <h2>最新預約</h2>
                     <button class="btnLarge">前往管理預約</button>
                   </div>
-                  <div class="latest_reservation_detail">
+                  <!-- <div class="latest_reservation_detail">
                     <ul>
                         <li>訂單編號</li>
                         <li>預約時段</li>
@@ -71,7 +105,41 @@
                         <li>按摩師</li>
                         <li>狀態</li>
                     </ul>
-                  </div>
+                  </div> -->
+                  <table class="table">
+                    <thead class="table-dark">
+                      <tr>
+                        <th scope="col">訂單編號</th>
+                        <th scope="col">預約客戶</th>
+                        <th scope="col">預約時段</th>
+                        <th scope="col">預約項目</th>
+                        <th scope="col">按摩師</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>A123456789</td>
+                        <td>無名氏</td>
+                        <td>2022-09-11 10:00 ~ 11:00</td>
+                        <td>精油深層放鬆</td>
+                        <td>李駿燕</td>
+                      </tr>
+                      <tr>
+                        <td>A123456789</td>
+                        <td>無名氏</td>
+                        <td>2022-09-11 10:00 ~ 11:00</td>
+                        <td>精油深層放鬆</td>
+                        <td>李駿燕</td>
+                      </tr>
+                      <tr>
+                        <td>A123456789</td>
+                        <td>無名氏</td>
+                        <td>2022-09-11 10:00 ~ 11:00</td>
+                        <td>精油深層放鬆</td>
+                        <td>李駿燕</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
               <div class="tab-pane fade myset_bac" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">321
@@ -100,4 +168,11 @@ export default {
 
   @import "~bootstrap/scss/bootstrap";
 
+  *{
+    position: relative;
+  }
+  .active{
+    background-color: transparent;
+  }
+  
 </style>

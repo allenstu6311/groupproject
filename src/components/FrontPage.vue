@@ -6,13 +6,13 @@
 
         <div class="btn_contain">
             <img class="slide-top" src="../assets/images/enterHand1.png" alt="">
-            <a href="/home">
-                <button class="enter">前台</button>
-            </a>
+            <router-link to="/home">
+                <button class="enter">前台TEST</button>
+            </router-link>
             <div class="space"></div>
-            <a href="/backstage">
-                <button class="enter ">後台</button>
-            </a>
+            <router-link to="/backstage">
+                <button class="enter ">後台TEST</button>
+            </router-link>
             <img class="slide-bottom" src="../assets/images/enterHand2.png" alt="">
         </div>
         

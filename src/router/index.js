@@ -176,8 +176,10 @@ const routes = [
     path: '/backstageIndex',
     name: 'backstageIndex',
     chName: '首頁',
-    component: BackstageIndexView
+    component: BackstageIndexView,
   },
+
+
   {
     path: '/manageLogin',
     name: 'manageLogin',

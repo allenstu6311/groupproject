@@ -38,6 +38,7 @@ export default {
         return {
             account: '',
             password: '',
+            loginStatus:[]
         }
     },
     methods: {
@@ -64,13 +65,12 @@ export default {
                         let memData = JSON.parse(xhr.responseText);
                         if (memData != '') {
                             let prepage = document.referrer;
-                            console.log(prepage);
-                            // if(prepage === ''){
-                            //     location.replace("/MemCenter");
-                            // }else{
-                            //     location.replace("prepage");
-                            // }
-
+                            localStorage.setItem("memInfo",memData);
+                            if(prepage === ''){
+                                location.replace("/MemCenter");
+                            }else{
+                                location.replace(prepage);
+                            }
                         }
                     }
 
@@ -84,6 +84,12 @@ export default {
             }
 
 
+        }
+    },
+    created() {
+        this.loginStatus = localStorage.getItem('memInfo');
+        if(this.loginStatus != ''){
+            location.replace("/MemCenter");
         }
     },
 }

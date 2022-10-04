@@ -20,7 +20,6 @@ try{
         $memData = $existAccount->fetch(PDO::FETCH_ASSOC);
         $_SESSION["memName"] = $memData["MEM_NAME"];
         $_SESSION["memAccount"] = $memData["MEM_ACCOUNT"];
-        $_SESSION["memPsw"] = $memData["MEM_PSW"];
         $_SESSION["memBirthday"] = $memData["MEM_BIRTHDAY"];
         $_SESSION["memAddress"] = $memData["MEM_ADDRESS"];
         $_SESSION["memPhone"] = $memData["MEM_PHONE"];
@@ -29,7 +28,6 @@ try{
         //送出登入者的資料
         $result = ["memName"=>$_SESSION["memName"],
                    "memAccount"=>$_SESSION["memAccount"],
-                   "memPsw"=>$_SESSION["memPsw"],
                    "memBirthday"=>$_SESSION["memBirthday"],
                    "memAddress"=>$_SESSION["memAddress"],
                    "memPhone"=>$_SESSION["memPhone"],

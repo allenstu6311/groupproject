@@ -69,7 +69,7 @@
                   </div>
                 </div>
                 <div class="btn">
-                  <a class="btnLarge" href="/resvPage">立即預約</a>
+                  <router-link class="btnLarge" to="/resvPage">立即預約</router-link>
                 </div>
               </div>
               <div class="pic_ctnr msg_card_pic col col-12 col-md-8 col-xl-4">
@@ -87,30 +87,35 @@
 </template>
 
 <script>
-    export default {
-        props: {
-            msg: String,
-            msgCard: String,
-        },
-        data() {
-            return {
-                msgCardList: [],
-            }
-        },
-        created(){
-            this.getDataFromApi(); // 在建立 Vue.js 模板時順帶執行這個參數
-        },
-        methods:{
-            async getDataFromApi() {
-                var url = 'http://localhost/CGD102_G2/src/assets/phps/reservation.php'
-                let getData = async(url) => {
-                    let response = await fetch(url); // await: 這行的 await 執行完才會執行下一個 await
-                    let JSON =  response.json();
-                    this.msgCardList = await JSON; // php 抓取回來的資料存取在預設好的參數裡
-                }
-                await getData(url); // 觸發 getData 的匿名 function 內容 ==> 89 ~ 91 行的內容
-                console.log(this.msgCardList);
-            }
-        }
-    }
+
+  const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
+
+  export default {
+      props: {
+          msg: String,
+          msgCard: String,
+      },
+      data() {
+          return {
+              msgCardList: [],
+          }
+      },
+      created(){
+          this.getDataFromApi(); // 在建立 Vue.js 模板時順帶執行這個參數
+      },
+      methods:{
+          async getDataFromApi() {
+              // var url = 'http://localhost/CGD102_G2/public/api/reservation.php'
+              var url = `${BASE_URL}/api/reservation.php`
+              let getData = async(url) => {
+                  console.log(url);
+                  let response = await fetch(url); // await: 這行的 await 執行完才會執行下一個 await
+                  let JSON =  response.json();
+                  this.msgCardList = await JSON; // php 抓取回來的資料存取在預設好的參數裡
+              }
+              await getData(url); // 觸發 getData 的匿名 function 內容 ==> 89 ~ 91 行的內容
+              console.log(this.msgCardList);
+          }
+      }
+  }
 </script>

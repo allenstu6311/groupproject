@@ -182,7 +182,7 @@
 </template>
 <script>
 import { DatePicker } from 'view-ui-plus';
-import 'view-ui-plus/dist/styles/viewuiplus.css'
+// import 'view-ui-plus/dist/styles/viewuiplus.css'
 
 export default {
   props: {},

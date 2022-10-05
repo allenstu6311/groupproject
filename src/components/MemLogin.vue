@@ -38,7 +38,8 @@ export default {
         return {
             account: '',
             password: '',
-            loginStatus:[]
+            session:'',
+            loginStatus:''
         }
     },
     methods: {
@@ -62,10 +63,11 @@ export default {
                     if (xhr.responseText == "帳號密碼有誤") {
                         alert("帳號密碼有誤");
                     } else {
-                        let memData = JSON.parse(xhr.responseText);
+                        this.session=JSON.parse(xhr.responseText);
+                        sessionStorage.setItem("memName",this.session.memName);
+                        console.log(sessionStorage.getItem('memName'));
                         if (memData != '') {
                             let prepage = document.referrer;
-                            localStorage.setItem("memInfo",memData);
                             if(prepage === ''){
                                 location.replace("/MemCenter");
                             }else{
@@ -87,10 +89,11 @@ export default {
         }
     },
     created() {
-        this.loginStatus = localStorage.getItem('memInfo');
-        if(this.loginStatus != ''){
-            location.replace("/MemCenter");
-        }
+        
+        console.log(this.loginStatus);
+        // if(this.loginStatus != []){
+        //     location.replace("/MemCenter");
+        // }
     },
 }
 </script>

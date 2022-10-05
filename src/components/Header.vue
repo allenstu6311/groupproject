@@ -20,17 +20,17 @@
             <!--這是已登入的大頭--->
             <input type="checkbox" id="check2">
             <label for="check2">
-                <span class="header_loginMember"><img src="../assets/images/loginHead.png" alt=""></span>
+                <span class="header_loginMember" :style="memlogged"><img src="../assets/images/loginHead.png" alt=""></span>
             </label>
 
             <!--這是大頭下拉選單--->
             <ul class="headerLogin">
-                <li><router-link to="/MemCenter">會員中心</router-link></li>
-                <li><router-link to="">登出</router-link></li>
+                <li :style="memlogged"><router-link to="/MemCenter">會員中心</router-link></li>
+                <li :style="memlogged"><router-link to="">登出</router-link></li>
             </ul>
 
             <!--這是未登入的大頭--->
-            <span class="header_member"><router-link to="/MemLogin"><img src="../assets/images/headerMember.png" alt=""></router-link></span>
+            <span class="header_member" :style="memIconShow"><router-link to="/MemLogin"><img src="../assets/images/headerMember.png" alt=""></router-link></span>
 
             <!--這是購物車--->
             <span class="header_shopping_cart"><router-link to="/cart"><img src="../assets/images/headerShoppinCart.png" alt=""></router-link></span>
@@ -44,7 +44,30 @@
 </template>
 <script>
 export default {
-    
+    data() {
+        return {
+            iconShow:true,
+            selectShow:false
+        }
+    },
+    computed:{
+        memIconShow(){
+            return{
+                'display': this.iconShow ? '' : 'none',
+            }
+        },
+        memlogged(){
+            return{
+                'display': this.selectShow ? 'block' : 'none',
+            }
+        }
+    },
+    created() {
+        if(sessionStorage.getItem("memName") != ''){
+            this.iconShow = false,
+            this.selectShow = true
+        }
+    },
 }
 </script>
 

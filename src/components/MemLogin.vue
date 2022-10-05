@@ -83,9 +83,12 @@ export default {
                 let login_info = `account=${this.account}&password=${this.password}`;
                 xhr.send(login_info);
             }
-
-
         }
     },
+    beforeCreate(){
+        if(sessionStorage.getItem("memName") != ''){
+            location.replace("/home");
+        }
+    }
 }
 </script>

@@ -90,6 +90,7 @@ export default {
     },
     getFiles(e){
       console.log(e)
+      
     }  
     
     }

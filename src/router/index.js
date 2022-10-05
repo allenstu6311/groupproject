@@ -23,6 +23,8 @@ import BackShop from '../views/BackShop.vue'
 import OrderItem from '../views/OrderItem.vue'
 import BackTherapistView from '../views/BackTherapistView.vue'
 import BackTherapistAddView from '../views/BackTherapistAddView.vue'
+import BackCouponView from '../views/BackCouponView.vue'
+
 
 
 
@@ -191,6 +193,11 @@ const routes = [
     path: '/manageLogin',
     name: 'manageLogin',
     component: ManageLoginView
+  },
+  {
+    path: '/BackCoupon',
+    name: 'BackCoupon',
+    component: BackCouponView
   },
 ]
 

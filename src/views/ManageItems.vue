@@ -2,26 +2,50 @@
   <div class="container-fluid">
     <div class="row">
       <SlideChose />
-      <div class="card text-center" id="card-container">
-        <div class="card-header">
-          <ul class="nav nav-tabs card-header-tabs">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="true" href="#">Active</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
-            </li>
-          </ul>
-        </div>
-        <div class="card-body">
-
-            <input type="file" name="picInfo">
-        </div>
-        <button>上傳</button>
+  <form>
+  <div class="row mb-3 w-75">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">產品名稱</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputEmail3">
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">價錢</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputEmail3">
+    </div>
+  </div>
+  <fieldset class="row mb-3">
+    <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+    <div class="col-sm-10">
+      <div class="form-check">
+        <input type="text" class="form-control" id="inputPassword3">
       </div>
+      <div class="form-check">
+        <input type="file" name="upFile[]" id="">
+        <input type="file" name="upFile[]" id="">
+        <input type="file" name="upFile[]" id="">
+      </div>
+      <div class="form-check disabled">
+        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+        <label class="form-check-label" for="gridRadios3">
+          Third disabled radio
+        </label>
+      </div>
+    </div>
+  </fieldset>
+  <div class="row mb-3">
+    <div class="col-sm-10 offset-sm-2">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck1">
+        <label class="form-check-label" for="gridCheck1">
+          Example checkbox
+        </label>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary">上傳</button>
+</form>
     </div>
   </div>
 </template>
@@ -30,9 +54,7 @@
 .row {
   flex-wrap: nowrap;
 }
-#card-container{
-    width: 75%;
-}
+
 </style>
 <script>
 import SlideChose from "@/components/SlideChose.vue";

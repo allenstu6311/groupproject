@@ -141,16 +141,14 @@ export default {
       
                     //  var url = 'http://localhost/CGD102_G2/public/api/reservation.php'
         var url = `${BASE_URL}/api/article.php`
-        this.axios.get(url,
+        this.axios.get("http://localhost/CGD102_G2/public/api/article.php",
         {
             params:{
                 prod_id:this.order[0].PROD_ID
             }
         })
         .then((res)=>{
-            console.log(res)
             this.article = res.data
-            console.log("文章", this.article)
          })
        
     }

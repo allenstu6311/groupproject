@@ -50,11 +50,12 @@
 .shopping-discount{
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     background-color: $white;
     box-shadow: 0px 0px 10px rgb(211, 211, 211);
     padding: 30px 0;
     font-weight: 800;
+    margin: auto;
 }
 // ====================================確認區
 .shopping-price{
@@ -86,7 +87,8 @@
     }
 
 }
-@media screen and (min-width:768px) {
+
+@media screen and (min-width:768px ) and (min-width:1100px) {
     // ======================================商品
     .shopping-list{
         .shopping-cart-empty{}
@@ -155,9 +157,10 @@
     }
 // ==========================================優惠券
 .shopping-discount{
+
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     background-color: $white;
     box-shadow: 0px 0px 10px rgb(211, 211, 211);
     padding: 30px 0;

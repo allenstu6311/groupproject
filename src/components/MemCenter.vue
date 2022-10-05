@@ -185,7 +185,7 @@
 <script>
 import MemLightBox from '@/components/MemLightBox.vue';
 import { nextTick } from '@vue/runtime-core';
-import { sync } from 'resolve';
+// import { sync } from 'resolve';
 export default {
     components: {
         MemLightBox,

@@ -13,7 +13,7 @@
                 <div class="mem_mug_shot">
                     <img src="../assets/images/member.jpg">
                 </div>
-                <div class="mem_name">無名氏</div>
+                <div class="mem_name">{{name}}</div>
             </div>
             <div class="mem_banner">
                 <img src="../assets/images/memberbanner.jpg">
@@ -62,10 +62,10 @@
                                     </tr>
                                     <tr class="person_info_item">
                                         <th>市話:</th>
-                                        <td :style="pdata_display_none">{{lphonef}}{{lphones}}</td>
-                                        <td><input type="text" v-model="lphonef" :style="pdata_display_show" maxlength="3" style="width:20px;">
+                                        <td :style="pdata_display_none">{{areaCode}}-{{lphone}}</td>
+                                        <td><input type="text" v-model="areaCode" :style="pdata_display_show" maxlength="3" style="width:20px;">
                                             <span :style="pdata_display_show">-</span>
-                                            <input type="text" v-model="lphones" :style="pdata_display_show" maxlength="10">
+                                            <input type="text" v-model="lphone" :style="pdata_display_show" maxlength="10">
                                         </td>
                                         
                                     </tr>
@@ -184,8 +184,6 @@
 
 <script>
 import MemLightBox from '@/components/MemLightBox.vue';
-import { nextTick } from '@vue/runtime-core';
-// import { sync } from 'resolve';
 export default {
     components: {
         MemLightBox,
@@ -196,15 +194,16 @@ export default {
         displayshow:true,
         account:'',
         newAccount:'',
-        password:"123abc",
-        email:"abc123@gmail.com",
-        birthday:"1998年10月27日",
-        phone:"0912345678",
-        lphonef:"03",
-        lphones:"12345678",
-        address:"桃園市中壢區復興路46號9樓",
+        password:'',
+        email:'',
+        birthday:'',
+        phone:'',
+        lphonef:'',
+        lphone:'',
+        address:'',
         name:'',
-        memData:''
+        memData:'',
+        areaCode:''
     }),
     computed: {
         modalStyle() {
@@ -229,34 +228,37 @@ export default {
         },
         getMemData(){
             this.name = sessionStorage.getItem('memName');
-            let xhr = new XMLHttpRequest();
-            xhr.onload = function(){
-                this.memData = JSON.parse(xhr.responseText);
-                console.log(this.memData);
-                this.account = this.memData.MEM_ACCOUNT;
-                console.log(this.account);
-            }
+            var xhr = new XMLHttpRequest();
+            
+            // var memData;
             xhr.open("post", "http://localhost/CGD102_G2/src/assets/phps/getMemData.php", true);
             xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-            let getMemInfo = `name=${this.name}`;
+            var getMemInfo = `name=${this.name}`;
             xhr.send(getMemInfo);
+
+            xhr.onload = function(){
+                this.memData = JSON.parse(xhr.responseText);
+                this.account = this.memData.MEM_ACCOUNT;
+                this.email = this.memData.MEM_EMAIL;
+                this.birthday = this.memData.MEM_BIRTHDAY;
+                this.phone = this.memData.MEM_PHONE;
+                this.address = this.memData.MEM_ADDRESS;
+                this.lphonef = this.memData.LOCALCALL;
+                this.name = this.memData.MEM_NAME;
+                this.lphonef = this.memData.MEM_LOCALCALL;
+                this.areaCode = this.lphonef.slice(0,2)
+                this.lphone = this.lphonef.slice(3)
+            }.bind(this);
+
         },
-        // async getMemData() {
-        //         var url = 'http://localhost/CGD102_G2/src/assets/phps/getMemData.php'
-        //         let getData = async(url) => {
-        //             let response = await fetch(url); // await: 這行的 await 執行完才會執行下一個 await
-        //             let JSON =  response.json();
-        //             this.memData = await JSON; // php 抓取回來的資料存取在預設好的參數裡
-        //         }
-        //         await getData(url); // 觸發 getData 的匿名 function 內容 ==> 89 ~ 91 行的內容
-        //         console.log(this.memData);
-        // }
+        
     },
     created() {
         this.getMemData(); 
     },
     mounted(){
-       
+        
+        
     }
 }
 </script>

@@ -1,12 +1,10 @@
 <template>
-    <Header />
     <router-view/>
-    <Footer />
 </template>
 
 <script>
-import Header from "@/components/Header.vue"
-import Footer from "@/components/Footer.vue"
+// import Header from "@/components/Header.vue"
+// import Footer from "@/components/Footer.vue"
 import {routes} from "@/router/index.js"
 
 export default {
@@ -15,9 +13,9 @@ export default {
         routes,
       }
     },
-    components:{
-        Header,
-        Footer,
-    }
+    // components:{
+    //     Header,
+    //     Footer,
+    // }
 }
 </script>

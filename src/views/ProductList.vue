@@ -1,4 +1,5 @@
 <template>
+  <Header />
   <div class="background-pic">
     <img src="../assets/images/bcgFlower.png" alt="" />
   </div>
@@ -32,13 +33,18 @@
       @tool="productTool"
     />
   </div>
+  <Footer />
 </template>
 
 <script>
+import Header from "@/components/Header.vue"
+import Footer from "@/components/Footer.vue"
 import Commodity from "@/components/Commodity.vue";
 import Filter from "@/components/Filter.vue";
 export default {
   components: {
+    Header,
+    Footer,
     Commodity,
     Filter,
   },

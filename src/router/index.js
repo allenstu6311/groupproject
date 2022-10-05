@@ -6,7 +6,7 @@ import TherapistView from '../views/TherapistView.vue'
 import EmployeeView from '../views/EmployeeView.vue'
 import ReservationView from '../views/ReservationView.vue'
 import ResvPageView from '../views/ResvPageView.vue'
-import Messagefaq from "../views/Messagefaq.vue"
+import MessagefaqView from "../views/MessagefaqView.vue"
 import ShoppingCar from "@/components/ShoppingCar.vue"
 import MemLogin from "../views/MemLogin.vue"
 import ProductList from "../views/ProductList.vue"
@@ -25,7 +25,6 @@ import BackTherapistView from '../views/BackTherapistView.vue'
 import ManageItems from '../views/ManageItems.vue'
 import BackTherapistAddView from '../views/BackTherapistAddView.vue'
 import BackCouponView from '../views/BackCouponView.vue'
-
 
 
 
@@ -96,7 +95,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (reserve.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "reserve" */ '../views/Messagefaq.vue')
+    component: () => import(/* webpackChunkName: "reserve" */ '../views/MessagefaqView.vue')
   },
 
   {
@@ -196,8 +195,6 @@ const routes = [
     chName: '首頁',
     component: BackstageIndexView,
   },
-
-
   {
     path: '/manageLogin',
     name: 'manageLogin',

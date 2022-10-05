@@ -5,11 +5,9 @@
             <div class="col-2">
                 <BackstageIndexAside />
             </div>
-            <div class="col-2"></div>
-            <div class="col-6">
+            <div class="col-10">
                 <BackTherapistAdd />
             </div>
-            <div class="col-2"></div>
         </div>
     </div>
 </template>

@@ -2,8 +2,8 @@
   <div class="container-fluid">
     <div class="row">
       <SlideChose />
-  <form>
-  <div class="row mb-3 w-75">
+  <form class="w-75">
+  <div class="row mb-3 ">
     <label for="inputEmail3" class="col-sm-2 col-form-label">產品名稱</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="inputEmail3">
@@ -19,7 +19,7 @@
     <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
     <div class="col-sm-10">
       <div class="form-check">
-        <input type="text" class="form-control" id="inputPassword3">
+        <input type="text" class="form-control" id="inputEmail3">
       </div>
       <div class="form-check">
         <input type="file" name="upFile[]" id="">

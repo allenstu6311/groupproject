@@ -65,14 +65,14 @@ export default {
                     } else {
                         this.session=JSON.parse(xhr.responseText);
                         sessionStorage.setItem("memName",this.session.memName);
-                        console.log(sessionStorage.getItem('memName'));
-                        if (memData != '') {
-                            let prepage = document.referrer;
-                            if(prepage === ''){
+                        this.loginStatus = sessionStorage.getItem("memName");
+                        if (this.loginStatus != '') {
+                            // let prepage = document.referrer;
+                            // if(prepage === ''){
                                 location.replace("/MemCenter");
-                            }else{
-                                location.replace(prepage);
-                            }
+                            // }else{
+                            //     location.replace(prepage);
+                            // }
                         }
                     }
 
@@ -81,19 +81,11 @@ export default {
                 xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
 
                 let login_info = `account=${this.account}&password=${this.password}`;
-                console.log(login_info);
                 xhr.send(login_info);
             }
 
 
         }
-    },
-    created() {
-        
-        console.log(this.loginStatus);
-        // if(this.loginStatus != []){
-        //     location.replace("/MemCenter");
-        // }
     },
 }
 </script>

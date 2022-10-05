@@ -105,8 +105,8 @@
       },
       methods:{
           async getDataFromApi() {
-              // var url = 'http://localhost/CGD102_G2/public/api/reservation.php'
-              var url = `${BASE_URL}/api/reservation.php`
+              // var url = 'http://localhost/CGD102_G2/public/api/reservation.php' //開發用
+              var url = `${BASE_URL}/api/reservation.php` //上線用
               let getData = async(url) => {
                   console.log(url);
                   let response = await fetch(url); // await: 這行的 await 執行完才會執行下一個 await

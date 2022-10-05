@@ -13,13 +13,13 @@
                     </p>
                     <div class="btn_group">
                         <div class="over_btn">
-                            <a class="btnLarge" href="/MassageSchool">穴道小知識</a>
+                            <router-link to="/MassageSchool" class="btnLarge">穴道小知識</router-link>
                         </div>
                         <div class="over_btn">
-                            <a class="btnLarge" href="/MassageGame">再試一次</a>
+                            <router-link to="/MassageGame" class="btnLarge">再試一次</router-link>
                         </div>
                         <div class="over_btn">
-                            <a class="btnLarge" href="/ProductList">前往商品專區</a>
+                            <router-link to="/ProductList" class="btnLarge">前往商品專區</router-link>
                         </div>
                     </div>
                 </div>

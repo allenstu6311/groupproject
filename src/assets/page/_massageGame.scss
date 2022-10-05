@@ -36,7 +36,7 @@
                 }
             }
             .answer_container{
-                width: 60%;
+                width: 80%;
                 padding: 5px;
                 margin: 0px auto 50px auto;
                 border: 3px solid $blue;
@@ -45,22 +45,27 @@
                 background-color: #fff;
                 position: relative;
                 .answer_frame{
+                    padding: 20px;
                     border-radius: 8px;
                     border: 2px solid $blue;
-                    padding: 10px;
-                    text-align: center;
                     font-size: 18px;
                     letter-spacing: 3px;
                     color: #524F4F;
                     .answer{
-                        padding: 10px;
-                        text-align: center;
-                        line-height: 2;
                         color: $blue;
                         font-family: $fontTitle;
                         font-size: 32px;
+                        .answer_correct{
+                            padding-top: 10px;
+                            font-family: Arial, Helvetica, sans-serif;
+                            color:#524F4F;
+                            font-size: 20px;
+                            line-height: 1.5;
+                        }
                     }
                     .answer.answer_click{
+                        padding-top: 12px;
+                        padding-bottom: 12px;
                         font-size: 18px;
                         letter-spacing: 1px;
                         font-family: Arial, Helvetica, sans-serif;
@@ -71,6 +76,46 @@
                 content: "";
                 width: 0px;
                 position: absolute;
+            }
+            .correct_container{
+                width: 80%;
+                padding: 5px;
+                margin: 70px auto 50px auto;
+                border: 3px solid $blue;
+                border-radius: 12px;
+                box-shadow: 6px 10px 0px 0px $blue;
+                background-color: #fff;
+                position: relative;
+                .correct_frame{
+                    border-radius: 8px;
+                    border: 2px solid $blue;
+                    font-size: 18px;
+                    letter-spacing: 3px;
+                    color: #524F4F;
+                    .correct{
+                        padding: 20px;
+                        font-family: Arial, Helvetica, sans-serif;
+                        color:#524F4F;
+                        font-size: 20px;
+                        line-height: 1.5;
+                        .answer_title{
+                            color: $blue;
+                            font-family: $fontTitle;
+                            font-size: 32px;
+                        }
+                    }
+                }
+            }
+            .correct_container::before{
+                content: "";
+                width: 0px;
+                border-top: 2px solid $blue;
+                border-right: 2px solid $blue;
+                border-bottom: 65px solid $blue;
+                border-left: 2px solid $blue;
+                position: absolute;
+                top: -25%;
+                left: 50%;
             }
             
         }
@@ -965,6 +1010,9 @@
             .ftai_yuan:focus::before{
                 color: $blue;
             }
+            .none{
+                display: none;
+            }
         }
     }
     .game_btn{
@@ -1002,15 +1050,11 @@
                     }
                 }
                 .answer_container{
-                    width: 30%;
-                    margin: 0px 0px 70px 54%;
+                    width: 60%;
+                    margin: 0px auto 70px auto;
                     border: 3px solid $blue;
                     .answer_frame{
-                        padding: 20px;
                         font-size: 20px;
-                        .answer{
-                            padding: 20px;
-                        }
                     }
                 }
                 .answer_container::before{
@@ -1021,9 +1065,25 @@
                     top: 6%;
                     left: 100%;
                 }
+                .correct_container{
+                    width: 60%;
+                    .correct_frame{
+                        .correct{
+
+                        }
+                    }
+                }
+                .correct_container::before{
+                    border-top: 30px solid transparent;
+                    border-right: 30px solid transparent;
+                    border-bottom: 30px solid transparent;
+                    border-left: 50px solid $blue;
+                    top: 9%;
+                    left: 100%;
+                }
             }
             .hand_pic{
-                margin: -23% 0px 0px 15%;
+                margin: 0px auto 0px auto;
                 width: 50%;
                 .zhong_chong::after{
                     top: 12px;
@@ -1303,9 +1363,7 @@
                 }
             }
         }
-        .game_btn{
-            margin:0% 0px 120px 50%;
-        }
+
     }
 }
 /*====== 桌機版 RWD | >1200px ======*/
@@ -1328,19 +1386,16 @@
                         border-right: 40px solid transparent;
                         border-bottom: 40px solid transparent;
                         border-left: 60px solid #163D82;
-                        top: 7%;
+                        top: 10%;
                         left: 101%;
                     }
                 }
                 .answer_container{
-                    width: 40%;
+                    width: 60%;
                     margin: 0px 0px 0px 10%;
                     .answer_frame{
                         padding: 20px;
                         font-size: 24px;
-                        .answer{
-                            padding: 20px;
-                        }
                     }
                 }
                 .answer_container::before{
@@ -1349,7 +1404,25 @@
                     border-bottom: 40px solid transparent;
                     border-left: 40px solid transparent;
                     top: 7%;
-                    right: 101%;
+                    right: 100%;
+                }
+                .correct_container{
+                    width: 60%;
+                    margin: 70px 0px 100px 30%;
+                    .correct_frame{
+                        .correct{
+
+                        }
+                    }
+                    
+                }
+                .correct_container::before{
+                    border-top: 30px solid transparent;
+                    border-right: 30px solid transparent;
+                    border-bottom: 30px solid transparent;
+                    border-left: 50px solid $blue;
+                    top: 9%;
+                    left: 100%;
                 }
             }
             .hand_pic{

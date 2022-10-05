@@ -12,7 +12,7 @@
         components:{
             Header,
             Footer,
-            GetCoupon
+            GetCoupon,
         }
     }
 </script>

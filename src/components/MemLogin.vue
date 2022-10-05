@@ -11,7 +11,7 @@
             </div>
             <br>
             <div class="sign">
-                <a href="/MemRegister">註冊</a>
+                <router-link to="/MemRegister">註冊</router-link>
                 <a href="./backstage.html">忘記密碼</a>
             </div>
         </div>
@@ -85,8 +85,10 @@ export default {
             }
         }
     },
-    beforeCreate(){
-        if(sessionStorage.getItem("memName") != ''){
+    mounted(){
+        let checkLogin = sessionStorage.getItem('memName');
+        if(checkLogin){
+            alert("請先登出");
             location.replace("/home");
         }
     }

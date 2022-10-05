@@ -26,7 +26,7 @@
             <!--這是大頭下拉選單--->
             <ul class="headerLogin">
                 <li :style="memlogged"><router-link to="/MemCenter">會員中心</router-link></li>
-                <li :style="memlogged"><router-link to="">登出</router-link></li>
+                <li :style="memlogged" @click="logout"><router-link to="">登出</router-link></li>
             </ul>
 
             <!--這是未登入的大頭--->
@@ -62,8 +62,15 @@ export default {
             }
         }
     },
-    created() {
-        if(sessionStorage.getItem("memName") != ''){
+    methods: {
+        logout(){
+            sessionStorage.removeItem("memName");
+            location. reload();
+        }
+    },
+    mounted() {
+        let checkLogin = sessionStorage.getItem('memName');
+        if(checkLogin){
             this.iconShow = false,
             this.selectShow = true
         }

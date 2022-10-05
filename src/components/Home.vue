@@ -87,12 +87,13 @@
                     <small>• PRODUCTS •</small>
                 </div>
                 <div class="product_content">
-                    <a href=""><div class="product_oil reveal fade-left ">
-                        <img src="../assets/images/index_oils.jpg" alt="">
-                    </div></a>
-                    <a href=""><div class="product_tool reveal fade-right">
-                        <img src="../assets/images/index_tools.jpg" alt="">
-                    </div></a>
+                    <div id="item" v-for="item in itemArray" :key="item">
+                        <img :src="item.img" alt="">
+                        <!-- 有掛載東西一定加:號!!!! :class -->
+                        <h4>{{item.name}}</h4>
+                        <h4>${{item.money}}</h4>
+                        <p>查看商品></p>
+                    </div>
                 </div>
                 <router-link to="/ProductList"><div class="btnLittle">更多商品</div></router-link>
             </section>
@@ -312,13 +313,21 @@
         };
       },
 
-//---------------------------------------------------------------------------------------------------
+
+//------------------------------------------------------------------
       props: {
             news: String
         },
         data() {
             return {
-                newsCardList: [],
+                newsCardList: [],//---------------最新消息------------------
+
+                itemArray:[ //---------------商品專區-----------------------
+                {name:'NEX Pro', money:1650 , img:'../assets/images/33cm.png'},
+                {name:'Ian', money:3000 , img:"../assets/images/fire.png"},
+                {name:'Joe', money:1500 , img:"https://img.onl/RJl8Ah"},
+                {name:'跟他講阿，卒仔', money:9000 , img:"https://img.onl/8mx3Ir"},
+            ]
             }
         },
         created(){
@@ -335,8 +344,10 @@
                 await getData(url); // 觸發 getData 的匿名 function 內容 ==> 95 ~ 97 行的內容
                 console.log(this.newsCardList);
             }
-        }
+        },
 
+ 
     };
 
-  </script>
+
+</script>

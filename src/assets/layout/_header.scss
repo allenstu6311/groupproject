@@ -73,6 +73,7 @@
             display: flex;
             width: 90px;
             justify-content: space-between;
+            position: relative;
             #check2{
                 display: none;
                 
@@ -85,7 +86,7 @@
                     align-self: center;
                     background-color: transparent;
                     cursor: pointer;
-                    display: none;//取消顯示
+                    // display: none;//取消顯示
                     a{
                         padding: 0;
         
@@ -98,6 +99,8 @@
             }
             #check2:checked~.headerLogin{
                 opacity: 1;
+                display: block;
+                
             }
             
             .headerLogin{//大頭下拉選單
@@ -105,7 +108,7 @@
                 flex-wrap: wrap;
                 position: absolute;
                 width: 120px;
-                right: 265px;
+                right: 15%;
                 top: 80px;
                 transition: .8s;
                 background-color: white;
@@ -114,7 +117,7 @@
                 box-shadow: 0px 2px 15px rgb(0 0 0 / 30%);
                 opacity: 0;
                 z-index: 999;
-                
+                display: none;
                 
                 li{
                     width: 100%;
@@ -147,7 +150,7 @@
             .header_member{ //這是未登入的大頭!!!!!!!!!!!!
                 width: 30px;
                 align-self: center;
-                // display: none; //取消顯示
+                display: none; //取消顯示
                 a{
                     padding: 0;
     
@@ -291,7 +294,7 @@
         }
         .headerLogin{//大頭下拉選單
             width: 120px;
-            right: 88px;
+            // right: 88px;
             top: 80px;
 
             
@@ -393,7 +396,7 @@
             }
             .headerLogin{//大頭下拉選單
                 width: 120px;
-                right: 88px;
+                // right: 88px;
                 top: 80px;
     
                 

@@ -22,6 +22,7 @@ import ManageLoginView from '../views/ManageLoginView.vue'
 import BackShop from '../views/BackShop.vue'
 import OrderItem from '../views/OrderItem.vue'
 import BackTherapistView from '../views/BackTherapistView.vue'
+import BackTherapistAddView from '../views/BackTherapistAddView.vue'
 
 
 
@@ -58,8 +59,14 @@ const routes = [
   {
     path: '/backTherapist',
     name: 'backTherapist',
-    chName: '按摩師管理',
+    chName: '管理按摩師',
     component: BackTherapistView
+  },
+  {
+    path: '/backtherapistadd',
+    name: 'backtherapistadd',
+    chName: '新增按摩師',
+    component: BackTherapistAddView
   },
   {
     path: '/employee',

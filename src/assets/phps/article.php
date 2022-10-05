@@ -4,8 +4,6 @@ header("Content-Type:application/json;charset=utf-8");
 
 function getId($prod_id){
 
-
-
 require_once("../../connect_cgd102g2.php");
 
 

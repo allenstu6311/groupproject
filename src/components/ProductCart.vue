@@ -125,6 +125,7 @@ export default {
       let index = this.calculate.findIndex((item) => item.PROD_ID === id);
 
       this.cart.splice(count, 1);
+      this.calculate.splice(index,1)
       this.$emit("cart-message", this.cart);
       this.setLocal();
     },

@@ -1,19 +1,16 @@
 <template>
-<nav>
-   <router-link v-for="item in chose" :key="item" :to="item.path">{{item.name}}</router-link>
-
-</nav>
-
-
 
   <ul class="list-group list-group-flush">
 
-            <li
-      class="list-group-item pt-3 pb-3"
-      v-for="item in chose"
-      :key="item.name"
-      @click="changeColor(item.id)"> <a :href="item.path" id="url" style=" background-color: transparent !important;"> {{ item.name }}</a></li>
-
+      <router-link 
+      v-for="item in chose" 
+      :key="item" 
+      :to="item.path" 
+      class="list-group-item pt-3 pb-3"  
+    
+      >
+      {{item.name}}
+      </router-link>
 
   </ul>
 
@@ -22,26 +19,21 @@
 </template>
 <style lang="scss" scoped>
 @import "bootstrap/scss/bootstrap";
-.list-group-item {
-  cursor: pointer;
-  background-color: #163d82;
-  color: white;
-}
+
 .list-group {
   width: 200px;
   background-color: rgb(201, 201, 201);
   margin:0 20px;
-  li{
-    width: 180px;
-    text-align: center;
-    font-size: 22px;
-    margin: 10px auto;
+ 
     a{
+      display: block;
       text-decoration: none;
+      background-color: #163d82;
+      color:white;
+      
     }
   }
 
-}
 </style>
 <script>
 import {routes} from "@/router/index.js"

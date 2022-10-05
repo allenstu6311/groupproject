@@ -86,12 +86,16 @@ table {
   flex-wrap: nowrap;
 }
 .list-group{
-  width: 15%;
-  :nth-child(2){
-    background-color: red;
-   
-  }
+  width: 55% !important;
+
+  li{
+     
+       a{
+        background-color: red !important;
+        }
+    }
 }
+ 
 
 </style>
 <script>

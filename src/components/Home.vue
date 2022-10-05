@@ -1,3 +1,4 @@
+
 <template>
      <div class="background_flower">
         <main>
@@ -88,11 +89,11 @@
                 </div>
                 <div class="product_content">
                     <div id="item" v-for="item in itemArray" :key="item">
-                        <img :src="item.img" alt="">
+                        <img :src="require(`../assets/images/${item.img}`)" alt="">
                         <!-- 有掛載東西一定加:號!!!! :class -->
                         <h4>{{item.name}}</h4>
-                        <h4>${{item.money}}</h4>
-                        <p>查看商品></p>
+                        <p>${{item.money}}</p>
+                        <span>加入購物車</span>
                     </div>
                 </div>
                 <router-link to="/ProductList"><div class="btnLittle">更多商品</div></router-link>
@@ -279,7 +280,9 @@
         </main>
     </div>
 </template>
-<script scoped>
+
+<script scoped >
+    
     // import Swiper core and required modules
     import {Autoplay, Pagination} from 'swiper';
   
@@ -323,10 +326,10 @@
                 newsCardList: [],//---------------最新消息------------------
 
                 itemArray:[ //---------------商品專區-----------------------
-                {name:'NEX Pro', money:1650 , img:'../assets/images/33cm.png'},
-                {name:'Ian', money:3000 , img:"../assets/images/fire.png"},
-                {name:'Joe', money:1500 , img:"https://img.onl/RJl8Ah"},
-                {name:'跟他講阿，卒仔', money:9000 , img:"https://img.onl/8mx3Ir"},
+                {name:'NEX Pro', money:1650 , img:"usb.png"},
+                {name:'Ian', money:3000 , img:"fire.png"},
+                {name:'Joe', money:1500 , img:"pinkhun.png"},
+                {name:'跟他講阿，卒仔', money:9000 , img:"knock1.png"},
             ]
             }
         },

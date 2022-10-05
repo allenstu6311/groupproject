@@ -62,7 +62,7 @@ body{
 }
 
 main{
-    overflow: hidden;
+    
     width: 100%;
     display: block;
     
@@ -298,7 +298,7 @@ main{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    // overflow: hidden;
+    overflow: hidden;
 
     .about_us_intro{
         width: 400px;
@@ -346,7 +346,7 @@ main{
             height: 430px;
             position: absolute;
             top: 0px;
-            right: -70px;
+            right: 0px;
             background: url(../assets/images/imageRoundGate.png);
             background-repeat: no-repeat;
             background-size: cover;
@@ -526,16 +526,16 @@ main{
             }
     
             .round_front{
-                width: 400px;
-                height: 400px;
+                width: 380px;
+                height: 380px;
                 border-radius: 50%;
                 position: relative;
                 background-color: $blue;
-                top:-100px;
+                top:-90px;
                 right: -200px;
                 img{
-                    width: 400px;
-                    height: 400px;
+                    width: 380px;
+                    height: 380px;
                     object-fit: cover;
                     border-radius: 50%;
                 }
@@ -673,27 +673,50 @@ main{
         max-width: 1200px;
         display: flex;
         justify-content: space-between;
+        margin-bottom: 80px;
 
         #item{
-            width:200px;
-            height:300px;
+            width:240px;
+            height:340px;
             background-color: #fff;
-            margin-top: 10px;
-            text-align:center;
+            text-align:start;
             padding: 10px;
             color: #FF4848;
-            margin: 8px;
+            margin: 20px 10px 20px 10px;
             cursor: pointer;
-            box-shadow: 5px 5px 0 $blue;
-            border-radius: 5px;
+            box-shadow: 0px 0px 8px rgb(182, 182, 182);
+            border-radius: 8px;
+            &:hover{
+                transform: scale(1);
+                transition: all 0.5s ;
+                box-shadow: 0px 0px 15px rgb(182, 182, 182);
+            }
+            
             img{
-                width:180px;
-                height:200px;
+                width:240px;
+                height:240px;
                 }
-                img:hover{
-                transform: translateX(-50%) translateY(-50%) rotate(-50deg);
-                transition-duration: 1s; 
+            h4{
+                margin-top: 5px;
+                font-weight: 600;
+                color: $blue;
+                
+                
+            }
+            p{
+                color: $red;
+                font-size: 18px;
+                margin-top: 15px;
+                font-weight: 600;
+            }
+            span{
+                display: block;
+                margin-top: 15px;
+                &:hover{
+                    color: $blue;
+                    font-weight: 600;
                 }
+            }
         }
     }
 
@@ -709,28 +732,12 @@ main{
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            .product_oil{
-                width: 355px;
-                height: 355px;
+            #item{
+                width: 80%;
+                height: 380px;
                 img{
-                    position: absolute;
-                    width: 335px;
-                    height: 213px;
-                    top: 62px;
-                    right: 10px;
-                    border-radius: 10px;
-                }
-            }
-            .product_tool{
-                width: 355px;
-                height: 355px;
-                img{
-                    position: absolute;
-                    width: 335px;
-                    height: 213px;
-                    top: 62px;
-                    right: 10px;
-                    border-radius: 10px;
+                    width: 90%;
+                    height: 250px;
                 }
             }
         }

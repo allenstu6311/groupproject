@@ -77,7 +77,7 @@ export default {
                 {
                 id: 10,
                 name: "管理折價券",
-                path:"/BackShop",
+                path:"/BackCoupon",
                 },
             ]
         }

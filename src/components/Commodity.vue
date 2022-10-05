@@ -326,8 +326,8 @@ export default {
       }
     },
     getCommodityInfo() {
-       var url = `${BASE_URL}/api/commoditylist.php` //上線
-      //  var url = "http://localhost/CGD102_G2/public/api/commoditylist.php"
+      //  var url = `${BASE_URL}/api/commoditylist.php` //上線
+       var url = "http://localhost/CGD102_G2/public/api/commoditylist.php"
       this.axios
         .get(url, {
           params: {

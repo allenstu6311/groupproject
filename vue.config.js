@@ -7,4 +7,7 @@ module.exports = defineConfig({
     ? '/cgd102/g2'
     : '/',
 
+    
+
 })
+

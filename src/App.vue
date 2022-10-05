@@ -1,6 +1,6 @@
 <template>
     <Header />
-    <Confirm />
+ 
     <router-view/>
     <Footer />
 

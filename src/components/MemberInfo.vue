@@ -34,13 +34,13 @@
               @focus="sevenCheck = true;"
             
             />7-11取貨付款
-          </h5>{{sevenCheck}}
+          </h5>
           <div class="info" v-for="item in post" :key="item">
             
             <p>{{ item.POIName }}門市</p>
            <p>{{ item.sevenAddress }}</p> 
           </div>
-          <div class="map-box" v-show="sevenCheck==true">
+          <div class="map-box" v-if="sevenCheck==true">
             <select name="" id="" v-model="city" @change="filterShop(city)">
               <option value="1">請選擇</option>
               <option
@@ -97,13 +97,10 @@
   box-sizing: border-box;
 }
 #sevenMap {
-width: 40vh;
-height: 40vh;
+  width: 300px;
+  height: 300px;
 }
-// .get_bigger{
-//   width: 30vh;
-//   height: 40vh;
-// }
+
 </style>
 
 <script>

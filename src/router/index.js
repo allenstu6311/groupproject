@@ -22,6 +22,7 @@ import ManageLoginView from '../views/ManageLoginView.vue'
 import BackShop from '../views/BackShop.vue'
 import OrderItem from '../views/OrderItem.vue'
 import BackTherapistView from '../views/BackTherapistView.vue'
+import ManageItems from '../views/ManageItems.vue'
 import BackTherapistAddView from '../views/BackTherapistAddView.vue'
 import BackCouponView from '../views/BackCouponView.vue'
 
@@ -121,6 +122,14 @@ const routes = [
     // this generates a separate chunk (reserve.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "reserve" */ '../views/OrderItem.vue')
+  },
+  {
+    path: '/ManageItems',
+    name: 'ManageItems',
+    // route level code-splitting
+    // this generates a separate chunk (reserve.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "reserve" */ '../views/ManageItems.vue')
   },
   {
     path: '/Confirm',

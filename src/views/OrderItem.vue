@@ -30,7 +30,6 @@
           <thead>
             <tr>
                 <th>訂單編號</th>
-                <th>訂單項目編號</th>
                 <th>會員姓名</th>
                 <th>訂單成立時間</th>
                 <th>狀態</th>
@@ -39,7 +38,6 @@
           </thead>
           <tbody>
             <tr v-for="item in data" :key="item">
-                <th>{{item.order_items_id}}</th>
                 <th>{{item.prod_orders_id}}</th>
                 <th>{{item.mem_name}}</th>
                 <th>{{item.prod_orders_date}}</th>

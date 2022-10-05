@@ -71,7 +71,9 @@
 </style>
 
 <script>
+const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 export default {
+    
     data(){
         return{
             tex:"",
@@ -136,8 +138,10 @@ export default {
     created(){
        
         this.getStorage()
-       
-        this.axios.get("http://localhost/CGD102_G2/src/assets/phps/article.php",
+      
+                    //  var url = 'http://localhost/CGD102_G2/public/api/reservation.php'
+        var url = `${BASE_URL}/api/article.php`
+        this.axios.get(url,
         {
             params:{
                 prod_id:this.order[0].PROD_ID

@@ -25,6 +25,8 @@ import BackTherapistView from '../views/BackTherapistView.vue'
 import ManageItems from '../views/ManageItems.vue'
 import BackTherapistAddView from '../views/BackTherapistAddView.vue'
 import BackCouponView from '../views/BackCouponView.vue'
+import BackCouponAddView from '../views/BackCouponAddView.vue'
+
 
 
 
@@ -204,6 +206,11 @@ const routes = [
     path: '/BackCoupon',
     name: 'BackCoupon',
     component: BackCouponView
+  },
+  {
+    path: '/BackCouponAdd',
+    name: 'BackCouponAdd',
+    component: BackCouponAddView
   },
 ]
 

@@ -257,8 +257,10 @@ export default {
         this.getMemData(); 
     },
     mounted(){
-        
-        
+        let checkLogin = sessionStorage.getItem('memName');
+        if(checkLogin == null){
+            location.replace("/home");
+        }
     }
 }
 </script>

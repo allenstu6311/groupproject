@@ -19,6 +19,4 @@ foreach($products as $i=>$someThing){
 echo json_encode($data);
 
 
-
-
 ?>

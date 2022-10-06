@@ -116,68 +116,17 @@
                         </div>
                     </div>
                     <div class="reservation_content">
-                        <div class="item">
+                        <div class="item" v-for="msgs in msgList" :key="msgs">
                             <div class="pic">
-                                <img src="../assets/images/resv1.jpg" alt="">
+                                <img :src="require(`../assets/images/${msgs.MSG_PIC}`)" alt="">
                             </div>
                             <div class="item_bottom">
                                 <div class="intro">
-                                    <h4>全身穴道按摩</h4>
-                                    <p class="pirce">120分鐘 / NT$2,400</p>
-                                    <p>適合平常沒有按摩習慣或身體很多部位都很緊繃者</p>
-                                    <p class="pirce">60分鐘 / NT$1,600</p>
-                                    <p>適合平常有按摩習慣者</p>
-                                </div>
-                                <div class="intro_btn">
-                                    <router-link to="/ResvPage"><div class="btnLittle">立即預約</div></router-link>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="pic">
-                                <img src="../assets/images/resv2.jpg" alt="">
-                            </div>
-                            <div class="item_bottom">
-                                <div class="intro">
-                                    <h4>精油深層放鬆</h4>
-                                    <p class="pirce">120分鐘 / NT$2,400</p>
-                                    <p>適合平常沒有按摩習慣或身體很多部位都很緊繃者</p>
-                                    <p class="pirce">60分鐘 / NT$1,600</p>
-                                    <p>適合平常有按摩習慣者</p>
-                                </div>
-                                <div class="intro_btn">
-                                    <router-link to="/ResvPage"><div class="btnLittle">立即預約</div></router-link>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="pic">
-                                <img src="../assets/images/resv3.jpg" alt="">
-                            </div>
-                            <div class="item_bottom">
-                                <div class="intro">
-                                    <h4>東方經絡指壓</h4>
-                                    <p class="pirce">120分鐘 / NT$2,400</p>
-                                    <p>適合平常沒有按摩習慣或身體很多部位都很緊繃者</p>
-                                    <p class="pirce">60分鐘 / NT$1,600</p>
-                                    <p>適合平常有按摩習慣者</p>
-                                </div>
-                                <div class="intro_btn">
-                                    <router-link to="/ResvPage"><div class="btnLittle">立即預約</div></router-link>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="pic">
-                                <img src="../assets/images/resv4.jpg" alt="">
-                            </div>
-                            <div class="item_bottom">
-                                <div class="intro">
-                                    <h4>足部舒壓按摩</h4>
-                                    <p class="pirce">120分鐘 / NT$1,800</p>
-                                    <p>適合平常沒有按摩習慣或身體很多部位都很緊繃者</p>
-                                    <p class="pirce">60分鐘 / NT$1,200</p>
-                                    <p>適合平常有按摩習慣者</p>
+                                    <h4>{{msgs.MSG_NAME}}</h4>
+                                    <p class="pirce">{{msgs.MSG_TIMESPAN_1}}分鐘 / ${{msgs.MSG_PRICE_1}}</p>
+                                    <p>{{msgs.MSG_REC_1}}</p>
+                                    <p class="pirce">{{msgs.MSG_TIMESPAN_2}}分鐘 / ${{msgs.MSG_PRICE_2}}</p>
+                                    <p>{{msgs.MSG_REC_2}}</p>
                                 </div>
                                 <div class="intro_btn">
                                     <router-link to="/ResvPage"><div class="btnLittle">立即預約</div></router-link>
@@ -308,14 +257,23 @@
                 newsCardList: [],//---------------最新消息------------------
                 product:[],//---------------商品專區-----------------------
                 order:[],
+                msgList:[],//---------------預約按摩------------------
             }
         },
         created(){ //一進網頁就直接執行的~
+
+            this.axios.get( "http://localhost/CGD102_G2/src/assets/phps/homeMsg.php")
+            .then((msg1)=>{ //msg1 可以自己取名,存取上面的路徑
+                this.msgList=msg1.data //把路徑中的資料(php)丟到上面的陣列中  .data是類似資料型別,也有殼能不是data
+                console.log("MSG~~~--->",this.msgList) // 檢查有沒有抓資料近來
+                
+            })
+
         
             this.axios.get( "http://localhost/CGD102_G2/src/assets/phps/homeProduct.php")
             .then((res)=>{
                 this.product=res.data
-                console.log("俊彥大帥哥--->",this.product)
+                console.log("俊彥大帥哥--->",this.product)// 檢查有沒有抓資料近來
             })
 
 
@@ -335,10 +293,9 @@
             joinDetail(id){
                 let index  = this.product.findIndex(item=>{
                     
-
                     return item.PROD_ID===id
                 })
-               
+            
                 this.order=[
                 {
                 PROD_ID: this.product[index].PROD_ID,
@@ -361,9 +318,6 @@
                 localStorage.setItem("order",JSON.stringify(this.order)) ;
             }
         },
-      
-
- 
     };
 
 

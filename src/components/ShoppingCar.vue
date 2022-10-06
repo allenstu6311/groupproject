@@ -30,8 +30,8 @@
     
   </div>
   <div class="add-on-control">
-        <span class="prev" @click="productPrev">◀</span>
-        <span class="next" @click="productNext">▶</span>
+        <span class="prev"   @click="productPrev"><i class="fa-solid fa-arrow-left"></i></span>
+        <span class="next" @click="productNext"><i class="fa-solid fa-arrow-right"></i></span>
     </div>
 </template>
 

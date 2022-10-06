@@ -42,7 +42,15 @@
     span{
         font-size: 35px;
         color: $blue;
-
+        transform: rotateX(30deg);
+        cursor: pointer;
+        &:active{
+            transform: translate(0px, 5px);
+        }
+        &:hover{
+            color:$red
+        }
+  
     }
  
 }

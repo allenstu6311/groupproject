@@ -107,7 +107,7 @@ export default {
       page: 1,
       score: [],
       star: [],
-      member: [],
+      member: "",
       cart: [],
       calculate:[],
       block: "☆",
@@ -185,7 +185,6 @@ export default {
       this.setStorage();
     },
     setStorage() {
-      localStorage.setItem("user", JSON.stringify(this.member));
       localStorage.setItem("cart", JSON.stringify(this.cart));
       localStorage.setItem("calculate", JSON.stringify(this.calculate));
     },
@@ -199,12 +198,6 @@ export default {
       ).toFixed(1);
       this.star = parseInt(this.score);
 
-      let members = localStorage.getItem("user");
-      if (!members) return;
-      this.member = JSON.parse(members);
-
-
-
       let carts = localStorage.getItem("cart");
       if (!carts) return;
       this.cart = JSON.parse(carts);
@@ -215,12 +208,6 @@ export default {
     },
   },
   created() {
-    this.axios
-      .get("http://localhost/CGD102_G2/src/assets/phps/memberInfo.php")
-      .then((res) => {
-        this.member = res.data;
-        // console.log(this.member);
-      });
     this.getStar();
   },
 };

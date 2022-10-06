@@ -15,10 +15,9 @@ export default {
         routes,
       }
     },
-//     created() {
-//       console.log('this.$router :>> ', this.$router.currentRoute
-// .value.meta);
-//     },
+    // created() {
+    //   console.log('this.$router :>> ', this.$router);
+    // },
     components:{
         Header,
         Footer,

@@ -1109,15 +1109,15 @@ span {
 .page_header nav .header_logo img {
   width: 100%;
 }
-.page_header nav ul {
+.page_header nav .navList {
   width: 60%;
   display: flex;
   justify-content: space-around;
 }
-.page_header nav ul li {
+.page_header nav .navList li {
   align-self: center;
 }
-.page_header nav ul li a {
+.page_header nav .navList li a {
   display: inline-block;
   font-family: "DFKai-SB";
   font-weight: 600;
@@ -1132,7 +1132,7 @@ span {
   bottom: 2px black solid;
   cursor: pointer;
 }
-.page_header nav ul li a:before {
+.page_header nav .navList li a:before {
   position: absolute;
   content: "";
   left: 0;
@@ -1144,21 +1144,86 @@ span {
   transform-origin: right;
   transition: transform 0.3s linear;
 }
-.page_header nav ul li a:hover:before {
+.page_header nav .navList li a:hover:before {
   transform: scaleX(1);
   transform-origin: left;
 }
-.page_header nav ul li a:hover {
+.page_header nav .navList li a:hover {
   color: #B52011;
 }
 .page_header nav .header_icon {
   display: flex;
   width: 90px;
   justify-content: space-between;
+  position: relative;
+}
+.page_header nav .header_icon #check2 {
+  display: none;
+}
+.page_header nav .header_icon label {
+  display: block;
+  align-self: center;
+}
+.page_header nav .header_icon label .header_loginMember {
+  width: 30px;
+  align-self: center;
+  background-color: transparent;
+  cursor: pointer;
+}
+.page_header nav .header_icon label .header_loginMember a {
+  padding: 0;
+}
+.page_header nav .header_icon label .header_loginMember a img {
+  vertical-align: bottom;
+  width: 100%;
+}
+.page_header nav .header_icon #check2:checked ~ .headerLogin {
+  opacity: 1;
+  display: block;
+}
+.page_header nav .header_icon .headerLogin {
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  width: 120px;
+  right: 15%;
+  top: 80px;
+  transition: 0.8s;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid #163D82;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  z-index: 999;
+  display: none;
+}
+.page_header nav .header_icon .headerLogin li {
+  width: 100%;
+  text-align: center;
+  padding: 10px 0px;
+  border-bottom: 0.5px solid #163D82;
+  border-top: 0.5px solid #163D82;
+}
+.page_header nav .header_icon .headerLogin li a {
+  font-family: "DFKai-SB";
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: #163D82;
+  text-decoration: none;
+  padding: 5px;
+  cursor: pointer;
+}
+.page_header nav .header_icon .headerLogin li a:hover:before {
+  display: none;
+}
+.page_header nav .header_icon .headerLogin li a:hover {
+  color: #B52011;
 }
 .page_header nav .header_icon .header_member {
   width: 30px;
   align-self: center;
+  display: none;
 }
 .page_header nav .header_icon .header_member a {
   padding: 0;
@@ -1181,21 +1246,21 @@ span {
 .page_header nav #check {
   display: none;
 }
-.page_header nav label {
+.page_header nav .hamburger {
   display: none;
   align-self: center;
   justify-content: space-evenly;
 }
-.page_header nav label span {
+.page_header nav .hamburger span {
   width: 36px;
   height: 3px;
   background-color: #163D82;
 }
-.page_header nav #check:checked ~ label .line2 {
+.page_header nav #check:checked ~ .hamburger .line2 {
   opacity: 0;
 }
-.page_header nav #check:checked ~ label .line1,
-.page_header nav #check:checked ~ label .line3 {
+.page_header nav #check:checked ~ .hamburger .line1,
+.page_header nav #check:checked ~ .hamburger .line3 {
   position: absolute;
   top: 0;
   right: 0;
@@ -1203,10 +1268,10 @@ span {
   left: 0;
   margin: auto;
 }
-.page_header nav #check:checked ~ label .line1 {
+.page_header nav #check:checked ~ .hamburger .line1 {
   transform: rotate(45deg);
 }
-.page_header nav #check:checked ~ label .line3 {
+.page_header nav #check:checked ~ .hamburger .line3 {
   transform: rotate(-45deg);
 }
 
@@ -1221,7 +1286,7 @@ span {
   .page_header nav nav {
     position: fixed;
   }
-  .page_header nav ul {
+  .page_header nav .navList {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -1238,21 +1303,55 @@ span {
     background-size: cover;
     z-index: 998;
   }
-  .page_header nav ul li {
+  .page_header nav .navList li {
     line-height: 40px;
     margin: 30px 0;
   }
-  .page_header nav ul li a {
+  .page_header nav .navList li a {
     color: #FFFFFF;
   }
-  .page_header nav ul li a:before {
+  .page_header nav .navList li a:before {
     background-color: #FFFFFF;
   }
-  .page_header nav ul li a:hover {
+  .page_header nav .navList li a:hover {
     color: #FFFFFF;
+  }
+  .page_header nav #check:checked ~ ul {
+    left: 0;
+    opacity: 1;
+  }
+  .page_header nav .hamburger {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 10px;
+    justify-content: space-evenly;
+  }
+  .page_header nav .hamburger span {
+    display: block;
   }
   .page_header nav .header_icon {
     margin-right: 55px;
+  }
+  .page_header nav .header_icon label .header_loginMember {
+    width: 30px;
+    align-self: center;
+  }
+  .page_header nav .header_icon label .header_loginMember a {
+    padding: 0;
+  }
+  .page_header nav .header_icon label .header_loginMember a img {
+    vertical-align: bottom;
+    width: 100%;
+  }
+  .page_header nav .header_icon #check2:checked ~ .headerLogin {
+    opacity: 1;
+  }
+  .page_header nav .header_icon .headerLogin {
+    width: 120px;
+    top: 80px;
   }
   .page_header nav .header_icon .header_member {
     width: 30px;
@@ -1275,22 +1374,6 @@ span {
   .page_header nav .header_icon .header_shopping_cart a img {
     vertical-align: bottom;
     width: 100%;
-  }
-  .page_header nav #check:checked ~ ul {
-    left: 0;
-    opacity: 1;
-  }
-  .page_header nav label {
-    width: 36px;
-    height: 36px;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    right: 10px;
-    justify-content: space-evenly;
-  }
-  .page_header nav label span {
-    display: block;
   }
 }
 /*======    平板版 RWD | 768px ~ 1200px ======*/
@@ -1304,7 +1387,7 @@ span {
   .page_header nav nav {
     position: fixed;
   }
-  .page_header nav ul {
+  .page_header nav .navList {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -1321,21 +1404,39 @@ span {
     background-size: cover;
     z-index: 998;
   }
-  .page_header nav ul li {
+  .page_header nav .navList li {
     line-height: 30px;
     margin: 10px 0;
   }
-  .page_header nav ul li a {
+  .page_header nav .navList li a {
     color: #FFFFFF;
   }
-  .page_header nav ul li a:before {
+  .page_header nav .navList li a:before {
     background-color: #FFFFFF;
   }
-  .page_header nav ul li a:hover {
+  .page_header nav .navList li a:hover {
     color: #FFFFFF;
   }
   .page_header nav .header_icon {
     margin-right: 55px;
+  }
+  .page_header nav .header_icon label .header_loginMember {
+    width: 30px;
+    align-self: center;
+  }
+  .page_header nav .header_icon label .header_loginMember a {
+    padding: 0;
+  }
+  .page_header nav .header_icon label .header_loginMember a img {
+    vertical-align: bottom;
+    width: 100%;
+  }
+  .page_header nav .header_icon #check2:checked ~ .headerLogin {
+    opacity: 1;
+  }
+  .page_header nav .header_icon .headerLogin {
+    width: 120px;
+    top: 80px;
   }
   .page_header nav .header_icon .header_member {
     width: 30px;
@@ -1363,7 +1464,7 @@ span {
     left: 0;
     opacity: 1;
   }
-  .page_header nav label {
+  .page_header nav .hamburger {
     width: 36px;
     height: 36px;
     display: flex;
@@ -1372,7 +1473,7 @@ span {
     right: 10px;
     justify-content: space-evenly;
   }
-  .page_header nav label span {
+  .page_header nav .hamburger span {
     display: block;
   }
 }
@@ -1839,6 +1940,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  overflow: hidden;
 }
 .about_us .about_us_intro {
   width: 400px;
@@ -1899,7 +2001,7 @@ main {
   height: 430px;
   position: absolute;
   top: 0px;
-  right: -70px;
+  right: 0px;
   background: url(../assets/images/imageRoundGate.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -2093,17 +2195,17 @@ main {
     background-size: cover;
   }
   .about_us .about_us_pic .round_front {
-    width: 400px;
-    height: 400px;
+    width: 380px;
+    height: 380px;
     border-radius: 50%;
     position: relative;
     background-color: #163D82;
-    top: -100px;
+    top: -90px;
     right: -200px;
   }
   .about_us .about_us_pic .round_front img {
-    width: 400px;
-    height: 400px;
+    width: 380px;
+    height: 380px;
     -o-object-fit: cover;
        object-fit: cover;
     border-radius: 50%;
@@ -2222,38 +2324,48 @@ main {
   max-width: 1200px;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 80px;
 }
-.product .product_content .product_oil {
-  width: 480px;
-  height: 450px;
-  background: url(../assets/images/indexOil.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-  position: relative;
+.product .product_content #item {
+  width: 240px;
+  height: 340px;
+  background-color: #fff;
+  text-align: start;
+  padding: 10px;
+  color: #FF4848;
+  margin: 20px 10px 20px 10px;
+  cursor: pointer;
+  box-shadow: 0px 0px 8px rgb(182, 182, 182);
+  border-radius: 8px;
 }
-.product .product_content .product_oil img {
-  position: absolute;
-  width: 450px;
-  height: 288px;
-  top: 85px;
-  right: 15px;
-  border-radius: 10px;
+.product .product_content #item:hover {
+  transform: scale(1.1);
+  transition: all 0.5s;
+  box-shadow: 0px 0px 15px rgb(182, 182, 182);
 }
-.product .product_content .product_tool {
-  width: 480px;
-  height: 450px;
-  background: url(../assets/images/indextool.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-  position: relative;
+.product .product_content #item img {
+  width: 240px;
+  height: 240px;
 }
-.product .product_content .product_tool img {
-  position: absolute;
-  width: 450px;
-  height: 288px;
-  top: 85px;
-  right: 15px;
-  border-radius: 10px;
+.product .product_content #item h4 {
+  margin-top: 5px;
+  font-weight: 600;
+  color: #163D82;
+}
+.product .product_content #item p {
+  color: #B52011;
+  font-size: 18px;
+  margin-top: 15px;
+  font-weight: 600;
+}
+.product .product_content #item span {
+  display: block;
+  margin-top: 15px;
+  color: rgb(162, 162, 162);
+}
+.product .product_content #item span:hover {
+  color: #163D82;
+  font-weight: 600;
 }
 
 /*====== 行動版 RWD | 320px ~ 768px ======*/
@@ -2268,29 +2380,13 @@ main {
     flex-wrap: wrap;
     justify-content: center;
   }
-  .product .product_content .product_oil {
-    width: 355px;
-    height: 355px;
+  .product .product_content #item {
+    width: 80%;
+    height: 380px;
   }
-  .product .product_content .product_oil img {
-    position: absolute;
-    width: 335px;
-    height: 213px;
-    top: 62px;
-    right: 10px;
-    border-radius: 10px;
-  }
-  .product .product_content .product_tool {
-    width: 355px;
-    height: 355px;
-  }
-  .product .product_content .product_tool img {
-    position: absolute;
-    width: 335px;
-    height: 213px;
-    top: 62px;
-    right: 10px;
-    border-radius: 10px;
+  .product .product_content #item img {
+    width: 90%;
+    height: 250px;
   }
 }
 /*======    平板版 RWD | 768px ~ 1200px ======*/
@@ -2645,6 +2741,25 @@ main {
     display: flex;
     justify-content: start;
     align-items: flex-start;
+  }
+}
+/*======    平板版 RWD | 768px ~ 1200px ======*/
+@media screen and (min-width: 768px) and (max-width: 1199.98px) {
+  .latest_news {
+    width: 90%;
+  }
+  .latest_news .news_content .news .pic {
+    width: 55%;
+  }
+  .latest_news .news_content .news .pic img {
+    width: 100%;
+  }
+  .latest_news .news_content .news .news_intro {
+    margin-left: 20px;
+    width: 50%;
+  }
+  .latest_news .news_content .news .news_intro .news_btn {
+    height: 80px;
   }
 }
 .full_page {
@@ -3421,6 +3536,7 @@ main {
   .switch .online_consultation .textColumn {
     width: 100%;
     order: 1;
+    padding: 0px 0px 80px 0px;
   }
   .switch .online_consultation .textColumn .text {
     width: 90%;
@@ -3870,7 +3986,7 @@ main {
   width: 380px;
   height: 10%;
   background-color: #163D82;
-  top: 40px;
+  top: 25px;
   left: -80px;
   z-index: -1;
   position: absolute;
@@ -3888,17 +4004,20 @@ main {
   padding-left: 10px;
   margin-bottom: 20px;
 }
-.resv_page .msg .topic .content.container .row .col .content_txt .calendar {
-  margin-top: 40px;
+.resv_page .msg .topic .content.container .row .col .content_txt .ivu-date-picker {
+  margin-top: 35px;
   margin-bottom: 40px;
+  width: 100%;
 }
-.resv_page .msg .topic .content.container .row .col .content_txt .calendar .xdsoft_datetimepicker {
-  margin: auto;
+.resv_page .msg .topic .content.container .row .col .content_txt .ivu-date-picker .ivu-input {
+  border-color: rgb(118, 118, 118);
+  color: #000;
 }
-.resv_page .msg .topic .content.container .row .col .content_txt .calendar .xdsoft_datetimepicker .active {
-  background-color: #fff;
+.resv_page .msg .topic .content.container .row .col .content_txt .ivu-date-picker .ivu-input-suffix i {
+  color: #000;
 }
 .resv_page .msg .topic .content.container .row .col .content_txt .content_footer {
+  margin-top: 30px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -4705,6 +4824,25 @@ main {
 .product-title .product-name {
   text-align: center;
 }
+.product-title .product-star {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.product-title .product-star .star-score:before {
+  content: "";
+  width: 45px;
+  height: 2px;
+  background-color: #B52011;
+  position: absolute;
+  bottom: 20px;
+}
+.product-title .product-star p {
+  font-size: 35px;
+  margin: 0 5px;
+  font-weight: 800;
+  color: #B52011;
+}
 .product-title .product-txt {
   text-align: center;
 }
@@ -4749,6 +4887,8 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: transparent;
+  border: none;
 }
 .product-title .product-number input {
   width: 50px;
@@ -5240,7 +5380,7 @@ main {
   left: 50%;
 }
 .massage_game .game_container .quiz_container .answer_container {
-  width: 60%;
+  width: 80%;
   padding: 5px;
   margin: 0px auto 50px auto;
   border: 3px solid #163D82;
@@ -5250,25 +5390,28 @@ main {
   position: relative;
 }
 .massage_game .game_container .quiz_container .answer_container .answer_frame {
-  height: 80px;
+  padding: 20px;
   border-radius: 8px;
   border: 2px solid #163D82;
-  padding: 10px;
-  text-align: center;
-  font-size: 18px;
   letter-spacing: 3px;
   color: #524F4F;
 }
 .massage_game .game_container .quiz_container .answer_container .answer_frame .answer {
-  padding: 10px;
-  text-align: center;
-  line-height: 2;
   color: #163D82;
   font-family: "DFKai-SB";
   font-size: 32px;
 }
+.massage_game .game_container .quiz_container .answer_container .answer_frame .answer .answer_correct {
+  padding-top: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #524F4F;
+  font-size: 16px;
+  line-height: 1.5;
+}
 .massage_game .game_container .quiz_container .answer_container .answer_frame .answer.answer_click {
-  font-size: 20px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-size: 18px;
   letter-spacing: 1px;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -5276,6 +5419,46 @@ main {
   content: "";
   width: 0px;
   position: absolute;
+}
+.massage_game .game_container .quiz_container .correct_container {
+  width: 80%;
+  padding: 5px;
+  margin: 70px auto 50px auto;
+  border: 3px solid #163D82;
+  border-radius: 12px;
+  box-shadow: 6px 10px 0px 0px #163D82;
+  background-color: #fff;
+  position: relative;
+}
+.massage_game .game_container .quiz_container .correct_container .correct_frame {
+  border-radius: 8px;
+  border: 2px solid #163D82;
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: #524F4F;
+  padding: 20px;
+}
+.massage_game .game_container .quiz_container .correct_container .correct_frame .correct {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #524F4F;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.massage_game .game_container .quiz_container .correct_container .correct_frame .correct .answer_title {
+  color: #163D82;
+  font-family: "DFKai-SB";
+  font-size: 32px;
+}
+.massage_game .game_container .quiz_container .correct_container::after {
+  content: "";
+  width: 0px;
+  border-top: 2px solid #163D82;
+  border-right: 2px solid #163D82;
+  border-bottom: 65px solid #163D82;
+  border-left: 2px solid #163D82;
+  position: absolute;
+  top: -30%;
+  left: 50%;
 }
 .massage_game .game_container .hand_pic {
   width: 80%;
@@ -5288,10 +5471,10 @@ main {
   -o-object-fit: contain;
      object-fit: contain;
 }
-.massage_game .game_container .hand_pic .acupoint {
+.massage_game .game_container .hand_pic .zhong_chong {
   position: absolute;
   top: 0%;
-  left: 0%;
+  left: 35%;
   width: 20px;
   height: 20px;
   background-color: #B52011;
@@ -5301,205 +5484,869 @@ main {
   transition: 0.3s;
   z-index: 98;
 }
-.massage_game .game_container .hand_pic .acupoint:hover, .massage_game .game_container .hand_pic .acupoint:focus {
+.massage_game .game_container .hand_pic .fzhong_chong {
+  position: absolute;
+  top: 0%;
+  left: 35%;
+  width: 20px;
+  height: 20px;
+  background-color: #B52011;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 98;
+}
+.massage_game .game_container .hand_pic .zhong_chong:hover {
   background-color: #B52011;
   transition: 0.3s;
   scale: 1.5;
   box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
 }
-.massage_game .game_container .hand_pic .acupoint::after {
+.massage_game .game_container .hand_pic .fzhong_chong:focus {
+  background-color: #B52011;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
+}
+.massage_game .game_container .hand_pic .zhong_chong::after {
   position: absolute;
-  top: 0px;
-  left: 0px;
   content: "";
   width: 0px;
   height: 0px;
   background-color: #163D82;
   transition: 0.5s;
-}
-.massage_game .game_container .hand_pic .acupoint:hover::after,
-.massage_game .game_container .hand_pic .acupoint:focus::after {
-  left: 0px;
-  width: 40px;
-  height: 1px;
-  transition: 0.5s;
-}
-.massage_game .game_container .hand_pic .acupoint::before {
-  width: 12px;
-  font-size: 12px;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  content: "";
-  font-family: "DFKai-SB";
-  color: transparent;
-  font-size: 20px;
-  transition: 0.3s;
-}
-.massage_game .game_container .hand_pic .acupoint:hover::before,
-.massage_game .game_container .hand_pic .acupoint:focus::before {
-  color: #163D82;
-  transition: 0.3s 0.2s;
-}
-.massage_game .game_container .hand_pic .zhong_chong {
-  left: 35%;
-}
-.massage_game .game_container .hand_pic .shao_shang {
-  top: 44%;
-  left: 90%;
-}
-.massage_game .game_container .hand_pic .he_gu {
-  top: 62%;
-  left: 57%;
-}
-.massage_game .game_container .hand_pic .ming_men {
-  top: 43%;
-  left: 10%;
-}
-.massage_game .game_container .hand_pic .shen_men {
-  top: 95%;
-  left: 28%;
-}
-.massage_game .game_container .hand_pic .lao_gong {
-  top: 55%;
-  left: 40%;
-}
-.massage_game .game_container .hand_pic .yu_ji {
-  top: 67%;
-  left: 72%;
-}
-.massage_game .game_container .hand_pic .shao_fu {
-  top: 67%;
-  left: 25%;
-}
-.massage_game .game_container .hand_pic .tai_yuan {
-  top: 93%;
-  left: 53%;
-}
-.massage_game .game_container .hand_pic .zhong_chong::after {
   top: 12px;
   left: 0px;
 }
-.massage_game .game_container .hand_pic .zhong_chong:hover::after,
-.massage_game .game_container .hand_pic .zhong_chong:focus::after {
+.massage_game .game_container .hand_pic .fzhong_chong::after {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  background-color: #163D82;
+  transition: 0.5s;
+  top: 12px;
+  left: 0px;
+}
+.massage_game .game_container .hand_pic .zhong_chong:hover::after {
+  width: 40px;
+  height: 1px;
+  transition: 0.5s;
+  left: -40px;
+}
+.massage_game .game_container .hand_pic .fzhong_chong:focus::after {
+  width: 40px;
+  height: 1px;
   left: -40px;
 }
 .massage_game .game_container .hand_pic .zhong_chong::before {
+  width: 12px;
+  font-size: 18px;
+  position: absolute;
+  content: "";
+  font-family: "DFKai-SB";
+  color: transparent;
+  transition: 0.3s;
   top: -25px;
   left: -65px;
   content: "中衝穴";
 }
+.massage_game .game_container .hand_pic .fzhong_chong::before {
+  width: 12px;
+  font-size: 18px;
+  position: absolute;
+  font-family: "DFKai-SB";
+  color: transparent;
+  transition: 0.3s;
+  top: -25px;
+  left: -65px;
+  content: "中衝穴";
+}
+.massage_game .game_container .hand_pic .zhong_chong:hover::before {
+  color: #163D82;
+  transition: 0.3s 0.2s;
+}
+.massage_game .game_container .hand_pic .fzhong_chong:focus::before {
+  color: #163D82;
+}
+.massage_game .game_container .hand_pic .shao_shang {
+  position: absolute;
+  top: 44%;
+  left: 90%;
+  width: 20px;
+  height: 20px;
+  background-color: #B52011;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 98;
+}
+.massage_game .game_container .hand_pic .fshao_shang {
+  position: absolute;
+  top: 44%;
+  left: 90%;
+  width: 20px;
+  height: 20px;
+  background-color: #B52011;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 98;
+}
+.massage_game .game_container .hand_pic .shao_shang:hover {
+  background-color: #B52011;
+  transition: 0.3s;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
+}
+.massage_game .game_container .hand_pic .fshao_shang:focus {
+  background-color: #B52011;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
+}
 .massage_game .game_container .hand_pic .shao_shang::after {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  background-color: #163D82;
+  transition: 0.5s;
   top: 12px;
   left: 100%;
 }
-.massage_game .game_container .hand_pic .shao_shang:hover::after,
-.massage_game .game_container .hand_pic .shao_shang:focus::after {
+.massage_game .game_container .hand_pic .fshao_shang::after {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  background-color: #163D82;
+  transition: 0.5s;
+  top: 12px;
+  left: 100%;
+}
+.massage_game .game_container .hand_pic .shao_shang:hover::after {
+  height: 1px;
+  transition: 0.5s;
+  width: 10px;
+  left: 100%;
+}
+.massage_game .game_container .hand_pic .fshao_shang:focus::after {
+  height: 1px;
   width: 10px;
   left: 100%;
 }
 .massage_game .game_container .hand_pic .shao_shang::before {
+  width: 12px;
+  font-size: 18px;
+  position: absolute;
+  font-family: "DFKai-SB";
+  color: transparent;
+  transition: 0.3s;
   top: -25px;
   left: 30px;
   content: "少商穴";
 }
+.massage_game .game_container .hand_pic .fshao_shang::before {
+  width: 12px;
+  font-size: 18px;
+  position: absolute;
+  font-family: "DFKai-SB";
+  color: transparent;
+  transition: 0.3s;
+  top: -25px;
+  left: 30px;
+  content: "少商穴";
+}
+.massage_game .game_container .hand_pic .shao_shang:hover::before {
+  color: #163D82;
+  transition: 0.3s 0.2s;
+}
+.massage_game .game_container .hand_pic .fshao_shang:focus::before {
+  color: #163D82;
+}
+.massage_game .game_container .hand_pic .he_gu {
+  position: absolute;
+  top: 62%;
+  left: 57%;
+  width: 20px;
+  height: 20px;
+  background-color: #B52011;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 98;
+}
+.massage_game .game_container .hand_pic .fhe_gu {
+  position: absolute;
+  top: 62%;
+  left: 57%;
+  width: 20px;
+  height: 20px;
+  background-color: #B52011;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 98;
+}
+.massage_game .game_container .hand_pic .he_gu:hover {
+  background-color: #B52011;
+  transition: 0.3s;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
+}
+.massage_game .game_container .hand_pic .fhe_gu:focus {
+  background-color: #B52011;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
+}
 .massage_game .game_container .hand_pic .he_gu::after {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  background-color: #163D82;
+  transition: 0.5s;
   top: 12px;
   left: 100%;
 }
-.massage_game .game_container .hand_pic .he_gu:hover::after,
-.massage_game .game_container .hand_pic .he_gu:focus::after {
+.massage_game .game_container .hand_pic .fhe_gu::after {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  background-color: #163D82;
+  transition: 0.5s;
+  top: 12px;
   left: 100%;
-  width: 40px;
+}
+.massage_game .game_container .hand_pic .he_gu:hover::after {
+  height: 1px;
+  transition: 0.5s;
+  left: 100%;
+  width: 70px;
+}
+.massage_game .game_container .hand_pic .fhe_gu:focus::after {
+  height: 1px;
+  left: 100%;
+  width: 70px;
 }
 .massage_game .game_container .hand_pic .he_gu::before {
+  width: 12px;
+  font-size: 18px;
+  position: absolute;
+  font-family: "DFKai-SB";
+  color: transparent;
+  transition: 0.3s;
   top: -23px;
-  left: 60px;
+  left: 90px;
   content: "合谷穴";
 }
+.massage_game .game_container .hand_pic .fhe_gu::before {
+  width: 12px;
+  font-size: 18px;
+  position: absolute;
+  font-family: "DFKai-SB";
+  color: transparent;
+  transition: 0.3s;
+  top: -23px;
+  left: 90px;
+  content: "合谷穴";
+}
+.massage_game .game_container .hand_pic .he_gu:hover::before {
+  color: #163D82;
+  transition: 0.3s 0.2s;
+}
+.massage_game .game_container .hand_pic .fhe_gu:focus::before {
+  color: #163D82;
+}
+.massage_game .game_container .hand_pic .ming_men {
+  position: absolute;
+  top: 43%;
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  background-color: #B52011;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 98;
+}
+.massage_game .game_container .hand_pic .fming_men {
+  position: absolute;
+  top: 43%;
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  background-color: #B52011;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 98;
+}
+.massage_game .game_container .hand_pic .ming_men:hover {
+  background-color: #B52011;
+  transition: 0.3s;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
+}
+.massage_game .game_container .hand_pic .fming_men:focus {
+  background-color: #B52011;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
+}
 .massage_game .game_container .hand_pic .ming_men::after {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  background-color: #163D82;
+  transition: 0.5s;
   top: 12px;
   left: 0px;
 }
-.massage_game .game_container .hand_pic .ming_men:hover::after,
-.massage_game .game_container .hand_pic .ming_men:focus::after {
+.massage_game .game_container .hand_pic .fming_men::after {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  background-color: #163D82;
+  transition: 0.5s;
+  top: 12px;
+  left: 0px;
+}
+.massage_game .game_container .hand_pic .ming_men:hover::after {
+  height: 1px;
+  transition: 0.5s;
+  width: 13px;
+  left: -13px;
+}
+.massage_game .game_container .hand_pic .fming_men:focus::after {
+  height: 1px;
   width: 13px;
   left: -13px;
 }
 .massage_game .game_container .hand_pic .ming_men::before {
+  width: 12px;
+  font-size: 18px;
+  position: absolute;
+  font-family: "DFKai-SB";
+  color: transparent;
+  transition: 0.3s;
   top: -25px;
   left: -35px;
   content: "命門穴";
 }
+.massage_game .game_container .hand_pic .fming_men::before {
+  width: 12px;
+  font-size: 18px;
+  position: absolute;
+  font-family: "DFKai-SB";
+  color: transparent;
+  transition: 0.3s;
+  top: -25px;
+  left: -35px;
+  content: "命門穴";
+}
+.massage_game .game_container .hand_pic .ming_men:hover::before {
+  color: #163D82;
+  transition: 0.3s 0.2s;
+}
+.massage_game .game_container .hand_pic .fming_men:focus::before {
+  color: #163D82;
+}
+.massage_game .game_container .hand_pic .shen_men {
+  position: absolute;
+  top: 95%;
+  left: 28%;
+  width: 20px;
+  height: 20px;
+  background-color: #B52011;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 98;
+}
+.massage_game .game_container .hand_pic .fshen_men {
+  position: absolute;
+  top: 95%;
+  left: 28%;
+  width: 20px;
+  height: 20px;
+  background-color: #B52011;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 98;
+}
+.massage_game .game_container .hand_pic .shen_men:hover {
+  background-color: #B52011;
+  transition: 0.3s;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
+}
+.massage_game .game_container .hand_pic .fshen_men:focus {
+  background-color: #B52011;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
+}
 .massage_game .game_container .hand_pic .shen_men::after {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  background-color: #163D82;
+  transition: 0.5s;
   top: 12px;
   left: 0px;
 }
-.massage_game .game_container .hand_pic .shen_men:hover::after,
-.massage_game .game_container .hand_pic .shen_men:focus::after {
+.massage_game .game_container .hand_pic .fshen_men::after {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  background-color: #163D82;
+  transition: 0.5s;
+  top: 12px;
+  left: 0px;
+}
+.massage_game .game_container .hand_pic .shen_men:hover::after {
+  height: 1px;
+  transition: 0.5s;
+  width: 28px;
+  left: -28px;
+}
+.massage_game .game_container .hand_pic .fshen_men:focus::after {
+  height: 1px;
   width: 28px;
   left: -28px;
 }
 .massage_game .game_container .hand_pic .shen_men::before {
+  width: 12px;
+  font-size: 18px;
+  position: absolute;
+  font-family: "DFKai-SB";
+  color: transparent;
+  transition: 0.3s;
   top: -25px;
   left: -50px;
   content: "神門穴";
 }
+.massage_game .game_container .hand_pic .fshen_men::before {
+  width: 12px;
+  font-size: 18px;
+  position: absolute;
+  font-family: "DFKai-SB";
+  color: transparent;
+  transition: 0.3s;
+  top: -25px;
+  left: -50px;
+  content: "神門穴";
+}
+.massage_game .game_container .hand_pic .shen_men:hover::before {
+  color: #163D82;
+  transition: 0.3s 0.2s;
+}
+.massage_game .game_container .hand_pic .fshen_men:focus::before {
+  color: #163D82;
+}
+.massage_game .game_container .hand_pic .lao_gong {
+  position: absolute;
+  top: 55%;
+  left: 40%;
+  width: 20px;
+  height: 20px;
+  background-color: #B52011;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 98;
+}
+.massage_game .game_container .hand_pic .flao_gong {
+  position: absolute;
+  top: 55%;
+  left: 40%;
+  width: 20px;
+  height: 20px;
+  background-color: #B52011;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 98;
+}
+.massage_game .game_container .hand_pic .lao_gong:hover {
+  background-color: #B52011;
+  transition: 0.3s;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
+}
+.massage_game .game_container .hand_pic .flao_gong:focus {
+  background-color: #B52011;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
+}
 .massage_game .game_container .hand_pic .lao_gong::after {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  background-color: #163D82;
+  transition: 0.5s;
   top: 12px;
   left: 0px;
 }
-.massage_game .game_container .hand_pic .lao_gong:hover::after,
-.massage_game .game_container .hand_pic .lao_gong:focus::after {
-  left: -60px;
-  width: 60px;
+.massage_game .game_container .hand_pic .flao_gong::after {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  background-color: #163D82;
+  transition: 0.5s;
+  top: 12px;
+  left: 0px;
+}
+.massage_game .game_container .hand_pic .lao_gong:hover::after {
+  height: 1px;
+  transition: 0.5s;
+  left: -80px;
+  width: 80px;
+}
+.massage_game .game_container .hand_pic .flao_gong:focus::after {
+  height: 1px;
+  left: -80px;
+  width: 80px;
 }
 .massage_game .game_container .hand_pic .lao_gong::before {
+  width: 12px;
+  font-size: 18px;
+  position: absolute;
+  font-family: "DFKai-SB";
+  color: transparent;
+  transition: 0.3s;
   top: -25px;
-  left: -80px;
+  left: -100px;
   content: "勞宮穴";
 }
+.massage_game .game_container .hand_pic .flao_gong::before {
+  width: 12px;
+  font-size: 18px;
+  position: absolute;
+  font-family: "DFKai-SB";
+  color: transparent;
+  transition: 0.3s;
+  top: -25px;
+  left: -100px;
+  content: "勞宮穴";
+}
+.massage_game .game_container .hand_pic .lao_gong:hover::before {
+  color: #163D82;
+  transition: 0.3s 0.2s;
+}
+.massage_game .game_container .hand_pic .flao_gong:focus::before {
+  color: #163D82;
+}
+.massage_game .game_container .hand_pic .yu_ji {
+  position: absolute;
+  top: 67%;
+  left: 72%;
+  width: 20px;
+  height: 20px;
+  background-color: #B52011;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 98;
+}
+.massage_game .game_container .hand_pic .fyu_ji {
+  position: absolute;
+  top: 67%;
+  left: 72%;
+  width: 20px;
+  height: 20px;
+  background-color: #B52011;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 98;
+}
+.massage_game .game_container .hand_pic .yu_ji:hover {
+  background-color: #B52011;
+  transition: 0.3s;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
+}
+.massage_game .game_container .hand_pic .fyu_ji:focus {
+  background-color: #B52011;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
+}
 .massage_game .game_container .hand_pic .yu_ji::after {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  background-color: #163D82;
+  transition: 0.5s;
   top: 12px;
   left: 100%;
 }
-.massage_game .game_container .hand_pic .yu_ji:hover::after,
-.massage_game .game_container .hand_pic .yu_ji:focus::after {
+.massage_game .game_container .hand_pic .fyu_ji::after {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  background-color: #163D82;
+  transition: 0.5s;
+  top: 12px;
+  left: 100%;
+}
+.massage_game .game_container .hand_pic .yu_ji:hover::after {
+  height: 1px;
+  transition: 0.5s;
+  width: 20px;
+  left: 100%;
+}
+.massage_game .game_container .hand_pic .fyu_ji:focus::after {
+  height: 1px;
   width: 20px;
   left: 100%;
 }
 .massage_game .game_container .hand_pic .yu_ji::before {
+  width: 12px;
+  font-size: 18px;
+  position: absolute;
+  font-family: "DFKai-SB";
+  color: transparent;
+  transition: 0.3s;
   top: -25px;
   left: 40px;
   content: "魚際穴";
 }
+.massage_game .game_container .hand_pic .fyu_ji::before {
+  width: 12px;
+  font-size: 18px;
+  position: absolute;
+  font-family: "DFKai-SB";
+  color: transparent;
+  transition: 0.3s;
+  top: -25px;
+  left: 40px;
+  content: "魚際穴";
+}
+.massage_game .game_container .hand_pic .yu_ji:hover::before {
+  color: #163D82;
+  transition: 0.3s 0.2s;
+}
+.massage_game .game_container .hand_pic .fyu_ji:focus::before {
+  color: #163D82;
+}
+.massage_game .game_container .hand_pic .shao_fu {
+  position: absolute;
+  top: 67%;
+  left: 25%;
+  width: 20px;
+  height: 20px;
+  background-color: #B52011;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 98;
+}
+.massage_game .game_container .hand_pic .fshao_fu {
+  position: absolute;
+  top: 67%;
+  left: 25%;
+  width: 20px;
+  height: 20px;
+  background-color: #B52011;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 98;
+}
+.massage_game .game_container .hand_pic .shao_fu:hover {
+  background-color: #B52011;
+  transition: 0.3s;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
+}
+.massage_game .game_container .hand_pic .fshao_fu:focus {
+  background-color: #B52011;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
+}
 .massage_game .game_container .hand_pic .shao_fu::after {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  background-color: #163D82;
+  transition: 0.5s;
   top: 12px;
   left: 0px;
 }
-.massage_game .game_container .hand_pic .shao_fu:hover::after,
-.massage_game .game_container .hand_pic .shao_fu:focus::after {
+.massage_game .game_container .hand_pic .fshao_fu::after {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  background-color: #163D82;
+  transition: 0.5s;
+  top: 12px;
+  left: 0px;
+}
+.massage_game .game_container .hand_pic .shao_fu:hover::after {
+  height: 1px;
+  transition: 0.5s;
+  left: -28px;
+  width: 28px;
+}
+.massage_game .game_container .hand_pic .fshao_fu:focus::after {
+  height: 1px;
   left: -28px;
   width: 28px;
 }
 .massage_game .game_container .hand_pic .shao_fu::before {
+  width: 12px;
+  font-size: 18px;
+  position: absolute;
+  font-family: "DFKai-SB";
+  color: transparent;
+  transition: 0.3s;
   top: -25px;
   left: -50px;
   content: "少府穴";
 }
+.massage_game .game_container .hand_pic .fshao_fu::before {
+  width: 12px;
+  font-size: 18px;
+  position: absolute;
+  font-family: "DFKai-SB";
+  color: transparent;
+  transition: 0.3s;
+  top: -25px;
+  left: -50px;
+  content: "少府穴";
+}
+.massage_game .game_container .hand_pic .shao_fu:hover::before {
+  color: #163D82;
+  transition: 0.3s 0.2s;
+}
+.massage_game .game_container .hand_pic .fshao_fu:focus::before {
+  color: #163D82;
+}
+.massage_game .game_container .hand_pic .tai_yuan {
+  position: absolute;
+  top: 93%;
+  left: 53%;
+  width: 20px;
+  height: 20px;
+  background-color: #B52011;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 98;
+}
+.massage_game .game_container .hand_pic .ftai_yuan {
+  position: absolute;
+  top: 93%;
+  left: 53%;
+  width: 20px;
+  height: 20px;
+  background-color: #B52011;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 98;
+}
+.massage_game .game_container .hand_pic .tai_yuan:hover {
+  background-color: #B52011;
+  transition: 0.3s;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
+}
+.massage_game .game_container .hand_pic .ftai_yuan:focus {
+  background-color: #B52011;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
+}
 .massage_game .game_container .hand_pic .tai_yuan::after {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  background-color: #163D82;
+  transition: 0.5s;
   top: 12px;
   left: 100%;
 }
-.massage_game .game_container .hand_pic .tai_yuan:hover::after,
-.massage_game .game_container .hand_pic .tai_yuan:focus::after {
+.massage_game .game_container .hand_pic .ftai_yuan::after {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  background-color: #163D82;
+  transition: 0.5s;
+  top: 12px;
+  left: 100%;
+}
+.massage_game .game_container .hand_pic .tai_yuan:hover::after {
+  height: 1px;
+  transition: 0.5s;
+  width: 30px;
+  left: 100%;
+}
+.massage_game .game_container .hand_pic .ftai_yuan:focus::after {
+  height: 1px;
   width: 30px;
   left: 100%;
 }
 .massage_game .game_container .hand_pic .tai_yuan::before {
+  width: 12px;
+  font-size: 18px;
+  position: absolute;
+  font-family: "DFKai-SB";
+  color: transparent;
+  transition: 0.3s;
   top: -25px;
   left: 50px;
   content: "太淵穴";
+}
+.massage_game .game_container .hand_pic .ftai_yuan::before {
+  width: 12px;
+  font-size: 18px;
+  position: absolute;
+  font-family: "DFKai-SB";
+  color: transparent;
+  transition: 0.3s;
+  top: -25px;
+  left: 50px;
+  content: "太淵穴";
+}
+.massage_game .game_container .hand_pic .tai_yuan:hover::before {
+  color: #163D82;
+  transition: 0.3s 0.2s;
+}
+.massage_game .game_container .hand_pic .ftai_yuan:focus::before {
+  color: #163D82;
+}
+.massage_game .game_container .hand_pic .none {
+  display: none;
 }
 .massage_game .game_btn {
   margin: 70px 0px 120px 0px;
@@ -5529,17 +6376,12 @@ main {
     left: 100%;
   }
   .massage_game .game_container .quiz_container .answer_container {
-    width: 30%;
-    margin: 0px 0px 70px 54%;
+    width: 60%;
+    margin: 0px auto 70px auto;
     border: 3px solid #163D82;
   }
-  .massage_game .game_container .quiz_container .answer_container .answer_frame {
-    height: 100px;
-    padding: 20px;
-    font-size: 20px;
-  }
-  .massage_game .game_container .quiz_container .answer_container .answer_frame .answer {
-    padding: 20px;
+  .massage_game .game_container .quiz_container .answer_container .answer_frame .answer .answer_correct {
+    font-size: 18px;
   }
   .massage_game .game_container .quiz_container .answer_container::before {
     border-top: 40px solid transparent;
@@ -5549,27 +6391,48 @@ main {
     top: 6%;
     left: 100%;
   }
+  .massage_game .game_container .quiz_container .correct_container {
+    width: 60%;
+  }
+  .massage_game .game_container .quiz_container .correct_container .correct_frame .correct {
+    font-size: 18px;
+  }
+  .massage_game .game_container .quiz_container .correct_container::after {
+    border-top: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 50px solid #163D82;
+    top: 9%;
+    left: 100%;
+  }
   .massage_game .game_container .hand_pic {
-    margin: -23% 0px 0px 15%;
+    margin: 0px auto 0px auto;
     width: 50%;
-  }
-  .massage_game .game_container .hand_pic .acupoint {
-    width: 25px;
-    height: 25px;
-  }
-  .massage_game .game_container .hand_pic .acupoint::before {
-    width: 60px;
-    font-size: 20px;
   }
   .massage_game .game_container .hand_pic .zhong_chong::after {
     top: 12px;
     left: 0px;
   }
-  .massage_game .game_container .hand_pic .zhong_chong:hover::after,
-.massage_game .game_container .hand_pic .zhong_chong:focus::after {
+  .massage_game .game_container .hand_pic .fzhong_chong::after {
+    top: 12px;
+    left: 0px;
+  }
+  .massage_game .game_container .hand_pic .zhong_chong:hover::after {
+    left: -40px;
+  }
+  .massage_game .game_container .hand_pic .fzhong_chong:focus::after {
     left: -40px;
   }
   .massage_game .game_container .hand_pic .zhong_chong::before {
+    width: 60px;
+    font-size: 20px;
+    top: 0px;
+    left: -100px;
+    content: "中衝穴";
+  }
+  .massage_game .game_container .hand_pic .fzhong_chong::before {
+    width: 60px;
+    font-size: 20px;
     top: 0px;
     left: -100px;
     content: "中衝穴";
@@ -5578,40 +6441,88 @@ main {
     top: 12px;
     left: 100%;
   }
-  .massage_game .game_container .hand_pic .shao_shang:hover::after,
-.massage_game .game_container .hand_pic .shao_shang:focus::after {
+  .massage_game .game_container .hand_pic .fshao_shang::after {
+    top: 12px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .shao_shang:hover::after {
+    width: 40px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .fshao_shang:focus::after {
     width: 40px;
     left: 100%;
   }
   .massage_game .game_container .hand_pic .shao_shang::before {
+    width: 60px;
+    font-size: 20px;
     top: 0px;
-    left: 70px;
+    left: 60px;
+    content: "少商穴";
+  }
+  .massage_game .game_container .hand_pic .fshao_shang::before {
+    width: 60px;
+    font-size: 20px;
+    top: 0px;
+    left: 60px;
     content: "少商穴";
   }
   .massage_game .game_container .hand_pic .he_gu::after {
     top: 12px;
     left: 100%;
   }
-  .massage_game .game_container .hand_pic .he_gu:hover::after,
-.massage_game .game_container .hand_pic .he_gu:focus::after {
+  .massage_game .game_container .hand_pic .fhe_gu::after {
+    top: 12px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .he_gu:hover::after {
+    left: 100%;
+    width: 100px;
+  }
+  .massage_game .game_container .hand_pic .fhe_gu:focus::after {
     left: 100%;
     width: 100px;
   }
   .massage_game .game_container .hand_pic .he_gu::before {
+    width: 60px;
+    font-size: 20px;
     top: 0px;
-    left: 130px;
+    left: 120px;
+    content: "合谷穴";
+  }
+  .massage_game .game_container .hand_pic .fhe_gu::before {
+    width: 60px;
+    font-size: 20px;
+    top: 0px;
+    left: 120px;
     content: "合谷穴";
   }
   .massage_game .game_container .hand_pic .ming_men::after {
     top: 12px;
     left: 0px;
   }
-  .massage_game .game_container .hand_pic .ming_men:hover::after,
-.massage_game .game_container .hand_pic .ming_men:focus::after {
+  .massage_game .game_container .hand_pic .fming_men::after {
+    top: 12px;
+    left: 0px;
+  }
+  .massage_game .game_container .hand_pic .ming_men:hover::after {
+    width: 35px;
+    left: -35px;
+  }
+  .massage_game .game_container .hand_pic .fming_men:focus::after {
     width: 35px;
     left: -35px;
   }
   .massage_game .game_container .hand_pic .ming_men::before {
+    width: 60px;
+    font-size: 20px;
+    top: 0px;
+    left: -95px;
+    content: "命門穴";
+  }
+  .massage_game .game_container .hand_pic .fming_men::before {
+    width: 60px;
+    font-size: 20px;
     top: 0px;
     left: -95px;
     content: "命門穴";
@@ -5620,12 +6531,28 @@ main {
     top: 12px;
     left: 0px;
   }
-  .massage_game .game_container .hand_pic .shen_men:hover::after,
-.massage_game .game_container .hand_pic .shen_men:focus::after {
+  .massage_game .game_container .hand_pic .fshen_men::after {
+    top: 12px;
+    left: 0px;
+  }
+  .massage_game .game_container .hand_pic .shen_men:hover::after {
+    width: 40px;
+    left: -40px;
+  }
+  .massage_game .game_container .hand_pic .fshen_men:focus::after {
     width: 40px;
     left: -40px;
   }
   .massage_game .game_container .hand_pic .shen_men::before {
+    width: 60px;
+    font-size: 20px;
+    top: 0px;
+    left: -100px;
+    content: "神門穴";
+  }
+  .massage_game .game_container .hand_pic .fshen_men::before {
+    width: 60px;
+    font-size: 20px;
     top: 0px;
     left: -100px;
     content: "神門穴";
@@ -5634,12 +6561,28 @@ main {
     top: 12px;
     left: 0px;
   }
-  .massage_game .game_container .hand_pic .lao_gong:hover::after,
-.massage_game .game_container .hand_pic .lao_gong:focus::after {
+  .massage_game .game_container .hand_pic .flao_gong::after {
+    top: 12px;
+    left: 0px;
+  }
+  .massage_game .game_container .hand_pic .lao_gong:hover::after {
+    left: -110px;
+    width: 110px;
+  }
+  .massage_game .game_container .hand_pic .flao_gong:focus::after {
     left: -110px;
     width: 110px;
   }
   .massage_game .game_container .hand_pic .lao_gong::before {
+    width: 60px;
+    font-size: 20px;
+    top: 0px;
+    left: -170px;
+    content: "勞宮穴";
+  }
+  .massage_game .game_container .hand_pic .flao_gong::before {
+    width: 60px;
+    font-size: 20px;
     top: 0px;
     left: -170px;
     content: "勞宮穴";
@@ -5648,26 +6591,58 @@ main {
     top: 12px;
     left: 100%;
   }
-  .massage_game .game_container .hand_pic .yu_ji:hover::after,
-.massage_game .game_container .hand_pic .yu_ji:focus::after {
+  .massage_game .game_container .hand_pic .fyu_ji::after {
+    top: 12px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .yu_ji:hover::after {
+    width: 40px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .fyu_ji:focus::after {
     width: 40px;
     left: 100%;
   }
   .massage_game .game_container .hand_pic .yu_ji::before {
+    width: 60px;
+    font-size: 20px;
     top: 0px;
-    left: 70px;
+    left: 60px;
+    content: "魚際穴";
+  }
+  .massage_game .game_container .hand_pic .fyu_ji::before {
+    width: 60px;
+    font-size: 20px;
+    top: 0px;
+    left: 60px;
     content: "魚際穴";
   }
   .massage_game .game_container .hand_pic .shao_fu::after {
     top: 12px;
     left: 0px;
   }
-  .massage_game .game_container .hand_pic .shao_fu:hover::after,
-.massage_game .game_container .hand_pic .shao_fu:focus::after {
+  .massage_game .game_container .hand_pic .fshao_fu::after {
+    top: 12px;
+    left: 0px;
+  }
+  .massage_game .game_container .hand_pic .shao_fu:hover::after {
+    left: -60px;
+    width: 60px;
+  }
+  .massage_game .game_container .hand_pic .vshao_fu:focus::after {
     left: -60px;
     width: 60px;
   }
   .massage_game .game_container .hand_pic .shao_fu::before {
+    width: 60px;
+    font-size: 20px;
+    top: 0px;
+    left: -120px;
+    content: "少府穴";
+  }
+  .massage_game .game_container .hand_pic .fshao_fu::before {
+    width: 60px;
+    font-size: 20px;
     top: 0px;
     left: -120px;
     content: "少府穴";
@@ -5676,18 +6651,31 @@ main {
     top: 12px;
     left: 100%;
   }
-  .massage_game .game_container .hand_pic .tai_yuan:hover::after,
-.massage_game .game_container .hand_pic .tai_yuan:focus::after {
+  .massage_game .game_container .hand_pic .ftai_yuan::after {
+    top: 12px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .tai_yuan:hover::after {
+    width: 40px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .ftai_yuan:focus::after {
     width: 40px;
     left: 100%;
   }
   .massage_game .game_container .hand_pic .tai_yuan::before {
+    width: 60px;
+    font-size: 20px;
     top: 0px;
-    left: 70px;
+    left: 60px;
     content: "太淵穴";
   }
-  .massage_game .game_btn {
-    margin: 0% 0px 120px 50%;
+  .massage_game .game_container .hand_pic .ftai_yuan::before {
+    width: 60px;
+    font-size: 20px;
+    top: 0px;
+    left: 60px;
+    content: "太淵穴";
   }
 }
 /*====== 桌機版 RWD | >1200px ======*/
@@ -5710,20 +6698,19 @@ main {
     border-right: 40px solid transparent;
     border-bottom: 40px solid transparent;
     border-left: 60px solid #163D82;
-    top: 7%;
+    top: 10%;
     left: 101%;
   }
   .massage_game .game_container .quiz_container .answer_container {
-    width: 40%;
+    width: 60%;
     margin: 0px 0px 0px 10%;
   }
   .massage_game .game_container .quiz_container .answer_container .answer_frame {
-    height: 100px;
     padding: 20px;
     font-size: 24px;
   }
-  .massage_game .game_container .quiz_container .answer_container .answer_frame .answer {
-    padding: 20px;
+  .massage_game .game_container .quiz_container .answer_container .answer_frame .answer .answer_correct {
+    font-size: 20px;
   }
   .massage_game .game_container .quiz_container .answer_container::before {
     border-top: 40px solid transparent;
@@ -5731,29 +6718,51 @@ main {
     border-bottom: 40px solid transparent;
     border-left: 40px solid transparent;
     top: 7%;
-    right: 101%;
+    right: 100%;
+  }
+  .massage_game .game_container .quiz_container .correct_container {
+    width: 60%;
+    margin: 70px 0px 100px 30%;
+  }
+  .massage_game .game_container .quiz_container .correct_container .correct_frame .correct {
+    font-size: 20px;
+  }
+  .massage_game .game_container .quiz_container .correct_container::after {
+    border-top: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 50px solid #163D82;
+    top: 9%;
+    left: 100%;
   }
   .massage_game .game_container .hand_pic {
     width: 35%;
-  }
-  .massage_game .game_container .hand_pic .acupoint {
-    width: 25px;
-    height: 25px;
-  }
-  .massage_game .game_container .hand_pic .acupoint::before {
-    width: 60px;
-    font-size: 20px;
   }
   .massage_game .game_container .hand_pic .zhong_chong::after {
     top: 12px;
     left: 0px;
   }
-  .massage_game .game_container .hand_pic .zhong_chong:hover::after,
-.massage_game .game_container .hand_pic .zhong_chong:focus::after {
+  .massage_game .game_container .hand_pic .fzhong_chong::after {
+    top: 12px;
+    left: 0px;
+  }
+  .massage_game .game_container .hand_pic .zhong_chong:hover::after {
+    left: -40px;
+  }
+  .massage_game .game_container .hand_pic .fzhong_chong:focus::after {
     left: -40px;
   }
   .massage_game .game_container .hand_pic .zhong_chong::before {
+    width: 60px;
+    font-size: 20px;
     top: 0px;
+    left: -100px;
+    content: "中衝穴";
+  }
+  .massage_game .game_container .hand_pic .fzhong_chong::before {
+    width: 60px;
+    top: 0px;
+    font-size: 20px;
     left: -100px;
     content: "中衝穴";
   }
@@ -5761,13 +6770,30 @@ main {
     top: 100%;
     left: 50%;
   }
-  .massage_game .game_container .hand_pic .shao_shang:hover::after,
-.massage_game .game_container .hand_pic .shao_shang:focus::after {
+  .massage_game .game_container .hand_pic .fshao_shang::after {
+    top: 100%;
+    left: 50%;
+  }
+  .massage_game .game_container .hand_pic .shao_shang:hover::after {
+    width: 1px;
+    height: 15px;
+    left: 50%;
+  }
+  .massage_game .game_container .hand_pic .fshao_shang:focus::after {
     width: 1px;
     height: 15px;
     left: 50%;
   }
   .massage_game .game_container .hand_pic .shao_shang::before {
+    width: 60px;
+    font-size: 20px;
+    top: 40px;
+    left: 0px;
+    content: "少商穴";
+  }
+  .massage_game .game_container .hand_pic .fshao_shang::before {
+    width: 60px;
+    font-size: 20px;
     top: 40px;
     left: 0px;
     content: "少商穴";
@@ -5776,12 +6802,28 @@ main {
     top: 12px;
     left: 100%;
   }
-  .massage_game .game_container .hand_pic .he_gu:hover::after,
-.massage_game .game_container .hand_pic .he_gu:focus::after {
+  .massage_game .game_container .hand_pic .fhe_gu::after {
+    top: 12px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .he_gu:hover::after {
+    left: 100%;
+    width: 75px;
+  }
+  .massage_game .game_container .hand_pic .fhe_gu:focus::after {
     left: 100%;
     width: 75px;
   }
   .massage_game .game_container .hand_pic .he_gu::before {
+    width: 60px;
+    font-size: 20px;
+    top: 0px;
+    left: 105px;
+    content: "合谷穴";
+  }
+  .massage_game .game_container .hand_pic .fhe_gu::before {
+    width: 60px;
+    font-size: 20px;
     top: 0px;
     left: 105px;
     content: "合谷穴";
@@ -5790,12 +6832,28 @@ main {
     top: 12px;
     left: 0px;
   }
-  .massage_game .game_container .hand_pic .ming_men:hover::after,
-.massage_game .game_container .hand_pic .ming_men:focus::after {
+  .massage_game .game_container .hand_pic .fming_men::after {
+    top: 12px;
+    left: 0px;
+  }
+  .massage_game .game_container .hand_pic .ming_men:hover::after {
+    width: 40px;
+    left: -40px;
+  }
+  .massage_game .game_container .hand_pic .fming_men:focus::after {
     width: 40px;
     left: -40px;
   }
   .massage_game .game_container .hand_pic .ming_men::before {
+    width: 60px;
+    font-size: 20px;
+    top: 0px;
+    left: -100px;
+    content: "命門穴";
+  }
+  .massage_game .game_container .hand_pic .fming_men::before {
+    width: 60px;
+    font-size: 20px;
     top: 0px;
     left: -100px;
     content: "命門穴";
@@ -5804,12 +6862,28 @@ main {
     top: 12px;
     left: 0px;
   }
-  .massage_game .game_container .hand_pic .shen_men:hover::after,
-.massage_game .game_container .hand_pic .shen_men:focus::after {
+  .massage_game .game_container .hand_pic .fshen_men::after {
+    top: 12px;
+    left: 0px;
+  }
+  .massage_game .game_container .hand_pic .shen_men:hover::after {
+    width: 40px;
+    left: -40px;
+  }
+  .massage_game .game_container .hand_pic .fshen_men:focus::after {
     width: 40px;
     left: -40px;
   }
   .massage_game .game_container .hand_pic .shen_men::before {
+    width: 60px;
+    font-size: 20px;
+    top: 0px;
+    left: -100px;
+    content: "神門穴";
+  }
+  .massage_game .game_container .hand_pic .fshen_men::before {
+    width: 60px;
+    font-size: 20px;
     top: 0px;
     left: -100px;
     content: "神門穴";
@@ -5818,12 +6892,28 @@ main {
     top: 12px;
     left: 0px;
   }
-  .massage_game .game_container .hand_pic .lao_gong:hover::after,
-.massage_game .game_container .hand_pic .lao_gong:focus::after {
+  .massage_game .game_container .hand_pic .flao_gong::after {
+    top: 12px;
+    left: 0px;
+  }
+  .massage_game .game_container .hand_pic .lao_gong:hover::after {
+    left: -110px;
+    width: 110px;
+  }
+  .massage_game .game_container .hand_pic .flao_gong:focus::after {
     left: -110px;
     width: 110px;
   }
   .massage_game .game_container .hand_pic .lao_gong::before {
+    width: 60px;
+    font-size: 20px;
+    top: 0px;
+    left: -170px;
+    content: "勞宮穴";
+  }
+  .massage_game .game_container .hand_pic .flao_gong::before {
+    width: 60px;
+    font-size: 20px;
     top: 0px;
     left: -170px;
     content: "勞宮穴";
@@ -5832,12 +6922,28 @@ main {
     top: 12px;
     left: 100%;
   }
-  .massage_game .game_container .hand_pic .yu_ji:hover::after,
-.massage_game .game_container .hand_pic .yu_ji:focus::after {
+  .massage_game .game_container .hand_pic .fyu_ji::after {
+    top: 12px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .yu_ji:hover::after {
+    width: 20px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .fyu_ji:focus::after {
     width: 20px;
     left: 100%;
   }
   .massage_game .game_container .hand_pic .yu_ji::before {
+    width: 60px;
+    font-size: 20px;
+    top: 0px;
+    left: 50px;
+    content: "魚際穴";
+  }
+  .massage_game .game_container .hand_pic .fyu_ji::before {
+    width: 60px;
+    font-size: 20px;
     top: 0px;
     left: 50px;
     content: "魚際穴";
@@ -5846,12 +6952,28 @@ main {
     top: 12px;
     left: 0px;
   }
-  .massage_game .game_container .hand_pic .shao_fu:hover::after,
-.massage_game .game_container .hand_pic .shao_fu:focus::after {
+  .massage_game .game_container .hand_pic .fshao_fu::after {
+    top: 12px;
+    left: 0px;
+  }
+  .massage_game .game_container .hand_pic .shao_fu:hover::after {
+    left: -60px;
+    width: 60px;
+  }
+  .massage_game .game_container .hand_pic .fshao_fu:focus::after {
     left: -60px;
     width: 60px;
   }
   .massage_game .game_container .hand_pic .shao_fu::before {
+    width: 60px;
+    font-size: 20px;
+    top: 0px;
+    left: -120px;
+    content: "少府穴";
+  }
+  .massage_game .game_container .hand_pic .fshao_fu::before {
+    width: 60px;
+    font-size: 20px;
     top: 0px;
     left: -120px;
     content: "少府穴";
@@ -5860,12 +6982,28 @@ main {
     top: 12px;
     left: 100%;
   }
-  .massage_game .game_container .hand_pic .tai_yuan:hover::after,
-.massage_game .game_container .hand_pic .tai_yuan:focus::after {
+  .massage_game .game_container .hand_pic .ftai_yuan::after {
+    top: 12px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .tai_yuan:hover::after {
+    width: 40px;
+    left: 100%;
+  }
+  .massage_game .game_container .hand_pic .ftai_yuan:focus::after {
     width: 40px;
     left: 100%;
   }
   .massage_game .game_container .hand_pic .tai_yuan::before {
+    width: 60px;
+    font-size: 20px;
+    top: 0px;
+    left: 70px;
+    content: "太淵穴";
+  }
+  .massage_game .game_container .hand_pic .ftai_yuan::before {
+    width: 60px;
+    font-size: 20px;
     top: 0px;
     left: 70px;
     content: "太淵穴";
@@ -6185,14 +7323,6 @@ a {
   width: 50%;
   display: flex;
 }
-.commodity-container .commodity-order .commodity-filter > :first-child {
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
-.commodity-container .commodity-order .commodity-filter > :last-child {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
 .commodity-container .commodity-order .commodity-filter button {
   width: 100%;
   background-color: #FFFFFF;
@@ -6237,7 +7367,7 @@ a {
   align-items: center;
   font-weight: 900;
   font-size: 16px;
-  z-index: 5;
+  z-index: 0;
   position: relative;
 }
 .commodity-area .commodity-obj .commodity-body {
@@ -6252,6 +7382,16 @@ a {
   font-size: 25px;
   font-weight: 800;
 }
+.commodity-page {
+  margin: auto;
+  padding: 20px 0;
+}
+.commodity-page span {
+  margin: 10px 10px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
 .commodity-card {
   margin-bottom: 70px;
   background-color: #FFFFFF;
@@ -6283,6 +7423,7 @@ a {
   width: 100%;
   height: 100%;
   position: relative;
+  margin-right: 30px;
 }
 .commodity-card .commodity-obj button {
   width: 20px;
@@ -6311,7 +7452,14 @@ a {
   font-size: 25px;
   font-weight: 800;
 }
+.special-offer {
+  background-color: #FFFFFF;
+}
+
 @media screen and (min-width: 768px) {
+  .sel {
+    margin-right: 20px;
+  }
   .commodity-list .commodity-order {
     display: flex;
     justify-content: space-between;
@@ -6326,6 +7474,7 @@ a {
   .commodity-area .commodity-obj {
     display: flex;
     align-items: center;
+    padding: 10px 0;
   }
   .commodity-area .commodity-obj .commodity-pic {
     width: 15%;
@@ -6388,7 +7537,7 @@ a {
     display: flex;
   }
   .commodity-card .commodity-obj .commodity-pic .slide-pic img {
-    width: 100%;
+    width: 111%;
     height: 100%;
     position: relative;
   }
@@ -6429,12 +7578,18 @@ a {
   background-color: #FFFFFF !important;
 }
 
+.changePage {
+  color: #B52011;
+}
+
 .filter-range {
   position: fixed;
   right: 0;
-  background-color: #FFFFFF;
   padding: 10px;
-  z-index: 8;
+  z-index: 0;
+}
+.filter-range svg {
+  font-size: 35px;
 }
 
 .filter-container {
@@ -6457,6 +7612,7 @@ a {
   position: relative;
   line-height: 2;
   padding: 10px;
+  border-radius: 5px;
 }
 .filter-container .filter-list .filter-close {
   position: absolute;
@@ -6475,10 +7631,16 @@ a {
 }
 .filter-container .filter-list .price-checkbox {
   font-size: 22px;
-  text-align: center;
+  text-align: left;
+}
+.filter-container .filter-list .price-checkbox p {
+  margin-left: 90px;
 }
 .filter-container .filter-list .keyword {
-  text-align: center;
+  text-align: left;
+}
+.filter-container .filter-list .keyword p {
+  margin-left: 90px;
 }
 
 .filter-wrap {
@@ -6497,12 +7659,30 @@ a {
     margin-left: 30px;
   }
   .filter-wrap .filter-list {
+    width: 100%;
     box-shadow: 0px 0px 10px rgb(206, 206, 206);
     padding: 10px;
     text-align: center;
+    margin-bottom: 100px;
   }
   .filter-wrap .filter-list .filter-close {
     display: none;
+  }
+  .filter-wrap .filter-list .price-checkbox {
+    width: 150px;
+    margin: auto;
+    text-align: left;
+  }
+  .filter-wrap .filter-list .price-checkbox :first-child {
+    text-align: center;
+  }
+  .filter-wrap .keyword {
+    width: 150px;
+    text-align: left;
+    margin: auto;
+  }
+  .filter-wrap .keyword :first-child {
+    text-align: center;
   }
 }
 .review-title {
@@ -6580,7 +7760,7 @@ a {
   width: 100%;
   max-width: 1200px;
   margin: auto;
-  padding: 50px 0;
+  padding: 10px 0;
 }
 .message-container .message-user .message-user {
   display: flex;
@@ -6596,8 +7776,12 @@ a {
 .message-container .message-user .message-user .user-pic img {
   width: 100%;
 }
-.message-container .message-user .message-user .user-name {
-  width: 50px;
+.message-container .message-user .message-user .user-name p {
+  font-weight: 800;
+}
+.message-container .message-user .message-user .user-name small {
+  font-size: 12px;
+  color: gray;
 }
 .message-container .message-user .message-area {
   padding: 10px 60px;
@@ -6608,14 +7792,20 @@ a {
 .message-container .message-user .message-area p {
   line-height: 1.5;
 }
-.message-container .message-write {
+
+.no-article {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.message-write {
   width: 100%;
   max-width: 1200px;
   margin: auto;
   padding: 30px 0;
   text-align: center;
 }
-.message-container .message-write .write-tex {
+.message-write .write-tex {
   margin-bottom: 20px;
   width: 100%;
   max-width: 1000px;
@@ -6735,11 +7925,12 @@ a {
 .shopping-discount {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   background-color: #FFFFFF;
   box-shadow: 0px 0px 10px rgb(211, 211, 211);
   padding: 30px 0;
   font-weight: 800;
+  margin: auto;
 }
 
 .shopping-price {
@@ -6770,7 +7961,7 @@ a {
   text-align: center;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (min-width: 1100px) {
   .shopping-list .shopping-list-order {
     display: flex;
     align-items: center;
@@ -6797,13 +7988,14 @@ a {
     display: flex;
     align-items: center;
     margin-left: 0;
+    justify-content: space-around;
   }
   .shopping-list .shopping-list-order .shopping-list-body .shopping-list-name {
     width: 300px;
     margin-bottom: 5px;
   }
   .shopping-list .shopping-list-order .shopping-list-body .shopping-list-calculate {
-    margin: auto;
+    margin: 0;
   }
   .shopping-list .shopping-list-order .shopping-list-body .shopping-list-calculate h5 {
     color: #B52011;
@@ -6817,7 +8009,13 @@ a {
     color: #B52011;
   }
   .shopping-list .shopping-list-order .shopping-list-body .shopping-list-int {
-    margin: auto;
+    margin: 0;
+    display: flex;
+  }
+  .shopping-list .shopping-list-order .shopping-list-body .shopping-list-int button {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
   }
   .shopping-list .shopping-list-order .shopping-list-btn {
     display: block;
@@ -6825,7 +8023,7 @@ a {
   .shopping-discount {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     background-color: #FFFFFF;
     box-shadow: 0px 0px 10px rgb(211, 211, 211);
     padding: 30px 0;
@@ -6877,6 +8075,90 @@ a {
     justify-content: space-evenly;
   }
 }
+.add-on-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  box-sizing: border-box;
+  display: flex;
+  position: relative;
+  margin: auto;
+  padding-left: 50px;
+  overflow: hidden;
+}
+.add-on-container .add-on-product {
+  position: relative;
+  width: 50%;
+  flex-shrink: 0;
+  margin: 10px 20px;
+}
+.add-on-container .add-on-product .add-on-pic {
+  width: 100%;
+}
+.add-on-container .add-on-product .add-on-pic img {
+  width: 100%;
+}
+.add-on-container .add-on-product .add-on-price {
+  margin: auto;
+  text-align: center;
+}
+.add-on-container .add-on-product .add-on-price p {
+  font-size: 20px;
+  color: #B52011;
+}
+
+.add-on-control {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+.add-on-control span {
+  font-size: 35px;
+  color: #163D82;
+}
+
+@media screen and (min-width: 768px) {
+  .add-on-container .add-on-product {
+    width: 10%;
+    flex-shrink: 0;
+    margin: 10px 20px;
+    line-height: 1.5;
+  }
+  .add-on-container .add-on-product .add-on-pic {
+    width: 100%;
+  }
+  .add-on-container .add-on-product .add-on-pic img {
+    width: 100%;
+    height: 100%;
+  }
+  .add-on-container .add-on-product .add-on-price-name {
+    text-align: center;
+    font-weight: 800;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .add-on-container .add-on-product .add-on-price {
+    margin: auto;
+    text-align: center;
+  }
+  .add-on-container .add-on-product .add-on-price p {
+    font-size: 20px;
+    color: #B52011;
+  }
+  .add-on-control {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+  }
+  .add-on-control span {
+    font-size: 35px;
+    color: #163D82;
+    margin: 0 15px;
+  }
+}
 @media screen and (min-width: 1200px) {
   .bread {
     padding: 10px;
@@ -6890,10 +8172,29 @@ a {
     display: flex;
     justify-content: space-between;
     padding-bottom: 100px;
+    font-weight: 800;
   }
   .product-title .product-body {
     width: 45%;
     margin: auto 0;
+  }
+  .product-title .product-body .product-star {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .product-title .product-body .product-star .star-score:before {
+    content: "";
+    width: 45px;
+    height: 2px;
+    background-color: #B52011;
+    position: absolute;
+    bottom: 10px;
+  }
+  .product-title .product-body .product-star p {
+    font-size: 35px;
+    margin: 0 5px;
+    font-weight: 800;
+    color: #B52011;
   }
   .product-title .product-introduce {
     width: 100%;
@@ -6934,6 +8235,7 @@ a {
     background-color: gray;
   }
   .product-title .pic-slide {
+    width: 450px;
     display: flex;
     align-items: center;
     margin-bottom: 30px;
@@ -6996,6 +8298,24 @@ a {
   .product-title .product-pic img {
     width: 130%;
   }
+  .product-title .product-star {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .product-title .product-star .star-score:before {
+    content: "";
+    width: 45px;
+    height: 2px;
+    background-color: #B52011;
+    position: absolute;
+    bottom: 10px;
+  }
+  .product-title .product-star p {
+    font-size: 35px;
+    margin: 0 5px;
+    font-weight: 800;
+    color: #B52011;
+  }
   .product-title .pic-control {
     width: 100px;
     display: none;
@@ -7008,18 +8328,6 @@ a {
     height: 10px;
     border-radius: 50%;
     background-color: gray;
-  }
-  .product-title .pic-control .product-body {
-    width: 45%;
-  }
-  .product-title .pic-control .product-body .product-introduce .product-txt {
-    text-align: left;
-  }
-  .product-title .pic-control .product-body .product-introduce .product-txt ul li {
-    width: 500px;
-    margin: auto;
-    display: flex;
-    justify-content: flex-start;
   }
   .product-title .pic-slide {
     display: flex;
@@ -7129,37 +8437,6 @@ a {
     margin: auto;
     line-height: 3;
   }
-  .shopping-cart .shopping-title {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    margin: 20px 0;
-  }
-  .shopping-cart .shopping-title .title-font {
-    width: 57px;
-    height: 57px;
-    border-radius: 50%;
-    background-color: #163D82;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-    color: white;
-    font-family: "DFKai-SB";
-  }
-  .shopping-cart .shopping-title .title-font:before {
-    content: "";
-    width: 49px;
-    height: 49px;
-    background-color: transparent;
-    border: 2.3px solid white;
-    position: absolute;
-    top: 1px;
-    left: 2.5%;
-    border-radius: 50%;
-  }
   .shopping-cart .shopping-list {
     margin-bottom: 150px;
   }
@@ -7218,43 +8495,6 @@ a {
     max-width: 1200px;
     margin: auto;
   }
-  .purchase-area .purchase-area-title {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-  }
-  .purchase-area .purchase-area-title .title-font {
-    width: 57px;
-    height: 57px;
-    border-radius: 50%;
-    background-color: #163D82;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-    color: white;
-    font-family: "DFKai-SB";
-  }
-  .purchase-area .purchase-area-title .title-font:before {
-    content: "";
-    width: 49px;
-    height: 49px;
-    background-color: transparent;
-    border: 2.3px solid white;
-    position: absolute;
-    top: 1px;
-    left: 2.5%;
-    border-radius: 50%;
-  }
-  .purchase-area .purchase-area-title .shopping-title {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    margin: 20px 0;
-  }
   .purchase-area-container {
     width: 100%;
     max-width: 1200px;
@@ -7299,4 +8539,73 @@ a {
     justify-content: flex-end;
     padding: 5px;
   }
+}
+.shopping-title {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  margin: 20px 0;
+}
+.shopping-title .title-font {
+  width: 57px;
+  height: 57px;
+  border-radius: 50%;
+  background-color: #163D82;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: white;
+  font-family: "DFKai-SB";
+}
+.shopping-title .title-font:before {
+  content: "";
+  width: 49px;
+  height: 49px;
+  background-color: transparent;
+  border: 2.3px solid white;
+  position: absolute;
+  top: 1px;
+  left: 2.5%;
+  border-radius: 50%;
+}
+
+.purchase-area-title {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+}
+.purchase-area-title .title-font {
+  width: 57px;
+  height: 57px;
+  border-radius: 50%;
+  background-color: #163D82;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: white;
+  font-family: "DFKai-SB";
+}
+.purchase-area-title .title-font:before {
+  content: "";
+  width: 49px;
+  height: 49px;
+  background-color: transparent;
+  border: 2.3px solid white;
+  position: absolute;
+  top: 1px;
+  left: 2.5%;
+  border-radius: 50%;
+}
+.purchase-area-title .shopping-title {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  margin: 20px 0;
 }/*# sourceMappingURL=style.css.map */

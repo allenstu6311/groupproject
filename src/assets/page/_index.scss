@@ -712,9 +712,7 @@ main{
             span{
                 display: block;
                 margin-top: 15px;
-                &::before {
-                    content: "♥";
-                }
+                color: rgb(162, 162, 162);
                 &:hover{
                     color: $blue;
                     font-weight: 600;

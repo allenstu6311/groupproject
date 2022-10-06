@@ -88,12 +88,14 @@
                     <small>• PRODUCTS •</small>
                 </div>
                 <div class="product_content">
-                    <div id="item" v-for="item in itemArray" :key="item">
-                        <img :src="require(`../assets/images/${item.img}`)" alt="">
+                    <div id="item" v-for="item in product" :key="item">
+                        <router-link to="/Detail">
+                            <img :src="require(`../assets/phps/pic/${item.PROD_PIC1}`)" @click="joinDetail(item.PROD_ID)"  alt="">
                         <!-- 有掛載東西一定加:號!!!! :class -->
-                        <h4>{{item.name}}</h4>
-                        <p>${{item.money}}</p>
-                        <span>加入購物車</span>
+                        <h4>{{item.PROD_NAME}}</h4>
+                        <p>${{item.PROD_PRICE}}</p>
+                        </router-link>
+                        <span><i class="fa-solid fa-cart-shopping"></i>加入購物車</span>
                     </div>
                 </div>
                 <router-link to="/ProductList"><div class="btnLittle">更多商品</div></router-link>
@@ -304,16 +306,19 @@
         data() {
             return {
                 newsCardList: [],//---------------最新消息------------------
-
-                itemArray:[ //---------------商品專區-----------------------
-                {name:'NEX Pro', money:1650 , img:"usb.png"},
-                {name:'火星計畫', money:3000 , img:"fire.png"},
-                {name:'日式按摩槍', money:1500 , img:"japan.png"},
-                {name:'跟他講阿，卒仔', money:9000 , img:"knock1.png"},
-            ]
+                product:[],//---------------商品專區-----------------------
+                order:[],
             }
         },
-        created(){
+        created(){ //一進網頁就直接執行的~
+        
+            this.axios.get( "http://localhost/CGD102_G2/src/assets/phps/homeProduct.php")
+            .then((res)=>{
+                this.product=res.data
+                console.log("俊彥大帥哥--->",this.product)
+            })
+
+
             this.getDataFromApi(); // 在建立 Vue.js 模板時順帶執行這個參數
         },
         methods:{
@@ -326,8 +331,37 @@
                 }
                 await getData(url); // 觸發 getData 的匿名 function 內容 ==> 95 ~ 97 行的內容
                 console.log(this.newsCardList);
+            },
+            joinDetail(id){
+                let index  = this.product.findIndex(item=>{
+                    
+
+                    return item.PROD_ID===id
+                })
+               
+                this.order=[
+                {
+                PROD_ID: this.product[index].PROD_ID,
+                PROD_NAME: this.product[index].PROD_NAME,
+                PROD_PRICE: this.product[index].PROD_PRICE,
+                PROD_PIC1: this.product[index].PROD_PIC1,
+                PROD_PIC2: this.product[index].PROD_PIC2,
+                PROD_PIC3: this.product[index].PROD_PIC3,
+                PROD_DATE: this.product[index].PROD_DATE,
+                PROD_DESC1: this.product[index].PROD_DESC1,
+                PROD_DESC2: this.product[index].PROD_DESC2,
+                PROD_DESC3: this.product[index].PROD_DESC3,
+                PROD_REVIEW: this.product[index].PROD_REVIEW + 1,
+                PROD_TIMES: this.product[index].PROD_TIMES + 1,
+                },
+            ]
+                this.joinLocalStorage()
+            },
+            joinLocalStorage(){
+                localStorage.setItem("order",JSON.stringify(this.order)) ;
             }
         },
+      
 
  
     };

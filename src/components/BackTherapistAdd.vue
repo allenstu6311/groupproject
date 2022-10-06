@@ -1,7 +1,7 @@
 <template>
     <div class="laster_therapist">
         <h1>新增按摩師</h1>
-        <div class="add_content">
+        <section class="add_content">
             <div class="row">
                 <div class="col">
                     <div class="input-group fixwidth mb-3">
@@ -58,7 +58,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="formFile" class="form-label">頭像上傳</label>
-                        <input class="form-control upload" type="file" id="formFile" maxlength="50" :v-model="pic">
+                        <input class="form-control upload" type="file" id="formFile" maxlength="50" :v-model="pic" @change="photo($event)">
                     </div>
                 </div>
                 <div class="col">
@@ -69,10 +69,10 @@
                 </div>
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button class="btn btn-primary me-md-2" type="button" @click="submit">儲存</button>
+                <button class="btn btn-primary me-md-2" @click="submit" type="button">儲存</button>
                 <router-link class="btn btn-primary" to="/backtherapist">取消</router-link>
             </div>
-        </div>
+        </section>
     </div>
 </template>
 
@@ -93,28 +93,37 @@ export default {
             pswtip: "*",
             pswclass: "error",
             pswflag: false,
+            
         }
     },
     methods: {
         submit(){
+        
             var xhr = new XMLHttpRequest();
-
+            
             xhr.onload = function(){
                 if(xhr.status == 200){
                     if(xhr.responseText == "帳號已建立"){
                         alert("帳號已建立");
-                        window.location.replace("/backtherapistadd");
+                        window.location.replace("/backtherapist");
                     }else if(xhr.responseText == "無法建立帳號"){
                         alert("無法建立帳號");
                     }
                 }
-            }
+            },
+          
 
             xhr.open("post","http://localhost/CGD102_G2/src/assets/phps/backtherapistadd.php", true);
             xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
             let therapist_data = `license1=${this.license1}&license2=${this.license2}&license3=${this.license3}&license4=${this.license4}&account=${this.account}&password=${this.password}&name=${this.name}&hiredate=${this.hiredate}&pic=${this.pic}`;
             xhr.send(therapist_data);
+
+
+        },
+        photo(e){
+            this.pic=e.target.files[0].name;
+            console.log( this.pic);
         },
         checkContentByReg(reg, content, tip, classname) {
             if (reg.test(content)) {

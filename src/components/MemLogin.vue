@@ -77,7 +77,9 @@ export default {
                     }
 
                 }
-                xhr.open("post", "http://localhost/CGD102_G2/src/assets/phps/login.php", true);
+                // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
+                // var url = ${BASE_URL}/api/login.php
+                xhr.open("post", "http://localhost/CGD102_G2/public/api/login.php", true);
                 xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
 
                 let login_info = `account=${this.account}&password=${this.password}`;

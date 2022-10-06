@@ -33,14 +33,14 @@
                     <input type="password" maxlength="15" v-model="passwordAgain">
                     <span :class="pswAclass">{{pswAtip}}</span>
                 </div>
-                <input type="text" maxlength="10" v-model="name">
+                <input type="text" maxlength="10" v-model="name" placeholder="最多十個字">
                 <div>
                     <input type="email" maxlength="40" v-model="email">
                     <span :class="emailclass">{{emailtip}}</span>
                 </div>
                 <input type="date" v-model="birthday">
-                <input type="text" maxlength="10" v-model="phone">
-                <input type="text" maxlength="10" v-model="localphone">
+                <input type="text" maxlength="10" v-model="phone" placeholder="09*********">
+                <input type="text" maxlength="10" v-model="localphone" placeholder="03*******">
                 <input type="text" maxlength="40" v-model="address">
             </div>
         </div>
@@ -75,10 +75,7 @@ export default {
     },
     methods: {
         submit() {
-            if (this.passwordAgain != this.password) {
-                alert("兩次密碼不相符");
-                return;
-            }else if(this.pswflag&&this.emailflag){
+            if(this.pswflag&&this.emailflag&&this.pswAflag){
                 var xhr = new XMLHttpRequest();
                 
                 xhr.onload = function(){
@@ -91,8 +88,9 @@ export default {
                         }
                     }
                 }
-                
-                xhr.open("post","http://localhost/CGD102_G2/src/assets/phps/register.php",true);
+                // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
+                // var url = ${BASE_URL}/api/register.php
+                xhr.open("post","http://localhost/CGD102_G2/public/api/register.php",true);
                 xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
                 let mem_deta = `account=${this.account}&password=${this.password}&name=${this.name}&email=${this.email}&birthday=${this.birthday}&phone=${this.phone}&localphone=${this.localphone}&address=${this.address}`
@@ -119,12 +117,16 @@ export default {
     watch: {
         email: function (content) {
             var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
-            this.emailflag = this.checkContentByReg(reg, content, "emailtip", "emailclass")
+            this.emailflag = this.checkContentByReg(reg, content, "emailtip", "emailclass");
         },
         password: function (content) {
             var reg = /^[0-9a-z]{6,10}$/;
-            this.pswflag = this.checkContentByReg(reg, content, "pswtip", "pswclass")
+            this.pswflag = this.checkContentByReg(reg, content, "pswtip", "pswclass");
         },
+        passwordAgain:function(content){
+            var reg = this.password;
+            this.pswAflag = this.checkContentByReg(reg,content,"pswAtip","pswAclass");
+        }
     }
 }
 </script>

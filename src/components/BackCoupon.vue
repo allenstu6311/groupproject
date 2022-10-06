@@ -60,6 +60,7 @@
 
 <script>
     const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
+
     export default {
         props: {
             backstageCoupon: String
@@ -74,8 +75,8 @@
         },
         methods:{
             async getDataFromApi() {
-                //var url = 'http://localhost/CGD102_G2/src/assets/phps/coupons.php'
-                var url = `${BASE_URL}/api/coupons.php`
+                //var url = 'http://localhost/CGD102_G2/src/assets/phps/coupons.php' //開發用
+                var url = `${BASE_URL}/api/coupons.php` //上線用
                 let getData = async(url) => {
                     let response = await fetch(url); // await 很重要
                     let JSON =  response.json();

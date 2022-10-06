@@ -31,7 +31,6 @@
                 </div>
                 <div>
                     <input type="password" maxlength="15" v-model="passwordAgain">
-                    <span :class="pswAclass">{{pswAtip}}</span>
                 </div>
                 <input type="text" maxlength="10" v-model="name" placeholder="最多十個字">
                 <div>
@@ -64,18 +63,18 @@ export default {
             address: '',
             emailtip: "*",
             pswtip: "*",
-            pswAtip: "*",
             emailclass: "error",
             pswclass: "error",
-            pswAclass: "error",
             emailflag: false,
             pswflag: false,
-            pswAflag: false,
         }
     },
     methods: {
         submit() {
-            if(this.pswflag&&this.emailflag&&this.pswAflag){
+            if(this.passwordAgain != this.password){
+                alert("再次輸入密碼與密碼不符");
+                return;
+            }else if(this.pswflag&&this.emailflag){
                 var xhr = new XMLHttpRequest();
                 
                 xhr.onload = function(){
@@ -123,10 +122,7 @@ export default {
             var reg = /^[0-9a-z]{6,10}$/;
             this.pswflag = this.checkContentByReg(reg, content, "pswtip", "pswclass");
         },
-        passwordAgain:function(content){
-            var reg = this.password;
-            this.pswAflag = this.checkContentByReg(reg,content,"pswAtip","pswAclass");
-        }
+        
     }
 }
 </script>

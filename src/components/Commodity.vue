@@ -322,7 +322,7 @@ export default {
           break;
           case 3:
           this.range_1 = 12;
-          this.range_2 = 2;
+          this.range_2 = 6;
           this.getCommodityInfo();
           break;
       }

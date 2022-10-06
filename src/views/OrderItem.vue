@@ -1,7 +1,10 @@
 <template>
-  <div class="container-fluid">
+   <BackstageIndexHeader />
+  <div class="container">
     <div class="row">
-      <SlideChose />
+        <div class="col-2">
+          <BackstageIndexAside />
+      </div>
       <div class="orderBox">
         <div class="order-search  m-3">
           <select class="form-select w-25" aria-label="Default select example">
@@ -55,20 +58,15 @@
   </div>
 
   <!-- ========================燈箱 -->
-  <!-- <div class="light-box" v-if="show==true">
-    <div class="product-box" v-for="item in detail" :key="item">
-      <img :src="require(`../assets/phps/pic/${item.PROD_PIC1}`)" alt="">
-    </div>
-  </div> -->
 
   <div class="modal" tabindex="1" :class="{lightBoxShow:show==true}">
   <div class="modal-dialog">
-    <div class="modal-content">
-        <h4>訂單{{prodId}}</h4>
+    <div class="modal-content p-3">
+        <h6 class="bold">訂單{{prodId}}</h6>
       <div class="modal-header"  v-for="item in detail" :key="item">
         <img :src="require(`../assets/phps/pic/${item.prod_pic1}`)" alt="">
-        <h5 class="modal-title">{{item.prod_name}}</h5>
-        <h3>{{item.prod_price}}</h3>
+        <h5 class="modal-title bold w-25 d-flex justify-content-center">{{item.prod_name}}</h5>
+        <p class="w-25 d-flex justify-content-center">{{item.prod_price}}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="show=false">Close</button >
@@ -76,15 +74,12 @@
     </div>
   </div>
 </div>
+  <BackTherapistAdd />
 </template>
 <style lang="scss" scoped>
 @import "~bootstrap/scss/bootstrap";
-
 @import "../assets/style.scss";
-.container-fluid {
-  width: 100%;
-  box-sizing: border-box;
-}
+
 .row {
   flex-wrap: nowrap;
 }
@@ -98,45 +93,80 @@
     display: flex;
     align-items: center;
   }
-  table {
-    width: 80%;
-
-    thead {
-      background-color: $blue;
-      color: white;
-    }
-    tr{
-        th{
-            border-bottom: 1px solid $blue
-        }
  
-    }
-  }
 }
 .lightBoxShow{
   display: block !important;
+   .modal-dialog{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+   }
   .modal-header{
     display: flex;
     justify-content: flex-start;
     img{
       width: 20%;
     }
+   
   }
 }
-
-.list-group {
-  width: 15%;
-  :nth-child(3) {
-    background-color: red;
+.modal-header{
+  justify-content: space-around !important;
+}
+// =========================選單設定
+*{
+    position: relative;
+}
+.show{
+    position: relative;
+}
+.active{
+    background-color: transparent;
+}
+.container{
+    line-height: 2;
+}
+table {
+  width: 80% !important;
+  table-layout:fixed;
+  text-align: center;
+  thead {
+    background-color: $blue;
+    th {
+      background-color: $blue;
+      font-size: 20px;
+      font-weight: 600;
+      color: white;
+    }
+  }
+  tbody {
+    tr {
+      td {
+        vertical-align: middle;
+        background-color: $white;
+        font-weight:600;
+        img {
+          vertical-align: middle;
+          width: 30%;
+        }
+      }
+    
+    }
+  
   }
 }
 </style>
 
 <script>
-import SlideChose from "@/components/SlideChose.vue";
+import BackstageIndexAside from '@/components/BackstageIndexAside.vue'
+import BackstageIndexHeader from '@/components/BackstageIndexHeader.vue'
+import BackTherapist from '@/components/BackTherapist.vue'
 export default {
   components: {
-    SlideChose,
+  BackstageIndexHeader,
+  BackstageIndexAside,
+  BackTherapist
   },
   data(){
     return{

@@ -1,11 +1,34 @@
 <template>
    <BackstageIndexHeader />
-  <div class="container">
+  <div class="container mt-5"> 
     <div class="row">
       <div class="col-2">
           <BackstageIndexAside />
       </div>
-      <div class="col-10">
+      <div class="orderBox">
+         <div class="order-search  m-3">
+          <select class="form-select w-25" aria-label="Default select example">
+            <option selected>排序方式</option>
+          </select>
+
+          <div class="input-group mx-3  w-25">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="請輸入訂單名稱"
+              aria-label="Recipient's username"
+              aria-describedby="button-addon2"
+            />
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              id="button-addon2"
+            >
+             <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+        </div>
+           <div class="col-10">
         <table class="table">
           <thead>
             <tr>
@@ -49,10 +72,22 @@
           </tbody>
         </table>
       </div>
+      </div>
+   
     </div>
   </div>
+  <nav aria-label="...">
+  <ul class="pagination justify-content-center mt-3 mb-3">
+     <li class="page-item " aria-current="page" :class="{active: pageColor==true}"> 
+      <span class="page-link" @click="changePage(true);pageColor=true">1</span>
+    </li>
+    <li class="page-item " aria-current="page" :class="{active: pageColor==false}">
+      <span class="page-link" @click="changePage(false);pageColor=false">2</span>
+    </li>
+  </ul>
+</nav>
   <div class="col-10">
-        <BackTherapistAdd />
+    <BackTherapistAdd />
   </div>   
 </template>
 <style lang="scss" scoped>
@@ -70,6 +105,9 @@
 }
 .container{
     line-height: 2;
+    .row{
+      flex-wrap: nowrap;
+    }
 }
 table {
   table-layout:fixed;
@@ -102,13 +140,18 @@ table {
 .table-striped > tbody > tr:nth-of-type(odd) > *[data-v-1e3ad792]{
     background-color: $white;
 }
-// .container-fluid {
-//   width: 100%;
-//   box-sizing: border-box;
-// }
-// .row {
-//   flex-wrap: nowrap;
-// }
+.orderBox {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column !important;
+
+  .order-search{
+    display: flex;
+    align-items: center;
+  }
+ 
+}
 
 </style>
 <script>
@@ -117,13 +160,16 @@ import BackstageIndexHeader from '@/components/BackstageIndexHeader.vue'
 import BackTherapist from '@/components/BackTherapist.vue'
 export default {
   components: {
-       BackstageIndexHeader,
+        BackstageIndexHeader,
         BackstageIndexAside,
         BackTherapist
   },
   data() {
     return {
       data: [],
+      number1:0,
+      number2:10,
+      pageColor:true,
     };
   },
   methods: {
@@ -162,14 +208,33 @@ export default {
           location.reload();
         });
     },
+    changePage(num){
+ 
+      if(num){
+        this.number1=0,
+        this.number2=10
+        this.getPageNumber()
+      }else{
+        this.number1=10
+        this.number2=20
+        this.getPageNumber()
+      }
+    },
+    getPageNumber(){
+        this.axios.get("http://localhost/CGD102_G2/src/assets/phps/totalproduct.php",{
+        params:{
+          range_1:this.number1,
+          range_2:this.number2
+        }
+      }).then((res)=>{
+        console.log(res)
+        this.data = res.data
+      })
+      
+    }
   },
   created() {
-    this.axios
-      .get("http://localhost/CGD102_G2/src/assets/phps/totalproduct.php")
-      .then((res) => {
-        this.data = res.data;
-        console.log(this.data);
-      });
+    this.getPageNumber()
   },
 };
 </script>

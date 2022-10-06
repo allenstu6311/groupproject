@@ -1,7 +1,10 @@
 <template>
-  <div class="container-fluid mt-5">
+  <BackstageIndexHeader />
+  <div class="container mt-5">
     <div class="row">
-      <SlideChose />
+      <div class="col-2">
+          <BackstageIndexAside />
+      </div>
       <form class="w-75">
         <div class="row mb-3 form-check">
           <label for="inputEmail3" class="col-sm-2 col-form-label"
@@ -151,13 +154,24 @@
       </form>
     </div>
   </div>
+  <BackTherapistAdd />
 </template>
 <style lang="scss" scoped>
 @import "bootstrap/scss/bootstrap";
-.row {
+@import "../assets/style.scss";
+.container{
+  margin: auto;
+  line-height: 2;
+  .row {
   flex-wrap: nowrap;
   line-height: 1.5;
+
+  form{
+    margin: auto;
+  }
 }
+}
+
 .form-check {
   display: flex;
   padding: 0;
@@ -172,14 +186,58 @@ img{
   height: 20%;
   max-height: 150px;
 }
+*{
+    position: relative;
+}
+.show{
+    position: relative;
+}
+.active{
+    background-color: transparent;
+}
+
+table {
+  width: 80% !important;
+  table-layout:fixed;
+  text-align: center;
+  thead {
+    background-color: $blue;
+    th {
+      background-color: $blue;
+      font-size: 20px;
+      font-weight: 600;
+      color: white;
+      padding: 15px 0;
+    }
+  }
+  tbody {
+    tr {
+      td {
+        vertical-align: middle;
+        background-color: $white;
+        font-weight:600;
+        img {
+          vertical-align: middle;
+          width: 30%;
+        }
+      }
+    
+    }
+  
+  }
+}
 </style>
 <script>
-import SlideChose from "@/components/SlideChose.vue";
+import BackstageIndexAside from '@/components/BackstageIndexAside.vue'
+import BackstageIndexHeader from '@/components/BackstageIndexHeader.vue'
+import BackTherapist from '@/components/BackTherapist.vue'
 export default {
   components: {
-    SlideChose,
+      BackstageIndexHeader,
+      BackstageIndexAside,
+      BackTherapist
   },
-  date() {
+  data() {
     return {
       PROD_NAME: "",
       PROD_PRICE: "",
@@ -192,14 +250,15 @@ export default {
       PROD_DESC2: "",
       PROD_DESC3: "",
       PROD_TYPE: "",
+      test1:'',
+      test2:'',
+      test3:'',
     };
   },
   methods: {
     upload() {
-      this.axios.get(
-        "http://localhost/CGD102_G2/src/assets/phps/backfile.php",
-        {
-          params: {
+      alert("上傳成功")
+      const data = {
             PROD_NAME: this.PROD_NAME,
             PROD_PRICE: this.PROD_PRICE,
             PROD_PIC1: this.PROD_PIC1,
@@ -211,9 +270,21 @@ export default {
             PROD_DESC2: this.PROD_DESC2,
             PROD_DESC3: this.PROD_DESC3,
             PROD_TYPE: this.PROD_TYPE,
-          },
+        };
+   
+        const formData = new FormData();
+        for (let key in data) {
+          formData.append(key, data[key]);
         }
-      );
+        this.axios.post(
+        "http://localhost/CGD102_G2/src/assets/phps/backfile.php", formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        })
+        .then((res)=>{
+          console.log(res)
+        }).catch((err)=> {
+          console.log(err)
+        });
     },
     getFiles1(e) {
       this.PROD_PIC1 = e.target.files[0];
@@ -221,8 +292,12 @@ export default {
       let reader = new FileReader();
       reader.onload = function () {
         document.getElementById("myImg1").src = reader.result; 
+
+         this.test1 = reader.result
+         console.log("test1",this.test1)
       };
       reader.readAsDataURL(this.PROD_PIC1);
+     
     },
     getFiles2(e) {
       this.PROD_PIC2 = e.target.files[0];
@@ -231,6 +306,7 @@ export default {
         document.getElementById("myImg2").src = reader.result; 
       };
       reader.readAsDataURL(this.PROD_PIC2);
+      this.test2 = reader.result
     },
     getFiles3(e) {
       this.PROD_PIC3 = e.target.files[0];
@@ -239,6 +315,7 @@ export default {
         document.getElementById("myImg3").src = reader.result; 
       };
       reader.readAsDataURL(this.PROD_PIC3);
+      this.test3 = reader.result
     },
   },
 };

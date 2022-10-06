@@ -110,9 +110,7 @@ export default {
                         alert("無法建立帳號");
                     }
                 }
-            },
-          
-
+            }
             xhr.open("post","http://localhost/CGD102_G2/src/assets/phps/backtherapistadd.php", true);
             xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
@@ -122,8 +120,8 @@ export default {
 
         },
         photo(e){
-            this.pic=e.target.files[0].name;
-            console.log( this.pic);
+            this.pic = e.target.files[0].name;
+            console.log(this.pic);
         },
         checkContentByReg(reg, content, tip, classname) {
             if (reg.test(content)) {

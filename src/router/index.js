@@ -69,14 +69,14 @@ const routes = [
     name: 'backTherapist',
     chName: '管理按摩師',
     component: BackTherapistView,
-    meta:{isHide:false}
+    meta:{isHide:true}
   },
   {
     path: '/backtherapistadd',
     name: 'backtherapistadd',
     chName: '新增按摩師',
     component: BackTherapistAddView,
-    meta:{isHide:false}
+    meta:{isHide:true}
   },
   {
     path: '/employee',

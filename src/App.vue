@@ -1,7 +1,7 @@
 <template>
-<Header    v-if="!this.$router.currentRoute.value.meta.isHide"/>
+<Header v-if="!this.$router.currentRoute.value.meta.isHide" />
     <router-view/>
-<Footer  v-if="!this.$router.currentRoute.value.meta.isHide" />
+<Footer v-if="!this.$router.currentRoute.value.meta.isHide" />
 </template>
 
 <script>

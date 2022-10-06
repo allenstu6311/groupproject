@@ -65,6 +65,8 @@ export default {
     methods: {
         logout(){
             sessionStorage.removeItem("memName");
+            sessionStorage.removeItem("memPhone");
+            sessionStorage.removeItem("memAddress");
             location. reload();
         }
     },

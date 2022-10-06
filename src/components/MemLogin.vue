@@ -65,6 +65,8 @@ export default {
                     } else {
                         this.session=JSON.parse(xhr.responseText);
                         sessionStorage.setItem("memName",this.session.memName);
+                        sessionStorage.setItem("memPhone",this.session.memPhone);
+                        sessionStorage.setItem("memAddress",this.session.memAddress);
                         this.loginStatus = sessionStorage.getItem("memName");
                         if (this.loginStatus != '') {
                             // let prepage = document.referrer;

@@ -2,7 +2,7 @@
 <template>
      <div class="background_flower">
         <main>
-            <section class="main_banner"><!------banner------>
+            <section class="main_banner"><!------------------banner---------------->
                 <video autoplay muted loop>
                     <source src="../assets/images/mainBanner_AdobeExpress.mp4 " type="video/mp4">
                 </video>
@@ -13,7 +13,7 @@
                 <div class="banner_hand bottom slide-show" ></div>
             </section><!------banner end------>
                 
-            <section class="about_us"><!------關於我們------>
+            <section class="about_us"><!--------------------關於我們-------------------->
                 <div class="about_us_intro">
                     <div class="title_area">
                         <div class="sure_title">
@@ -37,7 +37,7 @@
                     </div>
                 </div>
             </section>
-            <section class="massage_school"><!------按摩小學堂------>
+            <section class="massage_school"><!------------------按摩小學堂-------------------->
                 <div class="title_area ">
                     <div class="sure_title">
                         <h2 class="title_font">按</h2>
@@ -77,7 +77,7 @@
                     <div class="round_front reveal fade-right"></div>
                 </div>
             </section>
-            <section class="product"><!------商品專區------>
+            <section class="product"><!--------------------商品專區------------------------>
                 <div class="title_area">
                     <div class="sure_title">
                         <h2 class="title_font">商</h2>
@@ -98,7 +98,7 @@
                 </div>
                 <router-link to="/ProductList"><div class="btnLittle">更多商品</div></router-link>
             </section>
-            <div class="reservation_bg"><!------預約按摩------>
+            <div class="reservation_bg"><!-------------------預約按摩-------------------->
                 <section class="index_reservation">
                     <div class="reservation_intro">
                         <div class="title_area">
@@ -185,7 +185,7 @@
                     </div>
                 </section>
             </div>
-                <section class="index_review"><!------客戶感想------->
+                <section class="index_review"><!-----------------客戶感想------------------->
                     <div class="title_area ">
                         <div class="sure_title">
                             <h2 class="title_font">客</h2>
@@ -224,7 +224,7 @@
                         <swiper-slide class="slide"><img src="../assets/images/FrisbeeGog.png" alt=""></swiper-slide>
                     </swiper>
                 </section>
-                <section class="latest_news reveal fade-top"><!------最新消息------->
+                <section class="latest_news reveal fade-top"><!------------最新消息--------------->
                     <div class="title_area ">
                         <div class="sure_title">
                             <h2 class="title_font">最</h2>
@@ -256,25 +256,6 @@
                             </div>
                         </div>
                         <hr>
-                        <!-- <div class="news">
-                            <div class="pic">
-                                <img src="../assets/images/advanced_study.png" alt="" id="NEWS_PIC">
-                            </div>
-                            <div class="news_intro">
-                                <h3 class="news_title" id="NEWS_TITLE">12/26店休公告</h3>
-                                <div class="news_date" id="NEWS_DATE">2022-12-13</div>
-                                <div class="news_text" id="NEWS_TEXT">
-                                    為了帶給大家更好的服務，按指穴員工要去進修啦，按指穴店休一天~
-                                    <br>
-                                    店休時間：2022年12月26日
-                                    <br>
-                                    各位親愛的客人，記得不要撲空喔~
-                                </div>
-                                <div class="news_btn">
-                                    <div class="btnLittle">查看更多</div>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </section>
         </main>
@@ -282,7 +263,6 @@
 </template>
 
 <script scoped >
-    
     // import Swiper core and required modules
     import {Autoplay, Pagination} from 'swiper';
   
@@ -327,8 +307,8 @@
 
                 itemArray:[ //---------------商品專區-----------------------
                 {name:'NEX Pro', money:1650 , img:"usb.png"},
-                {name:'Ian', money:3000 , img:"fire.png"},
-                {name:'Joe', money:1500 , img:"pinkhun.png"},
+                {name:'火星計畫', money:3000 , img:"fire.png"},
+                {name:'日式按摩槍', money:1500 , img:"japan.png"},
                 {name:'跟他講阿，卒仔', money:9000 , img:"knock1.png"},
             ]
             }

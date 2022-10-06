@@ -151,16 +151,13 @@
                 border: none;
                 cursor: pointer;
                 transition: 0.3s;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
                 z-index: 98;
             }
             .zhong_chong:hover{
                 background-color: $red;
                 transition: 0.3s;
-                scale: 1.5;
-                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
-            }
-            .fzhong_chong:focus{
-                background-color: $red;
                 scale: 1.5;
                 box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
             }
@@ -177,22 +174,17 @@
             .fzhong_chong::after{
                 position: absolute;
                 content: '';
-                width: 0px;
-                height: 0px;
                 background-color: $blue;
                 transition: 0.5s;
                 top: 12px;
-                left: 0px;
+                width: 40px;
+                height: 1px;
+                left: -40px;
             }
             .zhong_chong:hover::after{
                 width: 40px;
                 height: 1px;
                 transition: 0.5s;
-                left: -40px;
-            }
-            .fzhong_chong:focus::after{
-                width: 40px;
-                height: 1px;
                 left: -40px;
             }
             .zhong_chong::before{
@@ -212,7 +204,7 @@
                 font-size: 18px;
                 position: absolute;
                 font-family: $fontTitle;
-                color: transparent;
+                color: $blue;
                 transition: 0.3s;
                 top: -25px;
                 left: -65px;
@@ -221,9 +213,6 @@
             .zhong_chong:hover::before{
                 color: $blue;
                 transition: 0.3s 0.2s;
-            }
-            .fzhong_chong:focus::before{
-                color: $blue;
             }
 
             .shao_shang{
@@ -251,15 +240,12 @@
                 cursor: pointer;
                 transition: 0.3s;
                 z-index: 98;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
             }
             .shao_shang:hover{
                 background-color: $red;
                 transition: 0.3s;
-                scale: 1.5;
-                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
-            }
-            .fshao_shang:focus{
-                background-color: $red;
                 scale: 1.5;
                 box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
             }
@@ -276,21 +262,16 @@
             .fshao_shang::after{
                 position: absolute;
                 content: '';
-                width: 0px;
-                height: 0px;
                 background-color: $blue;
                 transition: 0.5s;
                 top: 12px;
+                height: 1px;
+                width: 10px;
                 left: 100%;
             }
             .shao_shang:hover::after{
                 height: 1px;
                 transition: 0.5s;
-                width: 10px;
-                left: 100%;
-            }
-            .fshao_shang:focus::after{
-                height: 1px;
                 width: 10px;
                 left: 100%;
             }
@@ -310,7 +291,7 @@
                 font-size: 18px;
                 position: absolute;
                 font-family: $fontTitle;
-                color: transparent;
+                color: $blue;
                 transition: 0.3s;
                 top: -25px;
                 left: 30px;
@@ -319,9 +300,6 @@
             .shao_shang:hover::before{
                 color: $blue;
                 transition: 0.3s 0.2s;
-            }
-            .fshao_shang:focus::before{
-                color: $blue;
             }
 
             .he_gu{
@@ -349,15 +327,12 @@
                 cursor: pointer;
                 transition: 0.3s;
                 z-index: 98;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
             }
             .he_gu:hover{
                 background-color: $red;
                 transition: 0.3s;
-                scale: 1.5;
-                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
-            }
-            .fhe_gu:focus{
-                background-color: $red;
                 scale: 1.5;
                 box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
             }
@@ -374,21 +349,16 @@
             .fhe_gu::after{
                 position: absolute;
                 content: '';
-                width: 0px;
-                height: 0px;
                 background-color: $blue;
                 transition: 0.5s;
                 top: 12px;
                 left: 100%;
+                height: 1px;
+                width: 70px;
             }
             .he_gu:hover::after{
                 height: 1px;
                 transition: 0.5s;
-                left: 100%;
-                width: 70px;
-            }
-            .fhe_gu:focus::after{
-                height: 1px;
                 left: 100%;
                 width: 70px;
             }
@@ -408,7 +378,7 @@
                 font-size: 18px;
                 position: absolute;
                 font-family: $fontTitle;
-                color: transparent;
+                color: $blue;
                 transition: 0.3s;
                 top: -23px;
                 left: 90px;
@@ -417,9 +387,6 @@
             .he_gu:hover::before{
                 color: $blue;
                 transition: 0.3s 0.2s;
-            }
-            .fhe_gu:focus::before{
-                color: $blue;
             }
 
             .ming_men{
@@ -447,15 +414,12 @@
                 cursor: pointer;
                 transition: 0.3s;
                 z-index: 98;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
             }
             .ming_men:hover{
                 background-color: $red;
                 transition: 0.3s;
-                scale: 1.5;
-                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
-            }
-            .fming_men:focus{
-                background-color: $red;
                 scale: 1.5;
                 box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
             }
@@ -472,21 +436,16 @@
             .fming_men::after{
                 position: absolute;
                 content: '';
-                width: 0px;
-                height: 0px;
                 background-color: $blue;
                 transition: 0.5s;
                 top: 12px;
-                left: 0px;
+                height: 1px;
+                width: 13px;
+                left: -13px;
             }
             .ming_men:hover::after{
                 height: 1px;
                 transition: 0.5s;
-                width: 13px;
-                left: -13px;
-            }
-            .fming_men:focus::after{
-                height: 1px;
                 width: 13px;
                 left: -13px;
             }
@@ -506,7 +465,7 @@
                 font-size: 18px;
                 position: absolute;
                 font-family: $fontTitle;
-                color: transparent;
+                color: $blue;
                 transition: 0.3s;
                 top: -25px;
                 left: -35px;
@@ -516,10 +475,7 @@
                 color: $blue;
                 transition: 0.3s 0.2s;
             }
-            .fming_men:focus::before{
-                color: $blue;
-            }
-            
+
             .shen_men{
                 position: absolute;
                 top: 95%;
@@ -545,15 +501,12 @@
                 cursor: pointer;
                 transition: 0.3s;
                 z-index: 98;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
             }
             .shen_men:hover{
                 background-color: $red;
                 transition: 0.3s;
-                scale: 1.5;
-                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
-            }
-            .fshen_men:focus{
-                background-color: $red;
                 scale: 1.5;
                 box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
             }
@@ -570,21 +523,16 @@
             .fshen_men::after{
                 position: absolute;
                 content: '';
-                width: 0px;
-                height: 0px;
                 background-color: $blue;
                 transition: 0.5s;
                 top: 12px;
-                left: 0px;
+                height: 1px;
+                width: 28px;
+                left: -28px;
             }
             .shen_men:hover::after{
                 height: 1px;
                 transition: 0.5s;
-                width: 28px;
-                left: -28px;
-            }
-            .fshen_men:focus::after{
-                height: 1px;
                 width: 28px;
                 left: -28px;
             }
@@ -604,7 +552,7 @@
                 font-size: 18px;
                 position: absolute;
                 font-family: $fontTitle;
-                color: transparent;
+                color: $blue;
                 transition: 0.3s;
                 top: -25px;
                 left: -50px;
@@ -613,9 +561,6 @@
             .shen_men:hover::before{
                 color: $blue;
                 transition: 0.3s 0.2s;
-            }
-            .fshen_men:focus::before{
-                color: $blue;
             }
 
             .lao_gong{
@@ -643,15 +588,12 @@
                 cursor: pointer;
                 transition: 0.3s;
                 z-index: 98;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
             }
             .lao_gong:hover{
                 background-color: $red;
                 transition: 0.3s;
-                scale: 1.5;
-                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
-            }
-            .flao_gong:focus{
-                background-color: $red;
                 scale: 1.5;
                 box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
             }
@@ -668,21 +610,16 @@
             .flao_gong::after{
                 position: absolute;
                 content: '';
-                width: 0px;
-                height: 0px;
                 background-color: $blue;
                 transition: 0.5s;
                 top: 12px;
-                left: 0px;
+                height: 1px;
+                left: -80px;
+                width: 80px;
             }
             .lao_gong:hover::after{
                 height: 1px;
                 transition: 0.5s;
-                left: -80px;
-                width: 80px;
-            }
-            .flao_gong:focus::after{
-                height: 1px;
                 left: -80px;
                 width: 80px;
             }
@@ -702,7 +639,7 @@
                 font-size: 18px;
                 position: absolute;
                 font-family: $fontTitle;
-                color: transparent;
+                color: $blue;
                 transition: 0.3s;
                 top: -25px;
                 left: -100px;
@@ -711,9 +648,6 @@
             .lao_gong:hover::before{
                 color: $blue;
                 transition: 0.3s 0.2s;
-            }
-            .flao_gong:focus::before{
-                color: $blue;
             }
             
             .yu_ji{
@@ -741,15 +675,12 @@
                 cursor: pointer;
                 transition: 0.3s;
                 z-index: 98;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
             }
             .yu_ji:hover{
                 background-color: $red;
                 transition: 0.3s;
-                scale: 1.5;
-                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
-            }
-            .fyu_ji:focus{
-                background-color: $red;
                 scale: 1.5;
                 box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
             }
@@ -766,21 +697,16 @@
             .fyu_ji::after{
                 position: absolute;
                 content: '';
-                width: 0px;
-                height: 0px;
                 background-color: $blue;
                 transition: 0.5s;
                 top: 12px;
                 left: 100%;
+                height: 1px;
+                width: 20px;
             }
             .yu_ji:hover::after{
                 height: 1px;
                 transition: 0.5s;
-                width: 20px;
-                left: 100%;
-            }
-            .fyu_ji:focus::after{
-                height: 1px;
                 width: 20px;
                 left: 100%;
             }
@@ -800,7 +726,7 @@
                 font-size: 18px;
                 position: absolute;
                 font-family: $fontTitle;
-                color: transparent;
+                color: $blue;
                 transition: 0.3s;
                 top: -25px;
                 left: 40px;
@@ -809,9 +735,6 @@
             .yu_ji:hover::before{
                 color: $blue;
                 transition: 0.3s 0.2s;
-            }
-            .fyu_ji:focus::before{
-                color: $blue;
             }
 
             .shao_fu{
@@ -839,15 +762,12 @@
                 cursor: pointer;
                 transition: 0.3s;
                 z-index: 98;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
             }
             .shao_fu:hover{
                 background-color: $red;
                 transition: 0.3s;
-                scale: 1.5;
-                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
-            }
-            .fshao_fu:focus{
-                background-color: $red;
                 scale: 1.5;
                 box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
             }
@@ -864,12 +784,12 @@
             .fshao_fu::after{
                 position: absolute;
                 content: '';
-                width: 0px;
-                height: 0px;
                 background-color: $blue;
                 transition: 0.5s;
                 top: 12px;
-                left: 0px;
+                height: 1px;
+                left: -28px;
+                width: 28px;
             }
             .shao_fu:hover::after{
                 height: 1px;
@@ -877,11 +797,7 @@
                 left: -28px;
                 width: 28px;
             }
-            .fshao_fu:focus::after{
-                height: 1px;
-                left: -28px;
-                width: 28px;
-            }
+
             .shao_fu::before{
                 width: 12px;
                 font-size: 18px;
@@ -898,7 +814,7 @@
                 font-size: 18px;
                 position: absolute;
                 font-family: $fontTitle;
-                color: transparent;
+                color: $blue;
                 transition: 0.3s;
                 top: -25px;
                 left: -50px;
@@ -907,9 +823,6 @@
             .shao_fu:hover::before{
                 color: $blue;
                 transition: 0.3s 0.2s;
-            }
-            .fshao_fu:focus::before{
-                color: $blue;
             }
 
             .tai_yuan{
@@ -937,15 +850,12 @@
                 cursor: pointer;
                 transition: 0.3s;
                 z-index: 98;
+                scale: 1.5;
+                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
             }
             .tai_yuan:hover{
                 background-color: $red;
                 transition: 0.3s;
-                scale: 1.5;
-                box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
-            }
-            .ftai_yuan:focus{
-                background-color: $red;
                 scale: 1.5;
                 box-shadow: 0px 0px 10px $red,inset 0px 0px 5px $white;
             }
@@ -962,21 +872,16 @@
             .ftai_yuan::after{
                 position: absolute;
                 content: '';
-                width: 0px;
-                height: 0px;
                 background-color: $blue;
                 transition: 0.5s;
                 top: 12px;
+                height: 1px;
+                width: 30px;
                 left: 100%;
             }
             .tai_yuan:hover::after{
                 height: 1px;
                 transition: 0.5s;
-                width: 30px;
-                left: 100%;
-            }
-            .ftai_yuan:focus::after{
-                height: 1px;
                 width: 30px;
                 left: 100%;
             }
@@ -996,7 +901,7 @@
                 font-size: 18px;
                 position: absolute;
                 font-family: $fontTitle;
-                color: transparent;
+                color: $blue;
                 transition: 0.3s;
                 top: -25px;
                 left: 50px;
@@ -1005,9 +910,6 @@
             .tai_yuan:hover::before{
                 color: $blue;
                 transition: 0.3s 0.2s;
-            }
-            .ftai_yuan:focus::before{
-                color: $blue;
             }
             .none{
                 display: none;
@@ -1094,12 +996,9 @@
                 }
                 .fzhong_chong::after{
                     top: 12px;
-                    left: 0px;
-                }
-                .zhong_chong:hover::after{
                     left: -40px;
                 }
-                .fzhong_chong:focus::after{
+                .zhong_chong:hover::after{
                     left: -40px;
                 }
                 .zhong_chong::before{
@@ -1124,12 +1023,9 @@
                 .fshao_shang::after{
                     top: 12px;
                     left: 100%;
+                    width: 40px;
                 }
                 .shao_shang:hover::after{
-                    width: 40px;
-                    left: 100%;
-                }
-                .fshao_shang:focus::after{
                     width: 40px;
                     left: 100%;
                 }
@@ -1155,12 +1051,9 @@
                 .fhe_gu::after{
                     top: 12px;
                     left: 100%;
-                }
-                .he_gu:hover::after{
-                    left: 100%;
                     width: 100px;
                 }
-                .fhe_gu:focus::after{
+                .he_gu:hover::after{
                     left: 100%;
                     width: 100px;
                 }
@@ -1185,13 +1078,10 @@
                 }
                 .fming_men::after{
                     top: 12px;
-                    left: 0px;
-                }
-                .ming_men:hover::after{
                     width: 35px;
                     left: -35px;
                 }
-                .fming_men:focus::after{
+                .ming_men:hover::after{
                     width: 35px;
                     left: -35px;
                 }
@@ -1216,13 +1106,10 @@
                 }
                 .fshen_men::after{
                     top: 12px;
-                    left: 0px;
-                }
-                .shen_men:hover::after{
                     width: 40px;
                     left: -40px;
                 }
-                .fshen_men:focus::after{
+                .shen_men:hover::after{
                     width: 40px;
                     left: -40px;
                 }
@@ -1247,13 +1134,10 @@
                 }
                 .flao_gong::after{
                     top: 12px;
-                    left: 0px;
-                }
-                .lao_gong:hover::after{
                     left: -110px;
                     width: 110px;
                 }
-                .flao_gong:focus::after{
+                .lao_gong:hover::after{
                     left: -110px;
                     width: 110px;
                 }
@@ -1279,12 +1163,9 @@
                 .fyu_ji::after{
                     top: 12px;
                     left: 100%;
+                    width: 40px;
                 }
                 .yu_ji:hover::after{
-                    width: 40px;
-                    left: 100%;
-                }
-                .fyu_ji:focus::after{
                     width: 40px;
                     left: 100%;
                 }
@@ -1309,13 +1190,10 @@
                 }
                 .fshao_fu::after{
                     top: 12px;
-                    left: 0px;
-                }
-                .shao_fu:hover::after{
                     left: -60px;
                     width: 60px;
                 }
-                .vshao_fu:focus::after{
+                .shao_fu:hover::after{
                     left: -60px;
                     width: 60px;
                 }
@@ -1341,12 +1219,9 @@
                 .ftai_yuan::after{
                     top: 12px;
                     left: 100%;
+                    width: 40px;
                 }
                 .tai_yuan:hover::after{
-                    width: 40px;
-                    left: 100%;
-                }
-                .ftai_yuan:focus::after{
                     width: 40px;
                     left: 100%;
                 }
@@ -1440,12 +1315,9 @@
                 }
                 .fzhong_chong::after{
                     top: 12px;
-                    left: 0px;
-                }
-                .zhong_chong:hover::after{
                     left: -40px;
                 }
-                .fzhong_chong:focus::after{
+                .zhong_chong:hover::after{
                     left: -40px;
                 }
                 .zhong_chong::before{
@@ -1470,13 +1342,10 @@
                 .fshao_shang::after{
                     top: 100%;
                     left: 50%;
-                }
-                .shao_shang:hover::after{
                     width: 1px;
                     height: 15px;
-                    left: 50%;
                 }
-                .fshao_shang:focus::after{
+                .shao_shang:hover::after{
                     width: 1px;
                     height: 15px;
                     left: 50%;
@@ -1503,12 +1372,9 @@
                 .fhe_gu::after{
                     top: 12px;
                     left: 100%;
-                }
-                .he_gu:hover::after{
-                    left: 100%;
                     width: 75px;
                 }
-                .fhe_gu:focus::after{
+                .he_gu:hover::after{
                     left: 100%;
                     width: 75px;
                 }
@@ -1533,13 +1399,10 @@
                 }
                 .fming_men::after{
                     top: 12px;
-                    left: 0px;
-                }
-                .ming_men:hover::after{
                     width: 40px;
                     left: -40px;
                 }
-                .fming_men:focus::after{
+                .ming_men:hover::after{
                     width: 40px;
                     left: -40px;
                 }
@@ -1564,13 +1427,10 @@
                 }
                 .fshen_men::after{
                     top: 12px;
-                    left: 0px;
-                }
-                .shen_men:hover::after{
                     width: 40px;
                     left: -40px;
                 }
-                .fshen_men:focus::after{
+                .shen_men:hover::after{
                     width: 40px;
                     left: -40px;
                 }
@@ -1595,13 +1455,10 @@
                 }
                 .flao_gong::after{
                     top: 12px;
-                    left: 0px;
-                }
-                .lao_gong:hover::after{
                     left: -110px;
                     width: 110px;
                 }
-                .flao_gong:focus::after{
+                .lao_gong:hover::after{
                     left: -110px;
                     width: 110px;
                 }
@@ -1627,12 +1484,9 @@
                 .fyu_ji::after{
                     top: 12px;
                     left: 100%;
+                    width: 20px;
                 }
                 .yu_ji:hover::after{
-                    width: 20px;
-                    left: 100%;
-                }
-                .fyu_ji:focus::after{
                     width: 20px;
                     left: 100%;
                 }
@@ -1657,13 +1511,10 @@
                 }
                 .fshao_fu::after{
                     top: 12px;
-                    left: 0px;
-                }
-                .shao_fu:hover::after{
                     left: -60px;
                     width: 60px;
                 }
-                .fshao_fu:focus::after{
+                .shao_fu:hover::after{
                     left: -60px;
                     width: 60px;
                 }
@@ -1689,12 +1540,9 @@
                 .ftai_yuan::after{
                     top: 12px;
                     left: 100%;
+                    width: 40px;
                 }
                 .tai_yuan:hover::after{
-                    width: 40px;
-                    left: 100%;
-                }
-                .ftai_yuan:focus::after{
                     width: 40px;
                     left: 100%;
                 }

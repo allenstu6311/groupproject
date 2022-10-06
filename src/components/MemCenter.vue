@@ -231,7 +231,9 @@ export default {
             var xhr = new XMLHttpRequest();
             
             // var memData;
-            xhr.open("post", "http://localhost/CGD102_G2/src/assets/phps/getMemData.php", true);
+            // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
+            // var url = ${BASE_URL}/api/getMemData.php
+            xhr.open("post", "http://localhost/CGD102_G2/public/api/getMemData.php", true);
             xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
             var getMemInfo = `name=${this.name}`;
             xhr.send(getMemInfo);

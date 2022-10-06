@@ -34,12 +34,14 @@ const routes = [
   {
     path: '/',
     name: 'frontpage',
-    component: FrontPageView
+    component: FrontPageView,
+    meta:{isHide:false}
   },
   {
     path: '/home',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    meta:{isHide:false}
   },
   {
     path: '/about',
@@ -48,7 +50,8 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     // component: () => import('../views/AboutUs.vue')
-    component: AboutUs
+    component: AboutUs,
+    meta:{isHide:false}
 
   },
   {
@@ -58,19 +61,22 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     // component: () => import(/* webpackChunkName: "about" */ '../views/TherapistView.vue')
-    component: TherapistView
+    component: TherapistView,
+    meta:{isHide:false}
   },
   {
     path: '/backTherapist',
     name: 'backTherapist',
     chName: '管理按摩師',
-    component: BackTherapistView
+    component: BackTherapistView,
+    meta:{isHide:false}
   },
   {
     path: '/backtherapistadd',
     name: 'backtherapistadd',
     chName: '新增按摩師',
-    component: BackTherapistAddView
+    component: BackTherapistAddView,
+    meta:{isHide:false}
   },
   {
     path: '/employee',
@@ -79,17 +85,20 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     // component: () => import(/* webpackChunkName: "about" */ '../views/TherapistView.vue')
-    component: EmployeeView
+    component: EmployeeView,
+    meta:{isHide:false}
   },
   {
     path: '/reservation',
     name: 'reservation',
-    component: ReservationView
+    component: ReservationView,
+    meta:{isHide:false}
   },
   {
     path: '/resvPage',
     name: 'resvPage',
-    component: ResvPageView
+    component: ResvPageView,
+    meta:{isHide:false}
   },
   {
     path: '/message',
@@ -97,7 +106,8 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (reserve.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "reserve" */ '../views/MessagefaqView.vue')
+    component: () => import(/* webpackChunkName: "reserve" */ '../views/MessagefaqView.vue'),
+    meta:{isHide:false}
   },
 
   {
@@ -106,7 +116,8 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (reserve.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "reserve" */ '../views/Cart.vue')
+    component: () => import(/* webpackChunkName: "reserve" */ '../views/Cart.vue'),
+    meta:{isHide:false}
   },
   {
     path: '/BackShop',
@@ -114,7 +125,8 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (reserve.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "reserve" */ '../views/BackShop.vue')
+    component: () => import(/* webpackChunkName: "reserve" */ '../views/BackShop.vue'),
+    meta:{isHide:true}
   },
   {
     path: '/OrderItem',
@@ -122,7 +134,8 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (reserve.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "reserve" */ '../views/OrderItem.vue')
+    component: () => import(/* webpackChunkName: "reserve" */ '../views/OrderItem.vue'),
+    meta:{isHide:true}
   },
   {
     path: '/ManageItems',
@@ -130,7 +143,8 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (reserve.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "reserve" */ '../views/ManageItems.vue')
+    component: () => import(/* webpackChunkName: "reserve" */ '../views/ManageItems.vue'),
+    meta:{isHide:false}
   },
   {
     path: '/Confirm',
@@ -138,37 +152,44 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (reserve.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "reserve" */ '../views/Confirm.vue')
+    component: () => import(/* webpackChunkName: "reserve" */ '../views/Confirm.vue'),
+    meta:{isHide:false}
   },
   {
     path: '/MemLogin',
     name: 'MemLogin',
-    component: () => import('../views/MemLogin.vue')
+    component: () => import('../views/MemLogin.vue'),
+    meta:{isHide:false}
   },
   {
     path: '/MemCenter',
     name: 'MemCenter',
-    component: () => import('../views/MemCenterView.vue')
+    component: () => import('../views/MemCenterView.vue'),
+    meta:{isHide:false}
   },
   {
     path: '/MemRegister',
     name: 'MemRegister',
-    component: () => import('../views/MemRegisterView.vue')
+    component: () => import('../views/MemRegisterView.vue'),
+    meta:{isHide:false}
   },
   {
     path: '/MassageSchool',
     name: 'MassageSchool',
-    component: MassageSchoolView
+    component: MassageSchoolView,
+    meta:{isHide:false}
   },
   {
     path: '/MassageGame',
     name: 'MassageGame',
-    component: MassageGameView
+    component: MassageGameView,
+    meta:{isHide:false}
   },
   {
     path: '/GetCoupon',
     name: 'GetCoupon',
-    component: GetCouponView
+    component: GetCouponView,
+    meta:{isHide:false}
   },
   {
     path: '/ProductList',
@@ -176,7 +197,8 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (reserve.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "reserve" */ '../views/ProductList.vue')
+    component: () => import(/* webpackChunkName: "reserve" */ '../views/ProductList.vue'),
+    meta:{isHide:false}
   },
   {
     path: '/Detail',
@@ -184,33 +206,39 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (reserve.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "reserve" */ '../views/Detail.vue')
+    component: () => import(/* webpackChunkName: "reserve" */ '../views/Detail.vue'),
+    meta:{isHide:false}
   },
   {
     path: '/backstage',
     name: 'backstage',
-    component: BackstageView
+    component: BackstageView,
+    meta:{isHide:true}
   },
   {
     path: '/backstageIndex',
     name: 'backstageIndex',
     chName: '首頁',
     component: BackstageIndexView,
+    meta:{isHide:true}
   },
   {
     path: '/manageLogin',
     name: 'manageLogin',
-    component: ManageLoginView
+    component: ManageLoginView,
+    meta:{isHide:true}
   },
   {
     path: '/BackCoupon',
     name: 'BackCoupon',
-    component: BackCouponView
+    component: BackCouponView,
+    meta:{isHide:true}
   },
   {
     path: '/BackCouponAdd',
     name: 'BackCouponAdd',
-    component: BackCouponAddView
+    component: BackCouponAddView,
+    meta:{isHide:true}
   },
 ]
 

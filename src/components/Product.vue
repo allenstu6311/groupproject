@@ -90,7 +90,7 @@
         </div>
         <div class="product-addcar">
           <button class="btnLarge" @click="addCar(order[0].PROD_ID)">加入購物車</button>
-            <router-link to="/Confirm">
+            <router-link to="/Cart">
               <button class="btnLarge redBtn" @click="direct()">直接購買</button>
             </router-link>
         </div>

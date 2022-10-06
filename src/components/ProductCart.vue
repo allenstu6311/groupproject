@@ -107,7 +107,7 @@ export default {
       block: "☆",
       detect: false,
       order: [],
-      member:"",
+      member:[],
       unused:false,
     };
   },

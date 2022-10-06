@@ -79,6 +79,11 @@ export default {
                 name: "管理折價券",
                 path:"/BackCoupon",
                 },
+                  {
+                id: 11,
+                name: "商品上架",
+                path:"/ManageItems",
+                },
             ]
         }
     },

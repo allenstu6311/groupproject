@@ -70,6 +70,8 @@
 </template>
 
 <script>
+    const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
+
     export default {
         props: {
             faq: String
@@ -84,7 +86,7 @@
         },
         methods:{
             async getDataFromApi() {
-                var url = 'http://localhost/CGD102_G2/src/assets/phps/FAQContent.php'
+                var url = `${BASE_URL}/api/FAQContent.php`
                 let getData = async(url) => {
                     let response = await fetch(url); // await: 這行的 await 執行完才會執行下一個 await
                     let JSON =  response.json();

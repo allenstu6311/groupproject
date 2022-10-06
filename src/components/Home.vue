@@ -95,7 +95,7 @@
                         <h4>{{item.PROD_NAME}}</h4>
                         <p>${{item.PROD_PRICE}}</p>
                         </router-link>
-                        <span><i class="fa-solid fa-cart-shopping"></i>加入購物車</span>
+                        <span @click="addCar(order[0].PROD_ID)"><i class="fa-solid fa-cart-shopping"></i>加入購物車</span>
                     </div>
                 </div>
                 <router-link to="/ProductList"><div class="btnLittle">更多商品</div></router-link>
@@ -214,6 +214,7 @@
 </template>
 
 <script scoped >
+      const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
     // import Swiper core and required modules
     import {Autoplay, Pagination} from 'swiper';
   
@@ -258,11 +259,13 @@
                 product:[],//---------------商品專區-----------------------
                 order:[],
                 msgList:[],//---------------預約按摩------------------
+                cart: [],
+                calculate:[],
             }
         },
         created(){ //一進網頁就直接執行的~
 
-            this.axios.get( "http://localhost/CGD102_G2/src/assets/phps/homeMsg.php")
+            this.axios.get( `${BASE_URL}/api/homeMsg.php`)
             .then((msg1)=>{ //msg1 可以自己取名,存取上面的路徑
                 this.msgList=msg1.data //把路徑中的資料(php)丟到上面的陣列中  .data是類似資料型別,也有殼能不是data
                // console.log("MSG~~~--->",this.msgList)  檢查有沒有抓資料近來
@@ -270,7 +273,7 @@
             })
 
         
-            this.axios.get( "http://localhost/CGD102_G2/src/assets/phps/homeProduct.php")
+            this.axios.get( `${BASE_URL}/api/homeProduct.php`)
             .then((res)=>{
                 this.product=res.data
                 //console.log("俊彥大帥哥--->",this.product) 檢查有沒有抓資料近來
@@ -281,7 +284,8 @@
         },
         methods:{
             async getDataFromApi() { //async是非同步
-                var url = 'http://localhost/CGD102_G2/src/assets/phps/news.php'
+                // var url = 'http://localhost/CGD102_G2/src/assets/phps/news.php'
+                var url = `${BASE_URL}/api/news.php`
                 let getData = async(url) => {
                     let response = await fetch(url); // await 很重要
                     let JSON =  response.json();
@@ -316,7 +320,51 @@
             },
             joinLocalStorage(){
                 localStorage.setItem("order",JSON.stringify(this.order)) ;
-            }
+            },
+            addCar(id) {
+      
+      let index = this.cart.find(item=>item.PROD_ID===id)
+      
+      if(!index){
+        alert("成功加入")
+        this.cart.push({
+        PROD_ID: this.order[0].PROD_ID,
+        PROD_NAME: this.order[0].PROD_NAME,
+        PROD_PRICE: this.order[0].PROD_PRICE,
+        PROD_PIC1: this.order[0].PROD_PIC1,
+        PROD_PIC2: this.order[0].PROD_PIC2,
+        PROD_PIC3: this.order[0].PROD_PIC3,
+        PROD_DATE: this.order[0].PROD_DATE,
+        PROD_NUM: this.product_num,
+        PROD_DESC1: this.order[0].PROD_DESC1,
+        PROD_DESC2: this.order[0].PROD_DESC2,
+        PROD_DESC3: this.order[0].PROD_DESC3,
+        PROD_REVIEW: this.order[0].PROD_REVIEW + 1,
+        PROD_TIMES: this.order[0].PROD_TIMES + 1,
+      });
+
+          this.calculate.push({
+        PROD_ID: this.order[0].PROD_ID,
+        PROD_NAME: this.order[0].PROD_NAME,
+        PROD_PRICE: this.order[0].PROD_PRICE,
+        PROD_PIC1: this.order[0].PROD_PIC1,
+        PROD_PIC2: this.order[0].PROD_PIC2,
+        PROD_PIC3: this.order[0].PROD_PIC3,
+        PROD_DATE: this.order[0].PROD_DATE,
+        PROD_NUM: this.product_num,
+        PROD_DESC1: this.order[0].PROD_DESC1,
+        PROD_DESC2: this.order[0].PROD_DESC2,
+        PROD_DESC3: this.order[0].PROD_DESC3,
+        PROD_REVIEW: this.order[0].PROD_REVIEW + 1,
+        PROD_TIMES: this.order[0].PROD_TIMES + 1,
+      });
+
+   
+
+      }else{
+        alert("購物車已有相同物品")
+      }
+    },
         },
     };
 

@@ -1,36 +1,54 @@
 <template>
-    <div>
-        <header class="backstage_header">
-            <img src="../assets/images/backstageHeaderLogo.png">
-        </header>
-        <div class="container text-center">
+    <div class="background_flower">
+        <div class="container">
             <div class="choose_id">選擇登入身分</div>
-            <div class="row justify-content-md-around my_set">
-                <div class="col col-lg-2 manageLogin_hover">
-                    <a href="./manageLogin">
-                        <div class="manage_icon">
-                            <img src="../assets/images/manageIcon.png">
-                        </div>
-                        <button class="btnLittle">
-                            管理員登入
-                        </button>
-                    </a>
-                </div>
-                <div class="col col-lg-2 masseurLogin_hover">
-                    <div class="masseur_icon">
+            <div class="containerLogin">
+                <router-link to="/manageLogin">
+                    <div class="manageLogin">
+                        <p>管理員登入</p>
+                        <img src="../assets/images/manageIcon.png">
+                    </div>
+                </router-link>
+                <router-link to="">
+                    <div class="masseurLogin">
+                        <p>按摩師登入</p>
                         <img src="../assets/images/masseurIcon.png">
                     </div>
-                    <button class="btnLittle">
-                        <a href="#">按摩師登入</a>
-                    </button>
-                </div>
+            </router-link>
             </div>
         </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
+.container{
+    width: 100%;
+    height: 100vh;
+    text-align: center;
 
-  @import "~bootstrap/scss/bootstrap";
+    .choose_id{
+        font-size: 40px;
+        font-weight: 600;
+        margin: 100px 0 0 0 ;
+        letter-spacing: 1px;
+        color:#163D82;
+    }
+
+    .containerLogin{
+        margin: 0 auto;
+        max-width: 1200px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .manageLogin,.masseurLogin{
+            width: 250px;
+            height: 300px;
+            background-color: aquamarine;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    }
+}
 
 </style>

@@ -17,8 +17,7 @@ import Review from "@/components/Review.vue"
 
     export default{
         components:{
-            Header,
-            Footer, 
+          
             Product,
             Review
         }

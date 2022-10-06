@@ -4,23 +4,23 @@ header("Content-Type:application/json;charset=utf-8");
 
 try{
 
-    require_once("../../connect_cgd102g2.php");
+    require_once("../connect_cgd102g2.php");//上線用
 
-    $sql = "select * from FAQ";
-    $faq = $pdo->query($sql);
+    $sql = "select * from NEWS";
+    $new = $pdo->query($sql); //設定變數把sql的東西放進去
 
-    if($faq->rowCount()==0){
+    if($new->rowCount()==0){
         echo "無資料";
         // exit();
     }else{
-        $faqs = $faq->fetchAll(PDO::FETCH_ASSOC);
+        $news = $new->fetchAll(PDO::FETCH_ASSOC); //如果有資料的話,就抓所有索引值的資料
         $data = [];
 
-        foreach($faqs as $i => $page){
+        foreach($news as $i => $page){
         
         ?>
         <?php
-        $data[] = $page;
+        $data[] = $page; //資料都給陣列印出來
         }
 
         echo json_encode($data);

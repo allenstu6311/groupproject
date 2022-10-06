@@ -5,7 +5,7 @@ try{
     require_once("../../src/connect_cgd102g2.php");
     // require_once("../connect_cgd102g2.php");//上線用
     $findExistSql = "SELECT * 
-            FROM member 
+            FROM MEMBER 
             WHERE MEM_ACCOUNT=:ACCOUNT";
     $existAccount = $pdo -> prepare($findExistSql);
     $existAccount->bindValue(":ACCOUNT",$_POST["account"]);
@@ -13,7 +13,7 @@ try{
     
     if( $existAccount->rowCount() == 0 ){ //找不到
       //存入資料庫
-        $insertSql = "INSERT INTO member(MEM_NAME,MEM_ACCOUNT,MEM_PSW,MEM_BIRTHDAY,MEM_ADDRESS,MEM_PHONE,MEM_LOCALCALL,MEM_EMAIL,MEM_PERMISSION)
+        $insertSql = "INSERT INTO MEMBER(MEM_NAME,MEM_ACCOUNT,MEM_PSW,MEM_BIRTHDAY,MEM_ADDRESS,MEM_PHONE,MEM_LOCALCALL,MEM_EMAIL,MEM_PERMISSION)
                 VALUES(:MEM_NAME,:ACCOUNT,:PSW,:BIRTHDAY,:MEM_ADDRESS,:PHONE,:LOCALCALL,:EMAIL,1)";
         $member = $pdo -> prepare($insertSql);
         $member->bindValue(":MEM_NAME",$_POST["name"]);

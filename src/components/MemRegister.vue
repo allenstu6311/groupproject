@@ -38,12 +38,15 @@
                     <span :class="emailclass">{{emailtip}}</span>
                 </div>
                 <input type="date" v-model="birthday">
-                <input type="text" maxlength="10" v-model="phone" placeholder="09*********">
+                <div>
+                    <input type="text" maxlength="10" v-model="phone" placeholder="09*********">
+                    <span :class="phoneclass">{{phonetip}}</span>
+                </div>
                 <input type="text" maxlength="10" v-model="localphone" placeholder="03*******">
                 <input type="text" maxlength="40" v-model="address">
             </div>
         </div>
-        <div style="text-align:center"><button  class="btnLittle" @click="submit">送出</button>
+        <div style="text-align:center"><button class="btnLittle" @click="submit">送出</button>
         </div>
     </div>
 </template>
@@ -63,39 +66,42 @@ export default {
             address: '',
             emailtip: "*",
             pswtip: "*",
+            phonetip: "*",
             emailclass: "error",
             pswclass: "error",
+            phoneclass: "error",
             emailflag: false,
             pswflag: false,
+            phoneflag: false,
         }
     },
     methods: {
         submit() {
-            if(this.passwordAgain != this.password){
+            if (this.passwordAgain != this.password) {
                 alert("再次輸入密碼與密碼不符");
                 return;
-            }else if(this.pswflag&&this.emailflag){
+            } else if (this.pswflag && this.emailflag && phoneflag) {
                 var xhr = new XMLHttpRequest();
-                
-                xhr.onload = function(){
-                    if(xhr.status == 200){
-                        if(xhr.responseText == "註冊成功"){
+
+                xhr.onload = function () {
+                    if (xhr.status == 200) {
+                        if (xhr.responseText == "註冊成功") {
                             alert("註冊成功");
                             window.location.replace("/MemLogin");
-                        }else if(xhr.responseText == "此帳號已存在"){
+                        } else if (xhr.responseText == "此帳號已存在") {
                             alert("此帳號已存在");
                         }
                     }
                 }
                 // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
                 // var url = ${BASE_URL}/api/register.php
-                xhr.open("post","http://localhost/CGD102_G2/public/api/register.php",true);
-                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                xhr.open("post", "http://localhost/CGD102_G2/public/api/register.php", true);
+                xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
 
                 let mem_deta = `account=${this.account}&password=${this.password}&name=${this.name}&email=${this.email}&birthday=${this.birthday}&phone=${this.phone}&localphone=${this.localphone}&address=${this.address}`
                 xhr.send(mem_deta);
-                
-            }else{
+
+            } else {
                 alert("註冊失敗 有欄位錯誤")
             }
 
@@ -122,7 +128,12 @@ export default {
             var reg = /^[0-9a-z]{6,10}$/;
             this.pswflag = this.checkContentByReg(reg, content, "pswtip", "pswclass");
         },
-        
+        phone: function (content) {
+            var reg = /^[0][0-9]/;
+            this.phoneflag = this.checkContentByReg(reg, content, "phonetip", "phoneclass");
+        }
+
+
     }
 }
 </script>

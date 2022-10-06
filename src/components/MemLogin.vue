@@ -39,7 +39,7 @@ export default {
             account: '',
             password: '',
             session:'',
-            loginStatus:''
+            loginStatus:[]
         }
     },
     methods: {
@@ -64,17 +64,15 @@ export default {
                         alert("帳號密碼有誤");
                     } else {
                         this.session=JSON.parse(xhr.responseText);
-                        sessionStorage.setItem("memName",this.session.memName);
-                        sessionStorage.setItem("memPhone",this.session.memPhone);
-                        sessionStorage.setItem("memAddress",this.session.memAddress);
-                        this.loginStatus = sessionStorage.getItem("memName");
+                        console.log(this.session)
+                        sessionStorage.setItem("member",JSON.stringify(this.session));
+                        this.loginStatus = sessionStorage.getItem("member")
                         if (this.loginStatus != '') {
-                            // let prepage = document.referrer;
-                            // if(prepage === ''){
+                            if(document.referrer === ''){
                                 location.replace("/MemCenter");
-                            // }else{
-                            //     location.replace(prepage);
-                            // }
+                            }else{
+                                location.replace(document.referrer);
+                            }
                         }
                     }
 
@@ -90,7 +88,7 @@ export default {
         }
     },
     mounted(){
-        let checkLogin = sessionStorage.getItem('memName');
+        let checkLogin = sessionStorage.getItem('member');
         if(checkLogin){
             alert("請先登出");
             location.replace("/home");

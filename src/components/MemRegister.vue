@@ -24,7 +24,10 @@
                 輸入地址:
             </div>
             <div class="input_area">
-                <input type="text" maxlength="30" v-model="account">
+                <div>
+                    <input type="text" maxlength="30" v-model="account">
+                    <span :class="accountclass">{{accounttip}}</span>
+                </div>
                 <div>
                     <input type="password" maxlength="10" v-model="password" placeholder="最少為六碼，最大為十碼">
                     <span :class="pswclass">{{pswtip}}</span>
@@ -39,11 +42,14 @@
                 </div>
                 <input type="date" v-model="birthday">
                 <div>
-                    <input type="text" maxlength="10" v-model="phone" placeholder="09*********">
+                    <input type="text" maxlength="10" v-model="phone" placeholder="例:09****">
                     <span :class="phoneclass">{{phonetip}}</span>
                 </div>
-                <input type="text" maxlength="10" v-model="localphone" placeholder="03*******">
-                <input type="text" maxlength="40" v-model="address">
+                <input type="text" maxlength="10" v-model="localphone" placeholder="例:03*******">
+                <div>
+                    <input type="text" maxlength="40" v-model="address" placeholder="例:桃園市...">
+                    <span :class="addressclass">{{addresstip}}</span>
+                </div>
             </div>
         </div>
         <div style="text-align:center"><button class="btnLittle" @click="submit">送出</button>
@@ -64,15 +70,21 @@ export default {
             phone: '',
             localphone: '',
             address: '',
+            accounttip: "*",
             emailtip: "*",
             pswtip: "*",
             phonetip: "*",
+            addresstip: "*",
+            accountclass: "error",
             emailclass: "error",
             pswclass: "error",
             phoneclass: "error",
+            addressclass: "error",
+            accountflag: false,
             emailflag: false,
             pswflag: false,
             phoneflag: false,
+            addressflag: false,
         }
     },
     methods: {
@@ -80,7 +92,7 @@ export default {
             if (this.passwordAgain != this.password) {
                 alert("再次輸入密碼與密碼不符");
                 return;
-            } else if (this.pswflag && this.emailflag && phoneflag) {
+            } else if (this.accountflag&&this.pswflag && this.emailflag && this.phoneflag && this.addressflag) {
                 var xhr = new XMLHttpRequest();
 
                 xhr.onload = function () {
@@ -120,6 +132,10 @@ export default {
         }
     },
     watch: {
+        account: function(content){
+            var reg = /\S/;
+            this.accountflag = this.checkContentByReg(reg, content, "accounttip", "accountclass");
+        },
         email: function (content) {
             var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
             this.emailflag = this.checkContentByReg(reg, content, "emailtip", "emailclass");
@@ -131,8 +147,11 @@ export default {
         phone: function (content) {
             var reg = /^[0][0-9]/;
             this.phoneflag = this.checkContentByReg(reg, content, "phonetip", "phoneclass");
+        },
+        address: function (content) {
+            var reg = /\S/;
+            this.addressflag = this.checkContentByReg(reg, content, "addresstip", "addressclass");
         }
-
 
     }
 }

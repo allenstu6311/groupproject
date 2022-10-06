@@ -1223,7 +1223,6 @@ span {
 .page_header nav .header_icon .header_member {
   width: 30px;
   align-self: center;
-  display: none;
 }
 .page_header nav .header_icon .header_member a {
   padding: 0;
@@ -2776,10 +2775,8 @@ main {
   justify-content: center;
   align-items: center;
 }
-.memberLogin h2 {
-  font-size: 26px;
-  position: relative;
-  left: -130px;
+.memberLogin .title_area {
+  margin-top: 0;
   margin-bottom: 0;
 }
 .memberLogin hr {
@@ -2787,7 +2784,7 @@ main {
 }
 .memberLogin .input_area {
   width: 300px;
-  padding-top: 48px;
+  padding: 70px 0px 50px 0px;
   margin: 0 auto;
   font-size: 20px;
 }
@@ -2813,13 +2810,16 @@ main {
 .memberLogin .input_area .sign a {
   text-decoration: none;
   color: #000;
-  font-size: 12px;
+  font-size: 14px;
   padding: 0 5px;
+}
+.memberLogin .input_area .sign a:hover {
+  color: #B52011;
 }
 .memberLogin .another_login {
   display: flex;
   justify-content: center;
-  padding-top: 20px;
+  padding-top: 40px;
 }
 .memberLogin .another_login a {
   display: block;
@@ -2835,7 +2835,7 @@ main {
 }
 
 .login_btn {
-  margin: 10px 0;
+  margin: 0 0 20px 0;
 }
 .login_btn a {
   text-decoration: none;
@@ -5495,16 +5495,13 @@ main {
   border: none;
   cursor: pointer;
   transition: 0.3s;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
   z-index: 98;
 }
 .massage_game .game_container .hand_pic .zhong_chong:hover {
   background-color: #B52011;
   transition: 0.3s;
-  scale: 1.5;
-  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
-}
-.massage_game .game_container .hand_pic .fzhong_chong:focus {
-  background-color: #B52011;
   scale: 1.5;
   box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
 }
@@ -5521,22 +5518,17 @@ main {
 .massage_game .game_container .hand_pic .fzhong_chong::after {
   position: absolute;
   content: "";
-  width: 0px;
-  height: 0px;
   background-color: #163D82;
   transition: 0.5s;
   top: 12px;
-  left: 0px;
+  width: 40px;
+  height: 1px;
+  left: -40px;
 }
 .massage_game .game_container .hand_pic .zhong_chong:hover::after {
   width: 40px;
   height: 1px;
   transition: 0.5s;
-  left: -40px;
-}
-.massage_game .game_container .hand_pic .fzhong_chong:focus::after {
-  width: 40px;
-  height: 1px;
   left: -40px;
 }
 .massage_game .game_container .hand_pic .zhong_chong::before {
@@ -5556,7 +5548,7 @@ main {
   font-size: 18px;
   position: absolute;
   font-family: "DFKai-SB";
-  color: transparent;
+  color: #163D82;
   transition: 0.3s;
   top: -25px;
   left: -65px;
@@ -5565,9 +5557,6 @@ main {
 .massage_game .game_container .hand_pic .zhong_chong:hover::before {
   color: #163D82;
   transition: 0.3s 0.2s;
-}
-.massage_game .game_container .hand_pic .fzhong_chong:focus::before {
-  color: #163D82;
 }
 .massage_game .game_container .hand_pic .shao_shang {
   position: absolute;
@@ -5594,15 +5583,12 @@ main {
   cursor: pointer;
   transition: 0.3s;
   z-index: 98;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
 }
 .massage_game .game_container .hand_pic .shao_shang:hover {
   background-color: #B52011;
   transition: 0.3s;
-  scale: 1.5;
-  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
-}
-.massage_game .game_container .hand_pic .fshao_shang:focus {
-  background-color: #B52011;
   scale: 1.5;
   box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
 }
@@ -5619,21 +5605,16 @@ main {
 .massage_game .game_container .hand_pic .fshao_shang::after {
   position: absolute;
   content: "";
-  width: 0px;
-  height: 0px;
   background-color: #163D82;
   transition: 0.5s;
   top: 12px;
+  height: 1px;
+  width: 10px;
   left: 100%;
 }
 .massage_game .game_container .hand_pic .shao_shang:hover::after {
   height: 1px;
   transition: 0.5s;
-  width: 10px;
-  left: 100%;
-}
-.massage_game .game_container .hand_pic .fshao_shang:focus::after {
-  height: 1px;
   width: 10px;
   left: 100%;
 }
@@ -5653,7 +5634,7 @@ main {
   font-size: 18px;
   position: absolute;
   font-family: "DFKai-SB";
-  color: transparent;
+  color: #163D82;
   transition: 0.3s;
   top: -25px;
   left: 30px;
@@ -5662,9 +5643,6 @@ main {
 .massage_game .game_container .hand_pic .shao_shang:hover::before {
   color: #163D82;
   transition: 0.3s 0.2s;
-}
-.massage_game .game_container .hand_pic .fshao_shang:focus::before {
-  color: #163D82;
 }
 .massage_game .game_container .hand_pic .he_gu {
   position: absolute;
@@ -5691,15 +5669,12 @@ main {
   cursor: pointer;
   transition: 0.3s;
   z-index: 98;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
 }
 .massage_game .game_container .hand_pic .he_gu:hover {
   background-color: #B52011;
   transition: 0.3s;
-  scale: 1.5;
-  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
-}
-.massage_game .game_container .hand_pic .fhe_gu:focus {
-  background-color: #B52011;
   scale: 1.5;
   box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
 }
@@ -5716,21 +5691,16 @@ main {
 .massage_game .game_container .hand_pic .fhe_gu::after {
   position: absolute;
   content: "";
-  width: 0px;
-  height: 0px;
   background-color: #163D82;
   transition: 0.5s;
   top: 12px;
   left: 100%;
+  height: 1px;
+  width: 70px;
 }
 .massage_game .game_container .hand_pic .he_gu:hover::after {
   height: 1px;
   transition: 0.5s;
-  left: 100%;
-  width: 70px;
-}
-.massage_game .game_container .hand_pic .fhe_gu:focus::after {
-  height: 1px;
   left: 100%;
   width: 70px;
 }
@@ -5750,7 +5720,7 @@ main {
   font-size: 18px;
   position: absolute;
   font-family: "DFKai-SB";
-  color: transparent;
+  color: #163D82;
   transition: 0.3s;
   top: -23px;
   left: 90px;
@@ -5759,9 +5729,6 @@ main {
 .massage_game .game_container .hand_pic .he_gu:hover::before {
   color: #163D82;
   transition: 0.3s 0.2s;
-}
-.massage_game .game_container .hand_pic .fhe_gu:focus::before {
-  color: #163D82;
 }
 .massage_game .game_container .hand_pic .ming_men {
   position: absolute;
@@ -5788,15 +5755,12 @@ main {
   cursor: pointer;
   transition: 0.3s;
   z-index: 98;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
 }
 .massage_game .game_container .hand_pic .ming_men:hover {
   background-color: #B52011;
   transition: 0.3s;
-  scale: 1.5;
-  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
-}
-.massage_game .game_container .hand_pic .fming_men:focus {
-  background-color: #B52011;
   scale: 1.5;
   box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
 }
@@ -5813,21 +5777,16 @@ main {
 .massage_game .game_container .hand_pic .fming_men::after {
   position: absolute;
   content: "";
-  width: 0px;
-  height: 0px;
   background-color: #163D82;
   transition: 0.5s;
   top: 12px;
-  left: 0px;
+  height: 1px;
+  width: 13px;
+  left: -13px;
 }
 .massage_game .game_container .hand_pic .ming_men:hover::after {
   height: 1px;
   transition: 0.5s;
-  width: 13px;
-  left: -13px;
-}
-.massage_game .game_container .hand_pic .fming_men:focus::after {
-  height: 1px;
   width: 13px;
   left: -13px;
 }
@@ -5847,7 +5806,7 @@ main {
   font-size: 18px;
   position: absolute;
   font-family: "DFKai-SB";
-  color: transparent;
+  color: #163D82;
   transition: 0.3s;
   top: -25px;
   left: -35px;
@@ -5856,9 +5815,6 @@ main {
 .massage_game .game_container .hand_pic .ming_men:hover::before {
   color: #163D82;
   transition: 0.3s 0.2s;
-}
-.massage_game .game_container .hand_pic .fming_men:focus::before {
-  color: #163D82;
 }
 .massage_game .game_container .hand_pic .shen_men {
   position: absolute;
@@ -5885,15 +5841,12 @@ main {
   cursor: pointer;
   transition: 0.3s;
   z-index: 98;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
 }
 .massage_game .game_container .hand_pic .shen_men:hover {
   background-color: #B52011;
   transition: 0.3s;
-  scale: 1.5;
-  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
-}
-.massage_game .game_container .hand_pic .fshen_men:focus {
-  background-color: #B52011;
   scale: 1.5;
   box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
 }
@@ -5910,21 +5863,16 @@ main {
 .massage_game .game_container .hand_pic .fshen_men::after {
   position: absolute;
   content: "";
-  width: 0px;
-  height: 0px;
   background-color: #163D82;
   transition: 0.5s;
   top: 12px;
-  left: 0px;
+  height: 1px;
+  width: 28px;
+  left: -28px;
 }
 .massage_game .game_container .hand_pic .shen_men:hover::after {
   height: 1px;
   transition: 0.5s;
-  width: 28px;
-  left: -28px;
-}
-.massage_game .game_container .hand_pic .fshen_men:focus::after {
-  height: 1px;
   width: 28px;
   left: -28px;
 }
@@ -5944,7 +5892,7 @@ main {
   font-size: 18px;
   position: absolute;
   font-family: "DFKai-SB";
-  color: transparent;
+  color: #163D82;
   transition: 0.3s;
   top: -25px;
   left: -50px;
@@ -5953,9 +5901,6 @@ main {
 .massage_game .game_container .hand_pic .shen_men:hover::before {
   color: #163D82;
   transition: 0.3s 0.2s;
-}
-.massage_game .game_container .hand_pic .fshen_men:focus::before {
-  color: #163D82;
 }
 .massage_game .game_container .hand_pic .lao_gong {
   position: absolute;
@@ -5982,15 +5927,12 @@ main {
   cursor: pointer;
   transition: 0.3s;
   z-index: 98;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
 }
 .massage_game .game_container .hand_pic .lao_gong:hover {
   background-color: #B52011;
   transition: 0.3s;
-  scale: 1.5;
-  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
-}
-.massage_game .game_container .hand_pic .flao_gong:focus {
-  background-color: #B52011;
   scale: 1.5;
   box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
 }
@@ -6007,21 +5949,16 @@ main {
 .massage_game .game_container .hand_pic .flao_gong::after {
   position: absolute;
   content: "";
-  width: 0px;
-  height: 0px;
   background-color: #163D82;
   transition: 0.5s;
   top: 12px;
-  left: 0px;
+  height: 1px;
+  left: -80px;
+  width: 80px;
 }
 .massage_game .game_container .hand_pic .lao_gong:hover::after {
   height: 1px;
   transition: 0.5s;
-  left: -80px;
-  width: 80px;
-}
-.massage_game .game_container .hand_pic .flao_gong:focus::after {
-  height: 1px;
   left: -80px;
   width: 80px;
 }
@@ -6041,7 +5978,7 @@ main {
   font-size: 18px;
   position: absolute;
   font-family: "DFKai-SB";
-  color: transparent;
+  color: #163D82;
   transition: 0.3s;
   top: -25px;
   left: -100px;
@@ -6050,9 +5987,6 @@ main {
 .massage_game .game_container .hand_pic .lao_gong:hover::before {
   color: #163D82;
   transition: 0.3s 0.2s;
-}
-.massage_game .game_container .hand_pic .flao_gong:focus::before {
-  color: #163D82;
 }
 .massage_game .game_container .hand_pic .yu_ji {
   position: absolute;
@@ -6079,15 +6013,12 @@ main {
   cursor: pointer;
   transition: 0.3s;
   z-index: 98;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
 }
 .massage_game .game_container .hand_pic .yu_ji:hover {
   background-color: #B52011;
   transition: 0.3s;
-  scale: 1.5;
-  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
-}
-.massage_game .game_container .hand_pic .fyu_ji:focus {
-  background-color: #B52011;
   scale: 1.5;
   box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
 }
@@ -6104,21 +6035,16 @@ main {
 .massage_game .game_container .hand_pic .fyu_ji::after {
   position: absolute;
   content: "";
-  width: 0px;
-  height: 0px;
   background-color: #163D82;
   transition: 0.5s;
   top: 12px;
   left: 100%;
+  height: 1px;
+  width: 20px;
 }
 .massage_game .game_container .hand_pic .yu_ji:hover::after {
   height: 1px;
   transition: 0.5s;
-  width: 20px;
-  left: 100%;
-}
-.massage_game .game_container .hand_pic .fyu_ji:focus::after {
-  height: 1px;
   width: 20px;
   left: 100%;
 }
@@ -6138,7 +6064,7 @@ main {
   font-size: 18px;
   position: absolute;
   font-family: "DFKai-SB";
-  color: transparent;
+  color: #163D82;
   transition: 0.3s;
   top: -25px;
   left: 40px;
@@ -6147,9 +6073,6 @@ main {
 .massage_game .game_container .hand_pic .yu_ji:hover::before {
   color: #163D82;
   transition: 0.3s 0.2s;
-}
-.massage_game .game_container .hand_pic .fyu_ji:focus::before {
-  color: #163D82;
 }
 .massage_game .game_container .hand_pic .shao_fu {
   position: absolute;
@@ -6176,15 +6099,12 @@ main {
   cursor: pointer;
   transition: 0.3s;
   z-index: 98;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
 }
 .massage_game .game_container .hand_pic .shao_fu:hover {
   background-color: #B52011;
   transition: 0.3s;
-  scale: 1.5;
-  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
-}
-.massage_game .game_container .hand_pic .fshao_fu:focus {
-  background-color: #B52011;
   scale: 1.5;
   box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
 }
@@ -6201,21 +6121,16 @@ main {
 .massage_game .game_container .hand_pic .fshao_fu::after {
   position: absolute;
   content: "";
-  width: 0px;
-  height: 0px;
   background-color: #163D82;
   transition: 0.5s;
   top: 12px;
-  left: 0px;
+  height: 1px;
+  left: -28px;
+  width: 28px;
 }
 .massage_game .game_container .hand_pic .shao_fu:hover::after {
   height: 1px;
   transition: 0.5s;
-  left: -28px;
-  width: 28px;
-}
-.massage_game .game_container .hand_pic .fshao_fu:focus::after {
-  height: 1px;
   left: -28px;
   width: 28px;
 }
@@ -6235,7 +6150,7 @@ main {
   font-size: 18px;
   position: absolute;
   font-family: "DFKai-SB";
-  color: transparent;
+  color: #163D82;
   transition: 0.3s;
   top: -25px;
   left: -50px;
@@ -6244,9 +6159,6 @@ main {
 .massage_game .game_container .hand_pic .shao_fu:hover::before {
   color: #163D82;
   transition: 0.3s 0.2s;
-}
-.massage_game .game_container .hand_pic .fshao_fu:focus::before {
-  color: #163D82;
 }
 .massage_game .game_container .hand_pic .tai_yuan {
   position: absolute;
@@ -6273,15 +6185,12 @@ main {
   cursor: pointer;
   transition: 0.3s;
   z-index: 98;
+  scale: 1.5;
+  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
 }
 .massage_game .game_container .hand_pic .tai_yuan:hover {
   background-color: #B52011;
   transition: 0.3s;
-  scale: 1.5;
-  box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
-}
-.massage_game .game_container .hand_pic .ftai_yuan:focus {
-  background-color: #B52011;
   scale: 1.5;
   box-shadow: 0px 0px 10px #B52011, inset 0px 0px 5px #FFFFFF;
 }
@@ -6298,21 +6207,16 @@ main {
 .massage_game .game_container .hand_pic .ftai_yuan::after {
   position: absolute;
   content: "";
-  width: 0px;
-  height: 0px;
   background-color: #163D82;
   transition: 0.5s;
   top: 12px;
+  height: 1px;
+  width: 30px;
   left: 100%;
 }
 .massage_game .game_container .hand_pic .tai_yuan:hover::after {
   height: 1px;
   transition: 0.5s;
-  width: 30px;
-  left: 100%;
-}
-.massage_game .game_container .hand_pic .ftai_yuan:focus::after {
-  height: 1px;
   width: 30px;
   left: 100%;
 }
@@ -6332,7 +6236,7 @@ main {
   font-size: 18px;
   position: absolute;
   font-family: "DFKai-SB";
-  color: transparent;
+  color: #163D82;
   transition: 0.3s;
   top: -25px;
   left: 50px;
@@ -6341,9 +6245,6 @@ main {
 .massage_game .game_container .hand_pic .tai_yuan:hover::before {
   color: #163D82;
   transition: 0.3s 0.2s;
-}
-.massage_game .game_container .hand_pic .ftai_yuan:focus::before {
-  color: #163D82;
 }
 .massage_game .game_container .hand_pic .none {
   display: none;
@@ -6415,12 +6316,9 @@ main {
   }
   .massage_game .game_container .hand_pic .fzhong_chong::after {
     top: 12px;
-    left: 0px;
-  }
-  .massage_game .game_container .hand_pic .zhong_chong:hover::after {
     left: -40px;
   }
-  .massage_game .game_container .hand_pic .fzhong_chong:focus::after {
+  .massage_game .game_container .hand_pic .zhong_chong:hover::after {
     left: -40px;
   }
   .massage_game .game_container .hand_pic .zhong_chong::before {
@@ -6444,12 +6342,9 @@ main {
   .massage_game .game_container .hand_pic .fshao_shang::after {
     top: 12px;
     left: 100%;
+    width: 40px;
   }
   .massage_game .game_container .hand_pic .shao_shang:hover::after {
-    width: 40px;
-    left: 100%;
-  }
-  .massage_game .game_container .hand_pic .fshao_shang:focus::after {
     width: 40px;
     left: 100%;
   }
@@ -6474,12 +6369,9 @@ main {
   .massage_game .game_container .hand_pic .fhe_gu::after {
     top: 12px;
     left: 100%;
-  }
-  .massage_game .game_container .hand_pic .he_gu:hover::after {
-    left: 100%;
     width: 100px;
   }
-  .massage_game .game_container .hand_pic .fhe_gu:focus::after {
+  .massage_game .game_container .hand_pic .he_gu:hover::after {
     left: 100%;
     width: 100px;
   }
@@ -6503,13 +6395,10 @@ main {
   }
   .massage_game .game_container .hand_pic .fming_men::after {
     top: 12px;
-    left: 0px;
-  }
-  .massage_game .game_container .hand_pic .ming_men:hover::after {
     width: 35px;
     left: -35px;
   }
-  .massage_game .game_container .hand_pic .fming_men:focus::after {
+  .massage_game .game_container .hand_pic .ming_men:hover::after {
     width: 35px;
     left: -35px;
   }
@@ -6533,13 +6422,10 @@ main {
   }
   .massage_game .game_container .hand_pic .fshen_men::after {
     top: 12px;
-    left: 0px;
-  }
-  .massage_game .game_container .hand_pic .shen_men:hover::after {
     width: 40px;
     left: -40px;
   }
-  .massage_game .game_container .hand_pic .fshen_men:focus::after {
+  .massage_game .game_container .hand_pic .shen_men:hover::after {
     width: 40px;
     left: -40px;
   }
@@ -6563,13 +6449,10 @@ main {
   }
   .massage_game .game_container .hand_pic .flao_gong::after {
     top: 12px;
-    left: 0px;
-  }
-  .massage_game .game_container .hand_pic .lao_gong:hover::after {
     left: -110px;
     width: 110px;
   }
-  .massage_game .game_container .hand_pic .flao_gong:focus::after {
+  .massage_game .game_container .hand_pic .lao_gong:hover::after {
     left: -110px;
     width: 110px;
   }
@@ -6594,12 +6477,9 @@ main {
   .massage_game .game_container .hand_pic .fyu_ji::after {
     top: 12px;
     left: 100%;
+    width: 40px;
   }
   .massage_game .game_container .hand_pic .yu_ji:hover::after {
-    width: 40px;
-    left: 100%;
-  }
-  .massage_game .game_container .hand_pic .fyu_ji:focus::after {
     width: 40px;
     left: 100%;
   }
@@ -6623,13 +6503,10 @@ main {
   }
   .massage_game .game_container .hand_pic .fshao_fu::after {
     top: 12px;
-    left: 0px;
-  }
-  .massage_game .game_container .hand_pic .shao_fu:hover::after {
     left: -60px;
     width: 60px;
   }
-  .massage_game .game_container .hand_pic .vshao_fu:focus::after {
+  .massage_game .game_container .hand_pic .shao_fu:hover::after {
     left: -60px;
     width: 60px;
   }
@@ -6654,12 +6531,9 @@ main {
   .massage_game .game_container .hand_pic .ftai_yuan::after {
     top: 12px;
     left: 100%;
+    width: 40px;
   }
   .massage_game .game_container .hand_pic .tai_yuan:hover::after {
-    width: 40px;
-    left: 100%;
-  }
-  .massage_game .game_container .hand_pic .ftai_yuan:focus::after {
     width: 40px;
     left: 100%;
   }
@@ -6744,12 +6618,9 @@ main {
   }
   .massage_game .game_container .hand_pic .fzhong_chong::after {
     top: 12px;
-    left: 0px;
-  }
-  .massage_game .game_container .hand_pic .zhong_chong:hover::after {
     left: -40px;
   }
-  .massage_game .game_container .hand_pic .fzhong_chong:focus::after {
+  .massage_game .game_container .hand_pic .zhong_chong:hover::after {
     left: -40px;
   }
   .massage_game .game_container .hand_pic .zhong_chong::before {
@@ -6773,13 +6644,10 @@ main {
   .massage_game .game_container .hand_pic .fshao_shang::after {
     top: 100%;
     left: 50%;
-  }
-  .massage_game .game_container .hand_pic .shao_shang:hover::after {
     width: 1px;
     height: 15px;
-    left: 50%;
   }
-  .massage_game .game_container .hand_pic .fshao_shang:focus::after {
+  .massage_game .game_container .hand_pic .shao_shang:hover::after {
     width: 1px;
     height: 15px;
     left: 50%;
@@ -6805,12 +6673,9 @@ main {
   .massage_game .game_container .hand_pic .fhe_gu::after {
     top: 12px;
     left: 100%;
-  }
-  .massage_game .game_container .hand_pic .he_gu:hover::after {
-    left: 100%;
     width: 75px;
   }
-  .massage_game .game_container .hand_pic .fhe_gu:focus::after {
+  .massage_game .game_container .hand_pic .he_gu:hover::after {
     left: 100%;
     width: 75px;
   }
@@ -6834,13 +6699,10 @@ main {
   }
   .massage_game .game_container .hand_pic .fming_men::after {
     top: 12px;
-    left: 0px;
-  }
-  .massage_game .game_container .hand_pic .ming_men:hover::after {
     width: 40px;
     left: -40px;
   }
-  .massage_game .game_container .hand_pic .fming_men:focus::after {
+  .massage_game .game_container .hand_pic .ming_men:hover::after {
     width: 40px;
     left: -40px;
   }
@@ -6864,13 +6726,10 @@ main {
   }
   .massage_game .game_container .hand_pic .fshen_men::after {
     top: 12px;
-    left: 0px;
-  }
-  .massage_game .game_container .hand_pic .shen_men:hover::after {
     width: 40px;
     left: -40px;
   }
-  .massage_game .game_container .hand_pic .fshen_men:focus::after {
+  .massage_game .game_container .hand_pic .shen_men:hover::after {
     width: 40px;
     left: -40px;
   }
@@ -6894,13 +6753,10 @@ main {
   }
   .massage_game .game_container .hand_pic .flao_gong::after {
     top: 12px;
-    left: 0px;
-  }
-  .massage_game .game_container .hand_pic .lao_gong:hover::after {
     left: -110px;
     width: 110px;
   }
-  .massage_game .game_container .hand_pic .flao_gong:focus::after {
+  .massage_game .game_container .hand_pic .lao_gong:hover::after {
     left: -110px;
     width: 110px;
   }
@@ -6925,12 +6781,9 @@ main {
   .massage_game .game_container .hand_pic .fyu_ji::after {
     top: 12px;
     left: 100%;
+    width: 20px;
   }
   .massage_game .game_container .hand_pic .yu_ji:hover::after {
-    width: 20px;
-    left: 100%;
-  }
-  .massage_game .game_container .hand_pic .fyu_ji:focus::after {
     width: 20px;
     left: 100%;
   }
@@ -6954,13 +6807,10 @@ main {
   }
   .massage_game .game_container .hand_pic .fshao_fu::after {
     top: 12px;
-    left: 0px;
-  }
-  .massage_game .game_container .hand_pic .shao_fu:hover::after {
     left: -60px;
     width: 60px;
   }
-  .massage_game .game_container .hand_pic .fshao_fu:focus::after {
+  .massage_game .game_container .hand_pic .shao_fu:hover::after {
     left: -60px;
     width: 60px;
   }
@@ -6985,12 +6835,9 @@ main {
   .massage_game .game_container .hand_pic .ftai_yuan::after {
     top: 12px;
     left: 100%;
+    width: 40px;
   }
   .massage_game .game_container .hand_pic .tai_yuan:hover::after {
-    width: 40px;
-    left: 100%;
-  }
-  .massage_game .game_container .hand_pic .ftai_yuan:focus::after {
     width: 40px;
     left: 100%;
   }

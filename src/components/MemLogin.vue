@@ -1,34 +1,44 @@
 <template>
-    <div class="memberLogin">
-        <h2 class="h2">會員登入</h2>
-        <div class="input_area">
-            <div class="account">
-                帳號:<input type="text" v-model="account">
+    <div class="background_flower">
+        <div class="memberLogin">
+            <div class="title_area ">
+                <div class="sure_title">
+                    <h2 class="title_font">會</h2>
+                    <h2 class="title_font">員</h2>
+                    <h2 class="title_font">登</h2>
+                    <h2 class="title_font">入</h2>
+                </div>
+                <small>• LOGIN •</small>
             </div>
-            <br>
-            <div class="password">
-                密碼:<input type="password" v-model="password">
+            <div class="input_area">
+                <div class="account">
+                    帳號:<input type="text" v-model="account" style="font-size: 20px; margin-bottom: 5px;" >
+                </div>
+                <br>
+                <div class="password">
+                    密碼:<input type="password" v-model="password" style="font-size: 20px; margin-bottom: 5px;">
+                </div>
+                <br>
+                <div class="sign">
+                    <router-link to="/MemRegister">註冊</router-link>
+                    <a href="./backstage.html">忘記密碼</a>
+                </div>
             </div>
-            <br>
-            <div class="sign">
-                <router-link to="/MemRegister">註冊</router-link>
-                <a href="./backstage.html">忘記密碼</a>
+            <!-- 登入按鈕 -->
+            <button class="btnAddCart login_btn" @click="login">登入</button>
+            <hr>
+            <div>其他登入方式</div>
+            <div class="another_login">
+                <a href="https://www.google.com.tw" class="google">
+                    <img src="../assets/images/Google__G__Logo.svg.png">
+                </a>
+                <a href="https://www.facebook.com/" class="facebook">
+                    <img src="../assets/images/facebook.png">
+                </a>
+                <a href="https://line.me/zh-hant/" class="line">
+                    <img src="../assets/images/line.png">
+                </a>
             </div>
-        </div>
-        <!-- 登入按鈕 -->
-        <button class="btnMinimum login_btn" @click="login">登入</button>
-        <hr>
-        <div>其他登入方式</div>
-        <div class="another_login">
-            <a href="https://www.google.com.tw" class="google">
-                <img src="../assets/images/Google__G__Logo.svg.png">
-            </a>
-            <a href="https://www.facebook.com/" class="facebook">
-                <img src="../assets/images/facebook.png">
-            </a>
-            <a href="https://line.me/zh-hant/" class="line">
-                <img src="../assets/images/line.png">
-            </a>
         </div>
     </div>
 </template>

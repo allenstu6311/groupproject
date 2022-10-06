@@ -234,10 +234,10 @@
       },
       setup() {
         const onSwiper = (swiper) => {
-          console.log(swiper);
+        //   console.log(swiper);
         };
         const onSlideChange = () => {
-          console.log('slide change');
+        //   console.log('slide change');
         };
         return {
           onSwiper,
@@ -265,7 +265,7 @@
             this.axios.get( "http://localhost/CGD102_G2/src/assets/phps/homeMsg.php")
             .then((msg1)=>{ //msg1 可以自己取名,存取上面的路徑
                 this.msgList=msg1.data //把路徑中的資料(php)丟到上面的陣列中  .data是類似資料型別,也有殼能不是data
-                console.log("MSG~~~--->",this.msgList) // 檢查有沒有抓資料近來
+               // console.log("MSG~~~--->",this.msgList)  檢查有沒有抓資料近來
                 
             })
 
@@ -273,7 +273,7 @@
             this.axios.get( "http://localhost/CGD102_G2/src/assets/phps/homeProduct.php")
             .then((res)=>{
                 this.product=res.data
-                console.log("俊彥大帥哥--->",this.product)// 檢查有沒有抓資料近來
+                //console.log("俊彥大帥哥--->",this.product) 檢查有沒有抓資料近來
             })
 
 

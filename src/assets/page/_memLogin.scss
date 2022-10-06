@@ -11,20 +11,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    h2 {
-        font-size: 26px;
-        position: relative;
-        left: -130px;
+    .title_area{
+        margin-top: 0;
         margin-bottom: 0;
     }
-
     hr {
         width: 300px;
     }
 
     .input_area {
         width: 300px;
-        padding-top: 48px;
+        padding: 70px 0px 50px 0px;
         margin: 0 auto;
         font-size: 20px;
 
@@ -53,8 +50,12 @@
             a {
                 text-decoration: none;
                 color: #000;
-                font-size: 12px;
+                font-size: 14px;
                 padding: 0 5px;
+
+                &:hover{
+                    color:$red;
+                }
             }
         }
     }
@@ -62,7 +63,7 @@
     .another_login {
         display: flex;
         justify-content: center;
-        padding-top: 20px;
+        padding-top: 40px;
 
         a{
             display: block;
@@ -81,7 +82,7 @@
 }
 
 .login_btn{
-    margin: 10px 0;
+    margin: 0 0 20px 0;
     a{
         text-decoration: none;
         color: $white;

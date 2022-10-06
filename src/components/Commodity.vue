@@ -59,7 +59,9 @@
         <div class="commodity-obj" v-for="item in data" :key="item.PROD_ID">
           <button @click="next(item)">＜</button>
           <div class="commodity-pic">
+
             <router-link to="/Detail">
+
               <div
                 class="slide-pic"
                 id="pic"
@@ -73,6 +75,7 @@
                 <img :src="require(`../assets/phps/pic/${item.PROD_PIC2}`)" />
                 <img :src="require(`../assets/phps/pic/${item.PROD_PIC3}`)" />
               </div>
+              
             </router-link>
           </div>
           <button @click="prev(item)">＞</button>

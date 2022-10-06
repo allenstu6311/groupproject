@@ -1,5 +1,5 @@
 <template>
-    <Header />
+
      <div class="background-pic">
         <img src="../assets/images/bcgFlower.png" alt="">
     </div>
@@ -7,19 +7,16 @@
                     @cart-message="cartInformation"/>
     <ShoppingCar   @product-info="productInfo"
                     :checkCar ="carSend"/>
-    <Footer />
+
 </template>
 
 <script>
-import Header from "@/components/Header.vue"
-import Footer from "@/components/Footer.vue"
 import ShoppingCar from "@/components/ShoppingCar.vue"
 import ProductCart from "@/components/ProductCart.vue"
  
 export default {
     components:{
-        Header,
-        Footer, 
+      
         ShoppingCar,
         ProductCart,
     },

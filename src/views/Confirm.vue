@@ -1,5 +1,5 @@
 <template>
-  <Header />
+ 
   <div class="background-pic">
     <img src="../assets/images/bcgFlower.png" alt="" />
   </div>
@@ -25,17 +25,15 @@
       下一頁
     </button>
   </div>
-  <Footer />
+
 </template>
 <script>
-import Header from "@/components/Header.vue"
-import Footer from "@/components/Footer.vue"
+
 import MemberInfo from "@/components/MemberInfo.vue";
 import CheckCommodity from "@/components/CheckCommodity.vue";
 export default {
   components: {
-    Header,
-    Footer, 
+   
     MemberInfo,
     CheckCommodity,
   },

@@ -32,7 +32,7 @@ export default {
                 {
                 id: 1,
                 name: "管理最新消息",
-                path:"/BackShop",
+                path:"/backstageNews",
                 },
                 {
                 id: 2,
@@ -72,7 +72,7 @@ export default {
                 {
                 id: 9,
                 name: "管理常見問題",
-                path:"/BackShop",
+                path:"/backstageFAQ",
                 },
                 {
                 id: 10,

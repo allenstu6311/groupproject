@@ -62,7 +62,7 @@
 
 <script>
 
-    const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
+    // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
 
     export default {
         props: {
@@ -78,8 +78,8 @@
         },
         methods:{
             async getDataFromApi() {
-                xhr.open("post","http://localhost/CGD102_G2/public/api/therapistContent.php", true); //開發用
-                // xhr.open("post",`${BASE_URL}/api/therapistContent.php`, true); //上線用
+                // var url = 'http://localhost/CGD102_G2/public/api/therapistContent.php'; //開發用
+                var url = `${BASE_URL}/api/therapistContent.php`; //上線用
                 let getData = async(url) => {
                     let response = await fetch(url); // await 很重要
                     let JSON =  response.json();
@@ -111,8 +111,8 @@
                         }
                     }
                 }
-                // xhr.open("post","http://localhost/CGD102_G2/public/api/backtherapistselectchange.php", true); //開發用
-                xhr.open("post",`${BASE_URL}/api/backtherapistselectchange.php`, true);
+                xhr.open("post","http://localhost/CGD102_G2/public/api/backtherapistselectchange.php", true); //開發用
+                // xhr.open("post",`${BASE_URL}/api/backtherapistselectchange.php`, true); //上線用
                 xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
                 let therapist_data = `account=${THERAPIST_ACCOUNT}&status=${THERAPIST_STATUS}`;

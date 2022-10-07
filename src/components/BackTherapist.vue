@@ -61,6 +61,9 @@
 </template>
 
 <script>
+
+    const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
+
     export default {
         props: {
             backstageTherapsit: String
@@ -75,7 +78,8 @@
         },
         methods:{
             async getDataFromApi() {
-                var url = 'http://localhost/CGD102_G2/src/assets/phps/therapistContent.php'
+                xhr.open("post","http://localhost/CGD102_G2/public/api/therapistContent.php", true); //開發用
+                // xhr.open("post",`${BASE_URL}/api/therapistContent.php`, true); //上線用
                 let getData = async(url) => {
                     let response = await fetch(url); // await 很重要
                     let JSON =  response.json();

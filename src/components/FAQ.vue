@@ -70,7 +70,7 @@
 </template>
 
 <script>
-    const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
+    const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
 
     export default {
         props: {
@@ -86,7 +86,8 @@
         },
         methods:{
             async getDataFromApi() {
-                var url = `${BASE_URL}/api/FAQContent.php`
+                var url = 'http://localhost/CGD102_G2/public/api/FAQContent.php' //開發用
+                // var url = `${BASE_URL}/api/FAQContent.php` //上線用
                 let getData = async(url) => {
                     let response = await fetch(url); // await: 這行的 await 執行完才會執行下一個 await
                     let JSON =  response.json();

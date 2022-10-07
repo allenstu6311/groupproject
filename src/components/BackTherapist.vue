@@ -111,7 +111,8 @@
                         }
                     }
                 }
-                xhr.open("post","http://localhost/CGD102_G2/src/assets/phps/backtherapistselectchange.php", true);
+                // xhr.open("post","http://localhost/CGD102_G2/public/api/backtherapistselectchange.php", true); //開發用
+                xhr.open("post",`${BASE_URL}/api/backtherapistselectchange.php`, true);
                 xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
                 let therapist_data = `account=${THERAPIST_ACCOUNT}&status=${THERAPIST_STATUS}`;

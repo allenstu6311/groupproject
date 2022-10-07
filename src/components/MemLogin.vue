@@ -12,11 +12,11 @@
             </div>
             <div class="input_area">
                 <div class="account">
-                    帳號:<input type="text" v-model="account" style="font-size: 20px; margin-bottom: 5px;" >
+                    帳號:<input type="text" v-model="account" style="font-size: 20px; margin-bottom: 5px;"  @keydown.enter="login">
                 </div>
                 <br>
                 <div class="password">
-                    密碼:<input type="password" v-model="password" style="font-size: 20px; margin-bottom: 5px;">
+                    密碼:<input type="password" v-model="password" style="font-size: 20px; margin-bottom: 5px;" @keydown.enter="login">
                 </div>
                 <br>
                 <div class="sign">
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <!-- 登入按鈕 -->
-            <button class="btnAddCart login_btn" @click="login">登入</button>
+            <button class="btnAddCart login_btn" @click="login" >登入</button>
             <hr>
             <div>其他登入方式</div>
             <div class="another_login">
@@ -48,8 +48,8 @@ export default {
         return {
             account: '',
             password: '',
-            session:'',
-            loginStatus:[]
+            session: '',
+            loginStatus: []
         }
     },
     methods: {
@@ -73,33 +73,39 @@ export default {
                     if (xhr.responseText == "帳號密碼有誤") {
                         alert("帳號密碼有誤");
                     } else {
-                        this.session=JSON.parse(xhr.responseText);
+                        this.session = JSON.parse(xhr.responseText);
                         console.log(this.session)
-                        sessionStorage.setItem("member",JSON.stringify(this.session));
+                        sessionStorage.setItem("member", JSON.stringify(this.session));
                         this.loginStatus = sessionStorage.getItem("member")
                         if (this.loginStatus != '') {
-                            if(document.referrer === ''){
+                            if (document.referrer === '') {
                                 location.replace("/MemCenter");
-                            }else{
+                            }
+                            // else if(document.referrer === '/MemRegister'){
+                            //     location.replace("/MemCenter");
+                            // }
+                            else {
                                 location.replace(document.referrer);
                             }
                         }
                     }
 
                 }
-                // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
-                // var url = ${BASE_URL}/api/login.php
-                xhr.open("post", "http://localhost/CGD102_G2/public/api/login.php", true);
+                const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
+                var url = `${BASE_URL}/api/login.php`
+                // "http://localhost/CGD102_G2/public/api/login.php"
+                xhr.open("post",url, true);
                 xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
 
                 let login_info = `account=${this.account}&password=${this.password}`;
                 xhr.send(login_info);
             }
-        }
+        },
+
     },
-    mounted(){
+    mounted() {
         let checkLogin = sessionStorage.getItem('member');
-        if(checkLogin){
+        if (checkLogin) {
             alert("請先登出");
             location.replace("/home");
         }

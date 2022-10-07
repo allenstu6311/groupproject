@@ -41,9 +41,12 @@
                                         <td><input type="text" v-model="account" :style="pdata_display_show" maxlength="10"></td>
                                     </tr>
                                     <tr class="person_info_item">
-                                        <th>密碼:</th>
-                                        <td :style="pdata_display_none">{{password}}</td>
+                                        <th :style="pdata_display_show">輸入舊密碼:</th>
                                         <td><input type="password" v-model="password" :style="pdata_display_show" maxlength="10"></td>
+                                    </tr>
+                                    <tr class="person_info_item">
+                                        <th :style="pdata_display_show">再次輸入密碼:</th>
+                                        <td><input type="password" v-model="passwordA" :style="pdata_display_show" maxlength="10"></td>
                                     </tr>
                                     <tr class="person_info_item">
                                         <th>信箱:</th>
@@ -195,6 +198,7 @@ export default {
         account:'',
         newAccount:'',
         password:'',
+        passwordA:'',
         email:'',
         birthday:'',
         phone:'',
@@ -229,15 +233,14 @@ export default {
         },
         getMemData(){
             this.member = JSON.parse(sessionStorage.getItem('member'));
-            console.log(this.member);
             this.name = this.member.memName;
-            console.log(this.name);
             var xhr = new XMLHttpRequest();
             
             // var memData;
-            // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
-            // var url = ${BASE_URL}/api/getMemData.php
-            xhr.open("post", "http://localhost/CGD102_G2/public/api/getMemData.php", true);
+            const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
+            var url = `${BASE_URL}/api/login.php`;
+            // "http://localhost/CGD102_G2/public/api/getMemData.php"
+            xhr.open("post", url, true);
             xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
             var getMemInfo = `name=${this.name}`;
             xhr.send(getMemInfo);
@@ -245,6 +248,7 @@ export default {
             xhr.onload = function(){
                 this.memData = JSON.parse(xhr.responseText);
                 this.account = this.memData.MEM_ACCOUNT;
+                this.password = this.memData.MEM_PSW;
                 this.email = this.memData.MEM_EMAIL;
                 this.birthday = this.memData.MEM_BIRTHDAY;
                 this.phone = this.memData.MEM_PHONE;
@@ -260,13 +264,11 @@ export default {
         
     },
     created() {
-        this.getMemData(); 
-    },
-    mounted(){
         let checkLogin = sessionStorage.getItem('member');
         if(checkLogin == null){
             location.replace("/home");
         }
-    }
+        this.getMemData(); 
+    },
 }
 </script>

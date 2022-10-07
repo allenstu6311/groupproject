@@ -105,9 +105,10 @@ export default {
                         }
                     }
                 }
-                // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
-                // var url = ${BASE_URL}/api/register.php
-                xhr.open("post", "http://localhost/CGD102_G2/public/api/register.php", true);
+                const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
+                var url = `${BASE_URL}/api/login.php`;
+                // "http://localhost/CGD102_G2/public/api/register.php"
+                xhr.open("post",url, true);
                 xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
 
                 let mem_deta = `account=${this.account}&password=${this.password}&name=${this.name}&email=${this.email}&birthday=${this.birthday}&phone=${this.phone}&localphone=${this.localphone}&address=${this.address}`

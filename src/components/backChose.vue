@@ -9,6 +9,6 @@
     
 </template>
 
-<style>
-@import"import 'bootstrap'";
-</style>
+<script>
+import "bootstrap/scss/bootstrap.scss";
+</script>

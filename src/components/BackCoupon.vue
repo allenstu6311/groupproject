@@ -59,6 +59,8 @@
 </template>
 
 <script>
+import "bootstrap/scss/bootstrap.scss";
+
     const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 
     export default {
@@ -90,8 +92,9 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "bootstrap/scss/bootstrap";
-    @import "../assets/style.scss";
+    // @import "bootstrap/scss/bootstrap"; 
+    // @import "../assets/style.scss";
+    @import "../assets/base/_color.scss"; //有變數要引用的sass
 
     .back_coupons{
         h1{

@@ -23,13 +23,15 @@
     </div>
 </template>
 
+
 <script>
-    
+// import "bootstrap/scss/bootstrap.scss";
 </script>
 
 <style lang="scss" scoped>
-    @import "bootstrap/scss/bootstrap";
-    @import "../assets/style.scss";
+    @import "bootstrap/scss/bootstrap"; 
+    // @import "../assets/style.scss";
+    // @import "../assets/base/_color.scss"; //有變數要引用的sass
 
     .back_coupons_add{
         h1{

@@ -12,13 +12,13 @@
 </template>
 
 <script>
-    
+
 </script>
 
 <style lang="scss" scoped>
-    @import "bootstrap/scss/bootstrap";
-    @import "../assets/style.scss";
-
+    // @import "bootstrap/scss/bootstrap";
+    // @import "../assets/style.scss";
+    @import "../assets/base/_color.scss"; //有變數要引用的sass
     .backstage_manage_header{
         background-color: $blue;
         display: flex;

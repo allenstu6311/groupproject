@@ -17,7 +17,7 @@
 
 <script>
 import {routes} from "@/router/index.js"
-
+import "bootstrap/scss/bootstrap.scss";
 export default {
     data(){
         return{
@@ -96,8 +96,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @import "bootstrap/scss/bootstrap";
-    @import "../assets/style.scss";
+    // @import "bootstrap/scss/bootstrap"; 
+    // @import "../assets/style.scss";
+    @import "../assets/base/_color.scss"; //有變數要引用的sass
 
     #list-home-list{
         font-size: 16px;

@@ -86,7 +86,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "bootstrap/scss/bootstrap";
+    // @import "bootstrap/scss/bootstrap";
     @import "../assets/style.scss";
 
     .table {

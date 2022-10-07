@@ -3,8 +3,8 @@ header('Access-Control-Allow-Origin:*');
 header("Content-Type:application/json;charset=utf-8");
 session_start();
 try{
-  require_once("../../src/connect_cgd102g2.php");
-    // require_once("../connect_cgd102g2.php");//上線用
+  // require_once("../../src/connect_cgd102g2.php");
+    require_once("../connect_cgd102g2.php");//上線用
     $findExistSql = "SELECT * 
             FROM member 
             WHERE MEM_ACCOUNT=:ACCOUNT
@@ -19,6 +19,7 @@ try{
     }else{ //找得到
       //取回會員資料，存入session
         $memData = $existAccount->fetch(PDO::FETCH_ASSOC);
+        $_SESSION["memId"] = $memData["MEM_ID"];
         $_SESSION["memName"] = $memData["MEM_NAME"];
         $_SESSION["memAccount"] = $memData["MEM_ACCOUNT"];
         $_SESSION["memBirthday"] = $memData["MEM_BIRTHDAY"];
@@ -27,7 +28,8 @@ try{
         $_SESSION["memLocalCall"] = $memData["MEM_LOCALCALL"];
         $_SESSION["memEmail"] = $memData["MEM_EMAIL"];
         //送出登入者的資料
-        $result = ["memName"=>$_SESSION["memName"],
+        $result = ["memId"=>$_SESSION["memId"],
+                   "memName"=>$_SESSION["memName"],
                    "memAccount"=>$_SESSION["memAccount"],
                    "memBirthday"=>$_SESSION["memBirthday"],
                    "memAddress"=>$_SESSION["memAddress"],

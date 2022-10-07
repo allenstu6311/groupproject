@@ -1,73 +1,135 @@
 <template>
-  <div class="container-fluid">
+   <BackstageIndexHeader />
+  <div class="container mt-5"> 
     <div class="row">
-      <SlideChose />
-      <table class="table  ">
-        <thead>
-          <tr>
-            <th>商品照片</th>
-            <th>標題</th>
-            <th>狀態</th>
-            <th>上架</th>
-            <th>下架</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="item in data" :key="item.PROD_ID">
-            <th>
-              <img
-                :src="require(`../assets/phps/pic/${item.PROD_PIC1}`)"
-                alt=""
-              />
-            </th>
-            <th>{{ item.PROD_NAME }}</th>
-            <th v-show="item.PROD_STATUS == 1">上架中</th>
-            <th v-show="item.PROD_STATUS == 0">下架中</th>
-            <th>
-              <button
-                type="button"
-                class="btn btn-primary"
-                @click="onTheShelf(item.PROD_ID)"
-              >
-                上架
-              </button>
-            </th>
-            <th>
-              <button
-                type="button"
-                class="btn btn-danger"
-                @click="takeDown(item.PROD_ID)"
-              >
-                下架
-              </button>
-            </th>
-          </tr>
-        </tbody>
-      </table>
+      <div class="col-2">
+          <BackstageIndexAside />
+      </div>
+      <div class="orderBox">
+         <div class="order-search  m-3">
+          <select class="form-select w-25" aria-label="Default select example">
+            <option selected>排序方式</option>
+          </select>
+
+          <div class="input-group mx-3  w-25">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="請輸入訂單名稱"
+              aria-label="Recipient's username"
+              aria-describedby="button-addon2"
+            />
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              id="button-addon2"
+            >
+             <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+        </div>
+           <div class="col-10">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>商品照片</th>
+              <th>標題</th>
+              <th>狀態</th>
+              <th>上架</th>
+              <th>下架</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in data" :key="item.PROD_ID">
+              <td>
+                <img
+                  :src="require(`../assets/phps/pic/${item.PROD_PIC1}`)"
+                  alt=""
+                />
+              </td>
+              <td>{{ item.PROD_NAME }}</td>
+              <td v-show="item.PROD_STATUS == 1">上架中</td>
+              <td v-show="item.PROD_STATUS == 0">下架中</td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  @click="onTheShelf(item.PROD_ID)"
+                >
+                  上架
+                </button>
+              </td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  @click="takeDown(item.PROD_ID)"
+                >
+                  下架
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+   
     </div>
   </div>
+  <nav aria-label="...">
+  <ul class="pagination justify-content-center mt-3 mb-3">
+     <li class="page-item " aria-current="page" :class="{active: pageColor==true}"> 
+      <span class="page-link" @click="changePage(true);pageColor=true">1</span>
+    </li>
+    <li class="page-item " aria-current="page" :class="{active: pageColor==false}">
+      <span class="page-link" @click="changePage(false);pageColor=false">2</span>
+    </li>
+  </ul>
+</nav>
+  <div class="col-10">
+    <BackTherapistAdd />
+  </div>   
 </template>
 <style lang="scss" scoped>
 @import "~bootstrap/scss/bootstrap";
+@import "../assets/style.scss";
+
+*{
+    position: relative;
+}
+.show{
+    position: relative;
+}
+.active{
+    background-color: transparent;
+}
+.container{
+    line-height: 2;
+    .row{
+      flex-wrap: nowrap;
+    }
+}
 table {
-  width: 80% !important;
+  table-layout:fixed;
+  text-align: center;
   thead {
+    background-color: $blue;
     th {
-      background-color: #163d82 !important;
-      font-size: 22px;
-      font-weight: 800;
+      background-color: $blue;
+      font-size: 20px;
+      font-weight: 600;
       color: white;
     }
   }
   tbody {
     tr {
-      th {
-        width: 20%;
-        color:#163d82 !important;
-        background-color:white !important;
-        font-weight:800;
+      td {
+        vertical-align: middle;
+        background-color: $white;
+        font-weight:600;
         img {
-          width: 20%;
+          vertical-align: middle;
+          width: 30%;
         }
       }
     
@@ -76,37 +138,38 @@ table {
   }
 }
 .table-striped > tbody > tr:nth-of-type(odd) > *[data-v-1e3ad792]{
-    background-color:white !important;
+    background-color: $white;
 }
-.container-fluid {
+.orderBox {
   width: 100%;
-  box-sizing: border-box;
-}
-.row {
-  flex-wrap: nowrap;
-}
-.list-group{
-  width: 55% !important;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column !important;
 
-  li{
-     
-       a{
-        background-color: red !important;
-        }
-    }
-}
+  .order-search{
+    display: flex;
+    align-items: center;
+  }
  
+}
 
 </style>
 <script>
-import SlideChose from "@/components/SlideChose.vue";
+import BackstageIndexAside from '@/components/BackstageIndexAside.vue'
+import BackstageIndexHeader from '@/components/BackstageIndexHeader.vue'
+import BackTherapist from '@/components/BackTherapist.vue'
 export default {
   components: {
-    SlideChose,
+        BackstageIndexHeader,
+        BackstageIndexAside,
+        BackTherapist
   },
   data() {
     return {
       data: [],
+      number1:0,
+      number2:10,
+      pageColor:true,
     };
   },
   methods: {
@@ -145,14 +208,33 @@ export default {
           location.reload();
         });
     },
+    changePage(num){
+ 
+      if(num){
+        this.number1=0,
+        this.number2=10
+        this.getPageNumber()
+      }else{
+        this.number1=10
+        this.number2=20
+        this.getPageNumber()
+      }
+    },
+    getPageNumber(){
+        this.axios.get("http://localhost/CGD102_G2/src/assets/phps/totalproduct.php",{
+        params:{
+          range_1:this.number1,
+          range_2:this.number2
+        }
+      }).then((res)=>{
+        console.log(res)
+        this.data = res.data
+      })
+      
+    }
   },
   created() {
-    this.axios
-      .get("http://localhost/CGD102_G2/src/assets/phps/totalproduct.php")
-      .then((res) => {
-        this.data = res.data;
-        console.log(this.data);
-      });
+    this.getPageNumber()
   },
 };
 </script>

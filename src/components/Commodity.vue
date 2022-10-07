@@ -1,5 +1,4 @@
 <template>
-     <router-link to="/BackShop">後台</router-link>
   <div class="commodity-total col-7">
     <div class="commodity-container col-12">
       <div class="commodity-order col-12">
@@ -323,7 +322,7 @@ export default {
           break;
           case 3:
           this.range_1 = 12;
-          this.range_2 = 2;
+          this.range_2 = 6;
           this.getCommodityInfo();
           break;
       }
@@ -339,7 +338,6 @@ export default {
           },
         })
         .then((res) => {
-          // console.log(this.price)
           this.data = res.data;
           this.info = res.data;
           this.data.sort(function () {
@@ -425,7 +423,6 @@ export default {
     },
     data: {
       handler(newVal) {
-        console.log("data",newVal)
         if (newVal.length == 0) {
           this.empty = true;
         } else {
@@ -442,18 +439,7 @@ export default {
        
       },
     },
-    // checkPrice: {
-    //   handler(newVal) {
-    //     console.log("check-->", newVal);
-    //     this.data = newVal;
-    //   },
-    // },
-    // checkTool: {
-    //   handler(newVal) {
-    //     console.log("new-->", newVal);
-    //     this.data = newVal;
-    //   },
-    // },
+
     checkList: {
       handler(newVal) {
         

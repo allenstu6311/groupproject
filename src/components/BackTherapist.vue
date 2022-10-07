@@ -32,20 +32,26 @@
                     <td>{{ backstageTherapsit.THERAPIST_HIREDATE }}</td>
                     <td>
                         <div>
-                        <select class="form-select form-select-sm">
-                            <option selected>在職</option>
-                            <option value="1">離職</option>
+                        <select class="form-select form-select-sm" @change="chlive($event)">
+                            <option value='1' selected>在職</option>
+                            <option value='0'>離職</option>
                         </select></div>
                     </td>
                     <td>
                         <div>
                             <!-- <img src="../assets/images/Pen.png" alt="修改icon"> -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <router-link to="/backstageIndex">
+                            <svg 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            class="icon icon-tabler icon-tabler-edit"
+                            width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                            >
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
                                 <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
                                 <path d="M16 5l3 3"></path>
                             </svg>
+                            </router-link>
                         </div>
                     </td>
                 </tr>
@@ -77,6 +83,42 @@
                 }
                 await getData(url); // 觸發 getData 的匿名 function 內容 ==> 76 ~ 78 行的內容
                 console.log(this.backstageTherapsitList);
+            },
+            chlive(e){
+                this.backstageTherapsitList[0].THERAPIST_STATUS = e.target.value;
+                let THERAPIST_STATUS = this.backstageTherapsitList[0].THERAPIST_STATUS;
+                let THERAPIST_ACCOUNT = this.backstageTherapsitList[0].THERAPIST_ACCOUNT;
+
+                console.log(THERAPIST_STATUS);
+
+                var xhr = new XMLHttpRequest();
+                
+                xhr.onload = function(){
+                    if(xhr.status == 200){
+                        console.log(xhr.status);
+                        if(xhr.responseText){
+                            if(xhr.reponseText == "1"){
+                                alert("ok");
+                            }
+                            // alert("狀態修改成功");
+                            // window.location.replace("/backtherapist");
+                        }else{
+                            alert("狀態修改失敗");
+                        }
+                    }
+                }
+                xhr.open("post","http://localhost/CGD102_G2/src/assets/phps/backtherapistselectchange.php", true);
+                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+                let therapist_data = `account=${THERAPIST_ACCOUNT}&status=${THERAPIST_STATUS}`;
+                xhr.send(therapist_data);
+                console.log(therapist_data);
+            },
+            watch: {
+                 chlive(e){
+                    // e.target.value;
+                    console.log(e.target.value);
+                }
             }
         }
     }
@@ -121,6 +163,7 @@
                 width: 30%;
                 background-color: transparent;
                 border: none;
+                cursor: pointer;
             }
             thead{
                 background-color: $blue;

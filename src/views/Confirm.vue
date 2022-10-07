@@ -48,14 +48,7 @@ export default {
   },
   methods: {
     Information() {
-      let orders = localStorage.getItem("order");
-      if (!orders) return;
-      this.order = JSON.parse(orders);
-
-      let members = localStorage.getItem("user");
-      if (!members) return;
-      this.member = JSON.parse(members);
-
+    
       let carts = localStorage.getItem("cart");
       if (!carts) return;
       this.cart = JSON.parse(carts);
@@ -64,16 +57,9 @@ export default {
       if (!calculates) return;
       this.calculate = JSON.parse(calculates);
 
-      //   console.log("商-->",this.calculate)
-
       let totalPrices = localStorage.getItem("totalPrice");
       if (!totalPrices) return;
       this.totalPrice = JSON.parse(totalPrices);
-
-      this.score = (
-        this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
-      ).toFixed(1);
-      this.star = parseInt(this.score);
     },
     payInfo() {
       //商品清單
@@ -95,7 +81,6 @@ export default {
     },
     sendOrderItems() {//商品明細
       for (let i = 0; i < this.cart.length; i++) {
-        console.log(this.cart[i]);
         this.axios
           .get("http://localhost/CGD102_G2/src/assets/phps/productOrder.php", {
             params: {
@@ -106,7 +91,6 @@ export default {
             },
           })
           .then((res) => {
-            console.log("res", res);
           });
       }
     },

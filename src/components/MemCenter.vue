@@ -203,7 +203,8 @@ export default {
         address:'',
         name:'',
         memData:'',
-        areaCode:''
+        areaCode:'',
+        member:''
     }),
     computed: {
         modalStyle() {
@@ -227,7 +228,10 @@ export default {
             this.isShow = !this.isShow;
         },
         getMemData(){
-            this.name = sessionStorage.getItem('memName');
+            this.member = JSON.parse(sessionStorage.getItem('member'));
+            console.log(this.member);
+            this.name = this.member.memName;
+            console.log(this.name);
             var xhr = new XMLHttpRequest();
             
             // var memData;
@@ -259,7 +263,7 @@ export default {
         this.getMemData(); 
     },
     mounted(){
-        let checkLogin = sessionStorage.getItem('memName');
+        let checkLogin = sessionStorage.getItem('member');
         if(checkLogin == null){
             location.replace("/home");
         }

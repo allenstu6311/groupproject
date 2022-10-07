@@ -11,7 +11,7 @@
     <div
       class="shopping-cart-empty"
       v-if="detect == true"
-      style="text-align: center"
+      style="text-align: center;margin:100px 0"
     >
       <h1>目前購物車是空的</h1>
     </div>
@@ -58,6 +58,7 @@
   </div>
 
   <div class="shopping-discount col-10">
+    <small style="color:red" v-if="unused==true">(尚有優惠券未使用)</small>
     <h5>選擇優惠券:</h5>
     <select name="" id="" v-model="sel" @change="selChange(sel)">
       <option value="1">請選擇</option>
@@ -74,12 +75,13 @@
     </div>
     <div class="shopping-check">
       <div class="shopping-checkout">
+        
         <p>商品金額:{{ productPrice }}元</p>
         <p>折扣金額:{{ totalPrice - productPrice }}</p>
         <p>
-          結帳金額:$<strong>{{ totalPrice }}</strong>
-        </p>
-        <router-link to="/Confirm"
+          結帳金額:$:<strong style="font-size:22px;color:red">{{ totalPrice }}</strong>
+        </p> 
+        <router-link @click="checkMember(e)"  to="/Confirm" 
           ><button class="btnLittle">前往結帳</button>
         </router-link>
       </div>
@@ -105,6 +107,8 @@ export default {
       block: "☆",
       detect: false,
       order: [],
+      member:[],
+      unused:false,
     };
   },
   methods: {
@@ -157,9 +161,7 @@ export default {
       let orders = localStorage.getItem("order");
       if (orders) this.order = JSON.parse(orders);
 
-      let members = localStorage.getItem("user");
-      if (members) this.member = JSON.parse(members);
-
+     
       let carts = localStorage.getItem("cart");
       if (carts) this.cart = JSON.parse(carts);
 
@@ -168,6 +170,10 @@ export default {
 
       let totalPrices = localStorage.getItem("totalPrice");
       if (totalPrices) this.totalPrice = JSON.parse(totalPrices);
+
+      let members = sessionStorage.getItem("memName");
+      this.member = members
+      console.log("mem",this.member)
 
       if (this.order.length) {
         this.score = (
@@ -180,6 +186,13 @@ export default {
       this.totalPrice = parseInt(this.productPrice * this.sel);
       this.countMoney();
     },
+    checkMember(){
+      if(!this.member){
+        alert("您尚未登入")
+        this.$router.push("/MemLogin")
+      
+      }
+    }
   },
   computed: {
     buyCar: function () {
@@ -203,13 +216,24 @@ export default {
     }
   },
   created() {
-    this.axios
-      .get("http://localhost/CGD102_G2/src/assets/phps/member.php")
-      .then((res) => {
-        this.coupon = res.data;
-      });
     this.getInfo();
     this.selChange();
+  },
+  mounted() {
+     if(this.member){
+      this.axios
+      .get("http://localhost/CGD102_G2/src/assets/phps/member.php",{
+        params:{
+           MEM_NAME:this.member
+        }
+       
+      })
+      .then((res) => {
+        this.coupon = res.data;
+        console.log(this.coupon)
+      });
+
+    }
   },
 
   watch: {
@@ -243,14 +267,13 @@ export default {
          
         this.cart.push({ ...obj });
         this.calculate.push({ ...obj });
-   this.detect = false;
+        this.detect = false;
         this.setLocal();
       },
       deep: true,
     },
     buyCar: {
       handler(newVal) {
-        console.log(newVal);
         if (newVal.length == 0) {
           this.detect = true;
         }
@@ -277,6 +300,15 @@ export default {
           this.calculate = [];
         }
       },
+    },
+    coupon:{
+      handler(newVal){
+        if(newVal.length!=0){
+          this.unused=true
+        }else{
+           this.unused=false
+        }
+      }
     },
     deep: true,
   },

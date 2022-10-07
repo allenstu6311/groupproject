@@ -64,14 +64,12 @@ export default {
     },
     methods: {
         logout(){
-            sessionStorage.removeItem("memName");
-            sessionStorage.removeItem("memPhone");
-            sessionStorage.removeItem("memAddress");
+            sessionStorage.removeItem("member");
             location. reload();
         }
     },
     mounted() {
-        let checkLogin = sessionStorage.getItem('memName');
+        let checkLogin = sessionStorage.getItem('member');
         if(checkLogin){
             this.iconShow = false,
             this.selectShow = true

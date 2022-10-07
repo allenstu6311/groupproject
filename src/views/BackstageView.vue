@@ -14,7 +14,7 @@
                         <p>按摩師登入</p>
                         <img src="../assets/images/masseurIcon.png">
                     </div>
-            </router-link>
+                </router-link>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
     .choose_id{
         font-size: 40px;
         font-weight: 600;
-        margin: 100px 0 0 0 ;
+        padding: 100px 0 150px 0 ;
         letter-spacing: 1px;
         color:#163D82;
     }
@@ -39,14 +39,26 @@
         max-width: 1200px;
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-evenly;
 
         .manageLogin,.masseurLogin{
             width: 250px;
-            height: 300px;
-            background-color: aquamarine;
-            border-radius: 10px;
+            height: 250px;
+            background-color: #163D82;
+            border-radius: 50%;
             cursor: pointer;
+            transition: all .3s;
+            
+            &:hover{
+                transform: scale(1.1);
+            }
+            
+            p{
+                font-size: 32px;
+                font-weight: 600;
+                color: white;
+                padding: 45px 0 40px 0;
+            }
         }
     }
 }

@@ -264,19 +264,18 @@
             }
         },
         created(){ //一進網頁就直接執行的~
-
-            this.axios.get( `${BASE_URL}/api/homeMsg.php`)
+            // this.axios.get( "http://localhost/CGD102_G2/src/assets/phps/homeMsg.php") //開發用
+            this.axios.get( `${BASE_URL}/api/homeMsg.php`) //上線用
             .then((msg1)=>{ //msg1 可以自己取名,存取上面的路徑
                 this.msgList=msg1.data //把路徑中的資料(php)丟到上面的陣列中  .data是類似資料型別,也有殼能不是data
                // console.log("MSG~~~--->",this.msgList)  檢查有沒有抓資料近來
                 
             })
 
-        
-            this.axios.get( `${BASE_URL}/api/homeProduct.php`)
+            // this.axios.get( "http://localhost/CGD102_G2/src/assets/phps/homeProduct.php") //開發用
+            this.axios.get( `${BASE_URL}/api/homeProduct.php`)//上線用
             .then((res)=>{
                 this.product=res.data
-                //console.log("俊彥大帥哥--->",this.product) 檢查有沒有抓資料近來
             })
 
 
@@ -284,8 +283,8 @@
         },
         methods:{
             async getDataFromApi() { //async是非同步
-                // var url = 'http://localhost/CGD102_G2/src/assets/phps/news.php'
-                var url = `${BASE_URL}/api/news.php`
+                // var url = 'http://localhost/CGD102_G2/src/assets/phps/news.php'//開發用
+                var url = `${BASE_URL}/api/news.php` //上線用
                 let getData = async(url) => {
                     let response = await fetch(url); // await 很重要
                     let JSON =  response.json();

@@ -8,7 +8,8 @@ header("Content-Type:application/json;charset=utf-8");
 // function fileInfo($PROD_NAME,$PROD_PRICE,$PROD_PIC1,$PROD_PIC2,$PROD_PIC3,
 // $PROD_STATUS,$PROD_DATE,$PROD_DESC1,$PROD_DESC2,$PROD_DESC3,$PROD_TYPE){
 
-    require_once("../../connect_cgd102g2.php");
+     // require_once("../../src/connect_cgd102g2.php"); //開發路徑
+     require_once("../connect_cgd102g2.php");//上線路徑
     
         // if(file_exists("./pic")===false){
         //     mkdir("pic");//製造資料夾

@@ -11,6 +11,7 @@
 </template>
 
 <script>
+
 import ShoppingCar from "@/components/ShoppingCar.vue"
 import ProductCart from "@/components/ProductCart.vue"
  

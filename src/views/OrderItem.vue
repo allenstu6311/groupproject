@@ -97,6 +97,13 @@
 }
 .lightBoxShow{
   display: block !important;
+  position: fixed;
+  margin: auto;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.5);
    .modal-dialog{
     display: flex;
     align-items: center;
@@ -162,6 +169,8 @@ table {
 import BackstageIndexAside from '@/components/BackstageIndexAside.vue'
 import BackstageIndexHeader from '@/components/BackstageIndexHeader.vue'
 import BackTherapist from '@/components/BackTherapist.vue'
+
+const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 export default {
   components: {
   BackstageIndexHeader,
@@ -177,7 +186,9 @@ export default {
   },
   methods:{
     orderDetail(id){
-      this.axios.get("http://localhost/CGD102_G2/src/assets/phps/orderItemProduct.php",{
+        var url = `${BASE_URL}/api/orderItemProduct.php` //上線
+      // var url = "http://localhost/CGD102_G2/public/api/orderItemProduct.php"
+      this.axios.get(url,{
         params:{
           order_id:id
         }
@@ -191,7 +202,9 @@ export default {
     },
   },
   created(){
-    this.axios.get("http://localhost/CGD102_G2/src/assets/phps/backOrderItems.php")
+       var url = `${BASE_URL}/api/backOrderItems.php` //上線
+      // var url = "http://localhost/CGD102_G2/public/api/backOrderItems.php"
+    this.axios.get(url)
     .then((res)=>{
         this.data=res.data
         console.log(this.data)

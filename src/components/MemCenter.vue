@@ -42,11 +42,15 @@
                                     </tr>
                                     <tr class="person_info_item">
                                         <th :style="pdata_display_show">輸入舊密碼:</th>
-                                        <td><input type="password" v-model="password" :style="pdata_display_show" maxlength="10"></td>
+                                        <td><input type="password" v-model="inputpassword" :style="pdata_display_show" maxlength="10"></td>
+                                    </tr>
+                                    <tr class="person_info_item">
+                                        <th :style="pdata_display_show">輸入新密碼:</th>
+                                        <td><input type="password" v-model="newpassword" :style="pdata_display_show" maxlength="10"></td>
                                     </tr>
                                     <tr class="person_info_item">
                                         <th :style="pdata_display_show">再次輸入密碼:</th>
-                                        <td><input type="password" v-model="passwordA" :style="pdata_display_show" maxlength="10"></td>
+                                        <td><input type="password" v-model="newpasswordA" :style="pdata_display_show" maxlength="10"></td>
                                     </tr>
                                     <tr class="person_info_item">
                                         <th>信箱:</th>
@@ -68,7 +72,7 @@
                                         <td :style="pdata_display_none">{{areaCode}}-{{lphone}}</td>
                                         <td><input type="text" v-model="areaCode" :style="pdata_display_show" maxlength="3" style="width:20px;">
                                             <span :style="pdata_display_show">-</span>
-                                            <input type="text" v-model="lphone" :style="pdata_display_show" maxlength="10">
+                                            <input type="text" v-model="lphone" :style="pdata_display_show" maxlength="10" style="width:100px;">
                                         </td>
                                         
                                     </tr>
@@ -79,7 +83,8 @@
                                     </tr>
                                 </table>
                                 <div class="confirm_button">
-                                    <button class="btnMinimum" id="mem_confirm" :style="pdata_display_show" @click="editdata = false,displayshow = true">確定</button>
+                                    <button class="btnMinimum" :style="pdata_display_show" @click="cancelEdit">返回</button>
+                                    <button class="btnMinimum" id="mem_confirm" :style="pdata_display_show" @click="upmemdata">確定</button>
                                 </div>
                             </div>
                             <div class="edit">
@@ -187,6 +192,7 @@
 
 <script>
 import MemLightBox from '@/components/MemLightBox.vue';
+import { watch } from '@vue/runtime-core';
 export default {
     components: {
         MemLightBox,
@@ -197,8 +203,10 @@ export default {
         displayshow:true,
         account:'',
         newAccount:'',
-        password:'',
-        passwordA:'',
+        inputpassword:'',
+        oldpassword:'',
+        newpassword:'',
+        newpasswordA:'',
         email:'',
         birthday:'',
         phone:'',
@@ -208,7 +216,10 @@ export default {
         name:'',
         memData:'',
         areaCode:'',
-        member:''
+        member:'',
+        memId:'',
+        verifyPsw:'',
+        verifyEmail:'',
     }),
     computed: {
         modalStyle() {
@@ -234,13 +245,14 @@ export default {
         getMemData(){
             this.member = JSON.parse(sessionStorage.getItem('member'));
             this.name = this.member.memName;
+            this.memId = this.member.memId;
             var xhr = new XMLHttpRequest();
             
             // var memData;
-            const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
-            var url = `${BASE_URL}/api/login.php`;
+            // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
+            // var url = `${BASE_URL}/api/login.php`;
             // "http://localhost/CGD102_G2/public/api/getMemData.php"
-            xhr.open("post", url, true);
+            xhr.open("post", "http://localhost/CGD102_G2/public/api/getMemData.php", true);
             xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
             var getMemInfo = `name=${this.name}`;
             xhr.send(getMemInfo);
@@ -248,7 +260,7 @@ export default {
             xhr.onload = function(){
                 this.memData = JSON.parse(xhr.responseText);
                 this.account = this.memData.MEM_ACCOUNT;
-                this.password = this.memData.MEM_PSW;
+                this.oldpassword = this.memData.MEM_PSW;
                 this.email = this.memData.MEM_EMAIL;
                 this.birthday = this.memData.MEM_BIRTHDAY;
                 this.phone = this.memData.MEM_PHONE;
@@ -259,9 +271,62 @@ export default {
                 this.areaCode = this.lphonef.slice(0,2)
                 this.lphone = this.lphonef.slice(3)
             }.bind(this);
-
         },
-        
+        upmemdata(){
+            if(this.inputpassword!=this.oldpassword){
+                alert("輸入舊密碼不符");
+                return;
+            }else if(this.verifyPsw == false){
+                alert("新密碼格式錯誤");
+                return;
+            }else if(this.newpassword!=this.newpasswordA){
+                alert("輸入新密碼兩次不相同");
+                return;
+            }else if(this.verifyEmail == false){
+                alert("信箱格式錯誤");
+                return;
+            }else{
+                this.editdata = false;
+                this.displayshow = true;
+                
+                var xhr = new XMLHttpRequest();
+                // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
+                // var url = `${BASE_URL}/api/login.php`;
+                // "http://localhost/CGD102_G2/public/api/register.php"
+                xhr.open("post","http://localhost/CGD102_G2/public/api/updateMemData.php", true);
+                xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+
+                let new_mem_deta = `id=${this.memId}&account=${this.account}&password=${this.newpassword}&name=${this.name}&email=${this.email}&birthday=${this.birthday}&phone=${this.phone}&localphone=${this.lphonef}&address=${this.address}`
+                xhr.send(new_mem_deta);
+
+                this.inputpassword = '';
+                this.newpassword = '';
+                this.newpasswordA = '';
+                alert("修改成功");
+                location.reload();
+            }
+        },
+        checkNew(reg,content){
+            if(reg.test(content)){
+                return true;
+            }else{
+                return false;
+            }
+        },
+        cancelEdit(){
+            this.editdata = false;
+            this.displayshow = true;
+        }
+    },
+    watch:{
+        newpassword:function(content){
+            let reg = /^[0-9a-z]{6,10}$/;
+            this.verifyPsw = this.checkNew(reg,content)
+        },
+        email:function(content){
+            let reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+            this.verifyEmail = this.checkNew(reg,content)
+        },
     },
     created() {
         let checkLogin = sessionStorage.getItem('member');

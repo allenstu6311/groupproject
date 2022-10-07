@@ -26,6 +26,8 @@ import ManageItems from '../views/ManageItems.vue'
 import BackTherapistAddView from '../views/BackTherapistAddView.vue'
 import BackCouponView from '../views/BackCouponView.vue'
 import BackCouponAddView from '../views/BackCouponAddView.vue'
+import BackstageNewsView from '../views/BackstageNewsView.vue'
+import BackstageFAQView from '../views/BackstageFAQView.vue'
 
 
 
@@ -35,13 +37,25 @@ const routes = [
     path: '/',
     name: 'frontpage',
     component: FrontPageView,
-    meta:{isHide:false}
+    meta:{isHide:true}
   },
   {
     path: '/home',
     name: 'home',
     component: HomeView,
     meta:{isHide:false}
+  },
+  {
+    path: '/BackstageNews',
+    name: 'BackstageNews',
+    component: BackstageNewsView,
+    meta:{isHide:true}
+  },
+  {
+    path: '/BackstageFAQ',
+    name: 'BackstageFAQ',
+    component: BackstageFAQView,
+    meta:{isHide:true}
   },
   {
     path: '/about',

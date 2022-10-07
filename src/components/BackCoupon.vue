@@ -59,13 +59,9 @@
 </template>
 
 <script>
-<<<<<<< HEAD
 import "bootstrap/scss/bootstrap.scss";
 
-    const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
-=======
     //const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..' //上線用
->>>>>>> sherili
 
     export default {
         props: {

@@ -122,8 +122,8 @@ export default {
     },
   },
   created() {
-       var url = `${BASE_URL}/api/addOn.php` //上線
-      // var url = "http://localhost/CGD102_G2/public/api/addOn.php";
+      //  var url = `${BASE_URL}/api/addOn.php` //上線
+      var url = "http://localhost/CGD102_G2/public/api/addOn.php";
       this.axios
       .get(url)
       .then((res) => {

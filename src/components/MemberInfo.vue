@@ -100,6 +100,12 @@
   width: 300px;
   height: 300px;
 }
+img {
+    max-height: 100%;
+}
+.my-leaflet-map-container img {
+    max-height: none;
+}
 
 </style>
 
@@ -153,6 +159,18 @@ export default {
           this.url =
             "https://run.mocky.io/v3/721bf04e-fa05-46c5-9bd3-8658b17b4d70";
           break;
+        case "臺中市":
+          this.url="https://run.mocky.io/v3/c5cf6ffe-d567-404c-9806-ee337c789854";
+           break;
+        case "臺南市":
+          this.url="https://run.mocky.io/v3/cd67b8f2-f688-405c-a792-16f8f50ad43d";
+           break;
+        case "臺東市":
+          this.url="https://run.mocky.io/v3/6ec1183b-d847-4f30-9cf4-9db12e0aa2ce";
+           break;
+        case "嘉義市":
+          this.url="https://run.mocky.io/v3/f49a840e-abf3-4678-8121-e73d58f38889";
+           break;
       }
       this.axios.get(this.url).then((res) => {
         this.shop = res.data.stores;
@@ -162,6 +180,9 @@ export default {
     },
    
     initMap() {
+          setTimeout(function () {
+    window.dispatchEvent(new Event('resize'));
+      }, 100);
       this.map = L.map("sevenMap").setView([25.056, 121.501], 13);
 
       L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -176,6 +197,7 @@ export default {
       this.store = index;
     },
     updateMap(seven) {
+
       this.post = [];
       this.sevenAddress = [
         {
@@ -216,6 +238,7 @@ export default {
       return this.location.find((item) => item.CityName === this.city)
         ?.AreaList;
     },
+    
   },
   watch: {
     check: {
@@ -238,12 +261,6 @@ export default {
     }
   },
   created() {
-    // this.axios
-    //   .get("http://localhost/CGD102_G2/src/assets/phps/memberInfo.php")
-    //   .then((res) => {
-    //     this.member = res.data;
-    //     // console.log(this.member[0])
-    //   });
     let members = sessionStorage.getItem("member");
     this.member =JSON.parse( members)
 

@@ -107,7 +107,6 @@ export default {
     let members = sessionStorage.getItem("member");
     this.member = JSON.parse(members);
 
-    console.log("mem", this.member);
     this.axios
       .get(url, {
         params: {
@@ -117,7 +116,6 @@ export default {
       .then((res) => {
         this.memberCoups = res.data;
 
-        console.log("c", this.memberCoups);
       });
     this.Information();
     this.productMoney();

@@ -114,8 +114,8 @@ export default {
                     }
                 }
             }
-            // xhr.open("post","http://localhost/CGD102_G2/public/api/backtherapistadd.php", true); //開發用
-            xhr.open("post",`${BASE_URL}/api/backtherapistadd.php`, true); //上線用
+            xhr.open("post","http://localhost/CGD102_G2/public/api/backtherapistadd.php", true); //開發用
+            // xhr.open("post",`${BASE_URL}/api/backtherapistadd.php`, true); //上線用
             xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
             let therapist_data = `license1=${this.license1}&license2=${this.license2}&license3=${this.license3}&license4=${this.license4}&account=${this.account}&password=${this.password}&name=${this.name}&hiredate=${this.hiredate}&pic=${this.pic}`;

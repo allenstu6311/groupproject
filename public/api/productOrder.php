@@ -6,7 +6,8 @@ header("Content-Type:application/json;charset=utf-8");
 
 function productOrder($order_id,$prod_id,$prod_price,$prod_num){
 
-require_once("../../connect_cgd102g2.php");
+//   require_once("../../src/connect_cgd102g2.php"); //開發路徑
+require_once("../connect_cgd102g2.php");//上線路徑
 
 
 $sql = "insert into ORDER_ITEMS VALUES(null,{$order_id},{$prod_id},{$prod_price},{$prod_num}) ";

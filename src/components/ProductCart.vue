@@ -219,8 +219,8 @@ export default {
     this.selChange();
   },
   mounted() {
-      //  var url = `${BASE_URL}/api/member.php` //上線
-      var url = "http://localhost/CGD102_G2/public/api/member.php"
+       var url = `${BASE_URL}/api/member.php` //上線
+      // var url = "http://localhost/CGD102_G2/public/api/member.php"
      if(this.member){
       this.axios
       .get(url,{

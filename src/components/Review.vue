@@ -88,8 +88,9 @@ export default {
     },
     methods:{
         giveRating(num,name){
-        
-            this.axios.get("http://localhost/CGD102_G2/src/assets/phps/review.php",
+        var url = `${BASE_URL}/api/review.php` //上線
+      // var url = "http://localhost/CGD102_G2/public/api/review.php"
+        this.axios.get(url,
             {
                 params:{
                     number:num,
@@ -99,8 +100,10 @@ export default {
             alert("感謝評價")
         },
         upload(){
+            var url = `${BASE_URL}/api/comment.php` //上線
+            // var url = http://localhost/CGD102_G2/public/api/comment.php"
             if(!this.member){
-                    this.axios.get("http://localhost/CGD102_G2/src/assets/phps/comment.php",
+                    this.axios.get("http://localhost/CGD102_G2/public/api/comment.php",
                 {
                     params:{
                         post:this.tex,
@@ -144,7 +147,7 @@ export default {
        
         this.getStorage()
       
-                    //  var url = 'http://localhost/CGD102_G2/public/api/reservation.php'
+        //  var url = 'http://localhost/CGD102_G2/public/api/reservation.php'
         var url = `${BASE_URL}/api/article.php`
         this.axios.get("http://localhost/CGD102_G2/public/api/article.php",
         {

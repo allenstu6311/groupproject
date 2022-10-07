@@ -5,7 +5,8 @@ header("Content-Type:application/json;charset=utf-8");
 
 function price($filterPrice_1,$filterPrice_2){
 
-require_once("../../connect_cgd102g2.php");
+  // require_once("../../src/connect_cgd102g2.php"); //開發路徑
+  require_once("../connect_cgd102g2.php");//上線路徑
 
 
 $sql = "select * from PRODUCT where PROD_STATUS=1 and PROD_PRICE BETWEEN {$filterPrice_1} AND {$filterPrice_2} ";

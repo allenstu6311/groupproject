@@ -52,7 +52,6 @@
         </div>
     </div>
     </div>
-    
 
     <div class="message-write">
             <textarea name="" id="" cols="40" rows="10" class="write-tex" v-model="tex" @keyup.enter="upload"></textarea>
@@ -82,7 +81,8 @@ export default {
             score:[],
             star:[],
             block:"☆",
-            article:[]
+            article:[],
+            member:[],
        
         }
     },
@@ -99,8 +99,8 @@ export default {
             alert("感謝評價")
         },
         upload(){
-            
-                this.axios.get("http://localhost/CGD102_G2/src/assets/phps/comment.php",
+            if(!this.member){
+                    this.axios.get("http://localhost/CGD102_G2/src/assets/phps/comment.php",
                 {
                     params:{
                         post:this.tex,
@@ -117,6 +117,13 @@ export default {
 
                 this.tex=""
 
+            }else{
+                alert("您尚未登入");
+                this.$router.push("/MemLogin")
+            }
+            
+            
+
         },
         getStorage(){
            
@@ -124,12 +131,10 @@ export default {
             if(!orders) return;
             this.order = JSON.parse(orders)
 
-            let members = localStorage.getItem("user");
-            if (!members) return;
-            this.member = JSON.parse(members);
-
+            let members = sessionStorage.getItem("member");
+            this.member = members
+            
             this.score =(this.order[0].PROD_REVIEW/this.order[0].PROD_TIMES ).toFixed(1)
-           
             this.star = parseInt(this.score)
         },
     

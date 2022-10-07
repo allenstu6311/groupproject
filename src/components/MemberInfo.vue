@@ -221,9 +221,9 @@ export default {
     check: {
       handler(newVal) {
         if (newVal == true) {
-          this.name = this.member[0].MEM_NAME;
-          this.cellphone = this.member[0].MEM_PHONE;
-          this.address = this.member[0].MEM_ADDRESS;
+          this.name = this.member.memName;
+          this.cellphone = this.member.memPhone;
+          this.address = this.member.memAddress;
         } else {
           (this.name = ""), (this.cellphone = ""), (this.address = "");
         }
@@ -238,12 +238,15 @@ export default {
     }
   },
   created() {
-    this.axios
-      .get("http://localhost/CGD102_G2/src/assets/phps/memberInfo.php")
-      .then((res) => {
-        this.member = res.data;
-        // console.log(this.member[0])
-      });
+    // this.axios
+    //   .get("http://localhost/CGD102_G2/src/assets/phps/memberInfo.php")
+    //   .then((res) => {
+    //     this.member = res.data;
+    //     // console.log(this.member[0])
+    //   });
+    let members = sessionStorage.getItem("member");
+    this.member =JSON.parse( members)
+
     this.axios
       .get("/json/taiwan.json") //鄉鎮
       .then((res) => {

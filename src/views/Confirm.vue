@@ -1,13 +1,11 @@
 <template>
- 
   <div class="background-pic">
     <img src="../assets/images/bcgFlower.png" alt="" />
   </div>
 
   <div class="confirm-container">
     <MemberInfo />
-    <CheckCommodity 
-    @productPrice ="productMoney"/>
+    <CheckCommodity @productPrice="productMoney" />
   </div>
   <div class="agree">
     <input type="checkbox" v-model="agree" />
@@ -25,30 +23,28 @@
       下一頁
     </button>
   </div>
-
 </template>
 <script>
-
 import MemberInfo from "@/components/MemberInfo.vue";
 import CheckCommodity from "@/components/CheckCommodity.vue";
 export default {
   components: {
-   
     MemberInfo,
     CheckCommodity,
   },
-  
+
   data() {
     return {
       agree: false,
       totalPrice: 0,
       order_id: "",
-      productNote:"",
+      productNote: "",
+      member: [],
+      memberCoups: [],
     };
   },
   methods: {
     Information() {
-    
       let carts = localStorage.getItem("cart");
       if (!carts) return;
       this.cart = JSON.parse(carts);
@@ -63,15 +59,15 @@ export default {
     },
     payInfo() {
       //商品清單
-        alert("結帳完成")
+      alert("結帳完成");
       this.axios
         .get("http://localhost/CGD102_G2/src/assets/phps/productlist.php", {
           params: {
-            mem_id: this.member[0].MEM_ID,
+            mem_id: this.memberCoups.length>0?this.memberCoups[0].MEM_ID:2,
             productPrice: this.productNote,
-            cps_id: this.memberCoups[0].CPS_ID,
+            cps_id: this.memberCoups.length>0?this.memberCoups[0].CPS_ID:1,
             totalPrice: this.totalPrice,
-            address: this.member[0].MEM_ADDRESS,
+            address: this.member.memAddress,
           },
         })
         .then((res) => {
@@ -79,7 +75,8 @@ export default {
           this.timerd = setTimeout(this.sendOrderItems, 1000);
         });
     },
-    sendOrderItems() {//商品明細
+    sendOrderItems() {
+      //商品明細
       for (let i = 0; i < this.cart.length; i++) {
         this.axios
           .get("http://localhost/CGD102_G2/src/assets/phps/productOrder.php", {
@@ -90,25 +87,32 @@ export default {
               prod_num: this.cart[i].PROD_NUM,
             },
           })
-          .then((res) => {
-          });
+          .then((res) => {});
       }
     },
-    productMoney(val){
-        this.productNote=val
-    }
+    productMoney(val) {
+      this.productNote = val;
+    },
   },
 
   created() {
+    let members = sessionStorage.getItem("member");
+    this.member = JSON.parse(members);
+
+    console.log("mem", this.member);
     this.axios
-      .get("http://localhost/CGD102_G2/src/assets/phps/member.php")
+      .get("http://localhost/CGD102_G2/src/assets/phps/member.php", {
+        params: {
+          MEM_NAME: this.member.memName,
+        },
+      })
       .then((res) => {
         this.memberCoups = res.data;
-        // console.log("Coups-->", this.memberCoups);
-        // console.log("mem-->", this.member);
+
+        console.log("c", this.memberCoups);
       });
     this.Information();
-    this.productMoney()
+    this.productMoney();
   },
   watch: {
     calculate: {
@@ -118,7 +122,6 @@ export default {
           this.productPrice = parseFloat(
             this.productPrice + newVal[i].PROD_PRICE * newVal[i].PROD_NUM
           );
-          
         }
       },
     },

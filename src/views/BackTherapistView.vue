@@ -2,7 +2,7 @@
     <BackstageIndexHeader />
     <div class="container">
         <div class="row">
-            <div class="col-2">
+            <div class="col-2 aside_height">
                 <BackstageIndexAside />
             </div>
             <div class="col-10">
@@ -41,5 +41,8 @@ export default {
     }
     .container{
         line-height: 2;
+        .aside_height{
+            line-height: 1.7;
+        }
     }
 </style>

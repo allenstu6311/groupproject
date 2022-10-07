@@ -78,8 +78,8 @@
         },
         methods:{
             async getDataFromApi() {
-                xhr.open("post","http://localhost/CGD102_G2/public/api/therapistContent.php", true); //開發用
-                // xhr.open("post",`${BASE_URL}/api/therapistContent.php`, true); //上線用
+                // xhr.open("post","http://localhost/CGD102_G2/public/api/therapistContent.php", true); //開發用
+                xhr.open("post",`${BASE_URL}/api/therapistContent.php`, true); //上線用
                 let getData = async(url) => {
                     let response = await fetch(url); // await 很重要
                     let JSON =  response.json();

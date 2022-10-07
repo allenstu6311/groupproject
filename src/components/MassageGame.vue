@@ -111,7 +111,7 @@
 
             <div class="game_btn">
                 <button class="btnLarge" v-if="isActive"  @click="change()">確認答案</button>
-                <router-link to="/GetCoupon" class="btnLarge" v-else>領取折價券</router-link>
+                <router-link to="/GetCoupon" class="btnLarge" v-else @click="getCoupon()">領取折價券</router-link>
             </div>
 
         </div>
@@ -348,6 +348,16 @@
                         this.correctAnswer='中衝穴位於雙手手指的中指指尖，主要功效是清熱、開竅、利喉舌、清心瀉熱，主治中暑、中風昏迷、頭痛、咽喉腫痛、高血壓、心絞痛等病症。';
                     }
                 }
+            },
+            getCoupon(){
+                let xhr = new XMLHttpRequest();
+                // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'//上線用
+                // var url = ${BASE_URL}/api/getCoupons.php //上線用
+                xhr.open("post", "http://localhost/CGD102_G2/public/api/getCoupons.php", true); //開發用
+                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+                let game_count = `count=${this.count}`;
+                xhr.send(game_count);
             }
         },
     }

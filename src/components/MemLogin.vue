@@ -78,23 +78,23 @@ export default {
                         sessionStorage.setItem("member", JSON.stringify(this.session));
                         this.loginStatus = sessionStorage.getItem("member")
                         if (this.loginStatus != '') {
-                            if (document.referrer === '') {
+                            // if (document.referrer === '') {
                                 location.replace("/MemCenter");
-                            }
+                            // }
                             // else if(document.referrer === '/MemRegister'){
                             //     location.replace("/MemCenter");
                             // }
-                            else {
-                                location.replace(document.referrer);
-                            }
+                            // else {
+                            //     location.replace(document.referrer);
+                            // }
                         }
                     }
 
                 }
-                const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
-                var url = `${BASE_URL}/api/login.php`
+                // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
+                // var url = `${BASE_URL}/api/login.php`
                 // "http://localhost/CGD102_G2/public/api/login.php"
-                xhr.open("post",url, true);
+                xhr.open("post","http://localhost/CGD102_G2/public/api/login.php", true);
                 xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
 
                 let login_info = `account=${this.account}&password=${this.password}`;

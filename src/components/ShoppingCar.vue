@@ -5,7 +5,7 @@
 
   <!-- ========================================banner -->
 
-  <div class="purchase-area" style="padding:50px 0">
+  <div class="purchase-area" style="padding: 50px 0">
     <div class="purchase-area-title">
       <div class="title-font">加</div>
       <div class="title-font">購</div>
@@ -14,61 +14,64 @@
   </div>
 
   <div class="add-on-container">
-   
-    <div class="add-on-product" v-for="item in data" :key="item.PROD_ID" :style="{left:150*index+'px',
-    transition:0.4+'s'}">
+    <div
+      class="add-on-product"
+      v-for="item in data"
+      :key="item.PROD_ID"
+      :style="{ left: 150 * index + 'px', transition: 0.4 + 's' }"
+    >
       <div class="add-on-pic" @click="addShoppingCart(item.PROD_ID)">
         <img :src="require(`../assets/phps/pic/${item.PROD_PIC1}`)" alt="" />
       </div>
       <div class="add-on-price-name">
-        {{item.PROD_NAME}}
+        {{ item.PROD_NAME }}
       </div>
       <div class="add-on-price">
-        <p>${{item.PROD_PRICE}}</p>
+        <p>${{ item.PROD_PRICE }}</p>
       </div>
     </div>
-    
   </div>
   <div class="add-on-control">
-        <span class="prev"   @click="productPrev"><i class="fa-solid fa-arrow-left"></i></span>
-        <span class="next" @click="productNext"><i class="fa-solid fa-arrow-right"></i></span>
-    </div>
+    <span class="prev" @click="productPrev"
+      ><i class="fa-solid fa-arrow-left"></i
+    ></span>
+    <span class="next" @click="productNext"
+      ><i class="fa-solid fa-arrow-right"></i
+    ></span>
+  </div>
 </template>
 
 <script>
 export default {
-  props:{
-    checkCar:Array,
+  props: {
+    checkCar: Array,
   },
-  
+
   data() {
     return {
       data: [],
-      index:0,
-      addOn:[],
-      cart:[],
-      calculate:[],
-
+      index: 0,
+      addOn: [],
+      cart: [],
+      calculate: [],
+      member: [],
     };
   },
-  methods:{
-    productPrev(){
-        if(this.index<0){
-            this.index+=1
-        }
-    
+  methods: {
+    productPrev() {
+      if (this.index < 0) {
+        this.index += 1;
+      }
     },
-    productNext(){
-        if(this.index>-7){
-            this.index-=1
-        }
-        
+    productNext() {
+      if (this.index > -7) {
+        this.index -= 1;
+      }
     },
-    addShoppingCart(id){
-        
-      let count = this.data.findIndex(item=>item.PROD_ID===id)
-      
-      this.addOn={
+    addShoppingCart(id) {
+      let count = this.data.findIndex((item) => item.PROD_ID === id);
+
+      this.addOn = {
         PROD_ID: this.data[count].PROD_ID,
         PROD_NAME: this.data[count].PROD_NAME,
         PROD_PRICE: this.data[count].PROD_PRICE,
@@ -82,28 +85,37 @@ export default {
         PROD_DESC3: this.data[count].PROD_DESC3,
         PROD_REVIEW: this.data[count].PROD_REVIEW + 1,
         PROD_TIMES: this.data[count].PROD_TIMES + 1,
-        };
-      this.$emit("product-info",this.addOn)
-      
-      // location.reload()
-      
+      };
+      this.IncreaseShoppingCart(count);
+      this.$emit("product-info", this.addOn);
+
+
+    },
+     IncreaseShoppingCart(count) {
+      this.axios.get(
+        "http://localhost/CGD102_G2/public/api/changeShoppingCart.php",
+        {
+          params: {
+            judge: 1,
+            mem_id: this.member.memId,
+            prod_id:this.data[count].PROD_ID,
+            prod_qty:1,
+          },
+        }
+      );
     },
     updateStorage() {
       localStorage.setItem("user", JSON.stringify(this.member));
       localStorage.setItem("cart", JSON.stringify(this.cart));
       localStorage.setItem("calculate", JSON.stringify(this.calculate));
     },
-   
+
     cartInfo() {
       let orders = localStorage.getItem("order");
       if (!orders) return;
       this.order = JSON.parse(orders);
 
-      let members = localStorage.getItem("user");
-      if (!members) return;
-      this.member = JSON.parse(members);
-
-       let carts = localStorage.getItem("cart");
+      let carts = localStorage.getItem("cart");
       if (!carts) return;
       this.cart = JSON.parse(carts);
 
@@ -122,16 +134,47 @@ export default {
     },
   },
   created() {
-      //  var url = `${BASE_URL}/api/addOn.php` //上線
-      var url = "http://localhost/CGD102_G2/public/api/addOn.php";
-      this.axios
-      .get(url)
-      .then((res) => {
-        this.data = res.data;
-        // console.log(this.data);
-      });
-      this.cartInfo()
+    //  var url = `${BASE_URL}/api/addOn.php` //上線
+    var url = "http://localhost/CGD102_G2/public/api/addOn.php";
+    this.axios.get(url).then((res) => {
+      this.data = res.data;
+      // console.log(this.data);
+    });
+    let members = sessionStorage.getItem("member");
+    this.member = JSON.parse(members);
+    // console.log("mem", this.member.memId);
+
+    this.cartInfo();
+  },
+  watch: {
+    cart: {
+      handler(newVal) {
+        let members = sessionStorage.getItem("member");
+        this.member = JSON.parse(members);
+        // console.log("mem", this.member.memId);
+
     
+
+        // for (let i = 0; i < newVal.length; i++) {
+        //   this.axios
+        //     .get(
+        //       "http://localhost/CGD102_G2/public/api/insertShoppingCart.php",
+        //       {
+        //         params: {
+        //           judge:
+        //           mem_id: this.member.memId,
+        //           prod_id: this.cart[i].PROD_ID,
+        //           prod_qty: this.cart[i].PROD_NUM,
+        //         },
+        //       }
+        //     )
+        //     .then((res) => {
+        //       console.log("購物車內部", res);
+        //     });
+        // }
+      },
+    },
+    deep: true,
   },
 };
 </script>

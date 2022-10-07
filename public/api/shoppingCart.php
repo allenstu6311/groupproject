@@ -2,11 +2,17 @@
 header('Access-Control-Allow-Origin:*');
 header("Content-Type:application/json;charset=utf-8");
 
-function pagination($range_1, $range_2)
+function shoppingCart($mem_id)
 {
     require_once("../../src/connect_cgd102g2.php");
     // require_once("../connect_cgd102g2.php");//上線路徑
-    $sql = "SELECT * FROM PRODUCT WHERE PROD_STATUS=1 ORDER BY PROD_STATUS LIMIT {$range_1},{$range_2} ";
+    $sql = "SELECT M.MEM_ID,P.PROD_ID,P.PROD_NAME,P.PROD_PRICE,P.PROD_DESC1,P.PROD_DESC2,P.PROD_DESC3,P.PROD_PIC1,S.PROD_QTY FROM 
+    SHOPPINGCART S JOIN  MEMBER M 
+    ON M.MEM_ID=S.MEM_ID
+    JOIN  PRODUCT P 
+    ON S.PROD_ID=P.PROD_ID
+    WHERE S.MEM_ID ={$mem_id}";
+
     $book = $pdo->query($sql);
     $books = $book->fetchAll();
     $data = [];
@@ -17,5 +23,5 @@ function pagination($range_1, $range_2)
     }
     echo json_encode($data);
 }
-pagination($_GET['range_1'], $_GET['range_2']);
+shoppingCart($_GET['mem_id']);
 // echo "====",$_GET['range_1'];

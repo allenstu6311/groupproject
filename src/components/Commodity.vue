@@ -59,7 +59,7 @@
           <button @click="next(item)">＜</button>
           <div class="commodity-pic">
 
-            <router-link to="/Detail">
+            <router-link @click="checkMember();" to="/Detail">
 
               <div
                 class="slide-pic"
@@ -114,7 +114,7 @@
         >
           <div class="commodity-pic">
             <button @click="next(item)">＜</button>
-            <router-link to="/Detail">
+            <router-link @click="checkMember()" to="/Detail">
               <div
                 class="slide-pic"
                 ref="imgWidth"
@@ -247,6 +247,9 @@ export default {
       let orders = localStorage.getItem("order");
       if (!orders) return;
       this.order = JSON.parse(orders);
+
+      let members = sessionStorage.getItem("member");
+      this.member = JSON.parse(members);
     },
     groupBy(value) {
       switch (value) {
@@ -293,6 +296,14 @@ export default {
           break;
       }
     },
+    checkMember(){
+      if(!this.member){
+        alert("請先登入")
+        // e.preventDefault();
+        
+        this.$router.push("/MemLogin")
+      }
+    },
     clear() {
       this.order = [];
     },
@@ -328,8 +339,8 @@ export default {
       }
     },
     getCommodityInfo() {
-       var url = `${BASE_URL}/api/commoditylist.php` //上線
-      // var url = "http://localhost/CGD102_G2/public/api/commoditylist.php"
+      //  var url = `${BASE_URL}/api/commoditylist.php` //上線
+      var url = "http://localhost/CGD102_G2/public/api/commoditylist.php"
       this.axios
         .get(url, {
           params: {

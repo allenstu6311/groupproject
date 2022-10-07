@@ -9,7 +9,7 @@
 <script>
 import ShoppingCar from "@/components/ShoppingCar.vue";
 import ProductCart from "@/components/ProductCart.vue";
-
+const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 export default {
   components: {
     ShoppingCar,
@@ -27,16 +27,19 @@ export default {
       this.temporary.push(val);
     },
     cartInformation(val) {
-      console.log("val", val);
+
       this.carSend = val;
     },
   },
+
   created() {
     this.productInfo();
     let members = sessionStorage.getItem("member");
     this.member = JSON.parse(members);
-    console.log("mem", this.member);
-    
+    if(!this.member){
+        alert("請先登入");
+        this.$router.push("/MemLogin")
+    }
   },
   watch: {},
   updated() {

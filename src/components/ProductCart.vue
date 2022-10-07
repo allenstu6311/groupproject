@@ -11,12 +11,12 @@
     <div
       class="shopping-cart-empty"
       v-if="detect == true"
-      style="text-align: center;margin:100px 0"
+      style="text-align: center; margin: 100px 0"
     >
       <h1>目前購物車是空的</h1>
     </div>
 
-    <div class="shopping-list-order" v-for="item in cart" :key="item.PROD_ID">
+    <div class="shopping-list-order" v-for="item in memory" :key="item.PROD_ID">
       <input type="checkbox" v-model="calculate" :value="item" />
       <!-- {{calculate}} -->
       <div class="shopping-list-pic">
@@ -58,7 +58,7 @@
   </div>
 
   <div class="shopping-discount col-10">
-    <small style="color:red" v-if="unused==true">(尚有優惠券未使用)</small>
+    <small style="color: red" v-if="unused == true">(尚有優惠券未使用)</small>
     <h5>選擇優惠券:</h5>
     <select name="" id="" v-model="sel" @change="selChange(sel)">
       <option value="1">請選擇</option>
@@ -75,13 +75,14 @@
     </div>
     <div class="shopping-check">
       <div class="shopping-checkout">
-        
         <p>商品金額:{{ productPrice }}元</p>
         <p>折扣金額:{{ totalPrice - productPrice }}</p>
         <p>
-          結帳金額:$:<strong style="font-size:22px;color:red">{{ totalPrice }}</strong>
-        </p> 
-        <router-link @click="checkMember(e)"  to="/Confirm" 
+          結帳金額:$:<strong style="font-size: 22px; color: red">{{
+            totalPrice
+          }}</strong>
+        </p>
+        <router-link @click="checkMember()" to="/Confirm"
           ><button class="btnLittle">前往結帳</button>
         </router-link>
       </div>
@@ -91,7 +92,7 @@
 
 <script>
 import { nextTick } from "@vue/runtime-core";
-const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
+const BASE_URL = process.env.NODE_ENV === "production" ? "/cgd102/g2" : "..";
 export default {
   props: {
     getProduct: Array,
@@ -106,8 +107,9 @@ export default {
       block: "☆",
       detect: false,
       order: [],
-      member:[],
-      unused:false,
+      member: [],
+      unused: false,
+      memory: [],
     };
   },
   methods: {
@@ -115,22 +117,27 @@ export default {
       let carNum = this.calculate.find((item) => item.PROD_ID === id);
       item.PROD_NUM -= 1;
       carNum.PROD_NUM -= 1;
-      this.setLocal();
+      // this.reduceShoppingCart()
     },
     addNum(item, id) {
       item.PROD_NUM += 1;
       let carNum = this.calculate.find((item) => item.PROD_ID === id);
       carNum.PROD_NUM += 1;
       this.setLocal();
+      // this.IncreaseShoppingCart()
     },
     reduceCar(id) {
       let count = this.cart.findIndex((item) => item.PROD_ID === id);
       let index = this.calculate.findIndex((item) => item.PROD_ID === id);
-
+      let focus = this.memory.findIndex(item=>item.PROD_ID===id)
+     
+  console.log("車內",this.memory)
+      this.reduceShoppingCart(focus)
       this.cart.splice(count, 1);
-      this.calculate.splice(index,1)
+      this.calculate.splice(index, 1);
       this.$emit("cart-message", this.cart);
       this.setLocal();
+     
     },
     drop() {
       for (let i = this.cart.length - 1; i >= 0; i--) {
@@ -160,7 +167,6 @@ export default {
       let orders = localStorage.getItem("order");
       if (orders) this.order = JSON.parse(orders);
 
-     
       let carts = localStorage.getItem("cart");
       if (carts) this.cart = JSON.parse(carts);
 
@@ -170,9 +176,8 @@ export default {
       let totalPrices = localStorage.getItem("totalPrice");
       if (totalPrices) this.totalPrice = JSON.parse(totalPrices);
 
-      let members = sessionStorage.getItem("member");
-      this.member =  JSON.parse(members)
-      console.log("mem",this.member)
+       let members = sessionStorage.getItem("member");
+      this.member = JSON.parse(members);
 
       if (this.order.length) {
         this.score = (
@@ -185,13 +190,26 @@ export default {
       this.totalPrice = parseInt(this.productPrice * this.sel);
       this.countMoney();
     },
-    checkMember(){
-      if(!this.member){
-        alert("您尚未登入")
-        this.$router.push("/MemLogin")
-      
+    checkMember() {
+      if (!this.member) {
+        alert("您尚未登入");
+        this.$router.push("/MemLogin");
       }
-    }
+    },
+   
+    reduceShoppingCart(focus) {
+      this.axios.get(
+        "http://localhost/CGD102_G2/public/api/changeShoppingCart.php",
+        {
+          params: {
+            judge: 2,
+            mem_id: this.member.memId,
+            prod_id: this.memory[focus].PROD_ID,
+            prod_qty:1,
+          },
+        }
+      );
+    },
   },
   computed: {
     buyCar: function () {
@@ -209,30 +227,45 @@ export default {
       }
       return sum;
     },
-    totalPrice(){
-    return  parseInt(this.productPrice * this.sel);
-
-    }
+    totalPrice() {
+      return parseInt(this.productPrice * this.sel);
+    },
   },
   created() {
     this.getInfo();
     this.selChange();
-  },
-  mounted() {
-       var url = `${BASE_URL}/api/member.php` //上線
-      // var url = "http://localhost/CGD102_G2/public/api/member.php"
-     if(this.member){
+    
+
+    // let members = sessionStorage.getItem("member");
+    //   this.member = JSON.parse(members);
+      // console.log("mem",this.member.memId)
       this.axios
-      .get(url,{
-        params:{
-           MEM_NAME:this.member.memName
-        }
-       
+      .get("http://localhost/CGD102_G2/public/api/shoppingCart.php", {
+        params: {
+          mem_id: this.member.memId,
+        },
       })
       .then((res) => {
-        this.coupon = res.data;
+        this.memory = res.data;
+        console.log("before",this.memory)
       });
 
+  
+  },
+ 
+  mounted() {
+    var url = `${BASE_URL}/api/member.php`; //上線
+    // var url = "http://localhost/CGD102_G2/public/api/member.php"
+    if (this.member) {
+      this.axios
+        .get(url, {
+          params: {
+            MEM_NAME: this.member.memName,
+          },
+        })
+        .then((res) => {
+          this.coupon = res.data;
+        });
     }
   },
   watch: {
@@ -263,7 +296,7 @@ export default {
           PROD_REVIEW: newVal[newVal.length - 1].PROD_REVIEW,
           PROD_TIMES: newVal[newVal.length - 1].PROD_TIMES,
         };
-         
+
         this.cart.push({ ...obj });
         this.calculate.push({ ...obj });
         this.detect = false;
@@ -286,10 +319,15 @@ export default {
             this.productPrice + newVal[i].PROD_PRICE * newVal[i].PROD_NUM
           );
         }
-        
+
         this.setLocal();
         this.countMoney();
       },
+    },
+    memory:{
+      handler(newVal){
+        console.log(newVal)
+      }
     },
     checkOut: {
       handler(newVal) {
@@ -300,17 +338,16 @@ export default {
         }
       },
     },
-    coupon:{
-      handler(newVal){
-        if(newVal.length!=0){
-          this.unused=true
-        }else{
-           this.unused=false
+    coupon: {
+      handler(newVal) {
+        if (newVal.length != 0) {
+          this.unused = true;
+        } else {
+          this.unused = false;
         }
-      }
+      },
     },
     deep: true,
   },
-
 };
 </script>

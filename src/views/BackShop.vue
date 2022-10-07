@@ -17,7 +17,7 @@
             <input
               type="text"
               class="form-control"
-              placeholder="請輸入訂單名稱"
+              placeholder="請輸入商品名稱"
               aria-label="Recipient's username"
               aria-describedby="button-addon2"
               v-model="backProduct"
@@ -181,13 +181,13 @@ export default {
       pageColor:true,
       backProduct:"",
       changePageButton:true,
-      productState:"1",
+      productState:"9",
     };
   },
   methods: {
     onTheShelf(id) {
-         //  var url = `${BASE_URL}/api/rackupanddown.php` //上線
-      var url = "http://localhost/CGD102_G2/public/api/rackupanddown.php"
+          var url = `${BASE_URL}/api/rackupanddown.php` //上線
+      // var url = "http://localhost/CGD102_G2/public/api/rackupanddown.php"
       this.axios
         .get(url, {
           params: {
@@ -206,8 +206,8 @@ export default {
         });
     },
     takeDown(id) {
-            //  var url = `${BASE_URL}/api/rackupanddown.php` //上線
-      var url = "http://localhost/CGD102_G2/public/api/rackupanddown.php"
+             var url = `${BASE_URL}/api/rackupanddown.php` //上線
+      // var url = "http://localhost/CGD102_G2/public/api/rackupanddown.php"
       this.axios
         .get(url, {
           params: {
@@ -237,8 +237,8 @@ export default {
       }
     },
     getPageNumber(){
-      //  var url = `${BASE_URL}/api/totalproduct.php` //上線
-      var url = "http://localhost/CGD102_G2/src/assets/phps/totalproduct.php"
+       var url = `${BASE_URL}/api/totalproduct.php` //上線
+      // var url = "http://localhost/CGD102_G2/public/api/totalproduct.php"
         this.axios.get(url,{
         params:{
           range_1:this.number1,

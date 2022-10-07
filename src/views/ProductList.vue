@@ -3,6 +3,23 @@
   <div class="background-pic">
     <img src="../assets/images/bcgFlower.png" alt="" />
   </div>
+  <div class="banner">
+            <img src="../assets/images/bannerProduct.png" alt="">
+        </div>
+        <div class="main_title">
+            <img src="../assets/images/productTitle.png" alt="">
+        </div>
+          <div class="title_area">
+                <h2 class="sure_title">
+                    <p class="title_font">嚴</p>
+                    <p class="title_font">選</p>
+                    <p class="title_font">商</p>
+                    <p class="title_font">品</p>
+                </h2>
+                <div class="commodity-post">
+                    <small>• EXQUISITE PRODUCTS • </small>
+                </div>
+            </div>
   <div class="product-search">
     <input
       type="text"
@@ -37,7 +54,7 @@
 </template>
 
 <script>
-
+const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 import Commodity from "@/components/Commodity.vue";
 import Filter from "@/components/Filter.vue";
 export default {
@@ -68,8 +85,10 @@ export default {
       this.int_Num2 = val;
     },
     searchStar() {
+        var url = `${BASE_URL}/api/search.php` //上線
+      // var url = "http://localhost/CGD102_G2/public/api/search.php"
       this.axios
-        .get("http://localhost/CGD102_G2/src/assets/phps/search.php", {
+        .get(url, {
           params: {
             target: this.search_obj,
           },

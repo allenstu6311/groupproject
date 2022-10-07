@@ -27,6 +27,8 @@
 <script>
 import MemberInfo from "@/components/MemberInfo.vue";
 import CheckCommodity from "@/components/CheckCommodity.vue";
+
+const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 export default {
   components: {
     MemberInfo,
@@ -60,8 +62,10 @@ export default {
     payInfo() {
       //商品清單
       alert("結帳完成");
+       var url = `${BASE_URL}/api/productlist.php` //上線
+        // var url ="http://localhost/CGD102_G2/public/api/productlist.php"
       this.axios
-        .get("http://localhost/CGD102_G2/src/assets/phps/productlist.php", {
+        .get(url, {
           params: {
             mem_id: this.memberCoups.length>0?this.memberCoups[0].MEM_ID:2,
             productPrice: this.productNote,
@@ -77,9 +81,11 @@ export default {
     },
     sendOrderItems() {
       //商品明細
+        var url = `${BASE_URL}/api/productOrder.php` //上線
+        // var url ="http://localhost/CGD102_G2/public/api/productOrder.php"
       for (let i = 0; i < this.cart.length; i++) {
         this.axios
-          .get("http://localhost/CGD102_G2/src/assets/phps/productOrder.php", {
+          .get(url, {
             params: {
               order_id: this.order_id,
               prod_id: this.cart[i].PROD_ID,
@@ -96,12 +102,14 @@ export default {
   },
 
   created() {
+            var url = `${BASE_URL}/api/member.php` //上線
+        // var url ="http://localhost/CGD102_G2/public/api/member.php"
     let members = sessionStorage.getItem("member");
     this.member = JSON.parse(members);
 
     console.log("mem", this.member);
     this.axios
-      .get("http://localhost/CGD102_G2/src/assets/phps/member.php", {
+      .get(url, {
         params: {
           MEM_NAME: this.member.memName,
         },

@@ -3,12 +3,13 @@ header('Access-Control-Allow-Origin:*');
 header("Content-Type:application/json;charset=utf-8");
 
 
-function review($number,$product){
+function search($target){
 
-require_once("../../connect_cgd102g2.php");
+  // require_once("../../src/connect_cgd102g2.php"); //開發路徑
+  require_once("../connect_cgd102g2.php");//上線路徑
 
 
-$sql = "update PRODUCT set PROD_REVIEW = PROD_REVIEW+{$number} ,PROD_TIMES = PROD_TIMES+1 WHERE PROD_NAME='{$product}'";
+$sql = "select * from PRODUCT where PROD_STATUS=1 and PROD_NAME like '%{$target}%' ";
 
 $book = $pdo->query($sql);
 
@@ -25,6 +26,6 @@ $data=[];
     echo json_encode($data);
 }
 }
-review($_GET['number'],$_GET['product'])
+search($_GET['target'])
 
 ?>

@@ -27,8 +27,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @import "~bootstrap/scss/bootstrap";
-    @import "../assets/style.scss";
+    // @import "~bootstrap/scss/bootstrap";
+    // @import "../assets/style.scss";
 
     *{
         position: relative;

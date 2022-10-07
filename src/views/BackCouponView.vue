@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import "bootstrap/scss/bootstrap.scss";
 import BackstageIndexAside from '@/components/BackstageIndexAside.vue'
 import BackstageIndexHeader from '@/components/BackstageIndexHeader.vue'
 import BackCoupon from '@/components/BackCoupon.vue'
@@ -27,8 +28,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @import "~bootstrap/scss/bootstrap";
-    @import "../assets/style.scss";
+    // @import "bootstrap/scss/bootstrap"; 
+    // @import "../assets/style.scss";
+    @import "../assets/base/_color.scss"; //有變數要引用的sass
 
     *{
         position: relative;

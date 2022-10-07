@@ -1,6 +1,6 @@
 <template>
     <div class="laster_therapist">
-        <h1>新增按摩師</h1>
+        <h1>修改資訊</h1>
         <section class="add_content">
             <div class="row">
                 <div class="col">
@@ -77,14 +77,15 @@
 </template>
 
 <script>
-import "bootstrap/scss/bootstrap.scss";
+
 const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
 
 export default {
-    name: 'therapistadd',
+    name: 'therapistchangeinfo',
     data(){
         return{
-            name: '',
+            backstageTherapsitList: [],
+            name: '123',
             account: '',
             password: '',
             license1: '',
@@ -96,25 +97,49 @@ export default {
             pswtip: "*",
             pswclass: "error",
             pswflag: false,
+            allenHandsome:[],
         }
     },
+    created(){
+        this.onlineStorage()
+        
+    },
+    mounted(){
+   
+        // this.getDataFromApi();
+    },
+    // mounted() {
+    //     setTimeout(() =>  console.log("俊彥大帥哥",this.allenHandsome), 100)
+        
+    // },
     methods: {
+        // async getDataFromApi() {
+        //     var url = 'http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php'; //開發用
+        //     // var url = `${BASE_URL}/api/therapistContent.php`; //上線用
+        //     let getData = async(url) => {
+        //         let response = await fetch(url);
+        //         let JSON =  response.json();
+        //         this.backstageTherapsitList = await JSON;
+        //     }
+        //     await getData(url);
+        //     console.log(this.backstageTherapsitList);
+        // },
         submit(){
         
             var xhr = new XMLHttpRequest();
             
             xhr.onload = function(){
                 if(xhr.status == 200){
-                    if(xhr.responseText == "帳號已建立"){
-                        alert("帳號已建立");
+                    if(xhr.responseText == "修改完成"){
+                        alert("修改完成");
                         window.location.replace("/backtherapist");
-                    }else if(xhr.responseText == "無法建立帳號"){
-                        alert("無法建立帳號");
+                    }else if(xhr.responseText == "修改失敗"){
+                        alert("修改失敗");
                     }
                 }
             }
-            xhr.open("post","http://localhost/CGD102_G2/public/api/backtherapistadd.php", true); //開發用
-            // xhr.open("post",`${BASE_URL}/api/backtherapistadd.php`, true); //上線用
+            xhr.open("post","http://localhost/CGD102_G2/public/api/backtherapistchangeinfo.php", true); //開發用
+            // xhr.open("post",`${BASE_URL}/api/backtherapistchangeinfo.php`, true); //上線用
             xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
             let therapist_data = `license1=${this.license1}&license2=${this.license2}&license3=${this.license3}&license4=${this.license4}&account=${this.account}&password=${this.password}&name=${this.name}&hiredate=${this.hiredate}&pic=${this.pic}`;
@@ -136,7 +161,31 @@ export default {
                 this[classname] = "error"
                 return false
             }
-        }
+        },
+        onlineStorage(){
+                let allens = localStorage.getItem("THERAPIST_NAME")
+                this.allenHandsome = JSON.parse(allens)
+                alert(this.allenHandsome)
+                
+                this.$nextTick=()=>{
+                    this.getInfo()
+                }
+                console.log("俊彥大帥哥",this.allenHandsome)
+                
+        },
+        getInfo(){
+            
+            this.axios.get("http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php",{
+                params:{
+                    searchName:this.allenHandsome[0].THERAPIST_NAME
+                }
+            })
+            .then((res)=>{
+                console.log("俊彥率倒吊渣",res)
+                // this.backstageTherapsitList = res.data
+                this.name =this.allenHandsome[0].THERAPIST_NAME
+            })  
+        },
     },
     watch: {
         password: function (content) {
@@ -148,10 +197,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    // @import "bootstrap/scss/bootstrap"; 
-    // @import "../assets/style.scss";
-    @import "../assets/base/_color.scss"; //有變數要引用的sass
-
+    @import "bootstrap/scss/bootstrap";
+    @import "../assets/style.scss";
 
     .laster_therapist{
         h1{

@@ -19,6 +19,7 @@
             <thead>
                 <tr>
                     <th scope="col">姓名</th>
+                    <th scope="col">帳號</th>
                     <th scope="col">入職日期</th>
                     <th scope="col">狀態</th>
                     <th scope="col">修改</th>
@@ -29,6 +30,7 @@
                 v-for="backstageTherapsit in backstageTherapsitList" 
                 :key="backstageTherapsit">
                     <td>{{ backstageTherapsit.THERAPIST_NAME }}</td>
+                    <td>{{ backstageTherapsit.THERAPIST_ACCOUNT }}</td>
                     <td>{{ backstageTherapsit.THERAPIST_HIREDATE }}</td>
                     <td>
                         <div>
@@ -40,7 +42,7 @@
                     <td>
                         <div>
                             <!-- <img src="../assets/images/Pen.png" alt="修改icon"> -->
-                            <router-link to="/backstageIndex">
+                            <router-link to="/BackTherapistChangeInfo" @click="chtherapistinfo(backstageTherapsit.THERAPIST_NAME)">
                             <svg 
                             xmlns="http://www.w3.org/2000/svg" 
                             class="icon icon-tabler icon-tabler-edit"
@@ -70,16 +72,23 @@ import "bootstrap/scss/bootstrap.scss";
         },
         data() {
             return {
-                backstageTherapsitList: []
+                backstageTherapsitList: [],
+                allenHandsome:[],
             }
         },
         created(){
-            this.getDataFromApi(); // 在建立Vue.js模板時順帶執行這個參數
+            this.getDataFromApi();// 在建立Vue.js模板時順帶執行這個參數
+         
+            this.onlineStorage()
+            this.clear()
+              
+            
+            
         },
         methods:{
             async getDataFromApi() {
-                // var url = 'http://localhost/CGD102_G2/public/api/therapistContent.php'; //開發用
-                var url = `${BASE_URL}/api/therapistContent.php`; //上線用
+                var url = 'http://localhost/CGD102_G2/public/api/therapistContent.php'; //開發用
+                // var url = `${BASE_URL}/api/therapistContent.php`; //上線用
                 let getData = async(url) => {
                     let response = await fetch(url); // await 很重要
                     let JSON =  response.json();
@@ -88,43 +97,71 @@ import "bootstrap/scss/bootstrap.scss";
                 await getData(url); // 觸發 getData 的匿名 function 內容 ==> 76 ~ 78 行的內容
                 console.log(this.backstageTherapsitList);
             },
-            chlive(e){
-                this.backstageTherapsitList[0].THERAPIST_STATUS = e.target.value;
-                let THERAPIST_STATUS = this.backstageTherapsitList[0].THERAPIST_STATUS;
-                let THERAPIST_ACCOUNT = this.backstageTherapsitList[0].THERAPIST_ACCOUNT;
-
-                console.log(THERAPIST_STATUS);
-
-                var xhr = new XMLHttpRequest();
-                
-                xhr.onload = function(){
-                    if(xhr.status == 200){
-                        console.log(xhr.status);
-                        if(xhr.responseText){
-                            if(xhr.reponseText == "1"){
-                                alert("ok");
-                            }
-                            // alert("狀態修改成功");
-                            // window.location.replace("/backtherapist");
-                        }else{
-                            alert("狀態修改失敗");
-                        }
+              chtherapistinfo(name){
+                this.axios.get("http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php",{
+                    params:{
+                        searchName:name
                     }
-                }
-                xhr.open("post","http://localhost/CGD102_G2/public/api/backtherapistselectchange.php", true); //開發用
-                // xhr.open("post",`${BASE_URL}/api/backtherapistselectchange.php`, true); //上線用
-                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                })
+                .then((res)=>{
+                    // console.log(res.data[0].THERAPIST_NAME)
+                    this.allenHandsome = res.data
 
-                let therapist_data = `account=${THERAPIST_ACCOUNT}&status=${THERAPIST_STATUS}`;
-                xhr.send(therapist_data);
-                console.log(therapist_data);
+                    this.setStorage()
+
+                })
             },
-            watch: {
-                 chlive(e){
-                    // e.target.value;
-                    console.log(e.target.value);
-                }
+            setStorage(){
+                localStorage.setItem("THERAPIST_NAME",JSON.stringify(this.allenHandsome))
+            },
+            onlineStorage(){
+                let allens = localStorage.getItem("THERAPIST_NAME")
+                this.allenHandsome = JSON.parse(allens)
+            },
+            clear(){
+                // let index = this.allenHandsome.findIndex(item=>item.THERAPIST_NAME)
+                
+                this.allenHandsome=[]
+                this.setStorage()
             }
+       
+            // chlive(e){
+            //     this.backstageTherapsitList[0].THERAPIST_STATUS = e.target.value;
+            //     let THERAPIST_STATUS = this.backstageTherapsitList[0].THERAPIST_STATUS;
+            //     let THERAPIST_ACCOUNT = this.backstageTherapsitList[0].THERAPIST_ACCOUNT;
+
+            //     console.log(THERAPIST_STATUS);
+
+            //     var xhr = new XMLHttpRequest();
+                
+            //     xhr.onload = function(){
+            //         if(xhr.status == 200){
+            //             console.log(xhr.status);
+            //             if(xhr.responseText){
+            //                 if(xhr.reponseText == "1"){
+            //                     alert("ok");
+            //                 }
+            //                 // alert("狀態修改成功");
+            //                 // window.location.replace("/backtherapist");
+            //             }else{
+            //                 alert("狀態修改失敗");
+            //             }
+            //         }
+            //     }
+            //     xhr.open("post","http://localhost/CGD102_G2/public/api/backtherapistselectchange.php", true); //開發用
+            //     // xhr.open("post",`${BASE_URL}/api/backtherapistselectchange.php`, true); //上線用
+            //     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+            //     let therapist_data = `account=${THERAPIST_ACCOUNT}&status=${THERAPIST_STATUS}`;
+            //     xhr.send(therapist_data);
+            //     console.log(therapist_data);
+            // },
+            // watch: {
+            //      chlive(e){
+            //         // e.target.value;
+            //         console.log(e.target.value);
+            //     }
+            // }
         }
     }
 </script>
@@ -166,7 +203,8 @@ import "bootstrap/scss/bootstrap.scss";
             text-align: center;
             table-layout:fixed;
             .form-select{
-                width: 30%;
+                width: 50%;
+                text-align: end;
                 background-color: transparent;
                 border: none;
                 cursor: pointer;

@@ -7,17 +7,20 @@ try{
     require_once("../../src/connect_cgd102g2.php"); //開發路徑
     //require_once("../connect_cgd102g2.php");//上線路徑
 
-    $sql = "SELECT * FROM COUPONS";
-    $coupon = $pdo->query($sql);
+    $findCpsSql = "SELECT CPS_ID FROM COUPONS";
+    
+    $getCount = $pdo -> prepare($findCpsSql);
+    $getCount->bindValue(":COUNT",$_POST["count"]);
+    $getCount->execute();
 
-    if($coupon->rowCount()==0){
-        echo "無折價券資料";
+    if($getCount->rowCount()==0){
+        echo "答對零題";
         // exit();
     }else{
-        $coupons = $coupon->fetchAll(PDO::FETCH_ASSOC);
+        $getCount = $getCount->fetchAll(PDO::FETCH_ASSOC);
         $data = [];
 
-        foreach($coupons as $i => $page){
+        foreach($getCount as $i => $page){
         
         ?>
         <?php

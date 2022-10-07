@@ -26,6 +26,8 @@ import ManageItems from '../views/ManageItems.vue'
 import BackTherapistAddView from '../views/BackTherapistAddView.vue'
 import BackCouponView from '../views/BackCouponView.vue'
 import BackCouponAddView from '../views/BackCouponAddView.vue'
+import BackTherapistChangeInfoView from '../views/BackTherapistChangeInfoView.vue'
+
 
 
 
@@ -76,6 +78,13 @@ const routes = [
     name: 'backtherapistadd',
     chName: '新增按摩師',
     component: BackTherapistAddView,
+    meta:{isHide:true}
+  },
+  {
+    path: '/BackTherapistChangeInfo',
+    name: 'BackTherapistChangeInfoView',
+    chName: '修改按摩師資料',
+    component: BackTherapistChangeInfoView,
     meta:{isHide:true}
   },
   {

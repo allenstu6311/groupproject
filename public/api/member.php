@@ -8,7 +8,8 @@ header("Content-Type:application/json;charset=utf-8");
 
 function memberInfo($MEM_NAME){
 
-    require_once("../../connect_cgd102g2.php");
+      require_once("../../src/connect_cgd102g2.php"); //開發路徑
+    //   require_once("../connect_cgd102g2.php");//上線路徑
 
 $sql = "select M.MEM_NAME ,MC.MEM_ID,MC.CPS_ID ,CS.CPS_NAME,CS.CPS_DIS from  `MEMBER` M 
 JOIN my_coupons MC 

@@ -7,8 +7,10 @@
       </div>
       <div class="orderBox">
          <div class="order-search  m-3">
-          <select class="form-select w-25" aria-label="Default select example">
-            <option selected>排序方式</option>
+          <select class="form-select w-25" aria-label="Default select example" v-model="productState"      @change="checkProduct">
+            <option value="9"  selected>找尋商品</option>
+            <option value="0">下架中</option>
+            <option value="1">上架中</option>
           </select>
 
           <div class="input-group mx-3  w-25">
@@ -18,11 +20,13 @@
               placeholder="請輸入訂單名稱"
               aria-label="Recipient's username"
               aria-describedby="button-addon2"
+              v-model="backProduct"
             />
             <button
               class="btn btn-outline-secondary"
               type="button"
               id="button-addon2"
+              @click="backProductSearch"
             >
              <i class="fa-solid fa-magnifying-glass"></i>
             </button>
@@ -40,7 +44,9 @@
             </tr>
           </thead>
           <tbody>
+            <td colspan="5" v-if="this.data.length==0"><p class="m-auto bold">找不到此商品</p></td>
             <tr v-for="item in data" :key="item.PROD_ID">
+              
               <td>
                 <img
                   :src="require(`../assets/phps/pic/${item.PROD_PIC1}`)"
@@ -76,7 +82,7 @@
    
     </div>
   </div>
-  <nav aria-label="...">
+  <nav aria-label="..." v-if="changePageButton==true">
   <ul class="pagination justify-content-center mt-3 mb-3">
      <li class="page-item " aria-current="page" :class="{active: pageColor==true}"> 
       <span class="page-link" @click="changePage(true);pageColor=true">1</span>
@@ -158,6 +164,8 @@ table {
 import BackstageIndexAside from '@/components/BackstageIndexAside.vue'
 import BackstageIndexHeader from '@/components/BackstageIndexHeader.vue'
 import BackTherapist from '@/components/BackTherapist.vue'
+
+const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 export default {
   components: {
         BackstageIndexHeader,
@@ -167,22 +175,28 @@ export default {
   data() {
     return {
       data: [],
+      productInfo:[],
       number1:0,
       number2:10,
       pageColor:true,
+      backProduct:"",
+      changePageButton:true,
+      productState:"1",
     };
   },
   methods: {
     onTheShelf(id) {
+         //  var url = `${BASE_URL}/api/rackupanddown.php` //上線
+      var url = "http://localhost/CGD102_G2/public/api/rackupanddown.php"
       this.axios
-        .get("http://localhost/CGD102_G2/src/assets/phps/rackupanddown.php", {
+        .get(url, {
           params: {
             num: 1,
             id: id,
           },
         })
         .then((res) => {
-          console.log(this.data);
+          // console.log(this.data);
           if (res.data == 1) {
             alert("上架成功");
           } else {
@@ -192,8 +206,10 @@ export default {
         });
     },
     takeDown(id) {
+            //  var url = `${BASE_URL}/api/rackupanddown.php` //上線
+      var url = "http://localhost/CGD102_G2/public/api/rackupanddown.php"
       this.axios
-        .get("http://localhost/CGD102_G2/src/assets/phps/rackupanddown.php", {
+        .get(url, {
           params: {
             num: 0,
             id: id,
@@ -221,20 +237,77 @@ export default {
       }
     },
     getPageNumber(){
-        this.axios.get("http://localhost/CGD102_G2/src/assets/phps/totalproduct.php",{
+      //  var url = `${BASE_URL}/api/totalproduct.php` //上線
+      var url = "http://localhost/CGD102_G2/src/assets/phps/totalproduct.php"
+        this.axios.get(url,{
         params:{
           range_1:this.number1,
           range_2:this.number2
         }
       }).then((res)=>{
-        console.log(res)
         this.data = res.data
+        this.productInfo = res.data
       })
       
+    },
+    backProductSearch(){
+      //  var url = `${BASE_URL}/api/backShopSearch.php` //上線
+      var url = "http://localhost/CGD102_G2/public/api/backShopSearch.php"
+      this.axios.get(url,{
+        params:{
+             PROD_NAME:this.backProduct,
+        }
+      }).then((res)=>{
+        this.data = res.data
+        this.changePageButton=false
+      })
+    },
+    checkProduct(){
+        this.number1=0,
+        this.number2=20
+        this.getPageNumber();
+        this.changePageButton=false
+
+        this.timerd=setTimeout(this.filter,500)
+
+    },
+    filter(){
+      switch(this.productState){
+      case "9":
+        this.number1=0,
+        this.number2=10
+        this.getPageNumber();
+        this.data=this.productInfo;
+        this.changePageButton=true
+        break;
+      case "0":
+        let state0 = this.data.filter(item=>item.PROD_STATUS===0) 
+        console.log(state0)
+        this.data=state0;
+        break;
+      case "1":
+        let state1 = this.data.filter(item=>item.PROD_STATUS===1)     
+        this.data=state1;
+     }
+
+          // let state0 = this.data.filter(item=>item.PROD_STATUS===0) 
+          // this.data=state0;
+          // console.log("少",this.data)
     }
   },
   created() {
     this.getPageNumber()
   },
+  watch:{
+    backProduct:{
+      handler(newVal){
+       if(!newVal){
+        this.data=this.productInfo
+        this.changePageButton=true
+       }
+      }
+    },
+    deep:true,
+  }
 };
 </script>

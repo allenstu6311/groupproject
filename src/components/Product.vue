@@ -192,7 +192,6 @@ export default {
       let orders = localStorage.getItem("order");
       if (!orders) return;
       this.order = JSON.parse(orders);
-      console.log(this.order)
       this.score = (
         this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
       ).toFixed(1);

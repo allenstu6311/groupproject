@@ -91,6 +91,7 @@
 
 <script>
 import { nextTick } from "@vue/runtime-core";
+const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 export default {
   props: {
     getProduct: Array,
@@ -100,8 +101,6 @@ export default {
       cart: [],
       coupon: [],
       sel: "1",
-      // productPrice: 0,
-      // totalPrice: 0,
       calculate: [],
       checkOut: true,
       block: "☆",
@@ -171,8 +170,8 @@ export default {
       let totalPrices = localStorage.getItem("totalPrice");
       if (totalPrices) this.totalPrice = JSON.parse(totalPrices);
 
-      let members = sessionStorage.getItem("memName");
-      this.member = members
+      let members = sessionStorage.getItem("member");
+      this.member =  JSON.parse(members)
       console.log("mem",this.member)
 
       if (this.order.length) {
@@ -220,22 +219,22 @@ export default {
     this.selChange();
   },
   mounted() {
+      //  var url = `${BASE_URL}/api/member.php` //上線
+      var url = "http://localhost/CGD102_G2/public/api/member.php"
      if(this.member){
       this.axios
-      .get("http://localhost/CGD102_G2/src/assets/phps/member.php",{
+      .get(url,{
         params:{
-           MEM_NAME:this.member
+           MEM_NAME:this.member.memName
         }
        
       })
       .then((res) => {
         this.coupon = res.data;
-        console.log(this.coupon)
       });
 
     }
   },
-
   watch: {
     getProduct: {
       handler(newVal) {

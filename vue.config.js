@@ -4,7 +4,7 @@ module.exports = defineConfig({
 
   //影響index.html取js的取得路徑
   publicPath: process.env.NODE_ENV === 'production'
-    ? '/cgd102/g2'
+    ? '/cgd102/g2/'
     : '/',
 
     

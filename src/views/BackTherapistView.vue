@@ -27,17 +27,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    // @import "~bootstrap/scss/bootstrap";
-    // @import "../assets/style.scss";
-
     *{
         position: relative;
-    }
-    .show{
-        position: relative;
-    }
-    .active{
-        background-color: transparent;
     }
     .container{
         line-height: 2;

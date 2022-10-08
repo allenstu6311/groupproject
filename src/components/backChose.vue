@@ -7,8 +7,4 @@
   <li class="list-group-item">And a fifth one</li>
 </ul>
     
-</template>
-
-<script>
-import "bootstrap/scss/bootstrap.scss";
-</script>
+</template> 

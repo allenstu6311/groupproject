@@ -27,7 +27,7 @@
 
 
 <style lang="scss" scoped>
-    @import"../assets/style.scss";
+    @import"@/assets/base/color.scss";
     @keyframes slide-top {
     0% {
         opacity: 1;

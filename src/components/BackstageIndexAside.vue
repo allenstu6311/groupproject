@@ -16,13 +16,11 @@
 </template>
 
 <script>
-import {routes} from "@/router/index.js"
 import "bootstrap/scss/bootstrap.scss";
 export default {
     data(){
         return{
             value: 0,
-            routes,
             chose: [
                 {
                 id: 0,

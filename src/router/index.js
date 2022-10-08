@@ -1,38 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import FrontPageView from '../views/FrontPageView.vue'
-import HomeView from '../views/HomeView.vue'
-import AboutUs from '../views/AboutUs.vue'
-import TherapistView from '../views/TherapistView.vue'
-import EmployeeView from '../views/EmployeeView.vue'
-import ReservationView from '../views/ReservationView.vue'
-import ResvPageView from '../views/ResvPageView.vue'
-import MessagefaqView from "../views/MessagefaqView.vue"
-import ShoppingCar from "@/components/ShoppingCar.vue"
-import MemLogin from "../views/MemLogin.vue"
-import ProductList from "../views/ProductList.vue"
-import Detail from "../views/Detail.vue"
-import MemCenter from "../views/MemCenterView.vue"
-import MemRegister from "../views/MemRegisterView.vue"
-import MassageSchoolView from '../views/MassageSchoolView.vue'
-import MassageGameView from '../views/MassageGameView.vue'
-import GetCouponView from '../views/GetCouponView.vue'
-import BackstageView from '../views/BackstageView.vue'
-import BackstageIndexView from '../views/BackstageIndexView.vue'
-import ManageLoginView from '../views/ManageLoginView.vue'
-import BackShop from '../views/BackShop.vue'
-import OrderItem from '../views/OrderItem.vue'
-import BackTherapistView from '../views/BackTherapistView.vue'
-import ManageItems from '../views/ManageItems.vue'
-import BackTherapistAddView from '../views/BackTherapistAddView.vue'
-import BackCouponView from '../views/BackCouponView.vue'
-import BackCouponAddView from '../views/BackCouponAddView.vue'
-import BackstageNewsView from '../views/BackstageNewsView.vue'
-import BackstageFAQView from '../views/BackstageFAQView.vue'
-import BackTherapistChangeInfoView from '../views/BackTherapistChangeInfoView.vue'
-
-
-
-
+import FrontPageView from '@/views/FrontPageView.vue'
+import HomeView from '@/views/HomeView.vue'
+import BackstageView from '@/views/BackstageView.vue'
 
 const routes = [
   {
@@ -50,186 +19,150 @@ const routes = [
   {
     path: '/BackstageNews',
     name: 'BackstageNews',
-    component: BackstageNewsView,
+    component: () => import('@/views/BackstageNewsView.vue'),
     meta:{isHide:true}
   },
   {
     path: '/BackstageFAQ',
     name: 'BackstageFAQ',
-    component: BackstageFAQView,
+    component: () => import('@/views/BackstageFAQView.vue'),
     meta:{isHide:true}
   },
   {
     path: '/about',
     name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    // component: () => import('../views/AboutUs.vue')
-    component: AboutUs,
+    component: () => import('@/views/AboutUs.vue'),
     meta:{isHide:false}
 
   },
   {
     path: '/therapist',
     name: 'therapist',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    // component: () => import(/* webpackChunkName: "about" */ '../views/TherapistView.vue')
-    component: TherapistView,
+    component: () => import('@/views/TherapistView.vue'),
     meta:{isHide:false}
   },
   {
     path: '/backTherapist',
     name: 'backTherapist',
     chName: '管理按摩師',
-    component: BackTherapistView,
+    component: () => import('@/views/BackTherapistView.vue'),
     meta:{isHide:true}
   },
   {
     path: '/backtherapistadd',
     name: 'backtherapistadd',
     chName: '新增按摩師',
-    component: BackTherapistAddView,
+    component: () => import('@/views/BackTherapistAddView.vue'),
     meta:{isHide:true}
   },
   {
     path: '/BackTherapistChangeInfo',
     name: 'BackTherapistChangeInfoView',
     chName: '修改按摩師資料',
-    component: BackTherapistChangeInfoView,
+    component: () => import('@/views/BackTherapistChangeInfoView.vue'),
     meta:{isHide:true}
   },
   {
     path: '/employee',
     name: 'employee',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    // component: () => import(/* webpackChunkName: "about" */ '../views/TherapistView.vue')
-    component: EmployeeView,
+    component: () => import('@/views/EmployeeView.vue'),
     meta:{isHide:false}
   },
   {
     path: '/reservation',
     name: 'reservation',
-    component: ReservationView,
+    component: () => import('@/views/ReservationView.vue'),
     meta:{isHide:false}
   },
   {
     path: '/resvPage',
     name: 'resvPage',
-    component: ResvPageView,
+    component: () => import('@/views/ResvPageView.vue'),
     meta:{isHide:false}
   },
   {
     path: '/message',
     name: 'message',
-    // route level code-splitting
-    // this generates a separate chunk (reserve.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "reserve" */ '../views/MessagefaqView.vue'),
+    component: () => import('@/views/MessagefaqView.vue'),
     meta:{isHide:false}
   },
 
   {
     path: '/cart',
     name: 'cart',
-    // route level code-splitting
-    // this generates a separate chunk (reserve.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "reserve" */ '../views/Cart.vue'),
+    component: () => import('@/views/Cart.vue'),
     meta:{isHide:false}
   },
   {
     path: '/BackShop',
     name: 'BackShop',
-    // route level code-splitting
-    // this generates a separate chunk (reserve.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "reserve" */ '../views/BackShop.vue'),
+    component: () => import('@/views/BackShop.vue'),
     meta:{isHide:true}
   },
   {
     path: '/OrderItem',
     name: 'OrderItem',
-    // route level code-splitting
-    // this generates a separate chunk (reserve.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "reserve" */ '../views/OrderItem.vue'),
+    component: () => import('@/views/OrderItem.vue'),
     meta:{isHide:true}
   },
   {
     path: '/ManageItems',
     name: 'ManageItems',
-    // route level code-splitting
-    // this generates a separate chunk (reserve.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "reserve" */ '../views/ManageItems.vue'),
+    component: () => import('@/views/ManageItems.vue'),
     meta:{isHide:false}
   },
   {
     path: '/Confirm',
     name: 'Confirm',
-    // route level code-splitting
-    // this generates a separate chunk (reserve.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "reserve" */ '../views/Confirm.vue'),
+    component: () => import('@/views/Confirm.vue'),
     meta:{isHide:false}
   },
   {
     path: '/MemLogin',
     name: 'MemLogin',
-    component: () => import('../views/MemLogin.vue'),
+    component: () => import('@/views/MemLogin.vue'),
     meta:{isHide:false}
   },
   {
     path: '/MemCenter',
     name: 'MemCenter',
-    component: () => import('../views/MemCenterView.vue'),
+    component: () => import('@/views/MemCenterView.vue'),
     meta:{isHide:false}
   },
   {
     path: '/MemRegister',
     name: 'MemRegister',
-    component: () => import('../views/MemRegisterView.vue'),
+    component: () => import('@/views/MemRegisterView.vue'),
     meta:{isHide:false}
   },
   {
     path: '/MassageSchool',
     name: 'MassageSchool',
-    component: MassageSchoolView,
+    component: () => import('@/views/MassageSchoolView.vue'),
     meta:{isHide:false}
   },
   {
     path: '/MassageGame',
     name: 'MassageGame',
-    component: MassageGameView,
+    component: () => import('@/views/MassageGameView.vue'),
     meta:{isHide:false}
   },
   {
     path: '/GetCoupon',
     name: 'GetCoupon',
-    component: GetCouponView,
+    component: () => import('@/views/GetCouponView.vue'),
     meta:{isHide:false}
   },
   {
     path: '/ProductList',
     name: 'ProductList',
-    // route level code-splitting
-    // this generates a separate chunk (reserve.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "reserve" */ '../views/ProductList.vue'),
+    component: () => import('@/views/ProductList.vue'),
     meta:{isHide:false}
   },
   {
     path: '/Detail',
     name: 'Detail',
-    // route level code-splitting
-    // this generates a separate chunk (reserve.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "reserve" */ '../views/Detail.vue'),
+    component: () => import('@/views/Detail.vue'),
     meta:{isHide:false}
   },
   {
@@ -242,25 +175,25 @@ const routes = [
     path: '/backstageIndex',
     name: 'backstageIndex',
     chName: '首頁',
-    component: BackstageIndexView,
+    component: () => import('@/views/BackstageIndexView.vue'),
     meta:{isHide:true}
   },
   {
     path: '/manageLogin',
     name: 'manageLogin',
-    component: ManageLoginView,
+    component: () => import('@/views/ManageLoginView.vue'),
     meta:{isHide:true}
   },
   {
     path: '/BackCoupon',
     name: 'BackCoupon',
-    component: BackCouponView,
+    component: () => import('@/views/BackCouponView.vue'),
     meta:{isHide:true}
   },
   {
     path: '/BackCouponAdd',
     name: 'BackCouponAdd',
-    component: BackCouponAddView,
+    component: () => import('@/views/BackCouponAddView.vue'),
     meta:{isHide:true}
   },
 ]

@@ -43,17 +43,18 @@ export default {
       productNote: "",
       member: [],
       memberCoups: [],
+      memory:[],
     };
   },
   methods: {
     Information() {
-      let carts = localStorage.getItem("cart");
-      if (!carts) return;
-      this.cart = JSON.parse(carts);
+      // let carts = localStorage.getItem("cart");
+      // if (!carts) return;
+      // this.cart = JSON.parse(carts);
 
-      let calculates = localStorage.getItem("calculate");
-      if (!calculates) return;
-      this.calculate = JSON.parse(calculates);
+      // let calculates = localStorage.getItem("calculate");
+      // if (!calculates) return;
+      // this.calculate = JSON.parse(calculates);
 
       let totalPrices = localStorage.getItem("totalPrice");
       if (!totalPrices) return;
@@ -62,8 +63,8 @@ export default {
     payInfo() {
       //商品清單
       alert("結帳完成");
-       var url = `${BASE_URL}/api/productlist.php` //上線
-        // var url ="http://localhost/CGD102_G2/public/api/productlist.php"
+      //  var url = `${BASE_URL}/api/productlist.php` //上線
+        var url ="http://localhost/CGD102_G2/public/api/productlist.php"
       this.axios
         .get(url, {
           params: {
@@ -80,20 +81,24 @@ export default {
         });
     },
     sendOrderItems() {
+    
       //商品明細
-        var url = `${BASE_URL}/api/productOrder.php` //上線
-        // var url ="http://localhost/CGD102_G2/public/api/productOrder.php"
-      for (let i = 0; i < this.cart.length; i++) {
+        // var url = `${BASE_URL}/api/productOrder.php` //上線
+      var url ="http://localhost/CGD102_G2/public/api/productOrder.php"
+      for (let i = 0; i < this.memory.length; i++) {
+        alert("123")
         this.axios
           .get(url, {
             params: {
               order_id: this.order_id,
-              prod_id: this.cart[i].PROD_ID,
-              prod_price: this.cart[i].PROD_PRICE,
-              prod_num: this.cart[i].PROD_NUM,
+              prod_id: this.memory[i].PROD_ID,
+              prod_price: this.memory[i].PROD_PRICE,
+              prod_num: this.memory[i].PROD_QTY,
             },
           })
-          .then((res) => {});
+          .then((res) => {
+             console.log(res)
+          });
       }
     },
     productMoney(val) {
@@ -102,8 +107,9 @@ export default {
   },
 
   created() {
-            var url = `${BASE_URL}/api/member.php` //上線
-        // var url ="http://localhost/CGD102_G2/public/api/member.php"
+
+            // var url = `${BASE_URL}/api/member.php` //上線
+    var url ="http://localhost/CGD102_G2/public/api/member.php"
     let members = sessionStorage.getItem("member");
     this.member = JSON.parse(members);
 
@@ -117,6 +123,20 @@ export default {
         this.memberCoups = res.data;
 
       });
+
+      this.axios
+        .get("http://localhost/CGD102_G2/public/api/shoppingCart.php", {
+          params: {
+            mem_id: this.member.memId,
+          },
+        })
+        .then((res) => {
+          this.memory = res.data;
+         
+            
+          // console.log("before",this.memory)
+        });
+
     this.Information();
     this.productMoney();
   },

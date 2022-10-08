@@ -4,8 +4,8 @@ header("Content-Type:application/json;charset=utf-8");
 
 function getId($prod_id){
 
-    // require_once("../../src/connect_cgd102g2.php");
-    require_once("../connect_cgd102g2.php");//上線路徑
+    require_once("../../src/connect_cgd102g2.php");
+    // require_once("../connect_cgd102g2.php");//上線路徑
 
 
 $sql = "SELECT c.*,m.mem_name,m.mem_pic FROM comment c join member m

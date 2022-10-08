@@ -55,6 +55,7 @@ export default {
       cart: [],
       calculate: [],
       member: [],
+      memory:[],
     };
   },
   methods: {
@@ -69,23 +70,25 @@ export default {
       }
     },
     addShoppingCart(id) {
+   
       let count = this.data.findIndex((item) => item.PROD_ID === id);
+      let sameProduct = this.memory.findIndex(item=>item.PROD_ID===id)
 
-      this.addOn = {
-        PROD_ID: this.data[count].PROD_ID,
-        PROD_NAME: this.data[count].PROD_NAME,
-        PROD_PRICE: this.data[count].PROD_PRICE,
-        PROD_PIC1: this.data[count].PROD_PIC1,
-        PROD_PIC2: this.data[count].PROD_PIC2,
-        PROD_PIC3: this.data[count].PROD_PIC3,
-        PROD_DATE: this.data[count].PROD_DATE,
-        PROD_NUM: 1,
-        PROD_DESC1: this.data[count].PROD_DESC1,
-        PROD_DESC2: this.data[count].PROD_DESC2,
-        PROD_DESC3: this.data[count].PROD_DESC3,
-        PROD_REVIEW: this.data[count].PROD_REVIEW + 1,
-        PROD_TIMES: this.data[count].PROD_TIMES + 1,
-      };
+      // this.addOn = {
+      //   PROD_ID: this.data[count].PROD_ID,
+      //   PROD_NAME: this.data[count].PROD_NAME,
+      //   PROD_PRICE: this.data[count].PROD_PRICE,
+      //   PROD_PIC1: this.data[count].PROD_PIC1,
+      //   PROD_PIC2: this.data[count].PROD_PIC2,
+      //   PROD_PIC3: this.data[count].PROD_PIC3,
+      //   PROD_DATE: this.data[count].PROD_DATE,
+      //   PROD_NUM: 1,
+      //   PROD_DESC1: this.data[count].PROD_DESC1,
+      //   PROD_DESC2: this.data[count].PROD_DESC2,
+      //   PROD_DESC3: this.data[count].PROD_DESC3,
+      //   PROD_REVIEW: this.data[count].PROD_REVIEW + 1,
+      //   PROD_TIMES: this.data[count].PROD_TIMES + 1,
+      // };
       this.IncreaseShoppingCart(count);
       this.$emit("product-info", this.addOn);
 
@@ -105,19 +108,18 @@ export default {
       );
     },
     updateStorage() {
-      localStorage.setItem("user", JSON.stringify(this.member));
       localStorage.setItem("cart", JSON.stringify(this.cart));
       localStorage.setItem("calculate", JSON.stringify(this.calculate));
     },
 
     cartInfo() {
-      let orders = localStorage.getItem("order");
-      if (!orders) return;
-      this.order = JSON.parse(orders);
+      // let orders = localStorage.getItem("order");
+      // if (!orders) return;
+      // this.order = JSON.parse(orders);
 
-      let carts = localStorage.getItem("cart");
-      if (!carts) return;
-      this.cart = JSON.parse(carts);
+      // let carts = localStorage.getItem("cart");
+      // if (!carts) return;
+      // this.cart = JSON.parse(carts);
 
       let calculates = localStorage.getItem("calculate");
       if (!calculates) return;
@@ -127,10 +129,10 @@ export default {
       if (!totalPrices) return;
       this.totalPrice = JSON.parse(totalPrices);
 
-      this.score = (
-        this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
-      ).toFixed(1);
-      this.star = parseInt(this.score);
+      // this.score = (
+      //   this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
+      // ).toFixed(1);
+      // this.star = parseInt(this.score);
     },
   },
   created() {
@@ -144,6 +146,23 @@ export default {
     this.member = JSON.parse(members);
     // console.log("mem", this.member.memId);
 
+    if(!this.member){
+        alert("請先登入");
+        this.$router.push("/MemLogin")
+    }else{
+          this.axios
+      .get("http://localhost/CGD102_G2/public/api/shoppingCart.php", {
+        params: {
+          mem_id: this.member.memId,
+        },
+      })
+      .then((res) => {
+        this.memory = res.data;
+        // console.log("before",this.memory)
+      });
+
+    }
+
     this.cartInfo();
   },
   watch: {
@@ -152,8 +171,6 @@ export default {
         let members = sessionStorage.getItem("member");
         this.member = JSON.parse(members);
         // console.log("mem", this.member.memId);
-
-    
 
         // for (let i = 0; i < newVal.length; i++) {
         //   this.axios

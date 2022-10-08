@@ -40,7 +40,7 @@
           ><input
             style="text-align: center"
             type="text"
-            :value="item.PROD_NUM"
+            :value="item.PROD_QTY"
             size="1"
           /><button @click="addNum(item, item.PROD_ID)">+</button>
         </div>
@@ -114,24 +114,24 @@ export default {
   },
   methods: {
     reduceNum(item, id) {
-      let carNum = this.calculate.find((item) => item.PROD_ID === id);
-      item.PROD_NUM -= 1;
-      carNum.PROD_NUM -= 1;
-      // this.reduceShoppingCart()
+      item.PROD_QTY-=1;
+      // let carNum = this.calculate.find((item) => item.PROD_ID === id);
+      // item.PROD_NUM -= 1;
+      // carNum.PROD_NUM -= 1;
     },
     addNum(item, id) {
-      item.PROD_NUM += 1;
-      let carNum = this.calculate.find((item) => item.PROD_ID === id);
-      carNum.PROD_NUM += 1;
-      this.setLocal();
-      // this.IncreaseShoppingCart()
+      // item.PROD_NUM += 1;
+      item.PROD_QTY+=1;
+
+      // let carNum = this.calculate.find((item) => item.PROD_ID === id);
+      // carNum.PROD_NUM += 1;
+      // this.setLocal();
     },
     reduceCar(id) {
-      let count = this.cart.findIndex((item) => item.PROD_ID === id);
-      let index = this.calculate.findIndex((item) => item.PROD_ID === id);
+      // let count = this.cart.findIndex((item) => item.PROD_ID === id);
+      // let index = this.calculate.findIndex((item) => item.PROD_ID === id);
       let focus = this.memory.findIndex(item=>item.PROD_ID===id)
      
-  console.log("車內",this.memory)
       this.reduceShoppingCart(focus)
       this.cart.splice(count, 1);
       this.calculate.splice(index, 1);
@@ -179,12 +179,6 @@ export default {
        let members = sessionStorage.getItem("member");
       this.member = JSON.parse(members);
 
-      if (this.order.length) {
-        this.score = (
-          this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
-        ).toFixed(1);
-        this.star = parseInt(this.score);
-      }
     },
     selChange(sel) {
       this.totalPrice = parseInt(this.productPrice * this.sel);
@@ -220,9 +214,9 @@ export default {
     },
     productPrice() {
       let sum = 0;
-      for (let i = 0; i < this.calculate.length; i++) {
+      for (let i = 0; i < this.memory.length; i++) {
         sum = parseFloat(
-          sum + this.calculate[i].PROD_PRICE * this.calculate[i].PROD_NUM
+          sum + this.memory[i].PROD_PRICE * this.memory[i].PROD_QTY
         );
       }
       return sum;
@@ -235,11 +229,11 @@ export default {
     this.getInfo();
     this.selChange();
     
-
-    // let members = sessionStorage.getItem("member");
-    //   this.member = JSON.parse(members);
-      // console.log("mem",this.member.memId)
-      this.axios
+    if(!this.member){
+        alert("請先登入");
+        this.$router.push("/MemLogin")
+    }else{
+          this.axios
       .get("http://localhost/CGD102_G2/public/api/shoppingCart.php", {
         params: {
           mem_id: this.member.memId,
@@ -247,10 +241,10 @@ export default {
       })
       .then((res) => {
         this.memory = res.data;
-        console.log("before",this.memory)
+        console.log("購物車",this.memory)
       });
 
-  
+    }
   },
  
   mounted() {
@@ -271,7 +265,7 @@ export default {
   watch: {
     getProduct: {
       handler(newVal) {
-        let num = this.cart.findIndex(
+        let num = this.memory.findIndex(
           (item) => item.PROD_ID === newVal[newVal.length - 1].PROD_ID
         );
         if (num >= 0) {
@@ -310,24 +304,6 @@ export default {
           this.detect = true;
         }
       },
-    },
-    calculate: {
-      handler(newVal) {
-        this.productPrice = "";
-        for (let i = 0; i < newVal.length; i++) {
-          this.productPrice = parseFloat(
-            this.productPrice + newVal[i].PROD_PRICE * newVal[i].PROD_NUM
-          );
-        }
-
-        this.setLocal();
-        this.countMoney();
-      },
-    },
-    memory:{
-      handler(newVal){
-        console.log(newVal)
-      }
     },
     checkOut: {
       handler(newVal) {

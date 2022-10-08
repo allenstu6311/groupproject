@@ -59,7 +59,7 @@
           <button @click="next(item)">＜</button>
           <div class="commodity-pic">
 
-            <router-link @click="checkMember();" to="/Detail">
+            <router-link to="/Detail">
 
               <div
                 class="slide-pic"
@@ -114,7 +114,7 @@
         >
           <div class="commodity-pic">
             <button @click="next(item)">＜</button>
-            <router-link @click="checkMember()" to="/Detail">
+            <router-link  to="/Detail">
               <div
                 class="slide-pic"
                 ref="imgWidth"
@@ -206,6 +206,7 @@ export default {
       range_2: 6,
       currPage: 1,
       disappear:false,
+      member:[],
     };
   },
   methods: {
@@ -250,6 +251,7 @@ export default {
 
       let members = sessionStorage.getItem("member");
       this.member = JSON.parse(members);
+      console.log(this.member)
     },
     groupBy(value) {
       switch (value) {
@@ -296,14 +298,7 @@ export default {
           break;
       }
     },
-    checkMember(){
-      if(!this.member){
-        alert("請先登入")
-        // e.preventDefault();
-        
-        this.$router.push("/MemLogin")
-      }
-    },
+  
     clear() {
       this.order = [];
     },
@@ -380,8 +375,7 @@ export default {
   created() {
     this.getCommodityInfo();
     this.clear();
-    this.onlineStorage();
-    
+    this.onlineStorage();    
   },
   watch: {
     toggle: {

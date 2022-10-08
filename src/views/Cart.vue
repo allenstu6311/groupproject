@@ -36,10 +36,6 @@ export default {
     this.productInfo();
     let members = sessionStorage.getItem("member");
     this.member = JSON.parse(members);
-    if(!this.member){
-        alert("請先登入");
-        this.$router.push("/MemLogin")
-    }
   },
   watch: {},
   updated() {

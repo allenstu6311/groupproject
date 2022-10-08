@@ -11,7 +11,14 @@ function commodity($judge,$mem_id,$prod_id,$prod_qty){
         $sql="INSERT INTO SHOPPINGCART VALUES(NULL,{$mem_id},{$prod_id},{$prod_qty})";
         break;
         case 2:
-        $sql="DELETE FROM SHOPPINGCART WHERE PROD_ID={$prod_id}";   
+        $sql="DELETE FROM SHOPPINGCART WHERE PROD_ID={$prod_id}";
+        break;
+        case 3:
+        $sql="UPDATE SHOPPINGCART SET PROD_QTY = PROD_QTY+1 WHERE PROD_ID={$prod_id}";
+        break;  
+        case 4:
+        $sql="UPDATE SHOPPINGCART SET PROD_QTY = PROD_QTY-1 WHERE PROD_ID={$prod_id}";
+        break;  
     }
     $pdo->query($sql);
 

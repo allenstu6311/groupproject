@@ -113,6 +113,7 @@ export default {
       calculate:[],
       block: "☆",
       product_num: 1,
+      memory:[]
     };
   },
   methods: {
@@ -139,51 +140,67 @@ export default {
     },
     
     addCar(id) {
-      
-      let index = this.cart.find(item=>item.PROD_ID===id)
-      
-      if(!index){
+      let sameProduct = this.memory.find(item=>item.PROD_ID===id)
+      // let index = this.cart.find(item=>item.PROD_ID===id)
+    
+       if(!sameProduct){
         alert("成功加入")
-        this.cart.push({
-        PROD_ID: this.order[0].PROD_ID,
-        PROD_NAME: this.order[0].PROD_NAME,
-        PROD_PRICE: this.order[0].PROD_PRICE,
-        PROD_PIC1: this.order[0].PROD_PIC1,
-        PROD_PIC2: this.order[0].PROD_PIC2,
-        PROD_PIC3: this.order[0].PROD_PIC3,
-        PROD_DATE: this.order[0].PROD_DATE,
-        PROD_NUM: this.product_num,
-        PROD_DESC1: this.order[0].PROD_DESC1,
-        PROD_DESC2: this.order[0].PROD_DESC2,
-        PROD_DESC3: this.order[0].PROD_DESC3,
-        PROD_REVIEW: this.order[0].PROD_REVIEW + 1,
-        PROD_TIMES: this.order[0].PROD_TIMES + 1,
-      });
-
-          this.calculate.push({
-        PROD_ID: this.order[0].PROD_ID,
-        PROD_NAME: this.order[0].PROD_NAME,
-        PROD_PRICE: this.order[0].PROD_PRICE,
-        PROD_PIC1: this.order[0].PROD_PIC1,
-        PROD_PIC2: this.order[0].PROD_PIC2,
-        PROD_PIC3: this.order[0].PROD_PIC3,
-        PROD_DATE: this.order[0].PROD_DATE,
-        PROD_NUM: this.product_num,
-        PROD_DESC1: this.order[0].PROD_DESC1,
-        PROD_DESC2: this.order[0].PROD_DESC2,
-        PROD_DESC3: this.order[0].PROD_DESC3,
-        PROD_REVIEW: this.order[0].PROD_REVIEW + 1,
-        PROD_TIMES: this.order[0].PROD_TIMES + 1,
-      });
-
-   
-
+         this.IncreaseShoppingCart() 
       }else{
         alert("購物車已有相同物品")
       }
+      // if(!index){
+      //   alert("成功加入")
+      //   this.cart.push({
+      //   PROD_ID: this.order[0].PROD_ID,
+      //   PROD_NAME: this.order[0].PROD_NAME,
+      //   PROD_PRICE: this.order[0].PROD_PRICE,
+      //   PROD_PIC1: this.order[0].PROD_PIC1,
+      //   PROD_PIC2: this.order[0].PROD_PIC2,
+      //   PROD_PIC3: this.order[0].PROD_PIC3,
+      //   PROD_DATE: this.order[0].PROD_DATE,
+      //   PROD_NUM: this.product_num,
+      //   PROD_DESC1: this.order[0].PROD_DESC1,
+      //   PROD_DESC2: this.order[0].PROD_DESC2,
+      //   PROD_DESC3: this.order[0].PROD_DESC3,
+      //   PROD_REVIEW: this.order[0].PROD_REVIEW + 1,
+      //   PROD_TIMES: this.order[0].PROD_TIMES + 1,
+      // });
+
+      //   this.calculate.push({
+      //   PROD_ID: this.order[0].PROD_ID,
+      //   PROD_NAME: this.order[0].PROD_NAME,
+      //   PROD_PRICE: this.order[0].PROD_PRICE,
+      //   PROD_PIC1: this.order[0].PROD_PIC1,
+      //   PROD_PIC2: this.order[0].PROD_PIC2,
+      //   PROD_PIC3: this.order[0].PROD_PIC3,
+      //   PROD_DATE: this.order[0].PROD_DATE,
+      //   PROD_NUM: this.product_num,
+      //   PROD_DESC1: this.order[0].PROD_DESC1,
+      //   PROD_DESC2: this.order[0].PROD_DESC2,
+      //   PROD_DESC3: this.order[0].PROD_DESC3,
+      //   PROD_REVIEW: this.order[0].PROD_REVIEW + 1,
+      //   PROD_TIMES: this.order[0].PROD_TIMES + 1,
+      // });
+      // }else{
+      //   alert("購物車已有相同物品")
+      // }
       
 
-      this.setStorage();
+      // this.setStorage();
+    },
+       IncreaseShoppingCart() {
+      this.axios.get(
+        "http://localhost/CGD102_G2/public/api/changeShoppingCart.php",
+        {
+          params: {
+            judge: 1,
+            mem_id: this.member.memId,
+            prod_id:this.order[0].PROD_ID,
+            prod_qty:this.product_num,
+          },
+        }
+      );
     },
     setStorage() {
       localStorage.setItem("cart", JSON.stringify(this.cart));
@@ -193,8 +210,9 @@ export default {
       let orders = localStorage.getItem("order");
       if (!orders) return;
       this.order = JSON.parse(orders);
+
       this.score = (
-        this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
+      this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
       ).toFixed(1);
       this.star = parseInt(this.score);
 
@@ -202,13 +220,32 @@ export default {
       if (!carts) return;
       this.cart = JSON.parse(carts);
 
-       let calculates = localStorage.getItem("calculate");
+      let calculates = localStorage.getItem("calculate");
       if (!calculates) return;
       this.calculate = JSON.parse(calculates);
     },
   },
   created() {
     this.getStar();
+
+    let members = sessionStorage.getItem("member");
+    this.member = JSON.parse(members)
+
+    if(!this.member){
+        alert("請先登入");
+        this.$router.push("/MemLogin")
+    }else{
+          this.axios
+      .get("http://localhost/CGD102_G2/public/api/shoppingCart.php", {
+        params: {
+          mem_id: this.member.memId,
+        },
+      })
+      .then((res) => {
+        this.memory = res.data;
+        // console.log("before",this.memory)
+      });
+    }
   },
 };
 </script>

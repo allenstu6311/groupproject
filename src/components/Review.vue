@@ -88,8 +88,8 @@ export default {
     },
     methods:{
         giveRating(num,name){
-        var url = `${BASE_URL}/api/review.php` //上線
-      // var url = "http://localhost/CGD102_G2/public/api/review.php"
+        // var url = `${BASE_URL}/api/review.php` //上線
+        var url = "http://localhost/CGD102_G2/public/api/review.php"
         this.axios.get(url,
             {
                 params:{
@@ -97,36 +97,28 @@ export default {
                     product:name
                 }
             })
-            alert("感謝評價")
+            // alert("感謝評價")
         },
         upload(){
-            var url = `${BASE_URL}/api/comment.php` //上線
-            // var url = http://localhost/CGD102_G2/public/api/comment.php"
-            if(!this.member){
-                    this.axios.get("http://localhost/CGD102_G2/public/api/comment.php",
+            // var url = `${BASE_URL}/api/comment.php` //上線
+            var url = "http://localhost/CGD102_G2/public/api/comment.php";
+           
+                    this.axios.get(url,
                 {
                     params:{
                         post:this.tex,
                         product_id:this.order[0].PROD_ID,
-                        mem_id:this.member[0].MEM_ID,
+                        mem_id:this.member.memId,
                     }
                 })
                 
                 this.article.push({
                     COMMENT_MESSAGE:this.tex,
-                    mem_name:this.article[0].mem_name,
+                    mem_name:this.member.memName,
                     COMMENT_DATE:new Date().toISOString().slice(0, 19).replace('T', ' ')
                 })
 
                 this.tex=""
-
-            }else{
-                alert("您尚未登入");
-                this.$router.push("/MemLogin")
-            }
-            
-            
-
         },
         getStorage(){
            
@@ -135,7 +127,8 @@ export default {
             this.order = JSON.parse(orders)
 
             let members = sessionStorage.getItem("member");
-            this.member = members
+            this.member = JSON.parse(members)
+            console.log(this.member)
             
             this.score =(this.order[0].PROD_REVIEW/this.order[0].PROD_TIMES ).toFixed(1)
             this.star = parseInt(this.score)
@@ -147,9 +140,9 @@ export default {
        
         this.getStorage()
       
-        //  var url = 'http://localhost/CGD102_G2/public/api/reservation.php'
-        var url = `${BASE_URL}/api/article.php`
-        this.axios.get("http://localhost/CGD102_G2/public/api/article.php",
+         var url = 'http://localhost/CGD102_G2/public/api/article.php'
+        // var url = `${BASE_URL}/api/article.php`
+        this.axios.get(url,
         {
             params:{
                 prod_id:this.order[0].PROD_ID

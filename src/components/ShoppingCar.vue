@@ -21,8 +21,7 @@
       :style="{ left: 150 * index + 'px', transition: 0.4 + 's' }"
     >
       <div class="add-on-pic" @click="addShoppingCart(item.PROD_ID)">
-        <img :src="require(`../../public/api/pic/${item.PROD_PIC1}`)" alt="">
-        {{item.PROD_PIC1}}
+        <img :src="require(`../../public/api/pic/${item.PROD_PIC1}`)" alt="" />
       </div>
       <div class="add-on-price-name">
         {{ item.PROD_NAME }}
@@ -71,15 +70,16 @@ export default {
       }
     },
     addShoppingCart(id) {
+      this.updateCart();
       let count = this.data.findIndex((item) => item.PROD_ID === id);
       let sameProduct = this.memory.find((item) => item.PROD_ID === id);
+    
       // let index = this.cart.find(item=>item.PROD_ID===id)
-
       if (!sameProduct) {
         alert("成功加入");
         this.IncreaseShoppingCart(count);
         this.updateCart();
-        location.reload()
+        // location.reload()
       } else {
         alert("購物車已有相同物品");
       }
@@ -103,22 +103,21 @@ export default {
       // this.$emit("product-info", this.addOn);
     },
     IncreaseShoppingCart(count) {
-      this.axios.get(
-        "http://localhost/CGD102_G2/public/api/changeShoppingCart.php",
-        {
+      this.axios
+        .get("http://localhost/CGD102_G2/public/api/changeShoppingCart.php", {
           params: {
             judge: 1,
             mem_id: this.member.memId,
             prod_id: this.data[count].PROD_ID,
             prod_qty: 1,
           },
-        }
-      );
+        })
+        .then((res) => {});
     },
-    updateStorage() {
-      localStorage.setItem("cart", JSON.stringify(this.cart));
-      localStorage.setItem("calculate", JSON.stringify(this.calculate));
-    },
+    // updateStorage() {
+    //   localStorage.setItem("cart", JSON.stringify(this.cart));
+    //   localStorage.setItem("calculate", JSON.stringify(this.calculate));
+    // },
     updateCart() {
       this.axios
         .get("http://localhost/CGD102_G2/public/api/shoppingCart.php", {
@@ -128,7 +127,8 @@ export default {
         })
         .then((res) => {
           this.memory = res.data;
-          // console.log("before",this.memory)
+          // console.log(this.memory)
+          this.$emit("addCartInfo", this.memory);
         });
     },
 
@@ -156,12 +156,10 @@ export default {
     },
   },
   created() {
-  
     //  var url = `${BASE_URL}/api/addOn.php` //上線
     var url = "http://localhost/CGD102_G2/public/api/addOn.php";
     this.axios.get(url).then((res) => {
       this.data = res.data;
-        console.log(this.data);
     });
     let members = sessionStorage.getItem("member");
     this.member = JSON.parse(members);

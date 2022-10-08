@@ -253,9 +253,7 @@ export default {
       PROD_DESC2: "",
       PROD_DESC3: "",
       PROD_TYPE: "",
-      test1:'',
-      test2:'',
-      test3:'',
+      
     };
   },
   methods: {
@@ -286,7 +284,17 @@ export default {
           headers: { "Content-Type": "multipart/form-data" },
         })
         .then((res)=>{
-          console.log(res)
+          this.PROD_NAME= "",
+          this.PROD_PRICE= "",
+          this.PROD_PIC1= "",
+          this.PROD_PIC2= "",
+          this.PROD_PIC3= "",
+          this.PROD_STATUS= "",
+          this.PROD_DATE= "",
+          this.PROD_DESC1= "",
+          this.PROD_DESC2= "",
+          this.PROD_DESC3= "",
+          this.PROD_TYPE= ""
         }).catch((err)=> {
           console.log(err)
         });

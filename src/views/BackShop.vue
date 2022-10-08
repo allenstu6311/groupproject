@@ -188,8 +188,8 @@ export default {
   },
   methods: {
     onTheShelf(id) {
-          var url = `${BASE_URL}/api/rackupanddown.php` //上線
-      // var url = "http://localhost/CGD102_G2/public/api/rackupanddown.php"
+          // var url = `${BASE_URL}/api/rackupanddown.php` //上線
+      var url = "http://localhost/CGD102_G2/public/api/rackupanddown.php"
       this.axios
         .get(url, {
           params: {
@@ -208,8 +208,8 @@ export default {
         });
     },
     takeDown(id) {
-             var url = `${BASE_URL}/api/rackupanddown.php` //上線
-      // var url = "http://localhost/CGD102_G2/public/api/rackupanddown.php"
+            //  var url = `${BASE_URL}/api/rackupanddown.php` //上線
+      var url = "http://localhost/CGD102_G2/public/api/rackupanddown.php"
       this.axios
         .get(url, {
           params: {
@@ -239,8 +239,8 @@ export default {
       }
     },
     getPageNumber(){
-       var url = `${BASE_URL}/api/totalproduct.php` //上線
-      // var url = "http://localhost/CGD102_G2/public/api/totalproduct.php"
+      //  var url = `${BASE_URL}/api/totalproduct.php` //上線
+      var url = "http://localhost/CGD102_G2/public/api/totalproduct.php"
         this.axios.get(url,{
         params:{
           range_1:this.number1,

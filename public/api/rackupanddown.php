@@ -5,8 +5,8 @@ header("Content-Type:application/json;charset=utf-8");
 
 function rack($num,$id){
 
-   // require_once("../../src/connect_cgd102g2.php"); //開發路徑
-     require_once("../connect_cgd102g2.php");//上線路徑
+   require_once("../../src/connect_cgd102g2.php"); //開發路徑
+    //  require_once("../connect_cgd102g2.php");//上線路徑
     switch($num){
         case 0:
         $sql = "update product set PROD_STATUS=0 WHERE PROD_ID={$id}";

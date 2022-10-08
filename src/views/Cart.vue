@@ -2,8 +2,13 @@
   <div class="background-pic">
     <img src="../assets/images/bcgFlower.png" alt="" />
   </div>
-  <ProductCart :getProduct="temporary" @cart-message="cartInformation" />
-  <ShoppingCar @product-info="productInfo" :checkCar="carSend" />
+  <ProductCart :getProduct="temporary" 
+  @cart-message="cartInformation" 
+  :newCartInfo ="newCart"/>
+  <ShoppingCar 
+  @product-info="productInfo" 
+  :checkCar="carSend" 
+  @addCartInfo ="addCartInfo"/>
 </template>
 
 <script>
@@ -19,6 +24,7 @@ export default {
     return {
       temporary: [],
       carSend: [],
+      newCart:[],
     };
   },
   methods: {
@@ -30,6 +36,10 @@ export default {
 
       this.carSend = val;
     },
+    addCartInfo(val){
+      // console.log("val",val)
+      this.newCart = val
+    }
   },
 
   created() {

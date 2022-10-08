@@ -70,9 +70,9 @@
                 }"
                 @click="addOrder(item.PROD_ID)"
               >
-                <img :src="require(`../assets/phps/pic/${item.PROD_PIC1}`)" />
-                <img :src="require(`../assets/phps/pic/${item.PROD_PIC2}`)" />
-                <img :src="require(`../assets/phps/pic/${item.PROD_PIC3}`)" />
+              <img :src="require(`../../public/api/pic/${item.PROD_PIC1}`)" />
+              <img :src="require(`../../public/api/pic/${item.PROD_PIC2}`)" />
+              <img :src="require(`../../public/api/pic/${item.PROD_PIC3}`)" />
               </div>
               
             </router-link>
@@ -125,9 +125,9 @@
                   transition: 0.4 + 's',
                 }"
               >
-                <img :src="require(`../assets/phps/pic/${item.PROD_PIC1}`)" />
-                <img :src="require(`../assets/phps/pic/${item.PROD_PIC2}`)" />
-                <img :src="require(`../assets/phps/pic/${item.PROD_PIC3}`)" />
+              <img :src="require(`../../public/api/pic/${item.PROD_PIC1}`)" />
+              <img :src="require(`../../public/api/pic/${item.PROD_PIC2}`)" />
+              <img :src="require(`../../public/api/pic/${item.PROD_PIC3}`)" />
               </div>
             </router-link>
             <button @click="prev(item)">＞</button>

@@ -49,7 +49,7 @@
               
               <td>
                 <img
-                  :src="require(`../assets/phps/pic/${item.PROD_PIC1}`)"
+                  :src="require(`../../public/api/pic/${item.PROD_PIC1}`)"
                   alt=""
                 />
               </td>

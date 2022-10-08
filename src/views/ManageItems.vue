@@ -279,8 +279,8 @@ export default {
         for (let key in data) {
           formData.append(key, data[key]);
         }
-          var url = `${BASE_URL}/api/backfile.php` //上線
-      // var url = "http://localhost/CGD102_G2/public/api/backfile.php"
+          // var url = `${BASE_URL}/api/backfile.php` //上線
+      var url = "http://localhost/CGD102_G2/public/api/backfile.php"
         this.axios.post(
         url, formData, {
           headers: { "Content-Type": "multipart/form-data" },

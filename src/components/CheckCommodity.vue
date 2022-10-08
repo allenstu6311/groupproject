@@ -5,12 +5,12 @@
     </div>
     <div class="commodity-show">
       <ul>
-        <li v-for="item in calculate" :key="item">
+        <li v-for="item in memory" :key="item">
           <div class="commodity-pic">
-            <img :src="require(`../assets/phps/pic/${item.PROD_PIC1}`)" />
+           <img :src="require(`../../public/api/pic/${item.PROD_PIC1}`)" />
           </div>
           <div class="commodity-price">${{ item.PROD_PRICE }}</div>
-          <div class="commodity-price-num">X{{ item.PROD_NUM }}</div>
+          <div class="commodity-price-num">X{{ item.PROD_QTY }}</div>
         </li>
       </ul>
     </div>
@@ -39,54 +39,57 @@ export default {
       calculate: [],
       totalPrice: "",
       productPrice:0,
+      memory:[],
     };
   },
   methods: {
   
     getInfo() {
-      let orders = localStorage.getItem("order");
-      if (!orders) return;
-      this.order = JSON.parse(orders);
-
-      let members = localStorage.getItem("user");
-      if (!members) return;
+      
+      let members = sessionStorage.getItem("member");
       this.member = JSON.parse(members);
 
-      let carts = localStorage.getItem("cart");
-      if (!carts) return;
-      this.cart = JSON.parse(carts);
+      // let carts = localStorage.getItem("cart");
+      // if (!carts) return;
+      // this.cart = JSON.parse(carts);
 
-      let calculates = localStorage.getItem("calculate");
-      if (!calculates) return;
-      this.calculate = JSON.parse(calculates);
+      // let calculates = localStorage.getItem("calculate");
+      // if (!calculates) return;
+      // this.calculate = JSON.parse(calculates);
 
     //   console.log("商品-->",this.calculate)
 
       let totalPrices = localStorage.getItem("totalPrice");
       if (!totalPrices) return;
-      this.totalPrice = JSON.parse(totalPrices);
-
-      this.score = (
-        this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
-      ).toFixed(1);
-      this.star = parseInt(this.score);
-     
+      this.totalPrice = JSON.parse(totalPrices);   
+    },
+     updateCart() {
+      this.axios
+        .get("http://localhost/CGD102_G2/public/api/shoppingCart.php", {
+          params: {
+            mem_id: this.member.memId,
+          },
+        })
+        .then((res) => {
+          this.memory = res.data;
+          // console.log("before",this.memory)
+        });
     },
   },
 
   created() {
     this.getInfo();
-    
+    this.updateCart()
 
    
   },
     watch: {
-    calculate: {
+    memory: {
       handler(newVal) {
         this.productPrice = "";
         for (let i = 0; i < newVal.length; i++) {
           this.productPrice = parseFloat(
-            this.productPrice + newVal[i].PROD_PRICE * newVal[i].PROD_NUM
+            this.productPrice + newVal[i].PROD_PRICE * newVal[i].PROD_QTY
           );
               this.$emit("productPrice",this.productPrice)
         }

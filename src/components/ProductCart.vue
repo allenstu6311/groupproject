@@ -96,6 +96,7 @@ const BASE_URL = process.env.NODE_ENV === "production" ? "/cgd102/g2" : "..";
 export default {
   props: {
     getProduct: Array,
+    newCartInfo:Array,
   },
   data() {
     return {
@@ -128,11 +129,13 @@ export default {
 
     },
     reduceCar(id) {
+      this.updateCart();
       // let count = this.cart.findIndex((item) => item.PROD_ID === id);
       // let index = this.calculate.findIndex((item) => item.PROD_ID === id);
       let focus = this.memory.findIndex(item=>item.PROD_ID===id)
-     
       this.reduceShoppingCart(focus)
+      this.updateCart();
+      
       // this.cart.splice(count, 1);
       // this.calculate.splice(index, 1);
       // this.$emit("cart-message", this.cart);
@@ -152,8 +155,18 @@ export default {
         }
       }
       location.reload();
-
-
+    },
+      updateCart() {
+      this.axios
+        .get("http://localhost/CGD102_G2/public/api/shoppingCart.php", {
+          params: {
+            mem_id: this.member.memId,
+          },
+        })
+        .then((res) => {
+          this.memory = res.data;
+          // console.log("before",this.memory)
+        });
     },
 
     countMoney() {
@@ -202,7 +215,7 @@ export default {
             prod_qty:1,
           },
         }
-      );
+      )
     },
   },
   computed: {
@@ -298,6 +311,16 @@ export default {
       },
       deep: true,
     },
+    newCartInfo:{
+      handler(newVal){
+        this.updateCart()
+        // console.log("test",newVal)
+        this.updateCart();
+        // if(newVal){
+        //   this.memory  =newVal
+        // }
+      }
+    },
     buyCar: {
       handler(newVal) {
         if (newVal.length == 0) {
@@ -330,7 +353,6 @@ export default {
     },
     totalPrice:{
       handler(newVal){
-        console.log(newVal)
         this.countMoney()
       }
     },

@@ -17,10 +17,10 @@
     </div>
 
     <div class="shopping-list-order" v-for="item in memory" :key="item.PROD_ID">
-      <input type="checkbox" v-model="calculate" :value="item" />
+      <input type="checkbox" v-model="calculate" :value="item"  @change="memoryChecked(item.CHECKED)"/>
       <!-- {{calculate}} -->
       <div class="shopping-list-pic">
-        <img :src="require(`../assets/phps/pic/${item.PROD_PIC1}`)" alt="" />
+        <img :src="require(`../../public/api/pic/${item.PROD_PIC1}`)" />
       </div>
       <div class="shopping-list-body">
         <div class="shopping-list-name">
@@ -125,7 +125,7 @@ export default {
 
       // let carNum = this.calculate.find((item) => item.PROD_ID === id);
       // carNum.PROD_NUM += 1;
-      // this.setLocal();
+
     },
     reduceCar(id) {
       // let count = this.cart.findIndex((item) => item.PROD_ID === id);
@@ -133,10 +133,10 @@ export default {
       let focus = this.memory.findIndex(item=>item.PROD_ID===id)
      
       this.reduceShoppingCart(focus)
-      this.cart.splice(count, 1);
-      this.calculate.splice(index, 1);
-      this.$emit("cart-message", this.cart);
-      this.setLocal();
+      // this.cart.splice(count, 1);
+      // this.calculate.splice(index, 1);
+      // this.$emit("cart-message", this.cart);
+      // this.setLocal();
      
     },
     drop() {
@@ -153,22 +153,22 @@ export default {
       }
       location.reload();
 
-      this.setLocal();
+
     },
 
     countMoney() {
       localStorage.setItem("totalPrice", JSON.stringify(this.totalPrice));
     },
-    setLocal() {
-      localStorage.setItem("cart", JSON.stringify(this.cart));
-      localStorage.setItem("calculate", JSON.stringify(this.calculate));
-    },
+    // setLocal() {
+    //   // localStorage.setItem("cart", JSON.stringify(this.cart));
+    //   localStorage.setItem("calculate", JSON.stringify(this.calculate));
+    // },
     getInfo() {
       let orders = localStorage.getItem("order");
       if (orders) this.order = JSON.parse(orders);
 
-      let carts = localStorage.getItem("cart");
-      if (carts) this.cart = JSON.parse(carts);
+      // let carts = localStorage.getItem("cart");
+      // if (carts) this.cart = JSON.parse(carts);
 
       let calculates = localStorage.getItem("calculate");
       if (calculates) this.calculate = JSON.parse(calculates);
@@ -228,7 +228,7 @@ export default {
   created() {
     this.getInfo();
     this.selChange();
-    
+
     if(!this.member){
         alert("請先登入");
         this.$router.push("/MemLogin")
@@ -241,7 +241,7 @@ export default {
       })
       .then((res) => {
         this.memory = res.data;
-        console.log("購物車",this.memory)
+        // console.log("購物車",this.memory)
       });
 
     }
@@ -305,6 +305,11 @@ export default {
         }
       },
     },
+     checkBox:{
+      handler(newVal){
+        console.log('calculate',newVal)
+      }
+    },
     checkOut: {
       handler(newVal) {
         if (newVal == true) {
@@ -322,6 +327,12 @@ export default {
           this.unused = false;
         }
       },
+    },
+    totalPrice:{
+      handler(newVal){
+        console.log(newVal)
+        this.countMoney()
+      }
     },
     deep: true,
   },

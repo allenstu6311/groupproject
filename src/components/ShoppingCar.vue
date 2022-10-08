@@ -21,7 +21,8 @@
       :style="{ left: 150 * index + 'px', transition: 0.4 + 's' }"
     >
       <div class="add-on-pic" @click="addShoppingCart(item.PROD_ID)">
-        <img :src="require(`../assets/phps/pic/${item.PROD_PIC1}`)" alt="" />
+        <img :src="require(`../../public/api/pic/${item.PROD_PIC1}`)" alt="">
+        {{item.PROD_PIC1}}
       </div>
       <div class="add-on-price-name">
         {{ item.PROD_NAME }}
@@ -55,7 +56,7 @@ export default {
       cart: [],
       calculate: [],
       member: [],
-      memory:[],
+      memory: [],
     };
   },
   methods: {
@@ -70,9 +71,18 @@ export default {
       }
     },
     addShoppingCart(id) {
-   
       let count = this.data.findIndex((item) => item.PROD_ID === id);
-      let sameProduct = this.memory.findIndex(item=>item.PROD_ID===id)
+      let sameProduct = this.memory.find((item) => item.PROD_ID === id);
+      // let index = this.cart.find(item=>item.PROD_ID===id)
+
+      if (!sameProduct) {
+        alert("成功加入");
+        this.IncreaseShoppingCart(count);
+        this.updateCart();
+        location.reload()
+      } else {
+        alert("購物車已有相同物品");
+      }
 
       // this.addOn = {
       //   PROD_ID: this.data[count].PROD_ID,
@@ -89,20 +99,18 @@ export default {
       //   PROD_REVIEW: this.data[count].PROD_REVIEW + 1,
       //   PROD_TIMES: this.data[count].PROD_TIMES + 1,
       // };
-      this.IncreaseShoppingCart(count);
-      this.$emit("product-info", this.addOn);
-
-
+      // this.IncreaseShoppingCart(count);
+      // this.$emit("product-info", this.addOn);
     },
-     IncreaseShoppingCart(count) {
+    IncreaseShoppingCart(count) {
       this.axios.get(
         "http://localhost/CGD102_G2/public/api/changeShoppingCart.php",
         {
           params: {
             judge: 1,
             mem_id: this.member.memId,
-            prod_id:this.data[count].PROD_ID,
-            prod_qty:1,
+            prod_id: this.data[count].PROD_ID,
+            prod_qty: 1,
           },
         }
       );
@@ -110,6 +118,18 @@ export default {
     updateStorage() {
       localStorage.setItem("cart", JSON.stringify(this.cart));
       localStorage.setItem("calculate", JSON.stringify(this.calculate));
+    },
+    updateCart() {
+      this.axios
+        .get("http://localhost/CGD102_G2/public/api/shoppingCart.php", {
+          params: {
+            mem_id: this.member.memId,
+          },
+        })
+        .then((res) => {
+          this.memory = res.data;
+          // console.log("before",this.memory)
+        });
     },
 
     cartInfo() {
@@ -136,31 +156,31 @@ export default {
     },
   },
   created() {
+  
     //  var url = `${BASE_URL}/api/addOn.php` //上線
     var url = "http://localhost/CGD102_G2/public/api/addOn.php";
     this.axios.get(url).then((res) => {
       this.data = res.data;
-      // console.log(this.data);
+        console.log(this.data);
     });
     let members = sessionStorage.getItem("member");
     this.member = JSON.parse(members);
     // console.log("mem", this.member.memId);
 
-    if(!this.member){
-        alert("請先登入");
-        this.$router.push("/MemLogin")
-    }else{
-          this.axios
-      .get("http://localhost/CGD102_G2/public/api/shoppingCart.php", {
-        params: {
-          mem_id: this.member.memId,
-        },
-      })
-      .then((res) => {
-        this.memory = res.data;
-        // console.log("before",this.memory)
-      });
-
+    if (!this.member) {
+      alert("請先登入");
+      this.$router.push("/MemLogin");
+    } else {
+      this.axios
+        .get("http://localhost/CGD102_G2/public/api/shoppingCart.php", {
+          params: {
+            mem_id: this.member.memId,
+          },
+        })
+        .then((res) => {
+          this.memory = res.data;
+          // console.log("before",this.memory)
+        });
     }
 
     this.cartInfo();

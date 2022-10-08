@@ -8,7 +8,7 @@ function commodity($judge,$mem_id,$prod_id,$prod_qty){
 
     switch($judge){
         case 1:
-        $sql="INSERT INTO SHOPPINGCART VALUES(NULL,{$mem_id},{$prod_id},{$prod_qty})";
+        $sql="INSERT INTO SHOPPINGCART VALUES(NULL,{$mem_id},{$prod_id},{$prod_qty},1)";
         break;
         case 2:
         $sql="DELETE FROM SHOPPINGCART WHERE PROD_ID={$prod_id}";

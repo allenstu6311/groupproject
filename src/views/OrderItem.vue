@@ -64,10 +64,13 @@
     <div class="modal-content p-3">
         <h6 class="bold">訂單{{prodId}}</h6>
       <div class="modal-header"  v-for="item in detail" :key="item">
-        <img :src="require(`../assets/phps/pic/${item.prod_pic1}`)" alt="">
+        <img :src="require(`../../public/api/pic/${item.prod_pic1}`)" alt="">
         <h5 class="modal-title bold w-25 d-flex justify-content-center">{{item.prod_name}}</h5>
         <p class="w-25 d-flex justify-content-center">{{item.prod_price}}</p>
+         <p class="w-25 d-flex justify-content-center">X{{item.ORDER_ITEMS_QTY}}</p>
       </div>
+      
+    
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="show=false">Close</button >
       </div>
@@ -186,8 +189,8 @@ export default {
   },
   methods:{
     orderDetail(id){
-        var url = `${BASE_URL}/api/orderItemProduct.php` //上線
-      // var url = "http://localhost/CGD102_G2/public/api/orderItemProduct.php"
+        // var url = `${BASE_URL}/api/orderItemProduct.php` //上線
+      var url = "http://localhost/CGD102_G2/public/api/orderItemProduct.php"
       this.axios.get(url,{
         params:{
           order_id:id
@@ -202,8 +205,9 @@ export default {
     },
   },
   created(){
-       var url = `${BASE_URL}/api/backOrderItems.php` //上線
-      // var url = "http://localhost/CGD102_G2/public/api/backOrderItems.php"
+    
+      //  var url = `${BASE_URL}/api/backOrderItems.php` //上線
+    var url = "http://localhost/CGD102_G2/public/api/backOrderItems.php"
     this.axios.get(url)
     .then((res)=>{
         this.data=res.data

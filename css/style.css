@@ -1602,7 +1602,7 @@ footer nav .copyright p {
     height: 100px;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: flex-start;
   }
   footer nav .copyright p {
@@ -2537,7 +2537,7 @@ main {
 }
 .reservation_bg .index_reservation .reservation_content .item .item_bottom .intro_btn {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
 }
 
 /*====== 行動版 RWD | 320px ~ 768px ======*/
@@ -2707,7 +2707,7 @@ main {
   width: 100%;
   height: 100px;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: flex-end;
 }
 
@@ -2738,7 +2738,7 @@ main {
     width: 100%;
     height: 100px;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: flex-start;
   }
 }
@@ -2805,7 +2805,7 @@ main {
 }
 .memberLogin .input_area .sign {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .memberLogin .input_area .sign a {
   text-decoration: none;

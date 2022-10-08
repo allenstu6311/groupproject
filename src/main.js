@@ -1,20 +1,20 @@
 import { createApp } from 'vue'
-import axios from "axios"
-import VueAxios from 'vue-axios'
 import App from './App.vue'
-// import Header from "@/components/Header.vue"
-// import Footer from "@/components/Footer.vue"
+
 import './registerServiceWorker'
 import router from './router'
-import store from './store'
+// import store from './store'
+
+import axios from "axios"
 // import 'view-ui-plus/dist/styles/viewuiplus.css'
-// import "bootstrap/dist/css/bootstrap.css"
+import "bootstrap/dist/css/bootstrap.css"
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 
+import "@/assets/style.scss"
 
-createApp(App).use(store)
-                .use(router)
-                .use(VueAxios,axios)
-                .mount('#app')
-// .ues(Header).use(Footer)
+const app = createApp(App)
+// app.use(store)
+app.use(router)
+app.config.globalProperties.axios=axios
+app.mount('#app')

@@ -213,8 +213,8 @@
     </div>
 </template>
 
-<script scoped >
-      const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
+<script>
+import {BASE_URL} from '@/assets/js/commom.js'
     // import Swiper core and required modules
     import {Autoplay, Pagination} from 'swiper';
   
@@ -263,17 +263,16 @@
                 calculate:[],
             }
         },
-        created(){ //一進網頁就直接執行的~
-            this.axios.get( "http://localhost/CGD102_G2/public/api/homeMsg.php") //開發用!!!!
-            // this.axios.get( `${BASE_URL}/api/homeMsg.php`) //上線用!!!
+        created(){
+            //一進網頁就直接執行的~
+            this.axios.get( `${BASE_URL}/homeMsg.php`)
             .then((msg1)=>{ //msg1 可以自己取名,存取上面的路徑
                 this.msgList=msg1.data //把路徑中的資料(php)丟到上面的陣列中  .data是類似資料型別,也有殼能不是data
                // console.log("MSG~~~--->",this.msgList)  檢查有沒有抓資料近來
                 
             })
 
-            this.axios.get( "http://localhost/CGD102_G2/public/api/homeProduct.php") //開發用!!!!
-            // this.axios.get( `${BASE_URL}/api/homeProduct.php`)//上線用!!!
+            this.axios.get( `${BASE_URL}/homeProduct.php`)//上線用!!!
             .then((res)=>{
                 this.product=res.data
             })
@@ -283,15 +282,14 @@
         },
         methods:{
             async getDataFromApi() { //async是非同步
-                var url = 'http://localhost/CGD102_G2/public/api/news.php'//開發用!!!!
-                // var url = `${BASE_URL}/api/news.php` //上線用!!!!!
+                const url =  `${BASE_URL}/news.php`
                 let getData = async(url) => {
                     let response = await fetch(url); // await 很重要
                     let JSON =  response.json();
                     this.newsCardList = await JSON; // php 抓取回來的資料存取在預設好的參數裡
                 }
                 await getData(url); // 觸發 getData 的匿名 function 內容 ==> 95 ~ 97 行的內容
-                console.log(this.newsCardList);
+                // console.log(this.newsCardList);
             },
             joinDetail(id){
                 let index  = this.product.findIndex(item=>{

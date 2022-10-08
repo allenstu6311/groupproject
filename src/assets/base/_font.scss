@@ -1,7 +1,7 @@
+@import "color";
 body {
     font-family:'Microsoft JhengHei', '微軟正黑體', 'Microsoft YaHei', sans-serif;
-    }
-
+}
 
 $fontTitle:'DFKai-SB';//標楷體 
 //如果沒標楷體需求，其餘字體用預設字體
@@ -18,7 +18,6 @@ $fonSizeList:(
     "p":($fontSize)-48px,
     "span":($fontSize)-48px,
     "a":($fontSize)-48px,
-
 );
 
 @each $key,$val in $fonSizeList{

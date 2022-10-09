@@ -196,6 +196,12 @@ const routes = [
     component: () => import('@/views/BackCouponAddView.vue'),
     meta:{isHide:true}
   },
+  {
+    path: '/:pathMatch(.*)*', 
+    name: '404', 
+    component: () => import('@/views/NotFound.vue'),
+    meta:{isHide:true}
+  }
 ]
 
 const router = createRouter({

@@ -40,14 +40,15 @@ export default {
       totalPrice: "",
       productPrice:0,
       memory:[],
+      member:[]
     };
   },
   methods: {
   
     getInfo() {
       
-      let members = sessionStorage.getItem("member");
-      this.member = JSON.parse(members);
+      // let members = sessionStorage.getItem("member");
+      // this.member = JSON.parse(members);
 
       // let carts = localStorage.getItem("cart");
       // if (!carts) return;
@@ -64,8 +65,10 @@ export default {
       this.totalPrice = JSON.parse(totalPrices);   
     },
      updateCart() {
+            // var url = `${BASE_URL}/api/shoppingCart`; //上線
+    var url = "http://localhost/CGD102_G2/public/api/shoppingCart.php"
       this.axios
-        .get("http://localhost/CGD102_G2/public/api/shoppingCart.php", {
+        .get(url, {
           params: {
             mem_id: this.member.memId,
           },
@@ -79,9 +82,13 @@ export default {
 
   created() {
     this.getInfo();
-    this.updateCart()
 
-   
+    if(!this.member){
+      this.$router.push("/MemLogin");
+    }else{
+      this.updateCart()
+    }
+
   },
     watch: {
     memory: {

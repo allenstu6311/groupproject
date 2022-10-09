@@ -159,6 +159,7 @@ const routes = [
     component: () => import('@/views/ProductList.vue'),
     meta:{isHide:false}
   },
+
   {
     path: '/Detail',
     name: 'Detail',

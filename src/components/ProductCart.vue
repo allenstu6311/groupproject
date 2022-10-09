@@ -82,7 +82,7 @@
             totalPrice
           }}</strong>
         </p>
-        <router-link @click="checkMember()" to="/Confirm"
+        <router-link @click="checkList()" to="/Confirm"
           ><button class="btnLittle">前往結帳</button>
         </router-link>
       </div>
@@ -197,11 +197,8 @@ export default {
       this.totalPrice = parseInt(this.productPrice * this.sel);
       this.countMoney();
     },
-    checkMember() {
-      if (!this.member) {
-        alert("您尚未登入");
-        this.$router.push("/MemLogin");
-      }
+    checkList() {
+      localStorage.setItem("coupon",this.sel)
     },
    
     reduceShoppingCart(focus) {
@@ -243,11 +240,12 @@ export default {
     this.selChange();
 
     if(!this.member){
-        alert("請先登入");
         this.$router.push("/MemLogin")
     }else{
-          this.axios
-      .get("http://localhost/CGD102_G2/public/api/shoppingCart.php", {
+            // var url = `${BASE_URL}/api/shoppingCart`; //上線
+    var url = "http://localhost/CGD102_G2/public/api/shoppingCart.php"
+      this.axios
+      .get(url, {
         params: {
           mem_id: this.member.memId,
         },
@@ -261,8 +259,8 @@ export default {
   },
  
   mounted() {
-    var url = `${BASE_URL}/api/member.php`; //上線
-    // var url = "http://localhost/CGD102_G2/public/api/member.php"
+    // var url = `${BASE_URL}/api/member.php`; //上線
+    var url = "http://localhost/CGD102_G2/public/api/member.php"
     if (this.member) {
       this.axios
         .get(url, {

@@ -13,14 +13,15 @@
   </div>
 
   <div class="change-page">
-    <button type="button" @click="send">上一頁</button>
+    <router-link to="Cart" type="button"> 上一頁 </router-link>
+
     <button
       type="button"
       class="next-page"
       :class="{ checkAfter: agree }"
       @click="payInfo"
     >
-      下一頁
+      確認付款
     </button>
   </div>
 </template>
@@ -28,7 +29,7 @@
 import MemberInfo from "@/components/MemberInfo.vue";
 import CheckCommodity from "@/components/CheckCommodity.vue";
 
-const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
+const BASE_URL = process.env.NODE_ENV === "production" ? "/cgd102/g2" : "..";
 export default {
   components: {
     MemberInfo,
@@ -43,14 +44,16 @@ export default {
       productNote: "",
       member: [],
       memberCoups: [],
-      memory:[],
+      memory: [],
+      coupons: "",
+      cpsId: "",
     };
   },
   methods: {
     Information() {
-      // let carts = localStorage.getItem("cart");
-      // if (!carts) return;
-      // this.cart = JSON.parse(carts);
+      let members = sessionStorage.getItem("member");
+      this.member = JSON.parse(members);
+      console.log(this.member);
 
       // let calculates = localStorage.getItem("calculate");
       // if (!calculates) return;
@@ -64,13 +67,13 @@ export default {
       //商品清單
       alert("結帳完成");
       //  var url = `${BASE_URL}/api/productlist.php` //上線
-        var url ="http://localhost/CGD102_G2/public/api/productlist.php"
+      var url = "http://localhost/CGD102_G2/public/api/productlist.php";
       this.axios
         .get(url, {
           params: {
-            mem_id: this.memberCoups.length>0?this.memberCoups[0].MEM_ID:2,
+            mem_id: this.member.memId,
             productPrice: this.productNote,
-            cps_id: this.memberCoups.length>0?this.memberCoups[0].CPS_ID:1,
+            cps_id: this.cpsId,
             totalPrice: this.totalPrice,
             address: this.member.memAddress,
           },
@@ -81,12 +84,10 @@ export default {
         });
     },
     sendOrderItems() {
-    
       //商品明細
-        // var url = `${BASE_URL}/api/productOrder.php` //上線
-      var url ="http://localhost/CGD102_G2/public/api/productOrder.php"
+      // var url = `${BASE_URL}/api/productOrder.php` //上線
+      var url = "http://localhost/CGD102_G2/public/api/productOrder.php";
       for (let i = 0; i < this.memory.length; i++) {
-        alert("123")
         this.axios
           .get(url, {
             params: {
@@ -96,50 +97,74 @@ export default {
               prod_num: this.memory[i].PROD_QTY,
             },
           })
-          .then((res) => {
-             console.log(res)
-          });
+          .then((res) => {});
       }
     },
     productMoney(val) {
       this.productNote = val;
     },
+    getCouponInfo() {
+      this.coupons = localStorage.getItem("coupon");
+
+      switch (this.coupons) {
+        case "0.90":
+          this.cpsId = 1;
+          break;
+        case "0.80":
+          this.cpsId = 2;
+          break;
+        case "0.70":
+          this.cpsId = 3;
+          break;
+        case "0.60":
+          this.cpsId = 4;
+          break;
+        default:
+          this.coupons = 0;
+          break;
+      }
+    },
   },
 
   created() {
+    this.Information();
+    this.productMoney();
+    this.getCouponInfo();
 
-            // var url = `${BASE_URL}/api/member.php` //上線
-    var url ="http://localhost/CGD102_G2/public/api/member.php"
-    let members = sessionStorage.getItem("member");
-    this.member = JSON.parse(members);
-
-    this.axios
-      .get(url, {
-        params: {
-          MEM_NAME: this.member.memName,
-        },
-      })
-      .then((res) => {
-        this.memberCoups = res.data;
-
-      });
-
+    if (!this.member) {
+      alert("請先登入");
+      this.$router.push("/MemLogin");
+    } else {
+      // var url = `${BASE_URL}/api/shoppingCart`; //上線
+    var url = "http://localhost/CGD102_G2/public/api/shoppingCart.php"
       this.axios
-        .get("http://localhost/CGD102_G2/public/api/shoppingCart.php", {
+        .get(url, {
           params: {
             mem_id: this.member.memId,
           },
         })
         .then((res) => {
           this.memory = res.data;
-         
-            
+
           // console.log("before",this.memory)
         });
 
-    this.Information();
-    this.productMoney();
+      // var url = `${BASE_URL}/api/member.php` //上線
+      var url = "http://localhost/CGD102_G2/public/api/member.php";
+      this.axios
+        .get(url, {
+          params: {
+            MEM_NAME: this.member.memName,
+          },
+        })
+        .then((res) => {
+          this.memberCoups = res.data;
+          // console.log("sale",this.memberCoups)
+        });
+    }
   },
+
+  mounted() {},
   watch: {
     calculate: {
       handler(newVal) {
@@ -151,6 +176,15 @@ export default {
         }
       },
     },
+    member: {
+      handler(newVal) {
+        if (!newVal) {
+          alert("請先登入");
+          this.$router.push("/MemLogin");
+        }
+      },
+    },
+    deep: true,
   },
 };
 </script>

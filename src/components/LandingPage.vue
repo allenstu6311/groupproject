@@ -7,11 +7,11 @@
         <div class="btn_contain">
             <img class="slide-top" src="../assets/images/enterHand1.png" alt="">
             <router-link to="/home">
-                <button class="enter">前台TEST</button>
+                <button class="enter">前台</button>
             </router-link>
             <div class="space"></div>
             <router-link to="/backstage">
-                <button class="enter ">後台TEST</button>
+                <button class="enter ">後台</button>
             </router-link>
             <img class="slide-bottom" src="../assets/images/enterHand2.png" alt="">
         </div>

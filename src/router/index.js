@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import FrontPageView from '@/views/FrontPageView.vue'
+import LandingPageView from '@/views/LandingPageView.vue'
 import HomeView from '@/views/HomeView.vue'
 import BackstageView from '@/views/BackstageView.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'frontpage',
-    component: FrontPageView,
+    name: 'landingPage',
+    component: LandingPageView,
     meta:{isHide:true}
   },
   {

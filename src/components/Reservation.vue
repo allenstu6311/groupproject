@@ -87,7 +87,7 @@
 </template>
 
 <script>
-  import {BASE_URL} from '@/assets/js/commom.js'
+  import {BASE_URL} from '@/assets/js/common.js'
 
   export default {
       props: {

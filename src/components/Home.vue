@@ -214,7 +214,7 @@
 </template>
 
 <script>
-import {BASE_URL} from '@/assets/js/commom.js'
+import {BASE_URL} from '@/assets/js/common.js'
     // import Swiper core and required modules
     import {Autoplay, Pagination} from 'swiper';
   

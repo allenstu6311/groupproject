@@ -172,13 +172,17 @@
     <div class="special-offer" v-if="commoditySale == 2">
       <h1>目前無特價商品</h1>
     </div>
-  
+
   </div>
 </template>
 <script>
 import {BASE_URL} from '@/assets/js/common.js'
+import lightBox from "@/components/lightBox.vue"
 // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 export default {
+  components:{
+    lightBox
+  },
   props: {
     price: Array,
     enter1: Number,
@@ -208,6 +212,7 @@ export default {
       currPage: 1,
       disappear:false,
       member:[],
+      lightBoxShow:false
     };
   },
   methods: {

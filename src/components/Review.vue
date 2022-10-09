@@ -59,7 +59,7 @@
                 <button class="btnLittle" @click="upload"  >上傳</button>
             </div>
         </div>
-<lightBox />
+
 </template>
 
 <style lang="scss" scoped>
@@ -74,7 +74,7 @@ import {BASE_URL} from '@/assets/js/common.js'
 // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 export default {
     components:{
-        lightBox
+        
     },
     data(){
         return{
@@ -131,7 +131,7 @@ export default {
 
             let members = sessionStorage.getItem("member");
             this.member = JSON.parse(members)
-            console.log(this.member)
+         
             
             this.score =(this.order[0].PROD_REVIEW/this.order[0].PROD_TIMES ).toFixed(1)
             this.star = parseInt(this.score)
@@ -143,8 +143,8 @@ export default {
        
         this.getStorage()
       
-        //  var url = 'http://localhost/CGD102_G2/public/api/article.php'
-        var url = `${BASE_URL}/article.php`
+         var url = 'http://localhost/CGD102_G2/public/api/article.php'
+        // var url = `${BASE_URL}/article.php`
         this.axios.get(url,
         {
             params:{

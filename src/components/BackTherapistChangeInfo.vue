@@ -170,7 +170,7 @@ export default {
       allenHandsome: [],
     };
   },
- 
+
   mounted() {
     this.getInfo()
     // this.getDataFromApi();
@@ -188,8 +188,7 @@ export default {
     //     await getData(url);
     //     console.log(this.backstageTherapsitList);
     // },
-<<<<<<< HEAD
-    methods: {
+
         // async getDataFromApi() {
         //     var url = 'http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php'; //開發用
         //     // var url = `${BASE_URL}/api/therapistContent.php`; //上線用
@@ -202,9 +201,9 @@ export default {
         //     console.log(this.backstageTherapsitList);
         // },
         submit(){
-        
+
             var xhr = new XMLHttpRequest();
-            
+
             xhr.onload = function(){
                 if(xhr.status == 200){
                     if(xhr.responseText == "修改完成"){
@@ -224,78 +223,7 @@ export default {
 
 
         },
-        photo(e){
-            this.pic = e.target.files[0].name;
-            console.log(this.pic);
-        },
-        checkContentByReg(reg, content, tip, classname) {
-            if (reg.test(content)) {
-                this[tip] = "V"
-                this[classname] = "success"
-                return true
-            } else {
-                this[tip] = "請檢查格式"
-                this[classname] = "error"
-                return false
-            }
-        },
-        onlineStorage(){
-                let allens = localStorage.getItem("THERAPIST_NAME")
-                this.allenHandsome = JSON.parse(allens)
-                alert(this.allenHandsome)
-                
-                this.$nextTick=()=>{
-                    this.getInfo()
-                }
-                console.log("俊彥大帥哥",this.allenHandsome)
-                
-        },
-        getInfo(){
-            
-            // this.axios.get("http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php",{
-            this.axios.get(`${BASE_URL}/backtherapistgetvalue.php`,{
-                params:{
-                    searchName:this.allenHandsome[0].THERAPIST_NAME
-                }
-            })
-            .then((res)=>{
-                console.log("俊彥率倒吊渣",res)
-                // this.backstageTherapsitList = res.data
-                this.name =this.allenHandsome[0].THERAPIST_NAME
-            })  
-        },
-    },
-    watch: {
-        password: function (content) {
-            var reg = /^[0-9a-z]{6,10}$/;
-            this.pswflag = this.checkContentByReg(reg, content, "pswtip", "pswclass")
-=======
-    submit() {
-      var xhr = new XMLHttpRequest();
-
-      xhr.onload = function () {
-        if (xhr.status == 200) {
-          if (xhr.responseText == "修改完成") {
-            alert("修改完成");
-            window.location.replace("/backtherapist");
-          } else if (xhr.responseText == "修改失敗") {
-            alert("修改失敗");
-          }
->>>>>>> allen
-        }
-      };
-      xhr.open(
-        "post",
-        "http://localhost/CGD102_G2/public/api/backtherapistchangeinfo.php",
-        true
-      ); //開發用
-      // xhr.open("post",`${BASE_URL}/api/backtherapistchangeinfo.php`, true); //上線用
-      xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-
-      let therapist_data = `license1=${this.license1}&license2=${this.license2}&license3=${this.license3}&license4=${this.license4}&account=${this.account}&password=${this.password}&name=${this.name}&hiredate=${this.hiredate}&pic=${this.pic}`;
-      xhr.send(therapist_data);
-    },
-    photo(e) {
+      photo(e) {
       this.pic = e.target.files[0].name;
       console.log(this.pic);
     },
@@ -311,7 +239,7 @@ export default {
       }
     },
     getInfo() {
-        
+
       this.axios
         .get(
           "http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php",
@@ -328,7 +256,37 @@ export default {
           this.password = this.$route.query.password;
         });
     },
+      photo(e){
+            this.pic = e.target.files[0].name;
+            console.log(this.pic);
+        },
+        checkContentByReg(reg, content, tip, classname) {
+            if (reg.test(content)) {
+                this[tip] = "V"
+                this[classname] = "success"
+                return true
+            } else {
+                this[tip] = "請檢查格式"
+                this[classname] = "error"
+                return false
+            }
+        },
+
+    //   xhr.open(
+    //     "post",
+    //     "http://localhost/CGD102_G2/public/api/backtherapistchangeinfo.php",
+    //     true
+    //   ); //開發用
+    //   // xhr.open("post",`${BASE_URL}/api/backtherapistchangeinfo.php`, true); //上線用
+    //   xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+
+    //   let therapist_data = `license1=${this.license1}&license2=${this.license2}&license3=${this.license3}&license4=${this.license4}&account=${this.account}&password=${this.password}&name=${this.name}&hiredate=${this.hiredate}&pic=${this.pic}`;
+    //   xhr.send(therapist_data);
+    // }
+
   },
+      
+
   watch: {
     password: function (content) {
       var reg = /^[0-9a-z]{6,10}$/;

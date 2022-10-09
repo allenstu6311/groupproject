@@ -13,7 +13,7 @@
         <router-link to="/MemLogin" class="btnLarge">前往登入</router-link>
       </div>
       <div class="light-box-close">
-        <button type="button" @click="lightBoxShow=false">x</button>
+        <button type="button" @click="goBack">x</button>
       </div>
     </div>
   </div>
@@ -86,8 +86,14 @@
 export default {
     data(){
         return{
-            lightBoxShow:false
+            lightBoxShow:true
         }
+    },
+    methods:{
+      goBack(){
+        this.$router.go(-1)
+      }
+    
     }
 }
 </script>

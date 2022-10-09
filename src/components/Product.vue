@@ -234,9 +234,9 @@ export default {
     this.member = JSON.parse(members)
 
     if(!this.member){
-        alert("請先登入");
-        this.$router.push("/MemLogin")
+        return
     }else{
+       
           this.axios
       // .get("http://localhost/CGD102_G2/public/api/shoppingCart.php", {
       .get(`${BASE_URL}/shoppingCart.php`, {

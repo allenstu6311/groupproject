@@ -42,7 +42,13 @@
                     <td>
                         <div>
                             <!-- <img src="../assets/images/Pen.png" alt="修改icon"> -->
-                            <router-link to="/BackTherapistChangeInfo" @click="chtherapistinfo(backstageTherapsit.THERAPIST_NAME)">
+                            <!-- @click="getTherapsitInfo(backstageTherapsit.THERAPIST_NAME)" -->
+                            <router-link   :to="{path:'/BackTherapistChangeInfo' , query:{ 
+                                
+                                name: `${backstageTherapsit.THERAPIST_NAME}`,
+                                account:`${backstageTherapsit.THERAPIST_ACCOUNT}`,
+                                password:`${backstageTherapsit.THERAPIST_PSW}`
+                                }}" >
                             <svg 
                             xmlns="http://www.w3.org/2000/svg" 
                             class="icon icon-tabler icon-tabler-edit"
@@ -78,12 +84,6 @@ import "bootstrap/scss/bootstrap.scss";
         },
         created(){
             this.getDataFromApi();// 在建立Vue.js模板時順帶執行這個參數
-         
-            this.onlineStorage()
-            this.clear()
-              
-            
-            
         },
         methods:{
             async getDataFromApi() {
@@ -96,35 +96,8 @@ import "bootstrap/scss/bootstrap.scss";
                 }
                 await getData(url); // 觸發 getData 的匿名 function 內容 ==> 76 ~ 78 行的內容
                 console.log(this.backstageTherapsitList);
+                 
             },
-              chtherapistinfo(name){
-                this.axios.get("http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php",{
-                    params:{
-                        searchName:name
-                    }
-                })
-                .then((res)=>{
-                    // console.log(res.data[0].THERAPIST_NAME)
-                    this.allenHandsome = res.data
-
-                    this.setStorage()
-
-                })
-            },
-            setStorage(){
-                localStorage.setItem("THERAPIST_NAME",JSON.stringify(this.allenHandsome))
-            },
-            onlineStorage(){
-                let allens = localStorage.getItem("THERAPIST_NAME")
-                this.allenHandsome = JSON.parse(allens)
-            },
-            clear(){
-                // let index = this.allenHandsome.findIndex(item=>item.THERAPIST_NAME)
-                
-                this.allenHandsome=[]
-                this.setStorage()
-            }
-       
             // chlive(e){
             //     this.backstageTherapsitList[0].THERAPIST_STATUS = e.target.value;
             //     let THERAPIST_STATUS = this.backstageTherapsitList[0].THERAPIST_STATUS;

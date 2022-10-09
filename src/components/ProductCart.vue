@@ -319,10 +319,12 @@ export default {
         // }
       }
     },
-    buyCar: {
+    memory: {
       handler(newVal) {
         if (newVal.length == 0) {
           this.detect = true;
+        }else{
+          this.detect = false;
         }
       },
     },

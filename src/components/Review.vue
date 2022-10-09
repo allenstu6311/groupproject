@@ -59,7 +59,7 @@
                 <button class="btnLittle" @click="upload"  >上傳</button>
             </div>
         </div>
-
+<lightBox />
 </template>
 
 <style lang="scss" scoped>
@@ -70,9 +70,13 @@
 </style>
 
 <script>
+import lightBox from "@/components/lightBox.vue";
+
 const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 export default {
-    
+    components:{
+        lightBox
+    },
     data(){
         return{
             tex:"",

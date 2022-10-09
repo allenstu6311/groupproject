@@ -171,6 +171,15 @@ export default {
         case "嘉義市":
           this.url="https://run.mocky.io/v3/f49a840e-abf3-4678-8121-e73d58f38889";
            break;
+        case "嘉義縣":
+          this.url="https://run.mocky.io/v3/b959f79e-3d65-4987-9277-8d9a9feada0a";
+          break;
+        case "基隆市":
+          this.url="https://run.mocky.io/v3/28679e0e-a5aa-41c2-81d4-ac3ae3eb57d3";
+          break;
+        case "宜蘭縣":
+          this.url="https://run.mocky.io/v3/9f1a0cd3-22d0-4992-bf42-6fd45042a9ed";
+          break;
       }
       this.axios.get(this.url).then((res) => {
         this.shop = res.data.stores;

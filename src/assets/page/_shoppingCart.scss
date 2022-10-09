@@ -1,6 +1,8 @@
 
 @include cellphone();
-
+body{
+    background-color: red;
+}
 .price-important{
     color: $red;
 }
@@ -244,8 +246,4 @@
         }
   
     }
-
-
-
-   
 }

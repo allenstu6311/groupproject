@@ -1,11 +1,14 @@
+
 .add-on-container{
     @include container();
     box-sizing: border-box;
     display: flex;
+    align-items: flex-start;
     position: relative;
     margin: auto;
     padding-left: 50px;
     overflow: hidden;
+
     .add-on-product{
         position: relative;
         width: 50%;
@@ -29,15 +32,12 @@
            
         }
     }
-   
-   
-  
 }
 .add-on-control{
-    margin: auto; 
+    @include container();
     display: flex;
-    justify-content: center;
-    padding: 10px 0;
+    justify-content: space-between;
+    padding: 10px 20px;
 
     span{
         font-size: 35px;
@@ -54,10 +54,8 @@
     }
  
 }
-
 @media screen and (min-width:768px) {
     .add-on-container{
-      
         .add-on-product{
             width: 10%;
             flex-shrink: 0;
@@ -94,10 +92,10 @@
       
     }
     .add-on-control{
-        margin: auto; 
+        @include container();
         display: flex;
-        justify-content: center;
-        padding: 10px 0;
+        justify-content: space-between;
+        padding: 10px 20px;
     
         span{
             font-size: 35px;

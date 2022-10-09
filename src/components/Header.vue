@@ -47,7 +47,7 @@
         <span class="header_shopping_cart"
           ><router-link to="/cart"
             ><img src="../assets/images/headerShoppinCart.png" alt="" />
-            <div class="cart-number" v-if="showCartLength==true">{{cartMemory}}</div></router-link
+            <div class="cart-number" v-if="showCartLength==true">{{cartLength}}</div></router-link
           ></span
         >
       </div>
@@ -75,17 +75,29 @@ export default {
         display: this.selectShow ? "block" : "none",
       };
     },
-    cartMemory:function(){
-        this.updateCart()
-        return this.memory.length
+    cartLength:function(){
+      return  this.memory.length
+    },
+    cartTotal:function(){
+      return JSON.parse(JSON.stringify(this.memory))
     }
   },
+  watch:{
+     memory:{
+      handler(newVal){
+       
+        
+      }
+     },
+     deep:true,
+  },
+
   methods: {
     logout() {
       sessionStorage.removeItem("member");
       location.reload();
     },
-      updateCart() {
+    updateCart() {
             // var url = `${BASE_URL}/api/shoppingCart`; //上線
     var url = "http://localhost/CGD102_G2/public/api/shoppingCart.php"
       this.axios
@@ -96,11 +108,10 @@ export default {
         })
         .then((res) => {
           this.memory = res.data;
-          // console.log("before",this.memory)
         });
     },
       getCartNumber(){
-         if (this.member) {
+      if (this.member) {
       this.axios
         .get("http://localhost/CGD102_G2/public/api/shoppingCart.php", {
           params: {
@@ -127,6 +138,7 @@ export default {
     let members = sessionStorage.getItem("member");
     this.member = JSON.parse(members);
     this.getCartNumber()
+   
   },
  
 };

@@ -51,10 +51,8 @@ export default {
   },
   methods: {
     Information() {
-      let members = sessionStorage.getItem("member");
-      this.member = JSON.parse(members);
-      console.log(this.member);
-
+     let members = sessionStorage.getItem("member");
+    this.member = JSON.parse(members);
       // let calculates = localStorage.getItem("calculate");
       // if (!calculates) return;
       // this.calculate = JSON.parse(calculates);
@@ -146,7 +144,7 @@ export default {
         .then((res) => {
           this.memory = res.data;
 
-          // console.log("before",this.memory)
+          console.log("before",this.memory)
         });
 
       // var url = `${BASE_URL}/api/member.php` //上線
@@ -164,7 +162,6 @@ export default {
     }
   },
 
-  mounted() {},
   watch: {
     calculate: {
       handler(newVal) {
@@ -176,14 +173,7 @@ export default {
         }
       },
     },
-    member: {
-      handler(newVal) {
-        if (!newVal) {
-          alert("請先登入");
-          this.$router.push("/MemLogin");
-        }
-      },
-    },
+
     deep: true,
   },
 };
@@ -259,7 +249,7 @@ export default {
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (min-width: 1024px) {
   .confirm-container {
     width: 100%;
     max-width: 1200px;

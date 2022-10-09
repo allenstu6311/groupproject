@@ -47,8 +47,8 @@ export default {
   
     getInfo() {
       
-      // let members = sessionStorage.getItem("member");
-      // this.member = JSON.parse(members);
+      let members = sessionStorage.getItem("member");
+      this.member = JSON.parse(members);
 
       // let carts = localStorage.getItem("cart");
       // if (!carts) return;
@@ -82,13 +82,7 @@ export default {
 
   created() {
     this.getInfo();
-
-    if(!this.member){
-      this.$router.push("/MemLogin");
-    }else{
-      this.updateCart()
-    }
-
+    this.updateCart()
   },
     watch: {
     memory: {

@@ -1,55 +1,90 @@
-.member-info{
+.member-info {
     letter-spacing: 2px;
     line-height: 2;
     font-size: 22px;
     padding: 10px;
     margin-bottom: 50px;
     font-weight: 800;
-   
-    .member-title{}
-    .member-body{
+
+    .member-title {
+    }
+    .member-body {
         margin-bottom: 20px;
-        label{
+        line-height: 2;
+        label {
             display: block;
             width: 150px;
         }
-        input{
-            padding: 5px;
+        input[type="text"]{
+            width: 100%;
             border-radius: 5px;
             background-color: rgb(217, 217, 217);
             border: none;
         }
-        .member-name{
+        .member-name {
             display: flex;
             align-items: center;
+            margin: 10px 0;
+            
         }
-        .member-cellphone{
+        .member-cellphone {
             display: flex;
             align-items: center;
+            margin: 10px 0;
         }
-        .member-address{
+        .member-address {
             display: flex;
             align-items: center;
+            margin: 10px 0;
         }
-        .member-transport{
+        .member-transport {
             display: flex;
-            .delivery{}
-            .method{
+            .delivery {
+            }
+            .method {
                 display: flex;
                 flex-direction: column;
             }
         }
-        .member-pay{
+        .member-pay {
             display: flex;
-            .pay{}
-            .methods{
+            .pay {
+            }
+            .methods {
                 display: flex;
                 flex-direction: column;
             }
         }
-        
     }
-    .member-send{
+    .member-send {
         text-align: center;
+    }
+}
+@media screen and (max-width: 768px){
+    .member-info {
+        .member-body {
+            margin-bottom: 20px;
+            line-height: 1.5;
+            label {
+                display: block;
+                width: 150px;
+            }
+            input[type="text"] {
+                width: 100%;
+                min-width: 200px;
+                padding: 5px;
+                border-radius: 5px;
+                background-color: rgb(217, 217, 217);
+                border: none;
+                margin: 5px 0;
+            }
+            .map-box {
+            }
+            .info {
+            }
+            #sevenMap {
+                display: none;
+            }
+        }
     }
 }

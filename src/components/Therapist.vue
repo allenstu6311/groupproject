@@ -55,8 +55,8 @@
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-
-const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
+import {BASE_URL} from '@/assets/js/common.js';
+// const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
 
 export default {
     props: {
@@ -72,8 +72,8 @@ export default {
     },
     methods:{
         async getDataFromApi() {
-            var url = 'http://localhost/CGD102_G2/public/api/therapistContent.php' //開發用
-            // var url = `${BASE_URL}/api/therapistContent.php` //上線用
+            // var url = 'http://localhost/CGD102_G2/public/api/therapistContent.php' //開發用
+            var url = `${BASE_URL}/therapistContent.php` //上線用
             let getData = async(url) => {
                 let response = await fetch(url); // await 很雞掰，真的在哭
                 let JSON =  response.json();

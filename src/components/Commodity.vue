@@ -176,7 +176,8 @@
   </div>
 </template>
 <script>
-const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
+import {BASE_URL} from '@/assets/js/common.js'
+// const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 export default {
   props: {
     price: Array,
@@ -334,8 +335,8 @@ export default {
       }
     },
     getCommodityInfo() {
-      //  var url = `${BASE_URL}/api/commoditylist.php` //上線
-      var url = "http://localhost/CGD102_G2/public/api/commoditylist.php"
+       var url = `${BASE_URL}/commoditylist.php` //上線
+      // var url = "http://localhost/CGD102_G2/public/api/commoditylist.php"
       this.axios
         .get(url, {
           params: {

@@ -24,9 +24,6 @@
 </template>
 
 
-<script>
-import "bootstrap/scss/bootstrap.scss";
-</script>
 
 <style lang="scss" scoped>
     // @import "bootstrap/scss/bootstrap"; 

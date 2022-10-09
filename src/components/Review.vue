@@ -70,7 +70,8 @@
 </style>
 
 <script>
-const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
+import {BASE_URL} from '@/assets/js/common.js'
+// const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 export default {
     
     data(){
@@ -88,8 +89,8 @@ export default {
     },
     methods:{
         giveRating(num,name){
-        // var url = `${BASE_URL}/api/review.php` //上線
-        var url = "http://localhost/CGD102_G2/public/api/review.php"
+        var url = `${BASE_URL}/review.php` //上線
+        // var url = "http://localhost/CGD102_G2/public/api/review.php"
         this.axios.get(url,
             {
                 params:{
@@ -100,8 +101,8 @@ export default {
             // alert("感謝評價")
         },
         upload(){
-            // var url = `${BASE_URL}/api/comment.php` //上線
-            var url = "http://localhost/CGD102_G2/public/api/comment.php";
+            var url = `${BASE_URL}/comment.php` //上線
+            // var url = "http://localhost/CGD102_G2/public/api/comment.php";
            
                     this.axios.get(url,
                 {
@@ -140,8 +141,8 @@ export default {
        
         this.getStorage()
       
-         var url = 'http://localhost/CGD102_G2/public/api/article.php'
-        // var url = `${BASE_URL}/api/article.php`
+        //  var url = 'http://localhost/CGD102_G2/public/api/article.php'
+        var url = `${BASE_URL}/article.php`
         this.axios.get(url,
         {
             params:{

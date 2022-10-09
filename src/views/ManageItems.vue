@@ -232,8 +232,8 @@ table {
 import BackstageIndexAside from '@/components/BackstageIndexAside.vue'
 import BackstageIndexHeader from '@/components/BackstageIndexHeader.vue'
 import BackTherapist from '@/components/BackTherapist.vue'
-
-const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
+import {BASE_URL} from '@/assets/js/common.js'
+// const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 export default {
   components: {
       BackstageIndexHeader,
@@ -277,8 +277,8 @@ export default {
         for (let key in data) {
           formData.append(key, data[key]);
         }
-          // var url = `${BASE_URL}/api/backfile.php` //上線
-      var url = "http://localhost/CGD102_G2/public/api/backfile.php"
+        var url = `${BASE_URL}/backfile.php` //上線
+      // var url = "http://localhost/CGD102_G2/public/api/backfile.php"
         this.axios.post(
         url, formData, {
           headers: { "Content-Type": "multipart/form-data" },

@@ -67,7 +67,8 @@
     </div> 
 </template>
 <script>
-const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
+import {BASE_URL} from '@/assets/js/common.js'
+// const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 export default {
     data(){
         return{
@@ -93,7 +94,7 @@ export default {
     methods:{
     
         choseRange(){
-            var url = `${BASE_URL}/api/priceRange.php` //上線
+            var url = `${BASE_URL}/priceRange.php` //上線
             // var url = "http://localhost/CGD102_G2/public/api/priceRange.php"
             this.axios.get(url,
             {
@@ -176,7 +177,7 @@ export default {
                     }
                 break;
             }
-             var url = `${BASE_URL}/api/filterPrice.php` //上線
+             var url = `${BASE_URL}/filterPrice.php` //上線
             // var url = "http://localhost/CGD102_G2/public/api/filterPrice.php"
             this.axios.get(url,{
 
@@ -227,7 +228,7 @@ export default {
                     }
                     break;
             }
-             var url = `${BASE_URL}/api/fiterTool.php` //上線
+             var url = `${BASE_URL}/fiterTool.php` //上線
             // var url = "http://localhost/CGD102_G2/public/api/fiterTool.php"
             this.axios.get(url,
             {

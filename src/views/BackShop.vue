@@ -166,8 +166,8 @@ table {
 import BackstageIndexAside from '@/components/BackstageIndexAside.vue'
 import BackstageIndexHeader from '@/components/BackstageIndexHeader.vue'
 import BackTherapist from '@/components/BackTherapist.vue'
-
-const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
+import {BASE_URL} from '@/assets/js/common.js'
+// const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 export default {
   components: {
         BackstageIndexHeader,
@@ -188,8 +188,8 @@ export default {
   },
   methods: {
     onTheShelf(id) {
-          // var url = `${BASE_URL}/api/rackupanddown.php` //上線
-      var url = "http://localhost/CGD102_G2/public/api/rackupanddown.php"
+          var url = `${BASE_URL}/rackupanddown.php` //上線
+      // var url = "http://localhost/CGD102_G2/public/api/rackupanddown.php"
       this.axios
         .get(url, {
           params: {
@@ -208,8 +208,8 @@ export default {
         });
     },
     takeDown(id) {
-            //  var url = `${BASE_URL}/api/rackupanddown.php` //上線
-      var url = "http://localhost/CGD102_G2/public/api/rackupanddown.php"
+      var url = `${BASE_URL}/rackupanddown.php` //上線
+      // var url = "http://localhost/CGD102_G2/public/api/rackupanddown.php"
       this.axios
         .get(url, {
           params: {
@@ -239,8 +239,8 @@ export default {
       }
     },
     getPageNumber(){
-      //  var url = `${BASE_URL}/api/totalproduct.php` //上線
-      var url = "http://localhost/CGD102_G2/public/api/totalproduct.php"
+      var url = `${BASE_URL}/totalproduct.php` //上線
+      // var url = "http://localhost/CGD102_G2/public/api/totalproduct.php"
         this.axios.get(url,{
         params:{
           range_1:this.number1,
@@ -253,8 +253,8 @@ export default {
       
     },
     backProductSearch(){
-      //  var url = `${BASE_URL}/api/backShopSearch.php` //上線
-      var url = "http://localhost/CGD102_G2/public/api/backShopSearch.php"
+      var url = `${BASE_URL}/backShopSearch.php` //上線
+      // var url = "http://localhost/CGD102_G2/public/api/backShopSearch.php"
       this.axios.get(url,{
         params:{
              PROD_NAME:this.backProduct,

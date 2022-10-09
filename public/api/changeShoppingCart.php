@@ -3,8 +3,8 @@ header('Access-Control-Allow-Origin:*');
 header("Content-Type:application/json;charset=utf-8");
 
 function commodity($judge,$mem_id,$prod_id,$prod_qty){
-    require_once("../../src/connect_cgd102g2.php"); //開發路徑
-    //require_once("../connect_cgd102g2.php");//上線路徑
+    // require_once("../../src/connect_cgd102g2.php"); //開發路徑
+    require_once("../connect_cgd102g2.php");//上線路徑
 
     switch($judge){
         case 1:

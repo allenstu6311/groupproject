@@ -118,6 +118,7 @@
     </div>
 </template>
 <script>
+    import {BASE_URL} from '@/assets/js/common.js'
     export default {
         data () {
             return{
@@ -352,8 +353,9 @@
             getCoupon(){
                 let xhr = new XMLHttpRequest();
                 // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'//上線用
-                // var url = ${BASE_URL}/api/getCoupons.php //上線用
-                xhr.open("post", "http://localhost/CGD102_G2/public/api/getCoupons.php", true); //開發用
+                var url = `${BASE_URL}/getCoupons.php`; //上線用
+                // xhr.open("post", "http://localhost/CGD102_G2/public/api/getCoupons.php", true); //開發用
+                xhr.open("post", url, true); //上線用
                 xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
                 let game_count = `count=${this.count}`;

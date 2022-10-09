@@ -43,6 +43,8 @@
     </div>
 </template>
 <script>
+import {BASE_URL} from '@/assets/js/common.js'
+
 export default {
     data() {
         return {
@@ -92,9 +94,10 @@ export default {
 
                 }
                 // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
-                // var url = `${BASE_URL}/api/login.php`
+                var url = `${BASE_URL}/login.php`
                 // "http://localhost/CGD102_G2/public/api/login.php"
-                xhr.open("post","http://localhost/CGD102_G2/public/api/login.php", true);
+                // xhr.open("post","http://localhost/CGD102_G2/public/api/login.php", true);
+                xhr.open("post",url, true);
                 xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
 
                 let login_info = `account=${this.account}&password=${this.password}`;

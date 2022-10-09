@@ -191,6 +191,7 @@
 </template>
 
 <script>
+import {BASE_URL} from '@/assets/js/common.js'
 import MemLightBox from '@/components/MemLightBox.vue';
 import { watch } from '@vue/runtime-core';
 export default {
@@ -250,9 +251,11 @@ export default {
             
             // var memData;
             // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
-            // var url = `${BASE_URL}/api/login.php`;
+            // var url = `${BASE_URL}/login.php`;
             // "http://localhost/CGD102_G2/public/api/getMemData.php"
-            xhr.open("post", "http://localhost/CGD102_G2/public/api/getMemData.php", true);
+            // xhr.open("post", "http://localhost/CGD102_G2/public/api/getMemData.php", true);
+            var url = `${BASE_URL}/getMemData.php`;
+            xhr.open("post", url, true);
             xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
             var getMemInfo = `name=${this.name}`;
             xhr.send(getMemInfo);
@@ -291,9 +294,10 @@ export default {
                 
                 var xhr = new XMLHttpRequest();
                 // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
-                // var url = `${BASE_URL}/api/login.php`;
+                var url = `${BASE_URL}/updateMemData.php`;
                 // "http://localhost/CGD102_G2/public/api/register.php"
-                xhr.open("post","http://localhost/CGD102_G2/public/api/updateMemData.php", true);
+                // xhr.open("post","http://localhost/CGD102_G2/public/api/updateMemData.php", true);
+                xhr.open("post",url, true);
                 xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
 
                 let new_mem_deta = `id=${this.memId}&account=${this.account}&password=${this.newpassword}&name=${this.name}&email=${this.email}&birthday=${this.birthday}&phone=${this.phone}&localphone=${this.lphonef}&address=${this.address}`

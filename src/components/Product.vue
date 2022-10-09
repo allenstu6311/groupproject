@@ -100,7 +100,8 @@
 </template>
 
 <script>
-const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
+import {BASE_URL} from '@/assets/js/common.js'
+// const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 export default {
   data() {
     return {
@@ -191,7 +192,8 @@ export default {
     },
        IncreaseShoppingCart() {
       this.axios.get(
-        "http://localhost/CGD102_G2/public/api/changeShoppingCart.php",
+        // "http://localhost/CGD102_G2/public/api/changeShoppingCart.php",
+        `${BASE_URL}/changeShoppingCart.php`,
         {
           params: {
             judge: 1,
@@ -236,7 +238,8 @@ export default {
         this.$router.push("/MemLogin")
     }else{
           this.axios
-      .get("http://localhost/CGD102_G2/public/api/shoppingCart.php", {
+      // .get("http://localhost/CGD102_G2/public/api/shoppingCart.php", {
+      .get(`${BASE_URL}/shoppingCart.php`, {
         params: {
           mem_id: this.member.memId,
         },

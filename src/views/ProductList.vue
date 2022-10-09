@@ -54,7 +54,8 @@
 </template>
 
 <script>
-const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
+import {BASE_URL} from '@/assets/js/common.js'
+// const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 import Commodity from "@/components/Commodity.vue";
 import Filter from "@/components/Filter.vue";
 export default {
@@ -85,7 +86,7 @@ export default {
       this.int_Num2 = val;
     },
     searchStar() {
-        var url = `${BASE_URL}/api/search.php` //上線
+        var url = `${BASE_URL}/search.php` //上線
       // var url = "http://localhost/CGD102_G2/public/api/search.php"
       this.axios
         .get(url, {

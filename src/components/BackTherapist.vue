@@ -63,7 +63,8 @@
 </template>
 
 <script>
-import "bootstrap/scss/bootstrap.scss";
+    // import "bootstrap/scss/bootstrap.scss";
+    import {BASE_URL} from '@/assets/js/common.js'
     // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
 
     export default {
@@ -87,8 +88,8 @@ import "bootstrap/scss/bootstrap.scss";
         },
         methods:{
             async getDataFromApi() {
-                var url = 'http://localhost/CGD102_G2/public/api/therapistContent.php'; //開發用
-                // var url = `${BASE_URL}/api/therapistContent.php`; //上線用
+                // var url = 'http://localhost/CGD102_G2/public/api/therapistContent.php'; //開發用
+                var url = `${BASE_URL}/therapistContent.php`; //上線用
                 let getData = async(url) => {
                     let response = await fetch(url); // await 很重要
                     let JSON =  response.json();
@@ -98,7 +99,8 @@ import "bootstrap/scss/bootstrap.scss";
                 console.log(this.backstageTherapsitList);
             },
               chtherapistinfo(name){
-                this.axios.get("http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php",{
+                // this.axios.get("http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php",{
+                this.axios.get(`${BASE_URL}/backtherapistgetvalue.php`,{
                     params:{
                         searchName:name
                     }

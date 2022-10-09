@@ -77,8 +77,8 @@
 </template>
 
 <script>
-
-const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
+import {BASE_URL} from '@/assets/js/common.js'
+// const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
 
 export default {
     name: 'therapistchangeinfo',
@@ -138,8 +138,8 @@ export default {
                     }
                 }
             }
-            xhr.open("post","http://localhost/CGD102_G2/public/api/backtherapistchangeinfo.php", true); //開發用
-            // xhr.open("post",`${BASE_URL}/api/backtherapistchangeinfo.php`, true); //上線用
+            // xhr.open("post","http://localhost/CGD102_G2/public/api/backtherapistchangeinfo.php", true); //開發用
+            xhr.open("post",`${BASE_URL}/backtherapistchangeinfo.php`, true); //上線用
             xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
             let therapist_data = `license1=${this.license1}&license2=${this.license2}&license3=${this.license3}&license4=${this.license4}&account=${this.account}&password=${this.password}&name=${this.name}&hiredate=${this.hiredate}&pic=${this.pic}`;
@@ -175,7 +175,8 @@ export default {
         },
         getInfo(){
             
-            this.axios.get("http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php",{
+            // this.axios.get("http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php",{
+            this.axios.get(`${BASE_URL}/backtherapistgetvalue.php`,{
                 params:{
                     searchName:this.allenHandsome[0].THERAPIST_NAME
                 }

@@ -75,6 +75,24 @@ const routes = [
     meta:{isHide:false}
   },
   {
+    path: '/backmsg',
+    name: 'backmsg',
+    component: () => import('@/views/BackMsgView.vue'),
+    meta:{isHide:true}
+  },
+  {
+    path: '/backmsgadd',
+    name: 'backmsgadd',
+    component: () => import('@/views/BackMsgAddView.vue'),
+    meta:{isHide:true}
+  },
+  {
+    path: '/backmsgchange',
+    name: 'backmsgchange',
+    component: () => import('@/views/BackMsgChangeView.vue'),
+    meta:{isHide:true}
+  },
+  {
     path: '/resvPage',
     name: 'resvPage',
     component: () => import('@/views/ResvPageView.vue'),

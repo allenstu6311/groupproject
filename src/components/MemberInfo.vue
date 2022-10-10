@@ -92,7 +92,7 @@
   </div>
 </template>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
 * {
   box-sizing: border-box;
 }

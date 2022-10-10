@@ -108,8 +108,7 @@ export default {
                 }
                 // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
                 var url = `${BASE_URL}/register.php`;
-                // "http://localhost/CGD102_G2/public/api/register.php"
-                // xhr.open("post","http://localhost/CGD102_G2/public/api/register.php", true);
+                // var url = "http://localhost/CGD102_G2/public/api/register.php";
                 xhr.open("post",url, true);
                 xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
 

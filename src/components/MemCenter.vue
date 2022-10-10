@@ -249,12 +249,8 @@ export default {
             this.memId = this.member.memId;
             var xhr = new XMLHttpRequest();
             
-            // var memData;
-            // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
-            // var url = `${BASE_URL}/login.php`;
-            // "http://localhost/CGD102_G2/public/api/getMemData.php"
-            // xhr.open("post", "http://localhost/CGD102_G2/public/api/getMemData.php", true);
             var url = `${BASE_URL}/getMemData.php`;
+            // var url = "http://localhost/CGD102_G2/public/api/getMemData.php";
             xhr.open("post", url, true);
             xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
             var getMemInfo = `name=${this.name}`;
@@ -295,8 +291,7 @@ export default {
                 var xhr = new XMLHttpRequest();
                 // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
                 var url = `${BASE_URL}/updateMemData.php`;
-                // "http://localhost/CGD102_G2/public/api/register.php"
-                // xhr.open("post","http://localhost/CGD102_G2/public/api/updateMemData.php", true);
+                // var url = "http://localhost/CGD102_G2/public/api/updateMemData.php";
                 xhr.open("post",url, true);
                 xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
 

@@ -59,13 +59,10 @@
 </template>
 
 <script>
-<<<<<<< HEAD
 // import "bootstrap/scss/bootstrap.scss";
     import {BASE_URL} from '@/assets/js/common.js'
-=======
-import "bootstrap/scss/bootstrap.scss";
+    import "bootstrap/scss/bootstrap.scss";
 
->>>>>>> sherili
     //const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..' //上線用
 
     export default {

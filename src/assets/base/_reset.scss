@@ -49,3 +49,8 @@ table {
 *, *::before, *::after{
 	box-sizing: content-box;
 }
+.row {
+	margin: 0;
+	padding: 0;
+	flex-wrap: nowrap;
+}

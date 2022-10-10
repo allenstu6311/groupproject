@@ -342,3 +342,6 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+  @import "view-ui-plus/dist/styles/viewuiplus.css"; 
+</style>

@@ -1,5 +1,6 @@
 .filter-range {
     position: fixed;
+    top: 50%;
     right: 0;
     padding: 10px;
     z-index: 0;
@@ -27,7 +28,7 @@
         position: relative;
         line-height: 2;
         padding: 10px;
-        border-radius: 5px;
+        border-radius:20px;
        
 
         .filter-close {
@@ -46,6 +47,11 @@
             margin-top: 30px;
             font-size: 22px;
             text-align: center;
+            input{
+                text-align: center;
+                margin-bottom: 10px;
+            }
+          
         }
         .price-checkbox {
             font-size: 22px;
@@ -91,6 +97,19 @@
             }
 
             .price-range {
+                padding: 0;
+                line-height: 1.5;
+                input{
+                    padding: 5px;
+                    text-align: center;
+                    margin: 10px;
+                }
+                .range-btn{
+                    button{
+                        // padding: 0
+                    }
+                }
+                
             }
             .price-checkbox {
                 width: 150px;

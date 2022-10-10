@@ -111,7 +111,7 @@ export default {
     },
     product_price: {
       handler(newVal) {
-        console.log("watch-->", newVal);
+        // console.log("watch-->", newVal);
       },
     },
   },
@@ -141,7 +141,7 @@ export default {
   input {
     width: 100%;
     max-width: 450px;
-    padding: 5px;
+    padding: 10px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     border: none;

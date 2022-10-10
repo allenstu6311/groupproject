@@ -103,8 +103,10 @@ export default {
       // this.$emit("product-info", this.addOn);
     },
     IncreaseShoppingCart(count) {
+       // var url = `${BASE_URL}/api/changeShoppingCart.php`;
+      var url = "http://localhost/CGD102_G2/public/api/changeShoppingCart.php"
       this.axios
-        .get("http://localhost/CGD102_G2/public/api/changeShoppingCart.php", {
+        .get(url, {
           params: {
             judge: 1,
             mem_id: this.member.memId,

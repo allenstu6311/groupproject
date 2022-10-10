@@ -68,7 +68,7 @@
                     </p>
                   </div>
                 </div>
-                <div class="btn">
+                <div class="resv_btn">
                   <router-link class="btnLarge" to="/resvPage">立即預約</router-link>
                 </div>
               </div>

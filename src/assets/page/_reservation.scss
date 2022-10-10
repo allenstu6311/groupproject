@@ -119,14 +119,14 @@
                             }
                         }
 
-                        .btn {
+                        .resv_btn {
                             margin-top: 30px;
                             text-align: right;
                         }
                     }
                 }
             }
-            .msg_card_frame.btnLeft .msg_card .msg_card_txt .btn {
+            .msg_card_frame.btnLeft .msg_card .msg_card_txt .resv_btn {
                 @include pc() {
                     text-align: left;
                 }

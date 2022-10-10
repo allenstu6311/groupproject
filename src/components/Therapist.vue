@@ -52,10 +52,10 @@
     </div>
 </template>
 <script>
+import {BASE_URL} from '@/assets/js/common.js';
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-import {BASE_URL} from '@/assets/js/common.js';
 // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
 
 export default {

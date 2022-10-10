@@ -5,8 +5,8 @@ header("Content-Type:application/json;charset=utf-8");
 
 function review($number,$product){
 
-//   require_once("../../src/connect_cgd102g2.php"); //開發路徑
-require_once("../connect_cgd102g2.php");//上線路徑
+  require_once("../connect_cgd102g2.php"); //開發路徑
+// require_once("../connect_cgd102g2.php");//上線路徑
 
 
 $sql = "update PRODUCT set PROD_REVIEW = PROD_REVIEW+{$number} ,PROD_TIMES = PROD_TIMES+1 WHERE PROD_NAME='{$product}'";

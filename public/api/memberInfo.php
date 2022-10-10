@@ -6,7 +6,7 @@ header("Content-Type:application/json;charset=utf-8");
 require_once("../connect_cgd102g2.php");//上線路徑
 
 
-$sql = "select * from member";
+$sql = "select * from MEMBER";
 
 $book = $pdo->query($sql);
 

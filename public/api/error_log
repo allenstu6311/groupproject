@@ -1,0 +1,583 @@
+[09-Oct-2022 13:21:01 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.product' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/addOn.php:10
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/addOn.php(10): PDO->query('select * from p...')
+#1 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 10
+[09-Oct-2022 21:00:51 Asia/Taipei] PHP Warning:  require_once(../../src/connect_cgd102g2.php): failed to open stream: No such file or directory in /home/tibamefe/public_html/cgd102/g2/api/therapistContent.php on line 7
+[09-Oct-2022 21:00:51 Asia/Taipei] PHP Fatal error:  require_once(): Failed opening required '../../src/connect_cgd102g2.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/tibamefe/public_html/cgd102/g2/api/therapistContent.php on line 7
+[09-Oct-2022 21:01:21 Asia/Taipei] PHP Warning:  require_once(../../src/connect_cgd102g2.php): failed to open stream: No such file or directory in /home/tibamefe/public_html/cgd102/g2/api/therapistContent.php on line 7
+[09-Oct-2022 21:01:21 Asia/Taipei] PHP Fatal error:  require_once(): Failed opening required '../../src/connect_cgd102g2.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/tibamefe/public_html/cgd102/g2/api/therapistContent.php on line 7
+[09-Oct-2022 22:19:02 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('5')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 00:01:27 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('4')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 00:01:55 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('4')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 00:03:27 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('4')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 00:03:48 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('4')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 00:04:32 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('4')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 00:04:51 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('4')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 00:05:05 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('4')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 00:07:01 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('4')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 00:07:09 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('4')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 00:07:20 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('4')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 00:07:32 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('4')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 00:08:34 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('4')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 00:08:36 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('4')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 00:08:37 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('4')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 00:08:54 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('4')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 11:37:23 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('3')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 11:48:08 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 11:50:23 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 11:50:26 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('4')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 11:50:30 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('3')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 11:50:36 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('2')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 11:50:39 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('3')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 11:50:42 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('6')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 11:50:46 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('6')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 11:50:50 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('6')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 11:51:00 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('6')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 11:53:01 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('6')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 12:39:49 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.product' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/rackupanddown.php:18
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/rackupanddown.php(18): PDO->query('update product ...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/rackupanddown.php(26): rack('1', '1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/rackupanddown.php on line 18
+[10-Oct-2022 12:39:51 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.product' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/rackupanddown.php:18
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/rackupanddown.php(18): PDO->query('update product ...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/rackupanddown.php(26): rack('0', '1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/rackupanddown.php on line 18
+[10-Oct-2022 13:13:51 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('4')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 13:24:46 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('6')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 13:46:46 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.member' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/memberInfo.php:11
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/memberInfo.php(11): PDO->query('select * from m...')
+#1 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/memberInfo.php on line 11
+[10-Oct-2022 13:46:49 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.member' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/memberInfo.php:11
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/memberInfo.php(11): PDO->query('select * from m...')
+#1 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/memberInfo.php on line 11
+[10-Oct-2022 13:46:54 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.my_coupons' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/member.php:19
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/member.php(19): PDO->query('select M.MEM_NA...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/member.php(32): memberInfo(NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/member.php on line 19
+[10-Oct-2022 13:46:57 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.my_coupons' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/member.php:19
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/member.php(19): PDO->query('select M.MEM_NA...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/member.php(32): memberInfo(NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/member.php on line 19
+[10-Oct-2022 13:46:59 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.my_coupons' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/member.php:19
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/member.php(19): PDO->query('select M.MEM_NA...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/member.php(32): memberInfo(NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/member.php on line 19
+[10-Oct-2022 13:47:01 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.my_coupons' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/member.php:19
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/member.php(19): PDO->query('select M.MEM_NA...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/member.php(32): memberInfo(NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/member.php on line 19
+[10-Oct-2022 13:49:19 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.my_coupons' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/member.php:19
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/member.php(19): PDO->query('select M.MEM_NA...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/member.php(32): memberInfo(NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/member.php on line 19
+[10-Oct-2022 13:49:28 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.member' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/memberInfo.php:11
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/memberInfo.php(11): PDO->query('select * from m...')
+#1 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/memberInfo.php on line 11
+[10-Oct-2022 13:58:16 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.my_coupons' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/member.php:19
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/member.php(19): PDO->query('select M.MEM_NA...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/member.php(32): memberInfo(NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/member.php on line 19
+[10-Oct-2022 14:06:53 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.my_coupons' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/member.php:19
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/member.php(19): PDO->query('select M.MEM_NA...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/member.php(32): memberInfo(NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/member.php on line 19
+[10-Oct-2022 14:22:37 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('6')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 14:22:56 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 14:23:22 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 14:24:06 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 14:26:43 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 14:27:10 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 14:30:35 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PROD_TIMES = PROD_TIMES+1 WHERE PROD_NAME=''' at line 1 in /home/tibamefe/public_html/cgd102/g2/api/review.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/review.php(14): PDO->query('update PRODUCT ...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/review.php(29): review(NULL, NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/review.php on line 14
+[10-Oct-2022 14:32:35 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PROD_TIMES = PROD_TIMES+1 WHERE PROD_NAME=''' at line 1 in /home/tibamefe/public_html/cgd102/g2/api/review.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/review.php(14): PDO->query('update PRODUCT ...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/review.php(29): review(NULL, NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/review.php on line 14
+[10-Oct-2022 14:32:35 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PROD_TIMES = PROD_TIMES+1 WHERE PROD_NAME=''' at line 1 in /home/tibamefe/public_html/cgd102/g2/api/review.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/review.php(14): PDO->query('update PRODUCT ...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/review.php(29): review(NULL, NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/review.php on line 14
+[10-Oct-2022 14:32:35 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PROD_TIMES = PROD_TIMES+1 WHERE PROD_NAME=''' at line 1 in /home/tibamefe/public_html/cgd102/g2/api/review.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/review.php(14): PDO->query('update PRODUCT ...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/review.php(29): review(NULL, NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/review.php on line 14
+[10-Oct-2022 14:33:06 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PROD_TIMES = PROD_TIMES+1 WHERE PROD_NAME=''' at line 1 in /home/tibamefe/public_html/cgd102/g2/api/review.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/review.php(14): PDO->query('update PRODUCT ...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/review.php(29): review(NULL, NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/review.php on line 14
+[10-Oct-2022 14:35:03 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PROD_TIMES = PROD_TIMES+1 WHERE PROD_NAME=''' at line 1 in /home/tibamefe/public_html/cgd102/g2/api/review.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/review.php(14): PDO->query('update PRODUCT ...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/review.php(29): review(NULL, NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/review.php on line 14
+[10-Oct-2022 14:46:44 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.comment' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/article.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/article.php(14): PDO->query('SELECT c.*,m.me...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/article.php(27): getId('4')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/article.php on line 14
+[10-Oct-2022 15:13:15 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PROD_TIMES = PROD_TIMES+1 WHERE PROD_NAME=''' at line 1 in /home/tibamefe/public_html/cgd102/g2/api/review.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/review.php(14): PDO->query('update PRODUCT ...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/review.php(29): review(NULL, NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/review.php on line 14
+[10-Oct-2022 15:35:34 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.product' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/addOn.php:10
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/addOn.php(10): PDO->query('select * from p...')
+#1 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 10
+[10-Oct-2022 15:35:54 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.product' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/addOn.php:10
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/addOn.php(10): PDO->query('select * from p...')
+#1 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 10
+[10-Oct-2022 15:36:17 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.product' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/addOn.php:10
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/addOn.php(10): PDO->query('select * from p...')
+#1 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 10
+[10-Oct-2022 15:36:24 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.product' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/addOn.php:10
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/addOn.php(10): PDO->query('select * from p...')
+#1 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 10
+[10-Oct-2022 15:36:29 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.product' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/addOn.php:10
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/addOn.php(10): PDO->query('select * from p...')
+#1 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 10
+[10-Oct-2022 15:36:37 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.product' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/addOn.php:10
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/addOn.php(10): PDO->query('select * from p...')
+#1 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 10
+[10-Oct-2022 15:37:13 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.product' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/addOn.php:10
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/addOn.php(10): PDO->query('select * from p...')
+#1 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 10
+[10-Oct-2022 15:42:18 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.product' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/addOn.php:10
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/addOn.php(10): PDO->query('select * from p...')
+#1 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 10
+[10-Oct-2022 15:43:07 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.product' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/addOn.php:10
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/addOn.php(10): PDO->query('select * from p...')
+#1 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 10
+[10-Oct-2022 15:43:30 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.product' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/addOn.php:10
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/addOn.php(10): PDO->query('select * from p...')
+#1 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 10
+[10-Oct-2022 15:43:36 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.product' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/addOn.php:10
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/addOn.php(10): PDO->query('select * from p...')
+#1 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 10
+[10-Oct-2022 15:44:53 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.product' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/addOn.php:10
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/addOn.php(10): PDO->query('select * from p...')
+#1 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 10
+[10-Oct-2022 15:46:09 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.product' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/addOn.php:10
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/addOn.php(10): PDO->query('select * from p...')
+#1 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 10
+[10-Oct-2022 15:47:55 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PROD_TIMES = PROD_TIMES+1 WHERE PROD_NAME=''' at line 1 in /home/tibamefe/public_html/cgd102/g2/api/review.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/review.php(14): PDO->query('update PRODUCT ...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/review.php(29): review(NULL, NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/review.php on line 14
+[10-Oct-2022 15:47:57 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PROD_TIMES = PROD_TIMES+1 WHERE PROD_NAME=''' at line 1 in /home/tibamefe/public_html/cgd102/g2/api/review.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/review.php(14): PDO->query('update PRODUCT ...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/review.php(29): review(NULL, NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/review.php on line 14
+[10-Oct-2022 15:47:58 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PROD_TIMES = PROD_TIMES+1 WHERE PROD_NAME=''' at line 1 in /home/tibamefe/public_html/cgd102/g2/api/review.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/review.php(14): PDO->query('update PRODUCT ...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/review.php(29): review(NULL, NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/review.php on line 14
+[10-Oct-2022 15:47:59 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PROD_TIMES = PROD_TIMES+1 WHERE PROD_NAME=''' at line 1 in /home/tibamefe/public_html/cgd102/g2/api/review.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/review.php(14): PDO->query('update PRODUCT ...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/review.php(29): review(NULL, NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/review.php on line 14
+[10-Oct-2022 15:47:59 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PROD_TIMES = PROD_TIMES+1 WHERE PROD_NAME=''' at line 1 in /home/tibamefe/public_html/cgd102/g2/api/review.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/review.php(14): PDO->query('update PRODUCT ...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/review.php(29): review(NULL, NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/review.php on line 14
+[10-Oct-2022 15:48:00 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PROD_TIMES = PROD_TIMES+1 WHERE PROD_NAME=''' at line 1 in /home/tibamefe/public_html/cgd102/g2/api/review.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/review.php(14): PDO->query('update PRODUCT ...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/review.php(29): review(NULL, NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/review.php on line 14
+[10-Oct-2022 15:48:00 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PROD_TIMES = PROD_TIMES+1 WHERE PROD_NAME=''' at line 1 in /home/tibamefe/public_html/cgd102/g2/api/review.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/review.php(14): PDO->query('update PRODUCT ...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/review.php(29): review(NULL, NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/review.php on line 14
+[10-Oct-2022 15:49:53 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.product' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/addOn.php:10
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/addOn.php(10): PDO->query('select * from p...')
+#1 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 10
+[10-Oct-2022 15:50:07 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tibamefe_cgd102g2.product' doesn't exist in /home/tibamefe/public_html/cgd102/g2/api/addOn.php:10
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/addOn.php(10): PDO->query('select * from p...')
+#1 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 10
+[10-Oct-2022 15:50:28 Asia/Taipei] PHP Warning:  require_once(../../src/connect_cgd102g2.php): failed to open stream: No such file or directory in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 6
+[10-Oct-2022 15:50:28 Asia/Taipei] PHP Fatal error:  require_once(): Failed opening required '../../src/connect_cgd102g2.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 6
+[10-Oct-2022 15:50:41 Asia/Taipei] PHP Warning:  require_once(../../src/connect_cgd102g2.php): failed to open stream: No such file or directory in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 6
+[10-Oct-2022 15:50:41 Asia/Taipei] PHP Fatal error:  require_once(): Failed opening required '../../src/connect_cgd102g2.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 6
+[10-Oct-2022 15:50:55 Asia/Taipei] PHP Warning:  require_once(../../src/connect_cgd102g2.php): failed to open stream: No such file or directory in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 6
+[10-Oct-2022 15:50:55 Asia/Taipei] PHP Fatal error:  require_once(): Failed opening required '../../src/connect_cgd102g2.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 6
+[10-Oct-2022 15:50:58 Asia/Taipei] PHP Warning:  require_once(../../src/connect_cgd102g2.php): failed to open stream: No such file or directory in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 6
+[10-Oct-2022 15:50:58 Asia/Taipei] PHP Fatal error:  require_once(): Failed opening required '../../src/connect_cgd102g2.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/tibamefe/public_html/cgd102/g2/api/addOn.php on line 6
+[10-Oct-2022 15:53:43 Asia/Taipei] PHP Warning:  require_once(../../src/connect_cgd102g2.php): failed to open stream: No such file or directory in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 6
+[10-Oct-2022 15:53:43 Asia/Taipei] PHP Fatal error:  require_once(): Failed opening required '../../src/connect_cgd102g2.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 6
+[10-Oct-2022 15:55:29 Asia/Taipei] PHP Warning:  require_once(../../src/connect_cgd102g2.php): failed to open stream: No such file or directory in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 6
+[10-Oct-2022 15:55:29 Asia/Taipei] PHP Fatal error:  require_once(): Failed opening required '../../src/connect_cgd102g2.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 6
+[10-Oct-2022 15:55:36 Asia/Taipei] PHP Warning:  require_once(../../src/connect_cgd102g2.php): failed to open stream: No such file or directory in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 6
+[10-Oct-2022 15:55:36 Asia/Taipei] PHP Fatal error:  require_once(): Failed opening required '../../src/connect_cgd102g2.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 6
+[10-Oct-2022 15:57:08 Asia/Taipei] PHP Warning:  require_once(../../src/connect_cgd102g2.php): failed to open stream: No such file or directory in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 6
+[10-Oct-2022 15:57:08 Asia/Taipei] PHP Fatal error:  require_once(): Failed opening required '../../src/connect_cgd102g2.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 6
+[10-Oct-2022 15:57:40 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php:23
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(23): PDO->query('INSERT INTO SHO...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(28): commodity('1', '4', '4', '1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 23
+[10-Oct-2022 15:59:27 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php:23
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(23): PDO->query('INSERT INTO SHO...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(28): commodity('1', '4', '4', '1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 23
+[10-Oct-2022 15:59:56 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PROD_TIMES = PROD_TIMES+1 WHERE PROD_NAME=''' at line 1 in /home/tibamefe/public_html/cgd102/g2/api/review.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/review.php(14): PDO->query('update PRODUCT ...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/review.php(29): review(NULL, NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/review.php on line 14
+[10-Oct-2022 16:04:37 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php:23
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(23): PDO->query('INSERT INTO SHO...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(28): commodity('1', '1', '4', '1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 23
+[10-Oct-2022 16:05:34 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php:23
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(23): PDO->query('INSERT INTO SHO...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(28): commodity('1', '1', '4', '1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 23
+[10-Oct-2022 16:05:59 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php:23
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(23): PDO->query('INSERT INTO SHO...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(28): commodity('1', '1', '4', '1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 23
+[10-Oct-2022 16:06:37 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php:23
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(23): PDO->query('INSERT INTO SHO...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(28): commodity('1', '1', '6', '1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 23
+[10-Oct-2022 16:08:07 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php:23
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(23): PDO->query('INSERT INTO SHO...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(28): commodity('1', '1', '5', '1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 23
+[10-Oct-2022 16:09:21 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php:23
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(23): PDO->query('INSERT INTO SHO...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(28): commodity('1', '1', '6', '1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 23
+[10-Oct-2022 16:13:09 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PROD_TIMES = PROD_TIMES+1 WHERE PROD_NAME=''' at line 1 in /home/tibamefe/public_html/cgd102/g2/api/review.php:14
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/review.php(14): PDO->query('update PRODUCT ...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/review.php(29): review(NULL, NULL)
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/review.php on line 14
+[10-Oct-2022 16:25:34 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php:23
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(23): PDO->query('INSERT INTO SHO...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(28): commodity('1', '1', '5', '1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 23
+[10-Oct-2022 16:26:23 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php:23
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(23): PDO->query('INSERT INTO SHO...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(28): commodity('1', '1', '5', '1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 23
+[10-Oct-2022 16:26:26 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php:23
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(23): PDO->query('INSERT INTO SHO...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(28): commodity('1', '1', '5', '1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 23
+[10-Oct-2022 16:27:38 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php:23
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(23): PDO->query('INSERT INTO SHO...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(28): commodity('1', '1', '5', '1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 23
+[10-Oct-2022 16:27:48 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php:23
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(23): PDO->query('INSERT INTO SHO...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(28): commodity('1', '1', '5', '1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 23
+[10-Oct-2022 16:27:50 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php:23
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(23): PDO->query('INSERT INTO SHO...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(28): commodity('1', '1', '5', '1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 23
+[10-Oct-2022 16:27:51 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php:23
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(23): PDO->query('INSERT INTO SHO...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(28): commodity('1', '1', '5', '1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 23
+[10-Oct-2022 16:27:52 Asia/Taipei] PHP Fatal error:  Uncaught PDOException: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php:23
+Stack trace:
+#0 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(23): PDO->query('INSERT INTO SHO...')
+#1 /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php(28): commodity('1', '1', '5', '1')
+#2 {main}
+  thrown in /home/tibamefe/public_html/cgd102/g2/api/changeShoppingCart.php on line 23

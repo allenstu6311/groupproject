@@ -43,7 +43,7 @@ export default {
         async getDataFromApi() {
             var url = 'http://localhost/CGD102_G2/public/api/getCoupons.php'
             let getData = async(url) => {
-                let response = await fetch(url); // await 很雞掰，真的在哭
+                let response = await fetch(url); 
                 let JSON =  response.json();
                 this.count = await JSON; // php抓取回來的資料存取在預設好的參數裡
             }

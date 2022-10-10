@@ -18,10 +18,7 @@
                 <small>• FAQ •</small>
             </div>
             <div class="frame">
-                <div class="item"
-                    v-for="(faq, index) in faqCardList"
-                    :key="index"
-                >
+                <div class="item" v-for="(faq, index) in faqCardList" :key="index">
                     <input type="checkbox" name="" :id="'a'+[faq.FAQ_ID]" style="display: none;">
                     <label :for="'a'+[faq.FAQ_ID]">
                         <div class="question">

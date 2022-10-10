@@ -5,7 +5,7 @@ header("Content-Type:application/json;charset=utf-8");
 
 
 function page($range_1,$range_2){
-    // require_once("../../src/connect_cgd102g2.php"); //開發路徑
+    // require_once("../connect_cgd102g2.php"); //開發路徑
     require_once("../connect_cgd102g2.php");//上線路徑
 
 $sql="select*from PRODUCT limit {$range_1},{$range_2}";

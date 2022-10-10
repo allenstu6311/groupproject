@@ -3,10 +3,10 @@
 header('Access-Control-Allow-Origin:*');
 header("Content-Type:application/json;charset=utf-8");
 
-require_once("../../src/connect_cgd102g2.php"); //開發路徑
-// require_once("../connect_cgd102g2.php");//上線路徑
+// require_once("../../src/connect_cgd102g2.php"); //開發路徑
+require_once("../connect_cgd102g2.php");//上線路徑
 
-$sql = "select * from product where prod_status=1";
+$sql = "SELECT * FROM PRODUCT WHERE PROD_STATUS=1";
 $product = $pdo->query($sql);
 $products = $product->fetchAll();
 

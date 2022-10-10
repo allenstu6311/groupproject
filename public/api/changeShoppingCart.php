@@ -3,8 +3,10 @@ header('Access-Control-Allow-Origin:*');
 header("Content-Type:application/json;charset=utf-8");
 
 function commodity($judge,$mem_id,$prod_id,$prod_qty){
-    require_once("../../src/connect_cgd102g2.php"); //開發路徑
-    // require_once("../connect_cgd102g2.php");//上線路徑
+
+    try{
+           // require_once("../../src/connect_cgd102g2.php"); //開發路徑
+    require_once("../connect_cgd102g2.php");//上線路徑
 
     switch($judge){
         case 1:
@@ -20,7 +22,17 @@ function commodity($judge,$mem_id,$prod_id,$prod_qty){
         $sql="UPDATE SHOPPINGCART SET PROD_QTY = PROD_QTY-1 WHERE PROD_ID={$prod_id}";
         break;  
     }
-    $pdo->query($sql);
+  $test = $pdo->query($sql);
+    if($test->rowCount()>0){
+        echo 'ok';
+    }else{
+        echo 'no';
+    }
+
+    }catch(PDOException $e){
+    echo $e->getMessage();
+  }
+ 
 
 }
 

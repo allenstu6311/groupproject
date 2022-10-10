@@ -172,34 +172,22 @@ export default {
   },
 
   mounted() {
-    this.getInfo()
-    // this.getDataFromApi();
+    this.getInfo();
+    this.getDataFromApi();
   },
 
   methods: {
-    // async getDataFromApi() {
-    //     var url = 'http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php'; //開發用
-    //     // var url = `${BASE_URL}/api/therapistContent.php`; //上線用
-    //     let getData = async(url) => {
-    //         let response = await fetch(url);
-    //         let JSON =  response.json();
-    //         this.backstageTherapsitList = await JSON;
-    //     }
-    //     await getData(url);
-    //     console.log(this.backstageTherapsitList);
-    // },
-
-        // async getDataFromApi() {
-        //     var url = 'http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php'; //開發用
-        //     // var url = `${BASE_URL}/api/therapistContent.php`; //上線用
-        //     let getData = async(url) => {
-        //         let response = await fetch(url);
-        //         let JSON =  response.json();
-        //         this.backstageTherapsitList = await JSON;
-        //     }
-        //     await getData(url);
-        //     console.log(this.backstageTherapsitList);
-        // },
+        async getDataFromApi() {
+            // var url = 'http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php'; //開發用
+            var url = `${BASE_URL}/backtherapistgetvalue.php`; //上線用
+            let getData = async(url) => {
+                let response = await fetch(url);
+                let JSON =  response.json();
+                this.backstageTherapsitList = await JSON;
+            }
+            await getData(url);
+            console.log(this.backstageTherapsitList);
+        },
         submit(){
 
             var xhr = new XMLHttpRequest();
@@ -223,40 +211,35 @@ export default {
 
 
         },
-      photo(e) {
-      this.pic = e.target.files[0].name;
-      console.log(this.pic);
-    },
-    checkContentByReg(reg, content, tip, classname) {
-      if (reg.test(content)) {
-        this[tip] = "V";
-        this[classname] = "success";
-        return true;
-      } else {
-        this[tip] = "請檢查格式";
-        this[classname] = "error";
-        return false;
-      }
-    },
-    getInfo() {
-
-      this.axios
-        .get(
-          "http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php",
-          {
-            params: {
-              searchName:this.$route.query.name,
-            },
-          }
-        )
-        .then((res) => {
-          // this.backstageTherapsitList = res.data
-          this.name = this.$route.query.name;
-          this.account = this.$route.query.account;
-          this.password = this.$route.query.password;
-        });
-    },
-      photo(e){
+        photo(e) {
+            this.pic = e.target.files[0].name;
+            console.log(this.pic);
+        },
+        checkContentByReg(reg, content, tip, classname) {
+            if (reg.test(content)) {
+                this[tip] = "V";
+                this[classname] = "success";
+                return true;
+            } else {
+                this[tip] = "請檢查格式";
+                this[classname] = "error";
+                return false;
+            }
+        },
+        getInfo() {
+            this.axios.get("http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php",{
+                params: {
+                    searchName: this.$route.query.name,
+                }
+            })
+            .then((res) => {
+                // this.backstageTherapsitList = res.data
+                this.name = this.$route.query.name;
+                this.account = this.$route.query.account;
+                this.password = this.$route.query.password;
+            })
+        },
+        photo(e){
             this.pic = e.target.files[0].name;
             console.log(this.pic);
         },
@@ -271,74 +254,60 @@ export default {
                 return false
             }
         },
-
-    //   xhr.open(
-    //     "post",
-    //     "http://localhost/CGD102_G2/public/api/backtherapistchangeinfo.php",
-    //     true
-    //   ); //開發用
-    //   // xhr.open("post",`${BASE_URL}/api/backtherapistchangeinfo.php`, true); //上線用
-    //   xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-
-    //   let therapist_data = `license1=${this.license1}&license2=${this.license2}&license3=${this.license3}&license4=${this.license4}&account=${this.account}&password=${this.password}&name=${this.name}&hiredate=${this.hiredate}&pic=${this.pic}`;
-    //   xhr.send(therapist_data);
-    // }
-
-  },
-      
-
-  watch: {
-    password: function (content) {
-      var reg = /^[0-9a-z]{6,10}$/;
-      this.pswflag = this.checkContentByReg(reg, content, "pswtip", "pswclass");
     },
-  },
+    watch: {
+        password: function (content) {
+            var reg = /^[0-9a-z]{6,10}$/;
+            this.pswflag = this.checkContentByReg(reg, content, "pswtip", "pswclass");
+        },
+    },
 };
 </script>
 
 <style lang="scss" scoped>
 // @import "bootstrap/scss/bootstrap";
-@import "../assets/style.scss";
+// @import "../assets/style.scss";
+ @import "../assets/base/_color.scss"; //有變數要引用的sass
 
-.laster_therapist {
-  h1 {
-    font-size: 32px;
-    text-align: center;
-    padding: 0 0 10px;
-  }
-  .add_content {
-    border: 2px solid #ccc;
-    box-shadow: 0px 0px 3px 0px #ccc;
-    padding: 30px 40px;
-    .fixwidth {
-      width: 100%;
+    .laster_therapist{
+        h1{
+            font-size: 32px;
+            text-align: center;
+            padding: 0 0 10px;
+        }
+        .add_content{
+            border: 2px solid #ccc;
+            box-shadow: 0px 0px 3px 0px #ccc;
+            padding: 30px 40px;
+            .fixwidth{
+                width: 100%;
+            }
+            .form-control{
+                width: 50%;
+            }
+            .upload{
+                width: 90%;
+            }
+            .btn-primary{
+                background-color: #fff;
+                border: 2px solid #ccc;
+                color: $blue;
+                padding: 6px 20px;
+                font-weight: 600;
+                &:hover{
+                    background-color: $blue;
+                    color: $white;
+                    border: 2px solid transparent;
+                }
+            }
+            .figure{
+                width: 200px;
+                height: 200px;
+                overflow: hidden;
+                img{
+                    width: 100%;
+                }
+            }
+        }
     }
-    .form-control {
-      width: 50%;
-    }
-    .upload {
-      width: 90%;
-    }
-    .btn-primary {
-      background-color: #fff;
-      border: 2px solid #ccc;
-      color: $blue;
-      padding: 6px 20px;
-      font-weight: 600;
-      &:hover {
-        background-color: $blue;
-        color: $white;
-        border: 2px solid transparent;
-      }
-    }
-    .figure {
-      width: 200px;
-      height: 200px;
-      overflow: hidden;
-      img {
-        width: 100%;
-      }
-    }
-  }
-}
 </style>

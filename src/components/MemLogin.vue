@@ -97,7 +97,7 @@ export default {
                 var url = `${BASE_URL}/login.php`
                 // "http://localhost/CGD102_G2/public/api/login.php"
                 // xhr.open("post","http://localhost/CGD102_G2/public/api/login.php", true);
-                xhr.open("post",url, true);
+                xhr.open("post","http://localhost/CGD102_G2/public/api/login.php", true);
                 xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
 
                 let login_info = `account=${this.account}&password=${this.password}`;

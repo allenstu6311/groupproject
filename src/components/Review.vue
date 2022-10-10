@@ -100,7 +100,7 @@ export default {
                     product:name
                 }
             })
-            // alert("感謝評價")
+            alert("感謝評價")
         },
         upload(){
             var url = `${BASE_URL}/comment.php` //上線

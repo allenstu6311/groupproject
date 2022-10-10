@@ -84,7 +84,12 @@ export default {
   },
   watch:{
      memory:{
-      handler(newVal){
+      handler(newVal,oldVal){
+        for(let i=0;i<newVal.length;i++){
+           if(newVal!=oldVal){
+    
+        }
+        }
        
         
       }

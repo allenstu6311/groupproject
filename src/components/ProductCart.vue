@@ -202,8 +202,10 @@ export default {
     },
    
     reduceShoppingCart(focus) {
+      var url = `${BASE_URL}/api/ShoppingCart.php`;
+      // var url = "http://localhost/CGD102_G2/public/api/changeShoppingCart.php"
       this.axios.get(
-        "http://localhost/CGD102_G2/public/api/changeShoppingCart.php",
+        url,
         {
           params: {
             judge: 2,
@@ -242,8 +244,8 @@ export default {
     if(!this.member){
         this.$router.push("/MemLogin")
     }else{
-            // var url = `${BASE_URL}/api/shoppingCart`; //上線
-    var url = "http://localhost/CGD102_G2/public/api/shoppingCart.php"
+      var url = `${BASE_URL}/api/shoppingCart`; //上線
+    // var url = "http://localhost/CGD102_G2/public/api/shoppingCart.php"
       this.axios
       .get(url, {
         params: {
@@ -259,8 +261,8 @@ export default {
   },
  
   mounted() {
-    // var url = `${BASE_URL}/api/member.php`; //上線
-    var url = "http://localhost/CGD102_G2/public/api/member.php"
+    var url = `${BASE_URL}/api/member.php`; //上線
+    // var url = "http://localhost/CGD102_G2/public/api/member.php"
     if (this.member) {
       this.axios
         .get(url, {

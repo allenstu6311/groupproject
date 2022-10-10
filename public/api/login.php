@@ -3,8 +3,8 @@ header('Access-Control-Allow-Origin:*');
 header("Content-Type:application/json;charset=utf-8");
 session_start();
 try{
-  require_once("../../src/connect_cgd102g2.php");
-    // require_once("../connect_cgd102g2.php");//上線用
+  // require_once("../../src/connect_cgd102g2.php");
+    require_once("../connect_cgd102g2.php");//上線用
     $findExistSql = "SELECT * 
             FROM MEMBER
             WHERE MEM_ACCOUNT=:ACCOUNT

@@ -113,7 +113,7 @@
           :key="item.PROD_ID"
         >
           <div class="commodity-pic">
-            <button @click="next(item)">＜</button>
+            <button @click="next(item)" class="slide-control">＜</button>
             <router-link  to="/Detail">
               <div
                 class="slide-pic"
@@ -130,7 +130,7 @@
               <img :src="require(`../../public/api/pic/${item.PROD_PIC3}`)" />
               </div>
             </router-link>
-            <button @click="prev(item)">＞</button>
+            <button @click="prev(item)" class="slide-control">＞</button>
           </div>
 
           <div class="commodity-body">
@@ -409,10 +409,12 @@ export default {
       handler(newVal) {
    
         this.data = newVal;
+        this.disappear=false
       },
     },
     enter1: {
       handler(newVal) {
+        console.log(newVal)
         if (newVal == "") {
           this.data = this.info;
         }
@@ -429,6 +431,7 @@ export default {
       handler(newVal) {
         if (newVal != "") {
           this.data = newVal;
+          this.disappear=true
         }
       },
     },
@@ -446,6 +449,7 @@ export default {
        
         if (newVal == "") {
           this.data = this.info;
+          this.disappear=false
         }
        
       },
@@ -455,7 +459,7 @@ export default {
       handler(newVal) {
         
         this.data = newVal;
-          if(this.data.length<=6){
+          if(this.data){
             this.disappear=true
           }
       },
@@ -464,6 +468,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+
 .commodity-total {
   display: flex;
   flex-direction: column;
@@ -477,4 +482,5 @@ export default {
     color: #b52011;
   }
 }
+
 </style>

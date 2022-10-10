@@ -34,21 +34,22 @@
                     <td>{{ backstageTherapsit.THERAPIST_HIREDATE }}</td>
                     <td>
                         <div>
-                        <select class="form-select form-select-sm" @change="chlive($event)">
+                        <select class="form-select form-select-sm">
                             <option value='1' selected>在職</option>
                             <option value='0'>離職</option>
                         </select></div>
                     </td>
                     <td>
                         <div>
-                            <!-- <img src="../assets/images/Pen.png" alt="修改icon"> -->
                             <!-- @click="getTherapsitInfo(backstageTherapsit.THERAPIST_NAME)" -->
-                            <router-link   :to="{path:'/BackTherapistChangeInfo' , query:{ 
-                                
-                                name: `${backstageTherapsit.THERAPIST_NAME}`,
-                                account:`${backstageTherapsit.THERAPIST_ACCOUNT}`,
-                                password:`${backstageTherapsit.THERAPIST_PSW}`
-                                }}" >
+                            <router-link
+                                :to="{
+                                    path:'/BackTherapistChangeInfo', query:{ 
+                                        name: `${backstageTherapsit.THERAPIST_NAME}`,
+                                        account:`${backstageTherapsit.THERAPIST_ACCOUNT}`,
+                                        password:`${backstageTherapsit.THERAPIST_PSW}`
+                                    }
+                                }">
                             <svg 
                             xmlns="http://www.w3.org/2000/svg" 
                             class="icon icon-tabler icon-tabler-edit"
@@ -70,7 +71,7 @@
 
 <script>
     // import "bootstrap/scss/bootstrap.scss";
-    import {BASE_URL} from '@/assets/js/common.js'
+    import {BASE_URL} from '@/assets/js/common.js';
     // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
 
     export default {
@@ -92,14 +93,14 @@
                 var url = `${BASE_URL}/therapistContent.php`; //上線用
                 let getData = async(url) => {
                     let response = await fetch(url); // await 很重要
-                    let JSON =  response.json();
+                    let JSON = response.json();
                     this.backstageTherapsitList = await JSON; // php抓取回來的資料存取在預設好的參數裡
                 }
-                await getData(url); // 觸發 getData 的匿名 function 內容 ==> 76 ~ 78 行的內容
+                await getData(url); // 觸發 getData 的匿名 function 內容
                 console.log(this.backstageTherapsitList);
                  
             },
-              chtherapistinfo(name){
+            chtherapistinfo(name){
                 // this.axios.get("http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php",{
                 this.axios.get(`${BASE_URL}/backtherapistgetvalue.php`,{
                     params:{
@@ -109,9 +110,7 @@
                 .then((res)=>{
                     // console.log(res.data[0].THERAPIST_NAME)
                     this.allenHandsome = res.data
-
                     this.setStorage()
-
                 })
             },
             setStorage(){
@@ -123,48 +122,9 @@
             },
             clear(){
                 // let index = this.allenHandsome.findIndex(item=>item.THERAPIST_NAME)
-                
                 this.allenHandsome=[]
                 this.setStorage()
             }
-       
-            // chlive(e){
-            //     this.backstageTherapsitList[0].THERAPIST_STATUS = e.target.value;
-            //     let THERAPIST_STATUS = this.backstageTherapsitList[0].THERAPIST_STATUS;
-            //     let THERAPIST_ACCOUNT = this.backstageTherapsitList[0].THERAPIST_ACCOUNT;
-
-            //     console.log(THERAPIST_STATUS);
-
-            //     var xhr = new XMLHttpRequest();
-                
-            //     xhr.onload = function(){
-            //         if(xhr.status == 200){
-            //             console.log(xhr.status);
-            //             if(xhr.responseText){
-            //                 if(xhr.reponseText == "1"){
-            //                     alert("ok");
-            //                 }
-            //                 // alert("狀態修改成功");
-            //                 // window.location.replace("/backtherapist");
-            //             }else{
-            //                 alert("狀態修改失敗");
-            //             }
-            //         }
-            //     }
-            //     xhr.open("post","http://localhost/CGD102_G2/public/api/backtherapistselectchange.php", true); //開發用
-            //     // xhr.open("post",`${BASE_URL}/api/backtherapistselectchange.php`, true); //上線用
-            //     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-
-            //     let therapist_data = `account=${THERAPIST_ACCOUNT}&status=${THERAPIST_STATUS}`;
-            //     xhr.send(therapist_data);
-            //     console.log(therapist_data);
-            // },
-            // watch: {
-            //      chlive(e){
-            //         // e.target.value;
-            //         console.log(e.target.value);
-            //     }
-            // }
         }
     }
 </script>

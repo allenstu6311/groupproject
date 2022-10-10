@@ -167,7 +167,7 @@ export default {
       pswtip: "*",
       pswclass: "error",
       pswflag: false,
-      allenHandsome: [],
+      infoCount: []
     };
   },
 
@@ -209,7 +209,6 @@ export default {
             let therapist_data = `license1=${this.license1}&license2=${this.license2}&license3=${this.license3}&license4=${this.license4}&account=${this.account}&password=${this.password}&name=${this.name}&hiredate=${this.hiredate}&pic=${this.pic}`;
             xhr.send(therapist_data);
 
-
         },
         photo(e) {
             this.pic = e.target.files[0].name;
@@ -227,33 +226,36 @@ export default {
             }
         },
         getInfo() {
-            this.axios.get("http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php",{
-                params: {
-                    searchName: this.$route.query.name,
-                }
-            })
-            .then((res) => {
-                // this.backstageTherapsitList = res.data
-                this.name = this.$route.query.name;
-                this.account = this.$route.query.account;
-                this.password = this.$route.query.password;
-            })
+            this.info = this.$route.query && this.$route.query.name ? this.$route.query.name: null
+                if(!this.info) return
+                fetch(`${BASE_URL}/BackTherapistChangeInfo?name=${this.name}`
+                ).then((response) => {
+                    if(response){
+                        this.fetchError = (response.status !== 200)
+                        return response.json()
+                    }
+                }).then(responseText => {
+                    this.infoCount = responseText
+                }).catch((err) => {
+                    this.infoCount = []
+                })
+
+            // this.axios.get("http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php",{
+            //     params: {
+            //         searchInfo: this.$route.query.name,
+            //     }
+            // })
+            // .then((response) => {
+            //     // this.backstageTherapsitList = res.data
+            //     // this.name = this.$route.query;
+            //     this.name = this.$route.query.name;
+            //     this.account = this.$route.query.account;
+            //     this.password = this.$route.query.password;
+            // })
         },
-        photo(e){
-            this.pic = e.target.files[0].name;
-            console.log(this.pic);
-        },
-        checkContentByReg(reg, content, tip, classname) {
-            if (reg.test(content)) {
-                this[tip] = "V"
-                this[classname] = "success"
-                return true
-            } else {
-                this[tip] = "請檢查格式"
-                this[classname] = "error"
-                return false
-            }
-        },
+    },
+    created(){
+        this.getInfo();
     },
     watch: {
         password: function (content) {

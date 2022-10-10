@@ -70,6 +70,7 @@
                     .imgInfo{
                         color: $white;
                         font-family: $fontTitle;
+                        position: relative;
                         .circle {
                             background-color: $red;
                             font-weight: 500;
@@ -103,7 +104,7 @@
                     margin: 70px auto 0px;
                 }
                 .content{
-                    width: 75%;
+                    width: 80%;
                     margin: auto;
                     .imgInfo{
                         width: 3.3vw;

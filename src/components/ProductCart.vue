@@ -189,7 +189,7 @@ export default {
       let totalPrices = localStorage.getItem("totalPrice");
       if (totalPrices) this.totalPrice = JSON.parse(totalPrices);
 
-       let members = sessionStorage.getItem("member");
+      let members = sessionStorage.getItem("member");
       this.member = JSON.parse(members);
 
     },
@@ -202,8 +202,8 @@ export default {
     },
    
     reduceShoppingCart(focus) {
-      var url = `${BASE_URL}/api/ShoppingCart.php`;
-      // var url = "http://localhost/CGD102_G2/public/api/changeShoppingCart.php"
+      var url = `${BASE_URL}/api/shoppingCart.php`;
+      // var url = "http://localhost/CGD102_G2/public/api/changeshoppingCart.php"
       this.axios.get(
         url,
         {
@@ -241,9 +241,11 @@ export default {
     this.getInfo();
     this.selChange();
 
+
     if(!this.member){
         this.$router.push("/MemLogin")
     }else{
+ 
       var url = `${BASE_URL}/api/shoppingCart`; //上線
     // var url = "http://localhost/CGD102_G2/public/api/shoppingCart.php"
       this.axios

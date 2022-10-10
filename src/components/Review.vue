@@ -143,8 +143,8 @@ export default {
        
         this.getStorage()
       
-         var url = 'http://localhost/CGD102_G2/public/api/article.php'
-        // var url = `${BASE_URL}/article.php`
+        //  var url = 'http://localhost/CGD102_G2/public/api/article.php'
+        var url = `${BASE_URL}/article.php`
         this.axios.get(url,
         {
             params:{

@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import "bootstrap/scss/bootstrap.scss";
+// import "bootstrap/scss/bootstrap.scss";
 export default {
     data(){
         return{

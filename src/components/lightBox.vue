@@ -19,7 +19,8 @@
   </div>
 </template>
 <style lang="scss" scoped>
-@import "../assets/style.scss";
+// @import "../assets/style.scss";
+@import "@/assets/base/_color.scss";
 .light-box-container {
   position: fixed;
   margin: auto;

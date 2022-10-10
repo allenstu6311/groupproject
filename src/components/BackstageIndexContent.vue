@@ -87,7 +87,8 @@
 
 <style lang="scss" scoped>
     // @import "bootstrap/scss/bootstrap";
-    @import "../assets/style.scss";
+    // @import "../assets/style.scss";
+    @import "@/assets/base/_color.scss";
 
     .table {
         text-align: center;

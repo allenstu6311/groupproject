@@ -8,8 +8,8 @@
             <div class="coupon_container">
                 <div class="coupon_frame">
                     <p class="coupon">
-                        遊戲結束,總共答對了一題<br>
-                        恭喜您獲得<span>8折</span>折價券!
+                        遊戲結束,總共答對了<span>{{count}}題</span><br>
+                        恭喜您獲得<span>{{couponName}}</span>!
                     </p>
                     <div class="btn_group">
                         <div class="over_btn">
@@ -35,23 +35,74 @@
 export default {
     data(){
         return{
-            count:''
+            count:'',
+            data:[],
+            couponName:''
+        
+
         }
     },
     created(){
+        this.count = this.$route.query.count
         this.getDataFromApi(); // 在建立Vue.js模板時順帶執行這個參數
+        // this.getcount();
+        // console.log(this.$route.query.count)
+        let members = sessionStorage.getItem("member");
+        this.member = JSON.parse(members)
+        
+       
     },
     methods: {
-        async getDataFromApi() {
-            var url = `${BASE_URL}/getCoupons.php` //上線用
+        // async getDataFromApi() {
+        //     var url = `${BASE_URL}/getCoupons.php` //上線用
 
-            let getData = async(url) => {
-                let response = await fetch(url); 
-                let JSON =  response.json();
-                this.count = await JSON; // php抓取回來的資料存取在預設好的參數裡
-            }
-            await getData(url); // 觸發 getData 的匿名 function 內容 ==> 76 ~ 78 行的內容
-            console.log(this.count);
+        //     let getData = async(url) => {
+        //         let response = await fetch(url); 
+        //         let JSON =  response.json();
+        //         this.count = await JSON; // php抓取回來的資料存取在預設好的參數裡
+        //     }
+        //     await getData(url); // 觸發 getData 的匿名 function 內容 
+
+        //     console.log(this.count);
+        // },
+        getDataFromApi(){
+            var url = `${BASE_URL}/getCoupons.php` //上線用
+            this.axios.get(url)
+            .then((res)=>{
+                
+            this.data = res.data
+               console.log(this.data)
+            switch(this.count){
+            case "0":
+              
+            this.couponName=this.data[0].CPS_NAME
+            this.couponId = this.data[0].CPS_ID
+            break;
+            case "1":
+           
+            this.couponName=this.data[1].CPS_NAME
+            this.couponId = this.data[1].CPS_ID
+            break;
+            
+           }
+           
+           this.timerd = setTimeout(this.sendCoupons,1000)
+           
+            }) 
+               },
+        sendCoupons(){
+
+            var url = `${BASE_URL}/sendCoupon.php`
+            this.axios.get(url,{
+                params:{
+                    mem_id:this.member.memId,
+                    coupon_id: this.couponId
+                }
+            })
+            .thenn((res)=>{
+                console.log("存入",res)
+            })
+            
         }
     },
 }

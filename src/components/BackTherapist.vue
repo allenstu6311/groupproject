@@ -34,10 +34,14 @@
                     <td>{{ backstageTherapsit.THERAPIST_HIREDATE }}</td>
                     <td>
                         <div>
-                        <select class="form-select form-select-sm">
-                            <option value='1' selected>在職</option>
-                            <option value='0'>離職</option>
-                        </select></div>
+                            <select class="form-select form-select-sm"  @change="changeStatus(backstageTherapsit.THERAPIST_NAME,$event)">
+                                <!-- <option v-for="item in itemList" :value="item.value" :key="item.value" selected>
+                                  
+                                </option> -->
+                                <option value='1'>在職</option>
+                                <option value='0'>離職</option>
+                            </select>
+                        </div>
                     </td>
                     <td>
                         <div>
@@ -86,7 +90,7 @@
         data() {
             return {
                 backstageTherapsitList: [],
-                allenHandsome:[],
+                allenHandsome:[]
             }
         },
         created(){
@@ -104,6 +108,19 @@
                 await getData(url); // 觸發 getData 的匿名 function 內容
                 console.log(this.backstageTherapsitList);
                  
+            },
+            changeStatus(name,e){
+                this.name = name
+                // console.log(this.name);
+                // console.log(e.target.value);
+                var xhr = new XMLHttpRequest();
+            
+                xhr.open("post",`${BASE_URL}/backtherapistselectchange.php`, true); //上線用
+                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+                let status_data = `name=${this.name}&status=${e.target.value}`;
+                xhr.send(status_data);
+                console.log(status_data);
             },
             chtherapistinfo(name){
                 // this.axios.get("http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php",{

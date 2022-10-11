@@ -92,7 +92,8 @@
 
 <script>
 import { nextTick } from "@vue/runtime-core";
-const BASE_URL = process.env.NODE_ENV === "production" ? "/cgd102/g2" : "..";
+import {BASE_URL} from '@/assets/js/common.js'
+
 export default {
   props: {
     getProduct: Array,
@@ -202,7 +203,7 @@ export default {
     },
    
     reduceShoppingCart(focus) {
-      var url = `${BASE_URL}/api/shoppingCart.php`;
+      var url = `${BASE_URL}/changeShoppingCart.php`;
       // var url = "http://localhost/CGD102_G2/public/api/changeshoppingCart.php"
       this.axios.get(
         url,
@@ -246,7 +247,7 @@ export default {
         this.$router.push("/MemLogin")
     }else{
  
-      var url = `${BASE_URL}/api/shoppingCart`; //上線
+      var url = `${BASE_URL}/shoppingCart.php`; //上線
     // var url = "http://localhost/CGD102_G2/public/api/shoppingCart.php"
       this.axios
       .get(url, {
@@ -263,7 +264,7 @@ export default {
   },
  
   mounted() {
-    var url = `${BASE_URL}/api/member.php`; //上線
+    var url = `${BASE_URL}/member.php`; //上線
     // var url = "http://localhost/CGD102_G2/public/api/member.php"
     if (this.member) {
       this.axios

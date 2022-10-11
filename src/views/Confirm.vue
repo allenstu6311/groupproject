@@ -28,8 +28,8 @@
 <script>
 import MemberInfo from "@/components/MemberInfo.vue";
 import CheckCommodity from "@/components/CheckCommodity.vue";
+import {BASE_URL} from '@/assets/js/common.js'
 
-const BASE_URL = process.env.NODE_ENV === "production" ? "/cgd102/g2" : "..";
 export default {
   components: {
     MemberInfo,
@@ -64,8 +64,8 @@ export default {
     payInfo() {
       //商品清單
       alert("結帳完成");
-      //  var url = `${BASE_URL}/api/productlist.php` //上線
-      var url = "http://localhost/CGD102_G2/public/api/productlist.php";
+       var url = `${BASE_URL}/productlist.php`; //上線
+      // var url = "http://localhost/CGD102_G2/public/api/productlist.php";
       this.axios
         .get(url, {
           params: {
@@ -83,8 +83,8 @@ export default {
     },
     sendOrderItems() {
       //商品明細
-      // var url = `${BASE_URL}/api/productOrder.php` //上線
-      var url = "http://localhost/CGD102_G2/public/api/productOrder.php";
+      var url = `${BASE_URL}/productOrder.php`; //上線
+      // var url = "http://localhost/CGD102_G2/public/api/productOrder.php";
       for (let i = 0; i < this.memory.length; i++) {
         this.axios
           .get(url, {
@@ -133,8 +133,8 @@ export default {
       alert("請先登入");
       this.$router.push("/MemLogin");
     } else {
-      // var url = `${BASE_URL}/api/shoppingCart`; //上線
-    var url = "http://localhost/CGD102_G2/public/api/shoppingCart.php"
+      var url = `${BASE_URL}/shoppingCart.php`; //上線
+    // var url = "http://localhost/CGD102_G2/public/api/shoppingCart.php"
       this.axios
         .get(url, {
           params: {
@@ -147,8 +147,8 @@ export default {
           console.log("before",this.memory)
         });
 
-      // var url = `${BASE_URL}/api/member.php` //上線
-      var url = "http://localhost/CGD102_G2/public/api/member.php";
+      var url = `${BASE_URL}/member.php`; //上線
+      // var url = "http://localhost/CGD102_G2/public/api/member.php";
       this.axios
         .get(url, {
           params: {

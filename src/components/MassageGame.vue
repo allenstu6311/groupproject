@@ -111,7 +111,13 @@
 
             <div class="game_btn">
                 <button class="btnLarge" v-if="isActive"  @click="change()">確認答案</button>
-                <router-link to="/GetCoupon" class="btnLarge" v-else @click="getCoupon()">領取折價券</router-link>
+                <router-link :to="{ path:'/GetCoupon' ,
+                                query:{ 
+                                        count:this.count
+
+                                    } }"
+                                    
+                                    class="btnLarge" v-else>領取折價券</router-link>
             </div>
 
         </div>
@@ -150,6 +156,9 @@
                 correctAnswer:'',
 
                 count:0,
+
+
+                end:'',
                 
 
 
@@ -172,6 +181,10 @@
                 this.yuJi = false;
                 this.shaoFu = false;
                 this.taiYuan = false;
+
+                this.change(this.activeAcupoint)
+
+
                 
             },
             activeAcupointB(){
@@ -270,8 +283,8 @@
                 this.shaoFu = false;
                 this.taiYuan = true;
             },
-            change(){
-                if(this.activeAcupoint ==""){
+            change(answer){
+                if(this.activeAcupoint==""){
                     alert('請點選穴道');
                     return;
                 }else{
@@ -290,6 +303,7 @@
                         this.question='正確答案 !';
                         this.Answer='中衝穴位於雙手手指的中指指尖，主要功效是清熱、開竅、利喉舌、清心瀉熱，主治中暑、中風昏迷、頭痛、咽喉腫痛、高血壓、心絞痛等病症。';
                         this.count += 1;
+                       
                         console.log(this.count);
                     }else if(this.activeAcupoint =="B"){
                         this.Answer='少商穴位於雙手拇指節側，內側指甲角旁１分處，主要功效是清熱、利咽、醒神，可以治療或緩解感冒、扁桃體炎、咽喉腫痛、咽喉炎，更是夏日退高燒、改善喉嚨痛的急救要穴。';
@@ -350,17 +364,17 @@
                     }
                 }
             },
-            getCoupon(){
-                let xhr = new XMLHttpRequest();
-                // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'//上線用
-                var url = `${BASE_URL}/getCoupons.php`; //上線用
-                // xhr.open("post", "http://localhost/CGD102_G2/public/api/getCoupons.php", true); //開發用
-                xhr.open("post", url, true); //上線用
-                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+            // getCoupon(){
+            //     let xhr = new XMLHttpRequest();
 
-                let game_count = `count=${this.count}`;
-                xhr.send(game_count);
-            }
+            //     var url = `${BASE_URL}/getCoupons.php`; //上線用
+
+            //     xhr.open("post", url, true); //上線用
+            //     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+            //     let game_count = `count=${this.count}`;
+            //     xhr.send(game_count);
+            // }
         },
     }
 </script>

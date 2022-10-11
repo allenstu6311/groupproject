@@ -47,7 +47,12 @@
                                     path:'/BackTherapistChangeInfo', query:{ 
                                         name: `${backstageTherapsit.THERAPIST_NAME}`,
                                         account:`${backstageTherapsit.THERAPIST_ACCOUNT}`,
-                                        password:`${backstageTherapsit.THERAPIST_PSW}`
+                                        password:`${backstageTherapsit.THERAPIST_PSW}`,
+                                        license1:`${backstageTherapsit.THERAPIST_LICENSE_1}`,
+                                        license2:`${backstageTherapsit.THERAPIST_LICENSE_2}`,
+                                        license3:`${backstageTherapsit.THERAPIST_LICENSE_3}`,
+                                        license4:`${backstageTherapsit.THERAPIST_LICENSE_4}`,
+                                        hiredate:`${backstageTherapsit.THERAPIST_HIREDATE}`
                                     }
                                 }">
                                 <svg 

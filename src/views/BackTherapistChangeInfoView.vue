@@ -5,7 +5,7 @@
             <div class="col-2 aside_height">
                 <BackstageIndexAside />
             </div>
-            <div class="col-9">
+            <div class="col-10">
                 <BackTherapistChangeInfo />
             </div>
         </div>

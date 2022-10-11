@@ -29,6 +29,20 @@ const routes = [
     meta:{isHide:true}
   },
   {
+    path: '/BackstageNewsAdd',
+    name: 'BackstageNewsAdd',
+    chName: '新增最新消息',
+    component: () => import('@/views/BackstageNewsAddView.vue'),
+    meta:{isHide:true}
+  },
+  {
+    path: '/BackstageNewsModify',
+    name: 'BackstageNewsModify',
+    chName: '修改按摩師資料',
+    component: () => import('@/views/BackstageNewsModifyView.vue'),
+    meta:{isHide:true}
+  },
+  {
     path: '/about',
     name: 'about',
     component: () => import('@/views/AboutUs.vue'),

@@ -272,7 +272,8 @@ export default {
             PROD_DESC3: this.PROD_DESC3,
             PROD_TYPE: this.PROD_TYPE,
         };
-   
+        // let myForm = document.querySelector("form");
+        // const formData = new FormData(myForm);
         const formData = new FormData();
         for (let key in data) {
           formData.append(key, data[key]);
@@ -314,6 +315,7 @@ export default {
     },
     getFiles2(e) {
       this.PROD_PIC2 = e.target.files[0];
+      console.log(this.PROD_PIC2)
       let reader = new FileReader();
       reader.onload = function () {
         document.getElementById("myImg2").src = reader.result; 

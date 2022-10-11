@@ -41,9 +41,9 @@
           </thead>
           <tbody>
             <tr v-for="item in data" :key="item">
-              <th>{{ item.prod_orders_id }}</th>
-              <th>{{ item.mem_name }}</th>
-              <th>{{ item.prod_orders_date }}</th>
+              <th>{{ item.PROD_ORDERS_ID }}</th>
+              <th>{{ item.MEM_NAME }}</th>
+              <th>{{ item.PROD_ORDERS_DATE }}</th>
 
               <th v-if="item.prod_orders_cps_id == 0">未出貨</th>
               <th v-if="(item.prod_orders_cps_id = 1)">已出貨</th>
@@ -52,7 +52,7 @@
               <th>
                 <button
                   class="btnLittle"
-                  @click="orderDetail(item.prod_orders_id)"
+                  @click="orderDetail(item.PROD_ORDERS_ID)"
                 >
                   詳細資訊
                 </button>
@@ -72,22 +72,22 @@
         <h6 class="bold">訂單{{ prodId }}</h6>
         <div class="modal-header" v-for="item in detail" :key="item">
           <img
-            :src="require(`../../public/api/pic/${item.prod_pic1}`)"
+            :src="require(`../../public/api/pic/${item.PROD_PIC1}`)"
             alt=""
           />
           <h5 class="modal-title bold w-25 d-flex justify-content-center">
-            {{ item.prod_name }}
+            {{ item.PROD_NAME }}
           </h5>
           <p class="w-25 d-flex justify-content-center">
             X{{ item.ORDER_ITEMS_QTY }}
           </p>
           <p class="w-25 d-flex justify-content-center">
-            {{ item.prod_price }}
+            {{ item.PROD_PRICE }}
           </p>
         </div>
           <div class="modal-body  bold">
           <span>折價券:</span>
-          <span v-if="coupon==0">無</span>
+          <span v-if="coupon==5">無</span>
           <span v-if="coupon==1">九折優惠券</span>
           <span v-if="coupon==2">八折優惠券</span>
           <span v-if="coupon==3">七折優惠券</span>
@@ -235,6 +235,7 @@ export default {
   },
   methods: {
     orderDetail(id) {
+    
       var url = `${BASE_URL}/orderItemProduct.php`; //上線
       // var url = "http://localhost/CGD102_G2/public/api/orderItemProduct.php";
       this.axios
@@ -246,9 +247,9 @@ export default {
         .then((res) => {
           this.show = true;
           this.detail = res.data;
-          // console.log("detail",this.detail)
-          this.subtotal = this.detail[0].prod_orders_subtotal;
-          this.totalPrice = this.detail[0].prod_orders_total;
+          console.log("detail",this.detail)
+          this.subtotal = this.detail[0].PROD_ORDERS_SUBTOTAL;
+          this.totalPrice = this.detail[0].PROD_ORDERS_TOTAL;
           this.coupon = this.detail[0].PROD_ORDERS_CPS_ID
           this.prodId = id;
         });
@@ -257,8 +258,10 @@ export default {
   created() {
      var url = `${BASE_URL}/backOrderItems.php` //上線
     // var url = "http://localhost/CGD102_G2/public/api/backOrderItems.php";
-    this.axios.get(url).then((res) => {
+    this.axios.get(url)
+    .then((res) => {
       this.data = res.data;
+      console.log(this.data)
     });
   },
 };

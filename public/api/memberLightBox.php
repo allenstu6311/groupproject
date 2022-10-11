@@ -2,7 +2,7 @@
 header('Access-Control-Allow-Origin:*');
 header("Content-Type:application/json;charset=utf-8");
 
-function orderItem($order_id){
+function orderItem($mem_id){
 
 //    require_once("../../src/connect_cgd102g2.php"); //開發路徑
    require_once("../connect_cgd102g2.php");//上線路徑
@@ -13,7 +13,7 @@ function orderItem($order_id){
         ON OTI.PROD_ID = PRO.PROD_ID
         JOIN PRODUCT_ORDERS PD
         ON OTI.PROD_ORDERS_ID = PD.PROD_ORDERS_ID
-         WHERE OTI.PROD_ORDERS_ID={$order_id}";
+         WHERE PD.MEM_ID={$mem_id}";
 
     $product = $pdo->query($sql);
     $products = $product->fetchAll();
@@ -26,7 +26,7 @@ function orderItem($order_id){
     echo json_encode($data);
 
 }
-orderItem($_GET['order_id'])
+orderItem($_GET['mem_id'])
 
 
 

@@ -66,7 +66,7 @@ export default {
       this.totalPrice = JSON.parse(totalPrices);   
     },
      updateCart() {
-            var url = `${BASE_URL}/api/shoppingCart`; //上線
+      var url = `${BASE_URL}/shoppingCart.php`; //上線
     // var url = "http://localhost/CGD102_G2/public/api/shoppingCart.php"
       this.axios
         .get(url, {

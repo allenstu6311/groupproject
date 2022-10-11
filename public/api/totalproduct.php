@@ -10,6 +10,10 @@ function page($range_1,$range_2){
 
 $sql="select*from PRODUCT limit {$range_1},{$range_2}";
 
+// $sql = "DELETE FROM PRODUCT
+// WHERE PROD_ID>15";
+
+
 $product=$pdo->query($sql);
 
 $products= $product->fetchAll();

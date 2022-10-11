@@ -111,10 +111,19 @@
             },
             changeStatus(name,e){
                 this.name = name
-                // console.log(this.name);
-                // console.log(e.target.value);
+
                 var xhr = new XMLHttpRequest();
-            
+
+                xhr.onload = function(){
+                    if(xhr.status == 200){
+                        if(xhr.responseText == "狀態修改成功"){
+                            alert("狀態修改成功");
+                        }else {
+                            alert("狀態修改失敗");
+                        }
+                    }
+                }
+
                 xhr.open("post",`${BASE_URL}/backtherapistselectchange.php`, true); //上線用
                 xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 

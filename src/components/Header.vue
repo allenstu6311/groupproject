@@ -149,6 +149,6 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<!-- <style lang="scss">
 @import "../assets/style.scss";
-</style>
+</style> -->

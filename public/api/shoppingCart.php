@@ -22,12 +22,9 @@ function shoppingCart($mem_id)
 
         $data[] = $page;
     }
-    if(empty($data)){
-        echo "{}";
-    }else{
-        echo json_encode($data);
-    }
+    echo json_encode($data);
 
 }
 shoppingCart($_GET['mem_id']);
 // echo "====",$_GET['range_1'];
+?>

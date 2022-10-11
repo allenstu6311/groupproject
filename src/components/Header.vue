@@ -55,6 +55,7 @@
   </header>
 </template>
 <script>
+import {BASE_URL} from '@/assets/js/common.js'
 export default {
   data() {
     return {
@@ -76,24 +77,17 @@ export default {
       };
     },
     cartLength:function(){
-      return  this.memory.length
+  
+        return  this.memory.length
+      
+   
     },
-    cartTotal:function(){
-      return JSON.parse(JSON.stringify(this.memory))
-    }
+    // cartTotal:function(){
+    //   return JSON.parse(JSON.stringify(this.memory))
+    // }
   },
   watch:{
-     memory:{
-      handler(newVal,oldVal){
-        for(let i=0;i<newVal.length;i++){
-           if(newVal!=oldVal){
-    
-        }
-        }
-       
-        
-      }
-     },
+
      deep:true,
   },
 
@@ -103,8 +97,8 @@ export default {
       location.reload();
     },
     updateCart() {
-            // var url = `${BASE_URL}/api/shoppingCart`; //上線
-    var url = "http://localhost/CGD102_G2/public/api/shoppingCart.php"
+        var url = `${BASE_URL}/shoppingCart`; //上線
+    // var url = "http://localhost/CGD102_G2/public/api/shoppingCart.php"
       this.axios
         .get(url, {
           params: {
@@ -117,8 +111,9 @@ export default {
     },
       getCartNumber(){
       if (this.member) {
+             var url = `${BASE_URL}/shoppingCart`; //上線
       this.axios
-        .get("http://localhost/CGD102_G2/public/api/shoppingCart.php", {
+        .get(url, {
           params: {
             mem_id: this.member.memId,
           },
@@ -142,7 +137,7 @@ export default {
   created() {
     let members = sessionStorage.getItem("member");
     this.member = JSON.parse(members);
-    this.getCartNumber()
+    // this.getCartNumber()
    
   },
  

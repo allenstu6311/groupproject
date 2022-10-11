@@ -1,7 +1,7 @@
 <template>
     <teleport to='body'>
         <div class="modal-mask" :style="modalStyle">
-            <div class="modal-container" @click.stop="toggleModal">
+            <div class="modal-container" @click="toggleModal">
                 <div class="lightbox">
                     <div class="lightbox-body">
                         <div class="title">
@@ -94,6 +94,7 @@
 
 </template>
 <script>
+import {BASE_URL} from '@/assets/js/common.js'
 export default {
     data() {
         return {
@@ -177,6 +178,7 @@ export default {
         text-align: center;
         color: $white;
         font-size: 26px;
+        padding: 10px 0;
     }
 
     .memdetail {

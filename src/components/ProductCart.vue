@@ -219,7 +219,7 @@ export default {
     },
    
     reduceShoppingCart(focus) {
-      var url = `${BASE_URL}/shoppingCart.php`;
+      var url = `${BASE_URL}/changeShoppingCart.php`;
       // var url = "http://localhost/CGD102_G2/public/api/changeshoppingCart.php"
       this.axios.get(
         url,

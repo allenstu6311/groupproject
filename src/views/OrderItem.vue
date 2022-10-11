@@ -215,8 +215,8 @@ table {
 import BackstageIndexAside from "@/components/BackstageIndexAside.vue";
 import BackstageIndexHeader from "@/components/BackstageIndexHeader.vue";
 import BackTherapist from "@/components/BackTherapist.vue";
+import {BASE_URL} from '@/assets/js/common.js'
 
-const BASE_URL = process.env.NODE_ENV === "production" ? "/cgd102/g2" : "..";
 export default {
   components: {
     BackstageIndexHeader,
@@ -235,7 +235,7 @@ export default {
   },
   methods: {
     orderDetail(id) {
-      var url = `${BASE_URL}/api/orderItemProduct.php` //上線
+      var url = `${BASE_URL}/orderItemProduct.php`; //上線
       // var url = "http://localhost/CGD102_G2/public/api/orderItemProduct.php";
       this.axios
         .get(url, {

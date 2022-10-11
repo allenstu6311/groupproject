@@ -48,9 +48,9 @@
                                 <img src="../assets/images/small_teamPic.png" alt="按摩師介紹圖">
                             </div>
                         </div>
-                        <a href="/therapist">
+                        <router-link to="/therapist">
                             <div class="btnLarge">查看介紹</div>
-                        </a>
+                        </router-link>
                     </div>
                     <div class="col-xl-6 col-12 redTitle">
                         <div class="content">
@@ -64,9 +64,9 @@
                                 <div class="circle">紹</div>
                             </h3>
                         </div>
-                        <a href="/employee">
+                        <router-link to="/employee">
                             <div class="btnLarge">查看介紹</div>
-                        </a>
+                        </router-link>
                     </div>
                 </div>
             </div>

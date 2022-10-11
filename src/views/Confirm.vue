@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     Information() {
-     let members = sessionStorage.getItem("member");
+    let members = sessionStorage.getItem("member");
     this.member = JSON.parse(members);
       // let calculates = localStorage.getItem("calculate");
       // if (!calculates) return;
@@ -120,7 +120,7 @@ export default {
           this.cpsId = 4;
           break;
         default:
-          this.coupons = 0;
+          this.cpsId = 5;
           break;
       }
     },

@@ -12,7 +12,7 @@
             <option value="0">下架中</option>
             <option value="1">上架中</option>
           </select>
-
+         
           <div class="input-group mx-3  w-25">
             <input
               type="text"
@@ -249,6 +249,7 @@ export default {
       }).then((res)=>{
         this.data = res.data
         this.productInfo = res.data
+        console.log(this.data)
       })
       
     },
@@ -257,7 +258,7 @@ export default {
       // var url = "http://localhost/CGD102_G2/public/api/backShopSearch.php"
       this.axios.get(url,{
         params:{
-             PROD_NAME:this.backProduct,
+            PROD_NAME:this.backProduct,
         }
       }).then((res)=>{
         this.data = res.data
@@ -274,6 +275,7 @@ export default {
 
     },
     filter(){
+      
       switch(this.productState){
       case "9":
         this.number1=0,
@@ -281,14 +283,21 @@ export default {
         this.getPageNumber();
         this.data=this.productInfo;
         this.changePageButton=true
+      
         break;
       case "0":
-        let state0 = this.data.filter(item=>item.PROD_STATUS===0) 
-        console.log(state0)
+     
+     
+        let state0 = this.data.filter((item)=>item.PROD_STATUS==this.productState) 
+        // console.log("0",this.data)
+        console.log("0",state0)
         this.data=state0;
+       
         break;
       case "1":
-        let state1 = this.data.filter(item=>item.PROD_STATUS===1)     
+      
+        let state1 = this.data.filter((item)=>item.PROD_STATUS===this.productState)
+        console.log("1",state1)     
         this.data=state1;
      }
 

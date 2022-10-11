@@ -111,17 +111,28 @@
 
             <div class="game_btn">
                 <button class="btnLarge" v-if="isActive"  @click="change()">確認答案</button>
-                <router-link to="/GetCoupon" class="btnLarge" v-else @click="getCoupon()">領取折價券</router-link>
+                <router-link :to="{ path:'/GetCoupon' ,
+                                query:{ 
+                                        count:this.count
+
+                                    } }"
+                                    
+                                    class="btnLarge" v-else >領取折價券</router-link>
             </div>
 
         </div>
     </div>
+    <lightBox v-if="lightBoxShow==true"/>
 </template>
 <script>
-    import {BASE_URL} from '@/assets/js/common.js'
+    import lightBox from "@/components/lightBox.vue"
     export default {
+        components:{
+            lightBox
+        },
         data () {
             return{
+                lightBoxShow:false,
                 activeAcupoint:'',
                 isActive:true,
                 zhongChong:false,
@@ -150,8 +161,6 @@
                 correctAnswer:'',
 
                 count:0,
-                
-
 
                 acupoint:[
                     "中衝穴","少商穴","合谷穴","命門穴","神門穴","勞宮穴","魚際穴","少府穴","太淵穴","（請點擊穴道）",
@@ -159,6 +168,15 @@
                 imgName:'game1.png',
                 question:'天氣炎熱食慾不振，好像中暑了，這時該按哪一個穴道呢?'
             }
+        },
+        created(){
+            let members = sessionStorage.getItem("member");
+            this.member = JSON.parse(members)
+            if(!this.member){
+                this.lightBoxShow=true
+            }else{
+                this.lightBoxShow=false
+            }       
         },
         methods:{
             activeAcupointA(){
@@ -270,8 +288,8 @@
                 this.shaoFu = false;
                 this.taiYuan = true;
             },
-            change(){
-                if(this.activeAcupoint ==""){
+            change(answer){
+                if(this.activeAcupoint==""){
                     alert('請點選穴道');
                     return;
                 }else{
@@ -350,17 +368,6 @@
                     }
                 }
             },
-            getCoupon(){
-                let xhr = new XMLHttpRequest();
-                // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'//上線用
-                var url = `${BASE_URL}/getCoupons.php`; //上線用
-                // xhr.open("post", "http://localhost/CGD102_G2/public/api/getCoupons.php", true); //開發用
-                xhr.open("post", url, true); //上線用
-                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-
-                let game_count = `count=${this.count}`;
-                xhr.send(game_count);
-            }
         },
     }
 </script>

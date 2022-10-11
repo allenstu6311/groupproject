@@ -28,6 +28,7 @@
               aria-describedby="basic-addon1"
               maxlength="10"
               v-model="account"
+              disabled
             />
           </div>
         </div>
@@ -135,12 +136,8 @@
         </div>
       </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button class="btn btn-primary me-md-2" @click="submit" type="button">
-          儲存
-        </button>
-        <router-link class="btn btn-primary" to="/backtherapist"
-          >取消</router-link
-        >
+        <button class="btn btn-primary me-md-2" @click="submit" type="button">儲存</button>
+        <router-link class="btn btn-primary" to="/backtherapist">取消</router-link>
       </div>
     </section>
   </div>
@@ -167,26 +164,31 @@ export default {
       pswtip: "*",
       pswclass: "error",
       pswflag: false,
-      infoCount: []
-    };
+    }
   },
-
   mounted() {
     this.getInfo();
-    this.getDataFromApi();
   },
-
   methods: {
-        async getDataFromApi() {
-            // var url = 'http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php'; //開發用
-            var url = `${BASE_URL}/backtherapistgetvalue.php`; //上線用
-            let getData = async(url) => {
-                let response = await fetch(url);
-                let JSON =  response.json();
-                this.backstageTherapsitList = await JSON;
-            }
-            await getData(url);
-            console.log(this.backstageTherapsitList);
+        getInfo() {
+            this.axios.get(`${BASE_URL}/backtherapistgetvalue.php`,{
+                params: {
+                    searchName: this.$route.query.name,
+                }
+            })
+            .then((res) => {
+                // this.backstageTherapsitList = res.data
+                // this.name = this.$route.query;
+                this.name = this.$route.query.name;
+                this.account = this.$route.query.account;
+                this.password = this.$route.query.password;
+                this.license1 = this.$route.query.license1;
+                this.license2 = this.$route.query.license2;
+                this.license3 = this.$route.query.license3;
+                this.license4 = this.$route.query.license4;
+                this.hiredate = this.$route.query.hiredate;
+                // this.pic = this.$route.query.pic;
+            })
         },
         submit(){
 
@@ -194,8 +196,9 @@ export default {
 
             xhr.onload = function(){
                 if(xhr.status == 200){
-                    if(xhr.responseText == "修改完成"){
-                        alert("修改完成");
+                  // console.log(xhr.responseText);
+                    if(xhr.responseText == "修改成功"){
+                        alert("修改成功");
                         window.location.replace("/backtherapist");
                     }else if(xhr.responseText == "修改失敗"){
                         alert("修改失敗");
@@ -208,7 +211,7 @@ export default {
 
             let therapist_data = `license1=${this.license1}&license2=${this.license2}&license3=${this.license3}&license4=${this.license4}&account=${this.account}&password=${this.password}&name=${this.name}&hiredate=${this.hiredate}&pic=${this.pic}`;
             xhr.send(therapist_data);
-
+            console.log(therapist_data);
         },
         photo(e) {
             this.pic = e.target.files[0].name;
@@ -224,46 +227,15 @@ export default {
                 this[classname] = "error";
                 return false;
             }
-        },
-        getInfo() {
-            this.info = this.$route.query && this.$route.query.name ? this.$route.query.name: null
-                if(!this.info) return
-                fetch(`${BASE_URL}/BackTherapistChangeInfo?name=${this.name}`
-                ).then((response) => {
-                    if(response){
-                        this.fetchError = (response.status !== 200)
-                        return response.json()
-                    }
-                }).then(responseText => {
-                    this.infoCount = responseText
-                }).catch((err) => {
-                    this.infoCount = []
-                })
-
-            // this.axios.get("http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php",{
-            //     params: {
-            //         searchInfo: this.$route.query.name,
-            //     }
-            // })
-            // .then((response) => {
-            //     // this.backstageTherapsitList = res.data
-            //     // this.name = this.$route.query;
-            //     this.name = this.$route.query.name;
-            //     this.account = this.$route.query.account;
-            //     this.password = this.$route.query.password;
-            // })
-        },
-    },
-    created(){
-        this.getInfo();
+        }
     },
     watch: {
         password: function (content) {
             var reg = /^[0-9a-z]{6,10}$/;
             this.pswflag = this.checkContentByReg(reg, content, "pswtip", "pswclass");
-        },
-    },
-};
+        }
+    }
+}
 </script>
 
 <style lang="scss" scoped>

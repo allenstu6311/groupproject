@@ -1,6 +1,6 @@
 <template>
-<Header v-if="!hideHeaderFooter" />
-    <router-view/>
+<Header v-if="!hideHeaderFooter" ref="header" />
+    <router-view @update-cart="updateCart"/>
 <Footer v-if="!hideHeaderFooter" />
 </template>
 
@@ -20,6 +20,11 @@ export default {
     components:{
         Header,
         Footer,
+    },
+    methods: {
+      updateCart(list) {
+        this.$refs.header.updateCart(list);//?
+      },
     }
 }
 </script>

@@ -3,7 +3,8 @@
     <img src="../assets/images/bcgFlower.png" alt="" />
   </div>
   <ProductCart :getProduct="temporary" 
-  @cart-message="cartInformation" 
+  @cart-message="cartInformation"
+  @update-cart="$emit('update-cart', $event)" 
   :newCartInfo ="newCart"/>
   <ShoppingCar 
   @product-info="productInfo" 

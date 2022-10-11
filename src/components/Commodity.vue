@@ -258,6 +258,8 @@ export default {
       let members = sessionStorage.getItem("member");
       this.member = JSON.parse(members);
       console.log(this.member)
+
+    
     },
     groupBy(value) {
       switch (value) {
@@ -352,6 +354,7 @@ export default {
         .then((res) => {
           this.data = res.data;
           this.info = res.data;
+             console.log("info",this.data)
           this.data.sort(function () {
             return 0.5 - Math.random();
           });
@@ -382,6 +385,7 @@ export default {
     this.getCommodityInfo();
     this.clear();
     this.onlineStorage();    
+   
   },
   watch: {
     toggle: {

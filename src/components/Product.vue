@@ -338,8 +338,8 @@ export default {
       moveCursor(event) {
        
         const halfCursor = this.cursorWidth/2;
-        const left = event.clientX - this.magnifierBoxLeft-halfCursor;
-        const top = event.clientY - this.magnifierBoxTop-halfCursor;
+        const left = event.clientX - this.magnifierBoxLeft-200;
+        const top = event.clientY - this.magnifierBoxTop-230;
         
         // 处理光标左侧
         if(left < 0) { // 防止左侧溢出
@@ -440,7 +440,7 @@ export default {
       // this.setStorage();
     },
 
-       IncreaseShoppingCart() {
+      IncreaseShoppingCart() {
       this.axios.get(
         // "http://localhost/CGD102_G2/public/api/changeShoppingCart.php",
         `${BASE_URL}/changeShoppingCart.php`,
@@ -501,7 +501,7 @@ export default {
     // }
   },
   mounted(){
-      
+  
   }
 };
 </script>

@@ -17,7 +17,12 @@
     </div>
 
     <div class="shopping-list-order" v-for="item in memory" :key="item.PROD_ID">
-      <input type="checkbox" v-model="calculate" :value="item"  @change="memoryChecked(item.CHECKED)"/>
+      <input
+        type="checkbox"
+        v-model="calculate"
+        :value="item"
+        
+      />
       <!-- {{calculate}} -->
       <div class="shopping-list-pic">
         <img :src="require(`../../public/api/pic/${item.PROD_PIC1}`)" />
@@ -92,11 +97,11 @@
 
 <script>
 import { nextTick } from "@vue/runtime-core";
-import {BASE_URL} from '@/assets/js/common.js'
+import { BASE_URL } from "@/assets/js/common.js";
 export default {
   props: {
     getProduct: Array,
-    newCartInfo:Array,
+    newCartInfo: Array,
   },
   data() {
     return {
@@ -115,49 +120,48 @@ export default {
   },
   methods: {
     reduceNum(item, id) {
-      item.PROD_QTY-=1;
+      if(item.PROD_QTY){
+         item.PROD_QTY -= 1;
+      }
+     
       // let carNum = this.calculate.find((item) => item.PROD_ID === id);
       // item.PROD_NUM -= 1;
       // carNum.PROD_NUM -= 1;
     },
     addNum(item, id) {
       // item.PROD_NUM += 1;
-      item.PROD_QTY+=1;
+      item.PROD_QTY =parseInt(item.PROD_QTY)+1;
 
       // let carNum = this.calculate.find((item) => item.PROD_ID === id);
       // carNum.PROD_NUM += 1;
-
     },
     reduceCar(id) {
       this.updateCart();
       // let count = this.cart.findIndex((item) => item.PROD_ID === id);
       // let index = this.calculate.findIndex((item) => item.PROD_ID === id);
-      let focus = this.memory.findIndex(item=>item.PROD_ID===id)
-      this.reduceShoppingCart(focus)
+      let focus = this.memory.findIndex((item) => item.PROD_ID === id);
+      this.reduceShoppingCart(focus);
       this.updateCart();
-      
+
       // this.cart.splice(count, 1);
       // this.calculate.splice(index, 1);
       // this.$emit("cart-message", this.cart);
       // this.setLocal();
-     
     },
     drop() {
-      for (let i = this.cart.length - 1; i >= 0; i--) {
-        let a = this.cart[i].PROD_ID;
-        for (let j = this.calculate.length - 1; j >= 0; j--) {
-          let b = this.calculate[j].PROD_ID;
-          if (a == b) {
-            this.cart.splice(i, 1);
-            this.calculate.splice(j, 1);
-            break;
-          }
-        }
+      
+      let sameProduct = this.calculate.filter(v =>this.memory.filter(u=>u.PROD_ID===v.PROD_ID))
+      if(sameProduct){
+        let newData = this.memory.splice(sameProduct,sameProduct.length)
+        this.memory = newData
+
+     
+        this.updateCart(newData);
       }
-      location.reload();
+   
     },
-      updateCart() {
-              var url = `${BASE_URL}/shoppingCart`; //上線
+    updateCart(newData) {
+      var url = `${BASE_URL}/shoppingCart.php`; //上線
       this.axios
         .get(url, {
           params: {
@@ -165,26 +169,38 @@ export default {
           },
         })
         .then((res) => {
-          this.memory = res.data;
-          // console.log("before",this.memory)
+          // this.memory = res.data;
+          let oldVal = this.memory;
+          let newVal = res.data;
+          let isSame = newVal.length === oldVal.length;
+          if (!isSame) {
+            this.memory = res.data;
+            return;
+          }
+
+          isSame = newVal.every((v) => oldVal.findIndex((u) => u.PROD_ID === v.PROD_ID && u.PROD_QTY == v.PROD_QTY) > -1
+          );
+          if (!isSame) {
+            this.memory = res.data;
+          }
+          
+          this.$emit("update-cart", res.data);
         });
     },
-      memberCart(){
-        
-      var url = `${BASE_URL}/test`; //上線
-    // var url = "http://localhost/CGD102_G2/public/api/shoppingCart.php"
-      this.axios.get(url,
-      //  {
-      //   params: {
-      //     mem_id: this.member.memId,
-      //   },
-     
-      )
-      .then((res) => {
-        this.memory = res.data;
-        console.log("mm",this.memory)
-      });
-    },
+    // memberCart() {
+    //   var url = `${BASE_URL}/shoppingCart.php`; //上線
+    //   // var url = "http://localhost/CGD102_G2/public/api/shoppingCart.php"
+    //   this.axios
+    //     .get(url, {
+    //       params: {
+    //         mem_id: this.member.memId,
+    //       },
+    //     })
+    //     .then((res) => {
+    //       this.memory = res.data;
+    //       this.$emit("update-cart", res.data);
+    //     });
+    // },
 
     countMoney() {
       localStorage.setItem("totalPrice", JSON.stringify(this.totalPrice));
@@ -208,30 +224,26 @@ export default {
 
       let members = sessionStorage.getItem("member");
       this.member = JSON.parse(members);
-
     },
     selChange(sel) {
       this.totalPrice = parseInt(this.productPrice * this.sel);
       this.countMoney();
     },
     checkList() {
-      localStorage.setItem("coupon",this.sel)
+      localStorage.setItem("coupon", this.sel);
     },
-   
+
     reduceShoppingCart(focus) {
       var url = `${BASE_URL}/changeShoppingCart.php`;
       // var url = "http://localhost/CGD102_G2/public/api/changeshoppingCart.php"
-      this.axios.get(
-        url,
-        {
-          params: {
-            judge: 2,
-            mem_id: this.member.memId,
-            prod_id: this.memory[focus].PROD_ID,
-            prod_qty:1,
-          },
-        }
-      )
+      this.axios.get(url, {
+        params: {
+          judge: 2,
+          mem_id: this.member.memId,
+          prod_id: this.memory[focus].PROD_ID,
+          prod_qty: 1,
+        },
+      });
     },
   },
   computed: {
@@ -256,10 +268,10 @@ export default {
   },
   created() {
     this.getInfo();
-    this.selChange(); 
-    this.memberCart();
+    this.selChange();
+    this.updateCart();
   },
- 
+
   mounted() {
     var url = `${BASE_URL}/member.php`; //上線
     // var url = "http://localhost/CGD102_G2/public/api/member.php"
@@ -311,29 +323,29 @@ export default {
       },
       deep: true,
     },
-    newCartInfo:{
-      handler(newVal){
-        this.updateCart()
+    newCartInfo: {
+      handler(newVal) {
+        this.updateCart();
         // console.log("test",newVal)
         this.updateCart();
         // if(newVal){
         //   this.memory  =newVal
         // }
-      }
+      },
     },
     memory: {
       handler(newVal) {
         if (newVal.length == 0) {
           this.detect = true;
-        }else{
+        } else {
           this.detect = false;
         }
       },
     },
-     checkBox:{
-      handler(newVal){
-        console.log('calculate',newVal)
-      }
+    checkBox: {
+      handler(newVal) {
+        console.log("calculate", newVal);
+      },
     },
     checkOut: {
       handler(newVal) {
@@ -353,10 +365,10 @@ export default {
         }
       },
     },
-    totalPrice:{
-      handler(newVal){
-        this.countMoney()
-      }
+    totalPrice: {
+      handler(newVal) {
+        this.countMoney();
+      },
     },
     deep: true,
   },

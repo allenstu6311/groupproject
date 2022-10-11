@@ -74,13 +74,12 @@ export default {
       this.updateCart();
       let count = this.data.findIndex((item) => item.PROD_ID === id);
       let sameProduct = this.memory.find((item) => item.PROD_ID === id);
-    
+      
       // let index = this.cart.find(item=>item.PROD_ID===id)
       if (!sameProduct) {
         alert("成功加入");
         this.IncreaseShoppingCart(count);
-        // this.updateCart();
-        // location.reload()
+        this.updateCart();
       } else {
         alert("購物車已有相同物品");
       }
@@ -125,7 +124,7 @@ export default {
     //   localStorage.setItem("calculate", JSON.stringify(this.calculate));
     // },
     updateCart() {
-          var url = `${BASE_URL}/shoppingCart`; //上線
+          var url = `${BASE_URL}/shoppingCart.php`; //上線
       this.axios
         .get(url, {
           params: {

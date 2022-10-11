@@ -1,9 +1,10 @@
 <?php
+header('Access-Control-Allow-Origin:*');
+// header("Content-Type:application/json;charset=utf-8");
 echo "123";
 $image_file = $_FILES["PROD_PIC1"];
 echo $image_file['name'];
-header('Access-Control-Allow-Origin:*');
-header("Content-Type:application/json;charset=utf-8");
+
 
 // function fileInfo($PROD_NAME,$PROD_PRICE,$PROD_PIC1,$PROD_PIC2,$PROD_PIC3,
 // $PROD_STATUS,$PROD_DATE,$PROD_DESC1,$PROD_DESC2,$PROD_DESC3,$PROD_TYPE){

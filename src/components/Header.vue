@@ -79,14 +79,17 @@ export default {
     cartLength:function(){
   
         return  this.memory.length
-      
-   
     },
     // cartTotal:function(){
     //   return JSON.parse(JSON.stringify(this.memory))
     // }
   },
   watch:{
+    memory:{
+      handler(){
+        this.updateCart()
+      }
+    },
 
      deep:true,
   },
@@ -96,8 +99,11 @@ export default {
       sessionStorage.removeItem("member");
       location.reload();
     },
+    updateCartFromCartPage(list) {
+      this.memory = list;
+    },
     updateCart() {
-        var url = `${BASE_URL}/shoppingCart`; //上線
+        var url = `${BASE_URL}/shoppingCart.php`; //上線
     // var url = "http://localhost/CGD102_G2/public/api/shoppingCart.php"
       this.axios
         .get(url, {
@@ -106,12 +112,24 @@ export default {
           },
         })
         .then((res) => {
-          this.memory = res.data;
+          // this.memory = res.data;
+          let oldVal = this.memory;
+           let newVal = res.data;
+          let isSame = newVal.length === oldVal.length;
+          if(!isSame){
+            this.memory = res.data;
+            return;
+          }
+          isSame = newVal.every(v => oldVal.findIndex(u => u.PROD_ID === v.PROD_ID && u.PROD_QTY == v.PROD_QTY) > -1)//?
+        
+          if(!isSame){
+            this.memory = res.data;
+          }
         });
     },
       getCartNumber(){
       if (this.member) {
-             var url = `${BASE_URL}/shoppingCart`; //上線
+             var url = `${BASE_URL}/shoppingCart.php`; //上線
       this.axios
         .get(url, {
           params: {
@@ -137,7 +155,7 @@ export default {
   created() {
     let members = sessionStorage.getItem("member");
     this.member = JSON.parse(members);
-    // this.getCartNumber()
+    this.getCartNumber()
    
   },
  

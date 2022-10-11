@@ -34,6 +34,12 @@
                                             <td><slot name="item-count">{{item.num}}</slot></td>
                                             <td><slot name="item-price">{{item.price}}</slot></td>
                                         </tr> -->
+                            <tr v-for="item in data" :key="item.PROD_ID">
+                                <td><img :src="require(`../../public/api/pic/${item.PROD_PIC1}`)" alt=""></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
                     </table>
                 </div>
             </body>
@@ -42,53 +48,29 @@
 </template>
 
 <script>
-// export default {
-//     data: () => ({
-//         isShow: false,
-//         // car: [],
-//     }),
-//     computed: {
-//         modalStyle() {
-//             return {
-//                 'display': this.isShow ? '' : 'none',
-//             };
-//         }
-//     },
-//     methods: {
-//         toggleModal() {
-//             console.log('click')
-//             this.isShow = !this.isShow;
-//         },
-//         // online() {
-//         //     let buyCar = localStorage.getItem("car");
-//         //     if (!buyCar) return;
-//         //     this.car = JSON.parse(buyCar)
-//         // },
+import {BASE_URL} from '@/assets/js/common.js'
+export default {
+    data(){
+        return{
+            data:[],
+        }
+    },
+    created(){
+        let members = sessionStorage.getItem("member");
+        this.member = JSON.parse(members)
 
-//         // send() {
-//         //     for (let i = 0; i < this.car.length; i++) {
-//         //         this.price = this.car[i].price
-//         //         this.name = this.car[i].name
-//         //         this.num = this.car[i].num
-//         //         this.img = this.car[i].img
-//         //         this.img = this.car[i].img
-//         //         this.img = this.car[i].img
-//         //         this.img = this.car[i].img
-//         //         this.img = this.car[i].img
-//         //         this.img = this.car[i].img
-//         //         this.img = this.car[i].img
-//         //         this.img = this.car[i].img
-//         //         this.img = this.car[i].img
-//         //         this.img = this.car[i].img
-//         //         this.img = this.car[i].img
-//         //         this.img = this.car[i].img
-//         //         this.img = this.car[i].img
-//         //     }
-//         // }
-//     },
-//     // created() {
-//     //     this.online()
-//     //     this.send()
-//     // },
-// };
+        var url = `${BASE_URL}/memberLightBox.php`
+        this.axios.get(url,{
+            params:{
+                mem_id:this.member.memId
+            }
+        })
+        .then((res)=>{
+            
+            this.data=res.data
+            console.log("會員中心",this.data)
+    
+        })
+    }
+}
 </script>

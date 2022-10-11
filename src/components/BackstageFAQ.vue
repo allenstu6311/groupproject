@@ -18,7 +18,7 @@
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th scope="co1">編號</th>
+                    <!-- <th scope="co1">編號</th> -->
                     <th scope="col">標題</th>
                     <th scope="col">狀態</th>
                     <th scope="col">修改</th>
@@ -27,7 +27,7 @@
             </thead>
             <tbody>
                 <tr  v-for="(faq, index) in faqCardList" :key="index">
-                    <td>{{faq.FAQ_ID}}</td>
+                    <!-- <td>{{faq.FAQ_ID}}</td> -->
                     <td>{{faq.FAQ_TITLE}}</td>
                     <td>
                         <div>

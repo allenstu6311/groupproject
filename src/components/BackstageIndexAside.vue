@@ -60,7 +60,7 @@ export default {
                 {
                 id: 7,
                 name: "管理會員帳號",
-                path:"/BackShop",
+                path:"/BackManageMem",
                 },
                 {
                 id: 8,

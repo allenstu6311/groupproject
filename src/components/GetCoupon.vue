@@ -31,15 +31,13 @@
 
 <script>
     import {BASE_URL} from '@/assets/js/common.js'
-
+    
 export default {
     data(){
         return{
             count:'',
             data:[],
-            couponName:''
-        
-
+            couponName:'',
         }
     },
     created(){
@@ -48,50 +46,35 @@ export default {
         // this.getcount();
         // console.log(this.$route.query.count)
         let members = sessionStorage.getItem("member");
-        this.member = JSON.parse(members)
+        this.member = JSON.parse(members);
+        if(!this.member){
+                this.lightBoxShow=true
+            }else{
+                this.lightBoxShow=false
+            } 
         
-       
     },
     methods: {
-        // async getDataFromApi() {
-        //     var url = `${BASE_URL}/getCoupons.php` //上線用
-
-        //     let getData = async(url) => {
-        //         let response = await fetch(url); 
-        //         let JSON =  response.json();
-        //         this.count = await JSON; // php抓取回來的資料存取在預設好的參數裡
-        //     }
-        //     await getData(url); // 觸發 getData 的匿名 function 內容 
-
-        //     console.log(this.count);
-        // },
         getDataFromApi(){
             var url = `${BASE_URL}/getCoupons.php` //上線用
             this.axios.get(url)
             .then((res)=>{
-                
             this.data = res.data
-               console.log(this.data)
+            console.log(this.data)
             switch(this.count){
-            case "0":
-              
-            this.couponName=this.data[0].CPS_NAME
-            this.couponId = this.data[0].CPS_ID
-            break;
-            case "1":
-           
-            this.couponName=this.data[1].CPS_NAME
-            this.couponId = this.data[1].CPS_ID
-            break;
-            
-           }
-           
-           this.timerd = setTimeout(this.sendCoupons,1000)
-           
+                case "0":
+                    this.couponName=this.data[0].CPS_NAME
+                    this.couponId = this.data[0].CPS_ID
+                    break;
+                case "1":
+                    this.couponName=this.data[1].CPS_NAME
+                    this.couponId = this.data[1].CPS_ID
+                    break;
+            }
+            this.timerd = setTimeout(this.sendCoupons,1000)
             }) 
-               },
+        },
         sendCoupons(){
-
             var url = `${BASE_URL}/sendCoupon.php`
             this.axios.get(url,{
                 params:{
@@ -102,7 +85,6 @@ export default {
             .thenn((res)=>{
                 console.log("存入",res)
             })
-            
         }
     },
 }

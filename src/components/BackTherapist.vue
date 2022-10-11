@@ -110,23 +110,23 @@
                     // console.log(res.data[0].THERAPIST_NAME)
                     this.allenHandsome = res.data
 
-                    this.setStorage()
+                    // this.setStorage()
 
                 })
             },
-            setStorage(){
-                localStorage.setItem("THERAPIST_NAME",JSON.stringify(this.allenHandsome))
-            },
-            onlineStorage(){
-                let allens = localStorage.getItem("THERAPIST_NAME")
-                this.allenHandsome = JSON.parse(allens)
-            },
-            clear(){
-                // let index = this.allenHandsome.findIndex(item=>item.THERAPIST_NAME)
+            // setStorage(){
+            //     localStorage.setItem("THERAPIST_NAME",JSON.stringify(this.allenHandsome))
+            // },
+            // onlineStorage(){
+            //     let allens = localStorage.getItem("THERAPIST_NAME")
+            //     this.allenHandsome = JSON.parse(allens)
+            // },
+            // clear(){
+            //     // let index = this.allenHandsome.findIndex(item=>item.THERAPIST_NAME)
                 
-                this.allenHandsome=[]
-                this.setStorage()
-            }
+            //     this.allenHandsome=[]
+            //     this.setStorage()
+            // }
        
             // chlive(e){
             //     this.backstageTherapsitList[0].THERAPIST_STATUS = e.target.value;

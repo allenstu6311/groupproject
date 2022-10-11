@@ -34,8 +34,7 @@ import Review from "@/components/Review.vue"
                 this.lightBoxShow=true
             }else{
                 this.lightBoxShow=false
-            }  
-            console.log("mem",this.member)          
+            }       
         }
 
     }

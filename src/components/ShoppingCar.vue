@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import {BASE_URL} from '@/assets/js/common.js'
 export default {
   props: {
     checkCar: Array,
@@ -78,7 +79,7 @@ export default {
       if (!sameProduct) {
         alert("成功加入");
         this.IncreaseShoppingCart(count);
-        this.updateCart();
+        // this.updateCart();
         // location.reload()
       } else {
         alert("購物車已有相同物品");
@@ -103,8 +104,8 @@ export default {
       // this.$emit("product-info", this.addOn);
     },
     IncreaseShoppingCart(count) {
-       // var url = `${BASE_URL}/api/changeShoppingCart.php`;
-      var url = "http://localhost/CGD102_G2/public/api/changeShoppingCart.php"
+       var url = `${BASE_URL}/changeShoppingCart.php`;
+      // var url = "http://localhost/CGD102_G2/public/api/changeShoppingCart.php"
       this.axios
         .get(url, {
           params: {
@@ -114,15 +115,19 @@ export default {
             prod_qty: 1,
           },
         })
-        .then((res) => {});
+        .then((res) => {
+          this.memory = res.data
+          console.log("mm",this.memory)
+        });
     },
     // updateStorage() {
     //   localStorage.setItem("cart", JSON.stringify(this.cart));
     //   localStorage.setItem("calculate", JSON.stringify(this.calculate));
     // },
     updateCart() {
+          var url = `${BASE_URL}/shoppingCart`; //上線
       this.axios
-        .get("http://localhost/CGD102_G2/public/api/shoppingCart.php", {
+        .get(url, {
           params: {
             mem_id: this.member.memId,
           },
@@ -158,8 +163,8 @@ export default {
     },
   },
   created() {
-    //  var url = `${BASE_URL}/api/addOn.php` //上線
-    var url = "http://localhost/CGD102_G2/public/api/addOn.php";
+     var url = `${BASE_URL}/addOn.php` //上線
+    // var url = "http://localhost/CGD102_G2/public/api/addOn.php";
     this.axios.get(url).then((res) => {
       this.data = res.data;
     });
@@ -167,21 +172,22 @@ export default {
     this.member = JSON.parse(members);
     // console.log("mem", this.member.memId);
 
-    if (!this.member) {
-      alert("請先登入");
-      this.$router.push("/MemLogin");
-    } else {
-      this.axios
-        .get("http://localhost/CGD102_G2/public/api/shoppingCart.php", {
-          params: {
-            mem_id: this.member.memId,
-          },
-        })
-        .then((res) => {
-          this.memory = res.data;
-          // console.log("before",this.memory)
-        });
-    }
+    // if (!this.member) {
+    //   alert("請先登入");
+    //   this.$router.push("/MemLogin");
+    // } else {
+    //         var url = `${BASE_URL}/shoppingCart`; //上線
+    //   this.axios
+    //     .get(url, {
+    //       params: {
+    //         mem_id: this.member.memId,
+    //       },
+    //     })
+    //     .then((res) => {
+    //       this.memory = res.data;
+    //       // console.log("before",this.memory)
+    //     });
+    // }
 
     this.cartInfo();
   },

@@ -235,8 +235,8 @@ export default {
   },
   methods: {
     orderDetail(id) {
-      // var url = `${BASE_URL}/api/orderItemProduct.php` //上線
-      var url = "http://localhost/CGD102_G2/public/api/orderItemProduct.php";
+      var url = `${BASE_URL}/api/orderItemProduct.php` //上線
+      // var url = "http://localhost/CGD102_G2/public/api/orderItemProduct.php";
       this.axios
         .get(url, {
           params: {
@@ -246,7 +246,7 @@ export default {
         .then((res) => {
           this.show = true;
           this.detail = res.data;
-          console.log("detail",this.detail)
+          // console.log("detail",this.detail)
           this.subtotal = this.detail[0].prod_orders_subtotal;
           this.totalPrice = this.detail[0].prod_orders_total;
           this.coupon = this.detail[0].PROD_ORDERS_CPS_ID
@@ -255,8 +255,8 @@ export default {
     },
   },
   created() {
-    //  var url = `${BASE_URL}/api/backOrderItems.php` //上線
-    var url = "http://localhost/CGD102_G2/public/api/backOrderItems.php";
+     var url = `${BASE_URL}/backOrderItems.php` //上線
+    // var url = "http://localhost/CGD102_G2/public/api/backOrderItems.php";
     this.axios.get(url).then((res) => {
       this.data = res.data;
     });

@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import {BASE_URL} from '@/assets/js/common.js'
 export default {
   
   data() {
@@ -65,8 +66,8 @@ export default {
       this.totalPrice = JSON.parse(totalPrices);   
     },
      updateCart() {
-            // var url = `${BASE_URL}/api/shoppingCart`; //上線
-    var url = "http://localhost/CGD102_G2/public/api/shoppingCart.php"
+            var url = `${BASE_URL}/api/shoppingCart`; //上線
+    // var url = "http://localhost/CGD102_G2/public/api/shoppingCart.php"
       this.axios
         .get(url, {
           params: {

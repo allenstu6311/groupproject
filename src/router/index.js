@@ -109,7 +109,7 @@ const routes = [
     path: '/ManageItems',
     name: 'ManageItems',
     component: () => import('@/views/ManageItems.vue'),
-    meta:{isHide:false}
+    meta:{isHide:true}
   },
   {
     path: '/Confirm',

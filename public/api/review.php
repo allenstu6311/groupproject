@@ -9,7 +9,7 @@ function review($number,$product){
 require_once("../connect_cgd102g2.php");//上線路徑
 
 
-$sql = "update PRODUCT set PROD_REVIEW = PROD_REVIEW+{$number} ,PROD_TIMES = PROD_TIMES+1 WHERE PROD_NAME='{$product}'";
+$sql = "UPDATE PRODUCT SET PROD_REVIEW = PROD_REVIEW+{$number} ,PROD_TIMES = PROD_TIMES+1 WHERE PROD_NAME='{$product}'";
 
 $book = $pdo->query($sql);
 

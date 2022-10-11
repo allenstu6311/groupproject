@@ -14,7 +14,7 @@
 <script>
 import ShoppingCar from "@/components/ShoppingCar.vue";
 import ProductCart from "@/components/ProductCart.vue";
-import {BASE_URL} from '@/assets/js/common.js';
+// import {BASE_URL} from '@/assets/js/common.js';
 // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 export default {
   components: {

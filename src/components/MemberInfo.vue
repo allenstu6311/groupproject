@@ -24,21 +24,24 @@
           <label for="transport">配送方式:</label>
         </div>
         <div class="method">
-          <h5><input type="radio" name="transport" value="home" @focus="sevenCheck=false">宅配到府</h5>
+          <h5><input type="radio" name="transport" value="home" @focus="homeDelivery=true;sevenCheck=false" >宅配到府</h5>
+          <div class="home-delivery" v-if="homeDelivery==true">
+            <input type="text" size="30" name="address" v-model="address" @focus="homeDelivery=true"  />
+          </div>
           <h5>
             <input
               type="radio"
               name="transport"
               v-model="sevenCheck"
               value="true"
-              @focus="sevenCheck = true;"
+              @focus="sevenCheck=true;homeDelivery=false"
             
             />7-11取貨付款
           </h5>
           <div class="info" v-for="item in post" :key="item">
             
-            <p>{{ item.POIName }}門市</p>
-           <p>{{ item.sevenAddress }}</p> 
+            <p v-if="sevenCheck==true">門市:<input type="text" :value="item.POIName"></p>
+            <p v-if="sevenCheck==true">地址:<input type="text" :value="item.sevenAddress"></p>
           </div>
           <div class="map-box" v-if="sevenCheck==true">
             <select name="" id="" v-model="city" @change="filterShop(city)">
@@ -92,7 +95,7 @@
   </div>
 </template>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
 * {
   box-sizing: border-box;
 }
@@ -132,6 +135,7 @@ export default {
       cellphone: "",
       address: "",
       sevenCheck: false,
+      homeDelivery:false,
       map: null,
       shop: [],
       location: [],
@@ -179,6 +183,12 @@ export default {
           break;
         case "宜蘭縣":
           this.url="https://run.mocky.io/v3/9f1a0cd3-22d0-4992-bf42-6fd45042a9ed";
+          break;
+        case "屏東縣":
+          this.url="https://run.mocky.io/v3/a51a6fa9-0432-46a4-97ad-8895f8fb067c";
+          break;
+        case "彰化縣":
+          this.url="https://run.mocky.io/v3/a6e982b3-02e5-4fc7-a0c2-24d6950b8248";
           break;
       }
       this.axios.get(this.url).then((res) => {

@@ -168,6 +168,13 @@ const routes = [
     meta:{isHide:false}
   },
   {
+    path: '/BackManageMem',
+    name: 'BackManageMem',
+    chName: '管理會員帳號',
+    component: () => import('@/views/BackManageMemView.vue'),
+    meta:{isHide:true}
+  },
+  {
     path: '/MassageSchool',
     name: 'MassageSchool',
     component: () => import('@/views/MassageSchoolView.vue'),

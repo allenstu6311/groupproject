@@ -30,6 +30,8 @@
 </template>
 
 <script>
+    import {BASE_URL} from '@/assets/js/common.js'
+
 export default {
     data(){
         return{
@@ -41,7 +43,8 @@ export default {
     },
     methods: {
         async getDataFromApi() {
-            var url = 'http://localhost/CGD102_G2/public/api/getCoupons.php'
+            var url = `${BASE_URL}/getCoupons.php` //上線用
+
             let getData = async(url) => {
                 let response = await fetch(url); 
                 let JSON =  response.json();

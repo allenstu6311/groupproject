@@ -35,7 +35,11 @@
                 <div>
                     <input type="password" maxlength="15" v-model="passwordAgain">
                 </div>
-                <input type="text" maxlength="10" v-model="name" placeholder="最多十個字">
+                <div>
+                    <input type="text" maxlength="10" v-model="name" placeholder="最多十個字">
+                    <span :class="nameclass">{{nametip}}</span>
+                </div>
+                
                 <div>
                     <input type="email" maxlength="40" v-model="email">
                     <span :class="emailclass">{{emailtip}}</span>
@@ -73,16 +77,19 @@ export default {
             address: '',
             accounttip: "*",
             emailtip: "*",
+            nametip: "*",
             pswtip: "*",
             phonetip: "*",
             addresstip: "*",
             accountclass: "error",
             emailclass: "error",
+            nameclass: "error",
             pswclass: "error",
             phoneclass: "error",
             addressclass: "error",
             accountflag: false,
             emailflag: false,
+            nameflag: false,
             pswflag: false,
             phoneflag: false,
             addressflag: false,
@@ -93,7 +100,7 @@ export default {
             if (this.passwordAgain != this.password) {
                 alert("再次輸入密碼與密碼不符");
                 return;
-            } else if (this.accountflag&&this.pswflag && this.emailflag && this.phoneflag && this.addressflag) {
+            } else if (this.accountflag&&this.pswflag && this.emailflag && this.phoneflag && this.addressflag && this.nameflag) {
                 var xhr = new XMLHttpRequest();
 
                 xhr.onload = function () {
@@ -153,6 +160,10 @@ export default {
         address: function (content) {
             var reg = /\S/;
             this.addressflag = this.checkContentByReg(reg, content, "addresstip", "addressclass");
+        },
+        name: function (content) {
+            var reg = /\S/;
+            this.nameflag = this.checkContentByReg(reg, content, "nametip", "nameclass");
         }
 
     }

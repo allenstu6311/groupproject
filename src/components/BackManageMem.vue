@@ -44,8 +44,9 @@
         <h1>管理會員帳號</h1>
         <div class="search_mem_bar">
             <select class="form-select form-select-sm bg-light condition-search" aria-label=".form-select-sm example"
-                v-model="selecttype">
-                <option selected value="MEM_ID">依會員編號</option>
+                v-model="selecttype" >
+                <option value="-1">選擇排序條件</option>
+                <option value="MEM_ID">依會員編號</option>
                 <option value="MEM_NAME">依姓名排序</option>
                 <option value="MEM_PHONE">依手機排序</option>
             </select>
@@ -110,7 +111,7 @@ export default {
             memLocal: '',
             memEmail: '',
             memAddress: '',
-            selecttype: ''
+            selecttype: '-1'
         }
     },
     created() {
@@ -152,7 +153,7 @@ export default {
             this.memAddress = this.memberlist[this.index].MEM_ADDRESS;
         },
         sort() {
-            if (this.selecttype) {
+            if (this.selecttype != -1) {
                 this.memberlist.sort((a, b) => b[this.selecttype] < a[this.selecttype] ? 1 : -1)
             }
         }

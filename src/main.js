@@ -8,8 +8,6 @@ import router from './router'
 import axios from "axios"
 // import 'view-ui-plus/dist/styles/viewuiplus.css'
 import "bootstrap/dist/css/bootstrap.css"
-import '@fortawesome/fontawesome-free/css/all.css'
-import '@fortawesome/fontawesome-free/js/all.js'
 
 import "@/assets/style.scss"
 

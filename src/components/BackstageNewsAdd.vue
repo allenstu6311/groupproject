@@ -42,74 +42,48 @@
     </div>
 </template>
 <script>
-import {BASE_URL} from '@/assets/js/common.js'
+// import "bootstrap/scss/bootstrap.scss";
+    import {BASE_URL} from '@/assets/js/common.js'
+// const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
 
 export default {
+    name: 'NewsAdd',
     data(){
         return{
             NEWS_DATE: '',
             NEWS_TITLE: '',
-            NEWS_PIC: '',
             NEWS_TEXT: '',
-            allenHandsome:[],
+            NEWS_PIC: '',
         }
-    },
-    created(){
-        
     },
     methods: {
-        checkmName(){
-            //產生XMLHttpRequest物件
-            let xhr = new XMLHttpRequest();
-
-            //註冊callback function
-            xhr.onreadystatechange = function () {
-            // if (xhr.readyState == 4) { //4代表server端已處理完畢
-            if (xhr.readyState == XMLHttpRequest.DONE) { //XMLHttpRequest.DONE==4代表server端已處理完畢
-                if (xhr.status == 200) { //200:server端正確執行完畢
-                    document.getElementById("?????????").innerText = xhr.responseText;
-                } else {
-                    alert(xhr.status);
+        submit(){
+        
+            var xhr = new XMLHttpRequest();
+            
+            xhr.onload = function(){
+                if(xhr.status == 200){
+                    if(xhr.responseText == "新增成功"){
+                        alert("新增成功");
+                        window.location.replace("/BackstageNews");
+                    }else if(xhr.responseText == "新增失敗"){
+                        alert("新增失敗");
+                    }
                 }
             }
-        }
-
-            //設定好所要連結的程式
-            //開發用
-            let url = "??????????????" + document.getElementById("NEWS_TITLE").value;
-            // console.log(url);
-
-            xhr.open("get", url, true);
-
+            // xhr.open("post","http://localhost/CGD102_G2/public/api/backtherapistadd.php", true); //開發用
+            xhr.open("post",`${BASE_URL}/BackstageNewsAdd.php`, true); //上線用
             xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-            //送出資料
-            xhr.send(null);
-        },
 
-        submit(){
-            //產生XMLHttpRequest物件
-            let xhr = new XMLHttpRequest();
-            
-            //註冊callback function
-            xhr.onreadystatechange = function(){
-                // console.log(xhr.readyState);
-            }
-
-            //設定好所要連結的程式
-            let url = "http://localhost/CGD102_G2/public/api/BackstageNewsAdd";//開發用
-            // let url = `${BASE_URL}/backMsgAdd.php`//上線用
-            // xhr.open("post", url, true);
-            xhr.open("get", url, true);
-            xhr.send(null);
-
-
+            let news_data = `NEWS_DATE=${this.NEWS_DATE}&NEWS_TITLE=${this.NEWS_TITLE}&NEWS_TEXT=${this.NEWS_TEXT}&NEWS_PIC=${this.NEWS_PIC}`;
+            xhr.send(news_data);
+            console.log(news_data);
 
         },
         photo(e){
             this.NEWS_PIC = e.target.files[0].name;
-            // console.log(this.msg_pic);
+            console.log(this.NEWS_PIC);
         },
-        
     },
 }
 </script>

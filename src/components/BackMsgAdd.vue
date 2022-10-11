@@ -133,7 +133,7 @@ export default {
             //設定好所要連結的程式
             //開發用
             let url = "http://localhost/CGD102_G2/public/api/backMsgAdd.php?MSG_NAME=" + document.getElementById("msg_name").value;
-            console.log(url);
+            // console.log(url);
 
             xhr.open("get", url, true);
 
@@ -158,7 +158,7 @@ export default {
             // }
             //註冊callback function
             xhr.onreadystatechange = function(){
-                console.log(xhr.readyState);
+                // console.log(xhr.readyState);
             }
 
             //設定好所要連結的程式
@@ -180,7 +180,7 @@ export default {
         },
         photo(e){
             this.msg_pic = e.target.files[0].name;
-            console.log(this.msg_pic);
+            // console.log(this.msg_pic);
         },
         checkContentByReg(reg, content, tip, classname) {
             if (reg.test(content)) {

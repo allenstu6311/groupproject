@@ -108,13 +108,13 @@
               // var url = `${BASE_URL}/api/reservation.php` //上線用舊版需刪除/api
               var url = `${BASE_URL}/reservation.php` //上線用
               let getData = async(url) => {
-                  console.log(url);
+                  // console.log(url);
                   let response = await fetch(url); // await: 這行的 await 執行完才會執行下一個 await
                   let JSON =  response.json();
                   this.msgCardList = await JSON; // php 抓取回來的資料存取在預設好的參數裡
               }
               await getData(url); // 觸發 getData 的匿名 function 內容 ==> 89 ~ 91 行的內容
-              console.log(this.msgCardList);
+              // console.log(this.msgCardList);
           }
       }
   }

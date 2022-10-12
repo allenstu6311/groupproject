@@ -1,21 +1,12 @@
-<<<<<<< HEAD
-<template>
-    <teleport to='body'>
-        <div class="modal-mask" :style="modalStyle">
-            <div class="modal-container" @click="toggleModal">
-                <MemLightBox />
-=======
 <template >
         <teleport to='body'>
             <div class="modal-mask" :style="modalStyle">
                 <div class="modal-container" @click="toggleModal">
-                    <MemLightBox :memberBuyInfo="data"
-                                :memberInfo="memberData"/>
-                     <!-- @buyInfo="$emit('buyInfo',$event)" ref="memLightBox" -->
+                    <!-- <MemLightBox :memberBuyInfo="data"
+                                :memberInfo="memberData"/> -->
                 </div>
->>>>>>> allen
             </div>
-        </div>
+
     </teleport>
     <h1 class="sr_only">會員中心</h1>
     <!-- header -->
@@ -39,78 +30,15 @@
                 <label for="radio2">歷史訂單</label>
                 <label for="radio3">預約紀錄</label>
             </div>
-<<<<<<< HEAD
-            <div class="content_group">
-                <!-- 個人資料 -->
-                <div class="content content1">
-                    <h2>個人資料</h2>
-                    <hr>
-                    <div class="mem_data">
-                        <div class="mem_data_table">
-                            <table id="person_info">
-                                <tr class="person_info_item">
-                                    <th>帳號:</th>
-                                    <td :style="pdata_display_none">{{account}}</td>
-                                    <td><input type="text" v-model="account" :style="pdata_display_show" maxlength="10">
-                                    </td>
-                                </tr>
-                                <tr class="person_info_item">
-                                    <th :style="pdata_display_show">輸入舊密碼:</th>
-                                    <td><input type="password" v-model="inputpassword" :style="pdata_display_show"
-                                            maxlength="10"></td>
-                                </tr>
-                                <tr class="person_info_item">
-                                    <th :style="pdata_display_show">輸入新密碼:</th>
-                                    <td><input type="password" v-model="newpassword" :style="pdata_display_show"
-                                            maxlength="10"></td>
-                                </tr>
-                                <tr class="person_info_item">
-                                    <th :style="pdata_display_show">再次輸入密碼:</th>
-                                    <td><input type="password" v-model="newpasswordA" :style="pdata_display_show"
-                                            maxlength="10"></td>
-                                </tr>
-                                <tr class="person_info_item">
-                                    <th>信箱:</th>
-                                    <td :style="pdata_display_none">{{email}}</td>
-                                    <td><input type="text" v-model="email" :style="pdata_display_show" maxlength="30">
-                                    </td>
-                                </tr>
-                                <tr class="person_info_item">
-                                    <th>生日:</th>
-                                    <td :style="pdata_display_none">{{birthday}}</td>
-                                    <td><input type="date" v-model="birthday" :style="pdata_display_show"></td>
-                                </tr>
-                                <tr class="person_info_item">
-                                    <th>手機:</th>
-                                    <td :style="pdata_display_none">{{phone}}</td>
-                                    <td><input type="text" v-model="phone" :style="pdata_display_show" maxlength="10">
-                                    </td>
-                                </tr>
-                                <tr class="person_info_item">
-                                    <th>市話:</th>
-                                    <td :style="pdata_display_none">{{areaCode}}-{{lphone}}</td>
-                                    <td><input type="text" v-model="areaCode" :style="pdata_display_show" maxlength="3"
-                                            style="width:20px;">
-                                        <span :style="pdata_display_show">-</span>
-                                        <input type="text" v-model="lphone" :style="pdata_display_show" maxlength="10"
-                                            style="width:100px;">
-                                    </td>
-
-                                </tr>
-                                <tr class="person_info_item">
-                                    <th>地址:</th>
-                                    <td :style="pdata_display_none">{{address}}</td>
-                                    <td><input type="text" v-model="address" :style="pdata_display_show" maxlength="40">
-=======
             <div class="panel_group">
                 <input type="radio" name="panel_radio" id="radio1" class="panel_control" checked>
                 <input type="radio" name="panel_radio" id="radio2" class="panel_control">
                 <input type="radio" name="panel_radio" id="radio3" class="panel_control">
-                <div class="tab_group">
+                <!-- <div class="tab_group">
                     <label for="radio1">個人資料</label>
                     <label for="radio2">歷史訂單</label>
                     <label for="radio3">預約紀錄</label>
-                </div>
+                </div> -->
                 <div class="content_group">
                     <!-- 個人資料 -->
                     <div class="content content1">
@@ -221,7 +149,6 @@
                                         <div id="order_detail">
                                             <button class="btnMinimum order_detail" @click="isShowLIghtBox(item.PROD_ORDERS_ID) ">詳細資訊</button>
                                         </div>
->>>>>>> allen
                                     </td>
                                 </tr>
                             </table>
@@ -396,9 +323,6 @@ export default {
         toggleModal() {
             this.isShow = !this.isShow;
         },
-<<<<<<< HEAD
-        getMemData() {
-=======
         isShowLIghtBox(id){
             this.isShow=true
               var url = `${BASE_URL}/memberLightBox.php`
@@ -413,7 +337,6 @@ export default {
         },
       
         getMemData(){
->>>>>>> allen
             this.member = JSON.parse(sessionStorage.getItem('member'));
             this.name = this.member.memName;
             this.memId = this.member.memId;
@@ -486,10 +409,6 @@ export default {
                 }
             }
         },
-<<<<<<< HEAD
-        checkNew(reg, content) {
-            if (reg.test(content)) {
-=======
         getBuyInfo(){
             var url = `${BASE_URL}/memberCenterOrder.php`
             this.axios.get(url,{
@@ -499,11 +418,11 @@ export default {
             })
             .then((res)=>{
                 this.memberData = res.data
+                console.log(this.memberData)
             })
         },
         checkNew(reg,content){
             if(reg.test(content)){
->>>>>>> allen
                 return true;
             } else {
                 return false;
@@ -529,12 +448,8 @@ export default {
         if (checkLogin == null) {
             this.router.push({ path: '/home' });
         }
-<<<<<<< HEAD
-        this.getMemData();
-=======
         this.getMemData(); 
         this.getBuyInfo()
->>>>>>> allen
     },
 }
 </script>

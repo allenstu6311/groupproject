@@ -22,7 +22,7 @@
                 v-for="(therapist, index) in therapistCardList"
                 :key="index"
             >
-                <div class="row ">
+                <div class="row">
                     <div class="col-xl-6 col-12">
                         <div class="frame frame_one" :class="'frame_'+[therapist.THERAPIST_ID]">
                             <div class="masseusePic">
@@ -55,7 +55,7 @@
 import {BASE_URL} from '@/assets/js/common.js';
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
 
 export default {
@@ -73,13 +73,13 @@ export default {
     methods:{
         async getDataFromApi() {
             // var url = 'http://localhost/CGD102_G2/public/api/therapistContent.php' //開發用
-            var url = `${BASE_URL}/therapistContent.php` //上線用
+            var url = `${BASE_URL}/therapistContent.php`; //上線用
             let getData = async(url) => {
-                let response = await fetch(url); // await 很雞掰，真的在哭
+                let response = await fetch(url);
                 let JSON = response.json();
                 this.therapistCardList = await JSON; // php抓取回來的資料存取在預設好的參數裡
             }
-            await getData(url); // 觸發 getData 的匿名 function 內容 ==> 76 ~ 78 行的內容
+            await getData(url); // 觸發 getData 的匿名 function 內容
             console.log(this.therapistCardList);
         }
 

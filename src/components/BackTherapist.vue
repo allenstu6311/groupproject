@@ -34,12 +34,12 @@
                     <td>{{ backstageTherapsit.THERAPIST_HIREDATE }}</td>
                     <td>
                         <div>
-                            <select class="form-select form-select-sm"  @change="changeStatus(backstageTherapsit.THERAPIST_ACCOUNT,$event)">
-                                <!-- <option v-for="item in itemList" :value="item.value" :key="item.value" selected>
-                                  
-                                </option> -->
-                                <option value='TRUE'>在職</option>
-                                <option value='FALSE'>離職</option>
+                            <select 
+                                class="form-select form-select-sm"  
+                                @change="changeStatus(backstageTherapsit.THERAPIST_ACCOUNT,$event)"
+                            >
+                                <option value='1'>在職</option>
+                                <option value='0'>離職</option>
                             </select>
                         </div>
                     </td>
@@ -111,7 +111,7 @@
             },
             changeStatus(account,e){
                 this.account = account;
-
+                let url = `${BASE_URL}/backtherapistselectchange.php`;
                 var xhr = new XMLHttpRequest();
 
                 xhr.onload = function(){
@@ -124,7 +124,7 @@
                     }
                 }
 
-                xhr.open("post",`${BASE_URL}/backtherapistselectchange.php`, true); //上線用
+                xhr.open("post", url, true); //上線用
                 xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
                 let status_data = `account=${this.account}&status=${e.target.value}`;

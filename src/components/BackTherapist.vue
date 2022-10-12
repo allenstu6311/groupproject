@@ -24,7 +24,7 @@
                 <input 
                     type="search" 
                     class="form-control rounded" 
-                    placeholder="Search" 
+                    placeholder="搜尋按摩師" 
                     aria-label="Search" 
                     aria-describedby="search-addon" 
                     v-model="searchTherapist"
@@ -53,7 +53,7 @@
             <tbody>
                 <tr 
                 v-for="backstageTherapsit in backstageTherapsitList" 
-                :key="backstageTherapsit">
+                :key="backstageTherapsit.THERAPIST_NAME">
                     <td>{{ backstageTherapsit.THERAPIST_NAME }}</td>
                     <td>{{ backstageTherapsit.THERAPIST_ACCOUNT }}</td>
                     <td>{{ backstageTherapsit.THERAPIST_HIREDATE }}</td>
@@ -116,9 +116,10 @@
         },
         data() {
             return {
+                data: [],
                 backstageTherapsitList: [],
                 allenHandsome:[],
-                therapistInfo: [],
+                // therapistInfo: [],
                 selecttype: '-1',
                 selectPermission: '-1',
                 searchTherapist: '',
@@ -129,16 +130,15 @@
         },
         methods:{
             async getDataFromApi() {
-                // var url = 'http://localhost/CGD102_G2/public/api/therapistContent.php'; //開發用
-                var url = `${BASE_URL}/therapistContent.php`; //上線用
-                let getData = async(url) => {
-                    let response = await fetch(url); // await 很重要
-                    let JSON = response.json();
-                    this.backstageTherapsitList = await JSON; // php抓取回來的資料存取在預設好的參數裡
-                }
-                await getData(url); // 觸發 getData 的匿名 function 內容
-                console.log(this.backstageTherapsitList);
-                 
+                    // var url = 'http://localhost/CGD102_G2/public/api/therapistContent.php'; //開發用
+                    var url = `${BASE_URL}/therapistContent.php`; //上線用
+                    let getData = async(url) => {
+                        let response = await fetch(url); // await 很重要
+                        let JSON = response.json();
+                        this.backstageTherapsitList = await JSON; // php抓取回來的資料存取在預設好的參數裡
+                    }
+                    await getData(url); // 觸發 getData 的匿名 function 內容
+                    console.log(this.backstageTherapsitList);
             },
             changeStatus(account,e){
                 this.account = account;
@@ -211,6 +211,7 @@
                 }).then((res)=>{
                     this.data = res.data
                     // this.changePageButton=false
+                    console.log(this.data);
                 })
             },
         },
@@ -230,10 +231,11 @@
             searchTherapist: {
                 handler(newVal){
                     if(!newVal){
-                        this.data=this.therapistInfo
+                        this.data = this.backstageTherapsitList
                         // this.changePageButton=true
                     }
-                }
+                },
+                deep: true
             },
         }
     }

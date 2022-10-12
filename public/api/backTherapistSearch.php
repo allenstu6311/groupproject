@@ -8,14 +8,14 @@ function backSearch($THERAPIST_NAME){
     
     $sql="SELECT * FROM THERAPIST WHERE THERAPIST_NAME LIKE '%{$THERAPIST_NAME}%';";
 
-    $product = $pdo->query($sql);
+    $therapist = $pdo->query($sql);
 
-    $products = $product->fetchAll(PDO::FETCH_ASSOC);
+    $therapists = $therapist->fetchAll(PDO::FETCH_ASSOC);
 
     $data=[];
 
-    foreach($products as $i=>$thing){
-        $data[]= $thing;
+    foreach($therapists as $i=>$thing){
+        $data[] = $thing;
     }
     echo json_encode($data);
 

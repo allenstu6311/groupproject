@@ -171,16 +171,18 @@ export default {
 
       let members = sessionStorage.getItem("member");
       this.member = JSON.parse(members);
+   
+        this.score = (
+          parseInt( this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES)
+          ).toFixed(1);
+          this.star = parseInt(this.score);
 
-      this.score = (
-       parseInt( this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES)
-      ).toFixed(1);
-      this.star = parseInt(this.score);
-    },
+      }
   },
   created() {
     this.getStorage();
     this.updateArticle();
+    console.log(this.order[0])
   },
 };
 </script>

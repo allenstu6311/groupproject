@@ -17,10 +17,10 @@ try{
       echo "狀態修改失敗";
     }else{ //找到帳號
       //更改DB資料
-      $updateSql = "UPDATE THERAPIST SET THERAPIST_STATUS = '0' WHERE THERAPIST_ACCOUNT = ':ACCOUNT'";
+      $updateSql = "UPDATE THERAPIST SET THERAPIST_STATUS = ':STATUS' WHERE THERAPIST_ACCOUNT = ':ACCOUNT'";
       $therapist = $pdo -> prepare($updateSql);
-      // $therapist->bindValue(":ACCOUNT",$_POST["account"]);
-      // $therapist->bindValue(":STATUS",$_POST["status"]);
+      $therapist->bindValue(":ACCOUNT",$_POST["account"]);
+      $therapist->bindValue(":STATUS",$_POST["status"]);
       $therapist->execute();
       echo "狀態修改成功";
     }

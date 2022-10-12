@@ -53,9 +53,9 @@
 </template>
 <script>
 import {BASE_URL} from '@/assets/js/common.js';
-// import gsap from "gsap";
-// import ScrollTrigger from "gsap/ScrollTrigger";
-// gsap.registerPlugin(ScrollTrigger);
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
 
 export default {
@@ -81,148 +81,145 @@ export default {
             }
             await getData(url); // 觸發 getData 的匿名 function 內容 ==> 76 ~ 78 行的內容
             console.log(this.therapistCardList);
-
-            // gsap.from(".frame_1",{
-            // scrollTrigger: {
-            //     trigger: ".frame_1",
-            //     start: "30% center"
-            // },
-            // x: -300,
-            // rotation: -45,
-            // duration: 2,
-            // opacity: 0,
-            // ease: "back"
-            // });
-            // gsap.from(".text_1 p",{
-            //     scrollTrigger: {
-            //         trigger: ".text_1",
-            //         start: "top center"
-            //     },
-            //     duration: 1,
-            //     stagger: 0.2,
-            //     delay: 0.2,
-            //     x: 150,
-            //     opacity: 0,
-            //     ease: "back"
-            // });
-            // gsap.from(".btnLittle_1",{
-            //     scrollTrigger: {
-            //         trigger: ".text_1",
-            //         start: "top center"
-            //     },
-            //     duration: 1,
-            //     delay: 1.2,
-            //     x: 100,
-            //     opacity: 0,
-            //     ease: "back"
-            // });
-            // gsap.from(".frame_2",{
-            // scrollTrigger: {
-            //     trigger: ".frame_2",
-            //     start: "30% center"
-            // },
-            // x: -300,
-            // rotation: -45,
-            // duration: 2,
-            // opacity: 0,
-            // ease: "back"
-            // });
-            // gsap.from(".text_2 p",{
-            //     scrollTrigger: {
-            //         trigger: ".text_2",
-            //         start: "top center"
-            //     },
-            //     duration: 1,
-            //     stagger: 0.2,
-            //     delay: 0.2,
-            //     x: 150,
-            //     opacity: 0,
-            //     ease: "back"
-            // });
-            // gsap.from(".btnLittle_2",{
-            //     scrollTrigger: {
-            //         trigger: ".text_2",
-            //         start: "top center"
-            //     },
-            //     duration: 1,
-            //     delay: 1,
-            //     x: 100,
-            //     opacity: 0,
-            //     ease: "back"
-            // });
-            // gsap.from(".frame_3",{
-            // scrollTrigger: {
-            //     trigger: ".frame_3",
-            //     start: "30% center"
-            // },
-            // x: -300,
-            // rotation: -45,
-            // duration: 2,
-            // opacity: 0,
-            // ease: "back"
-            // });
-            // gsap.from(".text_3 p",{
-            //     scrollTrigger: {
-            //         trigger: ".text_3",
-            //         start: "top center"
-            //     },
-            //     duration: 1,
-            //     stagger: 0.2,
-            //     delay: 0.2,
-            //     x: 150,
-            //     opacity: 0,
-            //     ease: "back"
-            // });
-            // gsap.from(".btnLittle_3",{
-            //     scrollTrigger: {
-            //         trigger: ".text_3",
-            //         start: "top center"
-            //     },
-            //     duration: 1,
-            //     delay: 1,
-            //     x: 100,
-            //     opacity: 0,
-            //     ease: "back"
-            // });
-            // gsap.from(".frame_4",{
-            // scrollTrigger: {
-            //     trigger: ".frame_4",
-            //     start: "30% center"
-            // },
-            // x: -300,
-            // rotation: -45,
-            // duration: 2,
-            // opacity: 0,
-            // ease: "back"
-            // });
-            // gsap.from(".text_4 p",{
-            //     scrollTrigger: {
-            //         trigger: ".text_4",
-            //         start: "top center"
-            //     },
-            //     duration: 1,
-            //     stagger: 0.2,
-            //     delay: 0.2,
-            //     x: 150,
-            //     opacity: 0,
-            //     ease: "back"
-            // });
-            // gsap.from(".btnLittle_4",{
-            //     scrollTrigger: {
-            //         trigger: ".text_4",
-            //         start: "top center"
-            //     },
-            //     duration: 1,
-            //     delay: 1,
-            //     x: 100,
-            //     opacity: 0,
-            //     ease: "back"
-            // });
         }
+
+        // gsap.from(".frame_1",{
+        // scrollTrigger: {
+        //     trigger: ".frame_1",
+        //     start: "30% center"
+        // },
+        // x: -300,
+        // rotation: -45,
+        // duration: 2,
+        // opacity: 0,
+        // ease: "back"
+        // });
+        // gsap.from(".text_1 p",{
+        //     scrollTrigger: {
+        //         trigger: ".text_1",
+        //         start: "top center"
+        //     },
+        //     duration: 1,
+        //     stagger: 0.2,
+        //     delay: 0.2,
+        //     x: 150,
+        //     opacity: 0,
+        //     ease: "back"
+        // });
+        // gsap.from(".btnLittle_1",{
+        //     scrollTrigger: {
+        //         trigger: ".text_1",
+        //         start: "top center"
+        //     },
+        //     duration: 1,
+        //     delay: 1.2,
+        //     x: 100,
+        //     opacity: 0,
+        //     ease: "back"
+        // });
+        // gsap.from(".frame_2",{
+        // scrollTrigger: {
+        //     trigger: ".frame_2",
+        //     start: "30% center"
+        // },
+        // x: -300,
+        // rotation: -45,
+        // duration: 2,
+        // opacity: 0,
+        // ease: "back"
+        // });
+        // gsap.from(".text_2 p",{
+        //     scrollTrigger: {
+        //         trigger: ".text_2",
+        //         start: "top center"
+        //     },
+        //     duration: 1,
+        //     stagger: 0.2,
+        //     delay: 0.2,
+        //     x: 150,
+        //     opacity: 0,
+        //     ease: "back"
+        // });
+        // gsap.from(".btnLittle_2",{
+        //     scrollTrigger: {
+        //         trigger: ".text_2",
+        //         start: "top center"
+        //     },
+        //     duration: 1,
+        //     delay: 1,
+        //     x: 100,
+        //     opacity: 0,
+        //     ease: "back"
+        // });
+        // gsap.from(".frame_3",{
+        // scrollTrigger: {
+        //     trigger: ".frame_3",
+        //     start: "30% center"
+        // },
+        // x: -300,
+        // rotation: -45,
+        // duration: 2,
+        // opacity: 0,
+        // ease: "back"
+        // });
+        // gsap.from(".text_3 p",{
+        //     scrollTrigger: {
+        //         trigger: ".text_3",
+        //         start: "top center"
+        //     },
+        //     duration: 1,
+        //     stagger: 0.2,
+        //     delay: 0.2,
+        //     x: 150,
+        //     opacity: 0,
+        //     ease: "back"
+        // });
+        // gsap.from(".btnLittle_3",{
+        //     scrollTrigger: {
+        //         trigger: ".text_3",
+        //         start: "top center"
+        //     },
+        //     duration: 1,
+        //     delay: 1,
+        //     x: 100,
+        //     opacity: 0,
+        //     ease: "back"
+        // });
+        // gsap.from(".frame_4",{
+        // scrollTrigger: {
+        //     trigger: ".frame_4",
+        //     start: "30% center"
+        // },
+        // x: -300,
+        // rotation: -45,
+        // duration: 2,
+        // opacity: 0,
+        // ease: "back"
+        // });
+        // gsap.from(".text_4 p",{
+        //     scrollTrigger: {
+        //         trigger: ".text_4",
+        //         start: "top center"
+        //     },
+        //     duration: 1,
+        //     stagger: 0.2,
+        //     delay: 0.2,
+        //     x: 150,
+        //     opacity: 0,
+        //     ease: "back"
+        // });
+        // gsap.from(".btnLittle_4",{
+        //     scrollTrigger: {
+        //         trigger: ".text_4",
+        //         start: "top center"
+        //     },
+        //     duration: 1,
+        //     delay: 1,
+        //     x: 100,
+        //     opacity: 0,
+        //     ease: "back"
+        // })
     },
 }
 </script>
 
-<style lang="scss" scoped>
-    // @import"../assets/style.scss";
-</style>

@@ -38,8 +38,8 @@
                                 <!-- <option v-for="item in itemList" :value="item.value" :key="item.value" selected>
                                   
                                 </option> -->
-                                <option value='1'>在職</option>
-                                <option value='0'>離職</option>
+                                <option value='TRUE'>在職</option>
+                                <option value='FALSE'>離職</option>
                             </select>
                         </div>
                     </td>

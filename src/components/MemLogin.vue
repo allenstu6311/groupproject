@@ -44,6 +44,7 @@
 </template>
 <script>
 import {BASE_URL} from '@/assets/js/common.js'
+import { useRouter } from "vue-router";
 
 export default {
     data() {
@@ -51,7 +52,8 @@ export default {
             account: '',
             password: '',
             session: '',
-            loginStatus: []
+            loginStatus: [],
+            router: useRouter(),
         }
     },
     methods: {
@@ -70,7 +72,7 @@ export default {
                 return;
             } else {
                 let xhr = new XMLHttpRequest();
-
+                let thus = this
                 xhr.onload = function () {
                     if (xhr.responseText == "帳號密碼有誤") {
                         alert("帳號密碼有誤");
@@ -81,7 +83,7 @@ export default {
                         this.loginStatus = sessionStorage.getItem("member")
                         if (this.loginStatus != '') {
                             // if (document.referrer === '') {
-                                location.replace("/MemCenter");
+                                thus.router.replace({ path: '/MemCenter' })
                             // }
                             // else if(document.referrer === '/MemRegister'){
                             //     location.replace("/MemCenter");
@@ -110,7 +112,7 @@ export default {
         let checkLogin = sessionStorage.getItem('member');
         if (checkLogin) {
             alert("請先登出");
-            location.replace("/home");
+            this.router.push({ path: '/home' });
         }
     }
 }

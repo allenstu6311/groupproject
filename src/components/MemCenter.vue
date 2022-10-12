@@ -194,6 +194,7 @@
 import {BASE_URL} from '@/assets/js/common.js'
 import MemLightBox from '@/components/MemLightBox.vue';
 import { watch } from '@vue/runtime-core';
+import { useRouter } from "vue-router";
 export default {
     components: {
         MemLightBox,
@@ -221,6 +222,7 @@ export default {
         memId:'',
         verifyPsw:'',
         verifyEmail:'',
+        router: useRouter(),
     }),
     computed: {
         modalStyle() {
@@ -302,7 +304,7 @@ export default {
                 this.newpassword = '';
                 this.newpasswordA = '';
                 alert("修改成功");
-                location.reload();
+                this.router.replace({ path: '/MemCenter' })
             }
         },
         checkNew(reg,content){
@@ -330,7 +332,7 @@ export default {
     created() {
         let checkLogin = sessionStorage.getItem('member');
         if(checkLogin == null){
-            location.replace("/home");
+            this.router.push({ path: '/home' });
         }
         this.getMemData(); 
     },

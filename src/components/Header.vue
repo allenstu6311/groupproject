@@ -85,13 +85,13 @@ export default {
     // }
   },
   watch:{
-    memory:{
-      handler(){
-        this.updateCart()
-      }
-    },
+    // memory:{
+    //   handler(){
+    //     this.updateCart()
+    //   }
+    // },
 
-     deep:true,
+   
   },
 
   methods: {

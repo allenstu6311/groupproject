@@ -120,8 +120,13 @@ export default {
   },
   methods: {
     reduceNum(item, id) {
-      if(item.PROD_QTY){
+        this.updateCart()
+      let focus = this.memory.findIndex((item) => item.PROD_ID === id);
+      if(item.PROD_QTY>1){
          item.PROD_QTY -= 1;
+         this.reduceProductNum(focus)
+         this.updateCart()
+
       }
      
       // let carNum = this.calculate.find((item) => item.PROD_ID === id);
@@ -130,33 +135,47 @@ export default {
     },
     addNum(item, id) {
       // item.PROD_NUM += 1;
+      this.updateCart()
+      let focus = this.memory.findIndex((item) => item.PROD_ID === id);
       item.PROD_QTY =parseInt(item.PROD_QTY)+1;
+      this.addProductNum(focus)
+      this.updateCart()
 
       // let carNum = this.calculate.find((item) => item.PROD_ID === id);
       // carNum.PROD_NUM += 1;
     },
     reduceCar(id) {
       this.updateCart();
-      // let count = this.cart.findIndex((item) => item.PROD_ID === id);
-      // let index = this.calculate.findIndex((item) => item.PROD_ID === id);
+
       let focus = this.memory.findIndex((item) => item.PROD_ID === id);
+   
       this.reduceShoppingCart(focus);
       this.updateCart();
-
-      // this.cart.splice(count, 1);
-      // this.calculate.splice(index, 1);
-      // this.$emit("cart-message", this.cart);
-      // this.setLocal();
     },
     drop() {
-      
-      let sameProduct = this.calculate.filter(v =>this.memory.filter(u=>u.PROD_ID===v.PROD_ID))
-      if(sameProduct){
-        let newData = this.memory.splice(sameProduct,sameProduct.length)
-        this.memory = newData
+      var url = `${BASE_URL}/changeShoppingCart.php`
+      let memoryCart = this.memory
+      let sameProduct = this.calculate.filter(v =>memoryCart.filter(u=>u.PROD_ID===v.PROD_ID))
 
+
+      if(sameProduct.length>0){
      
-        this.updateCart(newData);
+        for(let i=0;i<sameProduct.length;i++){
+     
+          this.axios.get(url,{
+              params:{
+                judge: 2,
+                mem_id: this.member.memId,
+                prod_id: sameProduct[i].PROD_ID,
+                prod_qty: 1,
+              }
+          })
+          .then((res)=>{
+            this.updateCart()
+            
+          })
+
+        }
       }
    
     },
@@ -187,28 +206,9 @@ export default {
           this.$emit("update-cart", res.data);
         });
     },
-    // memberCart() {
-    //   var url = `${BASE_URL}/shoppingCart.php`; //上線
-    //   // var url = "http://localhost/CGD102_G2/public/api/shoppingCart.php"
-    //   this.axios
-    //     .get(url, {
-    //       params: {
-    //         mem_id: this.member.memId,
-    //       },
-    //     })
-    //     .then((res) => {
-    //       this.memory = res.data;
-    //       this.$emit("update-cart", res.data);
-    //     });
-    // },
-
     countMoney() {
       localStorage.setItem("totalPrice", JSON.stringify(this.totalPrice));
     },
-    // setLocal() {
-    //   // localStorage.setItem("cart", JSON.stringify(this.cart));
-    //   localStorage.setItem("calculate", JSON.stringify(this.calculate));
-    // },
     getInfo() {
       let orders = localStorage.getItem("order");
       if (orders) this.order = JSON.parse(orders);
@@ -245,7 +245,32 @@ export default {
         },
       });
     },
+      addProductNum(focus) {
+      var url = `${BASE_URL}/changeShoppingCart.php`;
+      // var url = "http://localhost/CGD102_G2/public/api/changeshoppingCart.php"
+      this.axios.get(url, {
+        params: {
+          judge: 3,
+          mem_id: this.member.memId,
+          prod_id: this.memory[focus].PROD_ID,
+          prod_qty: 1,
+        },
+      });
+    },
+    reduceProductNum(focus){
+      var url = `${BASE_URL}/changeShoppingCart.php`;
+      // var url = "http://localhost/CGD102_G2/public/api/changeshoppingCart.php"
+      this.axios.get(url, {
+        params: {
+          judge: 4,
+          mem_id: this.member.memId,
+          prod_id: this.memory[focus].PROD_ID,
+          prod_qty: 1,
+        },
+      });
+    },
   },
+  
   computed: {
     buyCar: function () {
       return JSON.parse(JSON.stringify(this.cart));
@@ -326,11 +351,7 @@ export default {
     newCartInfo: {
       handler(newVal) {
         this.updateCart();
-        // console.log("test",newVal)
         this.updateCart();
-        // if(newVal){
-        //   this.memory  =newVal
-        // }
       },
     },
     memory: {
@@ -344,13 +365,13 @@ export default {
     },
     checkBox: {
       handler(newVal) {
-        console.log("calculate", newVal);
+
       },
     },
     checkOut: {
       handler(newVal) {
         if (newVal == true) {
-          this.calculate = this.cart;
+          this.calculate = this.memory;
         } else {
           this.calculate = [];
         }

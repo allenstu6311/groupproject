@@ -21,9 +21,9 @@ function commodity($judge,$mem_id,$prod_id,$prod_qty){
         $sql="UPDATE SHOPPINGCART SET PROD_QTY = PROD_QTY-1 WHERE PROD_ID={$prod_id}";
         break;  
     }
-   $pdo->query($sql);
+     $pdo->query($sql);
   
-
+    
  }
   
  

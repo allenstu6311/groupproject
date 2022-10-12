@@ -5,6 +5,14 @@
             <div class="row">
                 <div class="col">
                     <div class="mb-3">
+                        <span class="text">編號:</span>
+                        <input type="text" class="form-control"  disabled maxlength="20" v-model="NEWS_ID">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
                         <span class="text">日期:</span>
                         <input type="date" class="form-control"  maxlength="50" v-model="NEWS_DATE">
                     </div>
@@ -49,6 +57,9 @@ export default {
   name: "BackstageNewsModify",
   data() {
     return {
+    backNewsList: [],
+    allenHandsome:[],
+    NEWS_ID: "",
     NEWS_DATE: "",
     NEWS_TITLE: "",
     NEWS_PIC: "",
@@ -56,22 +67,14 @@ export default {
     }
   },
   mounted() {
-    this.getInfo();
+    this.NEWS_ID = this.$route.query.id
+    this.NEWS_TITLE = this.$route.query.title
+    this.NEWS_DATE = this.$route.query.date
+    this.NEWS_TEXT = this.$route.query.text
+    this.NEWS_PIC = this.$route.query.pic
   },
   methods: {
-        getInfo() {
-            this.axios.get(`${BASE_URL}/BackstageNewsGetValue.php`,{
-                params: {
-                    searchTitle: this.$route.query.NEWS_TITLE,
-                }
-            })
-            .then((res) => {
-                this.NEWS_DATE = this.$route.query.NEWS_DATE;
-                this.NEWS_TITLE = this.$route.query.NEWS_TITLE;
-                this.NEWS_PIC = this.$route.query.NEWS_PIC;
-                this.NEWS_TEXT = this.$route.query.NEWS_TEXT;
-            })
-        },
+
         submit(){
 
             var xhr = new XMLHttpRequest();
@@ -91,9 +94,10 @@ export default {
             xhr.open("post",`${BASE_URL}/BackstageNewsModify.php`, true); //上線用
             xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
-            let news_data = `NEWS_DATE=${this.NEWS_DATE}&NEWS_TITLE=${this.NEWS_TITLE}&NEWS_TEXT=${this.NEWS_TEXT}&NEWS_PIC=${this.NEWS_PIC}`;
+            let news_data = `NEWS_ID=${this.NEWS_ID}&NEWS_DATE=${this.NEWS_DATE}&NEWS_TITLE=${this.NEWS_TITLE}&NEWS_TEXT=${this.NEWS_TEXT}&NEWS_PIC=${this.NEWS_PIC}`;
             xhr.send(news_data);
             console.log(news_data);
+      
         },
         photo(e) {
             this.NEWS_PIC = e.target.files[0].name;

@@ -1,15 +1,7 @@
 <template>
     <div class="base_content">
-        <h1>新增最新消息</h1>
+        <h1>修改常見問題</h1>
         <div class="add_content">
-            <div class="row">
-                <div class="col">
-                    <div class="mb-3">
-                        <span class="text">編號:</span>
-                        <input type="text" class="form-control"   maxlength="20" v-model="NEWS_ID">
-                    </div>
-                </div>
-            </div>
             <div class="row">
                 <div class="col">
                     <div class="mb-3">
@@ -44,57 +36,72 @@
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button class="btn btn-primary me-md-2" @click="submit" type="button">儲存</button>
-                <router-link class="btn btn-primary" to="/BackstageNews">取消</router-link>
+                <router-link class="btn btn-primary" to="/BackstageFAQ">取消</router-link>
             </div>
         </div>
     </div>
 </template>
 <script>
-// import "bootstrap/scss/bootstrap.scss";
-    import {BASE_URL} from '@/assets/js/common.js'
+import {BASE_URL} from '@/assets/js/common.js'
 // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
 
-export default {
-    name: 'NewsAdd',
-    data(){
-        return{
-            NEWS_ID: '',
-            NEWS_DATE: '',
-            NEWS_TITLE: '',
-            NEWS_TEXT: '',
-            NEWS_PIC: '',
-        }
-    },
-    methods: {
-        submit(){
+// export default {
+//   name: "BackstageNewsModify",
+//   data() {
+//     return {
+//     NEWS_DATE: "",
+//     NEWS_TITLE: "",
+//     NEWS_PIC: "",
+//     NEWS_TEXT: "",
+//     }
+//   },
+//   mounted() {
+//     this.getInfo();
+//   },
+//   methods: {
+//         getInfo() {
+//             this.axios.get(`${BASE_URL}/BackstageNewsGetValue.php`,{
+//                 params: {
+//                     searchTitle: this.$route.query.NEWS_TITLE,
+//                 }
+//             })
+//             .then((res) => {
+//                 this.NEWS_DATE = this.$route.query.NEWS_DATE;
+//                 this.NEWS_TITLE = this.$route.query.NEWS_TITLE;
+//                 this.NEWS_PIC = this.$route.query.NEWS_PIC;
+//                 this.NEWS_TEXT = this.$route.query.NEWS_TEXT;
+//             })
+//         },
+//         submit(){
+
+//             var xhr = new XMLHttpRequest();
+
+//             xhr.onload = function(){
+//                 if(xhr.status == 200){
+//                   // console.log(xhr.responseText);
+//                     if(xhr.responseText == "修改成功"){
+//                         alert("修改成功");
+//                         window.location.replace("/BackstageNews");
+//                     }else if(xhr.responseText == "修改失敗"){
+//                         alert("修改失敗");
+//                     }
+//                 }
+//             }
+//             // xhr.open("post","http://localhost/CGD102_G2/public/api/backtherapistchangeinfo.php", true); //開發用
+//             xhr.open("post",`${BASE_URL}/BackstageNewsModify.php`, true); //上線用
+//             xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+//             let news_data = `NEWS_DATE=${this.NEWS_DATE}&NEWS_TITLE=${this.NEWS_TITLE}&NEWS_TEXT=${this.NEWS_TEXT}&NEWS_PIC=${this.NEWS_PIC}`;
+//             xhr.send(news_data);
+//             console.log(news_data);
+//         },
+//         photo(e) {
+//             this.NEWS_PIC = e.target.files[0].name;
+//             console.log(this.NEWS_PIC);
+//         },
         
-            var xhr = new XMLHttpRequest();
-            
-            xhr.onload = function(){
-                if(xhr.status == 200){
-                    if(xhr.responseText == "新增成功"){
-                        alert("新增成功");
-                        window.location.replace("/BackstageNews");
-                    }else if(xhr.responseText == "新增失敗"){
-                        alert("新增失敗");
-                    }
-                }
-            }
-            // xhr.open("post","http://localhost/CGD102_G2/public/api/backtherapistadd.php", true); //開發用
-            xhr.open("post",`${BASE_URL}/BackstageNewsAdd.php`, true); //上線用
-            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-
-            let news_data = `NEWS_ID=${this.NEWS_ID}&NEWS_DATE=${this.NEWS_DATE}&NEWS_TITLE=${this.NEWS_TITLE}&NEWS_TEXT=${this.NEWS_TEXT}&NEWS_PIC=${this.NEWS_PIC}`;
-            xhr.send(news_data);
-            console.log(news_data);
-
-        },
-        photo(e){
-            this.NEWS_PIC = e.target.files[0].name;
-            console.log(this.NEWS_PIC);
-        },
-    },
-}
+//     },
+// }
 </script>
 
 <style lang="scss" scoped>

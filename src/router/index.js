@@ -38,8 +38,22 @@ const routes = [
   {
     path: '/BackstageNewsModify',
     name: 'BackstageNewsModify',
-    chName: '修改按摩師資料',
+    chName: '修改最新消息',
     component: () => import('@/views/BackstageNewsModifyView.vue'),
+    meta:{isHide:true}
+  },
+  {
+    path: '/BackstageFAQAdd',
+    name: 'BackstageFAQAdd',
+    chName: '新增問與答',
+    component: () => import('@/views/BackstageFAQAddView.vue'),
+    meta:{isHide:true}
+  },
+  {
+    path: '/BackstageFAQModify',
+    name: 'BackstageFAQModify',
+    chName: '修改問與答',
+    component: () => import('@/views/BackstageFAQModifyView.vue'),
     meta:{isHide:true}
   },
   {

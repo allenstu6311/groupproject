@@ -61,7 +61,8 @@
     </div>
 </template>
 <script>
-import {BASE_URL} from '@/assets/js/common.js'
+import {BASE_URL} from '@/assets/js/common.js';
+import { useRouter } from "vue-router";
 export default {
     name: 'register',
     data() {
@@ -93,6 +94,7 @@ export default {
             pswflag: false,
             phoneflag: false,
             addressflag: false,
+            router: useRouter(),
         }
     },
     methods: {
@@ -104,10 +106,11 @@ export default {
                 var xhr = new XMLHttpRequest();
 
                 xhr.onload = function () {
+                    let thus = this
                     if (xhr.status == 200) {
                         if (xhr.responseText == "註冊成功") {
                             alert("註冊成功");
-                            window.location.replace("/MemLogin");
+                            thus.router.push({ path: '/MemLogin' })
                         } else if (xhr.responseText == "此帳號已存在") {
                             alert("此帳號已存在");
                         }

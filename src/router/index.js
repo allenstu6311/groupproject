@@ -189,6 +189,13 @@ const routes = [
     meta:{isHide:true}
   },
   {
+    path: '/BackManageAccount',
+    name: 'BackManageAccount',
+    chName: '管理後台帳號',
+    component: () => import('@/views/BackManageAccountView.vue'),
+    meta:{isHide:true}
+  },
+  {
     path: '/MassageSchool',
     name: 'MassageSchool',
     component: () => import('@/views/MassageSchoolView.vue'),

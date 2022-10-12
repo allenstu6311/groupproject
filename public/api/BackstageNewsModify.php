@@ -13,11 +13,11 @@ try{
     $newsAccount->execute();
     
 
-    if( $newsAccount->rowCount() == 0 ){ //找不到title
+    if( $newsAccount->rowCount() == 0 ){ //找不到ID
         //傳回未修改成功
         echo "修改失敗";
         
-    }else{ //找到title
+    }else{ //找到ID
         //存入資料庫
         $updateSql = "UPDATE NEWS SET
         NEWS_ID = :NEWS_ID,
@@ -40,7 +40,7 @@ try{
 
 	}
     catch(PDOException $e){
-    echo $e->getNews();
+    echo $e->getMessage();
     }
 
 ?>

@@ -38,7 +38,12 @@
                         </div>
                     </td>
                     <td>
-                        <router-link to="/BackstageFAQModify">
+                        <router-link 
+                        :to="{path:'/BackstageFAQModify',query:{
+                                    id:`${faq.FAQ_ID}`,
+                                    title:`${faq.FAQ_TITLE}`,
+                                    text:`${faq.FAQ_TEXT}`,
+                                    }}">
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -89,7 +94,21 @@
                 }
                 await getData(url); // 觸發 getData 的匿名 function 內容 ==> 89 ~ 91 行的內容
                 console.log(this.faqCardList);
-            }
+            },
+            // modifyFAQ(name){
+            //     this.axios.get(`${BASE_URL}/BackstageFAQGetValue.php`,{
+            //         params:{
+            //             searchName:name
+            //         }
+            //     })
+            //     .then((res)=>{
+            //         // console.log(res.data[0].MSG_NAME)
+            //         this.allenHandsome = res.data
+
+            //         this.setStorage()
+
+            //     })
+            // },
         }
     }
 </script>

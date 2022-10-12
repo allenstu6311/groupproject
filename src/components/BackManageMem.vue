@@ -183,16 +183,6 @@ export default {
             xhr.open("post", url, true); //上線用
             xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
             
-            xhr.onload = function(){
-                    if(xhr.status == 200){
-                        console.log(xhr.responseText)
-                        // if(xhr.responseText == "狀態修改成功"){
-                        //     alert("狀態修改成功");
-                        // }else {
-                        //     alert("狀態修改失敗");
-                        // }
-                    }
-                }
 
             let status_data = `ID=${this.ID}&permission=${e.target.value}`;
             xhr.send(status_data);

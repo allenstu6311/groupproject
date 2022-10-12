@@ -78,7 +78,6 @@ export default {
                         alert("帳號密碼有誤");
                     } else {
                         this.session = JSON.parse(xhr.responseText);
-                        console.log(this.session)
                         sessionStorage.setItem("member", JSON.stringify(this.session));
                         this.loginStatus = sessionStorage.getItem("member")
                         if (this.loginStatus != '') {

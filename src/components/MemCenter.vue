@@ -13,7 +13,8 @@
                 <div class="mem_mug_shot">
                     <img src="../assets/images/member.jpg">
                 </div>
-                <div class="mem_name">{{name}}</div>
+                <div class="mem_name" :style="pdata_display_none">{{name}}</div>
+                <input type="text" v-model="name" :style="pdata_display_show" maxlength="10">
             </div>
             <div class="mem_banner">
                 <img src="../assets/images/memberbanner.jpg">

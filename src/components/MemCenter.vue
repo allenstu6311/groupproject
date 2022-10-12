@@ -160,40 +160,40 @@
 
                 </div>
                 <!-- 預約紀錄 -->
-            <div class="content content3">
-                <h2>預約紀錄</h2>
-                <hr>
-                <!-- 預約紀錄搜尋 -->
-                <div class="reserve_search_bar">
-                    <label for="reserve_search"><img src="../assets/images/Search.png"></label>
-                    <div class="reserve_search_row">
-                        <div class="category_row">
-                            <select name="category">
-                                <option value="">預約日期</option>
-                                <option value="">預約項目</option>
-                            </select>
-                            <div class="reserve_time">
-                                預約時間:
-                                <input type="text">
-                                ~
-                                <input type="text">
+                <div class="content content3">
+                    <h2>預約紀錄</h2>
+                    <hr>
+                    <!-- 預約紀錄搜尋 -->
+                    <div class="reserve_search_bar">
+                        <label for="reserve_search"><img src="../assets/images/Search.png"></label>
+                        <div class="reserve_search_row">
+                            <div class="category_row">
+                                <select name="category">
+                                    <option value="">預約日期</option>
+                                    <option value="">預約項目</option>
+                                </select>
+                                <div class="reserve_time">
+                                    預約時間:
+                                    <input type="text">
+                                    ~
+                                    <input type="text">
+                                </div>
                             </div>
+                            <input type="text" id="reserve_search">
                         </div>
-                        <input type="text" id="reserve_search">
                     </div>
-                </div>
-                <!-- 資料表格 -->
-                <div class="order_data">
-                    <table>
-                        <tr>
-                            <th>預約日期</th>
-                            <th>按摩項目</th>
-                            <th>按摩師</th>
-                            <th>價錢</th>
-                            <th>開始時間</th>
-                            <th>按摩時間長度</th>
-                        </tr>
-                        <!-- <tr id="vieworder">
+                    <!-- 資料表格 -->
+                    <div class="order_data">
+                        <table>
+                            <tr>
+                                <th>預約日期</th>
+                                <th>按摩項目</th>
+                                <th>按摩師</th>
+                                <th>價錢</th>
+                                <th>開始時間</th>
+                                <th>按摩時間長度</th>
+                            </tr>
+                            <!-- <tr id="vieworder">
                                     <td id="resvDate"></td>
                                     <td>{{this.orderList[0]["orderMsg"]}}</td>
                                     <td>{{this.orderList[0]["orderTherapist"]}}</td>
@@ -202,10 +202,9 @@
                                     <td id="resvTimeStart"></td>
                                     <td>1hr</td>
                                 </tr> -->
-                    </table>
+                        </table>
+                    </div>
                 </div>
-            </div>
-                
             </div>
         </div>
     </div>

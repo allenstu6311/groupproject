@@ -1,6 +1,5 @@
 .DS_Store
 node_modules
-package-lock.json
 /dist
 connect_cgd102g2.php
 

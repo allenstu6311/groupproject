@@ -6,7 +6,7 @@
                 <div class="col">
                     <div class="input-group fixwidth mb-3">
                         <span class="input-group-text" id="basic-addon1">折價券代碼</span>
-                        <input type="text" class="form-control" placeholder="" aria-label="id" aria-describedby="basic-addon1" maxlength="10" v-model="id">
+                        <input type="text" readonly="readonly" class="form-control" placeholder="" aria-label="id" aria-describedby="basic-addon1" maxlength="10" v-model="id">
                     </div>
                 </div>
             </div>

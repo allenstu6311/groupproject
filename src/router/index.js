@@ -251,6 +251,12 @@ const routes = [
     meta:{isHide:true}
   },
   {
+    path: '/BackCouponChangeinfo',
+    name: 'BackCouponChangeinfo',
+    component: () => import('@/views/BackCouponChangeinfoView.vue'),
+    meta:{isHide:true}
+  },
+  {
     path: '/:pathMatch(.*)*', 
     name: '404', 
     component: () => import('@/views/NotFound.vue'),

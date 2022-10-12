@@ -1,6 +1,6 @@
 <template>
     <div class="laster_therapist">
-        <h1>新增折價券</h1>
+        <h1>修改折價券</h1>
         <section class="add_content">
             <div class="row">
                 <div class="col">
@@ -41,50 +41,69 @@
 // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
 
 export default {
-    name: 'couponadd',
+    name: 'couponchangeinfo',
     data(){
         return{
+            backstageCouponList: [],
             id:'',
             name: '',
             discount:''
 
         }
     },
+    mounted() {
+    this.getInfo();
+    },
     methods: {
+        getInfo() {
+            this.axios.get(`${BASE_URL}/backCoupongetvalue.php`,{
+                params: {
+                    searchName: this.$route.query.name,
+                }
+            })
+            .then((res) => {
+                // this.backstageTherapsitList = res.data
+                // this.name = this.$route.query;
+                this.id = this.$route.query.id;
+                this.name = this.$route.query.name;
+                this.discount = this.$route.query.discount;
+            })
+        },
         submit(){
         
             var xhr = new XMLHttpRequest();
             
             xhr.onload = function(){
                 if(xhr.status == 200){
-                    if(xhr.responseText == "折價券已建立"){
-                        alert("折價券已建立");
+                  // console.log(xhr.responseText);
+                    if(xhr.responseText == "修改成功"){
+                        alert("修改成功");
                         window.location.replace("/BackCoupon");
-                    }else if(xhr.responseText == "無法建立折價券"){
-                        alert("無法建立折價券");
+                    }else if(xhr.responseText == "修改失敗"){
+                        alert("修改失敗");
                     }
                 }
             }
             // xhr.open("post","http://localhost/CGD102_G2/public/api/backcouponadd.php", true); //開發用
-            xhr.open("post",`${BASE_URL}/backCouponadd.php`, true); //上線用
+            xhr.open("post",`${BASE_URL}/backCouponchangeinfo.php`, true); //上線用
             xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
             let coupon_data = `id=${this.id}&name=${this.name}&discount=${this.discount}`;
             xhr.send(coupon_data);
-
+            console.log(coupon_data);
 
         },
-        checkContentByReg(reg, content, tip, classname) {
-            if (reg.test(content)) {
-                this[tip] = "V"
-                this[classname] = "success"
-                return true
-            } else {
-                this[tip] = "請檢查格式"
-                this[classname] = "error"
-                return false
-            }
-        }
+        // checkContentByReg(reg, content, tip, classname) {
+        //     if (reg.test(content)) {
+        //         this[tip] = "V"
+        //         this[classname] = "success"
+        //         return true
+        //     } else {
+        //         this[tip] = "請檢查格式"
+        //         this[classname] = "error"
+        //         return false
+        //     }
+        // }
     },
 }
 </script>

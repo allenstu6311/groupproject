@@ -4,10 +4,10 @@ header("Content-Type:application/json;charset=utf-8");
 
 try{
 
-    require_once("../connect_cgd102g2.php"); //開發路徑
-    //require_once("../connect_cgd102g2.php");//上線路徑
+    //require_once("../connect_cgd102g2.php"); //開發路徑
+    require_once("../connect_cgd102g2.php");//上線路徑
 
-    $sql = "SELECT * FROM COUPONS";
+    $sql = "SELECT * FROM COUPONS WHERE CPS_NAME = '{$searchName}'";
     $coupon = $pdo->query($sql);
 
     if($coupon->rowCount()==0){
@@ -33,4 +33,5 @@ try{
         echo "錯誤原因 : ", $e->getMessage(), "<br>";
         //echo "系統暫時不能正常運行，請稍後再試<br>";	
 }
+checkName($_GET['searchName'])
 ?>

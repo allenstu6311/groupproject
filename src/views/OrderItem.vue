@@ -8,7 +8,7 @@
       <div class="orderBox">
         <div class="order-search m-3">
           <select class="form-select w-25" aria-label="Default select example">
-            <option selected>排序方式</option>
+            <option value="1"></option>
           </select>
 
           <div class="input-group mx-3 w-25">

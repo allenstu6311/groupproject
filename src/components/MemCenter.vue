@@ -1,8 +1,10 @@
-<template>
+<template >
         <teleport to='body'>
             <div class="modal-mask" :style="modalStyle">
                 <div class="modal-container" @click="toggleModal">
-                    <MemLightBox />
+                    <MemLightBox :memberBuyInfo="data"
+                                :memberInfo="memberData"/>
+                     <!-- @buyInfo="$emit('buyInfo',$event)" ref="memLightBox" -->
                 </div>
             </div>
         </teleport>
@@ -120,19 +122,22 @@
                             <table>
                                 <tr>
                                     <th>訂單編號</th>
-                                    <th>訂單名稱</th>
+                                    <th>收件人</th>
                                     <th>訂單日期</th>
                                     <th>訂單狀態</th>
                                     <th></th>
                                 </tr>
-                                <tr>
-                                    <td>A123456789</td>
-                                    <td>訂單一</td>
-                                    <td>2022-09-16</td>
-                                    <td>未出貨</td>
+                                <tr v-for="item in memberData" :key="item.PROD_ORDERS_ID">
+                                    <td>{{item.PROD_ORDERS_ID}}</td>
+                                    <td>{{item.MEM_NAME}}</td>
+                                    <td>{{item.PROD_ORDERS_DATE}}</td>
+                                    <td v-if="item.PROD_ORDERS_STATUS==0">未出貨</td>
+                                    <td v-if="item.PROD_ORDERS_STATUS==1">已出貨</td>
+                                    <td v-if="item.PROD_ORDERS_STATUS==2">取消</td>
+                                    <td v-if="item.PROD_ORDERS_STATUS==3">送達</td>
                                     <td valign="middle">
                                         <div id="order_detail">
-                                            <button class="btnMinimum order_detail" @click="isShow = true">詳細資訊</button>
+                                            <button class="btnMinimum order_detail" @click="isShowLIghtBox(item.PROD_ORDERS_ID) ">詳細資訊</button>
                                         </div>
                                     </td>
                                 </tr>
@@ -199,6 +204,9 @@ export default {
     components: {
         MemLightBox,
     },
+    props:{
+
+    },
     data: () => ({
         isShow: false,
         editdata:false,
@@ -223,6 +231,8 @@ export default {
         verifyPsw:'',
         verifyEmail:'',
         router: useRouter(),
+        memberData:[],
+        data:[],
     }),
     computed: {
         modalStyle() {
@@ -245,6 +255,19 @@ export default {
         toggleModal() {
             this.isShow = !this.isShow;
         },
+        isShowLIghtBox(id){
+            this.isShow=true
+              var url = `${BASE_URL}/memberLightBox.php`
+        this.axios.get(url,{
+            params:{
+                order_id:id
+            }
+        })
+        .then((res)=>{
+            this.data=res.data
+        })
+        },
+      
         getMemData(){
             this.member = JSON.parse(sessionStorage.getItem('member'));
             this.name = this.member.memName;
@@ -307,6 +330,17 @@ export default {
                 this.router.replace({ path: '/MemCenter' })
             }
         },
+        getBuyInfo(){
+            var url = `${BASE_URL}/memberCenterOrder.php`
+            this.axios.get(url,{
+                params:{
+                    mem_id:this.member.memId
+                }
+            })
+            .then((res)=>{
+                this.memberData = res.data
+            })
+        },
         checkNew(reg,content){
             if(reg.test(content)){
                 return true;
@@ -335,6 +369,7 @@ export default {
             this.router.push({ path: '/home' });
         }
         this.getMemData(); 
+        this.getBuyInfo()
     },
 }
 </script>

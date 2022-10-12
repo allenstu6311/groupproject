@@ -201,9 +201,10 @@ img {
         left: 90%;  
         top: -10%; 
     }
-     .magnifier {
+  .magnifier {
     position: relative;
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     height: 500px;
     margin: 0 auto;  
   }
@@ -224,7 +225,7 @@ img {
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(110%);
+    transform: translateX(120%);
     background-color: #e8e8e8;
     overflow: hidden;
     img{
@@ -239,7 +240,7 @@ img {
     background-color: black;
     position: absolute;
     top: -7%;
-    left: 108%;
+    left: 118%;
    
     p{
          text-align:center;
@@ -305,9 +306,10 @@ export default {
   },
   methods: {
       showZoomBox(event) {
+      
         const halfCursor = this.cursorWidth/2;
-        const left = event.clientX- this.magnifierBoxLeft-halfCursor;
-        const top = event.clientY  - this.magnifierBoxTop-halfCursor;
+        const left = event.clientX- this.magnifierBoxLeft-50+'%'
+        const top = event.clientY  - this.magnifierBoxTop-50+'%'
         // 处理光标左侧
         if(left < 0) { // 防止左侧溢出
           this.cursorLeft = 0;
@@ -332,15 +334,14 @@ export default {
       },
       hiddenZoomBox() {
         this.isShowCursor = false;
-        this.cursorLeft = 100;
-        this.cursorTop = 100;
+        this.cursorLeft =0;
+        this.cursorTop = 0;
       },
       moveCursor(event) {
-       
         const halfCursor = this.cursorWidth/2;
-        const left = event.clientX - this.magnifierBoxLeft-200;
-        const top = event.clientY - this.magnifierBoxTop-230;
-        
+        const left = event.clientX -this.magnifierBoxLeft -halfCursor;
+        const top = event.clientY-this.magnifierBoxLeft-halfCursor
+
         // 处理光标左侧
         if(left < 0) { // 防止左侧溢出
           this.cursorLeft = 0;
@@ -389,55 +390,19 @@ export default {
     },
     
     addCar(id) {
-      let sameProduct = this.memory.find(item=>item.PROD_ID===id)
-      // let index = this.cart.find(item=>item.PROD_ID===id)
+      this.updateCart()
+      console.log(this.memory)
       this.fly=true
+       let sameProduct = this.memory.find(item=>item.PROD_ID===id)
     
+       
        if(!sameProduct){
         alert("成功加入")
          this.IncreaseShoppingCart() 
+            this.updateCart()
       }else{
         alert("購物車已有相同物品")
       }
-      // if(!index){
-      //   alert("成功加入")
-      //   this.cart.push({
-      //   PROD_ID: this.order[0].PROD_ID,
-      //   PROD_NAME: this.order[0].PROD_NAME,
-      //   PROD_PRICE: this.order[0].PROD_PRICE,
-      //   PROD_PIC1: this.order[0].PROD_PIC1,
-      //   PROD_PIC2: this.order[0].PROD_PIC2,
-      //   PROD_PIC3: this.order[0].PROD_PIC3,
-      //   PROD_DATE: this.order[0].PROD_DATE,
-      //   PROD_NUM: this.product_num,
-      //   PROD_DESC1: this.order[0].PROD_DESC1,
-      //   PROD_DESC2: this.order[0].PROD_DESC2,
-      //   PROD_DESC3: this.order[0].PROD_DESC3,
-      //   PROD_REVIEW: this.order[0].PROD_REVIEW + 1,
-      //   PROD_TIMES: this.order[0].PROD_TIMES + 1,
-      // });
-
-      //   this.calculate.push({
-      //   PROD_ID: this.order[0].PROD_ID,
-      //   PROD_NAME: this.order[0].PROD_NAME,
-      //   PROD_PRICE: this.order[0].PROD_PRICE,
-      //   PROD_PIC1: this.order[0].PROD_PIC1,
-      //   PROD_PIC2: this.order[0].PROD_PIC2,
-      //   PROD_PIC3: this.order[0].PROD_PIC3,
-      //   PROD_DATE: this.order[0].PROD_DATE,
-      //   PROD_NUM: this.product_num,
-      //   PROD_DESC1: this.order[0].PROD_DESC1,
-      //   PROD_DESC2: this.order[0].PROD_DESC2,
-      //   PROD_DESC3: this.order[0].PROD_DESC3,
-      //   PROD_REVIEW: this.order[0].PROD_REVIEW + 1,
-      //   PROD_TIMES: this.order[0].PROD_TIMES + 1,
-      // });
-      // }else{
-      //   alert("購物車已有相同物品")
-      // }
-      
-
-      // this.setStorage();
     },
 
       IncreaseShoppingCart() {
@@ -454,10 +419,22 @@ export default {
         }
       );
     },
-    // setStorage() {
-    //   localStorage.setItem("cart", JSON.stringify(this.cart));
-    //   localStorage.setItem("calculate", JSON.stringify(this.calculate));
-    // },
+    updateCart() {
+     
+      var url = `${BASE_URL}/shoppingCart.php`; //上線
+      this.axios
+        .get(url, {
+          params: {
+            mem_id: this.member.memId,
+          },
+        })
+        .then((res) => {
+          this.memory = res.data;
+          console.log("mm",this.memory)
+          // this.$emit("addCartInfo", this.memory);
+        });
+    },
+ 
     getStar() {
       let orders = localStorage.getItem("order");
       if (!orders) return;
@@ -467,42 +444,15 @@ export default {
       this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
       ).toFixed(1);
       this.star = parseInt(this.score);
-
-      // let carts = localStorage.getItem("cart");
-      // if (!carts) return;
-      // this.cart = JSON.parse(carts);
-
-      // let calculates = localStorage.getItem("calculate");
-      // if (!calculates) return;
-      // this.calculate = JSON.parse(calculates);
     },
   },
   created() {
     this.getStar();
-
+  
     let members = sessionStorage.getItem("member");
     this.member = JSON.parse(members)
-
-    // if(!this.member){
-        
-    // }else{
-       
-    //       this.axios
-    //   // .get("http://localhost/CGD102_G2/public/api/shoppingCart.php", {
-    //   .get(`${BASE_URL}/shoppingCart.php`, {
-    //     params: {
-    //       mem_id: this.member.memId,
-    //     },
-    //   })
-    //   .then((res) => {
-    //     this.memory = res.data;
-    //     // console.log("before",this.memory)
-    //   });
-    // }
+      this.updateCart();
   },
-  mounted(){
-  
-  }
 };
 </script>
 

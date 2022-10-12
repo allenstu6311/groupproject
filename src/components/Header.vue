@@ -150,12 +150,15 @@ export default {
     let checkLogin = sessionStorage.getItem("member");
     if (checkLogin) {
       (this.iconShow = false), (this.selectShow = true);
+      this.member = JSON.parse(checkLogin);
     }
+    // let members = sessionStorage.getItem("member");
+    // this.member = JSON.parse(members);
+    this.getCartNumber()
+
   },
   created() {
-    let members = sessionStorage.getItem("member");
-    this.member = JSON.parse(members);
-    this.getCartNumber()
+    
    
   },
  

@@ -32,7 +32,7 @@
             <option value="5">日期由新至舊</option>
             <option value="6">日期由舊至新</option>
           </select>
-          <button
+          <button 
             @click="toggle = true"
             :class="{ orderColor: toggle == true }"
           >
@@ -56,7 +56,7 @@
       <!-- =============================================橫排顯示 -->
       <div class="commodity-area col-12" v-if="toggle == false">
         <div class="commodity-obj" v-for="item in data" :key="item.PROD_ID">
-          <button @click="next(item)">＜</button>
+          <button @click="next(item)" class="slide-control">＜</button>
           <div class="commodity-pic">
 
             <router-link to="/Detail">
@@ -77,7 +77,7 @@
               
             </router-link>
           </div>
-          <button @click="prev(item)">＞</button>
+          <button @click="prev(item)" class="slide-control">＞</button>
           <div class="commodity-body">
             <div class="commodity-name">
               <h5 class="bold">{{ item.PROD_NAME }}</h5>
@@ -212,18 +212,19 @@ export default {
       currPage: 1,
       disappear:false,
       member:[],
-      lightBoxShow:false
+      lightBoxShow:false,
+      slideNum:0
     };
   },
   methods: {
     next(item) {
-      if (item.SLIDE < 0) {
-        item.SLIDE += 1;
-      }
+      if(item.SLIDE>0){
+        item.SLIDE+=1
+      } 
     },
     prev(item) {
       if (item.SLIDE > -2) {
-        item.SLIDE -= 1;
+       item.SLIDE-=1
       }
     },
     addOrder(id) {
@@ -390,16 +391,20 @@ export default {
   watch: {
     toggle: {
       handler(newVal) {
+          
         this.$nextTick(()=> {
           if (newVal == false) {
-            this.photo = document.getElementById("pic").clientWidth + 45;
+            this.photo = document.getElementById("pic").clientWidth;
+            
             window.onresize = () => {
-              let pic = document.getElementById("pic").clientWidth;
-              this.photo = pic;
+            let pic = document.getElementById("pic").clientWidth;
+            this.photo = pic;
+            
             };
-           
+              
           } else {
-            this.photo = document.getElementById("pic").clientWidth + 45;
+            
+            this.photo = document.getElementById("pic").clientWidth;
             window.onresize = () => {
               let pic = document.getElementById("pic").clientWidth;
               this.photo = pic;

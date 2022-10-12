@@ -41,9 +41,6 @@
 .commodity-area{
     margin-bottom: 70px;
     background-color: $white;
-
-  
-    
     .commodity-obj{
         display: flex; 
         align-items: center; 
@@ -70,7 +67,13 @@
             padding-top: 10px;
 
             .commodity-name{
-                margin-bottom: 20px;
+                overflow: hidden;
+                h4{
+                    margin-bottom: 20px;
+                    white-space: nowrap;
+                    text-overflow:ellipsis;
+                }
+                
             }
             .commodity-price{
                 p{
@@ -104,15 +107,7 @@
     flex-wrap: wrap;
     justify-content: center;
     position: relative;
-
-    // &:nth-child(0):before{
-    //     content: "";
-    //     width: 20px;
-    //     height: 10px;
-    //     background-color: red;
-    //     position: absolute;
-    // }
-    
+   
     .commodity-obj{
         display: flex; 
         flex-direction: column;
@@ -122,17 +117,15 @@
         position: relative;
 
         .slide-control{
-            width: 30px;
-            height: 30px;
-            background-color:$blue;
-            color:$white;
+            background-color:transparent;
+            color:$blue;
             border-radius: 50%;
             border: none;
             display: flex;
             justify-content: center;
             align-items: center;
             font-weight: 900;
-            font-size: 18px;
+            font-size: 22px;
         }
  
         .commodity-pic{
@@ -161,6 +154,13 @@
 
             .commodity-name{
                 margin-bottom: 20px;
+             
+                h4{
+                    margin-bottom: 20px;
+                    white-space: nowrap;
+                    text-overflow:ellipsis;
+                    overflow: hidden;
+                }
             }
             .commodity-price{
                 p{
@@ -199,7 +199,6 @@
            
         }
         }
-    
         .commodity-area{
             margin-bottom: 70px;
     
@@ -207,6 +206,18 @@
             display: flex; 
             align-items: center; 
             padding: 10px 0; 
+            .slide-control{
+                background-color:transparent;
+                color:$blue;
+                border-radius: 50%;
+                border: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-weight: 900;
+                font-size: 22px;
+                padding: 0;
+            }
             .commodity-pic{
                 width:15%;
                 position: relative;

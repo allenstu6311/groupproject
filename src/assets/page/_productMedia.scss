@@ -7,14 +7,14 @@
         @include container();
         line-height: 2;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
         padding-bottom: 100px;
         font-weight: 800;
 
         .product-body {
             width: 45%;
             margin: auto 0;
-
+          
             .product-star {
                 display: flex;
                 justify-content: flex-start;
@@ -53,6 +53,11 @@
                 }
             }
         }
+        .product-detail{
+            margin: 0 130px;
+           
+
+        }
         .product-name {
             display: flex;
         }
@@ -63,6 +68,7 @@
         .product-pic img {
             width: 100%;
         }
+      
 
         .pic-control {
             width: 100px;

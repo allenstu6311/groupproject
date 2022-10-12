@@ -16,8 +16,6 @@ try{
       $memberstatus->bindValue(":PERMISSION",$_POST["permission"]);
       $memberstatus->execute();
 
-      echo 123;
-
   }catch(PDOException $e){
     echo $e->getMessage();
   }

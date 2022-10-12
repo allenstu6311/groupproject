@@ -99,7 +99,8 @@ export default {
   methods: {
     logout() {
       sessionStorage.removeItem("member");
-      this.router.go(0);
+      // this.router.go(0);
+      this.router.push({ path: '/home' });
     },
     updateCartFromCartPage(list) {
       this.memory = list;

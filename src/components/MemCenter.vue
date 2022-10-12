@@ -304,7 +304,7 @@ export default {
                 this.newpassword = '';
                 this.newpasswordA = '';
                 alert("修改成功");
-                this.router.replace({ path: '/MemCenter' })
+                this.router.go(0);
             }
         },
         checkNew(reg,content){

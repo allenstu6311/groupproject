@@ -45,14 +45,6 @@ export default {
         this.getDataFromApi(); // 在建立Vue.js模板時順帶執行這個參數
         // this.getcount();
         // console.log(this.$route.query.count)
-        let members = sessionStorage.getItem("member");
-        this.member = JSON.parse(members);
-        if(!this.member){
-                this.lightBoxShow=true
-            }else{
-                this.lightBoxShow=false
-            } 
-        
     },
     methods: {
         getDataFromApi(){

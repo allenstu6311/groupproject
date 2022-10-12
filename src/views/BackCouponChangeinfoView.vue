@@ -6,7 +6,7 @@
                 <BackstageIndexAside />
             </div>
             <div class="col-10">
-                <BackCouponAdd />
+                <BackCouponChangeinfo />
             </div>
         </div>
     </div>
@@ -15,13 +15,13 @@
 <script>
 import BackstageIndexAside from '@/components/BackstageIndexAside.vue'
 import BackstageIndexHeader from '@/components/BackstageIndexHeader.vue'
-import BackCouponAdd from '@/components/BackCouponAdd.vue'
+import BackCouponChangeinfo from '@/components/BackCouponChangeinfo.vue'
 
 export default {
     components: {
         BackstageIndexHeader,
         BackstageIndexAside,
-        BackCouponAdd
+        BackCouponChangeinfo
     }
 }
 </script>

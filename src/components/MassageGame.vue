@@ -111,18 +111,17 @@
 
             <div class="game_btn">
                 <button class="btnLarge" v-if="isActive"  @click="change()">確認答案</button>
-                <router-link :to="{ path:'/GetCoupon' ,
-                                query:{ 
+                <router-link :to="{ path:'/GetCoupon',
+                                    query:{ 
                                         count:this.count
-
-                                    } }"
-                                    
-                                    class="btnLarge" v-else >領取折價券</router-link>
+                                    }}"
+                                    class="btnLarge" v-else >領取折價券
+                                    </router-link>
             </div>
 
         </div>
     </div>
-    <lightBox v-if="lightBoxShow==true"/>
+    <lightBox v-if="lightBoxShow == true"/>
 </template>
 <script>
     import lightBox from "@/components/lightBox.vue"
@@ -190,7 +189,6 @@
                 this.yuJi = false;
                 this.shaoFu = false;
                 this.taiYuan = false;
-                
             },
             activeAcupointB(){
                 this.activeAcupoint ="B";

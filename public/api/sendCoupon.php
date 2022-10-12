@@ -11,7 +11,7 @@ function coupon($mem_id,$coupon_id){
         $sql = "INSERT INTO MY_COUPONS VALUES
         (MEM_ID={$mem_id},CPS_ID={$coupon_id},MY_COUPONS_STATUS=1)";
 
-         $pdo->query($sql);
+        $pdo->query($sql);
     
         // if($coupon->rowCount()==0){
         //     echo "無折價券資料";

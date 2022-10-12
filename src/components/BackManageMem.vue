@@ -44,15 +44,17 @@
         <h1>管理會員帳號</h1>
         <div class="search_mem_bar">
             <select class="form-select form-select-sm bg-light condition-search" aria-label=".form-select-sm example"
-                v-model="selecttype" >
+                    v-model="selecttype">
                 <option value="-1">選擇排序條件</option>
                 <option value="MEM_ID">依會員編號</option>
                 <option value="MEM_NAME">依姓名排序</option>
                 <option value="MEM_PHONE">依手機排序</option>
             </select>
-            <select class="form-select form-select-sm bg-light mem_status" aria-label=".form-select-sm example">
-                <option selected>正常</option>
-                <option value="1">停權</option>
+            <select class="form-select form-select-sm bg-light mem_status" aria-label=".form-select-sm example"
+                    v-model="selectPermission">
+                <option value="-1">選擇狀態</option>
+                <option value="1">正常</option>
+                <option value="0">停權</option>
             </select>
             <div class="input-group rounded bg-light">
                 <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
@@ -74,15 +76,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(memberdata,index) in memberlist" :key="index" class="memdata_bar">
+                <tr v-for="(memberdata,index) in memberlist" :key="index" class="memdata_bar"
+                    >
                     <td>{{memberdata.MEM_ID}}</td>
                     <td>{{memberdata.MEM_NAME}}</td>
                     <td>{{memberdata.MEM_PHONE}}</td>
                     <td>
                         <select class="form-select form-select-sm bg-light mem_status"
-                            aria-label=".form-select-sm example">
-                            <option selected>正常</option>
-                            <option value="1">停權</option>
+                            aria-label=".form-select-sm example" v-model="memberdata.MEM_PERMISSION" :selected="memberdata.MEM_PERMISSION"
+                            @change="changeStatus(memberdata.MEM_ID,$event)">
+                            <option value="1" >正常</option>
+                            <option value="0" >停權</option>
                         </select>
                     </td>
                     <td>
@@ -95,7 +99,7 @@
 
 </template>
 <script>
-import {BASE_URL} from '@/assets/js/common.js'
+import { BASE_URL } from '@/assets/js/common.js'
 export default {
     data() {
         return {
@@ -111,7 +115,9 @@ export default {
             memLocal: '',
             memEmail: '',
             memAddress: '',
-            selecttype: '-1'
+            memPermission:'',
+            selecttype: '-1',
+            selectPermission:'-1'
         }
     },
     created() {
@@ -151,20 +157,63 @@ export default {
             this.memLocal = this.memberlist[this.index].MEM_LOCALCALL;
             this.memEmail = this.memberlist[this.index].MEM_EMAIL;
             this.memAddress = this.memberlist[this.index].MEM_ADDRESS;
+            this.memPermission = this.memberlist[this.index].MEM_PERMISSION;
         },
-        sort() {
+        
+        //排序功能
+        sorttype() {
             if (this.selecttype != -1) {
                 this.memberlist.sort((a, b) => b[this.selecttype] < a[this.selecttype] ? 1 : -1)
             }
-        }
+        },
+        sortPermission() {
+            if (this.selectPermission != -1) {
+                this.memberlist.sort((a, b) => b[this.selectPermission] < a[this.selectPermission] ? 1 : -1)
+            }
+        },
+        
+        
+        //切換狀態
+        changeStatus(id, e) {
+            this.ID = id
+
+            var xhr = new XMLHttpRequest();
+            var url = `${BASE_URL}/backMemChangeStatus.php`;
+            // var url = "http://localhost/CGD102_G2/public/api/backMemChangeStatus.php";
+            xhr.open("post", url, true); //上線用
+            xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+            
+            xhr.onload = function(){
+                    if(xhr.status == 200){
+                        console.log(xhr.responseText)
+                        // if(xhr.responseText == "狀態修改成功"){
+                        //     alert("狀態修改成功");
+                        // }else {
+                        //     alert("狀態修改失敗");
+                        // }
+                    }
+                }
+
+            let status_data = `ID=${this.ID}&permission=${e.target.value}`;
+            xhr.send(status_data);
+            console.log(status_data);
+
+            
+        },
     },
     watch: {
         selecttype: {
             handler(value) {
-                this.sort()
+                this.sorttype()
             },
             deep: true
-        }
+        },
+        selectPermission: {
+            handler(value) {
+                this.sortPermission()
+            },
+            deep: true
+        },
     }
 }
 </script>

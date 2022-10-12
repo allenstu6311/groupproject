@@ -56,6 +56,7 @@
 </template>
 <script>
 import {BASE_URL} from '@/assets/js/common.js'
+import { useRouter } from "vue-router";
 export default {
   data() {
     return {
@@ -63,6 +64,7 @@ export default {
       selectShow: false,
       showCartLength:false,
       memory:[],
+      router: useRouter(),
     };
   },
   computed: {
@@ -97,7 +99,7 @@ export default {
   methods: {
     logout() {
       sessionStorage.removeItem("member");
-      location.reload();
+      this.router.go(0);
     },
     updateCartFromCartPage(list) {
       this.memory = list;

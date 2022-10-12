@@ -97,8 +97,7 @@ export default {
                 }
                 // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
                 var url = `${BASE_URL}/login.php`
-                // "http://localhost/CGD102_G2/public/api/login.php"
-                // xhr.open("post","http://localhost/CGD102_G2/public/api/login.php", true);
+                // var url = "http://localhost/CGD102_G2/public/api/login.php"
                 xhr.open("post",url, true);
                 xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
 

@@ -5,8 +5,8 @@
             <div class="row">
                 <div class="col">
                     <div class="mb-3">
-                        <span class="text">日期:</span>
-                        <input type="date" class="form-control"  maxlength="50" v-model="NEWS_DATE">
+                        <span class="text">編號:</span>
+                        <input type="text" class="form-control"  disabled maxlength="20" v-model="FAQ_ID">
                     </div>
                 </div>
             </div>
@@ -14,15 +14,7 @@
                 <div class="col">
                     <div class="mb-3">
                         <span class="text">標題:</span>
-                        <input type="text" class="form-control"  id="NEWS_TITLE" placeholder="請輸入標題(最多50字)" aria-describedby="basic-addon1" maxlength="50" v-model="NEWS_TITLE">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="mb-3">
-                        <span class="text">上傳圖片:</span>
-                        <input class="form-control upload" type="file" id="formFile" maxlength="50" :v-model="NEWS_PIC" @change="photo($event)">
+                        <input type="text" class="form-control"  id="NEWS_TITLE" placeholder="請輸入標題(最多50字)" aria-describedby="basic-addon1" maxlength="50" v-model="FAQ_TITLE">
                     </div>
                 </div>
             </div>
@@ -30,7 +22,7 @@
                 <div class="col">
                     <div class="mb-3">
                         <span class="text">內文:</span>
-                        <textarea class="form-control"  placeholder="請輸入內文(最多500字)" style="height:60px" v-model="NEWS_TEXT"></textarea>
+                        <textarea class="form-control"  placeholder="請輸入內文(最多500字)" style="height:60px" v-model="FAQ_TEXT"></textarea>
                     </div>
                 </div>
             </div>
@@ -45,63 +37,50 @@
 import {BASE_URL} from '@/assets/js/common.js'
 // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
 
-// export default {
-//   name: "BackstageNewsModify",
-//   data() {
-//     return {
-//     NEWS_DATE: "",
-//     NEWS_TITLE: "",
-//     NEWS_PIC: "",
-//     NEWS_TEXT: "",
-//     }
-//   },
-//   mounted() {
-//     this.getInfo();
-//   },
-//   methods: {
-//         getInfo() {
-//             this.axios.get(`${BASE_URL}/BackstageNewsGetValue.php`,{
-//                 params: {
-//                     searchTitle: this.$route.query.NEWS_TITLE,
-//                 }
-//             })
-//             .then((res) => {
-//                 this.NEWS_DATE = this.$route.query.NEWS_DATE;
-//                 this.NEWS_TITLE = this.$route.query.NEWS_TITLE;
-//                 this.NEWS_PIC = this.$route.query.NEWS_PIC;
-//                 this.NEWS_TEXT = this.$route.query.NEWS_TEXT;
-//             })
-//         },
-//         submit(){
-
-//             var xhr = new XMLHttpRequest();
-
-//             xhr.onload = function(){
-//                 if(xhr.status == 200){
-//                   // console.log(xhr.responseText);
-//                     if(xhr.responseText == "修改成功"){
-//                         alert("修改成功");
-//                         window.location.replace("/BackstageNews");
-//                     }else if(xhr.responseText == "修改失敗"){
-//                         alert("修改失敗");
-//                     }
-//                 }
-//             }
-//             // xhr.open("post","http://localhost/CGD102_G2/public/api/backtherapistchangeinfo.php", true); //開發用
-//             xhr.open("post",`${BASE_URL}/BackstageNewsModify.php`, true); //上線用
-//             xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-
-//             let news_data = `NEWS_DATE=${this.NEWS_DATE}&NEWS_TITLE=${this.NEWS_TITLE}&NEWS_TEXT=${this.NEWS_TEXT}&NEWS_PIC=${this.NEWS_PIC}`;
-//             xhr.send(news_data);
-//             console.log(news_data);
-//         },
-//         photo(e) {
-//             this.NEWS_PIC = e.target.files[0].name;
-//             console.log(this.NEWS_PIC);
-//         },
+export default {
+  name: "BackstageFAQModify",
+  data() {
+    return {
+    backFAQList: [],
+    allenHandsome:[],
+    FAQ_ID: "",
+    FAQ_TITLE: "",
+    FAQ_TEXT: "",
+    }
+  },
+  mounted() {
+    this.FAQ_ID = this.$route.query.id
+    this.FAQ_TITLE = this.$route.query.title
+    this.FAQ_TEXT = this.$route.query.text
+  },
+  methods: {
         
-//     },
-// }
+        submit(){
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.onload = function(){
+                if(xhr.status == 200){
+                  // console.log(xhr.responseText);
+                    if(xhr.responseText == "修改成功"){
+                        alert("修改成功");
+                        window.location.replace("/BackstageFAQ");
+                    }else if(xhr.responseText == "修改失敗"){
+                        alert("修改失敗");
+                    }
+                }
+            }
+            // xhr.open("post","http://localhost/CGD102_G2/public/api/backtherapistchangeinfo.php", true); //開發用
+            xhr.open("post",`${BASE_URL}/BackstageFAQModify.php`, true); //上線用
+            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+            let FAQ_data = `FAQ_ID=${this.FAQ_ID}&FAQ_TITLE=${this.FAQ_TITLE}&FAQ_TEXT=${this.FAQ_TEXT}`;
+            xhr.send(FAQ_data);
+            console.log(FAQ_data);
+        },
+        
+    },
+}
 </script>
 
 <style lang="scss" scoped>

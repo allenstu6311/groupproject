@@ -107,21 +107,21 @@ export default {
                     }
                 })
             },  
-            modifyNews(name){
-                // this.axios.get("http://localhost/CGD102_G2/public/api/BackstageNewsGetValue.php",{
-                this.axios.get(`${BASE_URL}/BackstageNewsGetValue.php`,{
-                    params:{
-                        searchName:name
-                    }
-                })
-                .then((res)=>{
-                    // console.log(res.data[0].MSG_NAME)
-                    this.allenHandsome = res.data
+            // modifyNews(name){
+            //     // this.axios.get("http://localhost/CGD102_G2/public/api/BackstageNewsGetValue.php",{
+            //     this.axios.get(`${BASE_URL}/BackstageNewsGetValue.php`,{
+            //         params:{
+            //             searchName:name
+            //         }
+            //     })
+            //     .then((res)=>{
+            //         // console.log(res.data[0].MSG_NAME)
+            //         this.allenHandsome = res.data
 
-                    this.setStorage()
+            //         this.setStorage()
 
-                })
-            },
+            //     })
+            // },
         }
     }
 </script>

@@ -65,7 +65,7 @@ export default {
                 {
                 id: 8,
                 name: "管理後台帳號",
-                path:"/BackShop",
+                path:"/BackManageAccount",
                 },
                 {
                 id: 9,

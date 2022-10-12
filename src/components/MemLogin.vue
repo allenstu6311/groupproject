@@ -64,10 +64,12 @@ export default {
             if (account == '') {
                 alert('請輸入帳號');
                 return;
-            } else if (password == '') {
+            } 
+            else if (password == '') {
                 alert('請輸入密碼');
                 return;
-            } else if (account == '' && password == '') {
+            } 
+            else if (account == '' && password == '') {
                 alert('請輸入帳號和密碼');
                 return;
             } else {

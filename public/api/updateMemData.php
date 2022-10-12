@@ -11,7 +11,9 @@
         $updateMemData->bindValue(":MEM_ID",$_POST["id"]);
         $updateMemData->bindValue(":MEM_NAME",$_POST["name"]);
         $updateMemData->bindValue(":ACCOUNT",$_POST["account"]);
-        $updateMemData->bindValue(":PSW",$_POST["password"]);
+        if($_POST["password"] != ''){
+          $updateMemData->bindValue(":PSW",$_POST["password"]);
+        }
         $updateMemData->bindValue(":BIRTHDAY",$_POST["birthday"]);
         $updateMemData->bindValue(":PHONE",$_POST["phone"]);
         $updateMemData->bindValue(":LOCALCALL",$_POST["localphone"]);

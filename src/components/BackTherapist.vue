@@ -35,7 +35,9 @@
                     <td>
                         <div>
                             <select 
-                                class="form-select form-select-sm"  
+                                class="form-select form-select-sm"
+                                v-model="backstageTherapsit.THERAPIST_STATUS"
+                                :selected="backstageTherapsit.THERAPIST_STATUS"
                                 @change="changeStatus(backstageTherapsit.THERAPIST_ACCOUNT,$event)"
                             >
                                 <option value='1'>在職</option>
@@ -111,11 +113,16 @@
             },
             changeStatus(account,e){
                 this.account = account;
-                let url = `${BASE_URL}/backtherapistselectchange.php`;
+
                 var xhr = new XMLHttpRequest();
+                var url = `${BASE_URL}/backtherapistselectchange.php`;
+
+                xhr.open("post", url, true); //上線用
+                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
                 xhr.onload = function(){
                     if(xhr.status == 200){
+                        console.log(xhr.responseText)
                         if(xhr.responseText == "狀態修改成功"){
                             alert("狀態修改成功");
                         }else {
@@ -124,8 +131,6 @@
                     }
                 }
 
-                xhr.open("post", url, true); //上線用
-                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
                 let status_data = `account=${this.account}&status=${e.target.value}`;
                 xhr.send(status_data);

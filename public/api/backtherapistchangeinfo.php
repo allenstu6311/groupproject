@@ -12,22 +12,23 @@ try{
     $therapistAccount->bindValue(":ACCOUNT",$_POST["account"]);
     $therapistAccount->execute();
     
-    if( $therapistAccount->rowCount() == 0 ){ //找到帳號
+    if( $therapistAccount->rowCount() == 0 ){ //找不到帳號
         //傳回未修改成功
         echo "修改失敗";
-    }else{ //找不到
+    }else{ //找到帳號
       //存入資料庫
-        $updateSql = "UPDATE THERAPIST SET 
-        THERAPIST_NAME = :THERAPIST_NAME,
-        THERAPIST_ACCOUNT = :ACCOUNT,
-        THERAPIST_PSW = :PSW,
-        THERAPIST_LICENSE_1 = :LICENSE_1,
-        THERAPIST_LICENSE_2 = :LICENSE_2,
-        THERAPIST_LICENSE_3 = :LICENSE_3,
-        THERAPIST_LICENSE_4 = :LICENSE_4,
-        THERAPIST_HIREDATE = :HIREDATE,
-        THERAPIST_PIC = :PIC
-        WHERE THERAPIST_ACCOUNT = :ACCOUNT";
+        $updateSql = "UPDATE THERAPIST
+                      SET 
+                      THERAPIST_NAME = :THERAPIST_NAME,
+                      THERAPIST_ACCOUNT = :ACCOUNT,
+                      THERAPIST_PSW = :PSW,
+                      THERAPIST_LICENSE_1 = :LICENSE_1,
+                      THERAPIST_LICENSE_2 = :LICENSE_2,
+                      THERAPIST_LICENSE_3 = :LICENSE_3,
+                      THERAPIST_LICENSE_4 = :LICENSE_4,
+                      THERAPIST_HIREDATE = :HIREDATE,
+                      THERAPIST_PIC = :PIC
+                      WHERE THERAPIST_ACCOUNT = :ACCOUNT;";
 
         $therapist = $pdo -> prepare($updateSql);
         $therapist->bindValue(":LICENSE_1",$_POST["license1"]);

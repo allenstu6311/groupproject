@@ -125,31 +125,7 @@ export default {
         this.memberInfo= info
         this.getCartNumber()
     },
-    updateCart() {
-      var url = `${BASE_URL}/shoppingCart.php`; //上線
-      // var url = "http://localhost/CGD102_G2/public/api/shoppingCart.php"
-      this.axios
-        .get(url, {
-          params: {
-            mem_id: this.member.memId,
-          },
-        })
-        .then((res) => {
-          // this.memory = res.data;
-          let oldVal = this.memory;
-          let newVal = res.data;
-          let isSame = newVal.length === oldVal.length;
-          if (!isSame) {
-            this.memory = res.data;
-            return;
-          }
-          isSame = newVal.every(v => oldVal.findIndex(u => u.PROD_ID === v.PROD_ID && u.PROD_QTY == v.PROD_QTY) > -1)//?
-
-          if (!isSame) {
-            this.memory = res.data;
-          }
-        });
-    },
+  
     getCartNumber(){
      
       if (this.member) {

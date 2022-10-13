@@ -80,7 +80,7 @@
       <div class="commodity-area col-12" v-if="toggle == false">
         <div
           class="commodity-obj"
-          v-for="(item, index) in data"
+          v-for="(item,index) in data"
           :key="item.PROD_ID"
         >
           <button @click="next(index, item.length)" class="slide-control">
@@ -92,7 +92,7 @@
                 class="slide-pic"
                 id="pic"
                 :style="slidePic(index)"
-                @click="addOrder()"
+                @click="addOrder(item.PROD_ID)"
               >
                 <img :src="require(`../../public/api/pic/${item.PROD_PIC1}`)" />
                 <img :src="require(`../../public/api/pic/${item.PROD_PIC2}`)" />
@@ -134,28 +134,25 @@
       <div class="commodity-card" v-if="toggle == true">
         <div
           class="commodity-obj col-3"
-          v-for="item in data"
+          v-for="(item,index) in data"
           :key="item.PROD_ID"
         >
           <div class="commodity-pic">
-            <button @click="next(item)" class="slide-control">＜</button>
+            <button @click="next(index,item.length)" class="slide-control">＜</button>
             <router-link to="/Detail">
               <div
                 class="slide-pic"
                 ref="imgWidth"
                 id="pic"
                 @click="addOrder(item.PROD_ID)"
-                :style="{
-                  left: photo * item.SLIDE + 'px',
-                  transition: 0.4 + 's',
-                }"
+                :style="slidePic(index)"
               >
                 <img :src="require(`../../public/api/pic/${item.PROD_PIC1}`)" />
                 <img :src="require(`../../public/api/pic/${item.PROD_PIC2}`)" />
                 <img :src="require(`../../public/api/pic/${item.PROD_PIC3}`)" />
               </div>
             </router-link>
-            <button @click="prev(item)" class="slide-control">＞</button>
+            <button @click="prev(index,item.length)" class="slide-control">＞</button>
           </div>
 
           <div class="commodity-body">
@@ -245,40 +242,41 @@ export default {
   },
   methods: {
     slidePic(index) {
-      return { left: ` ${-200 * this.slideImgActive[index]}px` };
+      return { left: ` ${-100 * this.slideImgActive[index]}%` };
     },
-    next(index, last) {
-      if (this.slideImgActive[index] === 0) {
+    next(index) {
+      if (this.slideImgActive[index] === 2) {
         this.slideImgActive[index] = 0;
       } else {
         this.slideImgActive[index] += 1;
       }
     },
 
-    prev(index, last) {
+    prev(index) {
       if (this.slideImgActive[index] === 0) {
-        this.slideImgActive[index] = last - 1;
+        this.slideImgActive[index] = 2;
       } else {
         this.slideImgActive[index] -= 1;
-        console.log("index", this.slideImgActive[index]);
+    
       }
     },
-    addOrder() {
-      let index = this.data.findIndex((item) => item.PROD_ID === id);
+    addOrder(id) {
+   
+      let count = this.data.findIndex((item) => item.PROD_ID === id);
       this.order = [
         {
-          PROD_ID: this.data[index].PROD_ID,
-          PROD_NAME: this.data[index].PROD_NAME,
-          PROD_PRICE: this.data[index].PROD_PRICE,
-          PROD_PIC1: this.data[index].PROD_PIC1,
-          PROD_PIC2: this.data[index].PROD_PIC2,
-          PROD_PIC3: this.data[index].PROD_PIC3,
-          PROD_DATE: this.data[index].PROD_DATE,
-          PROD_DESC1: this.data[index].PROD_DESC1,
-          PROD_DESC2: this.data[index].PROD_DESC2,
-          PROD_DESC3: this.data[index].PROD_DESC3,
-          PROD_REVIEW: parseInt(this.data[index].PROD_REVIEW) + 1,
-          PROD_TIMES: parseInt(this.data[index].PROD_TIMES) + 1,
+          PROD_ID: this.data[count].PROD_ID,
+          PROD_NAME: this.data[count].PROD_NAME,
+          PROD_PRICE: this.data[count].PROD_PRICE,
+          PROD_PIC1: this.data[count].PROD_PIC1,
+          PROD_PIC2: this.data[count].PROD_PIC2,
+          PROD_PIC3: this.data[count].PROD_PIC3,
+          PROD_DATE: this.data[count].PROD_DATE,
+          PROD_DESC1: this.data[count].PROD_DESC1,
+          PROD_DESC2: this.data[count].PROD_DESC2,
+          PROD_DESC3: this.data[count].PROD_DESC3,
+          PROD_REVIEW: parseInt(this.data[count].PROD_REVIEW) + 1,
+          PROD_TIMES: parseInt(this.data[count].PROD_TIMES) + 1,
         },
       ];
 
@@ -294,7 +292,7 @@ export default {
 
       let members = sessionStorage.getItem("member");
       this.member = JSON.parse(members);
-      console.log(this.member);
+ 
     },
     groupBy(value) {
       switch (value) {

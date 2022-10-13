@@ -1,5 +1,5 @@
 <template>
-    <div class="massage_game">
+    <div class="massage_game ">
 
         <h1 class="sr_only">穴道小遊戲</h1>
 

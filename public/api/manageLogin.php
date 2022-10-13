@@ -19,9 +19,9 @@ try{
     }else{ //找得到
       //取回會員資料，存入session
         $memData = $existAccount->fetch(PDO::FETCH_ASSOC);
-        $_SESSION["adminId"] = $memData["ADMIN_ID"];
+        $_SESSION["adminName"] = $memData["ADMIN_NAME"];
         //送出登入者的資料
-        $result = ["adminId"=>$_SESSION["adminId"],];
+        $result = ["adminName"=>$_SESSION["adminName"],];
         echo json_encode($result);
     }	
   }catch(PDOException $e){

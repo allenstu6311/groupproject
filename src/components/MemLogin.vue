@@ -21,7 +21,7 @@
                 <br>
                 <div class="sign">
                     <router-link to="/MemRegister">註冊</router-link>
-                    <a href="./backstage.html">忘記密碼</a>
+                    <!-- <a href="./backstage.html">忘記密碼</a> -->
                 </div>
             </div>
             <!-- 登入按鈕 -->

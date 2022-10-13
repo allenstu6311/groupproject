@@ -5,7 +5,7 @@
           <div class="title">後台管理者系統</div>
         </div>
         <div class="user_name">
-          管理員 您好
+          {{name}} 您好
           <div class="logout" @click="logout">登出</div>
         </div>
       </header>
@@ -17,13 +17,21 @@ export default {
     data() {
         return {
             router: useRouter(),
+            name:''
         }
     },
     methods: {
         logout(){
             sessionStorage.removeItem("admin");
             this.router.push({ path: '/ManageLogin' });
+        },
+        getAdminName(){
+            let getname = JSON.parse(sessionStorage.getItem("admin"));
+            this.name = getname.adminName;
         }
+    },
+    created() {
+        this.getAdminName();
     },
 }
 </script>

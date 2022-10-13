@@ -51,7 +51,7 @@ export default {
                     } else {
                         this.session = JSON.parse(xhr.responseText);
                         sessionStorage.setItem("admin", JSON.stringify(this.session));
-                        this.loginStatus = sessionStorage.getItem("member")
+                        this.loginStatus = sessionStorage.getItem("admin")
                         if (this.loginStatus != '') {
                             thus.router.replace({ path: '/BackstageIndex' })
                         }

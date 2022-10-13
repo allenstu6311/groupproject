@@ -27,6 +27,7 @@ try{
         $_SESSION["memPhone"] = $memData["MEM_PHONE"];
         $_SESSION["memLocalCall"] = $memData["MEM_LOCALCALL"];
         $_SESSION["memEmail"] = $memData["MEM_EMAIL"];
+        $_SESSION["memStatus"] = $memData["MEM_PERMISSION"];
         //送出登入者的資料
         $result = ["memId"=>$_SESSION["memId"],
                    "memName"=>$_SESSION["memName"],
@@ -36,6 +37,7 @@ try{
                    "memPhone"=>$_SESSION["memPhone"],
                    "memLocalCall"=>$_SESSION["memLocalCall"],
                    "memEmail"=>$_SESSION["memEmail"],
+                   "memStatus"=>$_SESSION["memStatus"],
                   ];
         echo json_encode($result);
     }	

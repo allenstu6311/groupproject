@@ -52,7 +52,7 @@ export default {
             account: '',
             password: '',
             session: '',
-            loginStatus: [],
+            loginStatus: '',
             router: useRouter(),
         }
     },
@@ -80,11 +80,11 @@ export default {
                         alert("帳號密碼有誤");
                     } else {
                         this.session = JSON.parse(xhr.responseText);
-                        sessionStorage.setItem("member", JSON.stringify(this.session));
-                        this.loginStatus = sessionStorage.getItem("member")
-                        if (this.loginStatus != '') {
+                        this.loginStatus = this.session.memStatus;
+                        if (this.loginStatus == 1) {
                             // if (document.referrer === '') {
-                                thus.router.replace({ path: '/MemCenter' })
+                                sessionStorage.setItem("member", JSON.stringify(this.session));
+                                thus.router.replace({ path: '/MemCenter' });
                             // }
                             // else if(document.referrer === '/MemRegister'){
                             //     location.replace("/MemCenter");
@@ -92,11 +92,13 @@ export default {
                             // else {
                             //     location.replace(document.referrer);
                             // }
+                        }else{
+                            alert("此帳號已被停權");
+                            thus.router.go(0);
                         }
                     }
 
                 }
-                // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
                 var url = `${BASE_URL}/login.php`
                 // var url = "http://localhost/CGD102_G2/public/api/login.php"
                 xhr.open("post",url, true);

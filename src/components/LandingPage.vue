@@ -1,5 +1,5 @@
 <template>
-    <div class="container background_flower">
+    <div class="landing_content background_flower">
         <div class="logo">
             <img src="../assets/images/headerLogo.png" alt="">
         </div>
@@ -77,67 +77,69 @@
 }
 
 
-    .container{
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        background-color: $baseWhite;
-        .logo{
-            
-            margin: 0 auto;
-            padding-top: 40px;
-            width: 1200px;
-            img{
-                width: 300px;
-                
-            }
-        }
-        .btn_contain{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 65vh;
-            margin: 0 auto;
-            width: 1200px;
-            .space{
-                width: 250px;
-            }
-            a{
-                border-radius: 50%;
-                border: 3px solid $blue;
-                transition: all .3s;
-                &:hover{
-                    background-color: $blue;
-                    transform: scale(1.1);
-                }
-                &:hover .enter{
-                    color:$white;
-                }
-                
-
-                .enter{
-                background-color: transparent;
-                border: 0px;
-                width: 180px;
-                height: 180px;
-                cursor: pointer;
-                font-size: 36px;
-                font-weight: 600;
-                color: $blue;
-                letter-spacing: 3px;
-                }    
-            }
-        }
+.landing_content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    background-color: $baseWhite;
+    .logo{
         
-    .copyright {
         margin: 0 auto;
-        padding-top: 50px;
+        padding-top: 40px;
         width: 1200px;
-        line-height: 1.5;
-        p{
-            color: rgb(119, 119, 119);
+        img{
+            width: 300px;
+            
         }
     }
+    .btn_contain{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 65vh;
+        margin: 0 auto;
+        width: 1200px;
+        .space{
+            width: 250px;
+        }
+        a{
+            border-radius: 50%;
+            border: 3px solid $blue;
+            transition: all .3s;
+            &:hover{
+                background-color: $blue;
+                transform: scale(1.1);
+            }
+            &:hover .enter{
+                color:$white;
+            }
+            
+
+            .enter{
+            background-color: transparent;
+            border: 0px;
+            width: 180px;
+            height: 180px;
+            cursor: pointer;
+            font-size: 36px;
+            font-weight: 600;
+            color: $blue;
+            letter-spacing: 3px;
+            }    
+        }
     }
+    
+.copyright {
+    margin: 0 auto;
+    padding-top: 50px;
+    width: 1200px;
+    line-height: 1.5;
+    p{
+        color: rgb(119, 119, 119);
+    }
+}
+}
     
 </style>

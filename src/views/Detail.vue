@@ -39,6 +39,6 @@ import { Checkbox } from 'view-ui-plus'
 </script>
 <style scoped>
 .Detail-container {
-  margin-top: 100px;
+  padding-top: 100px;
 }
 </style>

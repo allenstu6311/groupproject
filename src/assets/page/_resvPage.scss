@@ -1,5 +1,6 @@
 .resv_page {
-    margin-top: 60px;
+    // margin-top: 60px;
+    padding-top: 120px;
 
     @include m() {
         @include grid(12);

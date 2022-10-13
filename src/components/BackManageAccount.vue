@@ -1,4 +1,5 @@
 <template>
+    <!-- 新增管理員燈箱 -->
     <teleport to='body'>
         <div class="modal-mask" :style="modalStyle">
             <div class="modal-container">
@@ -15,6 +16,27 @@
                         <div class="add_button_area">
                             <button class="btnLittle" @click="toggleModal">取消</button>
                             <button class="btnLittle" @click="newAdmin">確定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </teleport>
+    <!-- 再次確定是否刪除 -->
+    <teleport to='body'>
+        <div class="modal-mask" :style="comfirmA">
+            <div class="modal-container">
+                <div class="lightbox" @click.self="closeConfirmAgain">
+                    <div class="lightbox-body">
+                        <div class="title">
+                            刪除管理員帳號
+                        </div>
+                        <div class="inputarea">
+                            確定刪除選取的資料?
+                        </div>
+                        <div class="add_button_area">
+                            <button class="btnLittle" @click="closeConfirmAgain">取消</button>
+                            <button class="btnLittle" @click="dropAdmin">確定</button>
                         </div>
                     </div>
                 </div>
@@ -41,22 +63,26 @@
             </div>
             <div class="button_area">
                 <button class="btnMinimum new" @click="openlightbox">新增</button>
-                <button class="btnMinimum">刪除</button>
+                <button class="btnMinimum" @click="openConfirmAgain">刪除</button>
             </div>
         </div>
         <hr>
         <table class="manage_table">
             <thead>
                 <tr>
+                    <td></td>
                     <td>編號</td>
                     <td>姓名</td>
                     <td>帳號</td>
                     <td>密碼</td>
-                    <td></td>
+                    
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="(managedata,index) in managelist" :key="index" class="managedata_bar">
+                    <td>
+                        <input type="checkbox" v-model="managedata.checkedArray" @change="getindex(managedata.ADMIN_ID)">
+                    </td>
                     <td>{{managedata.ADMIN_ID}}</td>
                     <td>{{managedata.ADMIN_NAME}}</td>
                     <td>{{managedata.ADMIN_ACCOUNT}}</td>
@@ -80,9 +106,11 @@ export default {
         return {
             managelist: [],
             isShow: false,
+            confirmagain:false,
             addaccount: '',
             addpsw: '',
             addname: '',
+            checkedArray:[],
             router: useRouter(),
             // editShow: true,
             // confirmShow:false,
@@ -97,6 +125,11 @@ export default {
                 'display': this.isShow ? '' : 'none',
             };
         },
+        comfirmA(){
+            return {
+                'display': this.confirmagain ? '' : 'none',
+            };
+        }
         // edit() {
         //     return {
         //         'display': this.editShow ? '' : 'none',
@@ -121,13 +154,20 @@ export default {
                 this.managelist = JSON.parse(xhr.responseText);
             }.bind(this);
         },
+        //開啟新增管理員的燈箱
+        openlightbox() {
+            this.isShow = true;
+        },
         //關閉新增管理員的燈箱
         toggleModal() {
             this.isShow = !this.isShow;
         },
-        //開啟新增管理員的燈箱
-        openlightbox() {
-            this.isShow = true;
+        //開啟再次確認刪除
+        openConfirmAgain(){
+            this.confirmagain = true;
+        },
+        closeConfirmAgain() {
+            this.confirmagain = !this.confirmagain;
         },
         //新增管理員
         newAdmin() {
@@ -142,8 +182,6 @@ export default {
             } else {
                 let newAdminData = `account=${this.addaccount}&password=${this.addpsw}&name=${this.addname}`
                 xhr.send(newAdminData);
-                console.log(newAdminData);
-
             }
             xhr.onload = function () {
                 thus.isShow = false;
@@ -153,9 +191,28 @@ export default {
                 alert("新增成功");
                 thus.router.go(0);
             }
-
-
         },
+        //取得checked的index
+        getindex(ADMIN_ID){
+            this.checkedArray.push(ADMIN_ID);
+        },
+        dropAdmin(){
+            let xhr = new XMLHttpRequest();
+            
+            // var url = `${BASE_URL}/backDropAdmin.php`;//上線用
+            var url = "http://localhost/CGD102_G2/public/api/backDropAdmin.php";//開發用
+            xhr.open("post", url, true);
+            xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+            let droplist = `checked=${this.checkedArray}`;
+            console.log(droplist);
+            xhr.send(droplist);
+
+            xhr.onload = function(){
+                if(xhr.response){
+                    alert(1);
+                }
+            }
+        }
         //編輯按鈕顯示
         // editTargetData(managedata){
         //     this.editShow = !this.editShow;
@@ -272,6 +329,11 @@ export default {
             tr {
                 font-weight: 600;
                 color: $white;
+                td{
+                    &:nth-of-type(1){
+                        width: 40px;
+                    }
+                }
             }
         }
 

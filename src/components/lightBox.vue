@@ -13,7 +13,7 @@
         <router-link to="/MemLogin" class="btnLarge">前往登入</router-link>
       </div>
       <div class="light-box-close">
-        <button type="button" @click="sendLightBoxInfo">x</button>
+        <button type="button" @click="lightBoxShow=false">x</button>
       </div>
     </div>
   </div>

@@ -23,7 +23,7 @@
         :value="item"
         
       />
-      <!-- {{calculate}} -->
+     
       <div class="shopping-list-pic">
         <img :src="require(`../../public/api/pic/${item.PROD_PIC1}`)" />
       </div>
@@ -87,21 +87,27 @@
             totalPrice
           }}</strong>
         </p>
-        <router-link @click="checkList()" to="/Confirm"
+        <router-link @click="checkList(e)" to="/Confirm"
           ><button class="btnLittle">前往結帳</button>
         </router-link>
       </div>
     </div>
   </div>
+
+  <lightBox :lightBoxShow="showBox"/>
 </template>
 
 <script>
 import { nextTick } from "@vue/runtime-core";
 import { BASE_URL } from "@/assets/js/common.js";
+import lightBox from "@/components/lightBox.vue"
 export default {
   props: {
     getProduct: Array,
     newCartInfo: Array,
+  },
+   components:{
+      lightBox,
   },
   data() {
     return {
@@ -116,6 +122,8 @@ export default {
       member: [],
       unused: false,
       memory: [],
+      showBox:false
+      // checkMember:false
     };
   },
   methods: {
@@ -228,9 +236,13 @@ export default {
       this.totalPrice = parseInt(this.productPrice * this.sel);
       this.countMoney();
     },
-    checkList() {
-      localStorage.setItem("coupon", this.sel);
-    },
+    // checkList() {
+    //     if(!this.memory){
+    //       alert("購物車是空的")
+    //       e.preventDefault();
+          
+    //     }
+    // },
 
     reduceShoppingCart(focus) {
       var url = `${BASE_URL}/changeShoppingCart.php`;
@@ -291,12 +303,22 @@ export default {
     },
   },
   created() {
+    let members = sessionStorage.getItem("member");
+    this.member = JSON.parse(members);
+
+    if(!this.member){
+      this.showBox=true
+    }else{
+      this.showBox=false
+       this.updateCart();
+    }
     this.getInfo();
     this.selChange();
-    this.updateCart();
+   
   },
 
   mounted() {
+    
     var url = `${BASE_URL}/member.php`; //上線
     // var url = "http://localhost/CGD102_G2/public/api/member.php"
     if (this.member) {
@@ -360,11 +382,6 @@ export default {
         } else {
           this.detect = false;
         }
-      },
-    },
-    checkBox: {
-      handler(newVal) {
-
       },
     },
     checkOut: {

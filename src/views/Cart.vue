@@ -4,14 +4,16 @@
   </div>
   <ProductCart :getProduct="temporary" 
   @cart-message="cartInformation"
+
   @update-cart="$emit('update-cart', $event)" 
+  
   :newCartInfo ="newCart"/>
   <ShoppingCar 
   @product-info="productInfo" 
   :checkCar="carSend" 
   @addCartInfo ="addCartInfo"/>
 
-  <lightBox  v-show="checkMember==true"/>
+
 </template>
 
 <script>
@@ -31,7 +33,7 @@ export default {
       temporary: [],
       carSend: [],
       newCart:[],
-      checkMember:true
+      checkMember:false
     };
   },
   methods: {
@@ -50,19 +52,26 @@ export default {
   },
 
   created() {
-    this.productInfo();
-    let members = sessionStorage.getItem("member");
-    this.member = JSON.parse(members);
+      this.productInfo();
+    // let members = sessionStorage.getItem("member");
+    // this.member = JSON.parse(members);
 
-    if(!this.member){
-      this.checkMember=true
-    }else{
-      this.checkMember=false
-    }
+    // if(!this.member){
+    //   this.checkMember=true
+    // }else{
+    //   this.checkMember=false
+    // }
+  
   },
   watch: {},
-  updated() {
-    // console.log("t",this.temporary)
-  },
+    // member:{
+    //   handler(newVal){
+    //     if(!newVal){
+    //       this.checkMember=true
+    //     }else{
+    //       this.checkMember=false
+    //     }
+    //   }
+    // }
 };
 </script>

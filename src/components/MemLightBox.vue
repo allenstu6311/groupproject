@@ -4,7 +4,7 @@
       <header>訂單詳細資訊</header>
       <body>
         <span class="order-date">
-          訂購日期:<slot name="order-date">{{memberInfo?memberInfo[0].PROD_ORDERS_DATE:0}}</slot></span><br>
+          訂購日期:<slot name="order-date">{{memberInfo.length>0 ?memberInfo[0].PROD_ORDERS_DATE:0}}</slot></span><br>
         <span class="total-money">
           總計:<slot name="total-money">
             {{

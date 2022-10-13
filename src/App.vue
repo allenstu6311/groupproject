@@ -1,6 +1,9 @@
 <template>
 <Header v-if="!hideHeaderFooter" ref="header" />
-    <router-view @update-cart="updateCart"/>
+    <router-view   @update-cart="updateCart"
+                    @update-member="updateMember"
+                   />
+                   
 <Footer v-if="!hideHeaderFooter" />
 </template>
 
@@ -12,6 +15,11 @@ export default {
     // created() {
     //   console.log('this.$router :>> ', this.$router);
     // },
+    data(){
+      return{
+        member:[]
+      }
+    },
     computed:{
       hideHeaderFooter(){
         return this.$router.currentRoute.value.meta && this.$router.currentRoute.value.meta.isHide
@@ -23,8 +31,18 @@ export default {
     },
     methods: {
       updateCart(list) {
-        this.$refs.header.updateCart(list);//?
+        this.$refs.header.updateCart(list);
       },
+       updateMember(info) {
+       
+        this.$refs.header.updateMember(info);
+        
+      },
+    },
+    created(){
+      //  let members = sessionStorage.getItem("member");
+      // this.member = JSON.parse(members);
+      //   console.log("app",this.member)
     }
 }
 </script>

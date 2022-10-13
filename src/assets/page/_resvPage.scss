@@ -33,11 +33,11 @@
                 margin-left: 40px;
                 color: $blue;
 
-                a {
+                a, p {
                     color: $blue;
                 }
 
-                a.this_page {
+                a.this_page, p.this_page {
                     border-bottom: 1px solid $blue;
                 }
             }

@@ -87,8 +87,13 @@
           <label for="pay">付款方式:</label>
         </div>
         <div class="methods">
-          <h5><input type="radio" name="pay" value="online" />線上付款</h5>
-          <h5><input type="radio" name="pay" value="pick" />取貨付款</h5>
+          <h5><input type="radio" name="pay" value="online"  @focus="onlinePayList=true"/>線上付款</h5>
+          <div class="online-pay" v-if="onlinePayList==true" style="line-height:2">
+            <input type="text" placeholder="信用卡卡號" style="margin-bottom:10px">
+            <input type="text" placeholder="到期日" style="width:60%;margin-right: 10px">
+            <input type="text" placeholder="驗證碼" style="width:35%">
+          </div>
+          <h5><input type="radio" name="pay" value="pick"  @focus="onlinePayList=false"/>取貨付款</h5>
         </div>
       </div>
     </div>
@@ -146,9 +151,15 @@ export default {
       seven: "",
       sevenAddress: [],
       post: [],
+      onlinePayList:false,
+      
     };
   },
   methods: {
+    onlinePay(e){
+
+    },
+    
     filterShop(CityName) {
       switch (CityName) {
         case "桃園市":

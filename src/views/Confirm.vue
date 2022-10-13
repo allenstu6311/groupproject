@@ -55,9 +55,6 @@ export default {
     Information() {
     let members = sessionStorage.getItem("member");
     this.member = JSON.parse(members);
-      // let calculates = localStorage.getItem("calculate");
-      // if (!calculates) return;
-      // this.calculate = JSON.parse(calculates);
 
       let totalPrices = localStorage.getItem("totalPrice");
       if (!totalPrices) return;
@@ -65,7 +62,7 @@ export default {
     },
     payInfo() {
       //商品清單
-      alert("結帳完成");
+
        var url = `${BASE_URL}/productlist.php`; //上線
       // var url = "http://localhost/CGD102_G2/public/api/productlist.php";
       this.axios
@@ -97,7 +94,11 @@ export default {
               prod_num: this.memory[i].PROD_QTY,
             },
           })
-          .then((res) => {});
+          .then((res) => {
+               
+          });
+             alert("結帳完成!請至會員中心查看");
+            this.$router.push("/MemCenter")
       }
     },
     productMoney(val) {
@@ -145,8 +146,6 @@ export default {
         })
         .then((res) => {
           this.memory = res.data;
-
-          console.log("before",this.memory)
         });
 
       var url = `${BASE_URL}/member.php`; //上線
@@ -159,26 +158,13 @@ export default {
         })
         .then((res) => {
           this.memberCoups = res.data;
-          // console.log("sale",this.memberCoups)
+
         });
     }
   },
+  
 
-  watch: {
-    calculate: {
-      handler(newVal) {
-        this.productPrice = "";
-        for (let i = 0; i < newVal.length; i++) {
-          this.productPrice = parseFloat(
-            this.productPrice + newVal[i].PROD_PRICE * newVal[i].PROD_NUM
-          );
-        }
-      },
-    },
-
-    deep: true,
-  },
-};
+}
 </script>
 <style lang="scss" scope>
 .background-pic {

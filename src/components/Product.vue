@@ -487,12 +487,16 @@ export default {
       this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
       ).toFixed(1);
       this.star = parseInt(this.score);
+
+      let members = sessionStorage.getItem("member");
+      this.member = JSON.parse(members);
     },
   },
   created() {
   
       // this.updateCart();
       this.getStar();
+
   },
 };
 </script>

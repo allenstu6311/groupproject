@@ -104,9 +104,8 @@ export default {
                 return;
             } else if (this.accountflag&&this.pswflag && this.emailflag && this.phoneflag && this.addressflag && this.nameflag) {
                 var xhr = new XMLHttpRequest();
-
+                let thus = this
                 xhr.onload = function () {
-                    let thus = this
                     if (xhr.status == 200) {
                         if (xhr.responseText == "註冊成功") {
                             alert("註冊成功");
@@ -116,7 +115,6 @@ export default {
                         }
                     }
                 }
-                // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..';
                 var url = `${BASE_URL}/register.php`;
                 // var url = "http://localhost/CGD102_G2/public/api/register.php";
                 xhr.open("post",url, true);

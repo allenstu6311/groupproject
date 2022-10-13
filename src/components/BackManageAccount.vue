@@ -1,0 +1,289 @@
+<template>
+    <teleport to='body'>
+        <div class="modal-mask" :style="modalStyle">
+            <div class="modal-container">
+                <div class="lightbox" @click.self="toggleModal">
+                    <div class="lightbox-body">
+                        <div class="title">
+                            新增管理員帳號
+                        </div>
+                        <div class="inputarea">
+                            帳號: <input type="text" v-model="addaccount">
+                            密碼: <input type="text" v-model="addpsw">
+                            姓名: <input type="text" v-model="addname">
+                        </div>
+                        <div class="add_button_area">
+                            <button class="btnLittle" @click="toggleModal">取消</button>
+                            <button class="btnLittle" @click="newAdmin">確定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </teleport>
+    <div class="backmanage">
+        <h1>管理後台帳號</h1>
+        <div class="search_manage_bar">
+            <div class="search_bar">
+                <select class="form-select form-select-sm bg-light condition-search"
+                    aria-label=".form-select-sm example">
+                    <option value="-1">選擇排序條件</option>
+                    <option value="MEM_ID">依管理員編號</option>
+                    <option value="MEM_NAME">依姓名排序</option>
+                </select>
+                <div class="input-group rounded bg-light">
+                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                        aria-describedby="search-addon" />
+                    <span class="input-group-text border-0" id="search-addon">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="button_area">
+                <button class="btnMinimum new" @click="openlightbox">新增</button>
+                <button class="btnMinimum">刪除</button>
+            </div>
+        </div>
+        <hr>
+        <table class="manage_table">
+            <thead>
+                <tr>
+                    <td>編號</td>
+                    <td>姓名</td>
+                    <td>帳號</td>
+                    <td>密碼</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(managedata,index) in managelist" :key="index" class="managedata_bar">
+                    <td>{{managedata.ADMIN_ID}}</td>
+                    <td>{{managedata.ADMIN_NAME}}</td>
+                    <td>{{managedata.ADMIN_ACCOUNT}}</td>
+                    <td>{{managedata.ADMIN_PSW}}</td>
+                    <!-- <td>
+                        <button class="btnMinimum" @click="editTargetData(managedata)" :style="edit">修改</button>
+                        <button class="btnMinimum" @click="confirmTargetData(managedata)" :style="confirm">確定</button>
+                    </td> -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</template>
+<script>
+import { BASE_URL } from '@/assets/js/common.js'
+import { useRouter } from "vue-router";
+export default {
+    data() {
+        return {
+            managelist: [],
+            isShow: false,
+            addaccount: '',
+            addpsw: '',
+            addname: '',
+            router: useRouter(),
+            // editShow: true,
+            // confirmShow:false,
+        }
+    },
+    created() {
+        this.getmanagelist();
+    },
+    computed: {
+        modalStyle() {
+            return {
+                'display': this.isShow ? '' : 'none',
+            };
+        },
+        // edit() {
+        //     return {
+        //         'display': this.editShow ? '' : 'none',
+        //     }
+        // },
+        // confirm() {
+        //     return {
+        //         'display': this.confirmShow ? '' : 'none',
+        //     }
+        // },
+    },
+    methods: {
+        //取得資料
+        getmanagelist() {
+            let xhr = new XMLHttpRequest();
+            // var url = `${BASE_URL}/backGetManage.php`; //上線用
+            var url = "http://localhost/CGD102_G2/public/api/backGetManage.php";//開發用
+            xhr.open("get", url, true);
+            xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+            xhr.send(null);
+            xhr.onload = function () {
+                this.managelist = JSON.parse(xhr.responseText);
+            }.bind(this);
+        },
+        //關閉新增管理員的燈箱
+        toggleModal() {
+            this.isShow = !this.isShow;
+        },
+        //開啟新增管理員的燈箱
+        openlightbox() {
+            this.isShow = true;
+        },
+        //新增管理員
+        newAdmin() {
+            let xhr = new XMLHttpRequest();
+            let thus = this;
+            // var url = `${BASE_URL}/backNewAdmin.php`; //上線用
+            var url = "http://localhost/CGD102_G2/public/api/backNewAdmin.php";//開發用
+            xhr.open("post", url, true);
+            xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+            if (this.addaccount == '' || this.addpsw == '' || this.addname == '') {
+                alert("欄位不能空白")
+            } else {
+                let newAdminData = `account=${this.addaccount}&password=${this.addpsw}&name=${this.addname}`
+                xhr.send(newAdminData);
+                console.log(newAdminData);
+
+            }
+            xhr.onload = function () {
+                thus.isShow = false;
+                thus.addaccount = '';
+                thus.addpsw = '';
+                thus.addname = '';
+                alert("新增成功");
+                thus.router.go(0);
+            }
+
+
+        },
+        //編輯按鈕顯示
+        // editTargetData(managedata){
+        //     this.editShow = !this.editShow;
+        //     this.confirmShow = !this.confirmShow;
+        // },
+        // confirmTargetData(managedata){
+        //     this.editShow = !this.editShow;
+        //     this.confirmShow = !this.confirmShow;
+        // }
+    }
+}
+</script>
+<style lang="scss" scoped>
+@import "../assets/base/_color.scss";
+
+//燈箱
+.lightbox-body {
+    width: 50%;
+    cursor: auto;
+
+    .title {
+        background-color: $blue;
+        text-align: center;
+        color: $white;
+        font-size: 26px;
+        padding: 10px 0;
+    }
+
+    .inputarea {
+        background-color: $white;
+        border-collapse: separate;
+        border-spacing: 0px 10px;
+        width: 100%;
+        height: 80px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        input {
+            margin-right: 10px;
+            margin-left: 5px;
+        }
+
+    }
+
+    .add_button_area {
+        background-color: $white;
+        display: flex;
+        justify-content: center;
+        padding-bottom: 10px;
+
+        button {
+            margin-right: 10px;
+        }
+    }
+}
+
+//內容
+.backmanage {
+    h1 {
+        font-size: 32px;
+        text-align: center;
+        padding: 0 0 10px;
+    }
+
+    .search_manage_bar {
+        display: flex;
+        justify-content: space-between;
+
+        .search_bar {
+            display: flex;
+            flex-grow: 1;
+
+            .condition-search {
+                width: 20%;
+            }
+
+            .mem_status {
+                width: 10%;
+                margin: 0 20px;
+            }
+
+            .input-group {
+                width: 25%;
+            }
+        }
+
+        .button_area {
+            .new {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    hr {
+        margin: 1rem 0;
+        color: inherit;
+        border: 0;
+        border-top: 1px solid;
+        opacity: 0.25;
+    }
+
+    .manage_table {
+        width: 100%;
+        text-align: center;
+        table-layout: fixed;
+        border-collapse: separate;
+        border-spacing: 0px 10px;
+
+        thead {
+            background-color: $blue;
+
+            tr {
+                font-weight: 600;
+                color: $white;
+            }
+        }
+
+        tbody {
+            tr {
+                border-spacing: 10px;
+
+                td {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+</style>

@@ -200,6 +200,7 @@ export default {
                 this.checkedArray.shift(ADMIN_ID);
             }
         },
+        //刪除管理員
         dropAdmin(){
             let xhr = new XMLHttpRequest();
             let thus = this;

@@ -6,12 +6,12 @@
     <div class="review-score">
       <div class="review-fraction">
         <h3>
-          <strong>{{ (score-1).toFixed(1) }}</strong
+          <strong>{{ (score - 1).toFixed(1) }}</strong
           >/5
         </h3>
       </div>
       <div class="review-star">
-        <p v-for="item in star-1" :key="item">★</p>
+        <p v-for="item in star - 1" :key="item">★</p>
         <p v-if="star < 1">{{ block }}</p>
         <p v-if="star < 2">{{ block }}</p>
         <p v-if="star < 3">{{ block }}</p>
@@ -19,7 +19,7 @@
         <p v-if="star < 5">{{ block }}</p>
       </div>
       <small style="text-align: center"
-        >共{{ order[0] ? order[0].PROD_TIMES-1 : 0 }}人評價此商品</small
+        >共{{ order[0] ? order[0].PROD_TIMES - 1 : 0 }}人評價此商品</small
       >
     </div>
 
@@ -105,13 +105,17 @@
       </div>
     </div>
   </div>
+  <lightBox :lightBoxShow="showBox" />
 </template>
 <script>
 import { BASE_URL } from "@/assets/js/common.js";
 import { Alert } from "view-ui-plus";
+import lightBox from "@/components/lightBox.vue";
 // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 export default {
-  components: {},
+  components: {
+    lightBox,
+  },
   data() {
     return {
       tex: "",
@@ -124,11 +128,14 @@ export default {
       member: [],
       reviewStar: false,
       checkFont: "確定評價?",
-      lightBoxShow:false 
+      showBox: false,
     };
   },
   methods: {
     giveRating(num, name) {
+      if(!this.member){
+        this.showBox=true
+      }else{
       this.reviewStar = true;
       var url = `${BASE_URL}/review.php`; //上線
       // var url = "http://localhost/CGD102_G2/public/api/review.php"
@@ -140,23 +147,30 @@ export default {
           },
         })
         .then((res) => {});
+        
+      }
+    
     },
     thankYou() {
       alert("感謝評價");
     },
     upload() {
-      var url = `${BASE_URL}/comment.php`; //上線
-      // var url = "http://localhost/CGD102_G2/public/api/comment.php";
+      if (!this.member) {
+        this.showBox = true;
+      } else {
+        var url = `${BASE_URL}/comment.php`; //上線
+        // var url = "http://localhost/CGD102_G2/public/api/comment.php";
 
-      this.axios.get(url, {
-        params: {
-          post: this.tex,
-          product_id: this.order[0].PROD_ID,
-          mem_id: this.member.memId,
-        },
-      });
-      this.updateArticle();
-      this.tex = "";
+        this.axios.get(url, {
+          params: {
+            post: this.tex,
+            product_id: this.order[0].PROD_ID,
+            mem_id: this.member.memId,
+          },
+        });
+        this.updateArticle();
+        this.tex = "";
+      }
     },
     updateArticle() {
       //  var url = 'http://localhost/CGD102_G2/public/api/article.php'
@@ -179,8 +193,8 @@ export default {
       let members = sessionStorage.getItem("member");
       this.member = JSON.parse(members);
 
-    this.score = (
-      this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
+      this.score = (
+        this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
       ).toFixed(1);
       this.star = parseInt(this.score);
     },

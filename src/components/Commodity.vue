@@ -242,7 +242,8 @@ export default {
   },
   methods: {
     slidePic(index) {
-      return { left: ` ${-100 * this.slideImgActive[index]}%` };
+      return { left: ` ${-100 * this.slideImgActive[index]}%`,
+                transition:.4+'s' };
     },
     next(index) {
       if (this.slideImgActive[index] === 2) {
@@ -438,27 +439,7 @@ export default {
   },
   mounted() {},
   watch: {
-    toggle: {
-      handler(newVal) {
-        this.$nextTick(() => {
-          if (newVal == false) {
-            this.photo = document.getElementById("pic").clientWidth;
-
-            // window.onresize = () => {
-            // let pic = document.getElementById("pic").clientWidth;
-            // this.photo = pic;
-
-            // };
-          } else {
-            this.photo = document.getElementById("pic").clientWidth;
-            // window.onresize = () => {
-            //   let pic = document.getElementById("pic").clientWidth;
-            //   this.photo = pic;
-            // };
-          }
-        });
-      },
-    },
+   
     price: {
       handler(newVal) {
         this.data = newVal;

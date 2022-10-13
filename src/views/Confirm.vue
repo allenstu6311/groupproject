@@ -191,7 +191,8 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 50px 10px;
+  align-items: flex-start;
+  padding-top: 100px;
 }
 .next-page {
   width: 120px;
@@ -246,7 +247,7 @@ export default {
   }
 }
 
-@media screen and (min-width: 768px) and (min-width: 1024px) {
+@media screen and (min-width: 768px)  {
   .confirm-container {
     width: 100%;
     max-width: 1200px;
@@ -254,7 +255,7 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding: 80px 10px;
+    padding-top: 180px;
   }
   .change-page {
     display: flex;

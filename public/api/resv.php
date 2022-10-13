@@ -9,11 +9,11 @@ try{
     require_once("../connect_cgd102g2.php");
 
     
-    $insertSql = "INSERT INTO RESV (THERAPIST_ID, MSG_ID, RESV_DATE, RESV_TIME_START, RESV_TIME_END, RESV_STATUS)
-                  VALUES(:THERAPIST_ID, :MSG_ID, :RESV_DATE, :RESV_TIME_START, :RESV_TIME_END, 0);";
+    $insertSql = "INSERT INTO RESV (MEM_ID, THERAPIST_ID, MSG_ID, RESV_DATE, RESV_TIME_START, RESV_TIME_END, RESV_STATUS)
+                  VALUES(:MEM_ID, :THERAPIST_ID, :MSG_ID, :RESV_DATE, :RESV_TIME_START, :RESV_TIME_END, 0);";
     $resv = $pdo -> prepare($insertSql);
 
-    // $resv->bindValue(":MEM_ID",$_POST["MEM_ID"]);
+    $resv->bindValue(":MEM_ID",$_POST["MEM_ID"]);
     $resv->bindValue(":THERAPIST_ID",$_POST["THERAPIST_ID"]);
     $resv->bindValue(":MSG_ID",$_POST["MSG_ID"]);
     $resv->bindValue(":RESV_DATE",$_POST["RESV_DATE"]);

@@ -296,8 +296,9 @@ export default {
       xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
       //我從前台要送什麼資料去後端？
       // let resv_data = `RESV_DATE=${this.RESV_DATE}`;
-      // this.MEM_ID=`${this.member.memId}`;
-      let resv_data = `THERAPIST_ID=${this.THERAPIST_ID}&MSG_ID=${this.MSG_ID}&RESV_DATE=${this.RESV_DATE}&RESV_TIME_START=${this.RESV_TIME_START}&RESV_TIME_END=${this.RESV_TIME_END}`;
+      this.MEM_ID=`${this.member.memId}`;
+      console.log('MEM_ID',this.MEM_ID);
+      let resv_data = `MEM_ID=${this.MEM_ID}&THERAPIST_ID=${this.THERAPIST_ID}&MSG_ID=${this.MSG_ID}&RESV_DATE=${this.RESV_DATE}&RESV_TIME_START=${this.RESV_TIME_START}&RESV_TIME_END=${this.RESV_TIME_END}`;
       console.log(resv_data);
       xhr.send(resv_data);
     },
@@ -336,7 +337,7 @@ export default {
     } else {
       this.lightBoxShow = false;
     }
-    // console.log('id',this.member.memId);
+    console.log('id',this.member.memId);
   },
   watch: {
     orderList: {

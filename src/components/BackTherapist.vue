@@ -194,13 +194,13 @@
             sorttype() {
                 if (this.selecttype != -1) {
                     this.backstageTherapsitList.sort((a, b) => b[this.selecttype] < a[this.selecttype] ? 1 : -1)
-                }
+                } //sort 排序比較
             },
-            sortPermission() {
-                if (this.selectPermission != -1) {
-                    this.backstageTherapsitList.sort((a, b) => b[this.selectPermission] < a[this.selectPermission] ? 1 : -1)
-                }
-            },
+            // sortPermission() {
+            //     if (this.selectPermission != -1) {
+            //         this.backstageTherapsitList.sort((a, b) => b[this.selectPermission] < a[this.selectPermission] ? 1 : -1)
+            //     }
+            // },
             search(){
                 var url = `${BASE_URL}/backTherapistSearch.php` //上線
                 // var url = "http://localhost/CGD102_G2/public/api/backShopSearch.php"
@@ -209,9 +209,9 @@
                         THERAPIST_NAME: this.searchTherapist,
                     }
                 }).then((res)=>{
-                    this.data = res.data
+                    this.backstageTherapsitList = res.data
                     // this.changePageButton=false
-                    console.log(this.data);
+                    console.log(this.backstageTherapsitList);
                 })
             },
         },
@@ -222,12 +222,12 @@
                 },
                 deep: true
             },
-            selectPermission: {
-                handler(value) {
-                    this.sortPermission()
-                },
-                deep: true
-            },
+            // selectPermission: {
+            //     handler(value) {
+            //         this.sortPermission()
+            //     },
+            //     deep: true
+            // },
             searchTherapist: {
                 handler(newVal){
                     if(!newVal){

@@ -125,7 +125,7 @@ export default {
         },
         photo(e){
             this.pic = e.target.files[0].name;
-            console.log(this.pic);
+            // console.log(this.pic);
         },
         checkContentByReg(reg, content, tip, classname) {
             if (reg.test(content)) {

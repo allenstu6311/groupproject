@@ -1,5 +1,6 @@
 <template>
-    <MemCenter />
+    <MemCenter  
+    @memberInfo="$emit('update-member',$event)"/>
     
    
 </template>
@@ -14,8 +15,6 @@ export default {
     },
     data(){
       return{
-        buyVal:[],
-        buyVal2:[]
       }
     },
     methods:{

@@ -36,13 +36,36 @@
             @click="toggle = true"
             :class="{ orderColor: toggle == true }"
           >
-            <i class="fa-solid fa-clone"></i>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-border-all"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M0 0h16v16H0V0zm1 1v6.5h6.5V1H1zm7.5 0v6.5H15V1H8.5zM15 8.5H8.5V15H15V8.5zM7.5 15V8.5H1V15h6.5z"
+              />
+            </svg>
           </button>
           <button
             @click="toggle = false"
             :class="{ orderColor: toggle == false }"
           >
-            <i class="fa-solid fa-list"></i>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-list-ul"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+              />
+            </svg>
           </button>
         </div>
       </div>
@@ -55,9 +78,12 @@
 
       <!-- =============================================橫排顯示 -->
       <div class="commodity-area col-12" v-if="toggle == false">
-        <div class="commodity-obj" v-for="item in data" :key="item.PROD_ID">
-
-          <button @click="next(index,item.length)" class="slide-control">
+        <div
+          class="commodity-obj"
+          v-for="(item, index) in data"
+          :key="item.PROD_ID"
+        >
+          <button @click="next(index, item.length)" class="slide-control">
             ＜
           </button>
           <div class="commodity-pic">
@@ -74,7 +100,7 @@
               </div>
             </router-link>
           </div>
-          <button @click="prev(index,item.length)" class="slide-control">
+          <button @click="prev(index, item.length)" class="slide-control">
             ＞
           </button>
           <div class="commodity-body">
@@ -212,19 +238,30 @@ export default {
       member: [],
       lightBoxShow: false,
       slideNum: 0,
+      slideImgActive: [],
+      listData: [],
+      cart: {},
     };
   },
   methods: {
-     slidePic(index) {
-      return { left: ` ${-10*this.photo}+px`};
+    slidePic(index) {
+      return { left: ` ${-200 * this.slideImgActive[index]}px` };
     },
-    next(index,last) {
-  
+    next(index, last) {
+      if (this.slideImgActive[index] === 0) {
+        this.slideImgActive[index] = 0;
+      } else {
+        this.slideImgActive[index] += 1;
+      }
     },
-   
-    prev(id) {
-  
-      this.slidePic(id);
+
+    prev(index, last) {
+      if (this.slideImgActive[index] === 0) {
+        this.slideImgActive[index] = last - 1;
+      } else {
+        this.slideImgActive[index] -= 1;
+        console.log("index", this.slideImgActive[index]);
+      }
     },
     addOrder() {
       let index = this.data.findIndex((item) => item.PROD_ID === id);
@@ -351,10 +388,6 @@ export default {
         .then((res) => {
           this.data = res.data;
           this.info = res.data;
-          console.log("info", this.data);
-          this.data.sort(function () {
-            return 0.5 - Math.random();
-          });
 
           for (let i = 0; i < this.data.length; i++) {
             this.starNum.push(
@@ -381,7 +414,31 @@ export default {
     this.getCommodityInfo();
     this.clear();
     this.onlineStorage();
+
+    var url = `${BASE_URL}/commoditylist.php`;
+    this.axios
+      .get(url, {
+        params: {
+          range_1: this.range_1,
+          range_2: this.range_2,
+        },
+      })
+      .then((res) => {
+        if (res.data) {
+          this.listData = res.data;
+          this.listData.map((item) => {
+            this.cart[item.PROD_ID] = {
+              PROD_NAME: item.PROD_NAME,
+              PROD_PRICE: item.PROD_PRICE,
+              count: 0,
+              slide: 0,
+            };
+            this.slideImgActive.push(0);
+          });
+        }
+      });
   },
+  mounted() {},
   watch: {
     toggle: {
       handler(newVal) {

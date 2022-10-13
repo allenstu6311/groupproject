@@ -22,13 +22,13 @@
         <!--這是已登入的大頭--->
         <input type="checkbox" id="check2" />
         <label for="check2">
-          <span class="header_loginMember" :style="memlogged"
+          <span class="header_loginMember" :style="memlogged" v-if="!show"
             ><img src="../assets/images/loginHead.png" alt=""
           /></span>
         </label>
-
+        
         <!--這是大頭下拉選單--->
-        <ul class="headerLogin">
+        <ul class="headerLogin" v-if="!show">
           <li :style="memlogged">
             <router-link to="/MemCenter">會員中心</router-link>
           </li>
@@ -38,16 +38,16 @@
         </ul>
 
         <!--這是未登入的大頭--->
-        <span class="header_member" :style="memIconShow"
+        <span class="header_member" :style="memIconShow"  v-if="show"
           ><router-link to="/MemLogin"
-            ><img src="../assets/images/headerMember.png" alt="" /></router-link
+            ><img src="../assets/images/headerMember.png" alt=""/></router-link
         ></span>
 
         <!--這是購物車--->
         <span class="header_shopping_cart"
           ><router-link to="/cart"
             ><img src="../assets/images/headerShoppinCart.png" alt="" />
-            <div class="cart-number" v-if="showCartLength==true">{{cartLength}}</div></router-link
+            <div class="cart-number" v-if="!show">{{cartLength}}</div></router-link
           ></span
         >
       </div>
@@ -58,52 +58,63 @@
 import {BASE_URL} from '@/assets/js/common.js'
 import { useRouter } from "vue-router";
 export default {
+  props:{
+   
+  },
   data() {
     return {
       iconShow: true,
       selectShow: false,
-      showCartLength:false,
+      CartLength:false,
       memory:[],
       router: useRouter(),
+      member:[],
+      memberInfo:[],
+      show:true
     };
+  },
+  watch:{
+    memberInfo:{
+      handler(newVal){
+        if(newVal){
+          this.show=false
+        }
+      }
+    }
   },
   computed: {
     memIconShow() {
       return {
-        display: this.iconShow ? "" : "none",
+        display: this.iconShow ? "" : "",
       };
     },
     memlogged() {
       return {
-        display: this.selectShow ? "block" : "none",
+        display: this.selectShow ? "block" : "",
       };
     },
     cartLength:function(){
   
         return  this.memory.length
     },
-    // cartTotal:function(){
-    //   return JSON.parse(JSON.stringify(this.memory))
-    // }
-  },
-  watch:{
-    // memory:{
-    //   handler(){
-    //     this.updateCart()
-    //   }
-    // },
-
    
   },
-
-  methods: {
+  
+  methods:{
     logout() {
       sessionStorage.removeItem("member");
-      // this.router.go(0);
+      
       this.router.push({ path: '/home' });
+      this.show=true
     },
     updateCartFromCartPage(list) {
       this.memory = list;
+    },
+    updateMember(info) {
+        this.show=false
+        this.CartLength=true
+        this.memberInfo= info
+        this.getCartNumber()
     },
     updateCart() {
         var url = `${BASE_URL}/shoppingCart.php`; //上線
@@ -130,7 +141,8 @@ export default {
           }
         });
     },
-      getCartNumber(){
+    getCartNumber(){
+     
       if (this.member) {
              var url = `${BASE_URL}/shoppingCart.php`; //上線
       this.axios
@@ -144,7 +156,6 @@ export default {
           if(this.memory.length>0){
             this.showCartLength=true
           }
-          // console.log("before",this.memory)
         });
     }
     }
@@ -152,17 +163,14 @@ export default {
   mounted() {
     let checkLogin = sessionStorage.getItem("member");
     if (checkLogin) {
-      (this.iconShow = false), (this.selectShow = true);
-      this.member = JSON.parse(checkLogin);
+      // (this.iconShow = false), (this.selectShow = true);
+      this.show=false
     }
-    // let members = sessionStorage.getItem("member");
-    // this.member = JSON.parse(members);
-    this.getCartNumber()
-
   },
   created() {
-    
-   
+      let members = sessionStorage.getItem("member");
+      this.member = JSON.parse(members);
+      this.getCartNumber()
   },
  
 };

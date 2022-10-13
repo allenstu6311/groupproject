@@ -39,15 +39,19 @@
       ><i class="fa-solid fa-arrow-right"></i
     ></span>
   </div>
+  <lightBox :lightBoxShow="showBox"/>
 </template>
 
 <script>
 import {BASE_URL} from '@/assets/js/common.js'
+import lightBox from "@/components/lightBox.vue"
 export default {
   props: {
     checkCar: Array,
   },
-
+  components:{
+      lightBox,
+  },
   data() {
     return {
       data: [],
@@ -57,6 +61,7 @@ export default {
       calculate: [],
       member: [],
       memory: [],
+      showBox:false
     };
   },
   methods: {
@@ -71,7 +76,10 @@ export default {
       }
     },
     addShoppingCart(id) {
-      this.updateCart();
+    if (!this.member) {
+        this.showBox=true
+    }else {
+          this.updateCart();
       let count = this.data.findIndex((item) => item.PROD_ID === id);
       let sameProduct = this.memory.find((item) => item.PROD_ID === id);
       
@@ -83,24 +91,9 @@ export default {
       } else {
         alert("購物車已有相同物品");
       }
-
-      // this.addOn = {
-      //   PROD_ID: this.data[count].PROD_ID,
-      //   PROD_NAME: this.data[count].PROD_NAME,
-      //   PROD_PRICE: this.data[count].PROD_PRICE,
-      //   PROD_PIC1: this.data[count].PROD_PIC1,
-      //   PROD_PIC2: this.data[count].PROD_PIC2,
-      //   PROD_PIC3: this.data[count].PROD_PIC3,
-      //   PROD_DATE: this.data[count].PROD_DATE,
-      //   PROD_NUM: 1,
-      //   PROD_DESC1: this.data[count].PROD_DESC1,
-      //   PROD_DESC2: this.data[count].PROD_DESC2,
-      //   PROD_DESC3: this.data[count].PROD_DESC3,
-      //   PROD_REVIEW: this.data[count].PROD_REVIEW + 1,
-      //   PROD_TIMES: this.data[count].PROD_TIMES + 1,
-      // };
-      // this.IncreaseShoppingCart(count);
-      // this.$emit("product-info", this.addOn);
+  
+    }
+  
     },
     IncreaseShoppingCart(count) {
        var url = `${BASE_URL}/changeShoppingCart.php`;
@@ -119,10 +112,6 @@ export default {
           console.log("mm",this.memory)
         });
     },
-    // updateStorage() {
-    //   localStorage.setItem("cart", JSON.stringify(this.cart));
-    //   localStorage.setItem("calculate", JSON.stringify(this.calculate));
-    // },
     updateCart() {
           var url = `${BASE_URL}/shoppingCart.php`; //上線
       this.axios
@@ -139,13 +128,6 @@ export default {
     },
 
     cartInfo() {
-      // let orders = localStorage.getItem("order");
-      // if (!orders) return;
-      // this.order = JSON.parse(orders);
-
-      // let carts = localStorage.getItem("cart");
-      // if (!carts) return;
-      // this.cart = JSON.parse(carts);
 
       let calculates = localStorage.getItem("calculate");
       if (!calculates) return;
@@ -154,11 +136,6 @@ export default {
       let totalPrices = localStorage.getItem("totalPrice");
       if (!totalPrices) return;
       this.totalPrice = JSON.parse(totalPrices);
-
-      // this.score = (
-      //   this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
-      // ).toFixed(1);
-      // this.star = parseInt(this.score);
     },
   },
   created() {
@@ -170,23 +147,6 @@ export default {
     let members = sessionStorage.getItem("member");
     this.member = JSON.parse(members);
     // console.log("mem", this.member.memId);
-
-    // if (!this.member) {
-    //   alert("請先登入");
-    //   this.$router.push("/MemLogin");
-    // } else {
-    //         var url = `${BASE_URL}/shoppingCart`; //上線
-    //   this.axios
-    //     .get(url, {
-    //       params: {
-    //         mem_id: this.member.memId,
-    //       },
-    //     })
-    //     .then((res) => {
-    //       this.memory = res.data;
-    //       // console.log("before",this.memory)
-    //     });
-    // }
 
     this.cartInfo();
   },

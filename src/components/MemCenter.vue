@@ -20,15 +20,7 @@
         <div class="mem_banner">
             <img src="../assets/images/memberbanner.jpg">
         </div>
-        <div class="panel_group">
-            <!-- <input type="radio" name="panel_radio" id="radio1" class="panel_control" checked>
-            <input type="radio" name="panel_radio" id="radio2" class="panel_control">
-            <input type="radio" name="panel_radio" id="radio3" class="panel_control"> -->
-            <!-- <div class="tab_group">
-                <label for="radio1">個人資料</label>
-                <label for="radio2">歷史訂單</label>
-                <label for="radio3">預約紀錄</label>
-            </div> -->
+           
             <div class="panel_group">
                 <input type="radio" name="panel_radio" id="radio1" class="panel_control" checked>
                 <input type="radio" name="panel_radio" id="radio2" class="panel_control">
@@ -102,103 +94,9 @@
                                 <button class="btnMinimum" id="mem_edit" :style="pdata_display_none" @click="editdata = true,displayshow = false">編輯</button>
                             </div>
                         </div>
+                        
                     </div>
                     <!-- 歷史訂單 -->
-                    <div class="content content2">
-                        <h2>歷史訂單</h2>
-                        <hr>
-                        <!-- 歷史訂單搜尋 -->
-                        <div class="order_search_bar">
-                            <label for="order_search"><img src="../assets/images/Search.png"></label>
-                            <div class="order_search_row">
-                                <div class="category_row">
-                                    <select name="category">
-                                        <option value="">購買日期</option>
-                                        <option value="">訂單編號</option>
-                                        <option value="">訂單名稱</option>
-                                    </select>
-                                    <select name="state" id="state_search" class="state_search">
-                                        <option value="">未出貨</option>
-                                        <option value="">已出貨</option>
-                                        <option value="">訂單名稱</option>
-                                    </select>
-                                </div>
-                                <input type="text" id="order_search">
-                            </div>
-                        </div>
-                        <!-- 資料表格 -->
-                        <div class="order_data">
-                            <table>
-                                <tr>
-                                    <th>訂單編號</th>
-                                    <th>收件人</th>
-                                    <th>訂單日期</th>
-                                    <th>訂單狀態</th>
-                                    <th></th>
-                                </tr>
-                                <tr class="person_info_item">
-                                    <th :style="pdata_display_show">輸入舊密碼:</th>
-                                    <td><input type="password" v-model="inputpassword" :style="pdata_display_show"
-                                            maxlength="10"></td>
-                                </tr>
-                                <tr class="person_info_item">
-                                    <th :style="pdata_display_show">輸入新密碼:</th>
-                                    <td><input type="password" v-model="newpassword" :style="pdata_display_show"
-                                            maxlength="10"></td>
-                                </tr>
-                                <tr class="person_info_item">
-                                    <th :style="pdata_display_show">再次輸入密碼:</th>
-                                    <td><input type="password" v-model="newpasswordA" :style="pdata_display_show"
-                                            maxlength="10"></td>
-                                </tr>
-                                <tr class="person_info_item">
-                                    <th>信箱:</th>
-                                    <td :style="pdata_display_none">{{email}}</td>
-                                    <td><input type="text" v-model="email" :style="pdata_display_show" maxlength="30">
-                                    </td>
-                                </tr>
-                                <tr class="person_info_item">
-                                    <th>生日:</th>
-                                    <td :style="pdata_display_none">{{birthday}}</td>
-                                    <td><input type="date" v-model="birthday" :style="pdata_display_show"></td>
-                                </tr>
-                                <tr class="person_info_item">
-                                    <th>手機:</th>
-                                    <td :style="pdata_display_none">{{phone}}</td>
-                                    <td><input type="text" v-model="phone" :style="pdata_display_show" maxlength="10">
-                                    </td>
-                                </tr>
-                                <tr class="person_info_item">
-                                    <th>市話:</th>
-                                    <td :style="pdata_display_none">{{areaCode}}-{{lphone}}</td>
-                                    <td><input type="text" v-model="areaCode" :style="pdata_display_show" maxlength="3"
-                                            style="width:20px;">
-                                        <span :style="pdata_display_show">-</span>
-                                        <input type="text" v-model="lphone" :style="pdata_display_show" maxlength="10"
-                                            style="width:100px;">
-                                    </td>
-
-                                </tr>
-                                <tr class="person_info_item">
-                                    <th>地址:</th>
-                                    <td :style="pdata_display_none">{{address}}</td>
-                                    <td><input type="text" v-model="address" :style="pdata_display_show" maxlength="40">
-                                    </td>
-                                </tr>
-                            </table>
-                            <div class="confirm_button">
-                                <button class="btnMinimum" :style="pdata_display_show" @click="cancelEdit">返回</button>
-                                <button class="btnMinimum" id="mem_confirm" :style="pdata_display_show"
-                                    @click="upmemdata">確定</button>
-                            </div>
-                        </div>
-                        <div class="edit">
-                            <button class="btnMinimum" id="mem_edit" :style="pdata_display_none"
-                                @click="editdata = true,displayshow = false">編輯</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- 歷史訂單 -->
                 <div class="content content2">
                     <h2>歷史訂單</h2>
                     <hr>
@@ -297,8 +195,10 @@
                         </table>
                     </div>
                 </div>
+                </div>
+                
             </div>
-        </div>
+        
     </div>
 </template>
 
@@ -458,7 +358,6 @@ export default {
             })
                 .then((res) => {
                     this.memberData = res.data
-                    console.log(this.memberData)
                 })
         },
         checkNew(reg, content) {
@@ -482,6 +381,14 @@ export default {
             let reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
             this.verifyEmail = this.checkNew(reg, content)
         },
+        member:{
+            handler(newVal){
+                if(newVal){
+                this.$emit("memberInfo",newVal)
+                    
+                }       
+            }
+        }
     },
     created() {
         let checkLogin = sessionStorage.getItem('member');
@@ -489,7 +396,11 @@ export default {
             this.router.push({ path: '/home' });
         }
         this.getMemData();
-        this.getBuyInfo()
     },
+    mounted(){
+        let members = sessionStorage.getItem("member");
+        this.member = JSON.parse(members);
+        this.getBuyInfo()
+    }
 }
 </script>

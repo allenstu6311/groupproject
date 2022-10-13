@@ -9,7 +9,7 @@ try{
     $sql = "SELECT * FROM MSG";
     $msg = $pdo->query($sql);
 
-    if($msg->rowCount()==0){
+    if($msg->rowCount() == 0){
         echo "無按摩師資料";
         // exit();
     }else{
@@ -17,11 +17,13 @@ try{
         $data = [];
 
         foreach($msgs as $i => $page){
-            $data[] = $page;
+        ?>
+        <?php
+        $data[] = $page;
         }
-
         echo json_encode($data);
-
+        ?>
+        <?php
     }
 }catch (Exception $e) {
         echo "錯誤行號 : ", $e->getLine(), "<br>";

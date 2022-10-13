@@ -60,7 +60,22 @@
                         <input type="text" class="form-control" maxlength="50" v-model="msg_desc">
                     </div>
                 </div>
-
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">注意事項</span>
+                        <input type="text" class="form-control" maxlength="50" v-model="msg_look">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">常見問題</span>
+                        <input type="text" class="form-control" maxlength="50" v-model="msg_faq">
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col">
@@ -99,6 +114,8 @@ export default {
             msg_price_2: '',
             msg_rec_2: '',
             msg_desc: '',
+            msg_look: '',
+            msg_faq: '',
             msg_pic: '',
             pswtip: "*",
             pswclass: "error",
@@ -132,7 +149,7 @@ export default {
 
             //設定好所要連結的程式
             //開發用
-            let url = "http://localhost/CGD102_G2/public/api/backMsgAdd.php?MSG_NAME=" + document.getElementById("msg_name").value;
+            let url = `${BASE_URL}/backMsgAddCheckName.php?MSG_NAME=` + document.getElementById("msg_name").value;
             // console.log(url);
 
             xhr.open("get", url, true);
@@ -144,39 +161,27 @@ export default {
 
         submit(){
             //產生XMLHttpRequest物件
-            let xhr = new XMLHttpRequest();
+            var url = `${BASE_URL}/backMsgAdd.php`//上線用
+            var xhr = new XMLHttpRequest();
             
-            // xhr.onload = function(){
-            //     if(xhr.status == 200){
-            //         if(xhr.responseText == "按摩項目已建立"){
-            //             alert("按摩項目已建立");
-            //             window.location.replace("/backmsg");
-            //         }else if(xhr.responseText == "無法建立按摩項目"){
-            //             alert("無法建立按摩項目");
-            //         }
-            //     }
-            // }
-            //註冊callback function
-            xhr.onreadystatechange = function(){
-                // console.log(xhr.readyState);
+            xhr.onload = function(){
+                if(xhr.status == 200){
+                    console.log(xhr.responseText);
+                    if(xhr.responseText == "按摩項目已建立"){
+                        alert("按摩項目已建立");
+                        window.location.replace("/backmsg");
+                    }else if(xhr.responseText == "無法建立按摩項目"){
+                        alert("無法建立按摩項目");
+                    }
+                }
             }
 
             //設定好所要連結的程式
-            let url = "http://localhost/CGD102_G2/public/api/backMsgAdd.php";//開發用
-            // let url = `${BASE_URL}/backMsgAdd.php`//上線用
-            // xhr.open("post", url, true);
-            xhr.open("get", url, true);
-            xhr.send(null);
-
-
-            // xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-            
-            // let msg_data = `MSG_NAME=${this.msg_name}&MSG_INTRO=${this.msg_intro}&MSG_PRICE_1=${this.msg_price_1}&MSG_REC_1=${this.msg_rec_1}&MSG_PRICE_2=${this.msg_price_2}&MSG_REC_2=${this.msg_rec_2}&MSG_DESC=${this.msg_desc}&MSG_PIC=${this.msg_pic}`;
-            // //送出資料
-            // xhr.send(msg_data);
-
-
-
+            // let url = "http://localhost/CGD102_G2/public/api/backMsgAdd.php";//開發用
+            xhr.open("post", url, true);
+            let msg_data = `msg_name=${this.msg_name}&msg_intro=${this.msg_intro}&msg_price_1=${this.msg_price_1}&msg_rec_1=${this.msg_rec_1}&msg_price_2=${this.msg_price_2}&msg_rec_2=${this.msg_rec_2}&msg_desc=${this.msg_desc}&msg_look=${this.msg_look}&msg_faq=${this.msg_faq}&msg_pic=${this.msg_pic}`;
+            xhr.send(msg_data);
+            console.log(msg_data);
         },
         photo(e){
             this.msg_pic = e.target.files[0].name;

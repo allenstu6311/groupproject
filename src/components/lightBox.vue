@@ -83,6 +83,24 @@
     }
   }
 }
+/*====== 行動版 RWD | 320px ~ 768px ======*/
+@media screen and (min-width: 320px) and (max-width: 767.98px){
+  .light-box-container {
+    .light-box-text {
+      left: 15%;
+      top: 25%;
+    }
+  }
+}
+/*======    平板版 RWD | 768px ~ 1200px ======*/
+@media screen and (min-width: 768px) and (max-width: 1199.98px){
+  .light-box-container {
+    .light-box-text {
+      left: 32%;
+      top: 25%;
+    }
+  }
+}
 </style>
 <script>
 

@@ -1,19 +1,24 @@
 <template>
-   <BackstageIndexHeader />
-  <div class="container mt-5"> 
+  <BackstageIndexHeader />
+  <div class="container mt-5">
     <div class="row">
       <div class="col-2">
-          <BackstageIndexAside />
+        <BackstageIndexAside />
       </div>
       <div class="orderBox">
-         <div class="order-search  m-3">
-          <select class="form-select w-25" aria-label="Default select example" v-model="productState"      @change="checkProduct">
-            <option value="9"  selected>找尋商品</option>
+        <div class="order-search m-3">
+          <select
+            class="form-select w-25"
+            aria-label="Default select example"
+            v-model="productState"
+            @change="checkProduct"
+          >
+            <option value="9" selected>找尋商品</option>
             <option value="0">下架中</option>
             <option value="1">上架中</option>
           </select>
-         
-          <div class="input-group mx-3  w-25">
+
+          <div class="input-group mx-3 w-25">
             <input
               type="text"
               class="form-control"
@@ -28,99 +33,129 @@
               id="button-addon2"
               @click="backProductSearch"
             >
-             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-</svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-search"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                />
+              </svg>
             </button>
           </div>
         </div>
-           <div class="col-10">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>商品照片</th>
-              <th>標題</th>
-              <th>狀態</th>
-              <th>上架</th>
-              <th>下架</th>
-            </tr>
-          </thead>
-          <tbody>
-            <td colspan="5" v-if="this.data.length==0"><p class="m-auto bold">找不到此商品</p></td>
-            <tr v-for="item in data" :key="item.PROD_ID">
-              
-              <td>
-                <img
-                  :src="require(`../../public/api/pic/${item.PROD_PIC1}`)"
-                  alt=""
-                />
+        <div class="col-10">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>商品照片</th>
+                <th>標題</th>
+                <th>狀態</th>
+                <th>上架</th>
+                <th>下架</th>
+              </tr>
+            </thead>
+            <tbody>
+              <td colspan="5" v-if="this.data.length == 0">
+                <p class="m-auto bold">找不到此商品</p>
               </td>
-              <td>{{ item.PROD_NAME }}</td>
-              <td v-show="item.PROD_STATUS == 1">上架中</td>
-              <td v-show="item.PROD_STATUS == 0">下架中</td>
-              <td>
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  @click="onTheShelf(item.PROD_ID)"
-                >
-                  上架
-                </button>
-              </td>
-              <td>
-                <button
-                  type="button"
-                  class="btn btn-danger"
-                  @click="takeDown(item.PROD_ID)"
-                >
-                  下架
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+              <tr v-for="item in data" :key="item.PROD_ID">
+                <td>
+                  <img
+                    :src="require(`../../public/api/pic/${item.PROD_PIC1}`)"
+                    alt=""
+                  />
+                </td>
+                <td>{{ item.PROD_NAME }}</td>
+                <td v-show="item.PROD_STATUS == 1">上架中</td>
+                <td v-show="item.PROD_STATUS == 0">下架中</td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    @click="onTheShelf(item.PROD_ID)"
+                  >
+                    上架
+                  </button>
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    @click="takeDown(item.PROD_ID)"
+                  >
+                    下架
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      </div>
-   
     </div>
   </div>
-  <nav aria-label="..." v-if="changePageButton==true">
-  <ul class="pagination justify-content-center mt-3 mb-3">
-     <li class="page-item " aria-current="page" :class="{active: pageColor==true}"> 
-      <span class="page-link" @click="changePage(true);pageColor=true">1</span>
-    </li>
-    <li class="page-item " aria-current="page" :class="{active: pageColor==false}">
-      <span class="page-link" @click="changePage(false);pageColor=false">2</span>
-    </li>
-  </ul>
-</nav>
+  <nav aria-label="..." v-if="changePageButton == true">
+    <ul class="pagination justify-content-center mt-3 mb-3">
+      <li
+        class="page-item"
+        aria-current="page"
+        :class="{ active: pageColor == true }"
+      >
+        <span
+          class="page-link"
+          @click="
+            changePage(true);
+            pageColor = true;
+          "
+          >1</span
+        >
+      </li>
+      <li
+        class="page-item"
+        aria-current="page"
+        :class="{ active: pageColor == false }"
+      >
+        <span
+          class="page-link"
+          @click="
+            changePage(false);
+            pageColor = false;
+          "
+          >2</span
+        >
+      </li>
+    </ul>
+  </nav>
   <div class="col-10">
     <BackTherapistAdd />
-  </div>   
+  </div>
 </template>
 <style lang="scss" scoped>
-    // @import "bootstrap/scss/bootstrap"; 
-    // @import "../assets/style.scss";
-    @import "../assets/base/_color.scss"; //有變數要引用的sass
+// @import "bootstrap/scss/bootstrap";
+// @import "../assets/style.scss";
+@import "../assets/base/_color.scss"; //有變數要引用的sass
 
-
-*{
-    position: relative;
+* {
+  position: relative;
 }
-.show{
-    position: relative;
+.show {
+  position: relative;
 }
-.active{
-    background-color: transparent;
+.active {
+  background-color: transparent;
 }
-.container{
-    line-height: 2;
-    .row{
-      flex-wrap: nowrap;
-    }
+.container {
+  line-height: 2;
+  .row {
+    flex-wrap: nowrap;
+  }
 }
 table {
-  table-layout:fixed;
+  table-layout: fixed;
   text-align: center;
   thead {
     background-color: $blue;
@@ -136,19 +171,17 @@ table {
       td {
         vertical-align: middle;
         background-color: $white;
-        font-weight:600;
+        font-weight: 600;
         img {
           vertical-align: middle;
           width: 30%;
         }
       }
-    
     }
-  
   }
 }
-.table-striped > tbody > tr:nth-of-type(odd) > *[data-v-1e3ad792]{
-    background-color: $white;
+.table-striped > tbody > tr:nth-of-type(odd) > *[data-v-1e3ad792] {
+  background-color: $white;
 }
 .orderBox {
   width: 100%;
@@ -156,41 +189,39 @@ table {
   display: flex;
   flex-direction: column !important;
 
-  .order-search{
+  .order-search {
     display: flex;
     align-items: center;
   }
- 
 }
-
 </style>
 <script>
-import BackstageIndexAside from '@/components/BackstageIndexAside.vue'
-import BackstageIndexHeader from '@/components/BackstageIndexHeader.vue'
-import BackTherapist from '@/components/BackTherapist.vue'
-import {BASE_URL} from '@/assets/js/common.js'
+import BackstageIndexAside from "@/components/BackstageIndexAside.vue";
+import BackstageIndexHeader from "@/components/BackstageIndexHeader.vue";
+import BackTherapist from "@/components/BackTherapist.vue";
+import { BASE_URL } from "@/assets/js/common.js";
 // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 export default {
   components: {
-        BackstageIndexHeader,
-        BackstageIndexAside,
-        BackTherapist
+    BackstageIndexHeader,
+    BackstageIndexAside,
+    BackTherapist,
   },
   data() {
     return {
       data: [],
-      productInfo:[],
-      number1:0,
-      number2:10,
-      pageColor:true,
-      backProduct:"",
-      changePageButton:true,
-      productState:"9",
+      productInfo: [],
+      number1: 0,
+      number2: 10,
+      pageColor: true,
+      backProduct: "",
+      changePageButton: true,
+      productState: "9",
     };
   },
   methods: {
     onTheShelf(id) {
-          var url = `${BASE_URL}/rackupanddown.php` //上線
+      var url = `${BASE_URL}/rackupanddown.php`; //上線
       // var url = "http://localhost/CGD102_G2/public/api/rackupanddown.php"
       this.axios
         .get(url, {
@@ -206,11 +237,11 @@ export default {
           } else {
             alert("上架失敗");
           }
-          location.reload();
+          this.getPageNumber()
         });
     },
     takeDown(id) {
-      var url = `${BASE_URL}/rackupanddown.php` //上線
+      var url = `${BASE_URL}/rackupanddown.php`; //上線
       // var url = "http://localhost/CGD102_G2/public/api/rackupanddown.php"
       this.axios
         .get(url, {
@@ -225,102 +256,100 @@ export default {
           } else {
             alert("下架失敗");
           }
-          location.reload();
+          this.getPageNumber()
         });
     },
-    changePage(num){
- 
-      if(num){
-        this.number1=0,
-        this.number2=10
-        this.getPageNumber()
-      }else{
-        this.number1=10
-        this.number2=20
-        this.getPageNumber()
+    changePage(num) {
+      if (num) {
+        (this.number1 = 0), (this.number2 = 10);
+        this.getPageNumber();
+      } else {
+        this.number1 = 10;
+        this.number2 = 20;
+        this.getPageNumber();
       }
     },
-    getPageNumber(){
-      var url = `${BASE_URL}/totalproduct.php` //上線
+    getPageNumber() {
+      var url = `${BASE_URL}/totalproduct.php`; //上線
       // var url = "http://localhost/CGD102_G2/public/api/totalproduct.php"
-        this.axios.get(url,{
-        params:{
-          range_1:this.number1,
-          range_2:this.number2
-        }
-      }).then((res)=>{
-        this.data = res.data
-        this.productInfo = res.data
-        console.log(this.data)
-      })
-      
+      this.axios
+        .get(url, {
+          params: {
+            range_1: this.number1,
+            range_2: this.number2,
+          },
+        })
+        .then((res) => {
+          this.data = res.data;
+          this.productInfo = res.data;
+          console.log(this.data);
+        });
     },
-    backProductSearch(){
-      var url = `${BASE_URL}/backShopSearch.php` //上線
+    backProductSearch() {
+      var url = `${BASE_URL}/backShopSearch.php`; //上線
       // var url = "http://localhost/CGD102_G2/public/api/backShopSearch.php"
-      this.axios.get(url,{
-        params:{
-            PROD_NAME:this.backProduct,
-        }
-      }).then((res)=>{
-        this.data = res.data
-        this.changePageButton=false
-      })
+      this.axios
+        .get(url, {
+          params: {
+            PROD_NAME: this.backProduct,
+          },
+        })
+        .then((res) => {
+          this.data = res.data;
+          this.changePageButton = false;
+        });
     },
-    checkProduct(){
-        this.number1=0,
-        this.number2=20
-        this.getPageNumber();
-        this.changePageButton=false
+    checkProduct() {
+      (this.number1 = 0), (this.number2 = 20);
+      this.getPageNumber();
+      this.changePageButton = false;
 
-        this.timerd=setTimeout(this.filter,500)
-
+      this.timerd = setTimeout(this.filter, 500);
     },
-    filter(){
-      
-      switch(this.productState){
-      case "9":
-        this.number1=0,
-        this.number2=10
-        this.getPageNumber();
-        this.data=this.productInfo;
-        this.changePageButton=true
-      
-        break;
-      case "0":
-     
-     
-        let state0 = this.data.filter((item)=>item.PROD_STATUS==this.productState) 
-        // console.log("0",this.data)
-        console.log("0",state0)
-        this.data=state0;
-       
-        break;
-      case "1":
-      
-        let state1 = this.data.filter((item)=>item.PROD_STATUS===this.productState)
-        console.log("1",state1)     
-        this.data=state1;
-     }
+    filter() {
+      switch (this.productState) {
+        case "9":
+          (this.number1 = 0), (this.number2 = 10);
+          this.getPageNumber();
+          this.data = this.productInfo;
+          this.changePageButton = true;
 
-          // let state0 = this.data.filter(item=>item.PROD_STATUS===0) 
-          // this.data=state0;
-          // console.log("少",this.data)
-    }
+          break;
+        case "0":
+          let state0 = this.data.filter(
+            (item) => item.PROD_STATUS == this.productState
+          );
+          // console.log("0",this.data)
+          console.log("0", state0);
+          this.data = state0;
+
+          break;
+        case "1":
+          let state1 = this.data.filter(
+            (item) => item.PROD_STATUS === this.productState
+          );
+          console.log("1", state1);
+          this.data = state1;
+      }
+
+      // let state0 = this.data.filter(item=>item.PROD_STATUS===0)
+      // this.data=state0;
+      // console.log("少",this.data)
+    },
   },
   created() {
-    this.getPageNumber()
+    this.getPageNumber();
   },
-  watch:{
-    backProduct:{
-      handler(newVal){
-       if(!newVal){
-        this.data=this.productInfo
-        this.changePageButton=true
-       }
-      }
+  watch: {
+    backProduct: {
+      handler(newVal) {
+        if (!newVal) {
+          this.data = this.productInfo;
+          this.changePageButton = true;
+        }
+      },
     },
-    deep:true,
-  }
+    deep: true,
+  },
 };
 </script>

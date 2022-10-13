@@ -2,7 +2,7 @@
     <div class="latest_order">
         <div class="latest_order_title">
             <h2>最新訂單</h2>
-            <a href="#">前往管理訂單 ></a>
+            <router-link to="/OrderItem">前往管理訂單 ></router-link>
         </div>
         <table class="table table-striped table-hover">
             <thead>
@@ -42,7 +42,7 @@
     <div class="latest_reservation">
         <div class="latest_reservation_title">
             <h2>最新預約</h2>
-            <a href="#">前往管理預約 ></a>
+            <router-link to="/OrderItem">前往管理預約 ></router-link>
         </div>
         <table class="table table-striped table-hover">
             <thead>

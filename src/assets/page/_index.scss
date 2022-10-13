@@ -73,6 +73,7 @@ main{
     height: 90vh;
     margin: 0 auto;
     display: flex;
+    top: 80px;
     // background-image: url(../assets/images/mainBanner.gif);
     // background-repeat:no-repeat;
     // background-position: center;
@@ -293,7 +294,7 @@ main{
 .about_us{
     width: 100%;
     max-width: 1200px;
-    padding: 120px 0px 0px 0px;
+    padding: 160px 0px 0px 0px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -679,7 +680,6 @@ main{
             width:240px;
             height:340px;
             background-color: #fff;
-            text-align:start;
             padding: 10px;
             color: #FF4848;
             margin: 20px 10px 20px 10px;
@@ -691,15 +691,21 @@ main{
                 transition: all 0.5s ;
                 box-shadow: 0px 0px 15px rgb(182, 182, 182);
             }
+            &:hover span{
+                color: $blue;
+                font-weight: 600;
+            }
             
             img{
                 width:240px;
                 height:240px;
+                
                 }
             h4{
                 margin-top: 5px;
                 font-weight: 600;
                 color: $blue;
+                text-align:start;
                 
                 
             }
@@ -708,16 +714,13 @@ main{
                 font-size: 18px;
                 margin-top: 15px;
                 font-weight: 600;
+                text-align:start;
             }
             span{
                 display: block;
                 margin-top: 15px;
                 color: rgb(162, 162, 162);
-                &:hover{
-                    color: $blue;
-                    font-weight: 600;
-                    
-                }
+                text-align:start;
             }
         }
     }
@@ -738,8 +741,8 @@ main{
                 width: 80%;
                 height: 380px;
                 img{
-                    width: 90%;
-                    height: 250px;
+                    width: 100%;
+                    height: 280px;
                 }
             }
         }
@@ -752,7 +755,9 @@ main{
         
         .product_content{
             width: 100%;
-            
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
 
             .product_oil{
                 width: 350px;

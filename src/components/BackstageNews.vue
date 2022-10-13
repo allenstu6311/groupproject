@@ -3,15 +3,9 @@
         <h1>管理最新消息</h1>
         <div class="laster_selectbar hstack gap-3">
             <select class="form-select form-select-sm bg-light" aria-label=".form-select-sm example">
-                <option selected>上架中的消息</option>
-                <option value="1">已下架的消息</option>
+                <option selected>依編號排序</option>
+                <option value="1">依日期排序</option>
             </select>
-            <div class="input-group rounded bg-light">
-                <input type="search" class="form-control rounded" placeholder="搜尋關鍵字" aria-label="Search" aria-describedby="search-addon" />
-                <span class="input-group-text border-0" id="search-addon">
-                    <i class="fas fa-search"></i>
-                </span>
-            </div>
             <router-link class="btn btn-primary ms-auto" to="/BackstageNewsAdd">新增最新消息</router-link>
         </div>
         <hr>
@@ -21,7 +15,6 @@
                     <th scope="co1">編號</th>
                     <th scope="co1">日期</th>
                     <th scope="col">標題</th>
-                    <th scope="col">狀態</th>
                     <th scope="col">修改</th>
                     <th scope="col">刪除</th>
                 </tr>
@@ -31,14 +24,7 @@
                     <td>{{news.NEWS_ID}}</td>
                     <td>{{news.NEWS_DATE}}</td>
                     <td>{{news.NEWS_TITLE}}</td>
-                    <td>
-                        <div>
-                            <select class="form-select form-select-sm">
-                                <option selected>上架中</option>
-                                <option value="1">未上架</option>
-                            </select>
-                        </div>
-                    </td>
+
                     <td>
                         <div>
                             <router-link
@@ -62,9 +48,7 @@
                     <td>
                         <a href="">
                             <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16"  @click="deleteNews(news.NEWS_ID)">
-                                    <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
-                                    </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#0d6efd" data-v-5c299b9d="" @click="deleteNews(news.NEWS_ID)"><path d="M 10 2 L 9 3 L 4 3 L 4 5 L 5 5 L 5 20 C 5 20.522222 5.1913289 21.05461 5.5683594 21.431641 C 5.9453899 21.808671 6.4777778 22 7 22 L 17 22 C 17.522222 22 18.05461 21.808671 18.431641 21.431641 C 18.808671 21.05461 19 20.522222 19 20 L 19 5 L 20 5 L 20 3 L 15 3 L 14 2 L 10 2 z M 7 5 L 17 5 L 17 20 L 7 20 L 7 5 z M 9 7 L 9 18 L 11 18 L 11 7 L 9 7 z M 13 7 L 13 18 L 15 18 L 15 7 L 13 7 z" data-v-5c299b9d=""></path></svg>
                             </div>
                         </a>
                     </td>

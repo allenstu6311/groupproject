@@ -7,8 +7,15 @@
       </div>
       <div class="orderBox">
         <div class="order-search m-3">
-          <select class="form-select w-25" aria-label="Default select example">
-            <option value="1"></option>
+          <select
+            class="form-select w-25"
+            aria-label="Default select example"
+            v-model="orderSel"
+            @change="filterOrder"
+          >
+          <option value="1">由舊至新</option>
+          <option value="2">由新至舊</option>
+           
           </select>
 
           <div class="input-group mx-3 w-25">
@@ -18,11 +25,13 @@
               placeholder="請輸入訂單名稱"
               aria-label="Recipient's username"
               aria-describedby="button-addon2"
+              v-model="orderName"
             />
             <button
               class="btn btn-outline-secondary"
               type="button"
               id="button-addon2"
+              @click="searchORDER()"
             >
               <i class="fa-solid fa-magnifying-glass"></i>
             </button>
@@ -85,23 +94,23 @@
             {{ item.PROD_PRICE }}
           </p>
         </div>
-          <div class="modal-body  bold">
+        <div class="modal-body bold">
           <span>折價券:</span>
-          <span v-if="coupon==5">無</span>
-          <span v-if="coupon==1">九折優惠券</span>
-          <span v-if="coupon==2">八折優惠券</span>
-          <span v-if="coupon==3">七折優惠券</span>
-          <span v-if="coupon==4">六折優惠券</span>
+          <span v-if="coupon == 5">無</span>
+          <span v-if="coupon == 1">九折優惠券</span>
+          <span v-if="coupon == 2">八折優惠券</span>
+          <span v-if="coupon == 3">七折優惠券</span>
+          <span v-if="coupon == 4">六折優惠券</span>
         </div>
-        <div class="modal-body  bold">
+        <div class="modal-body bold">
           <span>小計:</span>
           <span>{{ subtotal }}</span>
         </div>
-            <div class="modal-body  bold">
+        <div class="modal-body bold">
           <span>折抵金額:</span>
-          <span>{{ totalPrice-subtotal }}</span>
+          <span>{{ totalPrice - subtotal }}</span>
         </div>
-        <div class="modal-body  bold">
+        <div class="modal-body bold">
           <span>銷售總額:</span>
           <span>{{ totalPrice }}</span>
         </div>
@@ -119,6 +128,41 @@
       </div>
     </div>
   </div>
+  <nav aria-label="...">
+    <ul
+      class="pagination justify-content-center mt-3 mb-3"
+      v-if="changePageButton == true"
+    >
+      <li
+        class="page-item"
+        aria-current="page"
+        :class="{ active: pageColor == 1 }"
+      >
+        <span
+          class="page-link"
+          @click="
+            changePage(1);
+            pageColor = 1;
+          "
+          >1</span
+        >
+      </li>
+      <li
+        class="page-item"
+        aria-current="page"
+        :class="{ active: pageColor == 2 }"
+      >
+        <span
+          class="page-link"
+          @click="
+            changePage(2);
+            pageColor = 2;
+          "
+          >2</span
+        >
+      </li>
+    </ul>
+  </nav>
   <BackTherapistAdd />
 </template>
 <style lang="scss" scoped>
@@ -159,11 +203,11 @@
       width: 20%;
     }
   }
-  .modal-body{
+  .modal-body {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 5px 10px
+    padding: 5px 10px;
   }
 }
 .modal-header {
@@ -215,7 +259,7 @@ table {
 import BackstageIndexAside from "@/components/BackstageIndexAside.vue";
 import BackstageIndexHeader from "@/components/BackstageIndexHeader.vue";
 import BackTherapist from "@/components/BackTherapist.vue";
-import {BASE_URL} from '@/assets/js/common.js'
+import { BASE_URL } from "@/assets/js/common.js";
 
 export default {
   components: {
@@ -226,16 +270,36 @@ export default {
   data() {
     return {
       data: [],
+      info: [],
       detail: [],
       show: false,
       totalPrice: "",
       subtotal: "",
-      coupon:''
+      coupon: "",
+      number1: 0,
+      number2: 7,
+      pageColor: 1,
+      orderName: "",
+      changePageButton: true,
+      orderSel: "1",
     };
   },
   methods: {
+    changePage(num) {
+      switch (num) {
+        case 1:
+          this.number1 = 0;
+          this.number2 = 7;
+
+          break;
+        case 2:
+          this.number1 = 8;
+          this.number2 = 15;
+          break;
+      }
+      this.getORderInfo();
+    },
     orderDetail(id) {
-    
       var url = `${BASE_URL}/orderItemProduct.php`; //上線
       // var url = "http://localhost/CGD102_G2/public/api/orderItemProduct.php";
       this.axios
@@ -247,22 +311,71 @@ export default {
         .then((res) => {
           this.show = true;
           this.detail = res.data;
-          console.log("detail",this.detail)
+          console.log("detail", this.detail);
           this.subtotal = this.detail[0].PROD_ORDERS_SUBTOTAL;
           this.totalPrice = this.detail[0].PROD_ORDERS_TOTAL;
-          this.coupon = this.detail[0].PROD_ORDERS_CPS_ID
+          this.coupon = this.detail[0].PROD_ORDERS_CPS_ID;
           this.prodId = id;
         });
     },
+    getORderInfo() {
+      var url = `${BASE_URL}/backOrderItems.php`; //上線
+      // var url = "http://localhost/CGD102_G2/public/api/backOrderItems.php";
+      this.axios
+        .get(url, {
+          params: {
+            range_1: this.number1,
+            range_2: this.number2,
+          },
+        })
+        .then((res) => {
+          this.data = res.data;
+          this.info = res.data;
+        });
+    },
+    searchORDER() {
+      var url = `${BASE_URL}/backOrderItemsSearch.php`;
+      this.axios
+        .get(url, {
+          params: {
+            search: this.orderName,
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          this.data = res.data;
+          this.changePageButton = false;
+        });
+    },
+    filterOrder(){
+      switch(this.orderSel){
+        case "1":
+          this.data.sort(function(a,b){
+            return new Date(a.PROD_ORDERS_DATE)-new Date(b.PROD_ORDERS_DATE)
+          })
+          break;
+
+           case "2":
+          this.data.sort(function(a,b){
+            return new Date(b.PROD_ORDERS_DATE)-new Date(a.PROD_ORDERS_DATE)
+          })
+          break;
+      }
+     
+    }
+  },
+  watch: {
+    orderName: {
+      handler(newVal) {
+        if (newVal == "") {
+          this.data = this.info;
+          this.changePageButton = true;
+        }
+      },
+    },
   },
   created() {
-     var url = `${BASE_URL}/backOrderItems.php` //上線
-    // var url = "http://localhost/CGD102_G2/public/api/backOrderItems.php";
-    this.axios.get(url)
-    .then((res) => {
-      this.data = res.data;
-      console.log(this.data)
-    });
+    this.getORderInfo();
   },
 };
 </script>

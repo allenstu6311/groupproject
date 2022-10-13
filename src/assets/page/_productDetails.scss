@@ -2,6 +2,7 @@
 
 
 .product-title {
+    font-weight: 800;
     @include container();
     line-height: 3;
 
@@ -11,6 +12,7 @@
     }
 
     .product-name {
+        margin: 20px 0;
         text-align: center;
     }
     .product-star{

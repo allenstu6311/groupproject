@@ -94,10 +94,8 @@
                         <!-- 有掛載東西一定加:號!!!! :class -->
                         <h4>{{item.PROD_NAME}}</h4>
                         <p>${{item.PROD_PRICE}}</p>
+                        <span>查看此商品>></span>
                         </router-link>
-                        <span @click="addCar(order[0].PROD_ID)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
-                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                        </svg>加入購物車</span>
                     </div>
                 </div>
                 <router-link to="/ProductList"><div class="btnLittle">更多商品</div></router-link>
@@ -293,35 +291,7 @@ import {BASE_URL} from '@/assets/js/common.js'
                 await getData(url); // 觸發 getData 的匿名 function 內容 ==> 95 ~ 97 行的內容
                 // console.log(this.newsCardList);
             },
-            joinDetail(id){
-                let index  = this.product.findIndex(item=>{
-                    
-                    return item.PROD_ID===id
-                })
-            
-                this.order=[
-                {
-                PROD_ID: this.product[index].PROD_ID,
-                PROD_NAME: this.product[index].PROD_NAME,
-                PROD_PRICE: this.product[index].PROD_PRICE,
-                PROD_PIC1: this.product[index].PROD_PIC1,
-                PROD_PIC2: this.product[index].PROD_PIC2,
-                PROD_PIC3: this.product[index].PROD_PIC3,
-                PROD_DATE: this.product[index].PROD_DATE,
-                PROD_DESC1: this.product[index].PROD_DESC1,
-                PROD_DESC2: this.product[index].PROD_DESC2,
-                PROD_DESC3: this.product[index].PROD_DESC3,
-                PROD_REVIEW: this.product[index].PROD_REVIEW + 1,
-                PROD_TIMES: this.product[index].PROD_TIMES + 1,
-                },
-            ]
-                this.joinLocalStorage()
-            },
-            joinLocalStorage(){
-                localStorage.setItem("order",JSON.stringify(this.order)) ;
-            },
-            addCar(id) {
-            },
+        
         },
 };
 

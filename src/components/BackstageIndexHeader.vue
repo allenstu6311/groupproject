@@ -6,7 +6,7 @@
         </div>
         <div class="user_name">
           管理員 您好
-          <a class="logout">登出</a>
+          <router-link to="/manageLogin" class="logout">登出</router-link>
         </div>
       </header>
 </template>

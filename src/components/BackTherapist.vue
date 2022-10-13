@@ -2,15 +2,40 @@
     <div class="laster_therapist">
         <h1>管理按摩師</h1>
         <div class="laster_selectbar hstack gap-3">
-            <select class="form-select form-select-sm bg-light" aria-label=".form-select-sm example">
-                <option selected>依入職日期排序</option>
-                <option value="1">依姓名排序</option>
+            <select 
+                class="form-select form-select-sm bg-light" 
+                aria-label=".form-select-sm example"
+                v-model="selecttype"
+            >
+                <option value="-1">選擇排序條件</option>
+                <option value="THERAPIST_HIREDDATE">依入職日期排序</option>
+                <option value="THERAPIST_NAME">依姓名排序</option>
+            </select>
+            <select 
+                class="form-select form-select-sm bg-light therapist_status" 
+                aria-label=".form-select-sm example"
+                v-model="selectPermission"
+            >
+                <option value="-1">選擇狀態</option>
+                <option value="1">在職</option>
+                <option value="0">離職</option>
             </select>
             <div class="input-group rounded bg-light">
-                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                <span class="input-group-text border-0" id="search-addon">
+                <input 
+                    type="search" 
+                    class="form-control rounded" 
+                    placeholder="搜尋按摩師" 
+                    aria-label="Search" 
+                    aria-describedby="search-addon" 
+                    v-model="searchTherapist"
+                />
+                <button 
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    @click="search"
+                >
                     <i class="fas fa-search"></i>
-                </span>
+                </button>
             </div>
             <router-link class="btn btn-primary ms-auto" to="/backtherapistadd">新增按摩師</router-link>
         </div>
@@ -28,7 +53,7 @@
             <tbody>
                 <tr 
                 v-for="backstageTherapsit in backstageTherapsitList" 
-                :key="backstageTherapsit">
+                :key="backstageTherapsit.THERAPIST_NAME">
                     <td>{{ backstageTherapsit.THERAPIST_NAME }}</td>
                     <td>{{ backstageTherapsit.THERAPIST_ACCOUNT }}</td>
                     <td>{{ backstageTherapsit.THERAPIST_HIREDATE }}</td>
@@ -91,8 +116,13 @@
         },
         data() {
             return {
+                data: [],
                 backstageTherapsitList: [],
-                allenHandsome:[]
+                allenHandsome:[],
+                // therapistInfo: [],
+                selecttype: '-1',
+                selectPermission: '-1',
+                searchTherapist: '',
             }
         },
         created(){
@@ -100,16 +130,15 @@
         },
         methods:{
             async getDataFromApi() {
-                // var url = 'http://localhost/CGD102_G2/public/api/therapistContent.php'; //開發用
-                var url = `${BASE_URL}/therapistContent.php`; //上線用
-                let getData = async(url) => {
-                    let response = await fetch(url); // await 很重要
-                    let JSON = response.json();
-                    this.backstageTherapsitList = await JSON; // php抓取回來的資料存取在預設好的參數裡
-                }
-                await getData(url); // 觸發 getData 的匿名 function 內容
-                console.log(this.backstageTherapsitList);
-                 
+                    // var url = 'http://localhost/CGD102_G2/public/api/therapistContent.php'; //開發用
+                    var url = `${BASE_URL}/therapistContent.php`; //上線用
+                    let getData = async(url) => {
+                        let response = await fetch(url); // await 很重要
+                        let JSON = response.json();
+                        this.backstageTherapsitList = await JSON; // php抓取回來的資料存取在預設好的參數裡
+                    }
+                    await getData(url); // 觸發 getData 的匿名 function 內容
+                    console.log(this.backstageTherapsitList);
             },
             changeStatus(account,e){
                 this.account = account;
@@ -160,7 +189,54 @@
                 // let index = this.allenHandsome.findIndex(item=>item.THERAPIST_NAME)
                 this.allenHandsome=[]
                 this.setStorage()
-            }
+            },
+            //排序功能
+            sorttype() {
+                if (this.selecttype != -1) {
+                    this.backstageTherapsitList.sort((a, b) => b[this.selecttype] < a[this.selecttype] ? 1 : -1)
+                } //sort 排序比較
+            },
+            // sortPermission() {
+            //     if (this.selectPermission != -1) {
+            //         this.backstageTherapsitList.sort((a, b) => b[this.selectPermission] < a[this.selectPermission] ? 1 : -1)
+            //     }
+            // },
+            search(){
+                var url = `${BASE_URL}/backTherapistSearch.php` //上線
+                // var url = "http://localhost/CGD102_G2/public/api/backShopSearch.php"
+                this.axios.get(url, {
+                    params:{
+                        THERAPIST_NAME: this.searchTherapist,
+                    }
+                }).then((res)=>{
+                    this.backstageTherapsitList = res.data
+                    // this.changePageButton=false
+                    console.log(this.backstageTherapsitList);
+                })
+            },
+        },
+        watch: {
+            selecttype: {
+                handler(value) {
+                    this.sorttype()
+                },
+                deep: true
+            },
+            // selectPermission: {
+            //     handler(value) {
+            //         this.sortPermission()
+            //     },
+            //     deep: true
+            // },
+            searchTherapist: {
+                handler(newVal){
+                    if(!newVal){
+                        this.data = this.backstageTherapsitList
+                        // this.changePageButton=true
+                    }
+                },
+                deep: true
+            },
         }
     }
 </script>
@@ -179,8 +255,11 @@
         .laster_selectbar{
             display: flex;
             .form-select{
-                width: 20%;
+                width: 15%;
                 line-height: 2;
+            }
+            .therapist_status{
+                width: 8%;
             }
             .input-group{
                 width: 25%;
@@ -202,8 +281,9 @@
             text-align: center;
             table-layout:fixed;
             .form-select{
-                width: 50%;
-                text-align: end;
+                width: 14%;
+                // text-align: center;
+                margin-left: 12%;
                 background-color: transparent;
                 border: none;
                 cursor: pointer;

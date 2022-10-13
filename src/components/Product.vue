@@ -2,6 +2,10 @@
   <div class="background-pic">
     <img src="../assets/images/bcgFlower.png " alt="" />
   </div>
+ 
+     
+ 
+   
   <!-- ========================================banner -->
   <div class="product-title" >
 
@@ -99,8 +103,8 @@
         <h2>{{ order[0].PROD_NAME }}</h2>
       </div>
       <div class="product-star" style="z-index:-1">
-        <p class="star-score">{{score}}</p>
-        <p v-for="item in star" :key="item" >★</p>
+        <p class="star-score">{{(score-1).toFixed(1)}}</p>
+        <p v-for="item in star-1" :key="item" >★</p>
         <p v-if="star < 1">{{ block }}</p>
         <p v-if="star < 2">{{ block }}</p>
         <p v-if="star < 3">{{ block }}</p>
@@ -153,6 +157,9 @@
       />
     </div>
   </transition>
+
+<lightBox  :lightBoxShow="showBox"/>
+
 </template>
 <style lang="scss" scoped>
 img {
@@ -205,7 +212,7 @@ img {
     position: relative;
     width: 100%;
     max-width: 500px;
-    height: 500px;
+    height: 450px;
     margin: 0 auto;  
   }
   .magnifier-cursor {
@@ -248,6 +255,17 @@ img {
          padding: 5px;
     }
   }
+  @media screen and (max-width:1024px) {
+    .magnifier-area{
+      display: none;
+    }
+    .magnifier-font{
+      display: none;
+    }
+     .magnifier-cursor{
+      display: none;
+     }
+  }
   
 
 
@@ -256,8 +274,15 @@ img {
 
 <script>
 import {BASE_URL} from '@/assets/js/common.js'
+import lightBox from "@/components/lightBox.vue"
 // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 export default {
+  props:{
+    getFalse:Boolean
+  },
+  components:{
+     lightBox
+  },
   data() {
     return {
       order: [],
@@ -271,6 +296,7 @@ export default {
       product_num: 1,
       memory:[],
       fly:false,
+     showBox:false,
 
       cursorWidth: 100, // 光标宽度 
       cursorHeight: 100, // 光标高度 
@@ -308,8 +334,8 @@ export default {
       showZoomBox(event) {
       
         const halfCursor = this.cursorWidth/2;
-        const left = event.clientX- this.magnifierBoxLeft-50+'%'
-        const top = event.clientY  - this.magnifierBoxTop-50+'%'
+        const left = event.clientX- this.magnifierBoxLeft-halfCursor 
+        const top = event.clientY  - this.magnifierBoxTop-halfCursor 
         // 处理光标左侧
         if(left < 0) { // 防止左侧溢出
           this.cursorLeft = 0;
@@ -324,11 +350,11 @@ export default {
         if(top < 0) { // 防止顶部溢出
           this.cursorTop = 0;
         }
-        if(top >= 0 && top <= 500 - this.cursorWidth) {
+        if(top >= 0 && top <= 400 - this.cursorWidth) {
           this.cursorTop = top;
         }
-        if(top > 500 - this.cursorWidth) { // 防止底部溢出
-          this.cursorTop = 500 - this.cursorWidth;
+        if(top > 400 - this.cursorWidth) { // 防止底部溢出
+          this.cursorTop = 400 - this.cursorWidth;
         }
         this.isShowCursor = true;
       },
@@ -346,11 +372,11 @@ export default {
         if(left < 0) { // 防止左侧溢出
           this.cursorLeft = 0;
         }
-        if(left >= 0 && left <= 500 - this.cursorWidth) {
+        if(left >= 0 && left <= 450 - this.cursorWidth) {
           this.cursorLeft = left;
         }
-        if(left > 500 - this.cursorWidth) { // 防止右侧溢出
-          this.cursorLeft = 500 - this.cursorWidth;
+        if(left > 450 - this.cursorWidth) { // 防止右侧溢出
+          this.cursorLeft = 450 - this.cursorWidth;
         }
         // 处理光标顶部
         if(top < 0) { // 防止顶部溢出
@@ -390,19 +416,23 @@ export default {
     },
     
     addCar(id) {
+     
+      if(!this.member){
+        this.showBox=!this.showBox
+      }else{
       this.updateCart()
-      console.log(this.memory)
-      this.fly=true
        let sameProduct = this.memory.find(item=>item.PROD_ID===id)
-    
-       
        if(!sameProduct){
         alert("成功加入")
+        this.fly=true
          this.IncreaseShoppingCart() 
-            this.updateCart()
+        this.updateCart()
       }else{
         alert("購物車已有相同物品")
       }
+
+      }
+   
     },
 
       IncreaseShoppingCart() {
@@ -421,7 +451,7 @@ export default {
     },
     updateCart() {
      
-      var url = `${BASE_URL}/shoppingCart.php`; //上線
+     var url = `${BASE_URL}/shoppingCart.php`; //上線
       this.axios
         .get(url, {
           params: {
@@ -429,9 +459,22 @@ export default {
           },
         })
         .then((res) => {
-          this.memory = res.data;
-          console.log("mm",this.memory)
-          // this.$emit("addCartInfo", this.memory);
+          // this.memory = res.data;
+          let oldVal = this.memory;
+          let newVal = res.data;
+          let isSame = newVal.length === oldVal.length;
+          if (!isSame) {
+            this.memory = res.data;
+            return;
+          }
+
+          isSame = newVal.every((v) => oldVal.findIndex((u) => u.PROD_ID === v.PROD_ID && u.PROD_QTY == v.PROD_QTY) > -1
+          );
+          if (!isSame) {
+            this.memory = res.data;
+          }
+          
+          this.$emit("update-cart", res.data);
         });
     },
  
@@ -447,11 +490,9 @@ export default {
     },
   },
   created() {
-    this.getStar();
   
-    let members = sessionStorage.getItem("member");
-    this.member = JSON.parse(members)
-      this.updateCart();
+      // this.updateCart();
+      this.getStar();
   },
 };
 </script>

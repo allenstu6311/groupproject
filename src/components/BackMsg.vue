@@ -93,7 +93,7 @@
                     let JSON =  response.json();
                     this.backMsgList = await JSON; // php抓取回來的資料存取在預設好的參數裡
                 }
-                await getData(url); // 觸發 getData 的匿名 function 內容 ==> 76 ~ 78 行的內容
+                await getData(url); // 觸發 getData 的匿名 function 內容
                 console.log(this.backMsgList);
             },
               modifyMsg(name){

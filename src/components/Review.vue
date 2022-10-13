@@ -6,12 +6,12 @@
     <div class="review-score">
       <div class="review-fraction">
         <h3>
-          <strong>{{ score }}</strong
+          <strong>{{ (score-1).toFixed(1) }}</strong
           >/5
         </h3>
       </div>
       <div class="review-star">
-        <p v-for="item in star" :key="item">★</p>
+        <p v-for="item in star-1" :key="item">★</p>
         <p v-if="star < 1">{{ block }}</p>
         <p v-if="star < 2">{{ block }}</p>
         <p v-if="star < 3">{{ block }}</p>
@@ -19,7 +19,7 @@
         <p v-if="star < 5">{{ block }}</p>
       </div>
       <small style="text-align: center"
-        >共{{ order[0] ? order[0].PROD_TIMES : 0 }}人評價此商品</small
+        >共{{ order[0] ? order[0].PROD_TIMES-1 : 0 }}人評價此商品</small
       >
     </div>
 
@@ -87,10 +87,18 @@
   <div class="star-lightBox" v-if="reviewStar == true">
     <div class="star-post">
       <div class="star-title">
-        <h3>{{checkFont}}</h3>
+        <h3>{{ checkFont }}</h3>
       </div>
       <div class="star-check">
-        <button class="btnLittle" @click="reviewStar=false;thankYou()">確定</button>
+        <button
+          class="btnLittle"
+          @click="
+            reviewStar = false;
+            thankYou();
+          "
+        >
+          確定
+        </button>
       </div>
       <div class="star-close">
         <button @click="reviewStar = false">x</button>
@@ -100,7 +108,7 @@
 </template>
 <script>
 import { BASE_URL } from "@/assets/js/common.js";
-import { Alert } from 'view-ui-plus';
+import { Alert } from "view-ui-plus";
 // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 export default {
   components: {},
@@ -115,27 +123,26 @@ export default {
       article: [],
       member: [],
       reviewStar: false,
-      checkFont:"確定評價?",
+      checkFont: "確定評價?",
+      lightBoxShow:false 
     };
   },
   methods: {
     giveRating(num, name) {
       this.reviewStar = true;
-        var url = `${BASE_URL}/review.php`; //上線
+      var url = `${BASE_URL}/review.php`; //上線
       // var url = "http://localhost/CGD102_G2/public/api/review.php"
-      this.axios.get(url, {
-        params: {
-          number: num,
-          product: name,
-        },
-      })
-      .then((res)=>{
-   
-      })
-     
+      this.axios
+        .get(url, {
+          params: {
+            number: num,
+            product: name,
+          },
+        })
+        .then((res) => {});
     },
-    thankYou(){
-        alert("感謝評價")
+    thankYou() {
+      alert("感謝評價");
     },
     upload() {
       var url = `${BASE_URL}/comment.php`; //上線
@@ -171,18 +178,26 @@ export default {
 
       let members = sessionStorage.getItem("member");
       this.member = JSON.parse(members);
-   
-        this.score = (
-          parseInt( this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES)
-          ).toFixed(1);
-          this.star = parseInt(this.score);
 
+    this.score = (
+      this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
+      ).toFixed(1);
+      this.star = parseInt(this.score);
+    },
+    checkMember() {
+      let members = sessionStorage.getItem("member");
+      this.member = JSON.parse(members);
+      if (!this.member) {
+        this.lightBoxShow = true;
+      } else {
+        this.lightBoxShow = false;
       }
+    },
   },
   created() {
+    this.checkMember();
     this.getStorage();
-    this.updateArticle();
-    console.log(this.order[0])
+    // this.updateArticle();
   },
 };
 </script>

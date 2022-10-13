@@ -37,7 +37,7 @@
                         <h4 class="third_title title_one">{{ therapist.THERAPIST_NAME }}  <span>師傅</span></h4>
                         <div class="text text_one" :class="'text_'+[therapist.THERAPIST_ID]">
                             <p>證照：</p>
-                            <p class="text_content" contenteditable v-text="therapist.THERAPIST_LICENSE_1"></p>
+                            <p class="text_content" v-text="therapist.THERAPIST_LICENSE_1"></p>
                             <p class="text_content" v-text="therapist.THERAPIST_LICENSE_2"></p>
                             <p class="text_content" v-text="therapist.THERAPIST_LICENSE_3"></p>
                             <p class="text_content" v-text="therapist.THERAPIST_LICENSE_4"></p>
@@ -65,6 +65,7 @@ export default {
     data() {
         return {
             therapistCardList: [],
+            ppic: 'masseusePic2.jpg',
         }
     },
     created(){

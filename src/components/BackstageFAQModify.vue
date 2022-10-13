@@ -54,14 +54,13 @@ export default {
     this.FAQ_TEXT = this.$route.query.text
   },
   methods: {
-        
         submit(){
-
+            var url = `${BASE_URL}/BackstageFAQModify.php`;
             var xhr = new XMLHttpRequest();
 
             xhr.onload = function(){
                 if(xhr.status == 200){
-                  // console.log(xhr.responseText);
+                  console.log(xhr.responseText);
                     if(xhr.responseText == "修改成功"){
                         alert("修改成功");
                         window.location.replace("/BackstageFAQ");
@@ -71,7 +70,7 @@ export default {
                 }
             }
             // xhr.open("post","http://localhost/CGD102_G2/public/api/backtherapistchangeinfo.php", true); //開發用
-            xhr.open("post",`${BASE_URL}/BackstageFAQModify.php`, true); //上線用
+            xhr.open("post", url, true); //上線用
             xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
             let FAQ_data = `FAQ_ID=${this.FAQ_ID}&FAQ_TITLE=${this.FAQ_TITLE}&FAQ_TEXT=${this.FAQ_TEXT}`;

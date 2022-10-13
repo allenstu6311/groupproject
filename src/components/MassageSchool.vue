@@ -23,7 +23,7 @@
                 <small>• ACUPOINT KNOWLEDGE •</small>
             </div>
 
-            <section class="knowledge_container title_left">
+            <section class="knowledge_container">
                 <h3 class="knowledge_title ">頭部</h3>
                 <swiper class="knowledge_swiper"
                         :modules="modules"
@@ -63,6 +63,7 @@
             </section>
 
             <section class="knowledge_container title_right">
+                <h3 class="knowledge_title">手部</h3>
                 <swiper class="knowledge_swiper"
                         :modules="modules"
                         :pagination="{ clickable: true }"
@@ -75,6 +76,12 @@
                         :key="index"
                     >
                         <li class="knowledge_card" >
+                            <div class="knowledge_pic">
+                                <img
+                                    :src="require(`@/assets/images/${hand.pic}`)"
+                                    :alt="hand.name"
+                                >
+                            </div>
                             <div class="knowledge_txt">
                                 <h3 class="knowledge_name">{{hand.name}}</h3>
                                 <p class="knowledge_introduce">
@@ -88,19 +95,12 @@
                                     {{hand.effect4}}
                                 </p>
                             </div>
-                            <div class="knowledge_pic">
-                                <img
-                                    :src="require(`@/assets/images/${hand.pic}`)"
-                                    :alt="hand.name"
-                                >
-                            </div>
                         </li>
                     </swiper-slide>
                 </swiper>
-                <h3 class="knowledge_title">手部</h3>
             </section>
 
-            <section class="knowledge_container title_left">
+            <section class="knowledge_container">
                 <h3 class="knowledge_title">身體</h3>
                 <swiper class="knowledge_swiper"
                         :modules="modules"
@@ -139,6 +139,7 @@
             </section>
 
             <section class="knowledge_container title_right">
+                <h3 class="knowledge_title">腳部</h3>
                 <swiper class="knowledge_swiper"
                         :modules="modules"
                         :pagination="{ clickable: true }"
@@ -151,6 +152,12 @@
                         :key="index"
                     >
                         <li class="knowledge_card" >
+                            <div class="knowledge_pic">
+                                <img
+                                    :src="require(`@/assets/images/${foot.pic}`)"
+                                    :alt="foot.name"
+                                >
+                            </div>
                             <div class="knowledge_txt">
                                 <h3 class="knowledge_name">{{foot.name}}</h3>
                                 <p class="knowledge_introduce">
@@ -164,16 +171,9 @@
                                     {{foot.effect4}}
                                 </p>
                             </div>
-                            <div class="knowledge_pic">
-                                <img
-                                    :src="require(`@/assets/images/${foot.pic}`)"
-                                    :alt="foot.name"
-                                >
-                            </div>
                         </li>
                     </swiper-slide>
                 </swiper>
-                <h3 class="knowledge_title">腳部</h3>
             </section>
 
             <div class="msgshl_btn ">

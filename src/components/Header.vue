@@ -1,7 +1,7 @@
 <template>
   <header class="page_header">
     <nav>
-      <input type="checkbox" id="check" />
+      <input type="checkbox" id="check" v-model="navCheck"/>
       <label for="check" class="hamburger">
         <span class="line1"></span>
         <span class="line2"></span>
@@ -65,10 +65,11 @@ import { useRouter } from "vue-router";
 export default {
   data() {
     return {
-      // iconShow: true,
-      // selectShow: false,
-      showCartLength: false,
-      memory: [],
+      navCheck: false,
+      iconShow: true,
+      selectShow: false,
+      showCartLength:false,
+      memory:[],
       router: useRouter(),
     };
   },
@@ -97,8 +98,12 @@ export default {
     //     this.updateCart()
     //   }
     // },
-
-
+    '$route.path'(){
+      if(this.navCheck){
+        this.navCheck = false
+      }
+    }
+   
   },
 
   methods: {

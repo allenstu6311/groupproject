@@ -22,8 +22,8 @@ try{
         $updateSql = "UPDATE FAQ SET
         FAQ_ID = :FAQ_ID,
         FAQ_TITLE = :FAQ_TITLE,
-        FAQ_TEXT = :FAQ_TEXT,
-        WHERE FAQ_ID = :FAQ_ID";
+        FAQ_TEXT = :FAQ_TEXT
+        WHERE FAQ_ID = :FAQ_ID;";
 
         $faq = $pdo -> prepare($updateSql);
         $faq->bindValue(":FAQ_ID",$_POST["FAQ_ID"]);

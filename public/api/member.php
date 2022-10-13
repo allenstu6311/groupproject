@@ -2,7 +2,7 @@
 header('Access-Control-Allow-Origin:*');
 header("Content-Type:application/json;charset=utf-8");
 
-function memberInfo($MEM_NAME){
+function memberInfo($MEM_ID){
 
     //   require_once("../../src/connect_cgd102g2.php"); //開發路徑
       require_once("../connect_cgd102g2.php");//上線路徑
@@ -14,7 +14,7 @@ JOIN COUPONS C
 ON MC.CPS_ID =  C.CPS_ID
 JOIN COUPONS CS
 ON  MC.CPS_ID = CS.CPS_ID 
-WHERE MEM_NAME='{$MEM_NAME}'";
+WHERE M.MEM_ID={$MEM_ID}";
 
 $book = $pdo->query($sql);
 
@@ -29,7 +29,7 @@ echo json_encode($data);
 
 }
 
-memberInfo($_GET['MEM_NAME'])
+memberInfo($_GET['MEM_ID'])
 
 ?>
 

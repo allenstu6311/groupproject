@@ -9,7 +9,7 @@ function coupon($mem_id,$coupon_id){
         require_once("../connect_cgd102g2.php");//上線路徑
     
         $sql = "INSERT INTO MY_COUPONS VALUES
-        (MEM_ID={$mem_id},CPS_ID={$coupon_id},MY_COUPONS_STATUS=1)";
+        ({$mem_id},{$coupon_id},1,)";
 
         $pdo->query($sql);
     

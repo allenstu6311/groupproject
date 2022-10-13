@@ -13,10 +13,11 @@
         <router-link to="/MemLogin" class="btnLarge">前往登入</router-link>
       </div>
       <div class="light-box-close">
-        <button type="button" @click="goBack">x</button>
+        <button type="button" @click="sendLightBoxInfo">x</button>
       </div>
     </div>
   </div>
+
 </template>
 <style lang="scss" scoped>
 // @import "../assets/style.scss";
@@ -47,7 +48,7 @@
     position: fixed;
     margin: auto;
     left: 40%;
-    top: 30%;
+    top: 25%;
     background-color: white;
     width: 300px; 
     display: flex;
@@ -84,17 +85,35 @@
 }
 </style>
 <script>
+
 export default {
+  props:{
+     lightBoxShow:Boolean,
+  },
+  components:{
+  
+  },
     data(){
         return{
-            lightBoxShow:true
+          judge:false
         }
     },
     methods:{
-      goBack(){
-        this.$router.go(-1)
-      }
     
+        sendLightBoxInfo(){
+   
+          this.$emit("boo",this.judge)
+        
+      },
+      
+    },
+    
+    mounted(){
+
+    },
+    created(){
+      
+     
     }
 }
 </script>

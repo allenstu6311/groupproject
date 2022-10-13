@@ -60,6 +60,7 @@ import { useRouter } from "vue-router";
 export default {
   data() {
     return {
+      navCheck: false,
       iconShow: true,
       selectShow: false,
       showCartLength:false,
@@ -92,7 +93,11 @@ export default {
     //     this.updateCart()
     //   }
     // },
-
+    '$route.path'(){
+      if(this.navCheck){
+        this.navCheck = false
+      }
+    }
    
   },
 

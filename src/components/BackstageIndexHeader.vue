@@ -6,13 +6,26 @@
         </div>
         <div class="user_name">
           管理員 您好
-          <router-link to="/manageLogin" class="logout">登出</router-link>
+          <div class="logout" @click="logout">登出</div>
         </div>
       </header>
 </template>
 
 <script>
-
+import { useRouter } from "vue-router";
+export default {
+    data() {
+        return {
+            router: useRouter(),
+        }
+    },
+    methods: {
+        logout(){
+            sessionStorage.removeItem("admin");
+            this.router.push({ path: '/ManageLogin' });
+        }
+    },
+}
 </script>
 
 <style lang="scss" scoped>
@@ -41,6 +54,7 @@
             .logout{
                 padding: 0 20px;
                 text-decoration: none;
+                cursor: pointer;
             }
         }
     }

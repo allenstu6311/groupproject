@@ -145,8 +145,8 @@ export default {
         //取得資料
         getmanagelist() {
             let xhr = new XMLHttpRequest();
-            // var url = `${BASE_URL}/backGetManage.php`; //上線用
-            var url = "http://localhost/CGD102_G2/public/api/backGetManage.php";//開發用
+            var url = `${BASE_URL}/backGetManage.php`; //上線用
+            // var url = "http://localhost/CGD102_G2/public/api/backGetManage.php";//開發用
             xhr.open("get", url, true);
             xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
             xhr.send(null);
@@ -173,8 +173,8 @@ export default {
         newAdmin() {
             let xhr = new XMLHttpRequest();
             let thus = this;
-            // var url = `${BASE_URL}/backNewAdmin.php`; //上線用
-            var url = "http://localhost/CGD102_G2/public/api/backNewAdmin.php";//開發用
+            var url = `${BASE_URL}/backNewAdmin.php`; //上線用
+            // var url = "http://localhost/CGD102_G2/public/api/backNewAdmin.php";//開發用
             xhr.open("post", url, true);
             xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
             if (this.addaccount == '' || this.addpsw == '' || this.addname == '') {
@@ -194,22 +194,26 @@ export default {
         },
         //取得checked的index
         getindex(ADMIN_ID){
-            this.checkedArray.push(ADMIN_ID);
+            if(this.checkedArray.indexOf(ADMIN_ID) == -1){
+                this.checkedArray.push(ADMIN_ID);
+            }else{
+                this.checkedArray.shift(ADMIN_ID);
+            }
         },
         dropAdmin(){
             let xhr = new XMLHttpRequest();
-            
-            // var url = `${BASE_URL}/backDropAdmin.php`;//上線用
-            var url = "http://localhost/CGD102_G2/public/api/backDropAdmin.php";//開發用
+            let thus = this;
+            var url = `${BASE_URL}/backDropAdmin.php`;//上線用
+            // var url = "http://localhost/CGD102_G2/public/api/backDropAdmin.php";//開發用
             xhr.open("post", url, true);
             xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
             let droplist = `checked=${this.checkedArray}`;
-            console.log(droplist);
             xhr.send(droplist);
 
             xhr.onload = function(){
                 if(xhr.response){
-                    alert(1);
+                    alert("刪除成功");
+                    thus.router.go(0);
                 }
             }
         }

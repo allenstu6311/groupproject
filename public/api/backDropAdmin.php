@@ -7,7 +7,7 @@ require_once("../../src/connect_cgd102g2.php"); //開發用
 $dropSql = "DELETE FROM ADMINISTRATOR
             WHERE ADMIN_ID IN (:DROPADMIN)";
 $dropAdmin = $pdo->prepare($dropSql);
-$dropAdmin->bindValue(":DROPADMIN",$_POST["droplist"]);
+$dropAdmin->bindValue(":DROPADMIN",$_POST["checked"]);
 $dropAdmin->execute();
 echo 1;
 }catch(PDOException $e){

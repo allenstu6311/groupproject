@@ -30,10 +30,10 @@
             class="msg_card_frame"
             v-for="(msgCard, index) in msgCardList"
             :key="index"
-            :class="{ reverse: index % 2 === 1, btnLeft: index%2 !==1}"
+            :class="{ reverse: index % 2 === 1, btnLeft: index % 2 !== 1 }"
           >
-            <div class="msg_card row"  >
-              <div class="msg_card_txt col col-12 col-md-12 col-xl-8" >
+            <div class="msg_card row">
+              <div class="msg_card_txt col col-12 col-md-12 col-xl-8">
                 <h3 class="name item_title">
                   {{ msgCard.MSG_NAME }}
                 </h3>
@@ -41,7 +41,7 @@
                   {{ msgCard.MSG_INTRO }}
                 </div>
                 <div class="price_form">
-                  <div class="long_time">
+                  <!-- <div class="long_time">
                     <div class="long_time_price">
                       <span class="timespan timespan_1">
                         {{ msgCard.MSG_TIMESPAN_1 }}分鐘 </span
@@ -53,12 +53,12 @@
                     <p class="rec rec_1">
                       {{ msgCard.MSG_REC_1 }}
                     </p>
-                  </div>
+                  </div> -->
                   <div class="short_time">
                     <div class="short_time_price">
                       <span class="timespan timespan_2">
-                        {{ msgCard.MSG_TIMESPAN_2 }}分鐘 </span
-                      >/
+                        {{ msgCard.MSG_TIMESPAN_2 }}分鐘
+                      </span>
                       <span class="price price_2">
                         NT${{ msgCard.MSG_PRICE_2 }}
                       </span>
@@ -69,7 +69,15 @@
                   </div>
                 </div>
                 <div class="resv_btn">
-                  <router-link class="btnLarge" to="/resvPage">立即預約</router-link>
+                  <router-link
+                    class="btnLarge"
+                    :to="{
+                      path: '/resvPage',
+                      query: { msg_id: `${msgCard.MSG_ID}` },
+                    }"
+                  >
+                    立即預約
+                  </router-link>
                 </div>
               </div>
               <div class="pic_ctnr msg_card_pic col col-12 col-md-8 col-xl-4">
@@ -87,35 +95,34 @@
 </template>
 
 <script>
-  import {BASE_URL} from '@/assets/js/common.js'
+import { BASE_URL } from "@/assets/js/common.js";
 
-  export default {
-      props: {
-          msg: String,
-          msgCard: String,
-      },
-      data() {
-          return {
-              msgCardList: [],
-          }
-      },
-      created(){
-          this.getDataFromApi(); // 在建立 Vue.js 模板時順帶執行這個參數
-      },
-      methods:{        
-          async getDataFromApi() {
-              // var url = 'http://localhost/CGD102_G2/public/api/reservation.php' //開發用
-              // var url = `${BASE_URL}/api/reservation.php` //上線用舊版需刪除/api
-              var url = `${BASE_URL}/reservation.php` //上線用
-              let getData = async(url) => {
-                  // console.log(url);
-                  let response = await fetch(url); // await: 這行的 await 執行完才會執行下一個 await
-                  let JSON =  response.json();
-                  this.msgCardList = await JSON; // php 抓取回來的資料存取在預設好的參數裡
-              }
-              await getData(url); // 觸發 getData 的匿名 function 內容 ==> 89 ~ 91 行的內容
-              // console.log(this.msgCardList);
-          }
-      }
-  }
+export default {
+  props: {
+    msg: String,
+    msgCard: String,
+  },
+  data() {
+    return {
+      msgCardList: [],
+    };
+  },
+  created() {
+    this.getDataFromApi(); // 在建立 Vue.js 模板時順帶執行這個參數
+  },
+  methods: {
+    async getDataFromApi() {
+      // var url = 'http://localhost/CGD102_G2/public/api/reservation.php' //開發用
+      var url = `${BASE_URL}/reservation.php`; //上線用
+      let getData = async (url) => {
+        // console.log(url);
+        let response = await fetch(url); // await: 這行的 await 執行完才會執行下一個 await
+        let JSON = response.json();
+        this.msgCardList = await JSON; // php 抓取回來的資料存取在預設好的參數裡
+      };
+      await getData(url); // 觸發 getData 的匿名 function 內容 ==> 89 ~ 91 行的內容
+      // console.log(this.msgCardList);
+    },
+  },
+};
 </script>

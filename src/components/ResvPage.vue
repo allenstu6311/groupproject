@@ -55,7 +55,7 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <span class="msg_price_1">NT$2400</span>
                       </option> -->
-                    <option value="" selected>
+                    <option :value="msgData[0].MSG_TIMESPAN_2" selected>
                       <span class="msg_timespan_1">{{ msgData[0].MSG_TIMESPAN_2 }}分鐘</span>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <span class="msg_price_1"
@@ -159,7 +159,8 @@
       </section> -->
     </main>
   </div>
-  <lightBox v-if="lightBoxShow == true" />
+  <lightBox  :lightBoxShow ="showBox" />
+
 </template>
 <script>
 import { DatePicker } from "view-ui-plus";
@@ -174,6 +175,7 @@ export default {
   },
   data() {
     return {
+      showBox:false,
       msgDataPic: "",
       msgData: [],
       lightBoxShow: false,
@@ -182,7 +184,7 @@ export default {
       isActive3: false,
       orderList: [],
       orderMsg: "全身穴道按摩",
-      THERAPIST_ID: "1",
+      THERAPIST_ID: "",
       orderPrice: "",
       MSG_ID: "",
       RESV_DATE: "",
@@ -265,8 +267,8 @@ export default {
         orderPrice: orderPrice.value,
       });
       this.setStorage();
-      console.log(this.timeResult);
-
+      // console.log(this.timeResult);
+bmit()
       window.alert("預約嗎？");
     },
     setStorage() {
@@ -278,34 +280,53 @@ export default {
       this.orderList = JSON.parse(orderLists);
     },
     submit() {
-      var xhr = new XMLHttpRequest();
-
-      xhr.onload = function () {
-        if (xhr.status == 200) {
-          if (xhr.responseText == 1) {
-            alert("預約成功"); //還要判斷該時段滿了沒 & 要跳轉到會員中心看訂單嗎？
+      if(!this.member){
+         this.showBox = !this.showBox
+      }else{
+        var url = `${BASE_URL}/resv.php`
+        console.log(this.valueTime)
+        console.log(this.THERAPIST_ID)
+        console.log(this.orderPrice)
+        this.axios.get(url,{
+          params:{
+            THERAPIST_ID:this.THERAPIST_ID,
+            MSG_RESV_DATE:this.valuesTimes,
+            
           }
-        } else {
-          alert(xhr.status);
-        }
-      };
+        })
+      // var xhr = new XMLHttpRequest();
+      // xhr.onload = function () {
+      //   if (xhr.status == 200) {
+      //     if (xhr.responseText == 1) {
+      //       alert("預約成功"); //還要判斷該時段滿了沒 & 要跳轉到會員中心看訂單嗎？
+      //     }
+      //   } else {
+      //     alert(xhr.status);
+      //   }
+      // };
 
-      // var url = "http://localhost/CGD102_G2/public/api/resv.php";
-      var url = `${BASE_URL}/resv.php`; //上線用
-      xhr.open("post", url, true);
-      xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-      //我從前台要送什麼資料去後端？
-      // let resv_data = `RESV_DATE=${this.RESV_DATE}`;
-      this.MEM_ID=`${this.member.memId}`;
-      console.log('MEM_ID',this.MEM_ID);
-      let resv_data = `MEM_ID=${this.MEM_ID}&THERAPIST_ID=${this.THERAPIST_ID}&MSG_ID=${this.MSG_ID}&RESV_DATE=${this.RESV_DATE}&RESV_TIME_START=${this.RESV_TIME_START}&RESV_TIME_END=${this.RESV_TIME_END}`;
-      console.log(resv_data);
-      xhr.send(resv_data);
+      // // var url = "http://localhost/CGD102_G2/public/api/resv.php";
+      // var url = `${BASE_URL}/resv.php`; //上線用
+      // xhr.open("post", url, true);
+      // xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+      // //我從前台要送什麼資料去後端？
+      // // let resv_data = `RESV_DATE=${this.RESV_DATE}`;
+      // this.MEM_ID=`${this.member.memId}`;
+      // // console.log('MEM_ID',this.MEM_ID);
+      // let resv_data = `MEM_ID=${this.MEM_ID}&THERAPIST_ID=${this.THERAPIST_ID}&MSG_ID=${this.MSG_ID}&RESV_DATE=${this.RESV_DATE}&RESV_TIME_START=${this.RESV_TIME_START}&RESV_TIME_END=${this.RESV_TIME_END}`;
+      // // console.log(resv_data);
+      // xhr.send(resv_data);
+      //      // getMsgData() {},
+      }
+   
     },
-    // getMsgData() {},
+ 
   },
   created() {
+    let members = sessionStorage.getItem("member");
+    this.member = JSON.parse(members);
     this.MSG_ID = this.$route.query.msg_id;
+  
     // 拿到從php傳回來的msg的data, id= 1,2,3...
     this.getStorage();
     // var url = "http://localhost/CGD102_G2/public/api/msgPage.php"; //開發用
@@ -318,8 +339,8 @@ export default {
         },
       })
       .then((res) => {
-        console.log(res.data);
-        console.log(res.data[0]);
+        // console.log(res.data);
+        // console.log(res.data[0]);
         // console.log(res.data[0].MSG_NAME);
         // console.log(res.data[0].MSG_NAME[0]);
         // console.log(res.data[0].MSG_PIC);
@@ -327,17 +348,12 @@ export default {
         this.msgDataPic=this.msgData[0].MSG_PIC;
       });
 
-    console.log(this.MSG_ID);
+    // console.log(this.MSG_ID);
     // this.getMsgData();
 
-    let members = sessionStorage.getItem("member");
-    this.member = JSON.parse(members);
-    if (!this.member) {
-      this.lightBoxShow = true;
-    } else {
-      this.lightBoxShow = false;
-    }
-    console.log('id',this.member.memId);
+
+   
+
   },
   watch: {
     orderList: {
@@ -359,11 +375,11 @@ export default {
       this.RESV_TIME_START = `${time.getHours()}`;
       this.RESV_TIME_END = `${time.getHours() + 1}`; //只有1小時的時段可選擇就直接+1
       // 1hr=60min=3600s=3600000ms;
-      console.log(this.valueTime);
-      console.log(this.timeResult);
-      console.log(this.RESV_DATE);
-      console.log(this.RESV_TIME_START);
-      console.log(this.RESV_TIME_END);
+      // console.log(this.valueTime);
+      // console.log(this.timeResult);
+      // console.log(this.RESV_DATE);
+      // console.log(this.RESV_TIME_START);
+      // console.log(this.RESV_TIME_END);
     },
   },
   computed: {

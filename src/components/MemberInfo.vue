@@ -164,7 +164,7 @@ export default {
       switch (CityName) {
         case "桃園市":
           this.url =
-            "https://run.mocky.io/v3/ce9f0a8d-71cb-4c60-8490-22a646c79c5a";
+            "https://run.mocky.io/v3/e2268f5b-b822-414a-88ae-fe012fceb3cf";
           break;
         case "臺北市":
           this.url =
@@ -200,6 +200,12 @@ export default {
           break;
         case "彰化縣":
           this.url="https://run.mocky.io/v3/a6e982b3-02e5-4fc7-a0c2-24d6950b8248";
+          break;
+        case "新竹市":
+          this.url="https://run.mocky.io/v3/76063865-4a12-42ce-8280-0b126ccdeb31";
+          break;
+         case "新北市":
+          this.url="https://run.mocky.io/v3/5da854dc-e88c-4491-b99f-985aa033f616";
           break;
       }
       this.axios.get(this.url).then((res) => {
@@ -295,7 +301,7 @@ export default {
     this.member =JSON.parse( members)
 
     this.axios
-      .get("/json/taiwan.json") //鄉鎮
+      .get("https://run.mocky.io/v3/f6678602-bce5-4221-b235-55c9ffa39c05") //鄉鎮
       .then((res) => {
         this.location = res.data;
       });

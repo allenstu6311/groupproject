@@ -106,6 +106,7 @@
     </div>
   </div>
   <lightBox :lightBoxShow="showBox" />
+
 </template>
 <script>
 import { BASE_URL } from "@/assets/js/common.js";
@@ -156,7 +157,7 @@ export default {
     },
     upload() {
       if (!this.member) {
-        this.showBox = true;
+        this.showBox = !this.showBox;
       } else {
         var url = `${BASE_URL}/comment.php`; //上線
         // var url = "http://localhost/CGD102_G2/public/api/comment.php";

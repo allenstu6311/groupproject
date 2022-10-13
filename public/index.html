@@ -13,18 +13,18 @@
     </noscript>
     <div id="app" >
       <div class="loading_content">
-        <div class="letter l1">L</div>
+        <div class="loading_letter l1">L</div>
         <div class="box">
           <div class="b b1"></div>
           <div class="b b2"></div>
           <div class="b b3"></div>
           <div class="b b4"></div>
         </div>
-        <div class="letter l2">A</div>
-        <div class="letter l3">D</div>
-        <div class="letter l4">I</div>
-        <div class="letter l5">N</div>
-        <div class="letter l6">G</div>
+        <div class="loading_letter l2">A</div>
+        <div class="loading_letter l3">D</div>
+        <div class="loading_letter l4">I</div>
+        <div class="loading_letter l5">N</div>
+        <div class="loading_letter l6">G</div>
       </div>
     </div>
     <!-- built files will be auto injected -->
@@ -48,7 +48,7 @@ body{
   align-items: center;
   
 }
-.letter{
+.loading_letter{
   font-family: 'Arial';
   width: 90px;
   height: 180px;
@@ -115,11 +115,8 @@ body{
 /*====== 行動版 RWD | 320px ~ 768px ======*/
 @media screen and (min-width: 320px) and (max-width: 767.98px){
 
-  #app{
-    margin: 0 auto;
-  width: 90%;
-  }
-  .letter{
+
+  .loading_letter{
     font-size: 55px;
   }
   .box{

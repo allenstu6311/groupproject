@@ -5,21 +5,23 @@ header("Content-Type:application/json;charset=utf-8");
 try{
 
     require_once("../connect_cgd102g2.php"); //上線用
-    echo "MSG_NAME";
+    
     $sql = "SELECT * FROM MSG WHERE MSG_NAME = ':NAME';";
     $msgName = $pdo -> prepare($sql);
-    $msgName->bindValue(":NAME",$_POST["msg_name"]);
+    $msgName->bindValue("':NAME'",$_POST["msg_name"]);
     $msgName->execute();
     
     if( $msgName->rowCount() == 0 ){ //找不到
       //存入資料庫
-        $insertSql = "INSERT INTO MSG (MSG_NAME,MSG_INTRO,MSG_PRICE_1,MSG_REC_1,MSG_PRICE_2,MSG_REC_2,MSG_DESC,MSG_NOTICE,MSG_FAQ,MSG_PIC,MSG_STATUS)
-                VALUES(:MSG_NAME,:MSG_INTRO,:MSG_PRICE_1,:MSG_REC_1,:MSG_PRICE_2,:MSG_REC_2,:MSG_DESC,:MSG_NOTICE,:MSG_FAQ,:MSG_PIC,1);";
+        $insertSql = "INSERT INTO MSG (MSG_NAME,MSG_INTRO,MSG_TIMESPAN_1,MSG_PRICE_1,MSG_REC_1,MSG_TIMESPAN_2,MSG_PRICE_2,MSG_REC_2,MSG_DESC,MSG_NOTICE,MSG_FAQ,MSG_PIC,MSG_STATUS)
+                VALUES(':NAME',:MSG_INTRO,:MSG_TIMESPAN_1,':MSG_PRICE_1',:MSG_REC_1,:MSG_TIMESPAN_2,':MSG_PRICE_2',:MSG_REC_2,:MSG_DESC,:MSG_NOTICE,:MSG_FAQ,:MSG_PIC,1);";
         $msg = $pdo -> prepare($insertSql);
-        $msg->bindValue(":MSG_NAME",$_POST["msg_name"]);
+        $msg->bindValue("':NAME'",$_POST["msg_name"]);
         $msg->bindValue(":MSG_INTRO",$_POST["msg_intro"]);
+        $msg->bindValue(":MSG_TIMESPAN_1",$_POST["msg_timespan_1"]);
         $msg->bindValue(":MSG_PRICE_1",$_POST["msg_price_1"]);
         $msg->bindValue(":MSG_REC_1",$_POST["msg_rec_1"]);
+        $msg->bindValue(":MSG_TIMESPAN_2",$_POST["msg_timespan_2"]);
         $msg->bindValue(":MSG_PRICE_2",$_POST["msg_price_2"]);
         $msg->bindValue(":MSG_REC_2",$_POST["msg_rec_2"]);
         $msg->bindValue(":MSG_DESC",$_POST["msg_desc"]);

@@ -110,8 +110,10 @@ export default {
             msg_name: '',
             msg_intro: '',
             msg_price_1: '',
+            msg_timespan_1: '120',
             msg_rec_1: '',
             msg_price_2: '',
+            msg_timespan_2: '60',
             msg_rec_2: '',
             msg_desc: '',
             msg_look: '',
@@ -161,7 +163,7 @@ export default {
 
         submit(){
             //產生XMLHttpRequest物件
-            var url = `${BASE_URL}/backMsgAdd.php`//上線用
+            let url = `${BASE_URL}/backMsgAdd.php`//上線用
             var xhr = new XMLHttpRequest();
             
             xhr.onload = function(){
@@ -179,7 +181,7 @@ export default {
             //設定好所要連結的程式
             // let url = "http://localhost/CGD102_G2/public/api/backMsgAdd.php";//開發用
             xhr.open("post", url, true);
-            let msg_data = `msg_name=${this.msg_name}&msg_intro=${this.msg_intro}&msg_price_1=${this.msg_price_1}&msg_rec_1=${this.msg_rec_1}&msg_price_2=${this.msg_price_2}&msg_rec_2=${this.msg_rec_2}&msg_desc=${this.msg_desc}&msg_look=${this.msg_look}&msg_faq=${this.msg_faq}&msg_pic=${this.msg_pic}`;
+            let msg_data = `msg_name=${this.msg_name}&msg_intro=${this.msg_intro}&msg_price_1=${this.msg_price_1}&msg_rec_1=${this.msg_rec_1}&msg_price_2=${this.msg_price_2}&msg_rec_2=${this.msg_rec_2}&msg_desc=${this.msg_desc}&msg_look=${this.msg_look}&msg_faq=${this.msg_faq}&msg_pic=${this.msg_pic}&msg_timespan_1=${this.msg_timespan_1}&msg_timespan_2=${this.msg_timespan_2}`;
             xhr.send(msg_data);
             console.log(msg_data);
         },

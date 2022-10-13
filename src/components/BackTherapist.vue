@@ -11,19 +11,10 @@
                 <option value="THERAPIST_HIREDDATE">依入職日期排序</option>
                 <option value="THERAPIST_NAME">依姓名排序</option>
             </select>
-            <select 
-                class="form-select form-select-sm bg-light therapist_status" 
-                aria-label=".form-select-sm example"
-                v-model="selectPermission"
-            >
-                <option value="-1">選擇狀態</option>
-                <option value="1">在職</option>
-                <option value="0">離職</option>
-            </select>
-            <div class="input-group rounded bg-light">
+            <div class="input-group bg-light">
                 <input 
                     type="search" 
-                    class="form-control rounded" 
+                    class="form-control" 
                     placeholder="搜尋按摩師" 
                     aria-label="Search" 
                     aria-describedby="search-addon" 
@@ -34,7 +25,11 @@
                     type="button"
                     @click="search"
                 >
-                    <i class="fas fa-search"></i>
+                    <i class="fa fa-search">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                    </i>
                 </button>
             </div>
             <router-link class="btn btn-primary ms-auto" to="/backtherapistadd">新增按摩師</router-link>
@@ -72,7 +67,6 @@
                     </td>
                     <td>
                         <div>
-                                <!-- @click="getTherapistInfo(backstageTherapsit.THERAPIST_NAME)" -->
                             <router-link
                                 :to="{
                                     path:'/BackTherapistChangeInfo', query:{ 
@@ -116,12 +110,9 @@
         },
         data() {
             return {
-                data: [],
                 backstageTherapsitList: [],
-                allenHandsome:[],
-                // therapistInfo: [],
+                changeData:[],
                 selecttype: '-1',
-                selectPermission: '-1',
                 searchTherapist: '',
             }
         },
@@ -166,7 +157,6 @@
                 console.log(status_data);
             },
             chtherapistinfo(name){
-                // this.axios.get("http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php",{
                 this.axios.get(`${BASE_URL}/backtherapistgetvalue.php`,{
                     params:{
                         searchName: name
@@ -174,20 +164,20 @@
                 })
                 .then((res)=>{
                     // console.log(res.data[0].THERAPIST_NAME)
-                    this.allenHandsome = res.data
+                    this.changeData = res.data
                     this.setStorage()
                 })
             },
             setStorage(){
-                localStorage.setItem("THERAPIST_NAME",JSON.stringify(this.allenHandsome))
+                localStorage.setItem("THERAPIST_NAME",JSON.stringify(this.changeData))
             },
             onlineStorage(){
                 let allens = localStorage.getItem("THERAPIST_NAME")
-                this.allenHandsome = JSON.parse(allens)
+                this.changeData = JSON.parse(allens)
             },
             clear(){
-                // let index = this.allenHandsome.findIndex(item=>item.THERAPIST_NAME)
-                this.allenHandsome=[]
+                // let index = this.changeData.findIndex(item=>item.THERAPIST_NAME)
+                this.changeData=[]
                 this.setStorage()
             },
             //排序功能
@@ -196,21 +186,14 @@
                     this.backstageTherapsitList.sort((a, b) => b[this.selecttype] < a[this.selecttype] ? 1 : -1)
                 } //sort 排序比較
             },
-            // sortPermission() {
-            //     if (this.selectPermission != -1) {
-            //         this.backstageTherapsitList.sort((a, b) => b[this.selectPermission] < a[this.selectPermission] ? 1 : -1)
-            //     }
-            // },
             search(){
                 var url = `${BASE_URL}/backTherapistSearch.php` //上線
-                // var url = "http://localhost/CGD102_G2/public/api/backShopSearch.php"
                 this.axios.get(url, {
                     params:{
                         THERAPIST_NAME: this.searchTherapist,
                     }
                 }).then((res)=>{
                     this.backstageTherapsitList = res.data
-                    // this.changePageButton=false
                     console.log(this.backstageTherapsitList);
                 })
             },
@@ -222,17 +205,10 @@
                 },
                 deep: true
             },
-            // selectPermission: {
-            //     handler(value) {
-            //         this.sortPermission()
-            //     },
-            //     deep: true
-            // },
             searchTherapist: {
                 handler(newVal){
                     if(!newVal){
                         this.data = this.backstageTherapsitList
-                        // this.changePageButton=true
                     }
                 },
                 deep: true
@@ -251,6 +227,15 @@
             font-size: 32px;
             text-align: center;
             padding: 0 0 10px;
+        }
+        .bg-light:focus{
+            box-shadow: 0 0 1px 1px $blue;
+        }
+        .form-control:focus{
+            box-shadow: 0 0 1px 1px $blue;
+        }
+        .btn{
+            border: 1px solid #ccc;
         }
         .laster_selectbar{
             display: flex;
@@ -287,6 +272,9 @@
                 background-color: transparent;
                 border: none;
                 cursor: pointer;
+                &:focus{
+                    box-shadow: 0 0 0 1px $blue;
+                }
             }
             thead{
                 background-color: $blue;

@@ -2,8 +2,8 @@
 header('Access-Control-Allow-Origin:*');
 header("Content-Type:application/json;charset=utf-8");
 try{
-require_once("../../src/connect_cgd102g2.php"); //開發用
-// require_once("../connect_cgd102g2.php");//上線用
+// require_once("../../src/connect_cgd102g2.php"); //開發用
+require_once("../connect_cgd102g2.php");//上線用
 $getSql = "INSERT INTO ADMINISTRATOR(ADMIN_ACCOUNT,ADMIN_PSW, ADMIN_NAME) 
            VALUES(:ACCOUNT,:PSW,:ADMIN_NAME)";
 $getManageData = $pdo->prepare($getSql);

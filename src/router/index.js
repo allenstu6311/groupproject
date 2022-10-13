@@ -196,6 +196,13 @@ const routes = [
     meta:{isHide:true}
   },
   {
+    path: '/ManageLogin',
+    name: 'ManageLogin',
+    chName: '後台登入',
+    component: () => import('@/views/ManageLoginView.vue'),
+    meta:{isHide:true}
+  },
+  {
     path: '/MassageSchool',
     name: 'MassageSchool',
     component: () => import('@/views/MassageSchoolView.vue'),

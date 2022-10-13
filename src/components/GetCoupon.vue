@@ -37,30 +37,45 @@ export default {
         return{
             count:'',
             data:[],
-            mycps:[],
             couponName:'',
+            checkMember:[]
         }
     },
     created(){
         this.count = this.$route.query.count
-        this.getDataFromApi(); // 在建立Vue.js模板時順帶執行這個參數
+        
         // this.getcount();
         // console.log(this.$route.query.count)
         let members = sessionStorage.getItem("member");
         this.member = JSON.parse(members);
+        var url = `${BASE_URL}/getCoupons.php` //上線用
+
+        this.axios.get(url)
+        .then((res)=>{
+            this.checkMember = res.data
+            console.log(this.checkMember[0].CPS_ID)
+
+        //     for(let i=0;i<this.checkMember.length;i++){
+        //         console.log(this.checkMember[i].CPS_ID)
+
+        //         switch(this.checkMember[i].CPS_ID){
+        //             case 1:
+        //         }
+        //     }
+        })
+        this.getDataFromApi(); // 在建立Vue.js模板時順帶執行這個參數
     },
     methods: {
         getDataFromApi(){
-            var url1 = `${BASE_URL}/myCoupons.php`
-            this.axios.get(url1).then((res)=>{
-                this.mycps = res.mycps
-                console.log(this.mycps)
-                this.status=this.mycps.MY_COUPONS_STATUS
-                console.log(this.status);
-            }) 
-
-            var url2 = `${BASE_URL}/getCoupons.php` //上線用
-            this.axios.get(url2)
+            let members = sessionStorage.getItem("member");
+            this.member = JSON.parse(members);
+            var url = `${BASE_URL}/myCoupons.php` //上線用
+            this.axios.get(url,{
+                params:{
+                    mem_id:this.member.MEM_ID,
+                    coupon_id: this.couponId
+                }
+            })
             .then((res)=>{
                 
                 this.data = res.data
@@ -70,20 +85,28 @@ export default {
                     case "0":
                         this.couponName=this.data[0].CPS_NAME
                         this.couponId = this.data[0].CPS_ID
-                        
- 
-                        this.timerd = setTimeout(this.sendCoupons,1000)
+                        if(this.data[0].MY_COUPONS_STATUS = "1"){
+                            alert('您已擁有這張折價券')
+                        }else{
+                            this.timerd = setTimeout(this.sendCoupons,1000)
+                        }
                         break;
                     case "1":
                         this.couponName=this.data[1].CPS_NAME
                         this.couponId = this.data[1].CPS_ID
-                        this.timerd = setTimeout(this.sendCoupons,1000)
+                        if(this.data[1].MY_COUPONS_STATUS = "1"){
+                            alert('您已擁有這張折價券')
+                        }else{
+                            this.timerd = setTimeout(this.sendCoupons,1000)
+                        }
                         break;
                 }
             }) 
             
         },
         sendCoupons(){
+            let members = sessionStorage.getItem("member");
+            this.member = JSON.parse(members);
             var url = `${BASE_URL}/sendCoupon.php`
             this.axios.get(url,{
                 params:{
@@ -96,5 +119,6 @@ export default {
             })
         }
     },
+    
 }
 </script>

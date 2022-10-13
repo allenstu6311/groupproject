@@ -7,10 +7,9 @@ try{
     require_once("../connect_cgd102g2.php"); //開發路徑
     //require_once("../connect_cgd102g2.php");//上線路徑
 
-    $findCpsSql = "SELECT CPS_ID,CPS_NAME FROM COUPONS";
+    $findCpsSql = "SELECT * FROM MY_COUPONS";
     
     $getCount = $pdo -> prepare($findCpsSql);
-    $getCount->bindValue(":COUNT",$_POST["count"]);
     $getCount->execute();
 
     if($getCount->rowCount()==0){

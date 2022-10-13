@@ -124,11 +124,12 @@
           </div>
         </div>
         <div class="col">
+          <figcaption class="figure-caption">預覽圖片</figcaption>
           <figure class="figure">
-            <figcaption class="figure-caption">預覽圖片</figcaption>
             <img
-              src="../assets/images/masseusePic1.jpg"
+              src=""
               class="figure-img img-fluid rounded"
+              id="getfile"
               alt="預覽圖片"
               maxlength="50"
             />
@@ -215,7 +216,15 @@ export default {
         },
         photo(e) {
             this.pic = e.target.files[0].name;
-            console.log(this.pic);
+            // console.log(this.pic);
+            this.picShow = e.target.files[0];
+            let reader = new FileReader();
+            reader.onload = function () {
+                document.getElementById("getfile").src = reader.result; 
+                // this.test = reader.result
+                console.log("test",document.getElementById("getfile").src)
+            };
+            reader.readAsDataURL(this.picShow);
         },
         checkContentByReg(reg, content, tip, classname) {
             if (reg.test(content)) {
@@ -275,8 +284,8 @@ export default {
                 }
             }
             .figure{
-                width: 200px;
-                height: 200px;
+                width: 180px;
+                height: 180px;
                 overflow: hidden;
                 img{
                     width: 100%;

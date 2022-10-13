@@ -58,7 +58,7 @@
                     <div class="short_time_price">
                       <span class="timespan timespan_2">
                         {{ msgCard.MSG_TIMESPAN_2 }}分鐘 </span
-                      >/
+                      >
                       <span class="price price_2">
                         NT${{ msgCard.MSG_PRICE_2 }}
                       </span>
@@ -69,7 +69,7 @@
                   </div>
                 </div>
                 <div class="resv_btn">
-                  <router-link class="btnLarge" to="/resvPage">立即預約</router-link>
+                  <router-link class="btnLarge" :to="{path:'/resvPage',query:{msg_id:`${msgCard.MSG_ID}`}}">立即預約</router-link>
                 </div>
               </div>
               <div class="pic_ctnr msg_card_pic col col-12 col-md-8 col-xl-4">
@@ -105,7 +105,6 @@
       methods:{        
           async getDataFromApi() {
               // var url = 'http://localhost/CGD102_G2/public/api/reservation.php' //開發用
-              // var url = `${BASE_URL}/api/reservation.php` //上線用舊版需刪除/api
               var url = `${BASE_URL}/reservation.php` //上線用
               let getData = async(url) => {
                   // console.log(url);

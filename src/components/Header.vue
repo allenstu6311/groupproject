@@ -89,6 +89,11 @@ export default {
           this.show=false
         }
       }
+    },
+    '$route.path'(){
+      if(this.navCheck){
+        this.navCheck = false
+      }
     }
   },
   computed: {

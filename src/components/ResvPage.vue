@@ -4,7 +4,7 @@
       <section class="msg container">
         <div class="topic">
           <div class="breadcrumb">
-            <a href="/home">首頁</a> > <a href="/reservation">預約按摩</a> >
+            <router-link to="/home">首頁</router-link> > <router-link to="/reservation">預約按摩</router-link> >
             <p class="this_page">{{msgData[0].MSG_NAME}}</p>
           </div>
           <div class="content container">

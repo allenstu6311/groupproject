@@ -2,8 +2,8 @@
         <teleport to='body'>
             <div class="modal-mask" :style="modalStyle">
                 <div class="modal-container" @click="toggleModal">
-                    <!-- <MemLightBox :memberBuyInfo="data"
-                                :memberInfo="memberData"/> -->
+                    <MemLightBox :memberBuyInfo="data"
+                                :memberInfo="memberData"/>
                 </div>
             </div>
 
@@ -22,23 +22,23 @@
             <img src="../assets/images/memberbanner.jpg">
         </div>
         <div class="panel_group">
-            <input type="radio" name="panel_radio" id="radio1" class="panel_control" checked>
+            <!-- <input type="radio" name="panel_radio" id="radio1" class="panel_control" checked>
             <input type="radio" name="panel_radio" id="radio2" class="panel_control">
-            <input type="radio" name="panel_radio" id="radio3" class="panel_control">
-            <div class="tab_group">
+            <input type="radio" name="panel_radio" id="radio3" class="panel_control"> -->
+            <!-- <div class="tab_group">
                 <label for="radio1">個人資料</label>
                 <label for="radio2">歷史訂單</label>
                 <label for="radio3">預約紀錄</label>
-            </div>
+            </div> -->
             <div class="panel_group">
                 <input type="radio" name="panel_radio" id="radio1" class="panel_control" checked>
                 <input type="radio" name="panel_radio" id="radio2" class="panel_control">
                 <input type="radio" name="panel_radio" id="radio3" class="panel_control">
-                <!-- <div class="tab_group">
+                <div class="tab_group">
                     <label for="radio1">個人資料</label>
                     <label for="radio2">歷史訂單</label>
                     <label for="radio3">預約紀錄</label>
-                </div> -->
+                </div>
                 <div class="content_group">
                     <!-- 個人資料 -->
                     <div class="content content1">

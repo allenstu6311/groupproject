@@ -45,6 +45,9 @@ export default {
         this.getDataFromApi(); // 在建立Vue.js模板時順帶執行這個參數
         // this.getcount();
         // console.log(this.$route.query.count)
+        let members = sessionStorage.getItem("member");
+        this.member = JSON.parse(members);
+    
     },
     methods: {
         getDataFromApi(){
@@ -57,16 +60,19 @@ export default {
                 case "0":
                     this.couponName=this.data[0].CPS_NAME
                     this.couponId = this.data[0].CPS_ID
+                    this.timerd = setTimeout(this.sendCoupons,1000)
                     break;
                 case "1":
                     this.couponName=this.data[1].CPS_NAME
                     this.couponId = this.data[1].CPS_ID
+                    this.timerd = setTimeout(this.sendCoupons,1000)
                     break;
             }
-            this.timerd = setTimeout(this.sendCoupons,1000)
+       
             }) 
         },
         sendCoupons(){
+          
             var url = `${BASE_URL}/sendCoupon.php`
             this.axios.get(url,{
                 params:{
@@ -74,9 +80,10 @@ export default {
                     coupon_id: this.couponId
                 }
             })
-            .thenn((res)=>{
+            .then((res)=>{
                 console.log("存入",res)
             })
+          
         }
     },
 }

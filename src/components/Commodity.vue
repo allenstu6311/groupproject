@@ -32,7 +32,7 @@
             <option value="5">日期由新至舊</option>
             <option value="6">日期由舊至新</option>
           </select>
-          <button 
+          <button
             @click="toggle = true"
             :class="{ orderColor: toggle == true }"
           >
@@ -56,28 +56,27 @@
       <!-- =============================================橫排顯示 -->
       <div class="commodity-area col-12" v-if="toggle == false">
         <div class="commodity-obj" v-for="item in data" :key="item.PROD_ID">
-          <button @click="next(item)" class="slide-control">＜</button>
+
+          <button @click="next(index,item.length)" class="slide-control">
+            ＜
+          </button>
           <div class="commodity-pic">
-
             <router-link to="/Detail">
-
               <div
                 class="slide-pic"
                 id="pic"
-                :style="{
-                  left: photo * item.SLIDE + 'px',
-                  transition: 0.4 + 's',
-                }"
-                @click="addOrder(item.PROD_ID)"
+                :style="slidePic(index)"
+                @click="addOrder()"
               >
-              <img :src="require(`../../public/api/pic/${item.PROD_PIC1}`)" />
-              <img :src="require(`../../public/api/pic/${item.PROD_PIC2}`)" />
-              <img :src="require(`../../public/api/pic/${item.PROD_PIC3}`)" />
+                <img :src="require(`../../public/api/pic/${item.PROD_PIC1}`)" />
+                <img :src="require(`../../public/api/pic/${item.PROD_PIC2}`)" />
+                <img :src="require(`../../public/api/pic/${item.PROD_PIC3}`)" />
               </div>
-              
             </router-link>
           </div>
-          <button @click="prev(item)" class="slide-control">＞</button>
+          <button @click="prev(index,item.length)" class="slide-control">
+            ＞
+          </button>
           <div class="commodity-body">
             <div class="commodity-name">
               <h5 class="bold">{{ item.PROD_NAME }}</h5>
@@ -114,7 +113,7 @@
         >
           <div class="commodity-pic">
             <button @click="next(item)" class="slide-control">＜</button>
-            <router-link  to="/Detail">
+            <router-link to="/Detail">
               <div
                 class="slide-pic"
                 ref="imgWidth"
@@ -125,9 +124,9 @@
                   transition: 0.4 + 's',
                 }"
               >
-              <img :src="require(`../../public/api/pic/${item.PROD_PIC1}`)" />
-              <img :src="require(`../../public/api/pic/${item.PROD_PIC2}`)" />
-              <img :src="require(`../../public/api/pic/${item.PROD_PIC3}`)" />
+                <img :src="require(`../../public/api/pic/${item.PROD_PIC1}`)" />
+                <img :src="require(`../../public/api/pic/${item.PROD_PIC2}`)" />
+                <img :src="require(`../../public/api/pic/${item.PROD_PIC3}`)" />
               </div>
             </router-link>
             <button @click="prev(item)" class="slide-control">＞</button>
@@ -154,34 +153,33 @@
           </div>
         </div>
       </div>
-        <div class="commodity-page"  v-show="disappear==false">
-      <span @click="prevCurrPage">＜</span>
-      <span
-        v-for="(i, value) in 3"
-        :key="i"
-       
-        @click="pagination(i, value)" 
-        :class="{ changePage: i == currPage }"
-        >{{ i }}</span
-      >
-      <span @click="nextCurrPage">＞</span>
-    </div>
+      <div class="commodity-page" v-show="disappear == false">
+        <span @click="prevCurrPage">＜</span>
+        <span
+          v-for="(i, value) in 3"
+          :key="i"
+          @click="pagination(i, value)"
+          :class="{ changePage: i == currPage }"
+          >{{ i }}</span
+        >
+        <span @click="nextCurrPage">＞</span>
+      </div>
     </div>
     <!-- =============================================特賣商品 -->
 
     <div class="special-offer" v-if="commoditySale == 2">
       <h1>目前無特價商品</h1>
     </div>
-
   </div>
 </template>
 <script>
-import {BASE_URL} from '@/assets/js/common.js'
-import lightBox from "@/components/lightBox.vue"
+import { BASE_URL } from "@/assets/js/common.js";
+import lightBox from "@/components/lightBox.vue";
+import { control } from "leaflet";
 // const BASE_URL = process.env.NODE_ENV === 'production'? '/cgd102/g2': '..'
 export default {
-  components:{
-    lightBox
+  components: {
+    lightBox,
   },
   props: {
     price: Array,
@@ -210,24 +208,25 @@ export default {
       range_1: 0,
       range_2: 6,
       currPage: 1,
-      disappear:false,
-      member:[],
-      lightBoxShow:false,
-      slideNum:0
+      disappear: false,
+      member: [],
+      lightBoxShow: false,
+      slideNum: 0,
     };
   },
   methods: {
-    next(item) {
-      if(item.SLIDE>0){
-        item.SLIDE+=1
-      } 
+     slidePic(index) {
+      return { left: ` ${-10*this.photo}+px`};
     },
-    prev(item) {
-      if (item.SLIDE > -2) {
-       item.SLIDE-=1
-      }
+    next(index,last) {
+  
     },
-    addOrder(id) {
+   
+    prev(id) {
+  
+      this.slidePic(id);
+    },
+    addOrder() {
       let index = this.data.findIndex((item) => item.PROD_ID === id);
       this.order = [
         {
@@ -241,8 +240,8 @@ export default {
           PROD_DESC1: this.data[index].PROD_DESC1,
           PROD_DESC2: this.data[index].PROD_DESC2,
           PROD_DESC3: this.data[index].PROD_DESC3,
-          PROD_REVIEW:parseInt(this.data[index].PROD_REVIEW)+1,
-          PROD_TIMES:parseInt(this.data[index].PROD_TIMES) +1,
+          PROD_REVIEW: parseInt(this.data[index].PROD_REVIEW) + 1,
+          PROD_TIMES: parseInt(this.data[index].PROD_TIMES) + 1,
         },
       ];
 
@@ -258,9 +257,7 @@ export default {
 
       let members = sessionStorage.getItem("member");
       this.member = JSON.parse(members);
-      console.log(this.member)
-
-    
+      console.log(this.member);
     },
     groupBy(value) {
       switch (value) {
@@ -307,22 +304,21 @@ export default {
           break;
       }
     },
-  
+
     clear() {
       this.order = [];
     },
     prevCurrPage() {
       this.currPage -= 1;
-      this.pagination(this.currPage)
+      this.pagination(this.currPage);
     },
     nextCurrPage() {
       this.currPage += 1;
-      this.pagination(this.currPage)
-     
+      this.pagination(this.currPage);
     },
-    pagination(i, value,currPage) {
-      this.currPage=i
-        
+    pagination(i, value, currPage) {
+      this.currPage = i;
+
       switch (i) {
         case 1:
           this.range_1 = 0;
@@ -335,7 +331,7 @@ export default {
           this.range_2 = 6;
           this.getCommodityInfo();
           break;
-          case 3:
+        case 3:
           this.range_1 = 12;
           this.range_2 = 6;
           this.getCommodityInfo();
@@ -343,7 +339,7 @@ export default {
       }
     },
     getCommodityInfo() {
-       var url = `${BASE_URL}/commoditylist.php` //上線
+      var url = `${BASE_URL}/commoditylist.php`; //上線
       // var url = "http://localhost/CGD102_G2/public/api/commoditylist.php"
       this.axios
         .get(url, {
@@ -355,7 +351,7 @@ export default {
         .then((res) => {
           this.data = res.data;
           this.info = res.data;
-             console.log("info",this.data)
+          console.log("info", this.data);
           this.data.sort(function () {
             return 0.5 - Math.random();
           });
@@ -371,7 +367,6 @@ export default {
           this.$nextTick(() => {
             //等dom更新時會執行
             this.photo = document.getElementById("pic").clientWidth;
-           
           });
 
           window.onresize = () => {
@@ -385,45 +380,39 @@ export default {
   created() {
     this.getCommodityInfo();
     this.clear();
-    this.onlineStorage();    
-   
+    this.onlineStorage();
   },
   watch: {
     toggle: {
       handler(newVal) {
-          
-        this.$nextTick(()=> {
+        this.$nextTick(() => {
           if (newVal == false) {
             this.photo = document.getElementById("pic").clientWidth;
-            
-            window.onresize = () => {
-            let pic = document.getElementById("pic").clientWidth;
-            this.photo = pic;
-            
-            };
-              
+
+            // window.onresize = () => {
+            // let pic = document.getElementById("pic").clientWidth;
+            // this.photo = pic;
+
+            // };
           } else {
-            
             this.photo = document.getElementById("pic").clientWidth;
-            window.onresize = () => {
-              let pic = document.getElementById("pic").clientWidth;
-              this.photo = pic;
-            };
-          
+            // window.onresize = () => {
+            //   let pic = document.getElementById("pic").clientWidth;
+            //   this.photo = pic;
+            // };
           }
         });
       },
     },
     price: {
       handler(newVal) {
-   
         this.data = newVal;
-        this.disappear=false
+        this.disappear = false;
       },
     },
     enter1: {
       handler(newVal) {
-        console.log(newVal)
+        console.log(newVal);
         if (newVal == "") {
           this.data = this.info;
         }
@@ -440,7 +429,7 @@ export default {
       handler(newVal) {
         if (newVal != "") {
           this.data = newVal;
-          this.disappear=true
+          this.disappear = true;
         }
       },
     },
@@ -455,29 +444,25 @@ export default {
     },
     search_empty: {
       handler(newVal) {
-       
         if (newVal == "") {
           this.data = this.info;
-          this.disappear=false
+          this.disappear = false;
         }
-       
       },
     },
 
     checkList: {
       handler(newVal) {
-        
         this.data = newVal;
-          if(this.data){
-            this.disappear=true
-          }
+        if (this.data) {
+          this.disappear = true;
+        }
       },
     },
   },
 };
 </script>
 <style lang="scss" scoped>
-
 .commodity-total {
   display: flex;
   flex-direction: column;
@@ -491,5 +476,4 @@ export default {
     color: #b52011;
   }
 }
-
 </style>

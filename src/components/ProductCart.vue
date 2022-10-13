@@ -157,7 +157,6 @@ export default {
       let memoryCart = this.memory
       let sameProduct = this.calculate.filter(v =>memoryCart.filter(u=>u.PROD_ID===v.PROD_ID))
 
-
       if(sameProduct.length>0){
      
         for(let i=0;i<sameProduct.length;i++){
@@ -304,7 +303,7 @@ export default {
       this.axios
         .get(url, {
           params: {
-            MEM_NAME: this.member.memName,
+            MEM_ID: this.member.memId,
           },
         })
         .then((res) => {

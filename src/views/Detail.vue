@@ -1,46 +1,44 @@
 <template>
-   
-    <div class="background-pic">
-        <img src="../assets/images/bcgFlower.png" alt="">
-    </div>
-    <div class="Detail-container">
-    <Product />
+  <div class="background-pic">
+    <img src="../assets/images/bcgFlower.png" alt="" />
+  </div>
+  <div class="Detail-container">
+    <Product @update-cart="$emit('update-cart', $event)" />
     <Review />
-    </div>
-  <lightBox   v-if="lightBoxShow==true"/>
+  </div>
+
+<lightBox  @boo="judge"/>
 </template>
 
 <script>
 import lightBox from "@/components/lightBox.vue"
 import Product from"@/components/Product.vue"
 import Review from "@/components/Review.vue"
+import { Checkbox } from 'view-ui-plus'
 
     export default{
         components:{
-          
+
             Product,
             Review,
             lightBox
         },
         data(){
             return{
-                lightBoxShow:false
+              test:""
             }
         },
-        created(){
-            let members = sessionStorage.getItem("member");
-            this.member = JSON.parse(members)
-            if(!this.member){
-                this.lightBoxShow=true
-            }else{
-                this.lightBoxShow=false
-            }       
-        }
-
+        methods: {
+            judge(val){
+                this.test=val
+                console.log(val)
+            }
+        },
+       
     }
 </script>
 <style scoped>
-    .Detail-container{
-        margin-top: 100px;
-    }
+.Detail-container {
+  margin-top: 100px;
+}
 </style>

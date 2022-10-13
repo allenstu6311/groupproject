@@ -53,14 +53,6 @@
                             如果您有其他疑問，可以加入我們官方LINE帳號，按指穴官方帳號提供您即時線上客服、
                             第一手最新消息，以及不定時優惠折扣！
                         </p>
-                        <div class="join">
-                            <a href="">
-                                <div class="btnLarge">
-                                    <img src="../assets/images/line_white.png" alt="line icon">
-                                    加入好友
-                                </div>
-                            </a>
-                        </div>
                     </div>
         </section>
     </main>

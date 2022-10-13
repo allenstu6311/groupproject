@@ -5,12 +5,6 @@
             <select class="form-select form-select-sm bg-light" aria-label=".form-select-sm example">
                 <option selected>依編號排序</option>
             </select>
-            <div class="input-group rounded bg-light">
-                <input type="search" class="form-control rounded" placeholder="搜尋關鍵字" aria-label="Search" aria-describedby="search-addon" />
-                <span class="input-group-text border-0" id="search-addon">
-                    <i class="fas fa-search"></i>
-                </span>
-            </div>
             <router-link class="btn btn-primary ms-auto" to="/BackstageFAQAdd">新增常見問題</router-link>
         </div>
         <hr>

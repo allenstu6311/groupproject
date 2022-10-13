@@ -1,7 +1,7 @@
 <template>
   <header class="page_header">
     <nav>
-      <input type="checkbox" id="check" />
+      <input type="checkbox" id="check" v-model="navCheck"/>
       <label for="check" class="hamburger">
         <span class="line1"></span>
         <span class="line2"></span>

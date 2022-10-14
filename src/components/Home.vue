@@ -123,8 +123,8 @@
                             <div class="item_bottom">
                                 <div class="intro">
                                     <h4>{{msgs.MSG_NAME}}</h4>
-                                    <p class="pirce">{{msgs.MSG_TIMESPAN_1}}分鐘 / ${{msgs.MSG_PRICE_1}}</p>
-                                    <p>{{msgs.MSG_REC_1}}</p>
+                                    <!-- <p class="pirce">{{msgs.MSG_TIMESPAN_1}}分鐘 / ${{msgs.MSG_PRICE_1}}</p>
+                                    <p>{{msgs.MSG_REC_1}}</p> -->
                                     <p class="pirce">{{msgs.MSG_TIMESPAN_2}}分鐘 / ${{msgs.MSG_PRICE_2}}</p>
                                     <p>{{msgs.MSG_REC_2}}</p>
                                 </div>

@@ -42,9 +42,9 @@
                             <p class="text_content" v-text="therapist.THERAPIST_LICENSE_3"></p>
                             <p class="text_content" v-text="therapist.THERAPIST_LICENSE_4"></p>
                         </div>
-                        <router-link to="/reservation">
-                            <div class="btnLittle btnLittle_one" :class="'btnLittle_'+[therapist.THERAPIST_ID]">立即預約</div>
-                        </router-link>
+                        <div class="btnLittle btnLittle_one" :class="'btnLittle_'+[therapist.THERAPIST_ID]">
+                            <router-link to="/reservation" class="textColor">立即預約</router-link>
+                        </div>
                     </div>
                 </div>
             </div>

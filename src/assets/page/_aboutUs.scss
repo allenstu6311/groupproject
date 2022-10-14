@@ -123,6 +123,9 @@
     // ==========================================手機版
 
     @media screen and (min-width: 320px) and (max-width: 767.98px){
+        *{
+            box-sizing: border-box;
+        }
         .about,
         .store_info{
             .frame{
@@ -130,6 +133,7 @@
             }
         }
         .container{
+           
             .row{
                 margin-left: auto;
                 margin-right: auto;

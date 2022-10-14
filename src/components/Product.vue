@@ -103,15 +103,15 @@
         <h2>{{ order[0].PROD_NAME }}</h2>
       </div>
       <div class="product-star" style="z-index:-1">
-        <p class="star-score">{{(score-1).toFixed(1)}}</p>
-        <p v-for="item in star-1" :key="item" >★</p>
+        <p class="star-score">{{score}}</p>
+        <p v-for="item in star" :key="item" >★</p>
         <p v-if="star < 1">{{ block }}</p>
         <p v-if="star < 2">{{ block }}</p>
         <p v-if="star < 3">{{ block }}</p>
         <p v-if="star < 4">{{ block }}</p>
         <p v-if="star < 5">{{ block }}</p>
       </div>
-
+   
       <div class="product-price">
         <p>${{ order[0].PROD_PRICE }}元</p>
       </div>
@@ -296,7 +296,7 @@ export default {
       product_num: 1,
       memory:[],
       fly:false,
-     showBox:false,
+      showBox:false,
 
       cursorWidth: 100, // 光标宽度 
       cursorHeight: 100, // 光标高度 
@@ -420,13 +420,15 @@ export default {
       if(!this.member){
         this.showBox=!this.showBox
       }else{
-      this.updateCart()
+    
        let sameProduct = this.memory.find(item=>item.PROD_ID===id)
        if(!sameProduct){
+   
         alert("成功加入")
         this.fly=true
-         this.IncreaseShoppingCart() 
+        this.IncreaseShoppingCart() 
         this.updateCart()
+       
       }else{
         alert("購物車已有相同物品")
       }
@@ -494,9 +496,9 @@ export default {
   },
   created() {
   
-      // this.updateCart();
+      this.updateCart();
       this.getStar();
-
+     
   },
 };
 </script>

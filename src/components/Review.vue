@@ -6,12 +6,12 @@
     <div class="review-score">
       <div class="review-fraction">
         <h3>
-          <strong>{{ (score - 1).toFixed(1) }}</strong
+          <strong>{{ score  }}</strong
           >/5
         </h3>
       </div>
       <div class="review-star">
-        <p v-for="item in star - 1" :key="item">★</p>
+        <p v-for="item in star " :key="item">★</p>
         <p v-if="star < 1">{{ block }}</p>
         <p v-if="star < 2">{{ block }}</p>
         <p v-if="star < 3">{{ block }}</p>
@@ -202,17 +202,12 @@ export default {
     checkMember() {
       let members = sessionStorage.getItem("member");
       this.member = JSON.parse(members);
-      if (!this.member) {
-        this.lightBoxShow = true;
-      } else {
-        this.lightBoxShow = false;
-      }
-    },
+    }
   },
   created() {
     this.checkMember();
     this.getStorage();
-    // this.updateArticle();
+    this.updateArticle();
   },
 };
 </script>

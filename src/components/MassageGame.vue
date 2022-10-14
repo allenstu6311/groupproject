@@ -291,7 +291,6 @@
                         this.question='正確答案 !';
                         this.Answer='中衝穴位於雙手手指的中指指尖，主要功效是清熱、開竅、利喉舌、清心瀉熱，主治中暑、中風昏迷、頭痛、咽喉腫痛、高血壓、心絞痛等病症。';
                         this.count += 1;
-                      
                     }else if(this.activeAcupoint =="B"){
                         this.Answer='少商穴位於雙手拇指節側，內側指甲角旁１分處，主要功效是清熱、利咽、醒神，可以治療或緩解感冒、扁桃體炎、咽喉腫痛、咽喉炎，更是夏日退高燒、改善喉嚨痛的急救要穴。';
                         this.imgName='game1Wrong.png';

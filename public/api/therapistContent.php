@@ -7,7 +7,7 @@ try{
     // require_once("../../src/connect_cgd102g2.php"); //開發路徑
     require_once("../connect_cgd102g2.php"); //上線用
 
-    $sql = "SELECT * FROM THERAPIST";
+    $sql = "SELECT * FROM THERAPIST WHERE THERAPIST_STATUS = '1';";
     $therapist = $pdo->query($sql);
 
     if($therapist->rowCount()==0){

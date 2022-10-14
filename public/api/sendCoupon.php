@@ -23,11 +23,7 @@ function coupon($checkNum,$mem_id,$coupon_id){
 
         $pdo->query($sql);
         echo $mem_id;
-    
-        // if($coupon->rowCount()==0){
-        //     echo "無折價券資料";
-        //     // exit(); 
-        // }
+
             ?>
             <?php
         

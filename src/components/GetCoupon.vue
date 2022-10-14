@@ -43,9 +43,7 @@ export default {
     },
     created(){
         this.count = this.$route.query.count
-        
-        // this.getcount();
-        // console.log(this.$route.query.count)
+
         let members = sessionStorage.getItem("member");
         this.member = JSON.parse(members);
         var url = `${BASE_URL}/getCoupons.php` //上線用]
@@ -101,31 +99,9 @@ export default {
                 }
             }
         })
-        // this.getDataFromApi(); // 在建立Vue.js模板時順帶執行這個參數
     },
     methods: {
-        // getDataFromApi(){
-        //     let members = sessionStorage.getItem("member");
-        //     this.member = JSON.parse(members);
-        //     var url = `${BASE_URL}/myCoupons.php` //上線用
-        //     this.axios.get(url,{
-        //         params:{
-        //             mem_id:this.member.MEM_ID,
-        //             coupon_id: this.couponId
-        //         }
-        //     })
-        //     .then((res)=>{
-                
-        //         this.data = res.data
-        //         console.log(this.data)
-                
-                
-        //     }) 
-            
-        // },
         sendCoupons(){
-            console.log("勸1",this.couponId)
-        
             let members = sessionStorage.getItem("member");
             this.member = JSON.parse(members);
             var url = `${BASE_URL}/sendCoupon.php`
@@ -137,10 +113,9 @@ export default {
                 }
             })
             .then((res)=>{
-                console.log("勸2",this.couponId)
+
             })
         }
     },
-    
 }
 </script>

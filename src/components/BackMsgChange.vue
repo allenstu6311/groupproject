@@ -1,12 +1,13 @@
 <template>
     <div class="msg_change">
         <h1>修改按摩項目</h1>
-        <section class="add_content">
+        <section class="add_content" v-for="item in allenHandsome" :key="item.MSG_ID">
             <div class="row">
                 <div class="col">
                     <div class="input-group fixwidth mb-3">
                         <span class="input-group-text">按摩項目名稱</span>
-                        <input type="text" class="form-control" placeholder="按摩項目名稱" maxlength="10" v-model="msg_name">
+                        <input type="text" class="form-control" placeholder="按摩項目名稱" maxlength="10" 
+                        v-model="item.MSG_NAME">
                     </div>
                 </div>
             </div>
@@ -105,6 +106,20 @@ export default {
     },
     created(){
         // this.onlineStorage()
+        console.log("test",this.$route.query.id)
+         var url = `${BASE_URL}/backMsgChange.php`
+        this.axios.get(url,{
+            params:{
+                msg_id:this.$route.query.id
+                // NAME:this.name,
+                // data:this.valuetime
+            }
+        })
+        .then((res)=>{
+           
+            this.allenHandsome = res.data
+            console.log("res", this.allenHandsome)
+        })
         
     },
     mounted(){

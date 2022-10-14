@@ -82,10 +82,7 @@
 
         <button @click="next()">＞</button>
       </div>
-
-    </div>
-  
-  
+    </div>  
     <div class="pic-control">
       <div
         class="pic-number"
@@ -214,6 +211,8 @@ img {
     max-width: 500px;
     height: 450px;
     margin: 0 auto;  
+ 
+    
   }
   .magnifier-cursor {
     position: absolute;
@@ -224,7 +223,7 @@ img {
     background-color: rgba(199, 199, 199, 0.5);
     width: 50px;
     height: 50px;
-    cursor: crosshair;
+  
   }
   .magnifier-area {
     width: 400px;
@@ -335,7 +334,7 @@ export default {
       
         const halfCursor = this.cursorWidth/2;
         const left = event.clientX- this.magnifierBoxLeft-halfCursor 
-        const top = event.clientY  - this.magnifierBoxTop-halfCursor 
+        const top = event.clientY  - this.magnifierBoxTop+100 
         // 处理光标左侧
         if(left < 0) { // 防止左侧溢出
           this.cursorLeft = 0;
@@ -350,11 +349,11 @@ export default {
         if(top < 0) { // 防止顶部溢出
           this.cursorTop = 0;
         }
-        if(top >= 0 && top <= 400 - this.cursorWidth) {
+        if(top >= 0 && top <= 500 - this.cursorWidth) {
           this.cursorTop = top;
         }
-        if(top > 400 - this.cursorWidth) { // 防止底部溢出
-          this.cursorTop = 400 - this.cursorWidth;
+        if(top > 500 - this.cursorWidth) { // 防止底部溢出
+          this.cursorTop = 500 - this.cursorWidth;
         }
         this.isShowCursor = true;
       },
@@ -366,7 +365,7 @@ export default {
       moveCursor(event) {
         const halfCursor = this.cursorWidth/2;
         const left = event.clientX -this.magnifierBoxLeft -halfCursor;
-        const top = event.clientY-this.magnifierBoxLeft-halfCursor
+        const top = event.clientY-this.magnifierBoxLeft+100
 
         // 处理光标左侧
         if(left < 0) { // 防止左侧溢出

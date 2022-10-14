@@ -29,6 +29,7 @@ $sql="SELECT R.RESV_DATE, MSG.MSG_NAME, T.THERAPIST_NAME, MSG.MSG_PRICE_2, R.RES
 		JOIN MSG
         ON R.MSG_ID=MSG.MSG_ID
         WHERE R.MEM_ID={$mem_id}
+        ORDER BY R.RESV_DATE
         ;";
 
   

@@ -183,6 +183,14 @@
                                 <th>開始時間</th>
                                 <th>按摩時間長度</th>
                             </tr>
+                            <tr v-for="item in memberDataResv" :key="item.RESV_ID">
+                                <td>{{item.RESV_DATE}}</td>
+                                <td>{{item.MSG_NAME}}</td>
+                                <td>{{item.THERAPIST_NAME}}</td>
+                                <td>{{item.MSG_PRICE_2}}</td>
+                                <td>{{item.RESV_TIME_START}}</td>
+                                <td>{{item.MSG_TIMESPAN_2}}</td>
+                            </tr>
                             <!-- <tr id="vieworder">
                                     <td id="resvDate"></td>
                                     <td>{{this.orderList[0]["orderMsg"]}}</td>
@@ -240,6 +248,7 @@ export default {
         verifyEmail: '',
         router: useRouter(),
         memberData: [],
+        memberDataResv: [],
         data: [],
     }),
     computed: {
@@ -360,6 +369,17 @@ export default {
                     this.memberData = res.data
                 })
         },
+        getResvInfo() {
+            let urlResv = `${BASE_URL}/memberCenterResv.php`
+            this.axios.get(urlResv, {
+                params: {
+                    mem_id: this.member.memId
+                }
+            })
+                .then((res) => {
+                    this.memberDataResv = res.data
+                })
+        },
         checkNew(reg, content) {
             if (reg.test(content)) {
                 return true;
@@ -401,6 +421,7 @@ export default {
         let members = sessionStorage.getItem("member");
         this.member = JSON.parse(members);
         this.getBuyInfo()
+        this.getResvInfo()
     }
 }
 </script>

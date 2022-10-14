@@ -158,7 +158,12 @@ export default {
   created() {
       let members = sessionStorage.getItem("member");
       this.member = JSON.parse(members);
-      this.getCartNumber()
+      if(this.member){
+          this.getCartNumber()
+      }else{
+        return
+      }
+    
   },
 
 };

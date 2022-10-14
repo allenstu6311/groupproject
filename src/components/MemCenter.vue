@@ -405,6 +405,7 @@ export default {
             handler(newVal){
                 if(newVal){
                 this.$emit("memberInfo",newVal)
+                
                     
                 }       
             }

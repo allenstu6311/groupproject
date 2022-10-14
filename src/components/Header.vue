@@ -131,21 +131,22 @@ export default {
         this.getCartNumber()
     },
   
-    getCartNumber(){
-     
-      if (this.member) {
-             var url = `${BASE_URL}/shoppingCart.php`; //上線
+   getCartNumber(){
+      if (Object.keys(this.member).length === 0) return
+      this.cartShow = false
       this.axios
-        .get(url, {
+        .get(`${BASE_URL}/shoppingCart.php`, {
           params: {
             mem_id: this.member.memId,
           },
         })
         .then((res) => {
           this.memory = res.data;
+          this.cartLength = this.memory.length
+          this.cartShow = true
         });
-    }
-    }
+    
+  },
   },
   mounted() {
     let checkLogin = sessionStorage.getItem("member");

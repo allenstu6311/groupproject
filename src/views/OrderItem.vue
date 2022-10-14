@@ -26,14 +26,17 @@
               aria-label="Recipient's username"
               aria-describedby="button-addon2"
               v-model="orderName"
+              @keydown.enter="searchORDER()"
             />
             <button
               class="btn btn-outline-secondary"
               type="button"
               id="button-addon2"
+              
               @click="searchORDER()"
             >
-           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+           <svg xmlns="http://www.w3.org/2000/svg"  width="25"
+                height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
 </svg>
             </button>
@@ -161,6 +164,20 @@
             pageColor = 2;
           "
           >2</span
+        >
+      </li>
+       <li
+        class="page-item"
+        aria-current="page"
+        :class="{ active: pageColor == 3 }"
+      >
+        <span
+          class="page-link"
+          @click="
+            changePage(3);
+            pageColor = 3;
+          "
+          >3</span
         >
       </li>
     </ul>
@@ -296,9 +313,16 @@ export default {
           break;
         case 2:
           this.number1 = 8;
-          this.number2 = 15;
+          this.number2 = 7;
           break;
+
+          case 3:
+          this.number1 = 16;
+          this.number2 = 7;
+          break;
+      
       }
+      
       this.getORderInfo();
     },
     orderDetail(id) {

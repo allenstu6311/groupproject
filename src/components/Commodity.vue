@@ -144,9 +144,12 @@
                 class="slide-pic"
                 ref="imgWidth"
                 id="pic"
+                
                 @click="addOrder(item.PROD_ID)"
                 :style="slidePic(index)"
               >
+            
+              
                 <img :src="require(`../../public/api/pic/${item.PROD_PIC1}`)" />
                 <img :src="require(`../../public/api/pic/${item.PROD_PIC2}`)" />
                 <img :src="require(`../../public/api/pic/${item.PROD_PIC3}`)" />

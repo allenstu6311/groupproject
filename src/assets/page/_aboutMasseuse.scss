@@ -45,6 +45,9 @@
                 }
                 .btnLittle{
                     text-align: center;
+                    a{
+                        color: $white;
+                    }
                 }
                 .frame{
                     text-align: center;
@@ -104,9 +107,10 @@
                 }
             }
             .rwd_text{
-                position: relative;
-                left: 25vw;
-                right: 25vw;
+                text-align: center;
+            }
+            .btnLittle{
+                margin: auto;
             }
         }
     }

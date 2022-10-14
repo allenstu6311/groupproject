@@ -283,40 +283,44 @@ bmit()
       if(!this.member){
          this.showBox = !this.showBox
       }else{
-        var url = `${BASE_URL}/resv.php`
-        console.log(this.valueTime)
-        console.log(this.THERAPIST_ID)
-        console.log(this.orderPrice)
-        this.axios.get(url,{
-          params:{
-            THERAPIST_ID:this.THERAPIST_ID,
-            MSG_RESV_DATE:this.valuesTimes,
+        // axios 寫法
+        // var url = `${BASE_URL}/resv.php`
+        // console.log(this.valueTime)
+        // console.log(this.THERAPIST_ID)
+        // console.log(this.orderPrice)
+        // this.axios.get(url,{
+        //   params:{
+        //     THERAPIST_ID:this.THERAPIST_ID,
+        //     MSG_RESV_DATE:this.valuesTimes,
             
-          }
-        })
-      // var xhr = new XMLHttpRequest();
-      // xhr.onload = function () {
-      //   if (xhr.status == 200) {
-      //     if (xhr.responseText == 1) {
-      //       alert("預約成功"); //還要判斷該時段滿了沒 & 要跳轉到會員中心看訂單嗎？
-      //     }
-      //   } else {
-      //     alert(xhr.status);
-      //   }
-      // };
+        //   }
+        // })
 
-      // // var url = "http://localhost/CGD102_G2/public/api/resv.php";
-      // var url = `${BASE_URL}/resv.php`; //上線用
-      // xhr.open("post", url, true);
-      // xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-      // //我從前台要送什麼資料去後端？
-      // // let resv_data = `RESV_DATE=${this.RESV_DATE}`;
-      // this.MEM_ID=`${this.member.memId}`;
-      // // console.log('MEM_ID',this.MEM_ID);
-      // let resv_data = `MEM_ID=${this.MEM_ID}&THERAPIST_ID=${this.THERAPIST_ID}&MSG_ID=${this.MSG_ID}&RESV_DATE=${this.RESV_DATE}&RESV_TIME_START=${this.RESV_TIME_START}&RESV_TIME_END=${this.RESV_TIME_END}`;
-      // // console.log(resv_data);
-      // xhr.send(resv_data);
-      //      // getMsgData() {},
+
+        // xhr 寫法
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+          if (xhr.status == 200) {
+            if (xhr.responseText == 1) {
+              alert("預約成功"); //還要判斷該時段滿了沒 & 要跳轉到會員中心看訂單
+            }
+          } else {
+            alert(xhr.status);
+          }
+        };
+
+        // var url = "http://localhost/CGD102_G2/public/api/resv.php";
+        let urlInsert = `${BASE_URL}/resv.php`; //上線用
+        xhr.open("post", urlInsert, true);
+        xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+        //我從前台要送什麼資料去後端？
+        // let resv_data = `RESV_DATE=${this.RESV_DATE}`;
+        this.MEM_ID=`${this.member.memId}`;
+        // console.log('MEM_ID',this.MEM_ID);
+        let resv_data = `MEM_ID=${this.MEM_ID}&THERAPIST_ID=${this.THERAPIST_ID}&MSG_ID=${this.MSG_ID}&RESV_DATE=${this.RESV_DATE}&RESV_TIME_START=${this.RESV_TIME_START}&RESV_TIME_END=${this.RESV_TIME_END}`;
+        // console.log(resv_data);
+        xhr.send(resv_data);
+        //      // getMsgData() {},
       }
    
     },

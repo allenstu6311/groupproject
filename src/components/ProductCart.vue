@@ -1,6 +1,6 @@
 <template>
   <div class="shopping-cart">
-    <div class="shopping-title" style="margin:0px">
+    <div class="shopping-title" style="padding-top:120px">
       <div class="title-font">購</div>
       <div class="title-font">物</div>
       <div class="title-font">車</div>
@@ -49,8 +49,7 @@
             size="1"
           /><button @click="addNum(item, item.PROD_ID)">+</button>
         </div>
-      </div>
-      <div class="shopping-list-btn">
+         <div class="shopping-list-btn">
         <button
           class="btnMinimum"
           style="padding: 7px"
@@ -59,6 +58,8 @@
           移出購物車
         </button>
       </div>
+      </div>
+     
     </div>
   </div>
 
@@ -235,14 +236,15 @@ export default {
     selChange(sel) {
       this.totalPrice = parseInt(this.productPrice * this.sel);
       this.countMoney();
+      console.log(this.sel)
+      localStorage.setItem("coupon",this.sel)
     },
-    // checkList() {
-    //     if(!this.memory){
-    //       alert("購物車是空的")
-    //       e.preventDefault();
-          
-    //     }
-    // },
+    checkList(e) {
+        if(this.memory.length<1){
+          alert("購物車是空的")
+         this.$router.go(0)
+        }
+    },
 
     reduceShoppingCart(focus) {
       var url = `${BASE_URL}/changeShoppingCart.php`;
@@ -283,9 +285,9 @@ export default {
   },
   
   computed: {
-    buyCar: function () {
-      return JSON.parse(JSON.stringify(this.cart));
-    },
+   seeMemory:function(){
+    return JSON.parse(JSON.stringify(this.memory))
+   },
     checkBox: function () {
       return JSON.parse(JSON.stringify(this.calculate));
     },
@@ -314,7 +316,13 @@ export default {
     }
     this.getInfo();
     this.selChange();
-   
+
+    if(this.memory.length==0){
+      this.detect=true
+    }else{
+      this.detect=false
+    }
+  localStorage.removeItem("coupon")
   },
 
   mounted() {
@@ -334,54 +342,56 @@ export default {
     }
   },
   watch: {
-    getProduct: {
-      handler(newVal) {
-        let num = this.memory.findIndex(
-          (item) => item.PROD_ID === newVal[newVal.length - 1].PROD_ID
-        );
-        if (num >= 0) {
-          alert("購物車已有相同物品");
-          return;
-        }
+    // getProduct: {
+    //   handler(newVal) {
+    //     let num = this.memory.findIndex(
+    //       (item) => item.PROD_ID === newVal[newVal.length - 1].PROD_ID
+    //     );
+    //     if (num >= 0) {
+    //       alert("購物車已有相同物品");
+    //       return;
+    //     }
 
-        alert("成功加入");
+    //     alert("成功加入");
 
-        const obj = {
-          PROD_ID: newVal[newVal.length - 1].PROD_ID,
-          PROD_NAME: newVal[newVal.length - 1].PROD_NAME,
-          PROD_PRICE: newVal[newVal.length - 1].PROD_PRICE,
-          PROD_PIC1: newVal[newVal.length - 1].PROD_PIC1,
-          PROD_PIC2: newVal[newVal.length - 1].PROD_PIC2,
-          PROD_PIC3: newVal[newVal.length - 1].PROD_PIC3,
-          PROD_DATE: newVal[newVal.length - 1].PROD_DATE,
-          PROD_NUM: 1,
-          PROD_DESC1: newVal[newVal.length - 1].PROD_DESC1,
-          PROD_DESC2: newVal[newVal.length - 1].PROD_DESC2,
-          PROD_DESC3: newVal[newVal.length - 1].PROD_DESC3,
-          PROD_REVIEW: newVal[newVal.length - 1].PROD_REVIEW,
-          PROD_TIMES: newVal[newVal.length - 1].PROD_TIMES,
-        };
+    //     const obj = {
+    //       PROD_ID: newVal[newVal.length - 1].PROD_ID,
+    //       PROD_NAME: newVal[newVal.length - 1].PROD_NAME,
+    //       PROD_PRICE: newVal[newVal.length - 1].PROD_PRICE,
+    //       PROD_PIC1: newVal[newVal.length - 1].PROD_PIC1,
+    //       PROD_PIC2: newVal[newVal.length - 1].PROD_PIC2,
+    //       PROD_PIC3: newVal[newVal.length - 1].PROD_PIC3,
+    //       PROD_DATE: newVal[newVal.length - 1].PROD_DATE,
+    //       PROD_NUM: 1,
+    //       PROD_DESC1: newVal[newVal.length - 1].PROD_DESC1,
+    //       PROD_DESC2: newVal[newVal.length - 1].PROD_DESC2,
+    //       PROD_DESC3: newVal[newVal.length - 1].PROD_DESC3,
+    //       PROD_REVIEW: newVal[newVal.length - 1].PROD_REVIEW,
+    //       PROD_TIMES: newVal[newVal.length - 1].PROD_TIMES,
+    //     };
 
-        this.cart.push({ ...obj });
-        this.calculate.push({ ...obj });
-        this.detect = false;
-        this.setLocal();
-      },
-      deep: true,
-    },
+    //     this.cart.push({ ...obj });
+    //     this.calculate.push({ ...obj });
+    //     this.detect = false;
+    //     this.setLocal();
+    //   },
+    //   deep: true,
+    // },
     newCartInfo: {
       handler(newVal) {
-        this.updateCart();
+        // this.updateCart();
         this.updateCart();
       },
     },
-    memory: {
-      handler(newVal) {
-        if (newVal.length == 0) {
+    seeMemory: { 
+      handler(newVal,oldVal) {
+        console.log(newVal)
+        if (newVal.length ==0) {
           this.detect = true;
         } else {
           this.detect = false;
         }
+         
       },
     },
     checkOut: {

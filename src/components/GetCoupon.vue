@@ -119,3 +119,9 @@ export default {
     },
 }
 </script>
+
+<style lang="scss" scoped>
+    a:hover{
+        color: #fff;
+    }    
+</style>

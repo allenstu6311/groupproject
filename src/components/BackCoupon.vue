@@ -8,12 +8,6 @@
                 <option value="CPS_NAME">依名稱排序</option>
                 <option value="CPS_DIS">依折扣排序</option>
             </select>
-            <div class="input-group rounded bg-light">
-                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                <span class="input-group-text border-0" id="search-addon">
-                    <i class="fas fa-search"></i>
-                </span>
-            </div>
             <router-link class="btn btn-primary ms-auto" to="/BackCouponAdd">新增折價券</router-link>
         </div>
         <hr>

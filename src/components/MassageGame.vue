@@ -1,5 +1,5 @@
 <template>
-    <div class="massage_game ">
+    <div class="massage_game">
 
         <h1 class="sr_only">穴道小遊戲</h1>
 
@@ -121,17 +121,11 @@
 
         </div>
     </div>
-    <lightBox v-if="lightBoxShow == true"/>
 </template>
 <script>
-    import lightBox from "@/components/lightBox.vue"
     export default {
-        components:{
-            lightBox
-        },
         data () {
             return{
-                lightBoxShow:false,
                 activeAcupoint:'',
                 isActive:true,
                 zhongChong:false,
@@ -167,15 +161,6 @@
                 imgName:'game1.png',
                 question:'天氣炎熱食慾不振，好像中暑了，這時該按哪一個穴道呢?'
             }
-        },
-        created(){
-            let members = sessionStorage.getItem("member");
-            this.member = JSON.parse(members)
-            if(!this.member){
-                this.lightBoxShow=true
-            }else{
-                this.lightBoxShow=false
-            }       
         },
         methods:{
             activeAcupointA(){

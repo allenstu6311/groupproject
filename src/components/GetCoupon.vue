@@ -54,7 +54,7 @@ export default {
         .then((res)=>{
             this.checkMember = res.data
             console.log(this.checkMember[0].CPS_ID)
-
+            
         //     for(let i=0;i<this.checkMember.length;i++){
         //         console.log(this.checkMember[i].CPS_ID)
 

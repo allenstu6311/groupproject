@@ -72,8 +72,8 @@
     </div>
 
     <div class="commodity-total" v-if="commoditySale == 1">
-      <div class="ifEmpty" v-if="empty == true">
-        <h1>查無商品</h1>
+      <div class="ifEmpty" v-if="empty" style="margin:40px 0">
+        <h2>查無商品</h2>
       </div>
 
       <!-- =============================================橫排顯示 -->
@@ -190,8 +190,8 @@
     </div>
     <!-- =============================================特賣商品 -->
 
-    <div class="special-offer" v-if="commoditySale == 2">
-      <h1>目前無特價商品</h1>
+    <div class="special-offer" v-if="commoditySale == 2" style="margin:40px 0">
+      <h2>目前無特價商品</h2>
     </div>
   </div>
 </template>
@@ -451,6 +451,7 @@ export default {
         console.log(newVal);
         if (newVal == "") {
           this.data = this.info;
+          this.disappear = false
         }
       },
     },
@@ -458,6 +459,8 @@ export default {
       handler(newVal) {
         if (newVal == "") {
           this.data = this.info;
+          this.disappear = false
+          
         }
       },
     },
@@ -467,7 +470,7 @@ export default {
           this.data = newVal;
           this.disappear = true;
         }
-      },
+        }
     },
     data: {
       handler(newVal) {
@@ -477,6 +480,7 @@ export default {
           this.empty = false;
         }
       },
+      deep:true,
     },
     search_empty: {
       handler(newVal) {

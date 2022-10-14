@@ -7,7 +7,7 @@ function memberInfo($MEM_ID){
     //   require_once("../../src/connect_cgd102g2.php"); //開發路徑
       require_once("../connect_cgd102g2.php");//上線路徑
 
-$sql = "SELECT M.MEM_NAME ,MC.MEM_ID,MC.CPS_ID ,CS.CPS_NAME,CS.CPS_DIS FROM  `MEMBER` M 
+$sql = "SELECT M.MEM_NAME ,MC.MEM_ID,MC.CPS_ID ,CS.CPS_NAME,CS.CPS_DIS,MC.MY_COUPONS_STATUS FROM  `MEMBER` M 
 JOIN MY_COUPONS MC 
 ON M.MEM_ID = MC.MEM_ID
 JOIN COUPONS C 

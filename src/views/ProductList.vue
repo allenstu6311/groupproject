@@ -137,7 +137,7 @@ export default {
   max-width: 1200px;
   margin: auto;
   display: flex;
-  padding: 50px 0;
+  padding: 50px 10px;
   justify-content: flex-end;
 
   input {

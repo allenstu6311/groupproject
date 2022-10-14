@@ -121,7 +121,7 @@ export default {
       this.router.push({ path: '/home' });
       this.show=true
     },
-    updateCartFromCartPage(list) {
+    updateCart(list) {
       this.memory = list;
     },
     updateMember(info) {
@@ -143,9 +143,6 @@ export default {
         })
         .then((res) => {
           this.memory = res.data;
-          if(this.memory.length>0){
-            this.showCartLength=true
-          }
         });
     }
     }

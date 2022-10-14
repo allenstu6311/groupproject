@@ -24,6 +24,9 @@
         .commodity-filter{
             width: 50%;
             display: flex;
+            .sel{
+                margin: 0 10px;
+            }
            
             button{
                 width: 100%;
@@ -41,6 +44,7 @@
 .commodity-area{
     margin-bottom: 70px;
     background-color: $white;
+    margin: auto;
     .commodity-obj{
         display: flex; 
         align-items: center; 
@@ -153,7 +157,7 @@
                     width: 100%;
                     height: 100%;
                     position: relative;
-                    margin-right: 30px;
+                    margin-right: 40px;
                 }
 
             }
@@ -163,7 +167,7 @@
         .commodity-body{
             width: 100%;
             padding-top: 10px;
-            max-width: 300px;
+            max-width: 240px;
 
             .commodity-name{
                 margin-bottom: 20px;
@@ -208,8 +212,8 @@
         }
         .commodity-filter{
             width: 50%;
-
            
+            
         }
         }
         .commodity-area{

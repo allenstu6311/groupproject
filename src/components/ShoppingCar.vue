@@ -115,7 +115,7 @@ export default {
         });
     },
     updateCart() {
-          var url = `${BASE_URL}/shoppingCart.php`; //上線
+      var url = `${BASE_URL}/shoppingCart.php`; //上線
       this.axios
         .get(url, {
           params: {
@@ -124,7 +124,7 @@ export default {
         })
         .then((res) => {
           this.memory = res.data;
-          // console.log(this.memory)
+          console.log(this.memory)
           this.$emit("addCartInfo", this.memory);
         });
     },
@@ -149,36 +149,10 @@ export default {
     let members = sessionStorage.getItem("member");
     this.member = JSON.parse(members);
     // console.log("mem", this.member.memId);
+    this.updateCart();
 
     this.cartInfo();
   },
-  watch: {
-    cart: {
-      handler(newVal) {
-        let members = sessionStorage.getItem("member");
-        this.member = JSON.parse(members);
-        // console.log("mem", this.member.memId);
-
-        // for (let i = 0; i < newVal.length; i++) {
-        //   this.axios
-        //     .get(
-        //       "http://localhost/CGD102_G2/public/api/insertShoppingCart.php",
-        //       {
-        //         params: {
-        //           judge:
-        //           mem_id: this.member.memId,
-        //           prod_id: this.cart[i].PROD_ID,
-        //           prod_qty: this.cart[i].PROD_NUM,
-        //         },
-        //       }
-        //     )
-        //     .then((res) => {
-        //       console.log("購物車內部", res);
-        //     });
-        // }
-      },
-    },
-    deep: true,
-  },
+ 
 };
 </script>

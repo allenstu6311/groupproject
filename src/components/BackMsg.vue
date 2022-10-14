@@ -38,7 +38,7 @@
                     <td>
                         <div>
                             <!-- <img src="../assets/images/Pen.png" alt="修改icon"> -->
-                            <router-link to="/backmsgchange" @click="modifyMsg(backMsg.MSG_NAME)">
+                            <router-link :to="{ path:'/backmsgchange',query:{id:`${backMsg.MSG_ID}`}}" >
                             <svg 
                             xmlns="http://www.w3.org/2000/svg" 
                             class="icon icon-tabler icon-tabler-edit"

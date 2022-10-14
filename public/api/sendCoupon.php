@@ -22,7 +22,6 @@ function coupon($checkNum,$mem_id,$coupon_id){
         }
 
         $pdo->query($sql);
-        echo $mem_id;
 
             ?>
             <?php

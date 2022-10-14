@@ -7,7 +7,7 @@
       </div>
       <form class="w-75">
         <div class="row mb-3 form-check">
-          <label for="inputEmail3" class="col-sm-2 col-form-label"
+          <label for="inputEmail3" class="col-width col-form-label"
             >產品名稱</label
           >
           <div class="col-sm-10">
@@ -21,7 +21,7 @@
           </div>
         </div>
         <div class="row mb-3 form-check">
-          <label for="inputPassword3" class="col-sm-2 col-form-label"
+          <label for="inputPassword3" class="col-width col-form-label"
             >價錢</label
           >
           <div class="col-sm-10">
@@ -160,7 +160,9 @@
 // @import "bootstrap/scss/bootstrap";
 // @import "../assets/style.scss";
     @import "../assets/base/_color.scss"; //有變數要引用的sass
-
+.col-width{
+  width: 13%;
+}
 .container{
   margin: auto;
   line-height: 2;

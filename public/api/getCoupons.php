@@ -9,8 +9,8 @@ try{
 
     $findCpsSql = "SELECT * FROM MY_COUPONS";
     
-    $getCount = $pdo -> prepare($findCpsSql);
-    $getCount->execute();
+    $getCount = $pdo -> query($findCpsSql);
+    // $getCount->execute();
 
     if($getCount->rowCount()==0){
         echo "答對零題";

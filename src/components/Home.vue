@@ -291,6 +291,35 @@ import {BASE_URL} from '@/assets/js/common.js'
                 await getData(url); // 觸發 getData 的匿名 function 內容 ==> 95 ~ 97 行的內容
                 // console.log(this.newsCardList);
             },
+            joinDetail(id){
+                let index  = this.product.findIndex(item=>{
+                    
+                    return item.PROD_ID===id
+                })
+            
+                this.order=[
+                {
+                PROD_ID: this.product[index].PROD_ID,
+                PROD_NAME: this.product[index].PROD_NAME,
+                PROD_PRICE: this.product[index].PROD_PRICE,
+                PROD_PIC1: this.product[index].PROD_PIC1,
+                PROD_PIC2: this.product[index].PROD_PIC2,
+                PROD_PIC3: this.product[index].PROD_PIC3,
+                PROD_DATE: this.product[index].PROD_DATE,
+                PROD_DESC1: this.product[index].PROD_DESC1,
+                PROD_DESC2: this.product[index].PROD_DESC2,
+                PROD_DESC3: this.product[index].PROD_DESC3,
+                PROD_REVIEW: this.product[index].PROD_REVIEW + 1,
+                PROD_TIMES: this.product[index].PROD_TIMES + 1,
+                },
+            ]
+                this.joinLocalStorage()
+            },
+            joinLocalStorage(){
+                localStorage.setItem("order",JSON.stringify(this.order)) ;
+            },
+            addCar(id) {
+            },
         
         },
 };

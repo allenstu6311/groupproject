@@ -108,7 +108,8 @@ export default {
                 if(xhr.status == 200){
                     if(xhr.responseText == "帳號已建立"){
                         alert("帳號已建立");
-                        window.location.replace("/backtherapist");
+                        // window.location.replace("/backtherapist"); //開發用
+                        window.location.replace("/cgd102/g2/backtherapist"); //上線用
                     }else if(xhr.responseText == "無法建立帳號"){
                         alert("無法建立帳號");
                     }

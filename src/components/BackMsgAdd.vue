@@ -171,7 +171,8 @@ export default {
                     console.log(xhr.responseText);
                     if(xhr.responseText == "按摩項目已建立"){
                         alert("按摩項目已建立");
-                        window.location.replace("/backmsg");
+                        // window.location.replace("/backmsg"); //開發用
+                        window.location.replace("/cgd102/g2/backmsg"); //上線用
                     }else if(xhr.responseText == "無法建立按摩項目"){
                         alert("無法建立按摩項目");
                     }

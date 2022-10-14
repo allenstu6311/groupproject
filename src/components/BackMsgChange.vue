@@ -119,7 +119,8 @@ export default {
                 if(xhr.status == 200){
                     if(xhr.responseText == "修改完成"){
                         alert("修改完成");
-                        window.location.replace("/backmsg");
+                        // window.location.replace("/backmsg"); //開發用
+                        window.location.replace("/cgd102/g2/backmsg"); //上線用
                     }else if(xhr.responseText == "修改失敗"){
                         alert("修改失敗");
                     }

@@ -108,12 +108,9 @@ export default {
       };
     },
     cartLength:function(){
-  
         return  this.memory.length
     },
-   
   },
-  
   methods:{
     logout() {
       sessionStorage.removeItem("member");
@@ -126,13 +123,13 @@ export default {
     },
     updateMember(info) {
         this.show=false
-        this.CartLength=true
+        this.cartLength=true
         this.memberInfo= info
         this.getCartNumber()
     },
   
    getCartNumber(){
-      if (Object.keys(this.member).length === 0) return
+      if (Object.keys(this.memberInfo).length === 0) return
       this.cartShow = false
       this.axios
         .get(`${BASE_URL}/shoppingCart.php`, {

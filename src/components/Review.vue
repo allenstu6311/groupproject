@@ -2,7 +2,7 @@
   <div class="review-title">
     <h2>商品評價</h2>
   </div>
-  <div class="review-container">
+  <div class="review-container" >
     <div class="review-score">
       <div class="review-fraction">
         <h3>
@@ -23,8 +23,8 @@
       >
     </div>
 
-    <div class="review-evaluation">
-      <div class="evaluation-star">
+    <div class="review-evaluation" v-for="item in order" :key="item">
+      <div class="evaluation-star" >
         <p @click="giveRating(1, order[0].PROD_NAME)">1星</p>
       </div>
       <div class="evaluation-star">
@@ -147,14 +147,19 @@ export default {
             product: name,
           },
         })
-        .then((res) => {});
+        .then((res) => {
+
+        });
         
       }
     
     },
     thankYou() {
       alert("感謝評價");
+      this.orderDetail()
+      this.$emit("update-review",this.order)
     },
+   
     upload() {
       if (!this.member) {
         this.showBox = !this.showBox;
@@ -165,7 +170,7 @@ export default {
         this.axios.get(url, {
           params: {
             post: this.tex,
-            product_id: this.order[0].PROD_ID,
+            product_id: this.$route.query.PROD_ID,
             mem_id: this.member.memId,
           },
         });
@@ -179,35 +184,43 @@ export default {
       this.axios
         .get(url, {
           params: {
-            prod_id: this.order[0].PROD_ID,
+            prod_id: this.$route.query.PROD_ID,
           },
         })
         .then((res) => {
           this.article = res.data;
         });
     },
-    getStorage() {
-      let orders = localStorage.getItem("order");
-      if (!orders) return;
-      this.order = JSON.parse(orders);
-
-      let members = sessionStorage.getItem("member");
-      this.member = JSON.parse(members);
-
-      this.score = (
-        this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
-      ).toFixed(1);
-      this.star = parseInt(this.score);
-    },
+  
     checkMember() {
       let members = sessionStorage.getItem("member");
       this.member = JSON.parse(members);
-    }
+    },
+      orderDetail() {
+      var url = `${BASE_URL}/orderProduct.php`;
+      this.axios
+        .get(url, {
+          params: {
+            prod_id: this.$route.query.PROD_ID,
+          },
+        })
+        .then((res) => {
+          this.order = res.data;
+          parseInt(this.order[0].PROD_REVIEW)+1 
+          parseInt(this.order[0].PROD_TIMES)+1
+          this.score = (
+          this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
+          ).toFixed(1);
+          this.star = parseInt(this.score);
+          console.log(this.order[0].PROD_TIMES)
+       
+        });
+    },
   },
   created() {
     this.checkMember();
-    this.getStorage();
     this.updateArticle();
+    this.orderDetail()
   },
 };
 </script>

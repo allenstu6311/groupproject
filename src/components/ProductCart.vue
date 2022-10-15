@@ -1,6 +1,6 @@
 <template>
   <div class="shopping-cart">
-    <div class="shopping-title" style="padding-top:120px">
+    <div class="shopping-title" style="padding-top: 120px">
       <div class="title-font">購</div>
       <div class="title-font">物</div>
       <div class="title-font">車</div>
@@ -17,13 +17,8 @@
     </div>
 
     <div class="shopping-list-order" v-for="item in memory" :key="item.PROD_ID">
-      <input
-        type="checkbox"
-        v-model="calculate"
-        :value="item"
-        
-      />
-     
+      <input type="checkbox" v-model="calculate" :value="item" />
+
       <div class="shopping-list-pic">
         <img :src="require(`../../public/api/pic/${item.PROD_PIC1}`)" />
       </div>
@@ -49,17 +44,16 @@
             size="1"
           /><button @click="addNum(item, item.PROD_ID)">+</button>
         </div>
-         <div class="shopping-list-btn">
-        <button
-          class="btnMinimum"
-          style="padding: 7px"
-          @click="reduceCar(item.PROD_ID)"
-        >
-          移出購物車
-        </button>
+        <div class="shopping-list-btn">
+          <button
+            class="btnMinimum"
+            style="padding: 7px"
+            @click="reduceCar(item.PROD_ID)"
+          >
+            移出購物車
+          </button>
+        </div>
       </div>
-      </div>
-     
     </div>
   </div>
 
@@ -95,20 +89,20 @@
     </div>
   </div>
 
-  <lightBox :lightBoxShow="showBox"/>
+  <lightBox :lightBoxShow="showBox" />
 </template>
 
 <script>
 import { nextTick } from "@vue/runtime-core";
 import { BASE_URL } from "@/assets/js/common.js";
-import lightBox from "@/components/lightBox.vue"
+import lightBox from "@/components/lightBox.vue";
 export default {
   props: {
     getProduct: Array,
     newCartInfo: Array,
   },
-   components:{
-      lightBox,
+  components: {
+    lightBox,
   },
   data() {
     return {
@@ -123,71 +117,58 @@ export default {
       member: [],
       unused: false,
       memory: [],
-      showBox:false
+      showBox: false,
       // checkMember:false
     };
   },
   methods: {
     reduceNum(item, id) {
-        this.updateCart()
+      this.updateCart();
       let focus = this.memory.findIndex((item) => item.PROD_ID === id);
-      if(item.PROD_QTY>1){
-         item.PROD_QTY -= 1;
-         this.reduceProductNum(focus)
-         this.updateCart()
-
+      if (item.PROD_QTY > 1) {
+        item.PROD_QTY -= 1;
+        this.reduceProductNum(focus);
+        this.updateCart();
       }
-     
-      // let carNum = this.calculate.find((item) => item.PROD_ID === id);
-      // item.PROD_NUM -= 1;
-      // carNum.PROD_NUM -= 1;
     },
     addNum(item, id) {
-      // item.PROD_NUM += 1;
-      this.updateCart()
+      this.updateCart();
       let focus = this.memory.findIndex((item) => item.PROD_ID === id);
-      item.PROD_QTY =parseInt(item.PROD_QTY)+1;
-      this.addProductNum(focus)
-      this.updateCart()
-
-      // let carNum = this.calculate.find((item) => item.PROD_ID === id);
-      // carNum.PROD_NUM += 1;
+      item.PROD_QTY = parseInt(item.PROD_QTY) + 1;
+      this.addProductNum(focus);
+      this.updateCart();
     },
     reduceCar(id) {
       this.updateCart();
-
       let focus = this.memory.findIndex((item) => item.PROD_ID === id);
-   
       this.reduceShoppingCart(focus);
       this.updateCart();
     },
     drop() {
-      var url = `${BASE_URL}/changeShoppingCart.php`
-      let memoryCart = this.memory
-      let sameProduct = this.calculate.filter(v =>memoryCart.filter(u=>u.PROD_ID===v.PROD_ID))
+      var url = `${BASE_URL}/changeShoppingCart.php`;
+      let memoryCart = this.memory;
+      let sameProduct = this.calculate.filter((v) =>
+        memoryCart.filter((u) => u.PROD_ID === v.PROD_ID)
+      );
 
-      if(sameProduct.length>0){
-     
-        for(let i=0;i<sameProduct.length;i++){
-     
-          this.axios.get(url,{
-              params:{
+      if (sameProduct.length > 0) {
+        for (let i = 0; i < sameProduct.length; i++) {
+          this.axios
+            .get(url, {
+              params: {
                 judge: 2,
                 mem_id: this.member.memId,
                 prod_id: sameProduct[i].PROD_ID,
                 prod_qty: 1,
-              }
-          })
-          .then((res)=>{
-            this.updateCart()
-            
-          })
-
+              },
+            })
+            .then((res) => {
+              this.updateCart();
+            });
         }
       }
-   
     },
-    updateCart(newData) {
+    updateCart() {
       var url = `${BASE_URL}/shoppingCart.php`; //上線
       this.axios
         .get(url, {
@@ -196,7 +177,7 @@ export default {
           },
         })
         .then((res) => {
-          // this.memory = res.data;
+          this.memory = res.data;
           let oldVal = this.memory;
           let newVal = res.data;
           let isSame = newVal.length === oldVal.length;
@@ -205,12 +186,16 @@ export default {
             return;
           }
 
-          isSame = newVal.every((v) => oldVal.findIndex((u) => u.PROD_ID === v.PROD_ID && u.PROD_QTY == v.PROD_QTY) > -1
+          isSame = newVal.every(
+            (v) =>
+              oldVal.findIndex(
+                (u) => u.PROD_ID === v.PROD_ID && u.PROD_QTY == v.PROD_QTY
+              ) > -1
           );
           if (!isSame) {
             this.memory = res.data;
           }
-          
+
           this.$emit("update-cart", res.data);
         });
     },
@@ -218,32 +203,22 @@ export default {
       localStorage.setItem("totalPrice", JSON.stringify(this.totalPrice));
     },
     getInfo() {
-      let orders = localStorage.getItem("order");
-      if (orders) this.order = JSON.parse(orders);
-
-      // let carts = localStorage.getItem("cart");
-      // if (carts) this.cart = JSON.parse(carts);
-
-      let calculates = localStorage.getItem("calculate");
+       let calculates = localStorage.getItem("calculate");
       if (calculates) this.calculate = JSON.parse(calculates);
 
       let totalPrices = localStorage.getItem("totalPrice");
       if (totalPrices) this.totalPrice = JSON.parse(totalPrices);
-
-      let members = sessionStorage.getItem("member");
-      this.member = JSON.parse(members);
     },
     selChange(sel) {
       this.totalPrice = parseInt(this.productPrice * this.sel);
       this.countMoney();
-      console.log(this.sel)
-      localStorage.setItem("coupon",this.sel)
+      localStorage.setItem("coupon", this.sel);
     },
     checkList(e) {
-        if(this.memory.length<1){
-          alert("購物車是空的")
-         this.$router.go(0)
-        }
+      if (this.memory.length < 1) {
+        alert("購物車是空的");
+        this.$router.go(0);
+      }
     },
 
     reduceShoppingCart(focus) {
@@ -258,7 +233,9 @@ export default {
         },
       });
     },
-      addProductNum(focus) {
+    addProductNum(focus) {
+       if (Object.keys(this.memory).length === 0) return
+       this.memoryShow=false
       var url = `${BASE_URL}/changeShoppingCart.php`;
       // var url = "http://localhost/CGD102_G2/public/api/changeshoppingCart.php"
       this.axios.get(url, {
@@ -268,9 +245,14 @@ export default {
           prod_id: this.memory[focus].PROD_ID,
           prod_qty: 1,
         },
-      });
+        
+      })  
+      .then((res)=>{
+        this.memoryShow=true
+      })
+    
     },
-    reduceProductNum(focus){
+    reduceProductNum(focus) {
       var url = `${BASE_URL}/changeShoppingCart.php`;
       // var url = "http://localhost/CGD102_G2/public/api/changeshoppingCart.php"
       this.axios.get(url, {
@@ -283,11 +265,11 @@ export default {
       });
     },
   },
-  
+
   computed: {
-   seeMemory:function(){
-    return JSON.parse(JSON.stringify(this.memory))
-   },
+    seeMemory: function () {
+      return JSON.parse(JSON.stringify(this.memory));
+    },
     checkBox: function () {
       return JSON.parse(JSON.stringify(this.calculate));
     },
@@ -308,25 +290,24 @@ export default {
     let members = sessionStorage.getItem("member");
     this.member = JSON.parse(members);
 
-    if(!this.member){
-      this.showBox=true
-    }else{
-      this.showBox=false
-       this.updateCart();
+    if (!this.member) {
+      this.showBox = true;
+    } else {
+      this.showBox = false;
+      this.updateCart();
     }
     this.getInfo();
     this.selChange();
 
-    if(this.memory.length==0){
-      this.detect=true
-    }else{
-      this.detect=false
+    if (this.memory.length == 0) {
+      this.detect = true;
+    } else {
+      this.detect = false;
     }
-  localStorage.removeItem("coupon")
+    localStorage.removeItem("coupon");
   },
 
   mounted() {
-    
     var url = `${BASE_URL}/member.php`; //上線
     // var url = "http://localhost/CGD102_G2/public/api/member.php"
     if (this.member) {
@@ -342,56 +323,18 @@ export default {
     }
   },
   watch: {
-    // getProduct: {
-    //   handler(newVal) {
-    //     let num = this.memory.findIndex(
-    //       (item) => item.PROD_ID === newVal[newVal.length - 1].PROD_ID
-    //     );
-    //     if (num >= 0) {
-    //       alert("購物車已有相同物品");
-    //       return;
-    //     }
-
-    //     alert("成功加入");
-
-    //     const obj = {
-    //       PROD_ID: newVal[newVal.length - 1].PROD_ID,
-    //       PROD_NAME: newVal[newVal.length - 1].PROD_NAME,
-    //       PROD_PRICE: newVal[newVal.length - 1].PROD_PRICE,
-    //       PROD_PIC1: newVal[newVal.length - 1].PROD_PIC1,
-    //       PROD_PIC2: newVal[newVal.length - 1].PROD_PIC2,
-    //       PROD_PIC3: newVal[newVal.length - 1].PROD_PIC3,
-    //       PROD_DATE: newVal[newVal.length - 1].PROD_DATE,
-    //       PROD_NUM: 1,
-    //       PROD_DESC1: newVal[newVal.length - 1].PROD_DESC1,
-    //       PROD_DESC2: newVal[newVal.length - 1].PROD_DESC2,
-    //       PROD_DESC3: newVal[newVal.length - 1].PROD_DESC3,
-    //       PROD_REVIEW: newVal[newVal.length - 1].PROD_REVIEW,
-    //       PROD_TIMES: newVal[newVal.length - 1].PROD_TIMES,
-    //     };
-
-    //     this.cart.push({ ...obj });
-    //     this.calculate.push({ ...obj });
-    //     this.detect = false;
-    //     this.setLocal();
-    //   },
-    //   deep: true,
-    // },
     newCartInfo: {
       handler(newVal) {
-        // this.updateCart();
         this.updateCart();
       },
     },
-    seeMemory: { 
-      handler(newVal,oldVal) {
-        console.log(newVal)
-        if (newVal.length ==0) {
+    seeMemory: {
+      handler(newVal, oldVal) {
+        if (newVal.length == 0) {
           this.detect = true;
         } else {
           this.detect = false;
         }
-         
       },
     },
     checkOut: {

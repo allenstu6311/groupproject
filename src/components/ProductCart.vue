@@ -1,6 +1,6 @@
 <template>
   <div class="shopping-cart">
-    <div class="shopping-title" style="padding-top: 120px">
+    <div class="shopping-title" style="padding-top:120px; margin: 0px;">
       <div class="title-font">購</div>
       <div class="title-font">物</div>
       <div class="title-font">車</div>

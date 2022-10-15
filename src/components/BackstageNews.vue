@@ -2,9 +2,10 @@
    <div class="laster_therapist">
         <h1>管理最新消息</h1>
         <div class="laster_selectbar hstack gap-3">
-            <select class="form-select form-select-sm bg-light" aria-label=".form-select-sm example">
-                <option selected>依編號排序</option>
-                <option value="1">依日期排序</option>
+            <select class="form-select form-select-sm bg-light" aria-label=".form-select-sm example" v-model="selecttype">
+                <option value="-1">選擇排序條件</option>
+                <option value="NEWS_ID">依編號排序</option>
+                <option value="NEWS_DATE">依日期排序</option>
             </select>
             <router-link class="btn btn-primary ms-auto" to="/BackstageNewsAdd">新增最新消息</router-link>
         </div>
@@ -67,6 +68,7 @@ export default {
         data() {
             return {
                 newsCardList: [],//---------------最新消息------------------
+                selecttype: '-1',
             }
         },
         created(){
@@ -90,22 +92,20 @@ export default {
                         new_id:id
                     }
                 })
+            },
+            sorttype() {
+            if (this.selecttype != -1) {
+                this.newsCardList.sort((a, b) => b[this.selecttype] < a[this.selecttype] ? 1 : -1)
+            }
             },  
-            // modifyNews(name){
-            //     // this.axios.get("http://localhost/CGD102_G2/public/api/BackstageNewsGetValue.php",{
-            //     this.axios.get(`${BASE_URL}/BackstageNewsGetValue.php`,{
-            //         params:{
-            //             searchName:name
-            //         }
-            //     })
-            //     .then((res)=>{
-            //         // console.log(res.data[0].MSG_NAME)
-            //         this.allenHandsome = res.data
-
-            //         this.setStorage()
-
-            //     })
-            // },
+        },
+        watch: {
+            selecttype: {
+                handler(value) {
+                    this.sorttype()
+                },
+                deep: true
+            }
         }
     }
 </script>

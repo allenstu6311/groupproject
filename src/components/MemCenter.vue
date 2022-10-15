@@ -101,7 +101,7 @@
                     <h2>歷史訂單</h2>
                     <hr>
                     <!-- 歷史訂單搜尋 -->
-                    <div class="order_search_bar">
+                    <!-- <div class="order_search_bar">
                         <label for="order_search"><img src="../assets/images/Search.png"></label>
                         <div class="order_search_row">
                             <div class="category_row">
@@ -118,7 +118,7 @@
                             </div>
                             <input type="text" id="order_search">
                         </div>
-                    </div>
+                    </div> -->
                     <!-- 資料表格 -->
                     <div class="order_data">
                         <table>
@@ -154,7 +154,7 @@
                     <h2>預約紀錄</h2>
                     <hr>
                     <!-- 預約紀錄搜尋 -->
-                    <div class="reserve_search_bar">
+                    <!-- <div class="reserve_search_bar">
                         <label for="reserve_search"><img src="../assets/images/Search.png"></label>
                         <div class="reserve_search_row">
                             <div class="category_row">
@@ -171,7 +171,7 @@
                             </div>
                             <input type="text" id="reserve_search">
                         </div>
-                    </div>
+                    </div> -->
                     <!-- 資料表格 -->
                     <div class="order_data">
                         <table>
@@ -181,15 +181,21 @@
                                 <th>按摩師</th>
                                 <th>價錢</th>
                                 <th>開始時間</th>
-                                <th>按摩時間長度</th>
+                                <th>結束時間</th>
+                                <!-- <th>按摩時間長度</th> -->
+                                <th>預約狀態</th>
                             </tr>
                             <tr v-for="item in memberDataResv" :key="item.RESV_ID">
                                 <td>{{item.RESV_DATE}}</td>
                                 <td>{{item.MSG_NAME}}</td>
                                 <td>{{item.THERAPIST_NAME}}</td>
                                 <td>{{item.MSG_PRICE_2}}</td>
-                                <td>{{item.RESV_TIME_START}}</td>
-                                <td>{{item.MSG_TIMESPAN_2}}</td>
+                                <td>{{item.RESV_TIME_START}}:00 - {{item.RESV_TIME_END}}:00</td>
+                                <td>{{item.RESV_TIME_END}}:00</td>
+                                <!-- <td>{{item.MSG_TIMESPAN_2}}分鐘</td> -->
+                                <td v-if="item.RESV_STATUS==0">未完成</td>
+                                <td v-if="item.RESV_STATUS==1">已完成</td>
+                                <td v-if="item.RESV_STATUS==2">已取消</td>
                             </tr>
                             <!-- <tr id="vieworder">
                                     <td id="resvDate"></td>

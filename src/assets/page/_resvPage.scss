@@ -56,7 +56,7 @@
                         box-sizing: border-box;
 
                         @include m() {
-                            padding: 30px 10px 15px 10px;
+                            padding: 20px 10px;
                         }
 
                         .content_pic.frame {
@@ -87,6 +87,12 @@
                                 margin-bottom: 50px;
                                 font-family: $fontTitle;
                                 position: relative;
+                                @include m(){
+                                    text-align: center;
+                                    margin-left: auto;
+                                    margin-right: auto;
+                                    margin-bottom: 40px;
+                                }
 
                                 .circle {
                                     display: inline-block;
@@ -97,18 +103,39 @@
                                     border-radius: 50%;
                                     font-size: 32px;
                                     text-align: center;
+                                    @include m() {
+                                        @include rect(42px);
+                                        line-height: 42px;
+                                        font-size: 28px;
+
+
+                                    }
+                                }
+                                @include t(){
+                                    &::before {
+                                        content: '';
+                                        width: 380px;
+                                        height: 10%;
+                                        background-color: $blue;
+                                        top: 25px;
+                                        left: -80px;
+                                        z-index: -1;
+                                        position: absolute;
+                                    }
+                                }
+                                @include pc(){
+                                    &::before {
+                                        content: '';
+                                        width: 380px;
+                                        height: 10%;
+                                        background-color: $blue;
+                                        top: 25px;
+                                        left: -80px;
+                                        z-index: -1;
+                                        position: absolute;
+                                    }
                                 }
 
-                                &::before {
-                                    content: '';
-                                    width: 380px;
-                                    height: 10%;
-                                    background-color: $blue;
-                                    top: 25px;
-                                    left: -80px;
-                                    z-index: -1;
-                                    position: absolute;
-                                }
                             }
 
                             p {
@@ -127,8 +154,17 @@
                             }
                             // view-ui-plus datepicker套件
                             .ivu-date-picker{
-                                margin-top: 35px;
-                                margin-bottom: 40px;
+                                @include m(){
+                                    // margin-top: 15px;
+                                    margin-bottom: 40px;
+                                }
+                                // margin-top: 35px;
+                                @include t(){
+                                    margin-bottom: 80px;
+                                }
+                                @include pc(){
+                                    margin-bottom: 80px;
+                                }
                                 width: 100%;
                                 .ivu-input{
                                     border-color:rgb(118, 118, 118);
@@ -139,12 +175,16 @@
                                 }
                             }
                             .content_footer {
+                                @include m(){
+                                    margin-top: 10px;
+                                }
                                 margin-top: 30px;
                                 width: 100%;
                                 display: flex;
                                 justify-content: space-between;
                                 align-items: center;
                                 color: $red;
+
 
                                 .price {
                                     color: $red;
@@ -178,6 +218,9 @@
                     text-align: center;
                     padding: 10px 0;
                     font-size: 24px;
+                    @media screen {
+                        font-size: 18px;
+                    }
 
                     &:hover {
                         cursor: pointer;
@@ -196,6 +239,9 @@
             }
 
             .tab_container {
+                @include m() {
+                    padding: 30px;
+                }
                 padding: 50px 80px;
                 line-height: 2;
             }

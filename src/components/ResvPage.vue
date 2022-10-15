@@ -42,14 +42,14 @@
                     <option value="3">康晉壕 師傅</option>
                     <option value="4">倪玉涓 師傅</option>
                   </select>
-                  <p>時間長度</p>
+                  <p>請選擇時間長度</p>
                   <select
                     v-model="orderPrice"
                     name="price_timespan"
                     id="orderPrice"
                     class="timespan"
                   >
-                    <!-- <option disabled value="">請選擇時間長度</option> -->
+                    <option disabled value="">請選擇時間長度</option>
                     <!-- <option value="2400" >
                         <span class="msg_timespan_1">120分鐘</span>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -63,6 +63,7 @@
                       >
                     </option>
                   </select>
+                  <p>請選擇預約日期及時間</p>
                   <DatePicker
                     v-model="valueTime"
                     type="datetime"

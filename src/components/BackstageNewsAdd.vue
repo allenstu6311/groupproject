@@ -6,7 +6,7 @@
                 <div class="col">
                     <div class="mb-3">
                         <span class="text">編號:</span>
-                        <input type="text" class="form-control"   maxlength="20" v-model="NEWS_ID">
+                        <input type="text" class="form-control"   maxlength="20" v-model="NEWS_ID" disabled>
                     </div>
                 </div>
             </div>

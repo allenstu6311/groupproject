@@ -87,20 +87,11 @@
                     }
                 })
             },  
-            // modifyFAQ(name){
-            //     this.axios.get(`${BASE_URL}/BackstageFAQGetValue.php`,{
-            //         params:{
-            //             searchName:name
-            //         }
-            //     })
-            //     .then((res)=>{
-            //         // console.log(res.data[0].MSG_NAME)
-            //         this.allenHandsome = res.data
-
-            //         this.setStorage()
-
-            //     })
-            // },
+            sorttype() {
+            if (this.selecttype != -1) {
+                this.backstageCouponList.sort((a, b) => b[this.selecttype] < a[this.selecttype] ? 1 : -1)
+            }
+            },
         }
     }
 </script>

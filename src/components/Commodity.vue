@@ -239,6 +239,7 @@ export default {
       slideImgActive: [],
       listData: [],
       cart: {},
+      judge:0,
     };
   },
   methods: {
@@ -265,45 +266,39 @@ export default {
     groupBy(value) {
       switch (value) {
         case "0":
-          this.data.sort(function () {
-            return 0.5 - Math.random();
-          });
+          this.judge=0
+          this.getCommodityInfo() 
           break;
 
         case "1":
-          this.data.sort(function (a, b) {
-            return b.PROD_PRICE - a.PROD_PRICE;
-          });
+           this.judge=1
+            this.getCommodityInfo() 
           break;
 
         case "2":
-          this.data.sort(function (a, b) {
-            return a.PROD_PRICE - b.PROD_PRICE;
-          });
+          this.judge=2
+          this.getCommodityInfo() 
+
           break;
 
         case "3":
-          this.data.sort(function (a, b) {
-            return b.PROD_REVIEW/b.PROD_TIMES - a.PROD_REVIEW/a.PROD_TIMES;
-          });
+          this.judge=3
+          this.getCommodityInfo() 
           break;
 
         case "4":
-          this.data.sort(function (a, b) {
-            return a.PROD_REVIEW/a.PROD_TIMES - b.PROD_REVIEW/b.PROD_TIMES;
-          });
+           this.judge=4
+          this.getCommodityInfo() 
           break;
 
         case "5":
-          this.data.sort(function (a, b) {
-            return new Date(b.PROD_DATE) - new Date(a.PROD_DATE);
-          });
+         this.judge=5
+          this.getCommodityInfo() 
           break;
 
         case "6":
-          this.data.sort(function (a, b) {
-            return new Date(a.PROD_DATE) - new Date(b.PROD_DATE);
-          });
+           this.judge=6
+          this.getCommodityInfo() 
           break;
       }
     },
@@ -343,6 +338,7 @@ export default {
       this.axios
         .get(url, {
           params: {
+            judge:this.judge,
             range_1: this.range_1,
             range_2: this.range_2,
           },
@@ -350,6 +346,7 @@ export default {
         .then((res) => {
           this.data = res.data;
           this.info = res.data;
+         
 
           for (let i = 0; i < this.data.length; i++) {
             this.starNum.push(
@@ -412,7 +409,6 @@ export default {
     },
     enter1: {
       handler(newVal) {
-        console.log(newVal);
         if (newVal == "") {
           this.data = this.info;
           this.disappear = false;
@@ -441,7 +437,6 @@ export default {
     },
     data: {
       handler(newVal) {
-        console.log("data", newVal);
         if (newVal.length < 1) {
           this.empty = true;
         } else {

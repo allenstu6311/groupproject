@@ -14,7 +14,6 @@
 
   <div class="change-page">
     <router-link to="Cart" type="button"> 上一頁 </router-link>
- 
     <button
       type="button"
       class="next-page"

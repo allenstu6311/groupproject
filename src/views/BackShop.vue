@@ -26,7 +26,7 @@
               aria-label="Recipient's username"
               aria-describedby="button-addon2"
               v-model="backProduct"
-               @keydown.enter="backProductSearch"
+              @keydown.enter="backProductSearch"
             />
             <button
               class="btn btn-outline-secondary"
@@ -92,10 +92,9 @@
                   >
                     下架
                   </button>
-                  
                 </td>
                 <td>
-                    <button
+                  <button
                     type="button"
                     class="btn btn-success"
                     @click="deleteProduct(item.PROD_ID)"
@@ -142,9 +141,23 @@
       </li>
     </ul>
   </nav>
-  <div class="col-10">
-    <BackTherapistAdd />
+  <div class="delete-light-box" v-if="lightBoxShow">
+    <div class="delete-text">
+      <label for="exampleDataList" class="form-label bold h3 mb-3 pt-4" >請輸入刪除密碼</label>
+    <input
+      class="form-control w-75 m-auto mb-3"
+      list="datalistOptions"
+      id="exampleDataList"
+      placeholder="請輸入密碼"
+      v-model="deleteCheck"
+    />
+    <button type="button" class="btn btn-primary m-2" @click="checkDelete">確定</button>
+    <button type="button" class="btn btn-secondary m-2" @click="lightBoxShow=false">取消</button>
+    </div>
+  
   </div>
+
+  <BackTherapistAdd />
 </template>
 <style lang="scss" scoped>
 // @import "bootstrap/scss/bootstrap";
@@ -153,6 +166,28 @@
 
 * {
   position: relative;
+}
+.delete-light-box{
+  position: fixed;
+  margin:  0 auto;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  .delete-text{
+    position: fixed;
+    margin: auto;
+    left: 40%;
+    top: 25%;
+    background-color: white;
+    line-height: 3;
+    padding: 20px;
+    width: 300px;
+    text-align: center; 
+    border-radius: 20px;
+  }
 }
 .show {
   position: relative;
@@ -229,6 +264,9 @@ export default {
       backProduct: "",
       changePageButton: true,
       productState: "9",
+      lightBoxShow:false,
+      targetId:'',
+      deletePassword:123456,
     };
   },
   methods: {
@@ -249,7 +287,7 @@ export default {
           } else {
             alert("上架失敗");
           }
-          this.getPageNumber()
+          this.getPageNumber();
         });
     },
     takeDown(id) {
@@ -268,7 +306,7 @@ export default {
           } else {
             alert("下架失敗");
           }
-          this.getPageNumber()
+          this.getPageNumber();
         });
     },
     changePage(num) {
@@ -343,17 +381,28 @@ export default {
           this.data = state1;
       }
     },
-    deleteProduct(id){
-        var url = `${BASE_URL}/deleteProduct.php`; //上線
-        this.axios.get(url,{
-          params:{
-            prod_id:id
-          }
+
+    deleteProduct(id) {
+      this.lightBoxShow=true
+      this.targetId = id
+    },
+    checkDelete(){
+      if(this.deleteCheck==this.deletePassword){
+         var url = `${BASE_URL}/deleteProduct.php`; //上線
+      this.axios
+        .get(url, {
+          params: {
+            prod_id:this.targetId,
+          },
         })
-        .then((res=>{
-          alert("刪除成功")
-            this.getPageNumber()
-        }))
+        .then((res) => {
+          alert("刪除成功");
+          this.lightBoxShow=false
+          this.getPageNumber();
+        });
+      }else{
+        alert("密碼錯誤")
+      }
     }
   },
   created() {

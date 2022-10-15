@@ -102,7 +102,7 @@
         <h2>{{ order[0].PROD_NAME }}</h2>
       </div>
       <div class="product-star" style="z-index: -1">
-        <p class="star-score">{{ score }}</p>
+        <p class="star-score">{{ score>0?score:0 }}</p>
         <p v-for="item in star" :key="item">★</p>
         <p v-if="star < 1">{{ block }}</p>
         <p v-if="star < 2">{{ block }}</p>
@@ -474,7 +474,7 @@ export default {
           if (!isSame) {
             this.memory = res.data;
           }
-
+       
           this.$emit("update-cart", res.data);
         });
     },
@@ -488,12 +488,17 @@ export default {
         })
         .then((res) => {
           this.order = res.data;
-          this.order[0].PROD_REVIEW+=1
-          this.order[0].PROD_TIMES+=1
+          // this.order[0].PROD_REVIEW+=1
+          // this.order[0].PROD_TIMES+=1
+          if(this.order[0].PROD_REVIEW>1){
           this.score = (
           this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
           ).toFixed(1);
           this.star = parseInt(this.score);
+          }else{
+              parseInt(this.order[0].PROD_REVIEW)+1 
+              parseInt(this.order[0].PROD_TIMES)+1
+          }
         });
     },
 
@@ -508,9 +513,8 @@ export default {
   },
   created() {
     this.checkMember()
-    this.orderDetail();
     this.updateCart()
+    this.orderDetail();
   },
-
 };
 </script>

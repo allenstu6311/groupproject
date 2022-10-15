@@ -56,9 +56,8 @@ export default {
         })
         .then((res)=>{
             this.data = res.data
-    
             let check = this.data.find(item=>item.MEM_ID===this.member.memId)
-            
+            console.log(this.data)
             if(!check){
                 this.num=1
                 switch(this.count){
@@ -77,10 +76,11 @@ export default {
 
             }else{
                 this.num=2
+                
                 switch(this.count){
                     case "0":
                         this.couponId = this.data[0].CPS_ID
-                        if(this.data[0].MY_COUPONS_STATUS == 1){
+                        if(check.MY_COUPONS_STATUS == 1){
                             alert('您已擁有這張折價券')
                         }else{
                             this.timerd = setTimeout(this.sendCoupons,1000)
@@ -89,7 +89,7 @@ export default {
                         break;
                     case "1":
                         this.couponId = this.data[1].CPS_ID
-                        if(this.data[1].MY_COUPONS_STATUS ==1){
+                        if(check.MY_COUPONS_STATUS ==1){
                             alert('您已擁有這張折價券')
                         }else{
                             this.timerd = setTimeout(this.sendCoupons,1000)

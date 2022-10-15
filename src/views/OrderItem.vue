@@ -227,6 +227,7 @@
     display: flex;
     justify-content: space-between;
     padding: 5px 10px;
+    max-width: 426px;
   }
 }
 .modal-header {
@@ -300,7 +301,8 @@ export default {
       pageColor: 1,
       orderName: "",
       changePageButton: true,
-      orderSel: "1",
+      orderSel: "2",
+      judge:2,
     };
   },
   methods: {
@@ -337,7 +339,6 @@ export default {
         .then((res) => {
           this.show = true;
           this.detail = res.data;
-          console.log("detail", this.detail);
           this.subtotal = this.detail[0].PROD_ORDERS_SUBTOTAL;
           this.totalPrice = this.detail[0].PROD_ORDERS_TOTAL;
           this.coupon = this.detail[0].PROD_ORDERS_CPS_ID;
@@ -350,6 +351,7 @@ export default {
       this.axios
         .get(url, {
           params: {
+            judge:this.judge,
             range_1: this.number1,
             range_2: this.number2,
           },
@@ -376,18 +378,14 @@ export default {
     filterOrder(){
       switch(this.orderSel){
         case "1":
-          this.data.sort(function(a,b){
-            return new Date(a.PROD_ORDERS_DATE)-new Date(b.PROD_ORDERS_DATE)
-          })
+          this.judge=1
           break;
 
            case "2":
-          this.data.sort(function(a,b){
-            return new Date(b.PROD_ORDERS_DATE)-new Date(a.PROD_ORDERS_DATE)
-          })
+            this.judge=2
           break;
       }
-     
+     this.getORderInfo()
     }
   },
   watch: {

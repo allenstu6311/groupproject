@@ -6,7 +6,7 @@
     <div class="review-score">
       <div class="review-fraction">
         <h3>
-          <strong>{{ score  }}</strong
+          <strong>{{ score>0?score:0  }}</strong
           >/5
         </h3>
       </div>
@@ -19,7 +19,7 @@
         <p v-if="star < 5">{{ block }}</p>
       </div>
       <small style="text-align: center"
-        >共{{ order[0] ? order[0].PROD_TIMES - 1 : 0 }}人評價此商品</small
+        >共{{ order[0] ? order[0].PROD_TIMES  : 0 }}人評價此商品</small
       >
     </div>
 
@@ -206,13 +206,16 @@ export default {
         })
         .then((res) => {
           this.order = res.data;
-          parseInt(this.order[0].PROD_REVIEW)+1 
-          parseInt(this.order[0].PROD_TIMES)+1
+           if(this.order[0].PROD_REVIEW>1){
           this.score = (
           this.order[0].PROD_REVIEW / this.order[0].PROD_TIMES
           ).toFixed(1);
           this.star = parseInt(this.score);
-          console.log(this.order[0].PROD_TIMES)
+          }else{
+              parseInt(this.order[0].PROD_REVIEW)+1 
+              parseInt(this.order[0].PROD_TIMES)+1
+          }
+         
        
         });
     },

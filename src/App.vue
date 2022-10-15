@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { BASE_URL } from "@/assets/js/common.js";
 import Header from "@/components/Header.vue"
 import Footer from "@/components/Footer.vue"
 
@@ -38,8 +39,10 @@ export default {
         this.$refs.header.updateMember(info);
         
       },
+   
     },
     created(){
+
       //  let members = sessionStorage.getItem("member");
       // this.member = JSON.parse(members);
       //   console.log("app",this.member)

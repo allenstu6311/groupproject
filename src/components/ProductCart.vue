@@ -1,13 +1,13 @@
 <template>
   <div class="shopping-cart">
-    <div class="shopping-title" style="padding-top: 120px">
+    <div class="shopping-title" style="padding-top: 120px;margin-bottom:40px">
       <div class="title-font">購</div>
       <div class="title-font">物</div>
       <div class="title-font">車</div>
     </div>
   </div>
 
-  <div class="shopping-list col-10">
+  <div class="shopping-list col-9">
     <div
       class="shopping-cart-empty"
       v-if="detect == true"
@@ -57,8 +57,9 @@
     </div>
   </div>
 
-  <div class="shopping-discount col-10">
+  <div class="shopping-discount col-9">
     <small style="color: red" v-if="unused == true">(尚有優惠券未使用)</small>
+    <small style="color: red" v-if="unused == false">(沒有優惠券嗎趕快去玩小遊戲)</small>
     <h5>選擇優惠券:</h5>
     <select name="" id="" v-model="sel" @change="selChange(sel)">
       <option value="1">請選擇</option>
@@ -68,7 +69,7 @@
     </select>
   </div>
 
-  <div class="shopping-price col-10">
+  <div class="shopping-price col-9">
     <div class="shopping-box">
       <span><input type="checkbox" v-model="checkOut" />全選</span>
       <button class="btnLarge" @click="drop">刪除選取項目</button>
@@ -96,6 +97,9 @@
 import { nextTick } from "@vue/runtime-core";
 import { BASE_URL } from "@/assets/js/common.js";
 import lightBox from "@/components/lightBox.vue";
+
+import _ from 'lodash';
+
 export default {
   props: {
     getProduct: Array,
@@ -110,7 +114,7 @@ export default {
       coupon: [],
       sel: "1",
       calculate: [],
-      checkOut: true,
+      checkOut: false,
       block: "☆",
       detect: false,
       order: [],
@@ -131,13 +135,24 @@ export default {
         this.updateCart();
       }
     },
-    addNum(item, id) {
+   
+    doQuery:_.debounce(function(){
+      this.addNum.send('v1/get_data', this.queryParams, data => {
+        this.rows = data
+      })
+    }),
+     
+  
+ 
+      addNum(item, id){
       this.updateCart();
       let focus = this.memory.findIndex((item) => item.PROD_ID === id);
       item.PROD_QTY = parseInt(item.PROD_QTY) + 1;
       this.addProductNum(focus);
-      this.updateCart();
+      this.updateCart()
     },
+     
+
     reduceCar(id) {
       this.updateCart();
       let focus = this.memory.findIndex((item) => item.PROD_ID === id);

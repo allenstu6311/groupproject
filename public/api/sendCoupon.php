@@ -10,11 +10,11 @@ function coupon($checkNum,$mem_id,$coupon_id){
         
         switch($checkNum){
 
-            case 1:
+            case '1':
                 $sql = "INSERT INTO MY_COUPONS (`MEM_ID`, `CPS_ID`, `MY_COUPONS_STATUS`) VALUES ({$mem_id}, {$coupon_id},1)";
             break;
 
-            case 2:
+            case '2':
                 $sql = "UPDATE MY_COUPONS 
                         SET MY_COUPONS_STATUS=1
                         WHERE CPS_ID={$coupon_id} AND MEM_ID={$mem_id}";

@@ -46,21 +46,6 @@
     <div class="backmanage">
         <h1>管理後台帳號</h1>
         <div class="search_manage_bar">
-            <div class="search_bar">
-                <select class="form-select form-select-sm bg-light condition-search"
-                    aria-label=".form-select-sm example">
-                    <option value="-1">選擇排序條件</option>
-                    <option value="MEM_ID">依管理員編號</option>
-                    <option value="MEM_NAME">依姓名排序</option>
-                </select>
-                <div class="input-group rounded bg-light">
-                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-                        aria-describedby="search-addon" />
-                    <span class="input-group-text border-0" id="search-addon">
-                        <i class="fas fa-search"></i>
-                    </span>
-                </div>
-            </div>
             <div class="button_area">
                 <button class="btnMinimum new" @click="openlightbox">新增</button>
                 <button class="btnMinimum" @click="openConfirmAgain">刪除</button>
@@ -111,6 +96,7 @@ export default {
             addpsw: '',
             addname: '',
             checkedArray:[],
+            adminName:'',
             router: useRouter(),
             // editShow: true,
             // confirmShow:false,
@@ -129,7 +115,7 @@ export default {
             return {
                 'display': this.confirmagain ? '' : 'none',
             };
-        }
+        },
         // edit() {
         //     return {
         //         'display': this.editShow ? '' : 'none',
@@ -210,6 +196,7 @@ export default {
             xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
             let droplist = `checked=${this.checkedArray}`;
             xhr.send(droplist);
+            console.log(droplist);
 
             xhr.onload = function(){
                 if(xhr.response){
@@ -286,7 +273,7 @@ export default {
 
     .search_manage_bar {
         display: flex;
-        justify-content: space-between;
+        justify-content: end;
 
         .search_bar {
             display: flex;

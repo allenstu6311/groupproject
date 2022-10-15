@@ -18,6 +18,7 @@
         input[type="checkbox"]{
             width: 20px;
             height: 20px;
+            margin: 3px;
         }
         .shopping-list-pic{
             width: 30%;
@@ -39,17 +40,26 @@
             .shopping-list-star{
                 display: none;
             }
-            .shopping-list-int{}
+            .shopping-list-int{
+                margin: 5px 0;
+                button{
+                    background-color: transparent;
+                    border: none;
+                    font-size: 22px;
+                }
+            }
            
         }
         .shopping-list-btn{
-            display: none;
+            
         }
     }
 }
 // =====================================優惠券
 .shopping-discount{
     display: flex;
+    flex-direction: column;
+    line-height: 2;
     align-items: center;
     justify-content: center;
     background-color: $white;
@@ -90,7 +100,7 @@
 
 }
 
-@media screen and (min-width:768px ) and (min-width:1100px) {
+@media screen  and (min-width:1100px) {
     // ======================================商品
     .shopping-list{
         .shopping-cart-empty{}
@@ -147,6 +157,7 @@
                         background-color: transparent;
                         border: none;
                         font-size: 20px;
+                    
                     }
                 }
                
@@ -162,6 +173,7 @@
 
     display: flex;
     align-items: center;
+    flex-direction: row;
     justify-content: flex-end;
     background-color: $white;
     box-shadow: 0px 0px 10px rgb(211, 211, 211);

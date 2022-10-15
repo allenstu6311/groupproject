@@ -108,12 +108,9 @@ export default {
       };
     },
     cartLength:function(){
-  
         return  this.memory.length
     },
-   
   },
-  
   methods:{
     logout() {
       sessionStorage.removeItem("member");
@@ -121,34 +118,32 @@ export default {
       this.router.push({ path: '/home' });
       this.show=true
     },
-    updateCartFromCartPage(list) {
+    updateCart(list) {
       this.memory = list;
     },
     updateMember(info) {
         this.show=false
-        this.CartLength=true
+        this.cartLength=true
         this.memberInfo= info
         this.getCartNumber()
     },
   
-    getCartNumber(){
-     
-      if (this.member) {
-             var url = `${BASE_URL}/shoppingCart.php`; //上線
+   getCartNumber(){
+      if (Object.keys(this.memberInfo).length === 0) return
+      this.cartShow = false
       this.axios
-        .get(url, {
+        .get(`${BASE_URL}/shoppingCart.php`, {
           params: {
             mem_id: this.member.memId,
           },
         })
         .then((res) => {
           this.memory = res.data;
-          if(this.memory.length>0){
-            this.showCartLength=true
-          }
+          this.cartLength = this.memory.length
+          this.cartShow = true
         });
-    }
-    }
+    
+  },
   },
   mounted() {
     let checkLogin = sessionStorage.getItem("member");
@@ -160,7 +155,12 @@ export default {
   created() {
       let members = sessionStorage.getItem("member");
       this.member = JSON.parse(members);
-      this.getCartNumber()
+      if(this.member){
+          this.getCartNumber()
+      }else{
+        return
+      }
+    
   },
 
 };

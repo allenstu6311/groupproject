@@ -177,13 +177,15 @@
             </section>
 
             <div class="msgshl_btn ">
-                <router-link to="/MassageGame" class="btnLarge">開始遊戲吧 !</router-link>
+                <a href="#" class="btnLarge" @click.prevent="gameStart()">開始遊戲吧 !</a>
             </div>
 
         </div>
     </div>
+    <lightBox  :lightBoxShow="showBox"/>
 </template>
 <script>
+    import lightBox from "@/components/lightBox.vue"
     import {Pagination ,Navigation} from 'swiper';
 
   // Import Swiper Vue.js components
@@ -194,13 +196,16 @@
     import 'swiper/css/navigation';
     import 'swiper/css/pagination';
     import 'swiper/css/scrollbar';
+    
     export default {
         components: {
         Swiper,
         SwiperSlide,
+        lightBox
         },
         data () {
             return{
+                showBox:false,
                 headList:[
                     {
                         pic:'head-01.png',
@@ -389,10 +394,10 @@
         },
         setup() {
             const onSwiper = (swiper) => {
-                console.log(swiper);
+                
             };
             const onSlideChange = () => {
-                console.log('slide change');
+
             };
             return {
                 onSwiper,
@@ -400,6 +405,25 @@
                 modules: [Pagination,Navigation],
             };
         },
+        created() {
+            this.getMember();
+        },
+        methods: {
+            getMember() {
+                let members = sessionStorage.getItem("member");
+                this.member = JSON.parse(members);
+            },
+            gameStart(){
+                if(!this.member){
+                    this.showBox=!this.showBox
+                }else{
+                    this.$router.push('/MassageGame')
+                }
+
+            }
+        },
     }
 </script>
+
+
 

@@ -42,16 +42,16 @@ export default {
                 name: "管理商品訂單",
                 path:"/OrderItem",
                 },
-                // {
-                // id: 4,
-                // name: "管理按摩項目",
-                // path:"/backmsg",
-                // },
                 {
                 id: 4,
-                name: "管理按摩訂單",
-                path:"/BackShop",
+                name: "管理按摩項目",
+                path:"/backmsg",
                 },
+                // {
+                // id: 4,
+                // name: "管理按摩訂單",
+                // path:"/BackShop",
+                // },
                 {
                 id: 5,
                 name: "管理按摩師",

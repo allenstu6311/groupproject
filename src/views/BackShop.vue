@@ -26,6 +26,7 @@
               aria-label="Recipient's username"
               aria-describedby="button-addon2"
               v-model="backProduct"
+               @keydown.enter="backProductSearch"
             />
             <button
               class="btn btn-outline-secondary"
@@ -35,8 +36,8 @@
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
+                width="25"
+                height="25"
                 fill="currentColor"
                 class="bi bi-search"
                 viewBox="0 0 16 16"
@@ -57,6 +58,7 @@
                 <th>狀態</th>
                 <th>上架</th>
                 <th>下架</th>
+                <th>刪除</th>
               </tr>
             </thead>
             <tbody>
@@ -89,6 +91,16 @@
                     @click="takeDown(item.PROD_ID)"
                   >
                     下架
+                  </button>
+                  
+                </td>
+                <td>
+                    <button
+                    type="button"
+                    class="btn btn-success"
+                    @click="deleteProduct(item.PROD_ID)"
+                  >
+                    刪除
                   </button>
                 </td>
               </tr>
@@ -265,7 +277,7 @@ export default {
         this.getPageNumber();
       } else {
         this.number1 = 10;
-        this.number2 = 20;
+        this.number2 = 10;
         this.getPageNumber();
       }
     },
@@ -282,7 +294,6 @@ export default {
         .then((res) => {
           this.data = res.data;
           this.productInfo = res.data;
-          console.log(this.data);
         });
     },
     backProductSearch() {
@@ -331,11 +342,19 @@ export default {
           console.log("1", state1);
           this.data = state1;
       }
-
-      // let state0 = this.data.filter(item=>item.PROD_STATUS===0)
-      // this.data=state0;
-      // console.log("少",this.data)
     },
+    deleteProduct(id){
+        var url = `${BASE_URL}/deleteProduct.php`; //上線
+        this.axios.get(url,{
+          params:{
+            prod_id:id
+          }
+        })
+        .then((res=>{
+          alert("刪除成功")
+            this.getPageNumber()
+        }))
+    }
   },
   created() {
     this.getPageNumber();

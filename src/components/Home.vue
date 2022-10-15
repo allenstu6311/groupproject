@@ -123,8 +123,8 @@
                             <div class="item_bottom">
                                 <div class="intro">
                                     <h4>{{msgs.MSG_NAME}}</h4>
-                                    <p class="pirce">{{msgs.MSG_TIMESPAN_1}}分鐘 / ${{msgs.MSG_PRICE_1}}</p>
-                                    <p>{{msgs.MSG_REC_1}}</p>
+                                    <!-- <p class="pirce">{{msgs.MSG_TIMESPAN_1}}分鐘 / ${{msgs.MSG_PRICE_1}}</p>
+                                    <p>{{msgs.MSG_REC_1}}</p> -->
                                     <p class="pirce">{{msgs.MSG_TIMESPAN_2}}分鐘 / ${{msgs.MSG_PRICE_2}}</p>
                                     <p>{{msgs.MSG_REC_2}}</p>
                                 </div>
@@ -290,6 +290,35 @@ import {BASE_URL} from '@/assets/js/common.js'
                 }
                 await getData(url); // 觸發 getData 的匿名 function 內容 ==> 95 ~ 97 行的內容
                 // console.log(this.newsCardList);
+            },
+            joinDetail(id){
+                let index  = this.product.findIndex(item=>{
+                    
+                    return item.PROD_ID===id
+                })
+            
+                this.order=[
+                {
+                PROD_ID: this.product[index].PROD_ID,
+                PROD_NAME: this.product[index].PROD_NAME,
+                PROD_PRICE: this.product[index].PROD_PRICE,
+                PROD_PIC1: this.product[index].PROD_PIC1,
+                PROD_PIC2: this.product[index].PROD_PIC2,
+                PROD_PIC3: this.product[index].PROD_PIC3,
+                PROD_DATE: this.product[index].PROD_DATE,
+                PROD_DESC1: this.product[index].PROD_DESC1,
+                PROD_DESC2: this.product[index].PROD_DESC2,
+                PROD_DESC3: this.product[index].PROD_DESC3,
+                PROD_REVIEW: this.product[index].PROD_REVIEW + 1,
+                PROD_TIMES: this.product[index].PROD_TIMES + 1,
+                },
+            ]
+                this.joinLocalStorage()
+            },
+            joinLocalStorage(){
+                localStorage.setItem("order",JSON.stringify(this.order)) ;
+            },
+            addCar(id) {
             },
         
         },

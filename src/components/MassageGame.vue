@@ -1,5 +1,5 @@
 <template>
-    <div class="massage_game ">
+    <div class="massage_game">
 
         <h1 class="sr_only">穴道小遊戲</h1>
 
@@ -121,17 +121,11 @@
 
         </div>
     </div>
-    <lightBox v-if="lightBoxShow == true"/>
 </template>
 <script>
-    import lightBox from "@/components/lightBox.vue"
     export default {
-        components:{
-            lightBox
-        },
         data () {
             return{
-                lightBoxShow:false,
                 activeAcupoint:'',
                 isActive:true,
                 zhongChong:false,
@@ -167,15 +161,6 @@
                 imgName:'game1.png',
                 question:'天氣炎熱食慾不振，好像中暑了，這時該按哪一個穴道呢?'
             }
-        },
-        created(){
-            let members = sessionStorage.getItem("member");
-            this.member = JSON.parse(members)
-            if(!this.member){
-                this.lightBoxShow=true
-            }else{
-                this.lightBoxShow=false
-            }       
         },
         methods:{
             activeAcupointA(){
@@ -306,7 +291,6 @@
                         this.question='正確答案 !';
                         this.Answer='中衝穴位於雙手手指的中指指尖，主要功效是清熱、開竅、利喉舌、清心瀉熱，主治中暑、中風昏迷、頭痛、咽喉腫痛、高血壓、心絞痛等病症。';
                         this.count += 1;
-                        console.log(this.count);
                     }else if(this.activeAcupoint =="B"){
                         this.Answer='少商穴位於雙手拇指節側，內側指甲角旁１分處，主要功效是清熱、利咽、醒神，可以治療或緩解感冒、扁桃體炎、咽喉腫痛、咽喉炎，更是夏日退高燒、改善喉嚨痛的急救要穴。';
                         this.imgName='game1Wrong.png';
@@ -369,3 +353,9 @@
         },
     }
 </script>
+
+<style lang="scss" scoped>
+    *{
+        box-sizing: border-box;
+    }
+</style>

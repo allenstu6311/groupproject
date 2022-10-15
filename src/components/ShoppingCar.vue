@@ -33,11 +33,11 @@
   </div>
   <div class="add-on-control" style="padding:10px 0px;">
     <span class="prev" @click="productPrev"
-      ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+      ><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
 </svg></span>
     <span class="next" @click="productNext"
-      ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+      ><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
 </svg></span>
   </div>
@@ -111,11 +111,10 @@ export default {
         })
         .then((res) => {
           this.memory = res.data
-          console.log("mm",this.memory)
         });
     },
     updateCart() {
-          var url = `${BASE_URL}/shoppingCart.php`; //上線
+      var url = `${BASE_URL}/shoppingCart.php`; //上線
       this.axios
         .get(url, {
           params: {
@@ -124,8 +123,26 @@ export default {
         })
         .then((res) => {
           this.memory = res.data;
-          // console.log(this.memory)
+          // this.memory = res.data;
+          let oldVal = this.memory;
+          let newVal = res.data;
+          let isSame = newVal.length === oldVal.length;
+          if (!isSame) {
+            this.memory = res.data;
+            return;
+          }
+
+          isSame = newVal.every(
+            (v) =>
+              oldVal.findIndex(
+                (u) => u.PROD_ID === v.PROD_ID && u.PROD_QTY == v.PROD_QTY
+              ) > -1
+          );
+          if (!isSame) {
+            this.memory = res.data;
+          }
           this.$emit("addCartInfo", this.memory);
+          this.$emit("update-cart", res.data);
         });
     },
 
@@ -148,37 +165,12 @@ export default {
     });
     let members = sessionStorage.getItem("member");
     this.member = JSON.parse(members);
-    // console.log("mem", this.member.memId);
-
+    if(this.member){
+        this.updateCart();
+    }
+  
     this.cartInfo();
   },
-  watch: {
-    cart: {
-      handler(newVal) {
-        let members = sessionStorage.getItem("member");
-        this.member = JSON.parse(members);
-        // console.log("mem", this.member.memId);
-
-        // for (let i = 0; i < newVal.length; i++) {
-        //   this.axios
-        //     .get(
-        //       "http://localhost/CGD102_G2/public/api/insertShoppingCart.php",
-        //       {
-        //         params: {
-        //           judge:
-        //           mem_id: this.member.memId,
-        //           prod_id: this.cart[i].PROD_ID,
-        //           prod_qty: this.cart[i].PROD_NUM,
-        //         },
-        //       }
-        //     )
-        //     .then((res) => {
-        //       console.log("購物車內部", res);
-        //     });
-        // }
-      },
-    },
-    deep: true,
-  },
+ 
 };
 </script>

@@ -5,10 +5,6 @@
             <select class="form-select form-select-sm bg-light" aria-label=".form-select-sm example">
                 <option selected>依名稱排序</option>
             </select>
-            <select class="form-select form-select-sm bg-light" aria-label=".form-select-sm example">
-                <option value="0">下架</option>
-                <option value="1" selected>上架</option>
-            </select>
             <div class="input-group rounded bg-light">
                 <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                 <span class="input-group-text border-0" id="search-addon">
@@ -42,7 +38,7 @@
                     <td>
                         <div>
                             <!-- <img src="../assets/images/Pen.png" alt="修改icon"> -->
-                            <router-link to="/backmsgchange" @click="modifyMsg(backMsg.MSG_NAME)">
+                            <router-link :to="{ path:'/backmsgchange',query:{id:`${backMsg.MSG_ID}`}}" >
                             <svg 
                             xmlns="http://www.w3.org/2000/svg" 
                             class="icon icon-tabler icon-tabler-edit"
@@ -72,17 +68,11 @@
         data() {
             return {
                 backMsgList: [],
-                // allenHandsome:[],
+                allenHandsome:[],
             }
         },
         created(){
             this.getDataFromApi();// 在建立Vue.js模板時順帶執行這個參數
-         
-            // this.onlineStorage()
-            // this.clear()
-              
-            
-            
         },
         methods:{
             async getDataFromApi() {
@@ -106,24 +96,21 @@
                 .then((res)=>{
                     // console.log(res.data[0].MSG_NAME)
                     this.allenHandsome = res.data
-
                     this.setStorage()
-
                 })
             },
-            // setStorage(){
-            //     localStorage.setItem("MSG_NAME",JSON.stringify(this.allenHandsome))
-            // },
-            // onlineStorage(){
-            //     let allens = localStorage.getItem("MSG_NAME")
-            //     this.allenHandsome = JSON.parse(allens)
-            // },
-            // clear(){
-            //     // let index = this.allenHandsome.findIndex(item=>item.MSG_NAME)
-                
-            //     this.allenHandsome=[]
-            //     this.setStorage()
-            // }
+            setStorage(){
+                localStorage.setItem("MSG_NAME",JSON.stringify(this.allenHandsome))
+            },
+            onlineStorage(){
+                let allens = localStorage.getItem("MSG_NAME")
+                this.allenHandsome = JSON.parse(allens)
+            },
+            clear(){
+                // let index = this.allenHandsome.findIndex(item=>item.MSG_NAME)
+                this.allenHandsome=[]
+                this.setStorage()
+            },
        
             // chlive(e){
             //     this.backMsgList[0].MSG_STATUS = e.target.value;

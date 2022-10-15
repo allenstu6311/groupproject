@@ -6,7 +6,7 @@
                 <div class="col">
                     <div class="mb-3">
                         <span class="text">編號:</span>
-                        <input type="text" class="form-control"   maxlength="20" v-model="FAQ_ID">
+                        <input type="text" class="form-control"   maxlength="20" v-model="id" disabled>
                     </div>
                 </div>
             </div>
@@ -14,7 +14,7 @@
                 <div class="col">
                     <div class="mb-3">
                         <span class="text">標題:</span>
-                        <input type="text" class="form-control"  id="NEWS_TITLE" placeholder="請輸入標題(最多50字)" aria-describedby="basic-addon1" maxlength="50" v-model="FAQ_TITLE">
+                        <input type="text" class="form-control"  id="NEWS_TITLE" placeholder="請輸入標題(最多50字)" aria-describedby="basic-addon1" maxlength="50" v-model="title">
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                 <div class="col">
                     <div class="mb-3">
                         <span class="text">內文:</span>
-                        <textarea class="form-control"  placeholder="請輸入內文(最多500字)" style="height:60px" v-model="FAQ_TEXT"></textarea>
+                        <textarea class="form-control"  placeholder="請輸入內文(最多500字)" style="height:60px" v-model="text"></textarea>
                     </div>
                 </div>
             </div>
@@ -42,9 +42,9 @@ export default {
     name: 'NewsAdd',
     data(){
         return{
-            FAQ_ID: '',
-            FAQ_TITLE: '',
-            FAQ_TEXT: '',
+            id: '',
+            title: '',
+            text: ''
         }
     },
     methods: {
@@ -56,7 +56,8 @@ export default {
                 if(xhr.status == 200){
                     if(xhr.responseText == "新增成功"){
                         alert("新增成功");
-                        window.location.replace("/BackstageFAQ");
+                        // window.location.replace("/BackstageFAQ"); //開發用
+                        window.location.replace("/cgd102/g2/BackstageFAQ"); //上線用
                     }else if(xhr.responseText == "新增失敗"){
                         alert("新增失敗");
                     }
@@ -66,7 +67,7 @@ export default {
             xhr.open("post",`${BASE_URL}/BackstageFAQAdd.php`, true); //上線用
             xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
-            let faq_data = `FAQ_ID=${this.FAQ_ID}&FAQ_TITLE=${this.FAQ_TITLE}&FAQ_TEXT=${this.FAQ_TEXT}`;
+            let faq_data = `id=${this.id}&title=${this.title}&text=${this.text}`;
             xhr.send(faq_data);
             console.log(faq_data);
 

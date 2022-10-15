@@ -6,7 +6,7 @@
                 <div class="col">
                     <div class="mb-3">
                         <span class="text">編號:</span>
-                        <input type="text" class="form-control"   maxlength="20" v-model="NEWS_ID">
+                        <input type="text" class="form-control"   maxlength="20" v-model="NEWS_ID" disabled>
                     </div>
                 </div>
             </div>
@@ -74,7 +74,8 @@ export default {
                 if(xhr.status == 200){
                     if(xhr.responseText == "新增成功"){
                         alert("新增成功");
-                        window.location.replace("/BackstageNews");
+                        // window.location.replace("/BackstageNews"); //開發用
+                        window.location.replace("/cgd102/g2/BackstageNews"); //上線用
                     }else if(xhr.responseText == "新增失敗"){
                         alert("新增失敗");
                     }

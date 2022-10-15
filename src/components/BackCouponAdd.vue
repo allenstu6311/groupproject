@@ -59,7 +59,8 @@ export default {
                 if(xhr.status == 200){
                     if(xhr.responseText == "折價券已建立"){
                         alert("折價券已建立");
-                        window.location.replace("/BackCoupon");
+                        // window.location.replace("/BackCoupon"); //開發用
+                        window.location.replace("/cgd102/g2/BackCoupon"); //上線用
                     }else if(xhr.responseText == "無法建立折價券"){
                         alert("無法建立折價券");
                     }

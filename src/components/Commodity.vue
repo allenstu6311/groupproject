@@ -72,28 +72,25 @@
     </div>
 
     <div class="commodity-total" v-if="commoditySale == 1">
-      <div class="ifEmpty" v-if="empty == true">
-        <h1>查無商品</h1>
+      <div class="ifEmpty" v-if="empty" style="margin: 40px 0">
+        <h2>查無商品</h2>
       </div>
 
       <!-- =============================================橫排顯示 -->
       <div class="commodity-area col-12" v-if="toggle == false">
         <div
           class="commodity-obj"
-          v-for="(item,index) in data"
+          v-for="(item, index) in data"
           :key="item.PROD_ID"
         >
           <button @click="next(index, item.length)" class="slide-control">
             ＜
           </button>
           <div class="commodity-pic">
-            <router-link to="/Detail">
-              <div
-                class="slide-pic"
-                id="pic"
-                :style="slidePic(index)"
-                @click="addOrder(item.PROD_ID)"
-              >
+            <router-link
+              :to="{ path: '/Detail', query: { PROD_ID: `${item.PROD_ID}` } }"
+            >
+              <div class="slide-pic" id="pic" :style="slidePic(index)">
                 <img :src="require(`../../public/api/pic/${item.PROD_PIC1}`)" />
                 <img :src="require(`../../public/api/pic/${item.PROD_PIC2}`)" />
                 <img :src="require(`../../public/api/pic/${item.PROD_PIC3}`)" />
@@ -134,12 +131,14 @@
       <div class="commodity-card" v-if="toggle == true">
         <div
           class="commodity-obj col-3"
-          v-for="(item,index) in data"
+          v-for="(item, index) in data"
           :key="item.PROD_ID"
         >
           <div class="commodity-pic">
-            <button @click="next(index,item.length)" class="slide-control">＜</button>
-            <router-link to="/Detail">
+            <button @click="next(index, item.length)" class="slide-control">
+              ＜
+            </button>
+            <router-link  :to="{ path: '/Detail', query: { PROD_ID: `${item.PROD_ID}` } }">
               <div
                 class="slide-pic"
                 ref="imgWidth"
@@ -152,7 +151,9 @@
                 <img :src="require(`../../public/api/pic/${item.PROD_PIC3}`)" />
               </div>
             </router-link>
-            <button @click="prev(index,item.length)" class="slide-control">＞</button>
+            <button @click="prev(index, item.length)" class="slide-control">
+              ＞
+            </button>
           </div>
 
           <div class="commodity-body">
@@ -190,8 +191,8 @@
     </div>
     <!-- =============================================特賣商品 -->
 
-    <div class="special-offer" v-if="commoditySale == 2">
-      <h1>目前無特價商品</h1>
+    <div class="special-offer" v-if="commoditySale == 2" style="margin: 40px 0">
+      <h2>目前無特價商品</h2>
     </div>
   </div>
 </template>
@@ -242,8 +243,9 @@ export default {
   },
   methods: {
     slidePic(index) {
-      return { left: ` ${-100 * this.slideImgActive[index]}%`,
-                transition:.4+'s' };
+      return {
+        left: ` ${-100 * this.slideImgActive[index]}%`,
+      };
     },
     next(index) {
       if (this.slideImgActive[index] === 2) {
@@ -258,42 +260,7 @@ export default {
         this.slideImgActive[index] = 2;
       } else {
         this.slideImgActive[index] -= 1;
-    
       }
-    },
-    addOrder(id) {
-   
-      let count = this.data.findIndex((item) => item.PROD_ID === id);
-      this.order = [
-        {
-          PROD_ID: this.data[count].PROD_ID,
-          PROD_NAME: this.data[count].PROD_NAME,
-          PROD_PRICE: this.data[count].PROD_PRICE,
-          PROD_PIC1: this.data[count].PROD_PIC1,
-          PROD_PIC2: this.data[count].PROD_PIC2,
-          PROD_PIC3: this.data[count].PROD_PIC3,
-          PROD_DATE: this.data[count].PROD_DATE,
-          PROD_DESC1: this.data[count].PROD_DESC1,
-          PROD_DESC2: this.data[count].PROD_DESC2,
-          PROD_DESC3: this.data[count].PROD_DESC3,
-          PROD_REVIEW: parseInt(this.data[count].PROD_REVIEW) + 1,
-          PROD_TIMES: parseInt(this.data[count].PROD_TIMES) + 1,
-        },
-      ];
-
-      this.setStorage();
-    },
-    setStorage() {
-      localStorage.setItem("order", JSON.stringify(this.order));
-    },
-    onlineStorage() {
-      let orders = localStorage.getItem("order");
-      if (!orders) return;
-      this.order = JSON.parse(orders);
-
-      let members = sessionStorage.getItem("member");
-      this.member = JSON.parse(members);
- 
     },
     groupBy(value) {
       switch (value) {
@@ -317,13 +284,13 @@ export default {
 
         case "3":
           this.data.sort(function (a, b) {
-            return b.PROD_REVIEW - a.PROD_REVIEW;
+            return b.PROD_REVIEW/b.PROD_TIMES - a.PROD_REVIEW/a.PROD_TIMES;
           });
           break;
 
         case "4":
           this.data.sort(function (a, b) {
-            return a.PROD_REVIEW - b.PROD_REVIEW;
+            return a.PROD_REVIEW/a.PROD_TIMES - b.PROD_REVIEW/b.PROD_TIMES;
           });
           break;
 
@@ -339,10 +306,6 @@ export default {
           });
           break;
       }
-    },
-
-    clear() {
-      this.order = [];
     },
     prevCurrPage() {
       this.currPage -= 1;
@@ -407,39 +370,40 @@ export default {
           };
         });
     },
+    slideImg() {
+      var url = `${BASE_URL}/commoditylist.php`;
+      this.axios
+        .get(url, {
+          params: {
+            range_1: this.range_1,
+            range_2: this.range_2,
+          },
+        })
+        .then((res) => {
+          if (res.data) {
+            this.listData = res.data;
+            this.listData.map((item) => {
+              this.cart[item.PROD_ID] = {
+                PROD_NAME: item.PROD_NAME,
+                PROD_PRICE: item.PROD_PRICE,
+                count: 0,
+                slide: 0,
+              };
+              this.slideImgActive.push(0);
+            });
+          }
+        });
+    },
   },
 
   created() {
+    let members = sessionStorage.getItem("member");
+    this.member = JSON.parse(members);
     this.getCommodityInfo();
-    this.clear();
-    this.onlineStorage();
-
-    var url = `${BASE_URL}/commoditylist.php`;
-    this.axios
-      .get(url, {
-        params: {
-          range_1: this.range_1,
-          range_2: this.range_2,
-        },
-      })
-      .then((res) => {
-        if (res.data) {
-          this.listData = res.data;
-          this.listData.map((item) => {
-            this.cart[item.PROD_ID] = {
-              PROD_NAME: item.PROD_NAME,
-              PROD_PRICE: item.PROD_PRICE,
-              count: 0,
-              slide: 0,
-            };
-            this.slideImgActive.push(0);
-          });
-        }
-      });
+    this.slideImg();
   },
   mounted() {},
   watch: {
-   
     price: {
       handler(newVal) {
         this.data = newVal;
@@ -451,6 +415,7 @@ export default {
         console.log(newVal);
         if (newVal == "") {
           this.data = this.info;
+          this.disappear = false;
         }
       },
     },
@@ -458,12 +423,17 @@ export default {
       handler(newVal) {
         if (newVal == "") {
           this.data = this.info;
+          this.disappear = false;
         }
       },
     },
     search: {
       handler(newVal) {
-        if (newVal != "") {
+        if (!newVal.length) {
+          this.empty = true;
+          this.data = "";
+          this.disappear = true;
+        } else {
           this.data = newVal;
           this.disappear = true;
         }
@@ -471,12 +441,14 @@ export default {
     },
     data: {
       handler(newVal) {
-        if (newVal.length == 0) {
+        console.log("data", newVal);
+        if (newVal.length < 1) {
           this.empty = true;
         } else {
           this.empty = false;
         }
       },
+      deep: true,
     },
     search_empty: {
       handler(newVal) {

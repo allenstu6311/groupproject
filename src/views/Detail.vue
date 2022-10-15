@@ -3,8 +3,9 @@
     <img src="../assets/images/bcgFlower.png" alt="" />
   </div>
   <div class="Detail-container">
-    <Product @update-cart="$emit('update-cart', $event)" />
-    <Review />
+    <Product  ref="getReview"  @update-cart="$emit('update-cart', $event)"
+              />
+    <Review  @update-review="updateReview"/>
   </div>
 
 <lightBox  @boo="judge"/>
@@ -25,13 +26,17 @@ import { Checkbox } from 'view-ui-plus'
         },
         data(){
             return{
-              test:""
+              test:"",
+              newReview:[]
             }
         },
         methods: {
             judge(val){
                 this.test=val
-                console.log(val)
+               
+            },
+            updateReview(val){
+              this.$refs.getReview.updateReview(val)
             }
         },
        

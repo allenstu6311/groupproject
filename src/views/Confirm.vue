@@ -13,9 +13,8 @@
   </div>
 
   <div class="change-page">
-    <!-- <router-link to="Cart" type="button"> 上一頁 </router-link> -->
-    <button @click="changeCupons">測試修改</button>
-
+    <router-link to="Cart" type="button"> 上一頁 </router-link>
+ 
     <button
       type="button"
       class="next-page"
@@ -53,14 +52,7 @@ export default {
     };
   },
   methods: {
-    changeCupons(){
-      this.axios.get(url,{
-        params:{
-          mem_id:this.member.memId,
-          cps_id:this.cpsId
-        }
-      })
-    },
+  
     Information() {
     let members = sessionStorage.getItem("member");
     this.member = JSON.parse(members);
@@ -69,53 +61,68 @@ export default {
       if (!totalPrices) return;
       this.totalPrice = JSON.parse(totalPrices);
     },
-    // payInfo() {
-    //   //商品清單
+    payInfo() {
+      //商品清單
 
-    //    var url = `${BASE_URL}/productlist.php`; //上線
-    //   // var url = "http://localhost/CGD102_G2/public/api/productlist.php";
-    //   this.axios
-    //     .get(url, {
-    //       params: {
-    //         mem_id: this.member.memId,
-    //         productPrice: this.productNote,
-    //         cps_id: this.cpsId,
-    //         totalPrice: this.totalPrice,
-    //         address: this.member.memAddress,
-    //       },
-    //     })
-    //     .then((res) => {
-    //       this.order_id = res.data;
-    //       this.timerd = setTimeout(this.sendOrderItems, 1000);
-    //     });
-    // },
-    // sendOrderItems() {
-    //   //商品明細
-    //   var url = `${BASE_URL}/productOrder.php`; //上線
-    //   // var url = "http://localhost/CGD102_G2/public/api/productOrder.php";
-    //   for (let i = 0; i < this.memory.length; i++) {
-    //     this.axios
-    //       .get(url, {
-    //         params: {
-    //           order_id: this.order_id,
-    //           prod_id: this.memory[i].PROD_ID,
-    //           prod_price: this.memory[i].PROD_PRICE,
-    //           prod_num: this.memory[i].PROD_QTY,
-    //         },
-    //       })
-    //       .then((res) => {
+       var url = `${BASE_URL}/productlist.php`; //上線
+      // var url = "http://localhost/CGD102_G2/public/api/productlist.php";
+      this.axios
+        .get(url, {
+          params: {
+            mem_id: this.member.memId,
+            productPrice: this.productNote,
+            cps_id: this.cpsId,
+            totalPrice: this.totalPrice,
+            address: this.member.memAddress,
+          },
+        })
+        .then((res) => {
+          this.order_id = res.data;
+          this.changeCupons();
+          this.timerd = setTimeout(this.sendOrderItems, 1000);
+        });
+    },
+    sendOrderItems() {
+      //商品明細
+      var url = `${BASE_URL}/productOrder.php`; //上線
+      // var url = "http://localhost/CGD102_G2/public/api/productOrder.php";
+      for (let i = 0; i < this.memory.length; i++) {
+        this.axios
+          .get(url, {
+            params: {
+              order_id: this.order_id,
+              prod_id: this.memory[i].PROD_ID,
+              prod_price: this.memory[i].PROD_PRICE,
+              prod_num: this.memory[i].PROD_QTY,
+            },
+          })
+          .then((res) => {
                
-    //       });
-    //          alert("結帳完成!請至會員中心查看");
-    //         this.$router.push("/MemCenter")
-    //   }
-    // },
+          });
+      }
+          alert("結帳完成!請至會員中心查看");
+          this.clearCart();
+          this.$router.push("/MemCenter")
+    },
+    clearCart(){
+      var url = `${BASE_URL}/clearCart.php`;
+      
+      this.axios.get(url,{
+        params:{
+          mem_id:this.member.memId
+        }
+        
+      })
+      .then((res)=>{
+        console.log(res)
+      })
+    },
     productMoney(val) {
       this.productNote = val;
     },
     getCouponInfo() {
       this.coupons = localStorage.getItem("coupon");
-
+      
       switch (this.coupons) {
         case "0.90":
           this.cpsId = 1;
@@ -133,8 +140,22 @@ export default {
           this.cpsId = 5;
           break;
       }
+     
+    },
+      changeCupons(){
+      var url = `${BASE_URL}/deleteCoupons.php`; //上線
+      this.axios.get(url,{
+        params:{
+          mem_id:this.member.memId,
+          cps_id:this.cpsId
+        }
+      })
+      .then((res)=>{
+        console.log(res)
+      })
     },
   },
+  
 
   created() {
     this.Information();
@@ -162,7 +183,7 @@ export default {
       this.axios
         .get(url, {
           params: {
-            MEM_NAME: this.member.memName,
+            MEM_ID: this.member.memId,
           },
         })
         .then((res) => {

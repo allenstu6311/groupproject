@@ -7,7 +7,7 @@
       </div>
       <form class="w-75">
         <div class="row mb-3 form-check">
-          <label for="inputEmail3" class="col-sm-2 col-form-label"
+          <label for="inputEmail3" class="col-width col-form-label"
             >產品名稱</label
           >
           <div class="col-sm-10">
@@ -21,7 +21,7 @@
           </div>
         </div>
         <div class="row mb-3 form-check">
-          <label for="inputPassword3" class="col-sm-2 col-form-label"
+          <label for="inputPassword3" class="col-width col-form-label"
             >價錢</label
           >
           <div class="col-sm-10">
@@ -41,6 +41,7 @@
           >
           <input
             type="file"
+            ref="filePic3"
             name="photo[]"
             class="form-control ml-1"
             id="inputEmail3"
@@ -54,6 +55,7 @@
           >
           <input
             type="file"
+            ref="filePic2"
             name="photo[]"
             class="form-control ml-1"
             id="inputEmail3"
@@ -67,6 +69,7 @@
           >
           <input
             type="file"
+            ref="filePic1"
             name="photo[]"
             class="form-control ml-1"
             id="inputEmail3"
@@ -160,6 +163,9 @@
 // @import "bootstrap/scss/bootstrap";
 // @import "../assets/style.scss";
     @import "../assets/base/_color.scss"; //有變數要引用的sass
+.col-width{
+  width: 13%;
+}
 .container{
   margin: auto;
   line-height: 2;
@@ -287,22 +293,31 @@ export default {
         .then((res)=>{
           this.PROD_NAME= "",
           this.PROD_PRICE= "",
-          this.PROD_PIC1= "",
-          this.PROD_PIC2= "",
-          this.PROD_PIC3= "",
+          this.PROD_PIC1="",
+          this.PROD_PIC2="",
+          this.PROD_PIC3="",
           this.PROD_STATUS= "",
           this.PROD_DATE= "",
           this.PROD_DESC1= "",
           this.PROD_DESC2= "",
           this.PROD_DESC3= "",
           this.PROD_TYPE= ""
+     
         }).catch((err)=> {
           console.log(err)
         });
     },
+    clearFile(){
+        this.$refs.filePic1.value=""
+        this.$refs.filePic2.value=""
+        this.$refs.filePic3.value=""
+        document.getElementById("myImg1").src = ""
+        document.getElementById("myImg2").src = ""
+        document.getElementById("myImg3").src = ""
+    
+    },
     getFiles1(e) {
       this.PROD_PIC1 = e.target.files[0];
-      console.log("pic",this.PROD_PIC1);
       let reader = new FileReader();
       reader.onload = function () {
         document.getElementById("myImg1").src = reader.result; 
@@ -315,7 +330,6 @@ export default {
     },
     getFiles2(e) {
       this.PROD_PIC2 = e.target.files[0];
-      console.log(this.PROD_PIC2)
       let reader = new FileReader();
       reader.onload = function () {
         document.getElementById("myImg2").src = reader.result; 

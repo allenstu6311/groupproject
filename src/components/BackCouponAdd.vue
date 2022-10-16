@@ -5,14 +5,6 @@
             <div class="row">
                 <div class="col">
                     <div class="input-group fixwidth mb-3">
-                        <span class="input-group-text" id="basic-addon1">折價券代碼</span>
-                        <input type="text" class="form-control" placeholder="" aria-label="id" aria-describedby="basic-addon1" maxlength="10" v-model="id">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="input-group fixwidth mb-3">
                         <span class="input-group-text" id="basic-addon1">折價券名稱</span>
                         <input type="text" class="form-control" placeholder="" aria-label="name" aria-describedby="basic-addon1" maxlength="10" v-model="name">
                     </div>
@@ -60,7 +52,7 @@ export default {
                     if(xhr.responseText == "折價券已建立"){
                         alert("折價券已建立");
                         // window.location.replace("/BackCoupon"); //開發用
-                        window.location.replace("/cgd102/g2/BackCoupon"); //上線用
+                        window.location.replace("/BackCoupon"); //上線用
                     }else if(xhr.responseText == "無法建立折價券"){
                         alert("無法建立折價券");
                     }

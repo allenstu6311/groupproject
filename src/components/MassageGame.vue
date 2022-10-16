@@ -358,4 +358,7 @@
     *{
         box-sizing: border-box;
     }
+    a:hover{
+        color: #fff;
+    } 
 </style>

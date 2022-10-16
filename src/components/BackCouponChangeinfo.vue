@@ -6,7 +6,7 @@
                 <div class="col">
                     <div class="input-group fixwidth mb-3">
                         <span class="input-group-text" id="basic-addon1">折價券代碼</span>
-                        <input type="text" readonly="readonly" class="form-control" placeholder="" aria-label="id" aria-describedby="basic-addon1" maxlength="10" v-model="id">
+                        <input type="text" class="form-control" placeholder="" aria-label="id" aria-describedby="basic-addon1" disabled maxlength="10" v-model="id">
                     </div>
                 </div>
             </div>
@@ -78,9 +78,9 @@ export default {
                   // console.log(xhr.responseText);
                     if(xhr.responseText == "修改成功"){
                         alert("修改成功");
-                        window.location.replace("/BackCoupon");
+                        
                         // window.location.replace("/BackCoupon"); //開發用
-                        window.location.replace("/cgd102/g2/BackCoupon"); //上線用
+                        window.location.replace("/BackCoupon"); //上線用
                     }else if(xhr.responseText == "修改失敗"){
                         alert("修改失敗");
                     }

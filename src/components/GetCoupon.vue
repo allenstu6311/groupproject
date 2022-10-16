@@ -121,7 +121,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    *{
+        box-sizing: border-box;
+    }
     a:hover{
         color: #fff;
-    }    
+    } 
 </style>

@@ -97,6 +97,7 @@
                             </div>
                         </li>
                     </swiper-slide>
+                    <div class="swiper-pagination" solt="pagination"></div>
                 </swiper>
             </section>
 
@@ -135,6 +136,7 @@
                             </div>
                         </li>
                     </swiper-slide>
+                    <div class="swiper-pagination" solt="pagination"></div>
                 </swiper>
             </section>
 
@@ -173,6 +175,7 @@
                             </div>
                         </li>
                     </swiper-slide>
+                    <div class="swiper-pagination" solt="pagination"></div>
                 </swiper>
             </section>
 
@@ -424,6 +427,11 @@
         },
     }
 </script>
+<style lang="scss" scoped>
+    a:hover{
+        color: #fff;
+    } 
+</style>
 
 
 

@@ -1,6 +1,6 @@
 .massage_game{
     width: 100%;
-    padding-top: 1px;
+    padding-top: 80px;
     .game_container{
         margin-top: 70px;
         .quiz_container{
@@ -32,7 +32,7 @@
                     border-bottom: 50px solid $blue;
                     border-left: 2px solid $blue;
                     position: absolute;
-                    top: 100%;
+                    top: 101%;
                     left: 50%;
                 }
             }
@@ -101,7 +101,8 @@
                         .answer_title{
                             color: $blue;
                             font-family: $fontTitle;
-                            font-size: 32px;
+                            font-size: 30px;
+                            padding-bottom: 5px;
                         }
                     }
                 }
@@ -196,7 +197,7 @@
                 font-family: $fontTitle;
                 color: transparent;
                 transition: 0.3s;
-                top: -25px;
+                top: -15px;
                 left: -65px;
                 content: '中衝穴';
             }
@@ -207,7 +208,7 @@
                 font-family: $fontTitle;
                 color: $blue;
                 transition: 0.3s;
-                top: -25px;
+                top: -15px;
                 left: -65px;
                 content: '中衝穴';
             }
@@ -283,7 +284,7 @@
                 font-family: $fontTitle;
                 color: transparent;
                 transition: 0.3s;
-                top: -25px;
+                top: -15px;
                 left: 30px;
                 content: '少商穴';
             }
@@ -294,7 +295,7 @@
                 font-family: $fontTitle;
                 color: $blue;
                 transition: 0.3s;
-                top: -25px;
+                top: -15px;
                 left: 30px;
                 content: '少商穴';
             }
@@ -370,7 +371,7 @@
                 font-family: $fontTitle;
                 color: transparent;
                 transition: 0.3s;
-                top: -23px;
+                top: -15px;
                 left: 90px;
                 content: '合谷穴';
             }
@@ -381,7 +382,7 @@
                 font-family: $fontTitle;
                 color: $blue;
                 transition: 0.3s;
-                top: -23px;
+                top: -15px;
                 left: 90px;
                 content: '合谷穴';
             }
@@ -457,7 +458,7 @@
                 font-family: $fontTitle;
                 color: transparent;
                 transition: 0.3s;
-                top: -25px;
+                top: -15px;
                 left: -35px;
                 content: '命門穴';
             }
@@ -468,7 +469,7 @@
                 font-family: $fontTitle;
                 color: $blue;
                 transition: 0.3s;
-                top: -25px;
+                top: -15px;
                 left: -35px;
                 content: '命門穴';
             }
@@ -544,7 +545,7 @@
                 font-family: $fontTitle;
                 color: transparent;
                 transition: 0.3s;
-                top: -25px;
+                top: -15px;
                 left: -50px;
                 content: '神門穴';
             }
@@ -555,7 +556,7 @@
                 font-family: $fontTitle;
                 color: $blue;
                 transition: 0.3s;
-                top: -25px;
+                top: -15px;
                 left: -50px;
                 content: '神門穴';
             }
@@ -631,7 +632,7 @@
                 font-family: $fontTitle;
                 color: transparent;
                 transition: 0.3s;
-                top: -25px;
+                top: -15px;
                 left: -100px;
                 content: '勞宮穴';
             }
@@ -642,7 +643,7 @@
                 font-family: $fontTitle;
                 color: $blue;
                 transition: 0.3s;
-                top: -25px;
+                top: -15px;
                 left: -100px;
                 content: '勞宮穴';
             }
@@ -718,7 +719,7 @@
                 font-family: $fontTitle;
                 color: transparent;
                 transition: 0.3s;
-                top: -25px;
+                top: -15px;
                 left: 40px;
                 content: '魚際穴';
             }
@@ -729,7 +730,7 @@
                 font-family: $fontTitle;
                 color: $blue;
                 transition: 0.3s;
-                top: -25px;
+                top: -15px;
                 left: 40px;
                 content: '魚際穴';
             }
@@ -806,7 +807,7 @@
                 font-family: $fontTitle;
                 color: transparent;
                 transition: 0.3s;
-                top: -25px;
+                top: -15px;
                 left: -50px;
                 content: '少府穴';
             }
@@ -817,7 +818,7 @@
                 font-family: $fontTitle;
                 color: $blue;
                 transition: 0.3s;
-                top: -25px;
+                top: -15px;
                 left: -50px;
                 content: '少府穴';
             }
@@ -893,7 +894,7 @@
                 font-family: $fontTitle;
                 color: transparent;
                 transition: 0.3s;
-                top: -25px;
+                top: -15px;
                 left: 50px;
                 content: '太淵穴';
             }
@@ -904,7 +905,7 @@
                 font-family: $fontTitle;
                 color: $blue;
                 transition: 0.3s;
-                top: -25px;
+                top: -15px;
                 left: 50px;
                 content: '太淵穴';
             }
@@ -1344,11 +1345,11 @@
                     top: 100%;
                     left: 50%;
                     width: 1px;
-                    height: 15px;
+                    height: 20px;
                 }
                 .shao_shang:hover::after{
                     width: 1px;
-                    height: 15px;
+                    height: 20px;
                     left: 50%;
                 }
                 .shao_shang::before{
@@ -1373,11 +1374,11 @@
                 .fhe_gu::after{
                     top: 12px;
                     left: 100%;
-                    width: 75px;
+                    width: 85px;
                 }
                 .he_gu:hover::after{
                     left: 100%;
-                    width: 75px;
+                    width: 85px;
                 }
                 .he_gu::before{
                     width: 60px;
@@ -1485,10 +1486,10 @@
                 .fyu_ji::after{
                     top: 12px;
                     left: 100%;
-                    width: 20px;
+                    width: 30px;
                 }
                 .yu_ji:hover::after{
-                    width: 20px;
+                    width: 30px;
                     left: 100%;
                 }
                 .yu_ji::before{
@@ -1541,10 +1542,10 @@
                 .ftai_yuan::after{
                     top: 12px;
                     left: 100%;
-                    width: 40px;
+                    width: 50px;
                 }
                 .tai_yuan:hover::after{
-                    width: 40px;
+                    width: 50px;
                     left: 100%;
                 }
                 .tai_yuan::before{

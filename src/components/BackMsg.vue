@@ -1,13 +1,11 @@
 <template>
     <div class="laster_therapist">
-        <h1>管理按摩項目</h1>
+        <h1>查看按摩項目</h1>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <!-- <th scope="col">☐</th> -->
-                    <th scope="col">標題</th>
-                    <!-- <th scope="col">狀態</th> -->
-                    <th scope="col">查看</th>
+                    <th scope="col">按摩項目</th>
+                    <th scope="col">詳細資訊</th>
                 </tr>
             </thead>
             <tbody>

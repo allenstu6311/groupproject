@@ -44,7 +44,7 @@ export default {
                 },
                 {
                 id: 4,
-                name: "管理按摩項目",
+                name: "查看按摩項目",
                 path:"/backmsg",
                 },
                 {

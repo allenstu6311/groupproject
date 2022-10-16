@@ -2,37 +2,18 @@
 header('Access-Control-Allow-Origin:*');
 header("Content-Type:application/json;charset=utf-8");
 
-// function checkName($searchName){
-    try{
+function getMsgId($msg_id){
 
-        require_once("../connect_cgd102g2.php"); //上線用
-    
-        // $sql = "SELECT * FROM MSG WHERE MSG_NAME ='全身穴道按摩'";
-        $sql = "SELECT * FROM MSG";
-        $msg = $pdo->query($sql);
-    
-        if($msg->rowCount()==0){
-            echo "無按摩項目資料";
-            // exit();
-        }else{
-            $msgs = $msg->fetchAll(PDO::FETCH_ASSOC);
-            $data = [];
-    
-            foreach($msgs as $i => $page){
-            
-            $data[] = $page;
-            }
-    
-            echo json_encode($data);
+    require_once("../connect_cgd102g2.php"); //上線用
 
-        }
-    }catch (Exception $e) {
-            echo "錯誤行號 : ", $e->getLine(), "<br>";
-            echo "錯誤原因 : ", $e->getMessage(), "<br>";
-            //echo "系統暫時不能正常運行，請稍後再試<br>";	
-    }
+    $sql = "SELECT * FROM MSG WHERE MSG_ID={$msg_id}";
+    $msg = $pdo->query($sql);
 
-// }
-// checkName($_GET['searchName'])
+    $msgs = $msg->fetchAll(PDO::FETCH_ASSOC);
+    
+    echo json_encode($msgs);
+
+}
+getMsgId($_GET['msg_id'])
 
 ?>

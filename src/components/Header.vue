@@ -1,13 +1,15 @@
 <template>
   <header class="page_header">
     <nav>
-      <input type="checkbox" id="check" v-model="navCheck"/>
+      <input type="checkbox" id="check" v-model="navCheck" />
       <label for="check" class="hamburger">
         <span class="line1"></span>
         <span class="line2"></span>
         <span class="line3"></span>
       </label>
-      <router-link to="/home" class="header_logo"><img src="../assets/images/headerLogo.png" alt="" /></router-link>
+      <router-link to="/home" class="header_logo"
+        ><img src="../assets/images/headerLogo.png" alt=""
+      /></router-link>
 
       <ul class="navList">
         <li>
@@ -34,7 +36,7 @@
             ><img src="../assets/images/loginHead.png" alt=""
           /></span>
         </label>
-        
+
         <!--這是大頭下拉選單--->
         <ul class="headerLogin" v-if="!show">
           <li :style="memlogged">
@@ -46,16 +48,18 @@
         </ul>
 
         <!--這是未登入的大頭--->
-        <span class="header_member" :style="memIconShow"  v-if="show"
+        <span class="header_member" :style="memIconShow" v-if="show"
           ><router-link to="/MemLogin"
-            ><img src="../assets/images/headerMember.png" alt=""/></router-link
+            ><img src="../assets/images/headerMember.png" alt="" /></router-link
         ></span>
 
         <!--這是購物車--->
         <span class="header_shopping_cart"
           ><router-link to="/cart"
             ><img src="../assets/images/headerShoppinCart.png" alt="" />
-            <div class="cart-number" v-if="!show">{{cartLength}}</div></router-link
+            <div class="cart-number" v-if="!show">
+              {{ cartLength }}
+            </div></router-link
           ></span
         >
       </div>
@@ -63,38 +67,36 @@
   </header>
 </template>
 <script>
-import { BASE_URL } from '@/assets/js/common.js'
+import { BASE_URL } from "@/assets/js/common.js";
 import { useRouter } from "vue-router";
 export default {
-  props:{
-   
-  },
+  props: {},
   data() {
     return {
       navCheck: false,
       iconShow: true,
       selectShow: false,
-      CartLength:false,
-      memory:[],
+      CartLength: false,
+      memory: [],
       router: useRouter(),
-      member:[],
-      memberInfo:[],
-      show:true
+      member: [],
+      memberInfo: [],
+      show: true,
     };
   },
-  watch:{
-    memberInfo:{
-      handler(newVal){
-        if(newVal){
-          this.show=false
+  watch: {
+    memberInfo: {
+      handler(newVal) {
+        if (newVal) {
+          this.show = false;
         }
+      },
+    },
+    "$route.path"() {
+      if (this.navCheck) {
+        this.navCheck = false;
       }
     },
-    '$route.path'(){
-      if(this.navCheck){
-        this.navCheck = false
-      }
-    }
   },
   computed: {
     memIconShow() {
@@ -107,31 +109,38 @@ export default {
         display: this.selectShow ? "block" : "",
       };
     },
-    cartLength:function(){
-        return  this.memory.length
+    cartLength: function () {
+      return this.memory.length;
     },
   },
-  methods:{
+  methods: {
     logout() {
       sessionStorage.removeItem("member");
-      
-      this.router.push({ path: '/home' });
-      this.show=true
+
+      this.router.push({ path: "/home" });
+      this.show = true;
     },
     updateCart(list) {
       this.memory = list;
     },
     updateMember(info) {
-        this.show=false
-        this.cartLength=true
-        this.memberInfo= info
-        this.member=info
-        this.getCartNumber()
+      this.show = false;
+      this.cartLength = true;
+      this.memberInfo = info;
+      this.member = info;
+      this.getCartNumber();
     },
-  
-   getCartNumber(){
-      if (Object.keys(this.memberInfo).length === 0) return
-      this.cartShow = false
+    synchronize(val) {
+      this.show = false;
+      this.cartLength = true;
+      this.memberInfo = val;
+      this.member = val;
+      this.getCartNumber();
+    },
+
+    getCartNumber() {
+      if (Object.keys(this.memberInfo).length === 0) return;
+      this.cartShow = false;
       this.axios
         .get(`${BASE_URL}/shoppingCart.php`, {
           params: {
@@ -140,30 +149,64 @@ export default {
         })
         .then((res) => {
           this.memory = res.data;
-          this.cartLength = this.memory.length
-          this.cartShow = true
+          this.cartLength = this.memory.length;
+          this.cartShow = true;
         });
-    
-  },
+    },
+      updateCart() {
+      var url = `${BASE_URL}/shoppingCart.php`; //上線
+      this.axios
+        .get(url, {
+          params: {
+            mem_id: this.member.memId,
+          },
+        })
+        .then((res) => {
+          this.memory = res.data;
+          let oldVal = this.memory;
+          let newVal = res.data;
+          let isSame = newVal.length === oldVal.length;
+          if (!isSame) {
+            this.memory = res.data;
+            return;
+          }
+
+          isSame = newVal.every(
+            (v) =>
+              oldVal.findIndex(
+                (u) => u.PROD_ID === v.PROD_ID && u.PROD_QTY == v.PROD_QTY
+              ) > -1
+          );
+          if (!isSame) {
+            this.memory = res.data;
+          }
+
+          this.$emit("update-cart", res.data);
+        });
+    },
   },
   mounted() {
     let checkLogin = sessionStorage.getItem("member");
     if (checkLogin) {
       // (this.iconShow = false), (this.selectShow = true);
-      this.show=false
+      this.show = false;
     }
   },
   created() {
-      let members = sessionStorage.getItem("member");
-      this.member = JSON.parse(members);
-      if(this.member){
-          this.getCartNumber()
-      }else{
-        return
-      }
-    
+    let members = sessionStorage.getItem("member");
+    this.member = JSON.parse(members);
+    if (this.member) {
+      this.getCartNumber();
+    } else {
+      return;
+    }
+    if (!this.member) {
+      this.showBox = true;
+    } else {
+      this.showBox = false;
+      this.updateCart();
+    }
   },
-
 };
 </script>
 

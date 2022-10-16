@@ -2,6 +2,7 @@
 <Header v-if="!hideHeaderFooter" ref="header" />
     <router-view   @update-cart="updateCart"
                     @update-member="updateMember"
+                    @synchronize="synchronize"
                    />
                    
 <Footer v-if="!hideHeaderFooter" />
@@ -11,15 +12,15 @@
 import { BASE_URL } from "@/assets/js/common.js";
 import Header from "@/components/Header.vue"
 import Footer from "@/components/Footer.vue"
+import { Alert } from 'view-ui-plus';
 
 export default {
-    // created() {
-    //   console.log('this.$router :>> ', this.$router);
-    // },
+
     data(){
       return{
         member:[],
         memory:[]
+    
       }
     },
     computed:{
@@ -36,9 +37,12 @@ export default {
         this.$refs.header.updateCart(list);
       },
        updateMember(info) {
-       
         this.$refs.header.updateMember(info);
         
+      },
+      synchronize(val){
+        console.log("val",val)
+         this.$refs.header.synchronize(val);
       },
       newUpdateCart() {
       var url = `${BASE_URL}/shoppingCart.php`; //上線
@@ -67,17 +71,26 @@ export default {
           if (!isSame) {
             this.memory = res.data;
           }
-
-          this.$emit("update-cart", res.data);
+        
+          this.$emit("synchronize",res.data);
         });
     },
+
    
     },
     created(){
- this.newUpdateCart()
+      let members = sessionStorage.getItem("member");
+      this.member = JSON.parse(members);
       if(this.member){
-     
-      }console.log("app",this.member)
+         this.newUpdateCart()
+      }else{
+        return
       }
+     
+
+  },
+  watch:{
+    
+  }
 }
 </script>

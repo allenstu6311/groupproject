@@ -240,6 +240,7 @@ export default {
       listData: [],
       cart: {},
       judge:0,
+      memory:[]
     };
   },
   methods: {
@@ -383,13 +384,16 @@ export default {
           }
         });
     },
+  
+ 
+ 
   },
 
   created() {
     let members = sessionStorage.getItem("member");
     this.member = JSON.parse(members);
     this.getCommodityInfo();
-    this.slideImg();
+    this.slideImg()
   },
   mounted() {},
   watch: {

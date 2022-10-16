@@ -127,7 +127,7 @@
           <figcaption class="figure-caption">預覽圖片</figcaption>
           <figure class="figure">
             <img
-              src=""
+              src="@/assets/images/00pic.png"
               class="figure-img img-fluid rounded"
               id="getfile"
               alt="預覽圖片"
@@ -197,7 +197,7 @@ export default {
 
             xhr.onload = function(){
                 if(xhr.status == 200){
-                  // console.log(xhr.responseText);
+                  console.log(xhr.responseText);
                     if(xhr.responseText == "修改成功"){
                         alert("修改成功");
                         // window.location.replace("/backtherapist"); //開發用

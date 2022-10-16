@@ -308,7 +308,7 @@ bmit()
               alert("預約成功");
               // window.location.replace("/reservation"); //開發用
               // window.location.replace("/cgd102/g2/reservation"); //上線用
-              // this.router.push({ path: '/reservation'});
+              this.router.push({ path: '/reservation'});
             }
           } else {
             alert(xhr.status);

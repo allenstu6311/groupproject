@@ -74,7 +74,7 @@ export default {
     methods:{
         async getDataFromApi() {
             // var url = 'http://localhost/CGD102_G2/public/api/therapistContent.php' //開發用
-            var url = `${BASE_URL}/therapistContent.php`; //上線用
+            var url = `${BASE_URL}/backtherapistStatusLook.php`; //上線用
             let getData = async(url) => {
                 let response = await fetch(url);
                 let JSON = response.json();

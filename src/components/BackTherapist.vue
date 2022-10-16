@@ -1,4 +1,4 @@
-<template>
+<template>     
     <div class="laster_therapist">
         <h1>管理按摩師</h1>
         <div class="laster_selectbar hstack gap-3">

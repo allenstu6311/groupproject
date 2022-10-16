@@ -64,7 +64,7 @@
                 <div class="col">
                     <figcaption class="figure-caption">預覽圖片</figcaption>
                     <figure class="figure">
-                        <img src="" class="figure-img img-fluid rounded" id="getfile" alt="預覽圖片" maxlength="50">
+                        <img src="@/assets/images/00pic.png" class="figure-img img-fluid rounded" id="getfile" alt="預覽圖片" maxlength="50">
                     </figure>
                 </div>
             </div>

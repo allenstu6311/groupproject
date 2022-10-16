@@ -6,6 +6,7 @@
           <BackstageIndexAside />
       </div>
       <form class="w-75">
+        <h1 style="font-size: 32px; text-align: center; width: 100%; margin-bottom: 20px;">商品上架</h1>
         <div class="row mb-3 form-check">
           <label for="inputEmail3" class="col-width col-form-label"
             >產品名稱</label

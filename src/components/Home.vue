@@ -3,9 +3,6 @@
      <div class="background_flower">
         <main>
             <section class="main_banner"><!------------------banner---------------->
-                <video autoplay muted loop>
-                    <source src="../assets/images/mainBanner_AdobeExpress.mp4 " type="video/mp4">
-                </video>
                 <div class="banner_circle first show-up"></div>
                 <div class="banner_logo slide-top"><img src="../assets/images/bannerLogo.png" alt=""></div>
                 <div class="banner_circle second show-up"></div>

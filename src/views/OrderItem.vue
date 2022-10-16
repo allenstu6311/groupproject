@@ -2,11 +2,12 @@
   <BackstageIndexHeader />
   <div class="container">
     <div class="row">
-      <div class="col-2">
+      <div class="col-2 aside_height">
         <BackstageIndexAside />
       </div>
       <div class="orderBox">
-        <div class="order-search m-3">
+        <h1 style="font-size: 32px; text-align: center; width: 88%;">管理商品訂單</h1>
+        <div class="order-search m-3" style="width:86%;">
           <select
             class="form-select w-25"
             aria-label="Default select example"
@@ -137,6 +138,7 @@
     <ul
       class="pagination justify-content-center mt-3 mb-3"
       v-if="changePageButton == true"
+      style="margin-left:250px;"
     >
       <li
         class="page-item"
@@ -192,6 +194,7 @@
 .orderBox {
   width: 100%;
   max-width: 1200px;
+  margin-left: 60px;
   display: flex;
   flex-direction: column !important;
 
@@ -245,6 +248,9 @@
 }
 .container {
   line-height: 2;
+  .aside_height{
+            line-height: 1.7;
+        }
 }
 table {
   width: 80% !important;

@@ -59,7 +59,7 @@
 
   <div class="shopping-discount col-9">
     <small style="color: red" v-if="unused == true">(尚有優惠券未使用)</small>
-    <small style="color: red" v-if="unused == false">(沒有優惠券嗎趕快去玩小遊戲)</small>
+  <router-link to="/MassageSchool" ><small class="getCoupons"  v-if="unused == false">(沒有優惠券嗎?趕快去玩小遊戲)</small></router-link>  
     <h5>選擇優惠券:</h5>
     <select name="" id="" v-model="sel" @change="selChange(sel)">
       <option value="1">請選擇</option>
@@ -92,6 +92,16 @@
 
   <lightBox :lightBoxShow="showBox" />
 </template>
+<style lang="scss">
+@import"../assets/style.scss";
+.getCoupons{
+  color:$blue;
+  &:hover{
+    color:$red
+  }
+}
+
+</style>
 
 <script>
 import { nextTick } from "@vue/runtime-core";

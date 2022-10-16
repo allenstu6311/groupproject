@@ -356,15 +356,7 @@ export default {
               ).toFixed(1)
             );
           }
-          this.$nextTick(() => {
-            //等dom更新時會執行
-            this.photo = document.getElementById("pic").clientWidth;
-          });
-
-          window.onresize = () => {
-            let pic = document.getElementById("pic").clientWidth;
-            this.photo = pic;
-          };
+       
         });
     },
     slideImg() {

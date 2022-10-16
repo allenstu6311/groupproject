@@ -1,10 +1,17 @@
 <template>
   <div class="shopping-cart">
-    <div class="shopping-title" style="padding-top: 120px;margin:0 0 40px 0;">
-      <div class="title-font">購</div>
-      <div class="title-font">物</div>
-      <div class="title-font">車</div>
-    </div>
+        <div class="title_area" style=" margin-top:0; margin-bottom:70px;padding-top:150px;display:flex;
+        flex-direction: column;align-items: flex-start;">
+                <h2 class="sure_title" style="justify-content: flex-start;">
+                    <p class="title_font">嚴</p>
+                    <p class="title_font">選</p>
+                    <p class="title_font">商</p>
+                    <p class="title_font">品</p>
+                </h2>
+                <div class="commodity-post">
+                    <small>• EXQUISITE PRODUCTS • </small>
+                </div>
+            </div>
   </div>
 
   <div class="shopping-list col-9">
@@ -72,7 +79,7 @@
   <div class="shopping-price col-9">
     <div class="shopping-box">
       <span style="font-size:20px;"><input type="checkbox" v-model="checkOut" />全選</span>
-      <button class="btnLittle" @click="drop">刪除選取項目</button>
+      <button class="btnLittle" style="width:150px"  @click="drop">刪除選取項目</button>
     </div>
     <div class="shopping-check">
       <div class="shopping-checkout">

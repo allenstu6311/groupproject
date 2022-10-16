@@ -15,7 +15,7 @@
             <p>價格範圍</p>
             <input type="text" size="5" v-model="priceRange_1">
             ~
-             <input type="text" size="5" v-model="priceRange_2">
+             <input type="text" size="5" v-model="priceRange_2" >
              <div class="range-btn">
                 <button class="btnLittle" @click="choseRange">送出</button>
              </div>

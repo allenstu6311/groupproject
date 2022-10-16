@@ -435,8 +435,10 @@ export default {
       handler(newVal) {
         if (newVal.length < 1) {
           this.empty = true;
+          this.disappear = true
         } else {
           this.empty = false;
+           this.disappear = false
         }
       },
       deep: true,

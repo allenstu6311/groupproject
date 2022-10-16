@@ -23,6 +23,7 @@
       確認付款
     </button>
   </div>
+  <button @click="limitSingular">測試</button>
 </template>
 <script>
 import MemberInfo from "@/components/MemberInfo.vue";
@@ -48,7 +49,7 @@ export default {
       memory: [],
       coupons: "",
       cpsId: "",
-      storeName:{}
+      storeName: {},
     };
   },
   methods: {
@@ -61,29 +62,33 @@ export default {
       this.totalPrice = JSON.parse(totalPrices);
     },
     sevenInfo(val) {
-      this.storeName=val 
+      this.storeName = val;
     },
     payInfo() {
       //商品清單
-      
-      var url = `${BASE_URL}/productlist.php`; //上線
-      // var url = "http://localhost/CGD102_G2/public/api/productlist.php";
-      this.axios
-        .get(url, {
-          params: {
-            mem_id: this.member.memId,
-            productPrice: this.productNote,
-            cps_id: this.cpsId,
-            totalPrice: this.totalPrice,
-            address:this.storeName.length>0 ? this.storeName[0].POIName:this.member.memAddress,
-          },
-        })
-        .then((res) => {
-          this.order_id = res.data;
-          console.log()
-          this.changeCupons();
-          this.timerd = setTimeout(this.sendOrderItems, 100);
-        });
+      if (this.agree) {
+        this.agree = false;
+        var url = `${BASE_URL}/productlist.php`; //上線
+        // var url = "http://localhost/CGD102_G2/public/api/productlist.php";
+        this.axios
+          .get(url, {
+            params: {
+              mem_id: this.member.memId,
+              productPrice: this.productNote,
+              cps_id: this.cpsId,
+              totalPrice: this.totalPrice,
+              address:
+                this.storeName.length > 0
+                  ? this.storeName[0].POIName
+                  : this.member.memAddress,
+            },
+          })
+          .then((res) => {
+            this.order_id = res.data;
+            this.changeCupons();
+            this.sendOrderItems();
+          });
+      }
     },
     sendOrderItems() {
       //商品明細
@@ -114,9 +119,7 @@ export default {
             mem_id: this.member.memId,
           },
         })
-        .then((res) => {
-          console.log(res);
-        });
+        .then((res) => {});
     },
     productMoney(val) {
       this.productNote = val;
@@ -151,16 +154,13 @@ export default {
             cps_id: this.cpsId,
           },
         })
-        .then((res) => {
-          console.log(res);
-        });
+        .then((res) => {});
     },
   },
   created() {
     this.Information();
     this.productMoney();
     this.getCouponInfo();
-
     if (!this.member) {
       alert("請先登入");
       this.$router.push("/MemLogin");

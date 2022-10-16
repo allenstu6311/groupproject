@@ -135,6 +135,7 @@
 </template>
 <script>
 import { DatePicker } from "view-ui-plus";
+// import zh from 'iview/dist/locale/zh-CN';
 // import 'view-ui-plus/dist/styles/viewuiplus.css'
 import { BASE_URL } from "@/assets/js/common.js";
 import { useRouter } from "vue-router";
@@ -325,4 +326,7 @@ bmit()
 </script>
 <style lang="scss" scoped>
 @import "view-ui-plus/dist/styles/viewuiplus.css";
+    a:hover{
+        color: #fff;
+    }    
 </style>

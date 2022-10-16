@@ -24,7 +24,7 @@
                     </i>
                 </button>
             </div>
-            <!-- <router-link class="btn btn-primary ms-auto" to="/backmsgadd">新增按摩項目</router-link>     -->
+            <router-link class="btn btn-primary ms-auto" to="/backmsgadd">新增按摩項目</router-link>    
         </div>
         <hr>
         <table class="table table-striped table-hover">

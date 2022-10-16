@@ -24,22 +24,6 @@
             <div class="row">
                 <div class="col">
                     <div class="input-group mb-3">
-                        <span class="input-group-text">120分鐘 NT$</span>
-                        <input type="text" class="form-control" maxlength="50" v-model="msg_price_1">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">120分鐘推薦客群</span>
-                        <input type="text" class="form-control" maxlength="50" v-model="msg_rec_1">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="input-group mb-3">
                         <span class="input-group-text">60分鐘 NT$</span>
                         <input type="text" class="form-control" maxlength="50" v-model="msg_price_2">
                     </div>
@@ -65,7 +49,7 @@
                 <div class="col">
                     <div class="input-group mb-3">
                         <span class="input-group-text">注意事項</span>
-                        <input type="text" class="form-control" maxlength="50" v-model="msg_look">
+                        <input type="text" class="form-control" maxlength="50" v-model="msg_notice">
                     </div>
                 </div>
             </div>
@@ -85,9 +69,9 @@
                     </div>
                 </div>
                 <div class="col">
+                    <figcaption class="figure-caption">預覽圖片</figcaption>
                     <figure class="figure">
-                        <figcaption class="figure-caption">預覽圖片</figcaption>
-                        <img src="../assets/images/resv1.jpg" class="figure-img img-fluid rounded" alt="預覽圖片" maxlength="50">
+                        <img src="" class="figure-img img-fluid rounded" id="getfile" alt="預覽圖片" maxlength="50">
                     </figure>
                 </div>
             </div>
@@ -116,13 +100,9 @@ export default {
             msg_timespan_2: '60',
             msg_rec_2: '',
             msg_desc: '',
-            msg_look: '',
+            msg_notice: '',
             msg_faq: '',
             msg_pic: '',
-            pswtip: "*",
-            pswclass: "error",
-            pswflag: false,
-            allenHandsome:[],
         }
     },
     created(){
@@ -140,105 +120,93 @@ export default {
             //註冊callback function
             xhr.onreadystatechange = function () {
             // if (xhr.readyState == 4) { //4代表server端已處理完畢
-            if (xhr.readyState == XMLHttpRequest.DONE) { //XMLHttpRequest.DONE==4代表server端已處理完畢
-                if (xhr.status == 200) { //200:server端正確執行完畢
-                    document.getElementById("idMsg").innerText = xhr.responseText;
-                } else {
-                    alert(xhr.status);
+                if (xhr.readyState == XMLHttpRequest.DONE) { //XMLHttpRequest.DONE==4代表server端已處理完畢
+                    if (xhr.status == 200) { //200:server端正確執行完畢
+                        document.getElementById("idMsg").innerText = xhr.responseText;
+                    } else {
+                        alert(xhr.status);
+                    }
                 }
             }
-        }
 
             //設定好所要連結的程式
             //開發用
-            let url = `${BASE_URL}/backMsgAddCheckName.php?MSG_NAME=` + document.getElementById("msg_name").value;
-            // console.log(url);
+            let urlBackMsgAddCheckName = `${BASE_URL}/backMsgAddCheckName.php?MSG_NAME=` + document.getElementById("msg_name").value;
+            // console.log(urlBackMsgAddCheckName);
 
-            xhr.open("get", url, true);
+            xhr.open("get", urlBackMsgAddCheckName, true);
 
             xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
             //送出資料
             xhr.send(null);
         },
 
-        submit(){
-            //產生XMLHttpRequest物件
-            let url = `${BASE_URL}/backMsgAdd.php`//上線用
-            var xhr = new XMLHttpRequest();
-            
-            xhr.onload = function(){
-                if(xhr.status == 200){
-                    console.log(xhr.responseText);
-                    if(xhr.responseText == "按摩項目已建立"){
-                        alert("按摩項目已建立");
-                        // window.location.replace("/backmsg"); //開發用
-                        window.location.replace("/cgd102/g2/backmsg"); //上線用
-                    }else if(xhr.responseText == "無法建立按摩項目"){
-                        alert("無法建立按摩項目");
-                    }
-                }
-            }
+        // submit(){
+        //     //產生XMLHttpRequest物件
 
-            //設定好所要連結的程式
-            // let url = "http://localhost/CGD102_G2/public/api/backMsgAdd.php";//開發用
-            xhr.open("post", url, true);
-            let msg_data = `msg_name=${this.msg_name}&msg_intro=${this.msg_intro}&msg_price_1=${this.msg_price_1}&msg_rec_1=${this.msg_rec_1}&msg_price_2=${this.msg_price_2}&msg_rec_2=${this.msg_rec_2}&msg_desc=${this.msg_desc}&msg_look=${this.msg_look}&msg_faq=${this.msg_faq}&msg_pic=${this.msg_pic}&msg_timespan_1=${this.msg_timespan_1}&msg_timespan_2=${this.msg_timespan_2}`;
-            xhr.send(msg_data);
-            console.log(msg_data);
+        //     var xhr = new XMLHttpRequest();
+            
+        //     xhr.onload = function(){
+        //         if(xhr.status == 200){
+        //             console.log(xhr.responseText);
+        //             if(xhr.responseText){
+        //                 alert("按摩項目已建立");
+        //                 window.location.replace("/backmsg"); //開發用
+        //                 // window.location.replace("/cgd102/g2/backmsg"); //上線用
+        //             }else if(xhr.responseText == "無法建立按摩項目"){
+        //                 alert("無法建立按摩項目");
+        //             }
+        //         }
+        //     }
+
+        //     //設定好所要連結的程式
+        //     let urlBackMagAdd = "http://localhost/CGD102_G2/public/api/backMsgAdd.php";//開發用
+        //     // let urlBackMagAdd = `${BASE_URL}/backMsgAdd.php`//上線用
+        //     xhr.open("post", urlBackMagAdd, true);
+        //     let msg_data = `msg_name=${this.msg_name}&msg_intro=${this.msg_intro}&msg_price_2=${this.msg_price_2}&msg_rec_2=${this.msg_rec_2}&msg_desc=${this.msg_desc}&msg_notice=${this.msg_notice}&msg_faq=${this.msg_faq}&msg_pic=${this.msg_pic}&msg_timespan_1=${this.msg_timespan_1}&msg_timespan_2=${this.msg_timespan_2}`;
+        //     console.log(msg_data);
+        //     xhr.send(msg_data);
+        // },
+        submit(){
+            let urlBackMagAdd = "http://localhost/CGD102_G2/public/api/backMsgAdd.php";//開發用
+            // let urlBackMagAdd = `${BASE_URL}/backMsgAdd.php`//上線用
+            this.axios.get(urlBackMagAdd, {
+                params: {
+                    msg_name: this.msg_name,
+                    msg_intro: this.msg_intro,
+                    msg_price_2: this.msg_price_2,
+                    msg_rec_2: this.msg_rec_2,
+                    msg_desc: this.msg_desc,
+                    msg_notice:this.msg_notice,
+                    msg_faq:this.msg_faq,
+                    msg_pic:this.msg_pic,
+                    msg_timespan_1:this.msg_timespan_1,
+                    msg_timespan_2:this.msg_timespan_2
+                }
+            }).then((res) => {
+                this.data = res.data
+                console.log("data",this.data)
+            })
         },
         photo(e){
             this.msg_pic = e.target.files[0].name;
-            // console.log(this.msg_pic);
+            console.log(this.msg_pic);
+            this.picShow = e.target.files[0];
+            let reader = new FileReader();
+            reader.onload = function () {
+                document.getElementById("getfile").src = reader.result; 
+                this.test = reader.result
+                console.log("test",document.getElementById("getfile").src)
+            };
+            reader.readAsDataURL(this.picShow);
         },
-        checkContentByReg(reg, content, tip, classname) {
-            if (reg.test(content)) {
-                this[tip] = "V"
-                this[classname] = "success"
-                return true
-            } else {
-                this[tip] = "請檢查格式"
-                this[classname] = "error"
-                return false
-            }
-        },
-        // onlineStorage(){
-        //         let allens = localStorage.getItem("THERAPIST_NAME")
-        //         this.allenHandsome = JSON.parse(allens)
-        //         // alert(this.allenHandsome)
-                
-        //         this.$nextTick=()=>{
-        //             this.getInfo()
-        //         }
-        //         console.log("俊彥大帥哥",this.allenHandsome)
-                
-        // },
-        // getInfo(){
-            
-        //     // this.axios.get("http://localhost/CGD102_G2/public/api/backtherapistgetvalue.php",{
-        //     this.axios.get(`${BASE_URL}/backtherapistgetvalue.php`,{
-        //         params:{
-        //             searchName:this.allenHandsome[0].THERAPIST_NAME
-        //         }
-        //     })
-        //     .then((res)=>{
-        //         console.log("俊彥率倒吊渣",res)
-        //         // this.backMsgList = res.data
-        //         this.name =this.allenHandsome[0].THERAPIST_NAME
-        //     })  
-        // },
     },
     watch: {
-        password: function (content) {
-            var reg = /^[0-9a-z]{6,10}$/;
-            this.pswflag = this.checkContentByReg(reg, content, "pswtip", "pswclass")
-        }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-    // @import "bootstrap/scss/bootstrap";
-    // @import "../assets/style.scss";
     @import "@/assets/base/_color.scss";
 
     .msg_add{

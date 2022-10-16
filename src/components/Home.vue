@@ -89,8 +89,8 @@
                 </div>
                 <div class="product_content">
                     <div id="item" v-for="item in product" :key="item">
-                        <router-link to="/Detail">
-                            <img :src="require(`../../public/api/pic/${item.PROD_PIC1}`)" @click="joinDetail(item.PROD_ID)"  alt="">
+                        <router-link :to="{path:'/Detail',query:{ PROD_ID: `${item.PROD_ID}`}}">
+                            <img :src="require(`../../public/api/pic/${item.PROD_PIC1}`)"   alt="">
                         <!-- 有掛載東西一定加:號!!!! :class -->
                         <h4>{{item.PROD_NAME}}</h4>
                         <p>${{item.PROD_PRICE}}</p>

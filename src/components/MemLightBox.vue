@@ -54,11 +54,7 @@
     </div>
   </div>
 </template>
-<style lang="scss" scoped>
-img {
-  width: 20%;
-}
-</style>
+
 
 <script>
 import { BASE_URL } from "@/assets/js/common.js";

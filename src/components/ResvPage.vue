@@ -65,13 +65,16 @@
                   </select>
                   <p>請選擇預約日期及時間</p>
                   <DatePicker
+                    
                     v-model="valueTime"
                     type="datetime"
                     format="yyyy-MM-dd HH:mm"
                     placeholder="請選擇預約日期及時間"
                     :options="options1"
+                    hide-disabled-options
                     :time-picker-options="{
-                      steps: [1, 60, 10],
+                      hideDisabledOptions,
+                      steps: [1, 60],
                       disabledHours: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 22, 23],
                     }"
                   />
@@ -125,39 +128,6 @@
           </div>
         </div>
       </section>
-      <!-- <section class="related">
-        <div class="title_area">
-          <h2 class="sure_title">
-            <p class="title_font">相</p>
-            <p class="title_font">關</p>
-            <p class="title_font">按</p>
-            <p class="title_font">摩</p>
-          </h2>
-          <small>• RELATED MASSAGE •</small>
-        </div>
-        <div class="items row">
-          <div
-            class="item col col-12 col-md-4 col-xl-4"
-            v-for="(item, index) in msgCardList"
-            :key="index"
-          >
-            <a href="" class="item_link">
-              <div class="item_pic">
-                <img
-                  :src="require(`@/assets/images/${item.pic}`)"
-                  :alt="item.pic_alt"
-                />
-              </div>
-              <div class="item_txt">
-                <span class="item_name">
-                  {{ item.name }}
-                </span>
-                <span class="item_price_2"> NT$ {{ item.price_2 }} </span>
-              </div>
-            </a>
-          </div>
-        </div>
-      </section> -->
     </main>
   </div>
   <lightBox  :lightBoxShow ="showBox" />
@@ -177,6 +147,7 @@ export default {
   },
   data() {
     return {
+      value1: '09:00:00',
       router: useRouter(),
       showBox:false,
       msgDataPic: "",
@@ -194,48 +165,7 @@ export default {
       RESV_TIME_START: "",
       RESV_TIME_END: "",
       activeTab: "A",
-      msgCardList: [
-        {
-          name: "精油深層放鬆",
-          intro:
-            "提供珍貴漢方中藥草精油，在純手技按摩手法外，利用不同精油的植物特性加強放鬆。以中式推拿舒展筋骨，西式芳療順淋巴，從身體到情緒，把負面疲勞一一帶走，達到身心排毒的功效。",
-          timespan_1: 120,
-          price_1: 2400,
-          rec_1: "適合平常沒有按摩習慣或身體很多部位都很緊繃者​",
-          timespan_2: 60,
-          price_2: 1600,
-          rec_2: "適合平常有按摩習慣者​",
-          pic: "resv2.jpg",
-          pic_alt: "精油深層放鬆照片",
-        },
-        {
-          name: "東方經絡指壓",
-          intro:
-            "找到引發痠痛的源頭部位，根據每個人的情況，靈活運用傳統東方指壓技法，推順氣結並深入經絡，精準的穴位指壓能快速緩解筋肉痠痛，真正順暢筋絡，達到放鬆舒緩，或更深度的修復。",
-          timespan_1: 120,
-          price_1: 2200,
-          rec_1: "適合平常沒有按摩習慣或身體很多部位都很緊繃者​",
-          timespan_2: 60,
-          price_2: 1500,
-          rec_2: "適合平常有按摩習慣者​",
-          pic: "resv3.jpg",
-          pic_alt: "東方經絡指壓照片",
-        },
-        {
-          name: "足部舒壓按摩",
-          intro:
-            "按摩前先讓每位客人沐足，雙腳浸泡在加了薰衣草沐浴鹽的溫水裡。接著透過專業手法，舒緩您小腿肌肉的緊繃，並依照刺激穴道原理，刺激腳底各部位反射區來活絡循環，鬆解腿部疲勞感，有效去除小腿水腫。",
-          timespan_1: 120,
-          price_1: 1800,
-          rec_1: "適合平常沒有按摩習慣或身體很多部位都很緊繃者​",
-          timespan_2: 60,
-          price_2: 1200,
-          rec_2: "適合平常有按摩習慣者​",
-          pic: "resv4.jpg",
-          pic_alt: "足部舒壓按摩照片",
-        },
-      ],
-      valueTime: "", //datepicker取出來的值
+      valueTime: "10:00:00", //datepicker取出來的值
       timeResult: "", //轉換成想要的格式
       disableTimeArray: [["2022-10-10 10:00:00", "2022-10-13 12:00:00"]],
       optionTime: {
@@ -286,45 +216,35 @@ bmit()
       if(!this.member){
          this.showBox = !this.showBox
       }else{
-        // axios 寫法
-        // var url = `${BASE_URL}/resv.php`
-        // console.log(this.valueTime)
-        // console.log(this.THERAPIST_ID)
-        // console.log(this.orderPrice)
-        // this.axios.get(url,{
-        //   params:{
-        //     THERAPIST_ID:this.THERAPIST_ID,
-        //     MSG_RESV_DATE:this.valuesTimes,
-            
-        //   }
-        // })
-
-
-        // xhr 寫法
-        var xhr = new XMLHttpRequest();
-        xhr.onload = function () {
-          if (xhr.status == 200) {
-            if (xhr.responseText == 1) {
-              alert("預約成功");
-              // window.location.replace("/reservation"); //開發用
-              // window.location.replace("/cgd102/g2/reservation"); //上線用
-              this.router.push({ path: '/reservation'});
+        if(this.RESV_TIME_START==0){
+          alert("請選擇時間"); 
+        }else{
+          // xhr 寫法
+          var xhr = new XMLHttpRequest();
+          xhr.onload = function () {
+            if (xhr.status == 200) {
+              if (xhr.responseText == 1) {
+                alert("預約成功");
+                // window.location.replace("/reservation"); //開發用
+                // window.location.replace("/cgd102/g2/reservation"); //上線用
+                this.router.push({ path: '/reservation'});
+              }
+            } else {
+              alert(xhr.status);
             }
-          } else {
-            alert(xhr.status);
-          }
-        };
+          };
 
-        // let urlInsert = "http://localhost/CGD102_G2/public/api/resv.php";
-        let urlInsert = `${BASE_URL}/resv.php`; //上線用
-        xhr.open("post", urlInsert, true);
-        xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-        // let resv_data = `RESV_DATE=${this.RESV_DATE}`;
-        this.MEM_ID=`${this.member.memId}`;
-        // console.log('MEM_ID',this.MEM_ID);
-        let resv_data = `MEM_ID=${this.MEM_ID}&THERAPIST_ID=${this.THERAPIST_ID}&MSG_ID=${this.MSG_ID}&RESV_DATE=${this.RESV_DATE}&RESV_TIME_START=${this.RESV_TIME_START}&RESV_TIME_END=${this.RESV_TIME_END}`;
-        // console.log(resv_data);
-        xhr.send(resv_data);
+          // let urlInsert = "http://localhost/CGD102_G2/public/api/resv.php";
+          let urlInsert = `${BASE_URL}/resv.php`; //上線用
+          xhr.open("post", urlInsert, true);
+          xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+          // let resv_data = `RESV_DATE=${this.RESV_DATE}`;
+          this.MEM_ID=`${this.member.memId}`;
+          // console.log('MEM_ID',this.MEM_ID);
+          let resv_data = `MEM_ID=${this.MEM_ID}&THERAPIST_ID=${this.THERAPIST_ID}&MSG_ID=${this.MSG_ID}&RESV_DATE=${this.RESV_DATE}&RESV_TIME_START=${this.RESV_TIME_START}&RESV_TIME_END=${this.RESV_TIME_END}`;
+          // console.log(resv_data);
+          xhr.send(resv_data);
+        }
       }
    
     },
@@ -368,13 +288,11 @@ bmit()
     valueTime(newVal) {
       let time = new Date(newVal);
       // 把datepicker取出來的值 轉換成想要的格式 2022-10-10 10:00:00
+
       this.timeResult = `${time.getFullYear()}-${
         time.getMonth() + 1
       }-${time.getDate()} ${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`;
-      this.RESV_DATE = `${time.getFullYear()}-${
-        time.getMonth() + 1
-      }-${time.getDate()}`;
-      // this.RESV_TIME_START = `${time.getHours()}:${time.getMinutes()}`;
+      this.RESV_DATE = `${time.getFullYear()}-${time.getMonth() + 1 <10?'0':''}${time.getMonth() + 1}-${time.getDate()<10?'0':''}${time.getDate()}`;
       this.RESV_TIME_START = `${time.getHours()}`;
       this.RESV_TIME_END = `${time.getHours() + 1}`; //只有1小時的時段可選擇就直接+1
       // console.log(this.valueTime);
@@ -382,6 +300,7 @@ bmit()
       // console.log(this.RESV_DATE);
       // console.log(this.RESV_TIME_START);
       // console.log(this.RESV_TIME_END);
+      // console.log("dd",dd);
     },
   },
   computed: {

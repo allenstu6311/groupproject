@@ -168,4 +168,9 @@ export default {
   margin: auto;
   justify-content: center;
 }
+@media screen and (min-width:760px){
+  .Product-container{
+    flex-wrap: wrap;
+}
+}
 </style>

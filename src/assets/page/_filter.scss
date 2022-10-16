@@ -24,17 +24,18 @@
     .filter-list {
         width: 100%;
         max-width: 300px;
-        background-color: aliceblue;
+        background-color: $white;
         position: relative;
         line-height: 2;
         padding: 10px;
         border-radius:20px;
+        top: 10%;
        
 
         .filter-close {
             position: absolute;
-            top: -15px;
-            right: 10px;
+            top: -3px;
+            right: 18px;
 
             p {
                 color: gray;

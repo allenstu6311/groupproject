@@ -76,7 +76,7 @@
 // ==================================留言
 .message-container{
     @include container();
-    padding: 10px 0;
+    padding: 10px 10px;
     .message-user{
         .message-user{
             display: flex;
@@ -121,7 +121,7 @@
 }
 .message-write{
     @include container();
-    padding: 30px 0;
+    padding: 30px 10px;
     text-align: center;
     .write-tex{
         margin-bottom: 20px;

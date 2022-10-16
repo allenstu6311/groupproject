@@ -6,7 +6,7 @@ header("Content-Type:application/json;charset=utf-8");
  require_once("../connect_cgd102g2.php"); //開發用
 // require_once("../connect_cgd102g2.php");//上線用
 
-$sql = "select * from MSG";//取資料庫的 PRODUCT MSG
+$sql = "select * from MSG limit 0,4";//取資料庫的 PRODUCT MSG
 
 $msg = $pdo->query($sql); //設定變數把sql的東西放進去
 

@@ -376,6 +376,7 @@ export default {
                 })
         },
         getResvInfo() {
+            // let urlResv = "http://localhost/CGD102_G2/public/api/memberCenterResv.php";
             let urlResv = `${BASE_URL}/memberCenterResv.php`
             this.axios.get(urlResv, {
                 params: {

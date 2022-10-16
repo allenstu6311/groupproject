@@ -167,6 +167,7 @@
 import { DatePicker } from "view-ui-plus";
 // import 'view-ui-plus/dist/styles/viewuiplus.css'
 import { BASE_URL } from "@/assets/js/common.js";
+import { useRouter } from "vue-router";
 import lightBox from "@/components/lightBox.vue";
 export default {
   props: {},
@@ -176,6 +177,7 @@ export default {
   },
   data() {
     return {
+      router: useRouter(),
       showBox:false,
       msgDataPic: "",
       msgData: [],
@@ -303,25 +305,26 @@ bmit()
         xhr.onload = function () {
           if (xhr.status == 200) {
             if (xhr.responseText == 1) {
-              alert("預約成功"); //還要判斷該時段滿了沒 & 要跳轉到會員中心看訂單
+              alert("預約成功");
+              // window.location.replace("/reservation"); //開發用
+              // window.location.replace("/cgd102/g2/reservation"); //上線用
+              // this.router.push({ path: '/reservation'});
             }
           } else {
             alert(xhr.status);
           }
         };
 
-        // var url = "http://localhost/CGD102_G2/public/api/resv.php";
+        // let urlInsert = "http://localhost/CGD102_G2/public/api/resv.php";
         let urlInsert = `${BASE_URL}/resv.php`; //上線用
         xhr.open("post", urlInsert, true);
         xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-        //我從前台要送什麼資料去後端？
         // let resv_data = `RESV_DATE=${this.RESV_DATE}`;
         this.MEM_ID=`${this.member.memId}`;
         // console.log('MEM_ID',this.MEM_ID);
         let resv_data = `MEM_ID=${this.MEM_ID}&THERAPIST_ID=${this.THERAPIST_ID}&MSG_ID=${this.MSG_ID}&RESV_DATE=${this.RESV_DATE}&RESV_TIME_START=${this.RESV_TIME_START}&RESV_TIME_END=${this.RESV_TIME_END}`;
         // console.log(resv_data);
         xhr.send(resv_data);
-        //      // getMsgData() {},
       }
    
     },
@@ -334,11 +337,11 @@ bmit()
   
     // 拿到從php傳回來的msg的data, id= 1,2,3...
     this.getStorage();
-    // var url = "http://localhost/CGD102_G2/public/api/msgPage.php"; //開發用
-    var url = `${BASE_URL}/msgPage.php` //上線用
+    // let urlSelect = "http://localhost/CGD102_G2/public/api/msgPage.php"; //開發用
+    let urlSelect = `${BASE_URL}/msgPage.php` //上線用
 
     this.axios
-      .get(url, {
+      .get(urlSelect, {
         params: {
           msg_id: this.$route.query.msg_id,
         },
@@ -354,11 +357,6 @@ bmit()
       });
 
     // console.log(this.MSG_ID);
-    // this.getMsgData();
-
-
-   
-
   },
   watch: {
     orderList: {
@@ -379,7 +377,6 @@ bmit()
       // this.RESV_TIME_START = `${time.getHours()}:${time.getMinutes()}`;
       this.RESV_TIME_START = `${time.getHours()}`;
       this.RESV_TIME_END = `${time.getHours() + 1}`; //只有1小時的時段可選擇就直接+1
-      // 1hr=60min=3600s=3600000ms;
       // console.log(this.valueTime);
       // console.log(this.timeResult);
       // console.log(this.RESV_DATE);
@@ -392,7 +389,7 @@ bmit()
       let thus = this;
       return {
         disabledDate(date) {
-          // return new Date(date).getMonth() + 1 == 9;
+          // return new Date(date).getMonth() + 1 == 9; //整個8月不能被預訂
           return thus.disableTimeArray.some((item) => {
             //some表示只要有包含在這段時間區間裡面 就return true, true就會被disable掉, date是選擇的日期
             return (

@@ -7,7 +7,9 @@
     position: fixed;
 
     nav{
-        width: 1200px;
+        max-width: 1200px;
+        width: 100%;
+        // width: 1200px;
         height: 80px;
         list-style: none;
         display: flex;

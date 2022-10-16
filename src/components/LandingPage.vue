@@ -10,7 +10,7 @@
                 <button class="enter">前台</button>
             </router-link>
             <div class="space"></div>
-            <router-link to="/backstage">
+            <router-link to="/manageLogin">
                 <button class="enter ">後台</button>
             </router-link>
             <img class="slide-bottom" src="../assets/images/enterHand2.png" alt="">

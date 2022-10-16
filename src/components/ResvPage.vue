@@ -36,8 +36,8 @@
                     id="orderTherapist"
                     class="therapist"
                   >
-                    <option value="" disabled>請選擇按摩師傅</option>
-                    <option value="1">李駿燕 師傅</option>
+                    <!-- <option value="" disabled>請選擇按摩師傅</option> -->
+                    <option value="1" selected>李駿燕 師傅</option>
                     <option value="2">言子倩 師傅</option>
                     <option value="3">康晉壕 師傅</option>
                     <option value="4">倪玉涓 師傅</option>
@@ -49,7 +49,7 @@
                     id="orderPrice"
                     class="timespan"
                   >
-                    <option disabled value="">請選擇時間長度</option>
+                    <!-- <option disabled value="">請選擇時間長度</option> -->
                     <!-- <option value="2400" >
                         <span class="msg_timespan_1">120分鐘</span>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -158,8 +158,8 @@ export default {
       isActive3: false,
       orderList: [],
       orderMsg: "全身穴道按摩",
-      THERAPIST_ID: "",
-      orderPrice: "",
+      THERAPIST_ID: "1",
+      orderPrice: "60",
       MSG_ID: "",
       RESV_DATE: "",
       RESV_TIME_START: "",
@@ -242,7 +242,7 @@ bmit()
           this.MEM_ID=`${this.member.memId}`;
           // console.log('MEM_ID',this.MEM_ID);
           let resv_data = `MEM_ID=${this.MEM_ID}&THERAPIST_ID=${this.THERAPIST_ID}&MSG_ID=${this.MSG_ID}&RESV_DATE=${this.RESV_DATE}&RESV_TIME_START=${this.RESV_TIME_START}&RESV_TIME_END=${this.RESV_TIME_END}`;
-          // console.log(resv_data);
+          console.log(resv_data);
           xhr.send(resv_data);
         }
       }

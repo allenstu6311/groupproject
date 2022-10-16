@@ -320,6 +320,7 @@ export default {
     } else {
       this.showBox = false;
       this.updateCart();
+      
     }
     this.getInfo();
     this.selChange();

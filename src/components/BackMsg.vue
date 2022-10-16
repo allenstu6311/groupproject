@@ -1,6 +1,32 @@
 <template>
-    <div class="laster_therapist">
+    <div class="back_msg">
         <h1>查看按摩項目</h1>
+        <div class="laster_selectbar hstack gap-3">
+            <div class="input-group bg-light">
+                <input 
+                    type="search" 
+                    class="form-control" 
+                    placeholder="搜尋按摩項目" 
+                    aria-label="Search" 
+                    aria-describedby="search-addon" 
+                    v-model="searchMsg"
+                    @keydown.enter="search"
+                />
+                <button 
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    @click="search"
+                >
+                    <i class="fa fa-search">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                    </i>
+                </button>
+            </div>
+            <!-- <router-link class="btn btn-primary ms-auto" to="/backmsgadd">新增按摩項目</router-link>     -->
+        </div>
+        <hr>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
@@ -11,7 +37,7 @@
             <tbody>
                 <tr 
                 v-for="backMsg in backMsgList" 
-                :key="backMsg">
+                :key="backMsg.MSG_NAME">
                     <td>{{ backMsg.MSG_NAME }}</td>
                     <td>
                         <div>
@@ -40,6 +66,7 @@
             return {
                 backMsgList: [],
                 msgData:[],
+                searchMsg: "",
             }
         },
         created(){
@@ -82,6 +109,42 @@
                 this.msgData=[]
                 this.setStorage()
             },
+            // backProductSearch() {
+            //     let urlSearch = `${BASE_URL}/backMsgSearch.php`; //上線
+            //     this.axios
+            //         .get(urlSearch, {
+            //         params: {
+            //             PROD_NAME: this.backProduct,
+            //         },
+            //         })
+            //         .then((res) => {
+            //         this.data = res.data;
+            //         this.changePageButton = false;
+            //         });
+            // },
+            search(){
+                let urlSearch = `${BASE_URL}/backMsgSearch.php`; //上線
+                this.axios.get(urlSearch, {
+                    params:{
+                        MSG_NAME: this.searchMsg,
+                    }
+                }).then((res)=>{
+                    this.backMsgList = res.data;
+                    console.log("this.backMsgList",this.backMsgList);
+                    console.log("this.data",this.data);
+                })
+            },
+        },
+        watch: {
+            searchMsg: {
+                handler(newVal){
+                    if(!newVal){
+                        this.data = this.backMsgList;
+                        console.log("this.data:",this.data);
+                    }
+                },
+                deep: true
+            },
         }
     }
 </script>
@@ -89,17 +152,29 @@
 <style lang="scss" scoped>
     @import "../assets/base/_color.scss"; //有變數要引用的sass
 
-    .laster_therapist{
+        .back_msg{
         h1{
             font-size: 32px;
             text-align: center;
             padding: 0 0 10px;
         }
+        .bg-light:focus{
+            box-shadow: 0 0 1px 1px $blue;
+        }
+        .form-control:focus{
+            box-shadow: 0 0 1px 1px $blue;
+        }
+        .btn{
+            border: 1px solid #ccc;
+        }
         .laster_selectbar{
             display: flex;
             .form-select{
-                width: 20%;
+                width: 15%;
                 line-height: 2;
+            }
+            .therapist_status{
+                width: 8%;
             }
             .input-group{
                 width: 25%;
@@ -121,11 +196,15 @@
             text-align: center;
             table-layout:fixed;
             .form-select{
-                width: 50%;
-                text-align: end;
+                width: 14%;
+                // text-align: center;
+                margin-left: 12%;
                 background-color: transparent;
                 border: none;
                 cursor: pointer;
+                &:focus{
+                    box-shadow: 0 0 0 1px $blue;
+                }
             }
             thead{
                 background-color: $blue;

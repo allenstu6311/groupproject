@@ -4,7 +4,7 @@ header("Content-Type:application/json;charset=utf-8");
 
 function pagination($judge,$range_1, $range_2)
 {
-    // require_once("../connect_cgd102g2.php");
+    // require_once("../../src/connect_cgd102g2.php");
     require_once("../connect_cgd102g2.php");//上線路徑
 
     switch($judge){

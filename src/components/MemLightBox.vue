@@ -4,7 +4,7 @@
       <header>訂單詳細資訊</header>
       <body>
         <span class="order-date">
-          訂購日期:<slot name="order-date">{{memberInfo.length>0 ?memberInfo[0].PROD_ORDERS_DATE:0}}</slot></span><br>
+          訂購日期:<slot name="order-date">{{memberInfo.length>0 ? orderDate:0}}</slot></span><br>
         <span class="total-money">
           總計:<slot name="total-money">
             {{
@@ -16,7 +16,7 @@
           收件人:<slot name="recipient">{{ member.memName }}</slot>
         </div>
         <div class="address">
-          收件地址:<slot name="address">{{ member.memAddress }}</slot>
+          收件地址:<slot name="address">{{ memberInfo.length>0 ? storeAddress:"" }}<span v-if="storeAddress.length<4">門市</span></slot>
         </div>
         <div class="order-list">
           訂購內容:
@@ -56,7 +56,7 @@
 </template>
 <style lang="scss" scoped>
 img {
-  width: 50%;
+  width: 20%;
 }
 </style>
 
@@ -67,6 +67,9 @@ export default {
   props: {
     memberBuyInfo: Array,
     memberInfo: Array,
+    storeAddress:String,
+    orderDate:Date,
+
   },
   data() {
     return {

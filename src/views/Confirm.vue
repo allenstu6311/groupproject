@@ -4,7 +4,7 @@
   </div>
 
   <div class="confirm-container">
-    <MemberInfo />
+    <MemberInfo @sevenInfo="sevenInfo" />
     <CheckCommodity @productPrice="productMoney" />
   </div>
   <div class="agree">
@@ -27,7 +27,7 @@
 <script>
 import MemberInfo from "@/components/MemberInfo.vue";
 import CheckCommodity from "@/components/CheckCommodity.vue";
-import {BASE_URL} from '@/assets/js/common.js'
+import { BASE_URL } from "@/assets/js/common.js";
 
 // const BASE_URL = process.env.NODE_ENV === "production" ? "/cgd102/g2" : "..";
 
@@ -48,22 +48,25 @@ export default {
       memory: [],
       coupons: "",
       cpsId: "",
+      storeName:{}
     };
   },
   methods: {
-  
     Information() {
-    let members = sessionStorage.getItem("member");
-    this.member = JSON.parse(members);
+      let members = sessionStorage.getItem("member");
+      this.member = JSON.parse(members);
 
       let totalPrices = localStorage.getItem("totalPrice");
       if (!totalPrices) return;
       this.totalPrice = JSON.parse(totalPrices);
     },
+    sevenInfo(val) {
+      this.storeName=val 
+    },
     payInfo() {
       //商品清單
-
-       var url = `${BASE_URL}/productlist.php`; //上線
+      
+      var url = `${BASE_URL}/productlist.php`; //上線
       // var url = "http://localhost/CGD102_G2/public/api/productlist.php";
       this.axios
         .get(url, {
@@ -72,13 +75,14 @@ export default {
             productPrice: this.productNote,
             cps_id: this.cpsId,
             totalPrice: this.totalPrice,
-            address: this.member.memAddress,
+            address:this.storeName.length>0 ? this.storeName[0].POIName:this.member.memAddress,
           },
         })
         .then((res) => {
           this.order_id = res.data;
+          console.log()
           this.changeCupons();
-          this.timerd = setTimeout(this.sendOrderItems, 1000);
+          this.timerd = setTimeout(this.sendOrderItems, 100);
         });
     },
     sendOrderItems() {
@@ -95,33 +99,31 @@ export default {
               prod_num: this.memory[i].PROD_QTY,
             },
           })
-          .then((res) => {
-               
-          });
+          .then((res) => {});
       }
-          alert("結帳完成!請至會員中心查看");
-          this.clearCart();
-          this.$router.push("/MemCenter")
+      alert("結帳完成!請至會員中心查看");
+      this.clearCart();
+      this.$router.push("/MemCenter");
     },
-    clearCart(){
+    clearCart() {
       var url = `${BASE_URL}/clearCart.php`;
-      
-      this.axios.get(url,{
-        params:{
-          mem_id:this.member.memId
-        }
-        
-      })
-      .then((res)=>{
-        console.log(res)
-      })
+
+      this.axios
+        .get(url, {
+          params: {
+            mem_id: this.member.memId,
+          },
+        })
+        .then((res) => {
+          console.log(res);
+        });
     },
     productMoney(val) {
       this.productNote = val;
     },
     getCouponInfo() {
       this.coupons = localStorage.getItem("coupon");
-      
+
       switch (this.coupons) {
         case "0.90":
           this.cpsId = 1;
@@ -139,23 +141,21 @@ export default {
           this.cpsId = 5;
           break;
       }
-     
     },
-      changeCupons(){
+    changeCupons() {
       var url = `${BASE_URL}/deleteCoupons.php`; //上線
-      this.axios.get(url,{
-        params:{
-          mem_id:this.member.memId,
-          cps_id:this.cpsId
-        }
-      })
-      .then((res)=>{
-        console.log(res)
-      })
+      this.axios
+        .get(url, {
+          params: {
+            mem_id: this.member.memId,
+            cps_id: this.cpsId,
+          },
+        })
+        .then((res) => {
+          console.log(res);
+        });
     },
   },
-  
-
   created() {
     this.Information();
     this.productMoney();
@@ -166,7 +166,7 @@ export default {
       this.$router.push("/MemLogin");
     } else {
       var url = `${BASE_URL}/shoppingCart.php`; //上線
-    // var url = "http://localhost/CGD102_G2/public/api/shoppingCart.php"
+      // var url = "http://localhost/CGD102_G2/public/api/shoppingCart.php"
       this.axios
         .get(url, {
           params: {
@@ -187,13 +187,10 @@ export default {
         })
         .then((res) => {
           this.memberCoups = res.data;
-
         });
     }
   },
-  
-
-}
+};
 </script>
 <style lang="scss" scope>
 .background-pic {
@@ -267,7 +264,7 @@ export default {
   }
 }
 
-@media screen and (min-width: 768px)  {
+@media screen and (min-width: 768px) {
   .confirm-container {
     width: 100%;
     max-width: 1200px;

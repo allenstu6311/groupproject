@@ -125,6 +125,7 @@ export default {
         this.show=false
         this.cartLength=true
         this.memberInfo= info
+        this.member=info
         this.getCartNumber()
     },
   

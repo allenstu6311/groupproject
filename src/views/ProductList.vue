@@ -126,6 +126,11 @@ export default {
       );
     },
   },
+  created(){
+      if(this.member){
+          this.updateCart()
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

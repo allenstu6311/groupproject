@@ -40,7 +40,7 @@
           </h5>
           <div class="info" v-for="item in post" :key="item">
             
-            <p v-if="sevenCheck==true">門市:<input type="text" :value="item.POIName"></p>
+            <p v-if="sevenCheck==true">門市:<input type="text" :value="item.POIName" ></p>
             <p v-if="sevenCheck==true">地址:<input type="text" :value="item.sevenAddress"></p>
           </div>
           <div class="map-box" v-if="sevenCheck==true">
@@ -152,6 +152,8 @@ export default {
       sevenAddress: [],
       post: [],
       onlinePayList:false,
+      POIName:'',
+      sevenPosition:"",
       
     };
   },
@@ -210,7 +212,6 @@ export default {
       }
       this.axios.get(this.url).then((res) => {
         this.shop = res.data.stores;
-        console.log("商店", this.shop);
       });
       this.position = this.township[0].AreaName;
     },
@@ -240,6 +241,7 @@ export default {
           POIName: this.seven.POIName,
           sevenAddress: this.seven.Address,
         },
+         
       ];
       this.map.setView([`${this.seven.Y}`, `${this.seven.X}`], 13);
       L.marker([`${this.seven.Y}`, `${this.seven.X}`], { icon: blackIcon })
@@ -257,6 +259,7 @@ export default {
         </div>`
         )
         .openPopup();
+         this.$emit("sevenInfo",this.sevenAddress)
     },
     addAddress() {
       this.post = this.sevenAddress;

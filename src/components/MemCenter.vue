@@ -3,7 +3,9 @@
             <div class="modal-mask" :style="modalStyle">
                 <div class="modal-container" @click="toggleModal">
                     <MemLightBox :memberBuyInfo="data"
-                                :memberInfo="memberData"/>
+                                :memberInfo="memberData"
+                                :orderDate="orderDate"
+                                :storeAddress="storeAddress"/>
                 </div>
             </div>
     </teleport>
@@ -140,7 +142,7 @@
                                 <td valign="middle">
                                     <div id="order_detail">
                                         <button class="btnMinimum order_detail"
-                                            @click="isShowLIghtBox(item.PROD_ORDERS_ID) ">詳細資訊</button>
+                                            @click="isShowLIghtBox(item.PROD_ORDERS_ID,item.PROD_ORDERS_ADDRESS,item.PROD_ORDERS_DATE) ">詳細資訊</button>
                                     </div>
                                 </td>
                             </tr>
@@ -256,6 +258,7 @@ export default {
         memberData: [],
         memberDataResv: [],
         data: [],
+        storeAddress:'',
     }),
     computed: {
         modalStyle() {
@@ -278,7 +281,7 @@ export default {
         toggleModal() {
             this.isShow = !this.isShow;
         },
-        isShowLIghtBox(id) {
+        isShowLIghtBox(id,address,date) {
             this.isShow = true
             var url = `${BASE_URL}/memberLightBox.php`
             this.axios.get(url, {
@@ -288,6 +291,10 @@ export default {
             })
                 .then((res) => {
                     this.data = res.data
+                    this.storeAddress = address
+                    this.orderDate = date
+                
+                    
                 })
         },
 
@@ -373,6 +380,7 @@ export default {
             })
                 .then((res) => {
                     this.memberData = res.data
+                    
                 })
         },
         getResvInfo() {

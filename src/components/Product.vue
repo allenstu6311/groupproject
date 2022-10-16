@@ -133,7 +133,7 @@
             加入購物車
           </button>
           <router-link to="/Cart">
-            <button class="btnLarge redBtn" @click="direct()">直接購買</button>
+            <button class="btnLarge redBtn" @click=" directPurchase(order[0].PROD_ID)">直接購買</button>
           </router-link>
         </div>
       </div>
@@ -419,6 +419,7 @@ export default {
       }
     },
     addCar(id) {
+      this.updateCart()
       if (!this.member) {
         this.showBox = !this.showBox;
       } else {
@@ -431,6 +432,18 @@ export default {
         } else {
           alert("購物車已有相同物品");
         }
+      }
+    },
+    directPurchase(id) {
+      this.updateCart()
+      if (!this.member) {
+        this.showBox = !this.showBox;
+      } else {
+        let sameProduct = this.memory.find((item) => item.PROD_ID === id);
+        if (!sameProduct) {
+          this.IncreaseShoppingCart();
+          this.updateCart();
+        } 
       }
     },
     IncreaseShoppingCart() {
@@ -460,6 +473,7 @@ export default {
           let oldVal = this.memory;
           let newVal = res.data;
           let isSame = newVal.length === oldVal.length;
+          console.log(this.memory)
           if (!isSame) {
             this.memory = res.data;
             return;
@@ -513,7 +527,12 @@ export default {
   },
   created() {
     this.checkMember()
-    this.updateCart()
+    if(!this.member){
+      this.showBox=true
+    }else{
+       this.updateCart()
+    }
+   
     this.orderDetail();
   },
 };

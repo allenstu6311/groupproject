@@ -33,9 +33,12 @@
             .order-list {
                 table {
                     border: 1px solid $black;
+                    table-layout: fixed;
 
                     td {
+                        width: 25%;
                         padding: 3px;
+                        vertical-align: middle;
                     }
                 }
 

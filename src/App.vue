@@ -18,7 +18,8 @@ export default {
     // },
     data(){
       return{
-        member:[]
+        member:[],
+        memory:[]
       }
     },
     computed:{
@@ -39,13 +40,44 @@ export default {
         this.$refs.header.updateMember(info);
         
       },
+      newUpdateCart() {
+      var url = `${BASE_URL}/shoppingCart.php`; //上線
+      this.axios
+        .get(url, {
+          params: {
+            mem_id: this.member.memId,
+          },
+        })
+        .then((res) => {
+          this.memory = res.data;
+          let oldVal = this.memory;
+          let newVal = res.data;
+          let isSame = newVal.length === oldVal.length;
+          if (!isSame) {
+            this.memory = res.data;
+            return;
+          }
+
+          isSame = newVal.every(
+            (v) =>
+              oldVal.findIndex(
+                (u) => u.PROD_ID === v.PROD_ID && u.PROD_QTY == v.PROD_QTY
+              ) > -1
+          );
+          if (!isSame) {
+            this.memory = res.data;
+          }
+
+          this.$emit("update-cart", res.data);
+        });
+    },
    
     },
     created(){
-
-      //  let members = sessionStorage.getItem("member");
-      // this.member = JSON.parse(members);
-      //   console.log("app",this.member)
-    }
+ this.newUpdateCart()
+      if(this.member){
+     
+      }console.log("app",this.member)
+      }
 }
 </script>

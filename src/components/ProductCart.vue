@@ -1,6 +1,6 @@
 <template>
   <div class="shopping-cart">
-    <div class="shopping-title" style="padding-top: 120px;margin-bottom:40px">
+    <div class="shopping-title" style="padding-top: 120px;margin:0 0 40px 0;">
       <div class="title-font">購</div>
       <div class="title-font">物</div>
       <div class="title-font">車</div>
@@ -13,7 +13,7 @@
       v-if="detect == true"
       style="text-align: center; margin: 100px 0"
     >
-      <h1>目前購物車是空的</h1>
+      <h1 style="font-size:36px; letter-spacing:1px; color:#163D82;">目前購物車是空的</h1>
     </div>
 
     <div class="shopping-list-order" v-for="item in memory" :key="item.PROD_ID">
@@ -71,8 +71,8 @@
 
   <div class="shopping-price col-9">
     <div class="shopping-box">
-      <span><input type="checkbox" v-model="checkOut" />全選</span>
-      <button class="btnLarge" @click="drop">刪除選取項目</button>
+      <span style="font-size:20px;"><input type="checkbox" v-model="checkOut" />全選</span>
+      <button class="btnLittle" @click="drop">刪除選取項目</button>
     </div>
     <div class="shopping-check">
       <div class="shopping-checkout">
@@ -84,7 +84,7 @@
           }}</strong>
         </p>
         <router-link @click="checkList(e)" to="/Confirm"
-          ><button class="btnLittle">前往結帳</button>
+          ><button class="btnLittle" style="font-size:18px;">前往結帳</button>
         </router-link>
       </div>
     </div>

@@ -84,11 +84,13 @@
     flex-wrap: wrap;
     text-align: center;
     background-color: $baseWhite;
+    margin: 0 auto;
     .logo{
         
         margin: 0 auto;
-        padding-top: 40px;
-        width: 1200px;
+        padding: 20px 0;
+        width: 100%;
+        max-width: 1200px;
         img{
             width: 300px;
             
@@ -100,7 +102,7 @@
         justify-content: center;
         height: 65vh;
         margin: 0 auto;
-        width: 1200px;
+        max-width: 1200px;
         .space{
             width: 250px;
         }
@@ -141,5 +143,30 @@
     }
 }
 }
-    
+/*====== 行動版 RWD | 320px ~ 768px ======*/
+@media screen and (min-width: 320px) and (max-width: 767.98px){
+    .landing_content{
+        width: 90%;
+
+        .btn_contain{
+            display: flex;
+            flex-wrap: wrap;
+            height: 58vh;
+
+            .slide-top{
+                display: none;
+            }
+            .slide-bottom{
+                display: none;
+            }
+        }
+    }
+    .copyright{
+        width: 90%;
+        display: flex;
+        justify-content: center;
+    }
+
+
+}    
 </style>

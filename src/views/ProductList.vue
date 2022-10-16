@@ -20,12 +20,14 @@
                     <small>• EXQUISITE PRODUCTS • </small>
                 </div>
             </div>
+        
   <div class="product-search">
     <input
       type="text"
       name=""
       v-model="search_obj"
       placeholder="請輸入商品名稱"
+      @keydown.enter="searchStar"
     />
     <button @click="searchStar" style="font-size:22px">
    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">

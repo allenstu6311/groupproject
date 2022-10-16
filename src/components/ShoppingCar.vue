@@ -5,12 +5,18 @@
 
   <!-- ========================================banner -->
 
-  <div class="purchase-area" style="padding: 50px 0">
-    <div class="purchase-area-title">
-      <div class="title-font">加</div>
-      <div class="title-font">購</div>
-      <div class="title-font">區</div>
-    </div>
+  <div class="shopping-cart">
+        <div class="title_area" style=" margin-top:20px; margin-bottom:50px;padding-top:50px;display:flex;
+        flex-direction: column;align-items: flex-start;">
+                <h2 class="sure_title" style="justify-content: flex-start;">
+                    <p class="title_font">加</p>
+                    <p class="title_font">購</p>
+                    <p class="title_font">區</p>
+                </h2>
+                <div class="commodity-post">
+                    <small>• EXQUISITE PRODUCTS • </small>
+                </div>
+            </div>
   </div>
 
   <div class="add-on-container">

@@ -44,8 +44,8 @@ function msgAdd($msg_name,$msg_intro,$msg_timespan_2,$msg_price_2,$msg_rec_2,$ms
     $insertSql = "INSERT INTO MSG (MSG_NAME,MSG_INTRO,MSG_TIMESPAN_2,MSG_PRICE_2,MSG_REC_2,MSG_DESC,MSG_NOTICE,MSG_FAQ,MSG_PIC,MSG_STATUS)
     VALUES('{$msg_name}','{$msg_intro}',{$msg_timespan_2},{$msg_price_2},'{$msg_rec_2}','{$msg_desc}','{$msg_notice}','{$msg_faq}','{$msg_pic}',1);";
 
-    $add = $pdo -> prepare($insertSql);
-    echo 1;
+    $pdo -> query($insertSql);
+    // echo  $pdo->lastInsertId();
 
 }
 msgAdd($_GET['msg_name'],$_GET['msg_intro'],$_GET['msg_timespan_2'],$_GET['msg_price_2'],$_GET['msg_rec_2'],$_GET['msg_desc'],$_GET['msg_notice'],$_GET['msg_faq'],$_GET['msg_pic'])

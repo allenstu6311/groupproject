@@ -109,6 +109,12 @@ const routes = [
     meta:{isHide:true}
   },
   {
+    path: '/backresv',
+    name: 'backresv',
+    component: () => import('@/views/BackResvView.vue'),
+    meta:{isHide:true}
+  },
+  {
     path: '/backmsgadd',
     name: 'backmsgadd',
     component: () => import('@/views/BackMsgAddView.vue'),

@@ -62,6 +62,7 @@
 }
 @media screen and (max-width: 768px){
     .member-info {
+        overflow: hidden;
         .member-body {
             margin-bottom: 20px;
             line-height: 1.5;
@@ -83,7 +84,7 @@
             .info {
             }
             #sevenMap {
-                display: none;
+                
             }
         }
     }

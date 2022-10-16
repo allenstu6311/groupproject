@@ -138,7 +138,7 @@
 .shopping-title{
     @include container();
     display: flex;
-    margin: 20px 0;
+
 
     .title-font{
         @include title();
@@ -160,7 +160,7 @@
     .shopping-title{
         @include container();
         display: flex;
-        margin: 20px 0;
+        
 
     }
 

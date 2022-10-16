@@ -1,6 +1,7 @@
 .register {
     @include container;
-
+    position: relative;
+    top:80px;
     .title {
         font-size: 40px;
         position: relative;

@@ -23,7 +23,7 @@ export default {
     methods: {
         logout(){
             sessionStorage.removeItem("admin");
-            this.router.push({ path: '/ManageLogin' });
+            this.router.push({ path: '/manageLogin' });
         },
         getAdminName(){
             let getname = JSON.parse(sessionStorage.getItem("admin"));

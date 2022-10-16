@@ -56,7 +56,7 @@
                 </div>
             </div>
         </div>
-        <div style="text-align:center"><button class="btnLittle" @click="submit">送出</button>
+        <div style="text-align:center;padding-bottom: 80px;"><button class="btnLittle" @click="submit">送出</button>
         </div>
     </div>
 </template>

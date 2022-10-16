@@ -87,8 +87,9 @@
 @media screen and (min-width: 320px) and (max-width: 767.98px){
   .light-box-container {
     .light-box-text {
-      left: 15%;
-      top: 25%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 }
@@ -96,8 +97,9 @@
 @media screen and (min-width: 768px) and (max-width: 1199.98px){
   .light-box-container {
     .light-box-text {
-      left: 32%;
-      top: 25%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 }

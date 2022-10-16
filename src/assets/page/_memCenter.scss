@@ -43,8 +43,16 @@
                 }
 
                 body {
-                    padding-top: 5px;
+                    padding: 5px 10px 0;
                     font-size: 20px;
+
+                    .order-date {
+                        font-size: 20px;
+                    }
+
+                    .total-money {
+                        font-size: 20px;
+                    }
 
                     .order-list {
                         table {
@@ -56,8 +64,21 @@
                         }
 
                         .order-detail {
+                            width: 95%;
+                            table-layout: fixed;
                             text-align: center;
                             margin: 5px auto;
+
+                            .item-info {
+                                td {
+                                    vertical-align: middle;
+
+                                    img {
+                                        width: 100%;
+                                        height: 100%;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -66,18 +87,11 @@
     }
 }
 
-
-
-
-
-
-
-
 .memCenter {
     @include container;
     position: relative;
     padding-bottom: 100px;
-    top:80px;
+    top: 80px;
 
     input {
         font-size: 16px;
@@ -228,6 +242,7 @@
                 background-color: $blue;
                 color: $white;
                 padding: 3px;
+                white-space: nowrap;
             }
 
             tr {
@@ -446,19 +461,31 @@
 }
 
 @media screen and (min-width: 1200px) {
-    .modal-mask{
+    .modal-mask {
         .modal-container {
-            .lightbox{
+            .lightbox {
                 .modal-body {
                     body {
                         width: 1200px;
                         margin: 0 auto;
+                        .order-list {
+                            .order-detail {
+                                .item-info {
+                                    td {
+                                        img {
+                                            width: 50%;
+                                            height: 100%;
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
     }
-    
+
     .memCenter {
         .reserve_search_row {
             display: flex;

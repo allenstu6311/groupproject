@@ -183,19 +183,19 @@
                                 <th>開始時間</th>
                                 <th>結束時間</th>
                                 <!-- <th>按摩時間長度</th> -->
-                                <th>預約狀態</th>
+                                <!-- <th>預約狀態</th> -->
                             </tr>
                             <tr v-for="item in memberDataResv" :key="item.RESV_ID">
                                 <td>{{item.RESV_DATE}}</td>
                                 <td>{{item.MSG_NAME}}</td>
                                 <td>{{item.THERAPIST_NAME}}</td>
                                 <td>{{item.MSG_PRICE_2}}</td>
-                                <td>{{item.RESV_TIME_START}}:00 - {{item.RESV_TIME_END}}:00</td>
+                                <td>{{item.RESV_TIME_START}}:00</td>
                                 <td>{{item.RESV_TIME_END}}:00</td>
                                 <!-- <td>{{item.MSG_TIMESPAN_2}}分鐘</td> -->
-                                <td v-if="item.RESV_STATUS==0">未完成</td>
+                                <!-- <td v-if="item.RESV_STATUS==0">未完成</td>
                                 <td v-if="item.RESV_STATUS==1">已完成</td>
-                                <td v-if="item.RESV_STATUS==2">已取消</td>
+                                <td v-if="item.RESV_STATUS==2">已取消</td> -->
                             </tr>
                             <!-- <tr id="vieworder">
                                     <td id="resvDate"></td>

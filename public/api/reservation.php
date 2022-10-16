@@ -7,7 +7,7 @@ try{
     // require_once("../connect_cgd102g2.php"); //開發路徑
     require_once("../connect_cgd102g2.php");//上線路徑
 
-    $sql = "SELECT * FROM MSG";
+    $sql = "SELECT * FROM MSG WHERE MSG_STATUS=0;";
     $msg = $pdo->query($sql);
 
     if($msg->rowCount()==0){

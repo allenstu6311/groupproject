@@ -19,14 +19,10 @@ try{
 
         foreach($msgs as $i => $page){
         
-        ?>
-        <?php
         $data[] = $page;
         }
 
         echo json_encode($data);
-        ?>
-        <?php
     }
 }catch (Exception $e) {
         echo "錯誤行號 : ", $e->getLine(), "<br>";

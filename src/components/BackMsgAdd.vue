@@ -103,6 +103,7 @@ export default {
             msg_notice: '',
             msg_faq: '',
             msg_pic: '',
+            data: [],
         }
     },
     created(){
@@ -168,8 +169,8 @@ export default {
         //     xhr.send(msg_data);
         // },
         submit(){
-            let urlBackMagAdd = "http://localhost/CGD102_G2/public/api/backMsgAdd.php";//開發用
-            // let urlBackMagAdd = `${BASE_URL}/backMsgAdd.php`//上線用
+            // let urlBackMagAdd = "http://localhost/CGD102_G2/public/api/backMsgAdd.php";//開發用
+            let urlBackMagAdd = `${BASE_URL}/backMsgAdd.php`//上線用
             this.axios.get(urlBackMagAdd, {
                 params: {
                     msg_name: this.msg_name,
@@ -186,6 +187,10 @@ export default {
             }).then((res) => {
                 this.data = res.data
                 console.log("data",this.data)
+                console.log("res.data",res.data)
+                // window.location.replace("/backmsg")
+                window.location.replace("/cgd102/g2/backmsg"); //上線用
+
             })
         },
         photo(e){

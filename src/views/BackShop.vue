@@ -59,7 +59,7 @@
                 <th>狀態</th>
                 <th>上架</th>
                 <th>下架</th>
-                <th>刪除</th>
+                <!-- <th>刪除</th> -->
               </tr>
             </thead>
             <tbody>
@@ -94,7 +94,7 @@
                     下架
                   </button>
                 </td>
-                <td>
+                <!-- <td>
                   <button
                     type="button"
                     class="btn btn-success"
@@ -102,7 +102,7 @@
                   >
                     刪除
                   </button>
-                </td>
+                </td> -->
               </tr>
             </tbody>
           </table>

@@ -105,12 +105,8 @@ export default {
                
             })
             .then((res)=>{
-               
                 this.range = res.data
-                console.log("range--->",this.range)
                 this.data=this.range
-                this.$emit("filter",this.range)
-             
             })
         },
         filterChose(){
@@ -185,7 +181,6 @@ export default {
                     filterPrice_1:this.checkPrice[0].price_1,
                     filterPrice_2:this.checkPrice[0].price_2
                 }
-                
             })
             .then((res)=>{
                 this.filterPrice = res.data

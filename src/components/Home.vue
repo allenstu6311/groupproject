@@ -258,14 +258,15 @@ import {BASE_URL} from '@/assets/js/common.js'
                 msgList:[],//---------------預約按摩------------------
                 cart: [],
                 calculate:[],
+                msgList:[],
             }
         },
         created(){
-            //一進網頁就直接執行的~
+            // 一進網頁就直接執行的~
             this.axios.get( `${BASE_URL}/homeMsg.php`)
             .then((msg1)=>{ //msg1 可以自己取名,存取上面的路徑
                 this.msgList=msg1.data //把路徑中的資料(php)丟到上面的陣列中  .data是類似資料型別,也有殼能不是data
-               // console.log("MSG~~~--->",this.msgList)  檢查有沒有抓資料近來
+            //    console.log("MSG~~~--->",this.msgList)  //檢查有沒有抓資料近來
                 
             })
 

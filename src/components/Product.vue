@@ -209,6 +209,7 @@ img {
   color: red;
   left: 90%;
   top: -10%;
+  z-index: 10000;
 }
 .magnifier {
   position: relative;
@@ -419,10 +420,11 @@ export default {
       }
     },
     addCar(id) {
-      this.updateCart()
+      
       if (!this.member) {
         this.showBox = !this.showBox;
       } else {
+        this.updateCart()
         let sameProduct = this.memory.find((item) => item.PROD_ID === id);
         if (!sameProduct) {
           alert("成功加入");
@@ -473,7 +475,6 @@ export default {
           let oldVal = this.memory;
           let newVal = res.data;
           let isSame = newVal.length === oldVal.length;
-          console.log(this.memory)
           if (!isSame) {
             this.memory = res.data;
             return;
@@ -527,10 +528,8 @@ export default {
   },
   created() {
     this.checkMember()
-    if(!this.member){
-      this.showBox=true
-    }else{
-       this.updateCart()
+    if(this.member){
+     this.updateCart()
     }
    
     this.orderDetail();

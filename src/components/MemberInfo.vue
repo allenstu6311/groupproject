@@ -4,7 +4,7 @@
       <h3 class="bold">訂單資訊</h3>
     </div>
     <div class="member-synchronize">
-      <input type="checkbox" v-model="check" />同訂購人資訊
+      <input type="checkbox" v-model="check" />同會員資訊
     </div>
     <div class="member-body">
       <div class="member-name">
@@ -43,7 +43,8 @@
             <p v-if="sevenCheck==true">門市:<input type="text" :value="item.POIName" ></p>
             <p v-if="sevenCheck==true">地址:<input type="text" :value="item.sevenAddress"></p>
           </div>
-          <div class="map-box" v-if="sevenCheck==true">
+          <div class="map-box" style="line-height:1.5" v-if="sevenCheck==true">
+            <small style="font-size:12px;color:red">資料量較大可能需要重複選取</small><br>
             <select name="" id="" v-model="city" @change="filterShop(city)">
               <option value="1">請選擇</option>
               <option

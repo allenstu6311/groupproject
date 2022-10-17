@@ -3,7 +3,7 @@
     header("Content-Type:application/json;charset=utf-8");
     try{
       require_once("../connect_cgd102g2.php");
-        // require_once("../connect_cgd102g2.php");//上線用
+      // require_once("../../src/connect_cgd102g2.php");//開發用
         if(isset($_POST["password"]) == 1){
             $findMemSql = "UPDATE MEMBER
                        SET  MEM_NAME=:MEM_NAME,MEM_ACCOUNT=:ACCOUNT,MEM_PSW=:PSW,MEM_BIRTHDAY=:BIRTHDAY,MEM_PHONE=:PHONE,MEM_LOCALCALL=:LOCALCALL,MEM_EMAIL=:EMAIL,MEM_ADDRESS=:MEM_ADDRESS

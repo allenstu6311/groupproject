@@ -23,7 +23,6 @@
       確認付款
     </button>
   </div>
-  <button @click="limitSingular">測試</button>
 </template>
 <script>
 import MemberInfo from "@/components/MemberInfo.vue";

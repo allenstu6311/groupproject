@@ -151,6 +151,7 @@
       id="exampleDataList"
       placeholder="請輸入密碼"
       v-model="deleteCheck"
+      type="password"
     />
     <button type="button" class="btn btn-primary m-2" @click="checkDelete">確定</button>
     <button type="button" class="btn btn-secondary m-2" @click="lightBoxShow=false">取消</button>

@@ -384,9 +384,6 @@ export default {
           }
         });
     },
-  
- 
- 
   },
 
   created() {

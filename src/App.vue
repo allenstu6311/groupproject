@@ -41,7 +41,6 @@ export default {
         
       },
       synchronize(val){
-        console.log("val",val)
          this.$refs.header.synchronize(val);
       },
       newUpdateCart() {

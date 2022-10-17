@@ -178,7 +178,7 @@
         </div>
       </div>
       <div class="commodity-page" v-show="disappear == false">
-        <span @click="prevCurrPage">＜</span>{{disappear}}
+        <span @click="prevCurrPage">＜</span>
         <span
           v-for="(i, value) in 3"
           :key="i"
@@ -395,11 +395,7 @@ export default {
   },
   mounted() {},
   watch: {
-    checkPrice:{
-      handler(newVal){
-        console.log(newVal)
-      }
-    },
+   
     price: {
       handler(newVal) {
         console.log(newVal)

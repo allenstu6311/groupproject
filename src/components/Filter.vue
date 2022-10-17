@@ -107,7 +107,8 @@ export default {
             })
             .then((res)=>{
                 this.range = res.data
-                this.$emit("checkMoney",this.range)
+                 this.$emit("checkMoney",this.range)
+                
 
             })
         },
@@ -186,6 +187,7 @@ export default {
             })
             .then((res)=>{
                 this.filterPrice = res.data
+                this.$emit("checkMoney",this.filterPrice)
          
           
             })

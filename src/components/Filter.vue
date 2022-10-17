@@ -94,6 +94,7 @@ export default {
     methods:{
     
         choseRange(){
+            
             var url = `${BASE_URL}/priceRange.php` //上線
             // var url = "http://localhost/CGD102_G2/public/api/priceRange.php"
             this.axios.get(url,
@@ -106,7 +107,8 @@ export default {
             })
             .then((res)=>{
                 this.range = res.data
-                this.data=this.range
+                this.$emit("checkMoney",this.range)
+
             })
         },
         filterChose(){
@@ -184,7 +186,8 @@ export default {
             })
             .then((res)=>{
                 this.filterPrice = res.data
-                 this.$emit("checkMoney",this.filterPrice)
+         
+          
             })
         },
         tool(num){

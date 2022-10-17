@@ -103,6 +103,7 @@ export default {
         });
     },
     productMoney(val) {
+      console.log(val)
       this.product_price = val;
     },
     productTool(val) {

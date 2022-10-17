@@ -178,7 +178,7 @@
         </div>
       </div>
       <div class="commodity-page" v-show="disappear == false">
-        <span @click="prevCurrPage">＜</span>
+        <span @click="prevCurrPage">＜</span>{{disappear}}
         <span
           v-for="(i, value) in 3"
           :key="i"
@@ -362,6 +362,7 @@ export default {
     },
     slideImg() {
       var url = `${BASE_URL}/commoditylist.php`;
+      // var url = "http://localhost/CGD102_G2/public/api/commoditylist.php";
       this.axios
         .get(url, {
           params: {
@@ -394,25 +395,35 @@ export default {
   },
   mounted() {},
   watch: {
+    checkPrice:{
+      handler(newVal){
+        console.log(newVal)
+      }
+    },
     price: {
       handler(newVal) {
+        console.log(newVal)
         this.data = newVal;
-        this.disappear = false;
+        
+        this.disappear = true;
       },
     },
     enter1: {
       handler(newVal) {
+      
         if (newVal == "") {
           this.data = this.info;
-          this.disappear = false;
+          this.disappear = true;
         }
       },
     },
     enter2: {
       handler(newVal) {
+
         if (newVal == "") {
           this.data = this.info;
-          this.disappear = false;
+          this.disappear = true;
+      
         }
       },
     },
@@ -435,7 +446,7 @@ export default {
           this.disappear = true
         } else {
           this.empty = false;
-           this.disappear = false
+      
         }
       },
       deep: true,

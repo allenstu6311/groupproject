@@ -80,7 +80,7 @@ export default {
                         alert("修改成功");
                         
                         // window.location.replace("/BackCoupon"); //開發用
-                        window.location.replace("/BackCoupon"); //上線用
+                        window.location.replace("/cgd102/g2/BackCoupon"); //上線用
                     }else if(xhr.responseText == "修改失敗"){
                         alert("修改失敗");
                     }

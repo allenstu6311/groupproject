@@ -308,7 +308,7 @@ export default {
             // var url = "http://localhost/CGD102_G2/public/api/getMemData.php";
             xhr.open("post", url, true);
             xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-            var getMemInfo = `name=${this.name}`;
+            var getMemInfo = `id=${this.memId}`;
             xhr.send(getMemInfo);
 
             xhr.onload = function () {

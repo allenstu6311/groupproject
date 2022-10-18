@@ -126,7 +126,14 @@
                                     <p>{{msgs.MSG_REC_2}}</p>
                                 </div>
                                 <div class="intro_btn">
-                                    <router-link to="/ResvPage"><div class="btnLittle">立即預約</div></router-link>
+                                    <!-- <router-link to="/ResvPage"><div class="btnLittle">立即預約</div></router-link> -->
+                                    <router-link 
+                                    :to="{
+                                        path: '/resvPage',
+                                        query: { msg_id: `${msgs.MSG_ID}`}
+                                    }">
+                                    <div class="btnLittle">立即預約</div>
+                                    </router-link>
                                 </div>
                             </div>
                         </div>

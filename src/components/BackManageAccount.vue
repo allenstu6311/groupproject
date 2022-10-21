@@ -273,7 +273,7 @@ export default {
 
     .search_manage_bar {
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
 
         .search_bar {
             display: flex;

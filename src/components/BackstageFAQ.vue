@@ -70,14 +70,14 @@
         methods:{
             async getDataFromApi() {
                 // var url = 'http://localhost/CGD102_G2/public/api/FAQContent.php' //開發用
-                var url = `${BASE_URL}/FAQContent.php` //上線用
+                const url = `${BASE_URL}/FAQContent.php` //上線用
                 let getData = async(url) => {
                     let response = await fetch(url); // await: 這行的 await 執行完才會執行下一個 await
                     let JSON =  response.json();
                     this.faqCardList = await JSON; // php 抓取回來的資料存取在預設好的參數裡
                 }
                 await getData(url); // 觸發 getData 的匿名 function 內容 ==> 89 ~ 91 行的內容
-                console.log(this.faqCardList);
+                // console.log(this.faqCardList);
             },
             deleteFAQ(id){
                 console.log(id)
@@ -87,11 +87,6 @@
                     }
                 })
             },  
-            sorttype() {
-            if (this.selecttype != -1) {
-                this.backstageCouponList.sort((a, b) => b[this.selecttype] < a[this.selecttype] ? 1 : -1)
-            }
-            },
         }
     }
 </script>

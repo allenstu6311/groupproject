@@ -72,12 +72,6 @@
                         />
                     </figure>
                 </div>
-                <!-- <div class="col">
-                    <figure class="figure">
-                        <figcaption class="figure-caption">預覽圖片</figcaption>
-                        <img src="../assets/images/resv1.jpg" class="figure-img img-fluid rounded" alt="預覽圖片" maxlength="50">
-                    </figure>
-                </div> -->
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <!-- <button class="btn btn-primary me-md-2" @click="submit" type="button">儲存</button> -->

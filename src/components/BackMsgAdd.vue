@@ -186,8 +186,8 @@ export default {
                 }
             }).then((res) => {
                 this.data = res.data
-                console.log("data",this.data)
-                console.log("res.data",res.data)
+                // console.log("data",this.data)
+                // console.log("res.data",res.data)
                 // window.location.replace("/backmsg")
                 window.location.replace("/cgd102/g2/backmsg"); //上線用
 
@@ -195,13 +195,13 @@ export default {
         },
         photo(e){
             this.msg_pic = e.target.files[0].name;
-            console.log(this.msg_pic);
+            // console.log(this.msg_pic);
             this.picShow = e.target.files[0];
             let reader = new FileReader();
             reader.onload = function () {
                 document.getElementById("getfile").src = reader.result; 
                 this.test = reader.result
-                console.log("test",document.getElementById("getfile").src)
+                // console.log("test",document.getElementById("getfile").src)
             };
             reader.readAsDataURL(this.picShow);
         },

@@ -110,7 +110,7 @@
                     }
                 })
                 .then((res)=>{
-                    console.log(res.data[0].MSG_NAME)
+                    // console.log(res.data[0].MSG_NAME)
                     this.msgData = res.data
                     this.setStorage()
                 })
